@@ -1,0 +1,44 @@
+\usepackage{bbm}
+\usepackage{tikz}
+\usepackage{amsmath,amssymb,amsthm,color,mathrsfs}
+\usepackage{hyperref}
+\usepackage{cleveref}
+\usepackage{enumitem,anysize}%
+\usepackage{expl3}
+\usepackage{lipsum}
+\usepackage{stringstrings}
+\usepackage{currfile}
+\marginsize{1cm}{1cm}{1cm}{1cm}%
+\theoremstyle{remark}
+\newtheorem{lemma}{Lemma}
+
+\newcounter{problem}
+\newcommand{\Problem}{\begin{tikzpicture}[baseline]%
+    \node at (-0.02em,0.3em) {$\mathbb{P}$};%
+    \node[scale=0.7] at (0.2em,-0.0em) {R};%
+    \node[scale=0.7] at (0.6em,0.4em) {O};%
+    \node[scale=0.8] at (1.05em,0.25em) {B};%
+    \node at (1.55em,0.3em) {L};%
+    \node[scale=0.7] at (1.75em,0.45em) {E};%
+    \node at (2.35em,0.3em) {M};%
+    \end{tikzpicture}%
+}
+\renewcommand{\theproblem}{\Roman{problem}}
+\newenvironment{problem}{\refstepcounter{problem}\noindent\color{blue}\Problem\theproblem}{}
+
+\crefname{problem}{\protect\Problem}{Problem}
+\newcommand\Solution{\begin{tikzpicture}[baseline]%
+\node at (-0.04em,0.3em) {$\mathbb{S}$};%
+\node[scale=0.7] at (0.35em,0.4em) {O};%
+\node at (0.7em,0.3em) {\textit{L}};%
+\node[scale=0.7] at (0.95em,0.4em) {U};%
+\node[scale=1.1] at (1.19em,0.32em){T};%
+\node[scale=0.85] at (1.4em,0.24em){I};%
+\node at (1.9em,0.32em){$\mathcal{O}$};%
+\node[scale=0.75] at (2.3em,0.21em){\texttt{N}};%
+\end{tikzpicture}}
+\newenvironment{solution}{\begin{proof}[\Solution]}{\end{proof}}
+\title{$\mathfrak{\currfilebase}$}
+\author{白永乐\\ %% 姓名
+SID: 202011150087\\ %% 学号
+\texttt{202011150087@mail.bnu.edu.cn}} %% 电邮

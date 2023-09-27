@@ -1,0 +1,296 @@
+%# -*- coding:utf-8 -*-
+%! Mode:: "TeX:UTF-8"
+%!TEX encoding = UTF-8 Unicode
+%!TEX TS-program = xelatex
+\documentclass{ctexart}
+\usepackage{bbm}
+\usepackage{tikz}
+
+\usepackage{amsmath,amssymb,amsthm,color,mathrsfs}
+\usepackage{enumitem,anysize}%
+\usepackage{expl3}
+\marginsize{1in}{1in}{1in}{1in}%
+\theoremstyle{remark}
+\newtheorem*{claim*}{Claim}
+\newtheorem{lemma}{Lemma}
+
+\DeclareMathOperator{\ot}{ordertype}
+\DeclareMathOperator{\dom}{dom}
+\DeclareMathOperator{\ran}{ran}
+\DeclareMathOperator{\field}{field}
+\DeclareMathOperator{\Ord}{Ord}
+
+\newcommand{\cc}{\mathfrak{c}}
+
+\def\email#1{{\texttt{#1}}}
+\newcommand{\isep}[1][0pt]{\addtolength{\itemsep}{#1}}
+\newtheorem{prob}{\begin{tikzpicture}[baseline]%
+\node at (-0.02em,0.3em) {$\mathbb{P}$};%
+\node[scale=0.7] at (0.2em,-0.0em) {R};%
+\node[scale=0.7] at (0.6em,0.4em) {O};%
+\node[scale=0.8] at (1.05em,0.25em) {B};%
+\node at (1.55em,0.3em) {L};%
+\node[scale=0.7] at (1.75em,0.45em) {E};%
+\node at (2.35em,0.3em) {M};%
+\end{tikzpicture}}
+\renewcommand\theprob{{\Roman{prob}}}
+\newenvironment{problem}{\color{blue}\begin{prob}}{\end{prob}}
+\newcommand\mysolution{\begin{tikzpicture}[baseline]%
+\node at (-0.04em,0.3em) {$\mathbb{S}$};%
+\node[scale=0.7] at (0.35em,0.4em) {O};%
+\node at (0.7em,0.3em) {\textit{L}};%
+\node[scale=0.7] at (0.95em,0.4em) {U};%
+\node[scale=1.1] at (1.19em,0.32em){T};%
+\node[scale=0.85] at (1.4em,0.24em){I};%
+\node at (1.9em,0.32em){$\mathcal{O}$};%
+\node[scale=0.75] at (2.3em,0.21em){\texttt{N}};%
+\end{tikzpicture}}
+\newenvironment{solution}{\begin{proof}[\mysolution]}{\end{proof}}
+\newtheorem{exer}{Exercise}
+\newenvironment{exercise}{\color{blue}\begin{exer}}{\end{exer}}
+
+%%%%%%%%
+\newcommand{\calL}{\mathcal{L}}
+
+\newcommand\<{\langle}
+\renewcommand\>{\rangle}
+\newcommand\eneg{\mathcal{E}_{\neg}}
+\newcommand\eto{\mathcal{E}_{\to}}
+\newcommand\N{\mathbb{N}}
+\newcommand\subini{\subsetneqq_{init}}
+%\def\({(}
+%\def\){)}
+\def\to{\rightarrow}
+\newcommand{\calA}{\mathcal{A}}
+\newcommand{\xor}{\vee}
+\newcommand{\bor}{\bigvee}
+\newcommand{\band}{\bigwedge}
+\newcommand{\xand}{\wedge}
+\newcommand{\minus}{\mathbin{\backslash}}
+\newcommand{\calF}{\mathcal{F}}
+\newcommand\mi[1]{\mathscr{P}(#1)}
+\newcommand{\calB}{\mathcal{B}}
+\newcommand{\heq}{\mathop{\hat{=}}}
+\newcommand{\hneq}{\mathop{\hat{\neq}}}
+\newcommand{\calR}{\mathcal{R}}
+\newcommand{\hle}{\mathop{\hat{<}}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\calM}{\mathcal{M}}
+\newcommand{\calN}{\mathcal{N}}
+\newcommand{\frA}{\mathfrak{A}}
+\newcommand{\card}{\mathrm{card}}
+\newcommand{\frM}{\mathfrak{M}}
+\newcommand{\Th}{\mathrm{Th}}
+\newcommand{\ecd}{\mathrm{EC}_\Delta}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\oto}{\leftrightarrow}
+\newcommand{\hin}{\hat{\in}}
+\newcommand{\fun}[2]{{}^{#1}#2}
+
+
+
+
+
+
+
+
+\begin{document}
+\title{$\mathbb{SET\ THEORY}$}
+\author{白永乐\\ %% 姓名
+SID: 202011150087\\ %% 学号
+\email{202011150087@mail.bnu.edu.cn}} %% 电邮
+\maketitle
+\section{Question}
+\iffalse
+\begin{problem}
+Show that $\varnothing$ exists and is unique.
+\end{problem}
+\begin{solution}
+Firstly, from axiom 0 we get $\exists x(x=x)$, then let $\phi(u)=u\hneq u$, from axiom 2 we get $\exists y\forall u(x\hin y\oto u\hin x\xand\phi(u))$. Obviously $\forall u(u\heq u)$, so we get $\forall u(\neg \phi(u))$, and then we get $\forall u\neg (u\hin y)$. i.e., $y=\emptyset$. 
+
+On the other side, consider another emptyset $z$, we get $u\in y\iff u\neq u\iff u\in z$, then we get $u\hin y\oto u\hin z$, and then from axiom 1 we get $y\heq z$. So emptyset is unique. 
+\end{solution}
+\begin{problem}
+Verify that
+$$
+\forall x \forall y \forall x^{\prime} \forall y^{\prime}\left((x, y)=\left(x^{\prime}, y^{\prime}\right) \rightarrow x=x^{\prime} \wedge y=y^{\prime}\right) .
+$$
+By induction, ordered $n$-tuples can be defined as follows:
+$$
+\left(x_1, \ldots, x_{n+1}\right)=\left(\left(x_1, \ldots, x_n\right), x_{n+1}\right) .
+$$
+Show that two ordered $n$-tuples $\left(x_1, \ldots, x_n\right)$ and $\left(y_1, \ldots, y_n\right)$ are equal iff $x_i=y_i$ for all $i=1, \ldots, n$.
+\end{problem}
+\begin{solution}
+First from axiom 1 we easily get $x\heq y\oto \{x\}\heq \{y\}$.
+
+Then consider $\{x\}\heq\{y,z\}$, form axiom 1 we get $y\hin\{x\}$, so $y\heq x$, and so do $z$. So we get $\{x\}\heq\{y,z\}\oto x\heq y\heq z$. 
+
+Then we consider $\{a,b\}\heq \{c,d\}$. If $a\heq b$ then we get $\{a\}=\{c,d\}$, and thus $a\heq b\heq c \heq d$. If not, from axiom 1 we can get $a\heq c\xor a\heq d$. If $a\heq c$ we can easily get $b\heq d$, and if $a\heq d$ we can get $b\heq c$. So finially we get $\{a,b\}\heq \{c,d\}\oto (a\heq c\xand b\heq d)\xor(a\heq d\xand b\heq c)$. 
+
+Now consider $(a,b)\heq (c,d)$, form the definition we get $\{\{a\},\{a,b\}\}\heq\{\{c\},\{c,d\}\}$, so we get $(\{a\}\heq\{c\}\xand \{a,b\}\heq \{c,d\})\xor (\{a\}\heq \{c,d\}\xand \{a,b\}\heq \{c\})$. 
+
+If $\{a\}\heq \{c,d\}\xand \{a,b\}\heq \{c\})$, we can get $a\heq b\heq c\heq d$, so $a\heq c,b\heq d$. 
+
+If $\{a\}\heq\{c\}\xand \{a,b\}\heq \{c,d\}$, we get $a\heq c$. If $a\heq b$, we get $a\heq b\heq c\heq d$. If $a\hneq b$, we get $c\hneq b$, but $b\hin \{c,d\}$, so $b\heq d$. 
+
+So we finially proved $(a,b)\heq (c,d)\oto (a\heq c\xand b\heq d)$. 
+
+Now we can use MI to proof $(x_1,\cdots x_n)=(y_1,\cdots y_n)\iff \band_{i=1}^n x_i=y_i$. 
+Assume it's right for $k\leq n$, where $n\geq 2$, consider $n+1$. 
+We have $(x_1,\cdots x_{n+1})=(y_1,\cdots y_{n+1})\iff (x_1,\cdots x_n)=(y_1,\cdots y_n)\xand x_{n+1}=y_{n+1}\iff x_i=y_i,\forall i=1,2,\cdots n+1$. 
+\end{solution}
+\begin{problem}
+Show that if $R$ is a set, then $\operatorname{dom}(R)$ and $\operatorname{ran}(R)$ are sets. (In fact, field $(R)=\bigcup \bigcup R$).
+\end{problem}
+\begin{solution}
+From axiom 2 we only need to prove $\field(R)\subset \cup\cup R$. i.e., $(u,v)\in R\to u\in \cup\cup R\xand v\in \cup\cup R$. 
+
+Obviously we know $x\subset y\to \cup x\subset \cup y$. So $\{(u,v)\}\subset R\Rightarrow (u,v)\subset \cup R\Rightarrow \cup(u,v)\subset \cup\cup R$. Since $\cup(u,v)=\{u\}\cup\{u,v\}=\{u,v\}$, we get $u,v\in\cup(u,v)\subset \cup\cup R$, then $u,v\in\cup\cup R$. 
+\end{solution}
+\begin{problem}
+Show that if $X, Y$ are sets then $\fun{X}{Y}$ is also a set.
+\end{problem}
+\begin{solution}
+Firstly we prove that $\cup A\subset B\to A\subset \mi{B}$. 
+Only need to prove $\forall x\in A,x\in \mi{B}$. Since $x\in\mi{B}\iff x\subset B$, we only need to prove $\forall u\in x,u\in B$. 
+Noting $u\in x\xand x\in A\to u\in \cup A$ and $\cup A\subset B$, so $u\in x\xand x\in A\to u\in B$. 
+
+Second we prove $A\times B:=\{(x,y):x\in A,y\in B\}$ exists. 
+From axiom 2 we only need to prove $A\times B\subset \mi{\mi{A\cup B}}$. 
+Since $\cup(A\times B)=\{\{x\}:x\in A\}\cup\{\{x,y\}:x\in A,y\in B\}$, we get $\cup\cup(A\times B)=A\cup B\subset A\cup B$, so $\cup(A\times B)\subset \mi{A\cup B}$, and thus $A\times B\subset\mi{\mi{A\cup B}}$. So from axiom 2 we get $A\times B$ exists. 
+
+Now we can prove the existence of $\fun{X}{Y}$. Noting $\forall f\in \fun{X}{Y},f\subset X\times Y$, so $\fun{X}{Y}\subset \mi{X\times Y}$. From axiom 2 we know $\fun{X}{Y}$ exists. 
+\end{solution}
+\fi
+\begin{problem}
+Using only $\hat{\in}$ and $\hat{=}$ to express the following formulas
+\begin{enumerate}
+\item $z \hat{=}((x, y),(u, v))$
+\item
+$\forall x[\neg(x \hat{=} \varnothing) \rightarrow(\exists y \hat{\in} x)(x \cap y \hat{=} \varnothing)]$
+\item
+$\forall u[\forall x \exists y(x, y) \hin u \rightarrow \exists f \forall x(x, f(x)) \hat{\in} u]$
+\end{enumerate}
+\end{problem}
+\begin{solution}
+    \begin{enumerate}
+        \item  \newcommand{\tempxyz}[5]{\forall #4(#4\in #1\oto (\forall #5(#5\in #4\oto #5=#2)\xor(\forall #5(#5\in #4\oto(#5=#2\xor #5=#3)))))}
+        \newcommand{\temp}[9]{\forall #6(#6\in #1\oto((\forall #7(#7\in #6\oto(\tempxyz{#7}{#2}{#3}{#8}{#9})))\xor(\forall #7(#7\in #6\oto((\tempxyz{#7}{#2}{#3}{#8}{#9})\xor(\tempxyz{#7}{#4}{#5}{#8}{#9}))))))}
+        $\temp{z}{x}{y}{u}{v}{a}{b}{c}{d}$
+        \item $\forall x(\neg(\forall u\neg(u\in x))\to\neg(\forall y\neg(y\in x\xand \forall u(u\in x\to \neq(u\in y)))))$
+        \item $\forall u(\forall x\exists y(x,y)\in u\to \exists f((\forall x\exists y((x,y)\in f\xand \forall z((x,z)\in f\to z=y)))\forall x\forall y((x,y)\in f\to(x,y)\in u)))$
+    \end{enumerate}
+   
+\end{solution}
+
+\begin{problem}
+Suppose that $R, S$ are two binary relations (as sets). Show that $R_{-1}$ and $S \circ R$ exist, where
+$$
+S \circ R=\{(x, z) \mid \exists y((x, y) \in R \wedge(y, z) \in S)\}
+$$
+\end{problem}
+\begin{solution}
+    since $A=\dom(R),B=\ran(R)$ exists, we can get $(x,y)\in R_{-1}\iff (y,x)\in R\Rightarrow y\in \ran(R)\xand x\in \dom(R)\iff (x,y)\in \ran(R)\times \dom(R)$, so we get $R_{-1}\subset \ran(R)\times \dom(R)$.  
+
+    For the same reason we can easily get $S\circ R\subset \dom(R)\times \ran(S)$. 
+
+    So from axiom 2 we finially get $R_{-1},R\circ S$ are sets. 
+\end{solution}
+
+\begin{problem}
+    There is no set $X$ such that $\mathscr{P}(X) \subseteq X$.
+\end{problem}
+\begin{solution}
+    If there is such $X$, we consider the set $Y:=\{x\in X:x\notin x\}\subset X$. If $Y\in Y$, then we get $Y\notin Y$. If $Y \notin Y$, since $Y\in \mi{X}\subset X$ we get $Y\in Y$. So it's a contradiction. So there is no such $X$. 
+\end{solution}
+\begin{problem}
+    If $X$ is inductive, then the set
+    $$
+    \{x \in X \mid x \subseteq X\}
+    $$
+    is inductive. Hence $N$ is transitive, and for each $n$, $n=\{m \in N \mid m<n\}$.
+\end{problem}
+\begin{solution}
+    Let $x\in X\xand x\subset X$. Since $X$ is inductive, we get $x\cup\{x\}\in X$. Since $x\in X$ we get $\{x\}\subset X$. So $x\cup\{x\}\subset X$. So $\{x\in X:x\subset X\}$ is inductive. 
+    Obviously $\emptyset \in\{x\in X:x\subset X\}$, so by MI we can get $\N\subset \{x\in \N:x\subset \N\}$, so $ \N= \{x\in \N:x\subset \N\}$. i.e., $\N$ is transitive. 
+
+    Since $\forall m,n\in \N(m<n\oto m\in n)$, so $\{m\in \N:m<n\}\subset n$. Since $\N$ is transitive, so $m\in n\to m\in \N$, so $n\subset \{m\in \N:m<n\}$. So finally we get $n=\{m\in \N:m<n\}$. 
+\end{solution}
+\begin{problem}
+    If $X$ is inductive, then the set
+    $$
+    \{x \in X \mid x \text { is transitive }\}
+    $$
+    is inductive. Hence every $n \in N$ is transitive.
+\end{problem}
+\begin{solution}
+    Use $\tau(x)$ to reperesent $x$ is transitive. Let $x\in X\xand \tau(x)$, consider $x\cup\{x\}$. Let $y\in x\cup \{x\}$, if $y=x$, then $y\subset x\cup \{x\}$; else, $y\in x$, since $x$ is transitive, so $y\subset x\subset x\cup\{x\}$. Then we get $\tau(x\cup\{x\})$. So $\{x\in X:\tau(x)\}$ is inductive. 
+
+    For $\N$ we have $\{n\in\N:\tau(n)\}$ is inductive, and $0$ is transitive, so $\forall n\in\N,\tau(n)$.
+\end{solution}
+
+\begin{problem}
+    If $X$ is inductive, then the set
+    $$
+    \{x \in X \mid x \text { is transitive and } x \notin x\}
+    $$
+    is inductive. Hence $n \notin n$ and $n \neq n+1$ for each $n \in N$
+\end{problem}
+\begin{solution}
+    Use $\tau(x)$ to reperesent $x$ is transitive. Let $x\in X\xand \tau(x)\xand x\notin x$, consider $x\cup\{x\}$. Let $y\in x\cup \{x\}$, if $y=x$, then $y\subset x\cup \{x\}$; else, $y\in x$, since $x$ is transitive, so $y\subset x\subset x\cup\{x\}$. Then we get $\tau(x\cup\{x\})$. If $x\cup\{x\}\in x\cup\{x\}$, then $x\cup\{x\}\in x\xor x\cup\{x\}=x$. Since $x\notin x$ so $x\cup\{x\}\neq x$, so $x\cup\{x\}\in x$. Since $x$ is transitive, so $x\cup\{x\}\subset x$. But $x\notin x$, so it's impossible. 
+    So $\{x\in X:\tau(x)\xand x\notin x\}$ is inductive. 
+
+    For $\N$, we get $\{n\in \N:\tau(n)\xand x\notin x\}$ is inductive, so $\N=\{n\in \N:\tau(n)\xand x\notin x\}$, so $n\in\N\to n\notin n$. And since $n+1=n\cup\{n\}$, we get $n+1\neq n$. 
+\end{solution}
+
+\begin{problem}\label{pro:7}
+    If $X$ is inductive, then the set
+$\{x \in X \mid x$ is transitive and every nonempty
+$$
+z \subseteq x \text { has an } \in \text {-minimal element }\}
+$$
+is inductive.
+( $t$ is $\in$-minimal in $z$ if there is no $s \in z$ such that $s \in t$.)
+\end{problem}
+\begin{solution}
+    Use $\tau(x)$ to reperesent $x$ is transitive, use $\phi(x)$ to reperesent every nonempty $z\subset x$ has an $\in-$minimal element. Let $x\in X\xand \tau(x)\xand \phi(x)$, consider $x\cup\{x\}$. 
+    If $x\in x$ then $x\cup\{x\}=x$ and thus $x\cup\{x\}\in \{y\in X:\tau(y)\xand \phi(y)\}$. Now we assume $x\notin x$. 
+
+    Let $y\in x\cup \{x\}$, if $y=x$, then $y\subset x\cup \{x\}$; else, $y\in x$, since $x$ is transitive, so $y\subset x\subset x\cup\{x\}$. Then we get $\tau(x\cup\{x\})$. 
+    Consider $z\subset x\cup\{x\}\xand z\neq \emptyset$. 
+    If $z=\{x\}$, since $x\notin x$ so $x$ is the $\in-$minimal element of $z$. Else, consider $t=z\minus \{x\}\subset x$, and $u\in t$ is $\in-$minimal element of $t$. Since $u\in x\xand \tau(x)$ we get $u\subset x$. And $x\notin x\to x\notin u$. So $u$ is $\in-$minimal element of $t\cup\{x\}$, too. So $u$ is $\in-$minimal element of $z$.  
+    So $\{x\in X:\tau(x)\xand \phi(x)\}$ is inductive. 
+\end{solution}
+
+\begin{problem}
+    Every nonempty $X \subseteq \N$ has an $\in$-minimal element.
+\end{problem}
+\begin{solution}
+    Consider $X\subset\N\xand X\neq \emptyset$. Assume $n\in X$. Consider $Y:=n\cap X\subset n$. If $Y=\emptyset$, then $n$ is the $\in-$minimal element of $X$. Else, from Problem \ref{pro:7} we know $Y$ has $\in-$minimal element $u$. 
+    Now we just need to prove $u$ is $\in-$minimal element of $X$. 
+    If not, $\exists m \in X,m\in u$, then since $u\in n$ we get $m\in u\subset n$, so $m\in n$ and thus $m\in Y$, contradiction with $u$ is $\in-$minimal element of $Y$. 
+\end{solution}
+
+\begin{problem}
+    If $X$ is inductive then so is
+$$
+\{x \in X \mid x=\varnothing \vee x=y \cup\{y\} \text { for some } y\}. 
+$$
+Hence each $n \neq \varnothing$ is $m+1$ for some $m$.
+\end{problem}
+\begin{solution}
+    Consider $x\in X\xand (x=\emptyset \xor (\exists z x=z\cup\{z\}))$, then for $y=x\cup\{x\}$ we have $y\in X\xand y=x\cup\{x\}$, thus $y\in\{x\in X:x=\emptyset\xor (\exists y\in X) x=y\cup\{y\}\}$. So the set is inductive, too. 
+
+    For $\N$ we get $\forall n\in\N,n=\emptyset \xor \exists m\in \N,n=m\cup\{m\}$. If $n=\emptyset$ then $n=0$. If $n=m\cup\{m\}$ then $m\in n$. Since $\N$ is transitive, we get $m\in n\subset \N$. So $m\in \N$. So $n=m\cup\{m\}=m+1$. 
+\end{solution}
+
+\begin{problem}
+    Let $A$ be a subset of $N$ such that $0 \in A$, and if $n \in A$ then $n+1 \in A$. Then $A=N$. 
+\end{problem}
+\begin{solution}
+    Obviously $A$ is inductive, and $\N$ is the least inductive set, so $\N\subset A$. Noting $A\subset \N$, so $A=\N$. 
+\end{solution}
+
+\end{document}

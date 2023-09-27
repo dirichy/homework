@@ -1,0 +1,12 @@
+%!Mode:: "TeX:UTF-8"
+%!TEX encoding = UTF-8 Unicode
+%!TEX TS-program = xelatex
+\documentclass{ctexart}
+\input{../../start.tex}
+\input{../../commands.tex}
+\begin{document}
+\large
+\setlength{\baselineskip}{1.2em}
+\maketitle
+
+\end{document}

@@ -1,0 +1,90 @@
+                             ALGEBRAIC GEOMETRY
+                                                   白永乐
+                                           SID: 202011150087
+                                   202011150087@mail.bnu.edu.cn
+                                           2023 年 9 月 23 日
+                                                                √
+ PROBLEM I Let R be a Abel ring, a is an ideal of R, and          a := {x ∈ R : ∃n ∈ N, xn ∈ a}. Prove
+that:
+       √
+   1.    a is ideal.
+       √√        √
+   2.        a = a.
+       √
+   3.    a is the smallest radical ideal contain a.
+   4. If p is prime ideal, then p is radical.
+       √       ∩
+   5.    a=      p∈P p, where P is the set of all prime ideal contains a.
+                          √                                                                  ∑m+n (m+n)
+ SOLUTION .    1. ∀a, b ∈   a, ∃m, n ∈ N, am , bn ∈ a. Consider a−b, we have (a−b)m+n =         k=0       k
+                                                                                                             ak bm+n−k .
+       Since k + m + n − k = m + n, so k ≥ m or m + n − k ≥ n. So (a − b)m+n ∈ a and thus
+                 √
+       a − b ∈ a.
+              √                                   √
+       ∀a ∈ a, b ∈ R, (ab)n = an bn . So ab ∈ a.
+                    √      √√                             √√       √                   √√
+   2. Obviously a ⊂            a, so only need to prove        a ⊂ a. Consider a ∈          a, ∃n ∈ N, an ∈
+       √                                                  √       √      √√
+         a, ∃m ∈ N, (an )m ∈ a. Thus amn ∈ a, so a ∈ a. So a =                a.
+                                                          √
+   3. Let b is a radical ideal contains a, then ∀a ∈ a, ∃n ∈ N, an ∈ a ⊂ b. Since b is radical, we
+                       √                                  √
+       get a ∈ b. So a ⊂ b. Noting we have proved a is radical in I.2, so it’s the smallest.
+              √
+   4. ∀a ∈      p, ∃n ∈ N, an ∈ p. Since p is prime, so a ∈ p.
+                                    √                                        ∩          √
+   5. From I.3 and I.4 we get a ⊂ p, so we only need to prove p∈P p ⊂ a. If not, then
+              √
+       ∃a ∈ / a, ∀p ∈ P, a ∈ p. Let I is the set of all ideal contains a and not contains any of an , n ∈ N.
+       Since (I, ⊂) is partial order, and obviously every chain has upper bound(use union), and
+       I ̸= ∅(a ∈ I). So there is a maximal element in I(by Zorn’s lemma). Assume q ∈ I is maximal
+       element, we will prove q is prime ideal. If not, then ∃x, y ∈     / q, xy ∈ q. Since q is maximal,
+       then (q, x), (q, y) contians some an . Assume an = q1 + xt1 , am = q2 + yt2 , q1 , q2 ∈ q, t1 , t2 ∈ R.
+                                                       1
+                                                                                                                                 2
+       Then am+n = q1 (q2 + yt2 ) + q2 xt1 + xyt1 t2 ∈ q, contradiction with the definition of I! So
+                                                                                                         ∩               √
+       q ∈ P. But a ∈       / q, contradiction with the assumption that a ∈ p∀p ∈ P! So p∈P p ⊂ a.
+ PROBLEM II An algebraically field is not finite field.
+                                                                 ∏
+ SOLUTION . Assume F is a finite, consider f (x) =                    a∈F (x − a) + 1 ∈ F [x], easily prove f (x) has no
+root in F .
+ PROBLEM III Let A = K[x1 , x2 , · · · xn ], and mp = (x1 − a1 , · · · xn − an ), p = (a1 , a2 , · · · an ) ∈               A  n
+                                                                                                                               K.
+Then m is max ideal.
+                                                                                                    ∑n
+Lemma 1. If f (x1 , x2 , · · · xn ) ∈ K[x1 , x2 , · · · xn ], f (a1 , a2 , · · · an ) = 0, then f =   k=1 (xk −ak )fk (x1 , x2 , · · · xn ).
+证明. Use MI to n. When n = 1 it’s obvious. If for some certain n it’s right, when goes to
+n + 1: Let g(x1 , x2 , · · · xn ) := f (x1 , x2 , · · · xn , an+1 ) ∈ K[x1 , x2 , · · · xn ]. Then g(a1 , a2 , · · · an ) = 0, so
+                           ∑n
+g(x1 , x2 , · · · xn ) = k=1 (xk −ak )gi (x1 , x2 , · · · xn ). Let h(xn+1 ) := f (x1 , x2 , · · · xn+1 )−g(x1 , x2 , · · · xn ) ∈
+K[x1 , x2 , · · · xn ][xn+1 ], then h(an+1 ) = 0. So h(xn+1 ) = (xn+1 − an+1 )h1 (xn+1 ) for some h1 (xn+1 ) ∈
+                                                                   ∑n+1
+K[x1 , x2 , · · · xn ][xn+1 ]. Then f (x1 , x2 , · · · xn+1 ) = k=1 (xi −ai )fi (x1 , x2 , · · · xn+1 ), where fk (x1 , x2 , · · · xn+1 ) =
+gk (x1 , x2 , · · · xn ), k = 1, 2, · · · n, and fn+1 (x1 , x2 , · · · xn+1 ) = h1 (xn+1 ).
+ SOLUTION . Obviously mp is ideal, so we only need to prove it’s max. Consider φ : K[x1 , x2 , · · · xn ] →
+K, f (x1 , x2 , · · · xn ) 7→ f (a1 , a2 , · · · an ). Obviously it’s a homomorphism, consider ker φ. Obviously
+mp ⊂ ker φ, now we prove ker φ ⊂ mp . Assume f ∈ ker φ, then f (a1 , a2 , · · · an ) = 0. Use Lemma 1
+we get f ∈ ker φ. So mp = ker φ. So R/mp ∼                = K is a field, thus mp is max ideal.
+ PROBLEM IV A ⊂ B ⊂ C are Abel rings. If B is f.g. A−module and C is f.g. B−module, then C is
+f.g. A−module, too.
+ SOLUTION . Let {bi : i = 1, 2, · · · n} is a basis of B over A, and {ci : i = 1, 2, · · · m} is a basis of C over
+                                                          ∑m                                                 ∑n
+B. Then for c ∈ C, ∃xi ∈ B such that c = i=1 xi ci . And ∃yij ∈ A such that xi = j=1 yij bj . So
+      ∑m ∑n
+c = i=1 j=1 yij bj ci . That means {bj ci : j = 1, 2, · · · n, i = 1, 2, · · · m} is a basis of C over A.
+ PROBLEM V If x is integral over A then A[x] is f.g. A−module.
+                                ∑n−1
+ SOLUTION . Assume xn +             k=0   −ak xk = 0, ak ∈ A. Then we prove {xk : k = 0, 1, · · · n − 1} is a basis
+of A[x]. Only need to prove xm , m ∈ N can be reperesented. Use MI to m. When m ≤ n − 1
+it’s obvious. Assume for certain m ≥ n, ∀k < m, xk can be reperesented, then for m, we have
+                               ∑n−1                ∑n−1
+xm = xm−n xn = xm−n t=0 at xt = t=0 at xt+m−n . Since t + m − n ≤ n − 1 + m − n = m − 1 < m,
+                                                ∑n−1
+we get xk can be reperesented, so t=0 at xt+m−n can be reperesented. i.e., xm can be reperesented.
+So {xk : k = 0, 1, · · · n − 1} is basis.
+ PROBLEM VI If field A is f.g. K−algebra, then exists a subring S of A such that S = K[y1 , y2 , · · · yn ]
+and A is f.g. S−module.
+           3
+SOLUTION .
