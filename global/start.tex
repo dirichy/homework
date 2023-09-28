@@ -39,6 +39,16 @@
 \end{tikzpicture}}
 \newenvironment{solution}{\begin{proof}[\Solution]}{\end{proof}}
 \title{$\mathfrak{\currfilebase}$}
-\author{白永乐\\ %% 姓名
-SID: 202011150087\\ %% 学号
-\texttt{202011150087@mail.bnu.edu.cn}} %% 电邮
+\makeatletter
+\newcommand\email[1]{\def\@email{#1}\def\@refemail{mailto:#1}}
+\newcommand\schoolid[1]{\def\@schoolid{#1}}
+\def\@maketitle{
+\raggedright
+\begin{center}
+{\Huge \bfseries \sffamily \@title }\\[4ex] 
+{\Large  \@author}\\[4ex] 
+{\large \@schoolid}\\[4ex]
+{\href\@refemail\@email}\\[4ex]
+\@date\\[8ex]
+\end{center}}
+\makeatother

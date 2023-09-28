@@ -1,10 +1,10 @@
-This is XeTeX, Version 3.14159265-2.6-0.99998 (TeX Live 2017/Debian) (preloaded format=xelatex 2023.9.4)  24 SEP 2023 00:00
+This is XeTeX, Version 3.14159265-2.6-0.99998 (TeX Live 2017/Debian) (preloaded format=xelatex 2023.9.4)  28 SEP 2023 19:14
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
  %&-line parsing enabled.
-**dsjh2
-(./dsjh2.tex
+**/home/dirichy/homework/AlgebraicGeometry/3/dsjh2
+(/home/dirichy/homework/AlgebraicGeometry/3/dsjh2.tex
 LaTeX2e <2017-04-15>
 Babel <3.18> and hyphenation patterns for 84 language(s) loaded.
 (/usr/share/texlive/texmf-dist/tex/latex/ctex/ctexart.cls (/usr/share/texlive/texmf-dist/tex/latex/l3kernel/expl3.sty
@@ -1785,12 +1785,12 @@ LaTeX Font Warning: Size substitutions with differences
 Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 173.
  ) 
 Here is how much of TeX's memory you used:
- 39423 strings out of 493007
- 792582 string characters out of 6136720
- 841770 words of memory out of 5000000
+ 39424 strings out of 493007
+ 792709 string characters out of 6136720
+ 841776 words of memory out of 5000000
  42919 multiletter control sequences out of 15000+600000
  543927 words of font info for 104 fonts, out of 8000000 for 9000
  1348 hyphenation exceptions out of 8191
- 57i,8n,74p,10423b,596s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 57i,8n,74p,10466b,596s stack positions out of 5000i,500n,10000p,200000b,80000s
 
 Output written on dsjh2.pdf (3 pages).

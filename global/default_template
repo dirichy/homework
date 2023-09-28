@@ -1,0 +1,16 @@
+%!Mode:: "TeX:UTF-8"
+%!TEX encoding = UTF-8 Unicode
+%!TEX TS-program = xelatex
+\documentclass{ctexart}
+\input{../../../global/all.tex}
+\newif\ifpreface
+\ifpreface
+    \include{../../../global/preface.tex}
+\fi
+\begin{document}
+\large
+\setlength{\baselineskip}{1.2em}
+\maketitle
+
+
+\end{document}
