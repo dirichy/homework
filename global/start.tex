@@ -3,15 +3,19 @@
 \usepackage{amsmath,amssymb,amsthm,color,mathrsfs}
 \usepackage{hyperref}
 \usepackage{cleveref}
-\usepackage{enumitem,anysize}%
+\usepackage{enumitem}%
 \usepackage{expl3}
 \usepackage{lipsum}
 \usepackage{stringstrings}
 \usepackage{currfile}
-\marginsize{1cm}{1cm}{1cm}{1cm}%
+\usepackage[margin=0pt]{geometry}
+\usetikzlibrary{calc}
 \theoremstyle{remark}
 \newtheorem{lemma}{Lemma}
-
+\usepackage{fontspec}
+\usepackage{fontawesome5}
+\usepackage{xcolor}
+\usepackage[placement=bottom,scale=1,opacity=1]{background}
 \newcounter{problem}
 \newcommand{\Problem}{\begin{tikzpicture}[baseline]%
     \node at (-0.02em,0.3em) {$\mathbb{P}$};%
@@ -38,10 +42,19 @@
 \node[scale=0.75] at (2.3em,0.21em){\texttt{N}};%
 \end{tikzpicture}}
 \newenvironment{solution}{\begin{proof}[\Solution]}{\end{proof}}
-\title{$\mathfrak{\currfilebase}$}
+\title{\input{../../.subject}\input{../.number}}
 \makeatletter
 \newcommand\email[1]{\def\@email{#1}\def\@refemail{mailto:#1}}
 \newcommand\schoolid[1]{\def\@schoolid{#1}}
+\ifpreface
+\def\@maketitle{
+\raggedright
+{\Huge \bfseries \sffamily \@title }\\[1cm] 
+{\Huge  \bfseries \sffamily\heiti\@author}\\[1cm] 
+{\Huge \@schoolid}\\[1cm]
+{\Huge\href\@refemail\@email}\\[0.5cm]
+\Huge\@date\\[1cm]}
+\else
 \def\@maketitle{
 \raggedright
 \begin{center}
@@ -51,4 +64,5 @@
 {\href\@refemail\@email}\\[4ex]
 \@date\\[8ex]
 \end{center}}
+\fi
 \makeatother
