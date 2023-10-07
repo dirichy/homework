@@ -106,64 +106,33 @@ SID: 202011150087\\ %% 学号
 \email{202011150087"mail.bnu.edu.cn}} %% 电邮
 \maketitle
 \begin{problem}\label{pro:1}
-    Find an $n-$dimensional real matrix representation of $(\R,+)$. 
+Find an $n-$dimensional real matrix representation of $(\R,+)$. 
 \end{problem}
 
-\begin{solution}
-    Let:
-    \begin{equation}
-        \phi : \R\to \gl_n(\R),x\mapsto e^x I_n
-    \end{equation}
-    Then obviously $(M_n(\R),\phi)$ is an $n-$dimensional real matrix representation of $(\R,+)$. 
-\end{solution}
 
 \begin{problem}\label{pro:2}
-    Find an infinitely dimensional representation of $(\R,+)$. 
-\end{problem}
-\begin{solution}
-    Let:
-    \begin{equation}
-        \phi:\R\to\gl(\R[x]),\phi(a)(f)(x):=f(a+x)
-    \end{equation}
-    Then it's easy to know $(\phi,\R[x])$ is a representation of $(\R,+)$. 
-\end{solution}
-
-\begin{problem}
-    Determine whether the representation is faithful or not in 
-    Example 1~4 and 
-    \Cref{pro:1}, 
-    \Cref{pro:2}. 
+Find an infinitely dimensional representation of $(\R,+)$. 
 \end{problem}
 
-\begin{solution}
-    \begin{itemize}
-        \item Example 1: When $a=0$ we have $f_0(x)=\e^0=1$, 
-        so it's obviously not faithful. When $a\neq 0$, we can easily get $f_a$ is injective, so it's faithful. 
-        \item Example 2: When $a=0$ we have $f_0(x)=\e^0=1$, 
-        so it's obviously not faithful. When $a\in \R^*$, let $x=y+\frac{2\pi}{a}$, then $f_a(x)=f_a(y)$, so $f_a$ is not faithful. When $a\in\C\minus \R$, we get $|f_a(x)|=\e^{-\im(a) x}$ is injective, so $f_a$ is injective, thus faithful. 
-        \item Example 3: Obviously $\phi(x+2\pi )=\phi(x)$ so it's not faithful. 
-        \item Example 4: Consider $f\in\R_n[x],f(x)=x$, then for $a\neq b$, we have $\phi(a)(f)=x+a\neq x+b=\phi(b)(f)$, so $\phi(a)\neq \phi(b)$, thus $\phi$ is faithful. 
-        \item \Cref{pro:1}: Obviously it's faithful.
-        \item \Cref{pro:2}: Obviously it's faithful. 
-    \end{itemize}
-\end{solution}
-
 \begin{problem}
-    Let $\lambda\in \C^*$, and:
-    \begin{equation}
-        \phi_{\lambda}:(\Z,+)\to\C^*,n\mapsto \lambda^n
-    \end{equation}
-    Prove that $\phi_\lambda$ is an $1-$dimensional complex representation of $(\Z,+)$, and find when it's faithful.   
+Determine whether the representation is faithful or not in 
+Example 1~4 and 
+\Cref{pro:1},
+\Cref{pro:2}.
 \end{problem}
 
-\begin{solution}
-    For $m,n\in \Z$, we have $\phi_{\lambda}(m+n)=\lambda^{m+n}=\lambda^m \lambda^n =\phi_{\lambda}(m)\phi_{\lambda}(n)$, so $\phi_{\lambda}$ is complex representation. Obviously $\C^*\cong \gl(\C)$, so it has dimension one. 
-
-    Noting $\phi_\lambda$ is faithful$\iff \ker(\phi)=\{0\}\iff \forall n\neq 0,\lambda^n\neq 1$. So $\phi_\lambda$ is not faithful if and only if $\lambda=\e^{q\pi}$ for some $q\in \Q$. 
-\end{solution}
 
 \begin{problem}
-    Let $V=\mathbb{R}[x]$. $\forall a \in \mathbb{R}$, let:
+Let $\lambda\in \C^*$, and:
+\begin{equation}
+\phi_{\lambda}:(\Z,+)\to\C^*,n\mapsto \lambda^n
+\end{equation}
+Prove that $\phi_\lambda$ is an $1-$dimensional complex representation of $(\Z,+)$, and find when it's faithful.   
+\end{problem}
+
+
+\begin{problem}
+Let $V=\mathbb{R}[x]$. $\forall a \in \mathbb{R}$, let:
 $$
 \begin{aligned}
 & L_a(f(x)):=f(a x), \quad \forall f(x) \in \mathbb{R}[x], \\
@@ -180,32 +149,10 @@ $$
 Question: Is $\varphi$ and $\psi$ is infinitely dimensional real representation of $(\mathbb{R},+)$ ?
 \end{problem}
 
-\begin{solution}
-    $\phi(a+b)(f)(x)=f((a+b)x),\phi(a)\phi(b)(f)(x)=\phi(a)(f(bx))=f(abx)$, let $f(x)=x,a=b=1$ we get $\phi(a+b)(f)(x)=f((a+b)x)\neq f(abx)$, so $\phi$ is not representation of $\R$. 
-
-    $\psi(a+b)(f)(x)=f(\e^{a+b}x),\psi(a)\psi(b)(f)(x)=\psi(a)(f(\e^b x))=f(\e^a \e^b x)=\psi(a+b)(f)(x)$, so $\psi$ is a representation of $(\R,+)$. 
-    Obviously $\R[x]$ is infinite-dimension, so $\psi$ is infinitely dimensional. 
-\end{solution}
 
 \begin{problem}
-    Give the matrix representation of $G=\<a\>$ given by the regular representation, $\rho$, of field $K$, where $\rank(a)=4$. 
+Give the matrix representation of $G=\<a\>$ given by the regular representation, $\rho$, of field $K$, where $\rank(a)=4$. 
 \end{problem}
-\begin{solution}
-    $\{e,a,a^2,a^3\}$ is basis of $K[G]$. And:
-    \begin{equation}
-        \rho(a)e=a,\rho(a)a=a^2,\rho(a)a^2=a^3,\rho(a)a^3=e
-    \end{equation}
-    So matrix of $\rho(a)$ is:
-    \begin{equation}
-        P(a)=\left(\begin{array}{cccc}
-            0 & 0 & 0 & 1\\
-            1 & 0 & 0 & 0\\
-            0 & 1 & 0 & 0\\
-            0 & 0 & 1 & 0\\
-        \end{array}\right)
-    \end{equation}
-    And thus $P(a^n)=P(a)^n$. Then $P$ is the matrix representation of $G$. 
-\end{solution}
 
 
 

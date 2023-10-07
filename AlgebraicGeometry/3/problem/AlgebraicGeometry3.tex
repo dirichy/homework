@@ -1,0 +1,145 @@
+%! Mode:: "TeX:UTF-8"
+%!TEX encoding = UTF-8 Unicode
+%!TEX TS-program = xelatex
+\documentclass{ctexart}
+\usepackage{bbm}
+\usepackage{tikz}
+\usepackage{amsmath,amssymb,amsthm,color,mathrsfs}
+\usepackage{hyperref}
+\usepackage{cleveref}
+\usepackage{enumitem,anysize}%
+\usepackage{expl3}
+\marginsize{1in}{1in}{1in}{1in}%
+\theoremstyle{remark}
+\newtheorem*{claim*}{Claim}
+\newtheorem{lemma}{Lemma}
+
+\DeclareMathOperator{\ot}{ordertype}
+\DeclareMathOperator{\dom}{dom}
+\DeclareMathOperator{\ran}{ran}
+\DeclareMathOperator{\field}{field}
+\DeclareMathOperator{\Ord}{Ord}
+
+\newcommand{\cc}{\mathfrak{c}}
+
+\def\email#1{{\texttt{#1}}}
+\newcommand{\isep}[1][0pt]{\addtolength{\itemsep}{#1}}
+\newcounter{problem}
+\renewcommand{\theproblem}{\Roman{problem}}
+\newenvironment{problem}{\refstepcounter{problem}\noindent\color{blue}\begin{tikzpicture}[baseline]%
+\node at (-0.02em,0.3em) {$\mathbb{P}$};%
+\node[scale=0.7] at (0.2em,-0.0em) {R};%
+\node[scale=0.7] at (0.6em,0.4em) {O};%
+\node[scale=0.8] at (1.05em,0.25em) {B};%
+\node at (1.55em,0.3em) {L};%
+\node[scale=0.7] at (1.75em,0.45em) {E};%
+\node at (2.35em,0.3em) {M};%
+\end{tikzpicture}\theproblem}{}
+\crefname{problem}{Problem}{Problem}
+%\renewcommand\theprob{{\Roman{problem}}}
+\newcommand\mysolution{\begin{tikzpicture}[baseline]%
+\node at (-0.04em,0.3em) {$\mathbb{S}$};%
+\node[scale=0.7] at (0.35em,0.4em) {O};%
+\node at (0.7em,0.3em) {\textit{L}};%
+\node[scale=0.7] at (0.95em,0.4em) {U};%
+\node[scale=1.1] at (1.19em,0.32em){T};%
+\node[scale=0.85] at (1.4em,0.24em){I};%
+\node at (1.9em,0.32em){$\mathcal{O}$};%
+\node[scale=0.75] at (2.3em,0.21em){\texttt{N}};%
+\end{tikzpicture}}
+\newenvironment{solution}{\begin{proof}[\mysolution]}{\end{proof}}
+
+%%%%%%%%
+\newcommand{\calL}{\mathcal{L}}
+
+\newcommand\<{\langle}
+\renewcommand\>{\rangle}
+\newcommand\eneg{\mathcal{E}_{\neg}}
+\newcommand\eto{\mathcal{E}_{\to}}
+\newcommand\N{\mathbb{N}}
+\newcommand\subini{\subsetneqq_{init}}
+\def\to{\rightarrow}
+\newcommand{\calA}{\mathcal{A}}
+\newcommand{\xor}{\vee}
+\newcommand{\bor}{\bigvee}
+\newcommand{\band}{\bigwedge}
+\newcommand{\xand}{\wedge}
+\newcommand{\minus}{\mathbin{\backslash}}
+\newcommand{\calF}{\mathcal{F}}
+\newcommand\mi[1]{\mathscr{P}(#1)}
+\newcommand{\calB}{\mathcal{B}}
+\newcommand{\heq}{\mathop{\hat{=}}}
+\newcommand{\hneq}{\mathop{\hat{\neq}}}
+\newcommand{\calR}{\mathcal{R}}
+\newcommand{\hle}{\mathop{\hat{<}}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\calM}{\mathcal{M}}
+\newcommand{\calN}{\mathcal{N}}
+\newcommand{\frA}{\mathfrak{A}}
+\newcommand{\card}{\mathrm{card}}
+\newcommand{\frM}{\mathfrak{M}}
+\newcommand{\Th}{\mathrm{Th}}
+\newcommand{\ecd}{\mathrm{EC}_\Delta}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\oto}{\leftrightarrow}
+\newcommand{\hin}{\hat{\in}}
+\newcommand{\fun}[2]{{}^{#1}#2}
+\newcommand{\A}{\mathbbm{A}}
+\newcommand{\fra}{\mathfrak{a}}
+\newcommand{\frb}{\mathfrak{b}}
+\newcommand{\frp}{\mathfrak{p}}
+\crefname{enumi}{}{}
+
+
+
+
+
+
+
+\begin{document}
+\title{$\mathbb{ALGEBRAIC\ GEOMETRY}$}
+\author{白永乐\\ %% 姓名
+SID: 202011150087\\ %% 学号
+\email{202011150087@mail.bnu.edu.cn}} %% 电邮
+\maketitle
+\begin{problem}
+Let $R$ be a Abel ring, $\fra$ is an ideal of $R$, and $\sqrt{\fra}:=\{x\in R:\exists n\in\N,x^n\in\fra\}$. Prove that:
+\begin{enumerate}[ref=\theproblem.\arabic*]
+\item\label{it:11} $\sqrt{\mathfrak{a}}$ is ideal.
+\item\label{it:12} $\sqrt{\sqrt{\mathfrak{a}}}=\sqrt{\mathfrak{a}}$.
+\item\label{it:13} $\sqrt{\fra}$ is the smallest radical ideal contain $\mathfrak{a}$. 
+\item\label{it:14} If $\mathfrak{p}$ is prime ideal, then $\mathfrak{p}$ is radical. 
+\item\label{it:15} $\sqrt{\mathfrak{a}}=\bigcap_{\mathfrak{p}\in\mathcal{P}}\mathfrak{p}$, where $\mathcal{P}$ is the set of all prime ideal contains $\fra$. 
+\end{enumerate}
+\end{problem}
+
+
+\begin{problem}
+An algebraically field is not finite field. 
+\end{problem}
+\begin{problem}
+Let $A=K[x_1,x_2,\cdots x_n]$, and $m_p=(x_1-a_1,\cdots x_n-a_n),p=(a_1,a_2,\cdots a_n)\in\A_K^n$. Then $m$ is max ideal.
+\end{problem}
+\begin{lemma}
+\label{lem:ker}
+If $f(x_1,x_2,\cdots x_n)\in K[x_1,x_2,\cdots x_n],f(a_1,a_2,\cdots a_n)=0$, then $f=\sum_{k=1}^n (x_k-a_k)f_k(x_1,x_2,\cdots x_n)$. 
+\end{lemma}
+\begin{proof}
+Use MI to $n$. When $n=1$ it's obvious. If for some certain $n$ it's right, when goes to $n+1$: Let $g(x_1,x_2,\cdots x_n):=f(x_1,x_2,\cdots x_n,a_{n+1})\in K[x_1,x_2,\cdots x_n]$. Then $g(a_1,a_2,\cdots a_n)=0$, so $g(x_1,x_2,\cdots x_n)=\sum_{k=1}^n (x_k-a_k)g_i(x_1,x_2,\cdots x_n)$. Let $h(x_{n+1}):=f(x_1,x_2,\cdots x_{n+1})-g(x_1,x_2,\cdots x_n)\in K[x_1,x_2,\cdots x_n][x_{n+1}]$, then $h(a_{n+1})=0$. So $h(x_{n+1})=(x_{n+1}-a_{n+1})h_1(x_{n+1})$ for some $h_1(x_{n+1})\in K[x_1,x_2,\cdots x_n][x_{n+1}]$. Then $f(x_1,x_2,\cdots x_{n+1})=\sum_{k=1}^{n+1}(x_{i}-a_i)f_i(x_1,x_2,\cdots x_{n+1})$, where $f_k(x_1,x_2,\cdots x_{n+1})=g_k(x_1,x_2,\cdots x_n),k=1,2,\cdots n$, and $f_{n+1}(x_1,x_2,\cdots x_{n+1})=h_1(x_{n+1})$. 
+\end{proof}
+
+\begin{problem}
+$A\subset B\subset C$ are Abel rings. If $B$ is f.g. $A-$module and $C$ is f.g. $B-$module, then $C$ is f.g. $A-$module, too.  
+\end{problem}
+
+\begin{problem}
+If $x$ is integral over $A$ then $A[x]$ is f.g. $A-$module. 
+\end{problem}
+
+\begin{problem}
+Let $R$ be an integral domain, finitely generated over a field $k$. If $R$ has transcendence degree $n$ over $k$, then there exist elements $x_1, \ldots, x_n \in R$, algebraically independent over $k$, such that $R$ is integrally dependent on the subring $k\left[x_1, \ldots, x_n\right]$ generated by the $x$ 's.
+\end{problem}
+
+
+\end{document}

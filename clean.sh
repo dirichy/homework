@@ -19,3 +19,7 @@ find . -name "*.fls" | xargs rm -f
 find . -name "*.log" | xargs rm -f
 find . -name "*.fdb_latexmk" | xargs rm -f
 find . -name "*.gz" | xargs rm -f
+read -r -p "Do you want delete pdfs? [y/N] " response
+if [ "$response" = "y" ] ; then
+ find . -name "*.pdf" | xargs rm -f
+fi

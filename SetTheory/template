@@ -1,12 +1,19 @@
 %!Mode:: "TeX:UTF-8"
 %!TEX encoding = UTF-8 Unicode
-%!TEX TS-program = xelatex
+%!TEX TS-program = xelatex × 2
 \documentclass{ctexart}
-\input{../../start.tex}
-\input{../../commands.tex}
+\newif\ifpreface
+\prefacetrue
+\input{../../../global/all}
 \begin{document}
 \large
 \setlength{\baselineskip}{1.2em}
+\ifpreface
+    \input{../../../global/preface}
+\else
 \maketitle
+\fi
+\newgeometry{left=2cm,right=2cm,top=2cm,bottom=2cm}
+%from_here_to_type
 
 \end{document}
