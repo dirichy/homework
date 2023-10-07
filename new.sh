@@ -6,20 +6,24 @@ echo $subject
  fi
 if [ ! -d "./"$subject"/" ]; then
  mkdir "./"$subject"/"
- cp global/default_template "./"$subject"/template"
+ cp global/default_template "./$subject/template"
+ cp global/default_template "./$subject/localcommands"
  echo $subject > "./$subject/.subject"
-fi
-path="./"$subject"/"
-i=1
-while [ -d "$path/$i" ]
-do
+ openfile="./$subject/template"
+else
+ path="./"$subject"/"
+ i=1
+ while [ -d "$path/$i" ]
+ do
 	i=$(($i+1))
-done
-mkdir "$path/$i"
-mkdir "$path/$i/problem"
-mkdir "$path/$i/solution"
-echo $i > "$path/$i/.number"
-cp "./"$subject"/"template "./$subject/$i/problem/$subject$i.tex"
+ done
+ mkdir "$path/$i"
+ mkdir "$path/$i/problem"
+ mkdir "$path/$i/solution"
+ echo $i > "$path/$i/.number"
+ cp "./"$subject"/"template "./$subject/$i/solution/$subject$i.tex"
+ openfile="./$subject/$i/solution/$subject$i.tex"
+fi
 j=1
 k=0
 while read line
@@ -28,9 +32,9 @@ do
  if [ "$line" = "%from_here_to_type" ] ; then
   k=$j
 fi
-done < "./$subject/$i/problem/$subject$i.tex"
+done < "$openfile"
 if [ k = 0 ] ; then
- code --goto "./$subject/$i/problem/$subject$i.tex":16:1
+ code --goto "$openfile:16:1"
 else
- code --goto "./$subject/$i/problem/$subject$i.tex:$k:1"
+ code --goto "$openfile:$k:1"
 fi

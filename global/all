@@ -1,0 +1,4 @@
+\input{../../../global/start}
+\input{../../../global/me}
+\input{../../../global/commands}
+\input{../../localcommands}

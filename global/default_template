@@ -1,15 +1,15 @@
 %!Mode:: "TeX:UTF-8"
 %!TEX encoding = UTF-8 Unicode
-%!TEX TS-program = xelatex
+%!TEX TS-program = xelatex × 2
 \documentclass{ctexart}
 \newif\ifpreface
 \prefacetrue
-\input{../../../global/all.tex}
+\input{../../../global/all}
 \begin{document}
 \large
 \setlength{\baselineskip}{1.2em}
 \ifpreface
-    \input{../../../global/preface.tex}
+    \input{../../../global/preface}
 \else
 \maketitle
 \fi
@@ -17,4 +17,3 @@
 %from_here_to_type
 
 \end{document}
-%please_sync_me_to_solution
