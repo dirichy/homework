@@ -6,7 +6,7 @@ if [ ! $subject ]; then
 fi
 echo $subject > "./$subject/.subject"
 cp global/default_template "./$subject/template"
-cp global/default_template "./$subject/localcommands"
+cp global/default_localcommands "./$subject/localcommands"
 openfile="./$subject/template"
 path="./"$subject"/"
  i=1
