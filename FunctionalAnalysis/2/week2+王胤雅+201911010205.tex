@@ -1,0 +1,125 @@
+\documentclass{ctexart}
+%\usepackage{xeCJK}
+%\usepackage[T1]{fontenc}
+%\usepackage{mathptmx}
+\usepackage{amsmath,amssymb,amsthm,color,mathrsfs}
+\usepackage{enumitem,anysize}
+\usepackage{geometry}
+\usepackage{lipsum}
+\usepackage{bbm}
+\usepackage{tikz}
+\usepackage{hyperref}
+\hypersetup{
+	hypertex=true,
+	colorlinks=true,
+	linkcolor=red,
+	filecolor=blue,      
+	urlcolor=blue,
+	citecolor=cyan,
+}
+
+\geometry{a4paper,left=2.5cm,right=2.5cm,top=2.5cm,bottom=2.5cm}
+
+\def\<{\langle}
+\def\>{\rangle}
+\edef\lim{\displaystyle\lim}
+\def\email#1{\href{mailto:#1}{\texttt{#1}}}
+
+\newtheorem{problem}{\textbf{Problem}}
+\renewcommand\theproblem{\textbf{\Roman{problem}}}
+\newenvironment{solution}{\begin{proof}[\textbf{Solution}]}{\end{proof}}
+
+\renewcommand\phi{\varphi}
+\renewcommand{\(}{\left(}
+\renewcommand{\)}{\right)}
+\renewcommand{\d}{\mathrm{d}}
+\newcommand{\e}{\mathrm{e}}
+\newcommand{\supp}{\mathrm{supp}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\E}{\mathbb{E}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\shi}{\mathbbm{1}}
+\newcommand{\eleto}{\mapsto}
+\renewcommand{\epsilon}{\varepsilon}
+
+
+
+
+
+\newcommand{\minus}{\mathbin{\backslash}}
+
+\newtheorem{lemma}{Lemma}
+\newtheorem{cora}{Corallary}
+
+
+
+
+\pagestyle{empty}
+\title{\begin{tikzpicture}[baseline]%
+\node [scale=1.5] at (0.0em,0.0em) {F};%
+\node [scale=0.8] at (0.35em,-0.25em) {U};%
+\node [scale=0.9] at (0.8em,0.2em) {N};%
+\node [scale=0.8] at (1.25em,-0.1em) {C};%
+\node [scale=1.5] at (1.6em,0.0em) {T};%
+\node [scale=0.8] at (1.8em,0.05em) {I};%
+\node [scale=0.6] at (2.1em,-0.25em) {O};%
+\node [scale=0.9] at (2.52em,0.2em) {N};%
+\node [scale=0.8] at (2.85em,-0.1em) {A};%
+\node [scale=1.5] at (3.35em,0.0em) {L};%
+\node [scale=1] at (3.7em,0.18em) {2};%
+\end{tikzpicture}}
+\author{王胤雅\\
+SID:201911010205\\
+\email{201911010205@mail.bnu.edu.cn}}
+
+\iffalse
+1 
+
+
+
+\fi
+
+\begin{document}
+\large
+\maketitle
+\begin{problem}
+    证明存在闭区间 $[0,1]$ 上的连续函数 $x(t)$, 使得
+    $$
+    x(t)=\frac{1}{2} \sin x(t)-a(t) .
+    $$
+    其中 $a(t)$ 是给定的 $[0,1]$ 上的连续函数
+\end{problem}
+\begin{proof}
+    $\theta: C[0,1]\to C[0,1]$, $x(t)\eleto 1/2\sin x(t)-a(t)$,  $\rho(x(t),y(t)):=\max_{0\leq t\leq 1}|x(t)-y(t)|$ is the distance on $C[0,1]$.
+    \begin{equation}
+        \begin{aligned}
+            &|\theta(x(t))-\theta(y(t))|\\
+            =&|1/2\sin x(t)-a(t)-(1/2\sin y(t)-a(t))|\\
+            =&|1/2\sin x(t)-1/2\sin y(t)|\\
+            =&|\sin \frac{x(t)-y(t)}{2}\cos\frac{x(t)+y(t)}{2}|\\
+            \leq&|\frac{x(t)-y(t)}{2}|
+        \end{aligned}\end{equation}
+    Therefore, $\rho(\theta(x(t)),\theta(y(t)))\leq \frac{1}{2}\rho(x(t),y(t))$. Thus, $\theta$ is a contraction mapping on $(C[0,1],\rho)$. By contraction mapping principle, $\exists x(t)\in C[0,1]$ statisfies $x(t)=\frac{1}{2}\sin x(t)-a(t)$.
+    
+\end{proof}
+\begin{problem}
+$$x(t)-\lambda \int_0^1 \e^{t-s} x(s) \mathrm{d} s=y(t),$$
+其中 $y(t) \in C[0,1], \lambda$ 为常数, $|\lambda|<1$. 证明存在唯一解 $x(t) \in C[0,1]$.
+\end{problem}
+\begin{proof}
+ $x(t)-\lambda \int_0^1 \e^{t-s} x(s) \mathrm{d} s=y(t),\Leftrightarrow \e^{-t} x(t)-\lambda \int_0^1 \e^{-s} x(s) \mathrm{d} s=\e^{-t}y(t).$\\
+ Let $z(t)=\e^{-t}x(t),w(t)=\e^{-t}y(t)$,  $\theta: C[0,1]\to C[0,1]$, $z(t)\eleto \lambda \int_0^1 z(s) \mathrm{d} s-w(t)$,  $\rho(x(t),y(t)):=\max_{0\leq t\leq 1}|x(t)-y(t)|$ is the distance on $C[0,1]$.
+ \begin{equation}
+    \begin{aligned}
+        &|\theta(u(t))-\theta(v(t))|\\
+        =&|(\lambda \int_0^1 u(s) \mathrm{d} s-w(t))-(\lambda \int_0^1 v(s) \mathrm{d} s-w(t))|\\
+        =&|\lambda \int_0^1 u(s) \mathrm{d} s-\lambda \int_0^1 v(s) \mathrm{d} s|\\
+        \leq&|\lambda |\int_0^1|u(s)-v(s)|\mathrm{d}  s\\
+        \leq &|\lambda|\rho(u(s),v(s))
+    \end{aligned}\end{equation}
+    Therefore, $\rho(\theta(x(t)),\theta(y(t)))\leq |\lambda|\rho(x(t),y(t))$, where $|\lambda|<1$.
+    Thus, $\theta$ is a contraction mapping on $(C[0,1],\rho)$. By contraction mapping principle, $\exists |z(t)\in C[0,1]$ statisfies $z(t)=\lambda \int_0^1 z(s) \mathrm{d} s-w(t)$. $x(t)=\e^{t}z(t)$ is what we need.
+\end{proof}
+\end{document}
+
+

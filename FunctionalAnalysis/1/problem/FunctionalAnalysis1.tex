@@ -1,0 +1,93 @@
+\documentclass{ctexart}
+%\usepackage{xeCJK}
+%\usepackage[T1]{fontenc}
+%\usepackage{mathptmx}
+\usepackage{amsmath,amssymb,amsthm,color,mathrsfs}
+\usepackage{enumitem,anysize}
+\usepackage{geometry}
+\usepackage{lipsum}
+\usepackage{bbm}
+\usepackage{tikz}
+\usepackage{hyperref}
+\hypersetup{
+hypertex=true,
+colorlinks=true,
+linkcolor=red,
+filecolor=blue,      
+urlcolor=blue,
+citecolor=cyan,
+}
+
+\geometry{a4paper,left=2.5cm,right=2.5cm,top=2.5cm,bottom=2.5cm}
+
+\def\<{\langle}
+\def\>{\rangle}
+\edef\lim{\displaystyle\lim}
+\def\email#1{\href{mailto:#1}{\texttt{#1}}}
+
+\newtheorem{problem}{\textbf{Problem}}
+\renewcommand\theproblem{\textbf{\Roman{problem}}}
+\newenvironment{solution}{\begin{proof}[\textbf{Solution}]}{\end{proof}}
+
+\renewcommand\phi{\varphi}
+\renewcommand{\(}{\left(}
+\renewcommand{\)}{\right)}
+\renewcommand{\d}{\mathrm{d}}
+\newcommand{\supp}{\mathrm{supp}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\E}{\mathbb{E}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\shi}{\mathbbm{1}}
+\renewcommand{\epsilon}{\varepsilon}
+
+
+
+
+
+\newcommand{\minus}{\mathbin{\backslash}}
+
+\newtheorem{lemma}{Lemma}
+\newtheorem{cora}{Corallary}
+
+
+
+
+\pagestyle{empty}
+\title{\begin{tikzpicture}[baseline]%
+\node [scale=1.5] at (0.0em,0.0em) {F};%
+\node [scale=0.8] at (0.35em,-0.25em) {U};%
+\node [scale=0.9] at (0.8em,0.2em) {N};%
+\node [scale=0.8] at (1.25em,-0.1em) {C};%
+\node [scale=1.5] at (1.6em,0.0em) {T};%
+\node [scale=0.8] at (1.8em,0.05em) {I};%
+\node [scale=0.6] at (2.1em,-0.25em) {O};%
+\node [scale=0.9] at (2.52em,0.2em) {N};%
+\node [scale=0.8] at (2.85em,-0.1em) {A};%
+\node [scale=1.5] at (3.35em,0.0em) {L};%
+\node [scale=1] at (3.7em,0.18em) {1};%
+\end{tikzpicture}}
+\author{王胤雅\\
+SID:201911010205\\
+\email{201911010205@mail.bnu.edu.cn}}
+
+\iffalse
+
+,,
+\fi
+
+\begin{document}
+\large
+\maketitle
+\begin{problem}
+设 $(X, \d)$ 是距离空间, 令 $\rho(x, y)=\frac{\d(x, y)}{1+\d(x, y)}$. 求证 $(X, \rho)$ 也是距离空间. 
+\end{problem}
+
+\newcommand{\intt}[2]{\int_0^1|#1-#2| \mathrm{d} x}
+\begin{problem}
+$[0,1]$ 上的全体多项式记为$P[0,1]$, 定义距离
+\begin{equation}
+\d(p, q)=\int_0^1|p(x)-q(x)| \mathrm{d} x 
+\end{equation}
+其中 p, q \text { 是多项式 }. 证明
+$(P[0,1],\d)$是不完备的, 并指出它的完备化空间.
+\end{problem}

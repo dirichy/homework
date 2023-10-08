@@ -7,7 +7,7 @@ echo $subject
 if [ ! -d "./"$subject"/" ]; then
  mkdir "./"$subject"/"
  cp global/default_template "./$subject/template"
- cp global/default_template "./$subject/localcommands"
+ cp global/default_localcommands "./$subject/localcommands"
  echo $subject > "./$subject/.subject"
  openfile="./$subject/template"
 else

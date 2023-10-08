@@ -1,0 +1,163 @@
+\documentclass{ctexart}
+%\usepackage{xeCJK}
+%\usepackage[T1]{fontenc}
+%\usepackage{mathptmx}
+\usepackage{amsmath,amssymb,amsthm,color,mathrsfs}
+\usepackage{enumitem,anysize}
+\usepackage{geometry}
+\usepackage{lipsum}
+\usepackage{bbm}
+\usepackage{tikz}
+\usepackage{color}
+\usepackage{hyperref}
+\usepackage{cleveref}
+\hypersetup{
+	hypertex=true,
+	colorlinks=true,
+	linkcolor=red,
+	filecolor=blue,      
+	urlcolor=blue,
+	citecolor=cyan,
+}
+
+\geometry{a4paper,left=2.5cm,right=2.5cm,top=2.5cm,bottom=2.5cm}
+
+\def\<{\langle}
+\def\>{\rangle}
+\edef\lim{\displaystyle\lim}
+\def\email#1{\href{mailto:#1}{\texttt{#1}}}
+
+\newcounter{problem}
+\renewcommand{\theproblem}{\Roman{problem}}
+\newenvironment{problem}{\refstepcounter{problem}\noindent\color{blue}\textbf{Problem}\theproblem.}{}
+\crefname{problem}{Problem}{Problem}
+
+\newenvironment{solution}{\begin{proof}[\textbf{Solution}]}{\end{proof}}
+
+\renewcommand\phi{\varphi}
+\renewcommand{\(}{\left(}
+\renewcommand{\)}{\right)}
+\renewcommand{\d}{\mathrm{d}}
+\newcommand{\supp}{\mathrm{supp}}
+%\newcommand{\d}{\mathrm{d}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\E}{\mathbb{E}}
+\newcommand{\R}{\mathbb{R}}
+\renewcommand{\C}{\mathbb{C}}
+\newcommand{\shi}{\mathbbm{1}}
+\newcommand{\calU}{\mathcal{U}}
+\renewcommand{\epsilon}{\varepsilon}
+\newcommand{\eto}{\mapsto}
+\newcommand{\Iff}{\Leftrightarrow}
+\newcommand{\huo}{\vee}
+\newcommand{\qie}{\wedge}
+
+
+
+
+\newcommand{\minus}{\mathbin{\backslash}}
+
+\newtheorem{lemma}{Lemma}
+\newtheorem{cora}{Corallary}
+
+
+
+
+\pagestyle{empty}
+\title{\begin{tikzpicture}[baseline]%
+\node [scale=1.5] at (0.0em,0.0em) {F};%
+\node [scale=0.8] at (0.35em,-0.25em) {U};%
+\node [scale=0.9] at (0.8em,0.2em) {N};%
+\node [scale=0.8] at (1.25em,-0.1em) {C};%
+\node [scale=1.5] at (1.6em,0.0em) {T};%
+\node [scale=0.8] at (1.8em,0.05em) {I};%
+\node [scale=0.6] at (2.1em,-0.25em) {O};%
+\node [scale=0.9] at (2.52em,0.2em) {N};%
+\node [scale=0.8] at (2.85em,-0.1em) {A};%
+\node [scale=1.5] at (3.35em,0.0em) {L};%
+\node [scale=1] at (3.7em,0.18em) {4};%
+\end{tikzpicture}}
+\author{王胤雅\\
+SID:201911010205\\
+\email{201911010205@mail.bnu.edu.cn}}
+
+
+\begin{document}
+\large
+\maketitle
+\setlength{\baselineskip}{1.5\baselineskip}
+\begin{problem}
+$(X,\d)$ is a distance space, $A\subset X$ is a self-sequence compact set. $\forall f\in C(A):=\{f\in\R^A: f \text{is continuous} \}$, $f(A):=\{f(x): x\in A\}$. Proof:  $f(A)$ is bounded and $\max f(A)=\sup f(A),\min f(A)=\inf f(A)$.
+\end{problem}
+\begin{solution}
+\begin{solution}
+Since $f$ is continuous and $A$ is self-sequence-compact, then $f(A)$ is compact in $\R$, that means $f(A)$ is bounded and closed in $\R$. Let $m=\sup f(A)$, $b_n\in f(A), n\in\N_+$, s.t. $b_n\to m$. 
+\iffalse
+Let $N_1$ s.t. $\forall n\geq N_1$, $|b_n-m|<1$, let $n_1=N_1$, then by the continuousness of $f$, $\exists \delta_1, a_1\in A$ s.t. $f(B(a_1,\delta_1))\subset B(b_{n_1},1)$ . Suppose $a_{k-1}$ have be defined, let define $a_k$. $\exists N_k\geq\max\{N_1,\cdots, N_{k-1}\},$ s.t. $m\in B(b_{N_k},\frac{1}{k})$, then by the continuousness of $f$, $\exists \delta_k, a_k\in A$ s.t. $f(B(a_k,\delta_k))\subset B(b_{n_k},\frac{1}{k})$.  \fi
+Let $N_1$ s.t. $\forall n\geq N_1$, $|b_n-m|<1$, $a_1\in f^{-1}(b_{N_1})$.Suppose $a_{k-1}$ have be defined, let define $a_k$. $\exists N_k\geq\max\{N_1,\cdots, N_{k-1}\},$ s.t.$\forall n\geq N_k$, $|b_n-m|<\frac{1}{k}$, let $a_k\in f^{-1}(b_{N_k})$.
+Since $A$ is self-sequence-compact, $\exists \{a_{n_i}:i\in\N_+\}\subset\{a_n:n\in\N_+\} \exists a\in A$ s.t. $a_{n_i}\to a,i\to\infty$.
+Therefore, $\forall \epsilon>0$, let $k>\frac{1}{\epsilon}$, $\forall i>N_{n_k}$, $|f(a_{n_i})-m|\leq \frac{1}{n_i}\leq \frac{1}{k}< \epsilon $.
+So by the continuousness of $f$, $\lim_{i\to\infty}f(a_{n_i})=f(\lim_{i\to\infty}a_{n_i})=f(a)=m$, so $\max f(A)=\sup f(A)=f(a)$.
+It is the same for $\inf f(A)=\min f(A)$.
+\end{solution}
+
+
+\begin{problem}
+	$(X,\d)$ is a distance space, $M\subset X$ is a self-sequence compact set. $\forall f\in C(M):=\{f\in\R^M: f \ \text{is continuous} \}$. Proof: $f$ is continuous uniformly.
+\end{problem}
+\begin{solution}
+	$\forall x\in M,\epsilon>0$, let $A:=\{\delta>0: B(x,\delta)\subset \{y\in M: |f(x)-f(y)|<\frac{\epsilon}{2}\}\}$. Since $f$ is continuous, then $A\neq \emptyset$, besides, $M$ is compact, then $M$ is bounded, so $A$ is bounded. Let $\delta_x:=\frac{\sup A}{2},\calU:=\{B(x,\delta_x):x\in M\}$, by the compactness of $M$, $\exists \{u_{x_1}\cdots u_{x_n}\}\subset \calU$ s.t. $M\subset \cup_{i=1}^n u_i$. Let $\delta:=\min_{1\leq i\leq n}\delta_{x_i}$. $\forall x \in M $, $\forall y: \d(x,y)<\delta$, $\exists i$ s.t. $x\in u_{x_i}$. W.L.O.G. $i=1$, $\d(y,x_1)\leq\d(y,x)+\d(x,x_1)\leq\delta+\delta_{x_1}\leq2\delta_{x_1}$, then $|f(y)-f(x)|\leq|f(y)-f(x_1)|+|f(x_1)-f(x)|\leq\frac{\epsilon}{2}+\frac{\epsilon}{2}=\epsilon$.
+\end{solution}
+
+\begin{problem}
+	$M\subset C[a,b]$, M is bounded, proof: $S=\{\int_a^x f(t)\d t| f\in M\}$ is a sequence compact.
+\end{problem}
+\begin{solution}
+	Since $\forall f\in C[a,b]$, $\int_a^x f(t)\d t\in C[a,b]$, then $S\subset C[a,b]$. 
+	We only need to proof $S$ is uniformly bounded and equicontinuity.
+	Since $M$ is bounded, then $\exists A$, $\forall f\in M$, $\max_{t\in [a,b]}|f(t)|\leq A$. 
+	\begin{itemize}
+		\item $S$ is uniformly bounded: 
+		$\max_{t\in [a,b]}|\int_a^t f(x)\d x|\leq \max_{t\in[a,b]}\int_a^t|f(x)|\d x\leq \int_a^b|f(x)|\d x\leq A(b-a)$.
+		\item $\forall \epsilon>0$, $0<\delta<\frac{\epsilon}{2A}$, $\forall a\leq x,y\leq b:|x-y|<\delta$, $\forall f\in M$, $|\int_{[a,x]}f(t)\d t- \int_{[a,y]}f(t)\d t|\leq\(\int_{[a,x]}-\int_{[a,y]}\)|f(t)|\d t\leq A\delta<A\frac{\epsilon}{2A}<\epsilon$.
+	\end{itemize}
+\end{solution}
+
+\begin{problem}
+	$\phi: \R^n\to \R$, $\forall x=(x_1,\cdots,x_n)\in\R^n,  \phi(x)=(\sum_{k=1}^n |x_k|^{1/2})^2$. Is $(\R^n, \phi) $ a $B^*$ space?
+\end{problem}
+\begin{solution}
+	\begin{enumerate}
+		\item $n=1$, then $\phi(x)=|x|$. Obviously, $\phi$ is a norm on $\R$.
+		\item $\forall n\geq 2$, Not $B^*$. Let $x=(1,0,0,\cdots,0), y=(0,1,0,\cdots,0)$, $\phi(x+y)=(\sum_{i=1}^n(x_k+y_k)^{\frac{1}{2}})^2=(1^{\frac{1}{2}}+1^{\frac{1}{2}})^2=4>(1^{\frac{1}{2}})^2+(1^{\frac{1}{2}})^2=2=\phi(x)+\phi(y)$
+	\end{enumerate}
+\end{solution}
+
+\begin{problem}
+	$||\cdot||: \C^{\infty}\to \R$, $\forall x=(x_1,\cdots, x_n,\cdots)$, $||x||=\sum_{n=1}^{\infty} 2^{-n}\min\{1,|x_n|\}$
+	\begin{enumerate}
+		\item Is $||\cdot||$ a norm on $\C^{\infty}$?
+		\item $\d: C^{\infty}\times C^{\infty}\to \R$, $\forall x, y\in C^{\infty},\d(x,y)=||x-y||$. Whether $\d$ is the distance on $\C^{\infty}$. If so, explain the meaning of $||x^{(n)}-x||\to 0(n\to\infty)$.
+	\end{enumerate}
+\end{problem}
+\begin{solution}
+	\begin{enumerate}
+		\item Not a norm: let $x=(1,1,\cdots, 1,\cdots)\neq 0$, then $||2x||=\sum_{n=1}^{\infty} 2^{-n}\min\{1,2\}=\sum_{n=1}^{\infty} 2^{-n}=||x||\neq 2||x||$
+		\item $\d$ is a distance: \begin{enumerate}
+			\item $\d(x,y)=||x-y||\geq 0$, trivial. $||x-y||=0\Iff \sum_{n=1}^{\infty} 2^{-n}\min\{1,|x_n-y_n|\}=0\Iff \forall n, \min\{1,|x_n-y_n|\}=0\Iff \forall n |x_n-y_n|=0\Iff x=y$.
+			\item $||x-y||=\sum_{n=1}^{\infty} 2^{-n}\min\{1,|x_n-y_n|\}=\sum_{n=1}^{\infty} 2^{-n}\min\{1,|y_n-x_n|\}=||y-x||$.
+			\item $\forall x,y,z\in \C^{\infty}$, $\forall n\in\N_+, a_n=|x_n-z_n|$, $b_n=|z_n-y_n|$
+			Since $\min\{1,a_n\}+\min\{1,b_n\}= 2 \huo \min\{1,a_n\}+\min\{1,b_n\}=1+a_n\huo \min\{1,a_n\}+\min\{1,b_n\}=1+b_n\huo\min\{1,a_n\}+\min\{1,b_n\}= a_n+b_n$, and $\min\{1,a_n+b_n\}\leq 1\leq 2,1+a_n,1+b_n\qie \min\{1,a_n+b_n\}\leq a_n+b_n$, so $\min\{1,a_n+b_n\}\leq\min\{1,a_n\}+\min\{1,b_n\}$. 
+			Therefore, $\min\{1,|x_n-y_n|\}\leq \min\{1,|x_n-z_n|\}+\min\{1,|z_n-y_n|\}$. Then, 
+			$\d(x,y)=\sum_{n=1}^{\infty} 2^{-n}\min\{1,|x_n-y_n|\}\leq\sum_{n=1}^{\infty} 2^{-n}(\min\{1,|x_n-z_n|\}+\min\{1,|z_n-y_n|\})=\sum_{n=1}^{\infty} 2^{-n}(\min\{1,|x_n-z_n|\})+\sum_{n=1}^{\infty} 2^{-n}(\min\{1,|z_n-y_n|\})=\d(x,z)+\d(z,y)$.
+		\end{enumerate}
+		\item Let $x^{(n)}=(x^{(n)}_1,\cdots, x^{(n)}_k,\cdots), x=(x_1,\cdots,x_k,\cdots)$, then $||x^{(n)}-x||\to 0\Iff \forall k, |x_k^{(n)}-x_k|\to 0,n\to\infty$.
+		 \begin{enumerate}
+			\item $\Rightarrow$: Since $||x^{(n)}-x||\to 0$, then $\forall \epsilon>0$, $\exists N$, $\forall n> N, \forall i\in\N$, $\frac{\epsilon}{2^i}>\sum_{m=1}^{\infty} 2^{-m}\min\{1,|x^{(n)}_m-x_m|\}\geq 2^{-m}\min\{1,|x^{(n)}_m-x_m|\}\forall m\geq 1$. So let $m=i$, then $2^{-i}\min\{1,|x^{(n)}_i-x_i|\}<\frac{\epsilon}{2^i}$
+			Since $1>\lim_{\epsilon\to0}\epsilon$, then $2^{-i}|x^{(n)}_i-x_i|<\frac{\epsilon}{2^i},\forall n>N$. Therefore, $|x^{(n)}_i-x_i|\to 0,n\to \infty$.
+			\item $\Leftarrow$: $\forall \epsilon>0, \exists N, \forall n\geq N$, $\sum_{m=n}^{\infty}2^{-m}<\frac{\epsilon}{2}$, $\exists M$, $\forall 1<i\leq N-1$, $\forall n>M$, $|x_i^{(n)}-x_i|<\frac{\epsilon}{2\sum_{k=1}^{N-1}2^{-k}}$. So $n>\max\{N,M\}$, $\sum_{m=1}^n2^{-m}\min\{1,|x^{(n)}_m-x_m|\}\leq \sum_{m=1}^{N-1}2^{-m}\min\{1,|x^{(n)}_m-x_m|\}+\sum_{m=N}^n2^{-m}\min\{1,|x^{(n)}_m-x_m|\}\leq \sum_{m=1}^{N-1}2^{-m}|x^{(n)}_m-x_m|+\frac{\epsilon}{2}\leq\sum_{m=1}^{N-1}2^{-m}\frac{\epsilon}{2\sum_{k=1}^{N-1}2^{-k}}+\frac{\epsilon}{2}=\epsilon$.
+		\end{enumerate}
+	\end{enumerate}
+\end{solution}
+
+\end{document}

@@ -1,0 +1,195 @@
+\documentclass{ctexart}
+%\usepackage{xeCJK}
+%\usepackage[T1]{fontenc}
+%\usepackage{mathptmx}
+\usepackage{amsmath,amssymb,amsthm,color,mathrsfs}
+\usepackage{enumitem,anysize}
+\usepackage{geometry}
+\usepackage{lipsum}
+\usepackage{bbm}
+\usepackage{tikz}
+\usepackage{hyperref}
+\hypersetup{
+	hypertex=true,
+	colorlinks=true,
+	linkcolor=red,
+	filecolor=blue,      
+	urlcolor=blue,
+	citecolor=cyan,
+}
+
+\geometry{a4paper,left=2.5cm,right=2.5cm,top=2.5cm,bottom=2.5cm}
+
+\def\<{\langle}
+\def\>{\rangle}
+\edef\lim{\displaystyle\lim}
+\def\email#1{\href{mailto:#1}{\texttt{#1}}}
+
+\newtheorem{problem}{\textbf{Problem}}
+\renewcommand\theproblem{\textbf{\Roman{problem}}}
+\newenvironment{solution}{\begin{proof}[\textbf{Solution}]}{\end{proof}}
+
+\renewcommand\phi{\varphi}
+\renewcommand{\(}{\left(}
+\renewcommand{\)}{\right)}
+\renewcommand{\d}{\mathrm{d}}
+\newcommand{\supp}{\mathrm{supp}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\E}{\mathbb{E}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\shi}{\mathbbm{1}}
+\renewcommand{\epsilon}{\varepsilon}
+
+
+
+
+
+\newcommand{\minus}{\mathbin{\backslash}}
+
+\newtheorem{lemma}{Lemma}
+\newtheorem{cora}{Corallary}
+
+
+
+
+\pagestyle{empty}
+\title{\begin{tikzpicture}[baseline]%
+\node [scale=1.5] at (0.0em,0.0em) {F};%
+\node [scale=0.8] at (0.35em,-0.25em) {U};%
+\node [scale=0.9] at (0.8em,0.2em) {N};%
+\node [scale=0.8] at (1.25em,-0.1em) {C};%
+\node [scale=1.5] at (1.6em,0.0em) {T};%
+\node [scale=0.8] at (1.8em,0.05em) {I};%
+\node [scale=0.6] at (2.1em,-0.25em) {O};%
+\node [scale=0.9] at (2.52em,0.2em) {N};%
+\node [scale=0.8] at (2.85em,-0.1em) {A};%
+\node [scale=1.5] at (3.35em,0.0em) {L};%
+\node [scale=1] at (3.7em,0.18em) {1};%
+\end{tikzpicture}}
+\author{王胤雅\\
+SID:201911010205\\
+\email{201911010205@mail.bnu.edu.cn}}
+
+\iffalse
+
+,,
+\fi
+
+\begin{document}
+\large
+\maketitle
+\begin{problem}
+设 $(X, \d)$ 是距离空间, 令 $\rho(x, y)=\frac{\d(x, y)}{1+\d(x, y)}$. 求证 $(X, \rho)$ 也是距离空间. 
+\end{problem}
+\begin{solution}
+\begin{itemize}
+\item Since $\forall x,y\in X, \d(x,y)\geq 0$, then $\rho(x,y)=\frac{\d(x, y)}{1+\d(x, y)}\geq 0$. If $\rho(x,y)=0\Leftrightarrow \d(x,y)=0\Leftrightarrow x=y$.
+\item Since $\forall x,y\in X$, $\d(x,y)=\d(y,x)$, then $\rho(x,y)=\frac{\d(x, y)}{1+\d(x, y)}=\frac{\d(y, x)}{1+\d(y, x)}=\rho(y,x).$
+\item $\forall x,y,z\in X$, $\rho(x,y)=\frac{\d(x, y)}{1+\d(x, y)}$. 
+\\If $\d(x,y)\leq\max\{\d(x,z),\d(z,y)\}$, by the increasing of function $\frac{x}{1+x}$ on $[0,+\infty)$, then $\rho(x,y)\leq\max\{\rho(x,z),\rho(z,y)\}\leq \d(x,z)+\d(z,y)$.\\
+If $\d(x,y)>\max\{\d(x,z),\d(z,y)\}$, then $\rho(x,y)=\frac{\d(x, y)}{1+\d(x, y)}\leq\frac{\d(x, z)}{1+\d(x, y)}+\frac{\d(z, y)}{1+\d(x, y)}\leq\frac{\d(x, z)}{1+\d(x, z)}+\frac{\d(z, y)}{1+\d(z, y)}=\rho(x,z)+\rho(z,y)$.
+
+\end{itemize}
+\end{solution}
+
+\newcommand{\intt}[2]{\int_0^1|#1-#2| \mathrm{d} x}
+\begin{problem}
+ $[0,1]$ 上的全体多项式记为$P[0,1]$, 定义距离
+\begin{equation}
+\d(p, q)=\int_0^1|p(x)-q(x)| \mathrm{d} x 
+\end{equation}
+其中 p, q \text { 是多项式 }. 证明
+$(P[0,1],\d)$是不完备的, 并指出它的完备化空间.
+\end{problem}
+\begin{solution}
+First of all, $(P[0,1],\d)$ is not complete.\\
+Consider $f_n(x)=\sum_{k=1}^n \frac{1}{k+1}x^k,x\in [0,1]$, so $\{f_n:n\in \N\}\subset P[0,1]$.
+ $\forall n\geq m$, $\d(f_m,f_n)=\intt{f_m}{f_n}\leq \sum_{k=m+1}^n \frac{1}{(1+k)^2}\to0,$ as $m,n\to\infty$, $\{f_n\}$ is a cauchy series.
+  While $f(x)=\sum_{k=1}^{\infty}\frac{1}{1+k}x,x\in [0,1]$, $\d(f_n, f)=\intt{f_n}{f}=\sum_{k=n+1}^{\infty}\frac{1}{{(1+k)}^2}\to 0$.
+   By the uniqueness of limit, $f$ is the limit of $\{f_n\}$. 
+$\forall n$, $f^{(n)}(0)=\frac{n!}{n+1}\neq 0$, so $f\notin P[0,1]$.\\
+Secondly, proof $L^1[0,1]$ is the completeness of $P[0,1]$.
+\begin{lemma}[Stone–Weierstrass theorem]\label{lem:1}
+$\forall f\in C[0,1],\exists \{f_n\in P[0,1]:n\in\N\}$ satisfies 
+$$\max_{0\leq x\leq1}|f_n(x)-f(x)|\to 0, n\to\infty$$.
+\end{lemma}
+\begin{proof}
+$\forall x\in[0,1]$, $\{X_n: n\in\N_+\}\stackrel{i.i.d.}{\sim} B(1,x), S_n:=\sum_{k=1}^n X_k$.
+ Consider $b_n(x)=\sum_{k=1}^{n}f(\frac{k}{n})\binom{n}{k}x^k(1-x)^{n-k}=\E(\frac{S_n}{n})$
+ Since $f$ is uniformly continuous on $[0,1]$, 
+then $\forall \epsilon>0$, $\exists \delta>0$, $\forall x,y\in[0,1]:|x-y|<\delta$, $|f(x)-f(y)|<\epsilon$. Then,
+\begin{equation}
+ \begin{aligned}
+&|\E(f(\frac{S_n}{n}))-f(x)|\\
+=&|\int_0^1f(\frac{S_n}{n})-f(x)\d x|\\
+\leq&\intt{f(\frac{S_n}{n})}{f(x)}\\
+\leq&\int_{|\frac{S_n}{n}-f(x)|<\delta}|f(\frac{S_n}{n})-f(x)|\d x+\int_{|\frac{S_n}{n}-f(x)|\geq\delta}|f(\frac{S_n}{n})-f(x)|\d x\\
+\leq&\epsilon+2\sup_{t\in[0,1]}|f(x)|\E{\shi_{\{|\frac{S_n}{n}-f(x)|\geq\delta\}}}
+\end{aligned}
+\end{equation}
+By Chebyshev's inequality, 
+\begin{equation}
+\begin{aligned}
+&\E{\shi_{|\frac{S_n}{n}-f(x)|\geq\delta}}\\
+\leq &\frac{\E{|\frac{S_n}{n}-f(x)|^2}}{\delta^2}\\
+=&\frac{x(1-x)}{n\delta^2}\\
+\leq&\frac{1}{4n\delta^2}
+\end{aligned}
+\end{equation}
+Thus, 
+\begin{equation}
+\sup_{t\in[0,1]}|\E(f(\frac{S_n}{n}))-f(x)|\leq\epsilon+\frac{1}{2n\delta^2}\sup_{t\in[0,1]}|f(x)|
+\end{equation}
+Last, let $n\to\infty$, and then let $\epsilon\to 0$, we get $\sup_{t\in[0,1]}|\E(f(\frac{S_n}{n}))-f(x)|\to0,n\to\infty$.
+That means $b_n\to f$ uniformly.
+\end{proof}
+\begin{lemma}[Lusin Theorem]\label{lem:2}
+$f$ is a measurable function on $E$, and $f$ is finite a.s., $\forall \delta>0,$ $\exists F\subset E$ is closed, $F$ satisfies $m(E\minus F)<\delta$, $f$ is continuous on $F$.
+\end{lemma}
+\begin{proof}
+Since $f$ is finite a.s.
+\begin{itemize}
+\item When $f$ is simple measurable functions. 
+Let $f=\sum_{k=1}^{n}a_kE_k$, $a_k\in \R\forall k=1,\cdots,n,$ $E_i\cap E_j=\emptyset, i\neq j, E=\cup_{k=1}^{n}E_k$.
+$\forall \delta>0,k=1,\cdots, n$, $\exists F_k\subset E_k$, $m(E_k\minus F_k)<\frac{\delta}{n}$. $f=a_k,\forall x\in F_k$. 
+Let $F=\cup_{k=1}^n F_k$, so $F$ is closed, and $f$ is continuous on $F$.
+Besides, $m(E\minus F)= m((\cup_{k=1}^n E_k)\minus (\cup_{k=1}^n F_k))\leq m(\cup_{k=1}^n (E_k\minus F_k))\leq\sum_{k=1}^n m(E_k\minus F_k)\leq \delta$
+\item When $f$ is a measurable function. Let $g=\frac{f}{1+|f|}$, then $f=\frac{g}{1-|g|}$, that means $f\in C[0,1]\Leftrightarrow g\in C[0,1]$, and $g$ is bounded. 
+W.L.O.G., $f$ is bounded. So $\exists\{\phi_n$ is simply measurable function: $n\in N\}, \phi_n\to f$ uniformly. 
+$\forall \delta>0, \phi_n$, $\exists F_n\subset E$ is closed, and $\phi_n$ is continuous on $F$, $m(E\minus F_n)<\frac{\delta}{2^n}$.
+$F=\cap_{n=1}^{\infty}F_n$, $F$ is closed, and $\forall \phi_n$, $\phi_n$ is continuous on $F$, 
+$m(E\minus F)\leq m(E\minus\cap_{n=1}^{\infty}F_n)=m(\cup_{n=1}^{\infty}(E\minus F_n))\leq\sum_{n=1}^{\infty}m(E\minus F_n)<\sum_{n=1}^{\infty}\frac{\delta}{2^n}=\delta$. 
+\end{itemize}
+\end{proof}
+\begin{lemma}\label{lem:3}
+$\forall f \in L^1(E)$, $\forall \epsilon>0, \exists g\in C(E)$, $\supp (g)$ is compact, satisfies \\
+$\int_E|f(x)-g(x)|\d x<0$.
+\end{lemma}
+\begin{proof}
+It is easy to find $\phi$ is measurable on $E$, which satisfies $\supp \phi$ is compact and $\int_E |f(x)-\phi(x)|\d x<\frac{\epsilon}{2}$.\\
+Let $|\phi|\leq M$. By lemma\ref{lem:2}, we can find $g\in C(E)$ that satisfies $m(|\phi(x)-g(x)|>0)\frac{\epsilon}{4M}$ and $g(x)\leq M$.
+\begin{equation}
+\begin{aligned}
+&\int_E |f(x)-g(x)|\d x\\
+\leq&\int_E|f(x)-\phi(x)|\d x+\int_E|\phi(x)-g(x)|\d x\\
+\leq &\frac{\epsilon}{2}+2Mm(|\phi(x)-g(x)|>0) \\
+\leq &\frac{\epsilon}{2}+\frac{\epsilon}{2}=\epsilon
+\end{aligned}
+\end{equation}
+\end{proof}
+$\forall f\in L^1[0,1]$, by lemma\ref{lem:3}, $\exists \{g_n\in C[0,1]: n\in\N\}$ satisfies $\int_{[0,1]}|f-g_n|\d x\to 0, n\to\infty$.
+Then by lemma\ref{lem:1}, $\forall g_n$, $\exists \{g_{n,m}\in P[0,1]:m\in\N\}$ satisfies $g_{n,m}\to g_n$ uniformly.\\
+$\forall \epsilon>0$, $\exists N$, $\forall n>N$, $\int_{[0,1]}|g_n(x)-f(x)|\d x<\frac{\epsilon}{2}$, $\exists M_n$, $m>M_n$, $\max_{t\in[0,1]}|g_{n,m}(t)-g_n(t)|<\frac{\epsilon}{2}$. Let $m_n=M_n+1$, $\{g_{n,m_n}\in P[0,1]:n\in\N\}$, 
+\begin{equation}
+\begin{aligned}
+&\int_{[0,1]}|g_{n,m_n}-f|\d x \\
+\leq&\int_{[0,1]}|g_{n,m_n}-g_n|\d x+\int_{[0,1]}|g_{n}-f|\d x\\
+\leq&\frac{\epsilon}{2}+\frac{\epsilon}{2}=\epsilon
+\end{aligned}
+\end{equation}
+Therefore, $P[0,1]$ is dense in $L^1[0,1]$.
+Let $\theta: P[0,1]\to L^{1}[0,1]$, which is an embed mapping. It is obvious that $\theta$ is isometry, $L^1[0,1]$ is complete, $\theta(P[0,1])=P[0,1]$ is dense in $L^1[0,1]$.
+
+
+\end{solution}
+\end{document}
