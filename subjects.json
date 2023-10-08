@@ -3,5 +3,6 @@
 	"set":"SetTheory",
 	"dsjh":"AlgebraicGeometry",
 	"algebra":"AlgebraicGeometry",
-	"com":"Combination"
+	"com":"Combination",
+	"fun":"FunctionalAnalysis"
 }
