@@ -1,0 +1,142 @@
+%!Mode:: "TeX:UTF-8"
+%!TEX encoding = UTF-8 Unicode
+%!TEX TS-program = xelatex × 2
+\documentclass{ctexart}
+\newif\ifpreface
+\prefacetrue
+\input{../../../global/all}
+\DeclareMathOperator{\ord}{Ord}
+\DeclareMathOperator{\otype}{OrderType}
+\newcommand{\ini}{\mathrm{\mathop{ini}}}
+\newtheorem{example}{Example}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\calA}{\mathcal{A}}
+\newcommand{\len}{\mathop{\mathrm{len}}}
+\newcommand{\Q}{\mathbb{Q}}
+\begin{document}
+\large
+\setlength{\baselineskip}{1.2em}
+\ifpreface
+\input{../../../global/preface}
+\else
+\maketitle
+\fi
+\newgeometry{left=2cm,right=2cm,top=2cm,bottom=2cm}
+%from_here_to_type
+\section{Question}
+\begin{problem}
+Let $(U,\le),(V,\prec)$ be two well-orderings. Consider $f:=\{(x,y):x\in U\xand y\in V\xand (U_x,\le)\cong (V_y,\prec)\}$, prove $f$ is isomorphism from some initial segment of $U$ to some initial segment of $V$. 
+\end{problem}
+
+\begin{problem}\label{pro:2}
+The relation ``$(P,\le)\cong(Q,\le)$'' is an equivalence relation (on the class of all partially ordered sets).
+\end{problem}
+
+
+\begin{problem}
+Let $\mathcal{A}$ denote the class of all well orderings. For any $a,b\in\mathcal{A}$, define $a\prec b\iff a$ is isomorphic to an initial segment of $b$. Show that $\prec$ is a well ordering on $\mathcal{A}/\cong$, where $\cong$ is the equivalence relation given in \Cref{pro:2}.  
+\end{problem}
+
+
+\begin{problem}
+\begin{enumerate}
+\item If $(W,<)$ is a well ordering and $U \subset W$, then $(U,<\cap(U \times U))$ is a well ordering.
+\item
+If $\left(W_1,<_1\right)$ and $\left(W_2,<_2\right)$ are two well orderings and $W_1 \cap W_2=\varnothing$, then $W_1 \oplus W_2=\left(W_1 \cup W_2, \prec\right)$ is a well ordering, where
+$$
+\prec=<_1 \cup<_2 \cup\left\{(a, b) \mid a \in W_1 \wedge b \in W_2\right\}
+$$
+\item
+If $\left(W_1,<_1\right)$ and $\left(W_2,<_2\right)$ are two well orderings, then $W_1 \otimes W_2=\left(W_1 \times W_2, \prec\right)$ is a well ordering, where
+$$
+\left(a_1, b_1\right) \prec\left(a_2, b_2\right) \leftrightarrow b_1<_2 b_2 \vee\left(b_1=b_2 \wedge a_1<_1 a_2\right)
+$$
+\end{enumerate}
+\end{problem}
+
+
+\begin{problem}
+Show that the following are equivalent:
+\begin{enumerate}[ref=\theproblem.\arabic*]
+\item\label{it:1} $T$ is transitive;
+\item\label{it:2}$\bigcup T \subseteq T$;
+\item\label{it:3} $T \subseteq \mathscr{P}(T)$.
+\end{enumerate}
+\end{problem}
+
+
+\begin{problem}
+Let $\alpha, \beta, \gamma \in$ Ord and let $\alpha<\beta$. Then
+\begin{enumerate}[label=\alph*,ref=\theproblem.\alph*]
+\item\label{it:11} $\alpha+\gamma \leq \beta+\gamma$.
+\item\label{it:12} $\alpha \cdot \gamma \leq \beta \cdot \gamma$.
+\item\label{it:13} $\alpha^\gamma \leq \beta^\gamma$.
+\end{enumerate}
+Given examples to show that $\leq$ cannot be replaced by $<$ in either inequality.
+\end{problem}
+
+\begin{example}
+\begin{enumerate}[label=\alph*,ref=Example\theexample.\alph*]
+\item\label{it:71} Let $\alpha=0,\beta=1,\gamma=\omega$, then $\alpha<\beta$ but $\alpha+\gamma=\omega=1+\omega=\beta+\gamma$. 
+\item\label{it:72} Let $\alpha=1,\beta=2,\gamma=\omega$, then $\alpha\cdot \gamma=\omega=2\cdot\omega =\omega$. 
+\item\label{it:73}  Let $\alpha=2,\beta=3,\gamma=\omega$, then $\alpha^\gamma=\beta^\gamma$. 
+\end{enumerate}
+\end{example}
+
+\begin{problem}
+Show that the following rules do not hold for all $\alpha, \beta, \gamma \in\ord$:
+\begin{enumerate}[label=\alph*,ref=\theproblem.\alph*]
+\item If $\alpha+\gamma=\beta+\gamma$ then $\alpha=\beta$.
+\item If $\gamma>0$ and $\alpha \cdot \gamma=\beta \cdot \gamma$ then $\alpha=\beta$.
+\item $(\beta+\gamma) \cdot \alpha=\beta \cdot \alpha+\gamma \cdot \alpha$.
+\end{enumerate}
+\end{problem}
+
+
+\begin{problem}
+Find a set $A \subset \mathbb{Q}$ such that $\left(A,<_{\mathbb{Q}}\right) \cong(\alpha, \in)$, where
+\begin{enumerate}[label=\alph*,ref=\theproblem.\alph*]
+\item  $\alpha=\omega+1$,
+\item  $\alpha=\omega \cdot 2$,
+\item  $\alpha=\omega \cdot \omega$,
+\item  $\alpha=\omega^\omega$,
+\item  $\alpha=\varepsilon_0$.
+\item  $\alpha$ is any ordinal $<\omega_1$.
+\end{enumerate}
+\end{problem}
+
+
+
+\begin{problem}
+An ordinal $\alpha$ is a limit ordinal iff $\alpha=\omega \cdot \beta$ for some $\beta \in\ord$.
+\end{problem}
+
+
+
+\begin{problem}
+Find the first three $\alpha>0$ s.t. $\xi+\alpha=\alpha$ for all $\xi<\alpha$.
+\end{problem}
+
+
+
+\begin{problem}
+Find the least $\xi$ such that
+\begin{enumerate}[label=\alph*,ref=\theproblem.\alph*]
+\item  $\omega+\xi=\xi$.
+\item  $\omega \cdot \xi=\xi, \xi \neq 0$.
+\item  $\omega^{\xi}=\xi$.
+\end{enumerate}
+(Hint for (1): Consider a sequence $\left\langle\xi_n\right\rangle$ s.t. $\xi_{n+1}=\omega+\xi_n$.)
+\end{problem}
+\begin{lemma}\label{lem:f}
+If $f:\ord\to\ord$ and $a\leq b\to f(a)\leq f(b)$ and $f(\sup B)=\sup f(B)$ for any $B$ is subset of $\ord$, let $a_0=0,a_{n+1}=f(a_n)$, then $\xi=\sup\{a_n:n\in\N\}$ is the least $\xi$ such that $f(\xi)=\xi$. 
+\end{lemma}
+\begin{proof}
+First we prove $a_{n+1}\geq a_n$. Use MI it's obvious. 
+
+Second we prove $f(\xi)=\xi$. Obviously $f(\xi)=f(\sup\{a_n\})=\sup\{f(a_n)\}=\sup\{a_{n+1}\}=\lim a_{n+1}=\lim a_n=\xi$.
+
+Finally we prove $\xi$ is the least. Assume $f(\alpha)=\alpha$, then use MI we can easily prove $\alpha\geq a_n\forall n<\omega$. So $\alpha\geq \sup\{a_n\}=\xi$. 
+\end{proof}
+
+
