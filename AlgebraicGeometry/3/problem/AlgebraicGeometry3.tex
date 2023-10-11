@@ -2,21 +2,10 @@
 %!TEX encoding = UTF-8 Unicode
 %!TEX TS-program = xelatex
 \documentclass{ctexart}
-\usepackage{bbm}
-\usepackage{tikz}
-\usepackage{amsmath,amssymb,amsthm,color,mathrsfs}
-\usepackage{hyperref}
-\usepackage{cleveref}
-\usepackage{enumitem,anysize}%
-\usepackage{expl3}
-\marginsize{1in}{1in}{1in}{1in}%
-\theoremstyle{remark}
-\newtheorem*{claim*}{Claim}
-\newtheorem{lemma}{Lemma}
+\newif\ifpreface
+\prefacetrue
+\input{../../../global/all}
 
-\DeclareMathOperator{\ot}{ordertype}
-\DeclareMathOperator{\dom}{dom}
-\DeclareMathOperator{\ran}{ran}
 \DeclareMathOperator{\field}{field}
 \DeclareMathOperator{\Ord}{Ord}
 
@@ -24,17 +13,7 @@
 
 \def\email#1{{\texttt{#1}}}
 \newcommand{\isep}[1][0pt]{\addtolength{\itemsep}{#1}}
-\newcounter{problem}
 \renewcommand{\theproblem}{\Roman{problem}}
-\newenvironment{problem}{\refstepcounter{problem}\noindent\color{blue}\begin{tikzpicture}[baseline]%
-\node at (-0.02em,0.3em) {$\mathbb{P}$};%
-\node[scale=0.7] at (0.2em,-0.0em) {R};%
-\node[scale=0.7] at (0.6em,0.4em) {O};%
-\node[scale=0.8] at (1.05em,0.25em) {B};%
-\node at (1.55em,0.3em) {L};%
-\node[scale=0.7] at (1.75em,0.45em) {E};%
-\node at (2.35em,0.3em) {M};%
-\end{tikzpicture}\theproblem}{}
 \crefname{problem}{Problem}{Problem}
 %\renewcommand\theprob{{\Roman{problem}}}
 \newcommand\mysolution{\begin{tikzpicture}[baseline]%
@@ -47,7 +26,6 @@
 \node at (1.9em,0.32em){$\mathcal{O}$};%
 \node[scale=0.75] at (2.3em,0.21em){\texttt{N}};%
 \end{tikzpicture}}
-\newenvironment{solution}{\begin{proof}[\mysolution]}{\end{proof}}
 
 %%%%%%%%
 \newcommand{\calL}{\mathcal{L}}
@@ -60,13 +38,7 @@
 \newcommand\subini{\subsetneqq_{init}}
 \def\to{\rightarrow}
 \newcommand{\calA}{\mathcal{A}}
-\newcommand{\xor}{\vee}
-\newcommand{\bor}{\bigvee}
-\newcommand{\band}{\bigwedge}
-\newcommand{\xand}{\wedge}
-\newcommand{\minus}{\mathbin{\backslash}}
 \newcommand{\calF}{\mathcal{F}}
-\newcommand\mi[1]{\mathscr{P}(#1)}
 \newcommand{\calB}{\mathcal{B}}
 \newcommand{\heq}{\mathop{\hat{=}}}
 \newcommand{\hneq}{\mathop{\hat{\neq}}}
@@ -76,14 +48,11 @@
 \newcommand{\calM}{\mathcal{M}}
 \newcommand{\calN}{\mathcal{N}}
 \newcommand{\frA}{\mathfrak{A}}
-\newcommand{\card}{\mathrm{card}}
 \newcommand{\frM}{\mathfrak{M}}
 \newcommand{\Th}{\mathrm{Th}}
 \newcommand{\ecd}{\mathrm{EC}_\Delta}
 \newcommand{\Q}{\mathbb{Q}}
 \newcommand{\Z}{\mathbb{Z}}
-\newcommand{\oto}{\leftrightarrow}
-\newcommand{\hin}{\hat{\in}}
 \newcommand{\fun}[2]{{}^{#1}#2}
 \newcommand{\A}{\mathbbm{A}}
 \newcommand{\fra}{\mathfrak{a}}
@@ -98,11 +67,14 @@
 
 
 \begin{document}
-\title{$\mathbb{ALGEBRAIC\ GEOMETRY}$}
-\author{白永乐\\ %% 姓名
-SID: 202011150087\\ %% 学号
-\email{202011150087@mail.bnu.edu.cn}} %% 电邮
+\large
+\setlength{\baselineskip}{1.2em}
+\ifpreface
+\input{../../../global/preface}
+\else
 \maketitle
+\fi
+\newgeometry{left=2cm,right=2cm,top=2cm,bottom=2cm}
 \begin{problem}
 Let $R$ be a Abel ring, $\fra$ is an ideal of $R$, and $\sqrt{\fra}:=\{x\in R:\exists n\in\N,x^n\in\fra\}$. Prove that:
 \begin{enumerate}[ref=\theproblem.\arabic*]

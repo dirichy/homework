@@ -17,3 +17,4 @@ result=""
 for i in range(ord('A'),ord('Z')+1,1):
     result+=give_dmd(mode,chr(i),"\\\\math"+"bbm"+"{"+chr(i)+"}")+",\n"
 pyperclip.copy(result)
+exit()

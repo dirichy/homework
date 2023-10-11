@@ -25,7 +25,7 @@
 %from_here_to_type
 \section{Question}
 \begin{problem}
-Let $(U,\le),(V,\prec)$ be two well-orderings. Consider $f:=\{(x,y):x\in U\xand y\in V\xand (U_x,\le)\cong (V_y,\prec)\}$, prove $f$ is isomorphism from some initial segment of $U$ to some initial segment of $V$. 
+Let $(U,\le),(V,\prec)$ be two well-orderings. Consider $f:=\{(x,y):x\in U\xand y\in V\xand (U_x,\le)\cong (V_y,\prec)\}$, prove $f$ is isomorphism from some initial segment of $U$ to some initial segment of $V$.
 \end{problem}
 
 \begin{problem}\label{pro:2}
@@ -34,7 +34,7 @@ The relation ``$(P,\le)\cong(Q,\le)$'' is an equivalence relation (on the class 
 
 
 \begin{problem}
-Let $\mathcal{A}$ denote the class of all well orderings. For any $a,b\in\mathcal{A}$, define $a\prec b\iff a$ is isomorphic to an initial segment of $b$. Show that $\prec$ is a well ordering on $\mathcal{A}/\cong$, where $\cong$ is the equivalence relation given in \Cref{pro:2}.  
+Let $\mathcal{A}$ denote the class of all well orderings. For any $a,b\in\mathcal{A}$, define $a\prec b\iff a$ is isomorphic to an initial segment of $b$. Show that $\prec$ is a well ordering on $\mathcal{A}/\cong$, where $\cong$ is the equivalence relation given in \Cref{pro:2}.
 \end{problem}
 
 
@@ -77,9 +77,9 @@ Given examples to show that $\leq$ cannot be replaced by $<$ in either inequalit
 
 \begin{example}
 \begin{enumerate}[label=\alph*,ref=Example\theexample.\alph*]
-\item\label{it:71} Let $\alpha=0,\beta=1,\gamma=\omega$, then $\alpha<\beta$ but $\alpha+\gamma=\omega=1+\omega=\beta+\gamma$. 
-\item\label{it:72} Let $\alpha=1,\beta=2,\gamma=\omega$, then $\alpha\cdot \gamma=\omega=2\cdot\omega =\omega$. 
-\item\label{it:73}  Let $\alpha=2,\beta=3,\gamma=\omega$, then $\alpha^\gamma=\beta^\gamma$. 
+\item\label{it:71} Let $\alpha=0,\beta=1,\gamma=\omega$, then $\alpha<\beta$ but $\alpha+\gamma=\omega=1+\omega=\beta+\gamma$.
+\item\label{it:72} Let $\alpha=1,\beta=2,\gamma=\omega$, then $\alpha\cdot \gamma=\omega=2\cdot\omega =\omega$.
+\item\label{it:73}  Let $\alpha=2,\beta=3,\gamma=\omega$, then $\alpha^\gamma=\beta^\gamma$.
 \end{enumerate}
 \end{example}
 
@@ -129,14 +129,14 @@ Find the least $\xi$ such that
 (Hint for (1): Consider a sequence $\left\langle\xi_n\right\rangle$ s.t. $\xi_{n+1}=\omega+\xi_n$.)
 \end{problem}
 \begin{lemma}\label{lem:f}
-If $f:\ord\to\ord$ and $a\leq b\to f(a)\leq f(b)$ and $f(\sup B)=\sup f(B)$ for any $B$ is subset of $\ord$, let $a_0=0,a_{n+1}=f(a_n)$, then $\xi=\sup\{a_n:n\in\N\}$ is the least $\xi$ such that $f(\xi)=\xi$. 
+If $f:\ord\to\ord$ and $a\leq b\to f(a)\leq f(b)$ and $f(\sup B)=\sup f(B)$ for any $B$ is subset of $\ord$, let $a_0=0,a_{n+1}=f(a_n)$, then $\xi=\sup\{a_n:n\in\N\}$ is the least $\xi$ such that $f(\xi)=\xi$.
 \end{lemma}
 \begin{proof}
-First we prove $a_{n+1}\geq a_n$. Use MI it's obvious. 
+First we prove $a_{n+1}\geq a_n$. Use MI it's obvious.
 
 Second we prove $f(\xi)=\xi$. Obviously $f(\xi)=f(\sup\{a_n\})=\sup\{f(a_n)\}=\sup\{a_{n+1}\}=\lim a_{n+1}=\lim a_n=\xi$.
 
-Finally we prove $\xi$ is the least. Assume $f(\alpha)=\alpha$, then use MI we can easily prove $\alpha\geq a_n\forall n<\omega$. So $\alpha\geq \sup\{a_n\}=\xi$. 
+Finally we prove $\xi$ is the least. Assume $f(\alpha)=\alpha$, then use MI we can easily prove $\alpha\geq a_n\forall n<\omega$. So $\alpha\geq \sup\{a_n\}=\xi$.
 \end{proof}
 
 
