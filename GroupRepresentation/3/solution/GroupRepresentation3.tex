@@ -1,12 +1,56 @@
 %!Mode:: "TeX:UTF-8"
 %!TEX encoding = UTF-8 Unicode
-%!TEX TS-program = xelatex
+%!TEX TS-program = xelatex × 2
 \documentclass{ctexart}
-\input{../../start.tex}
-\input{../../commands.tex}
+\newif\ifpreface
+\prefacetrue
+\input{../../../global/all}
 \begin{document}
 \large
 \setlength{\baselineskip}{1.2em}
+\ifpreface
+  \input{../../../global/preface}
+\else
 \maketitle
+\fi
+\newgeometry{left=2cm,right=2cm,top=2cm,bottom=2cm}
+%from_here_to_type
+\begin{problem}\label{pro:1}
+ Let $\phi$ is representation of $\gl_n(K)$ over $K^n$. And $\phi(A)\alpha:=A \alpha$. Prove:$\phi$ is faithful and irreducible and $n-$dimentional. 
+\end{problem}
+\begin{solution}
+ Obviously it's $n$-dimentional. If $A\neq B$, then exists $\alpha\in K^n$ s.t. $(A-B)\alpha\neq 0$. So $\phi(A)\alpha\neq \phi(B)\alpha$. So $\phi(A)\neq \phi(B)$, so $\phi$ is faithful. To prove $\phi$ is irreducible, we only need to prove there is no invariant subspace of $K^n$. Obviously for $\alpha,\beta\in K^n\minus\{0\}$, obviously there exists $A\in \gl_n(K)$ such that $A \alpha=\beta$. So there is no nontrival invariant subspace of $K^n$. So it's irreducible. 
+\end{solution}
+
+\begin{problem}
+ For $A\in\gl_n(K)$, let $\psi(A)X=AX,\forall X\in M_n(K)$. Then:
+ \begin{enumerate}
+  \item $\psi$ is $n^2-$dimentional representation of $\gl_n(K)$ over $K$. 
+  \item For $j:1\leq j\leq n$, let $M_n^{(j)}(K):=\{(a_{ik})_{n\times n}:a_{ik}\neq 0\to k=j\}$. Prove $M_n^{(j)}$ is invariant subspace of $\gl_n(K)$. Let $\psi$ is subrepresentation of $\psi$ in $M_n^{(j)}$, prove $\psi_j$ is irreducible and $\psi=\bigoplus_{j=1}^n \psi_j$. 
+  \item Prove $\psi_j\cong \phi$, where $\phi=(\Cref{pro:1}).\phi$
+ \end{enumerate}
+\end{problem}
+
+\begin{solution}
+ \begin{enumerate}
+  \item 
+ \end{enumerate}
+\end{solution}
+
+\begin{problem}
+ Let $K=\mathbb{C}$ and $n=2$ in (Group representation second homework).(Problem 3), prove the subrepresentation of $\phi$ over $M_2^n(\mathbb{C})$ is irreducible.
+\end{problem}
+
+\begin{problem}
+ Assume $n\geq 3$ and $n\nmid \char K$, proof: then then $n-$ dimentional permutate representation of $S_n$ can be decomposed as the direct sum of a main representation and a $n-1-$ dimentional irreducible subrepresentation
+\end{problem}
+
+\begin{problem}
+ Caculate the $1- $ dimentional $\mathbb{C}$ representation:
+ \begin{enumerate}
+  \item $(2,4)-$type of $8-$ order elementary Abel group.
+  \item the addition group of $\mathbb{Z}_p^n$
+ \end{enumerate} 
+\end{problem}
 
 \end{document}
