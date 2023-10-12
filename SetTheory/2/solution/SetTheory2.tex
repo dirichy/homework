@@ -1,0 +1,237 @@
+%!Mode:: "TeX:UTF-8"
+%!TEX encoding = UTF-8 Unicode
+%!TEX TS-program = xelatex × 2
+\documentclass{ctexart}
+\newif\ifpreface
+\prefacetrue
+\input{../../../global/all}
+\DeclareMathOperator{\ord}{Ord}
+\DeclareMathOperator{\otype}{OrderType}
+\newcommand{\ini}{\mathrm{\mathop{ini}}}
+\newtheorem{example}{Example}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\calA}{\mathcal{A}}
+\newcommand{\len}{\mathop{\mathrm{len}}}
+\newcommand{\Q}{\mathbb{Q}}
+\crefname{enumi}{}{}
+\begin{document}
+\large
+\setlength{\baselineskip}{1.2em}
+\ifpreface
+ \input{../../../global/preface}
+\else
+\maketitle
+\fi
+\newgeometry{left=2cm,right=2cm,top=2cm,bottom=2cm}
+%from_here_to_type
+\section{Question}
+\begin{problem}
+ Let $(U,\le),(V,\prec)$ be two well-orderings. Consider $f:=\{(x,y):x\in U\xand y\in V\xand (U_x,\le)\cong (V_y,\prec)\}$, prove $f$ is isomorphism from some initial segment of $U$ to some initial segment of $V$. 
+\end{problem}
+\begin{solution}
+ First we need to prove $\dom(f)$ is initial segment of $U$. Only need to prove $\forall a\in \dom(f),U_a\subset \dom(f)$. 
+ Assume $h:U_a\to V_y$ is isomorphism, consider $b<a$. 
+ Since $h$ is isomorphism, so $h[U_b]$ is initial segment of $V_y$ and thus is initial segment of $V$(Because the property ``isInitialSegment'' is definable). So $b\in \dom(f)$, too. So $\dom(f)$ is initial segment of $U$. 
+ For the same reason we know $\ran(f)$ is initial of $V$. 
+
+ Second we will prove $f$ is a map. Assume $U_x\cong V_{y_1}\cong V_{y_2}$, since well-order set can't be isomorphic to it's proper initial segment, so $y_1=y_2$. So $f$ is a map. For the same reason $f_{-1}$ is a map, too. So $f$ is bijection from some initial segment of $U$ to some initial segment of $V$.
+\end{solution}
+
+\begin{problem}\label{pro:2}
+ The relation ``$(P,\le)\cong(Q,\le)$'' is an equivalence relation (on the class of all partially ordered sets).
+\end{problem}
+
+\begin{solution}
+ First we prove $\cong$ has reflexivity. Obviously $\mathrm{id}:P\to P$ is isomorphism. 
+
+ Second we prove $\cong$ has symmetry. If $f:P\to Q$ is isomorphism, then $f_{-1}:Q\to P$ is isomorphism, too. 
+
+ Finally we prove $\cong$ has transitivity. If $f:P\to Q,g:Q\to R$ are isomorphisms, then $g\circ f:P\to R$ is isomorphism from $P$ to $R$. 
+\end{solution}
+
+\begin{problem}
+ Let $\mathcal{A}$ denote the class of all well orderings. For any $a,b\in\mathcal{A}$, define $a\prec b\iff a$ is isomorphic to an initial segment of $b$. Show that $\prec$ is a well ordering on $\mathcal{A}/\cong$, where $\cong$ is the equivalence relation given in \Cref{pro:2}.  
+\end{problem}
+
+\begin{solution}
+ Obviously $\prec$ is partial order, so we only need to prove every nonempty subclass of $\mathcal{A}/\cong $ has minimum. 
+ Assume $\emptyset\neq\mathcal{B}\subset \mathcal{A}/\cong$, assume $[a]\in \mathcal{B}$, where $[a]=\{b:b\cong a\}$. Let $B=\ini(a)\cap \bigcup\mathcal{B}$, where $\ini(a)$ means all of initial segment of $a$. Then $B\subset \ini(a)$ is a subset of $\ini(a)$, and $\ini(a)$ is a well ordered set, so it has minimum. assume $b=\min B\in B$. Then we will prove $[b]=\min \mathcal{B}$. 
+
+ Consider $[c]\in \mathcal{B}$, if $[a]\prec [c]$, then since $[b]\prec [a]$ we get $[b]\prec [c]$. Else, we get $[c]\prec[a]$. So there is a isomorphism from $c$ to some $d$ in $\ini(a)$. Then $d\in[c]$ and $d\in B$. So $b\prec d$ and thus $[b]\prec [d]$. So $[b]$ is the minimum of $\mathcal{B}$. 
+\end{solution}
+
+\begin{problem}
+ \begin{enumerate}
+  \item If $(W,<)$ is a well ordering and $U \subset W$, then $(U,<\cap(U \times U))$ is a well ordering.
+  \item 
+  If $\left(W_1,<_1\right)$ and $\left(W_2,<_2\right)$ are two well orderings and $W_1 \cap W_2=\varnothing$, then $W_1 \oplus W_2=\left(W_1 \cup W_2, \prec\right)$ is a well ordering, where
+  $$
+  \prec=<_1 \cup<_2 \cup\left\{(a, b) \mid a \in W_1 \wedge b \in W_2\right\}
+  $$
+  \item
+  If $\left(W_1,<_1\right)$ and $\left(W_2,<_2\right)$ are two well orderings, then $W_1 \otimes W_2=\left(W_1 \times W_2, \prec\right)$ is a well ordering, where
+  $$
+  \left(a_1, b_1\right) \prec\left(a_2, b_2\right) \leftrightarrow b_1<_2 b_2 \vee\left(b_1=b_2 \wedge a_1<_1 a_2\right)
+  $$
+ \end{enumerate}
+\end{problem}
+
+\begin{solution}
+ \begin{enumerate}
+  \item Obviously $V$ is partial ordered. Consider nonempty set $V\subset U$, we know $V\subset W$, so $\min V$ exists. 
+  \item First we need to prove $\prec$ is partial order. 
+  \begin{itemize}
+   \item Reflexivity: For $a\in W_1\cup W_2$, if $a\in W_1$ then $(a,a)\notin \le_1$. Obviously $(a,a)\notin \le_2,W_1\times W_2$, so $(a,a)\notin \prec$. If $a\in W_2$ for the same reason we get $(a,a)\notin \prec$. So $a\not\prec a$. 
+   \item Transitivity: Consider $a\prec b,b\prec c$. Only need to prove $a\prec c$. If $a\in W_1,c\in W_2$ then obvious $a\prec c$. So we can assume $a,c\in W_i$, where $i=1$ or $i=2$. Since $a\prec b\prec c$ we can get $b\in W_i$, too. So we get $a<_i b<_i c$ and thus $a<_i c$. So $a\prec c$. 
+  \end{itemize}
+  Second we prove $\prec$ is well order. For nonempty set $U\subset W_1\cap W_2$, if $U\cap W_1\neq \emptyset$, then $\min U=\min W_1\cap U$ exists ($W_1$ is well-order). Else, $U\subset W_2$, so $\min U$ exists. 
+  \item As same as above we can easily get $\prec$ is partial order, so we only need prove $\prec$ is well order. For nonempty $U\subset W_1\times W_2$, 
+  consider $\ran U\subset W_2$, we get $b=\min \ran(U)$ exists. Then consider $U_{-1}[b]\subset W_1$, 
+  we get $a=\min U_{-1}[b]$ exists. Now we will prove $(a,b)=\min U$. Obviously $(a,b)\in U$. 
+  If $(x,y)\in U$, then $y\in \ran(U)$, so $y\geq_2 b$. If $b<_2 y$ then $(a,b)\prec (x,y)$, 
+  else $b=y$, so $x\in  U_{-1}[b]$ and thus $x\geq_1 a$, so $(x,y)\not\prec(a,b)$. So $(a,b)=\min U$. 
+ \end{enumerate}
+\end{solution}
+
+\begin{problem}
+ Show that the following are equivalent:
+ \begin{enumerate}[ref=\theproblem.\arabic*]
+  \item\label{it:1} $T$ is transitive;
+  \item\label{it:2}$\bigcup T \subseteq T$;
+  \item\label{it:3} $T \subseteq \mathscr{P}(T)$.
+ \end{enumerate}
+\end{problem}
+
+\begin{solution}
+ \begin{enumerate}
+  \item $\Cref{it:1}\Rightarrow \Cref{it:2}$:
+  
+  $\forall x\in \bigcup T,\exists y\in T,x\in y$. Since $T$ is transitive, we get $y\in T\to y\subset T$, so $x\in y\subset T,x\in T$. So $\bigcup T\subset T$. 
+  \item $\Cref{it:2}\Rightarrow \Cref{it:3}$:
+  
+  $\forall x\in T,\forall y\in x, y\in \bigcup T\subset T$. So $x\subset T$, that's means $x\in \mi{T}$. So $T\subset \mi{T}$.
+  \item $\Cref{it:3}\Rightarrow \Cref{it:1}$:
+  
+  $\forall x\in T$, since $T\subset \mi{T}$, we have $x\subset T$. So $T$ is transitive.
+ \end{enumerate}
+\end{solution}
+
+\begin{problem}
+ Let $\alpha, \beta, \gamma \in$ Ord and let $\alpha<\beta$. Then
+ \begin{enumerate}[label=\alph*,ref=\theproblem.\alph*]
+  \item\label{it:11} $\alpha+\gamma \leq \beta+\gamma$.
+  \item\label{it:12} $\alpha \cdot \gamma \leq \beta \cdot \gamma$.
+  \item\label{it:13} $\alpha^\gamma \leq \beta^\gamma$.
+ \end{enumerate}
+Given examples to show that $\leq$ cannot be replaced by $<$ in either inequality.
+\end{problem}
+
+\begin{solution}
+ \begin{enumerate}[label=\alph*,ref=\theproblem.\alph*]
+  \item If not, let $c:=\min\{\gamma\in\ord:\exists \alpha,\beta\in\ord,\alpha< \beta,\alpha+\gamma> \beta+\gamma\}$. Obviously $c\neq 0$. If $c$ is successor, then assume $c=d+1$. Then $\alpha+d\leq \beta+d$. Obviously $\alpha+1=\alpha\cup\{\alpha\}\subset \beta\cup\{\beta\}$, so $c>1$. So $(\alpha+d)+1\leq (\beta+d)+1$, i.e., $\alpha+c\leq \beta+c$, contradiction! Else, $c$ is limit. So $\alpha+c=\sup\{\alpha+d:d<c\}\leq \sup\{\beta+d:d<c\}=\beta+c$, contradiction, too. 
+  \item If not, let $c:=\min\{\gamma\in\ord:\exists \alpha,\beta\in\ord,\alpha< \beta,\alpha\cdot\gamma> \beta\cdot\gamma\}$. Obviously $c\neq 0$. If $c$ is successor, then assume $c=d+1$. Then $\alpha\cdot d\leq \beta\cdot d$. From \Cref{it:11} we get $(\alpha d)+\alpha\leq (\beta d)+\alpha\leq \beta d+\beta$. i.e., $\alpha\cdot c\leq \beta\cdot c$, contradiction! Else, $c$ is limit. So $\alpha c=\sup\{\alpha d:d<c\}\leq \sup\{\beta d:d<c\}=\beta c$, contradiction, too. 
+  \item If not, let $c:=\min\{\gamma\in\ord:\exists \alpha,\beta\in\ord,\alpha< \beta,\alpha^\gamma> \beta^\gamma\}$. Obviously $c\neq 0$. If $c$ is successor, then assume $c=d+1$. Then $\alpha^d\leq \beta^d$. From \Cref{it:12} we get $\alpha^d \alpha\leq \beta^d\alpha\leq \beta^d\beta$. i.e., $\alpha^c\leq \beta^c$, contradiction! Else, $c$ is limit. So $\alpha^c=\sup\{\alpha^d:d<c\}\leq \sup\{\beta^d:d<c\}=\beta^c$, contradiction, too. 
+  
+    
+ \end{enumerate}
+\end{solution}
+\begin{example}
+ \begin{enumerate}[label=\alph*,ref=Example\theexample.\alph*]
+  \item\label{it:71} Let $\alpha=0,\beta=1,\gamma=\omega$, then $\alpha<\beta$ but $\alpha+\gamma=\omega=1+\omega=\beta+\gamma$. 
+  \item\label{it:72} Let $\alpha=1,\beta=2,\gamma=\omega$, then $\alpha\cdot \gamma=\omega=2\cdot\omega =\omega$. 
+  \item\label{it:73}  Let $\alpha=2,\beta=3,\gamma=\omega$, then $\alpha^\gamma=\beta^\gamma$. 
+ \end{enumerate}
+\end{example}
+
+\begin{problem}
+ Show that the following rules do not hold for all $\alpha, \beta, \gamma \in\ord$:
+ \begin{enumerate}[label=\alph*,ref=\theproblem.\alph*]
+  \item If $\alpha+\gamma=\beta+\gamma$ then $\alpha=\beta$.
+  \item If $\gamma>0$ and $\alpha \cdot \gamma=\beta \cdot \gamma$ then $\alpha=\beta$.
+  \item $(\beta+\gamma) \cdot \alpha=\beta \cdot \alpha+\gamma \cdot \alpha$.
+ \end{enumerate}
+\end{problem}
+ 
+ \begin{solution}
+  \begin{enumerate}[label=\alph*,ref=\theproblem.\alph*]
+   \item \Cref{it:71}
+   \item \Cref{it:72}
+   \item $(1+1)\omega=\omega\neq \omega\cdot 2=\omega+\omega=1\cdot \omega+1\cdot \omega$.
+  \end{enumerate}
+ \end{solution}
+ 
+ \begin{problem}
+ Find a set $A \subset \mathbb{Q}$ such that $\left(A,<_{\mathbb{Q}}\right) \cong(\alpha, \in)$, where
+ \begin{enumerate}[label=\alph*,ref=\theproblem.\alph*]
+ \item  $\alpha=\omega+1$,
+ \item  $\alpha=\omega \cdot 2$,
+ \item  $\alpha=\omega \cdot \omega$,
+ \item  $\alpha=\omega^\omega$,
+ \item  $\alpha=\varepsilon_0$.
+ \item  $\alpha$ is any ordinal $<\omega_1$.
+ \end{enumerate}
+ \end{problem}
+ 
+ \begin{solution}
+  \begin{enumerate}[label=\alph*,ref=\theproblem.\alph*]
+   \item Let $A=\{1-\frac{1}{2^n}:n\in\N\}\cup\{1\}$. Then $1-\frac{1}{2^n}\mapsto n,1\mapsto \omega$ is the isomorphism. 
+   \item Let $A=\{1-\frac{1}{2^n}:n\in\N\}\cup\{2-\frac{1}{2^n}:n\in\N\}$. Then $1-\frac{1}{2^n}\mapsto n,2-\frac{1}{2^n}\mapsto \omega+n$ is the isomorphism. 
+   \item Let $A=\{m-\frac{1}{2^n}:m\in\N^+,n\in\N\}$. Then $m-\frac{1}{2^n}\mapsto \omega\cdot(m-1)+n$ is the isomorphism. 
+   \item Obviously $\omega^\omega=\sup\{\omega^n:n\in\N\}=\sum_{n=k}^\infty \omega^n,\forall k\in \N$. 
+   Consider 
+   $$A_n:=\{n-\sum_{i=1}^n\prod_{j=1}^i \frac{1}{2^{k_j}}:k_t\in\N^+,t=1,2,\cdots n\}$$
+    We can easily get $A_n\cong \omega^n$. 
+    Then let $A:=\bigcup_{k=1}^\infty A_n$, we get $A\cong \sum_{k=1}^\infty \omega^k =\omega^\omega$. 
+  \end{enumerate}
+ \end{solution}
+ 
+ 
+ \begin{problem}
+  An ordinal $\gamma$ is a limit ordinal iff $\gamma=\omega \cdot \beta$ for some $\beta \in\ord$.
+ \end{problem}
+ 
+ \begin{solution}
+  First we prove $\omega\cdot \beta$ is limit ordinal. Since $\omega\cdot \beta\cong \omega\otimes \beta$, we only need to prove there is not maximum in $\omega\otimes \beta$. For $(a,b)\in \omega\times \beta$, easily $(a+1,b)>(a,b)$. 
+
+  Second we prove every limit ordinal has the form $\omega\cdot \beta$. Assume $\gamma$ is a limit ordinal. Let $B:=\{x\in \gamma:x \text{ is limit ordinal}\}$. Let $f:\gamma\to B,f(x):=\inf\{y:\exists n\in\N,x=y+n\}$. Obviously $\inf\{y\in \gamma:\exists n\in\N,x=y+n\}$ is a limit ordinal. So $f$ is a map. Let $\beta:=\otype (B)$. Then to prove $\omega\cdot \beta=\gamma$, we only need to prove $\omega\otimes B\cong \gamma$.  Let $g:\gamma\to \omega\otimes B,x\mapsto (n,f(x))$, where $f(x)+n=x$. Easy to prove $g$ is isomorphism, so $\omega\cdot \beta=\gamma$. 
+ \end{solution}
+ 
+ 
+ \begin{problem}
+  Find the first three $\alpha>0$ s.t. $\xi+\alpha=\alpha$ for all $\xi<\alpha$.
+ \end{problem}
+ 
+ \begin{solution}
+  The first is $0$ because there is no ordinal less than $0$. The second is $1$ because $0+1=1$. The third is $\omega$, because on one hand if $\alpha<\omega$ then $1+\alpha\neq \alpha$ on the other hand $\xi+\omega=\omega,\forall \xi<\omega$. 
+ \end{solution}
+ 
+ 
+ \begin{problem}
+ Find the least $\xi$ such that
+ \begin{enumerate}[label=\alph*,ref=\theproblem.\alph*]
+  \item  $\omega+\xi=\xi$.
+  \item  $\omega \cdot \xi=\xi, \xi \neq 0$.
+  \item  $\omega^{\xi}=\xi$.
+ \end{enumerate}
+ (Hint for (1): Consider a sequence $\left\langle\xi_n\right\rangle$ s.t. $\xi_{n+1}=\omega+\xi_n$.)
+ \end{problem}
+\begin{lemma}\label{lem:f}
+ If $f:\ord\to\ord$ and $a\leq b\to f(a)\leq f(b)$ and $f(\sup B)=\sup f(B)$ for any $B$ is subset of $\ord$, let $a_0=0,a_{n+1}=f(a_n)$, then $\xi=\sup\{a_n:n\in\N\}$ is the least $\xi$ such that $f(\xi)=\xi$. 
+\end{lemma}
+\begin{proof}
+ First we prove $a_{n+1}\geq a_n$. Use MI it's obvious. 
+
+ Second we prove $f(\xi)=\xi$. Obviously $f(\xi)=f(\sup\{a_n\})=\sup\{f(a_n)\}=\sup\{a_{n+1}\}=\lim a_{n+1}=\lim a_n=\xi$.
+ 
+ Finally we prove $\xi$ is the least. Assume $f(\alpha)=\alpha$, then use MI we can easily prove $\alpha\geq a_n\forall n<\omega$. So $\alpha\geq \sup\{a_n\}=\xi$. 
+\end{proof}
+
+\begin{solution}
+ \begin{enumerate}
+  \item Let $f(x)=\omega+x$. From \Cref{lem:f}, we can let $a_n=\omega\cdot n$, then $a_{0}=0$ and $a_{n+1}=f(a_n)$. So $\xi=\sup\{a_n\}=\omega\cdot \omega=\omega^2$. 
+  \item Let $f(x)=\omega\cdot x$. From \Cref{lem:f}, we can let $a_0=0,a_n=\omega^{n-1},\forall n\geq 1$. Then $a_{n+1}=f(a_n)$. So $\xi=\sup\{a_n\}=\omega^\omega$. 
+  \item Let $f(x)=\omega^x$. From \Cref{lem:f}, we can let $a_0=0,a_{n+1}=f(a_n)=\omega^{a_n}$, then $\xi=\sup\{a_n\}=\varepsilon_0$. 
+  \end{enumerate}
+\end{solution}
+
+\end{document}
