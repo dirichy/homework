@@ -3,18 +3,23 @@
 %!TEX TS-program = xelatex × 2
 \documentclass{ctexart}
 \newif\ifpreface
-\prefacetrue
+%\prefacetrue
 \input{../../../global/all}
+\crefname{enumi}{}{}
+\renewcommand{\phi}{\varphi}
+
 \begin{document}
 \large
 \setlength{\baselineskip}{1.2em}
 \ifpreface
 \input{../../../global/preface}
+\newgeometry{left=2cm,right=2cm,top=2cm,bottom=2cm}
 \else
+\newgeometry{left=2cm,right=2cm,top=2cm,bottom=2cm}
 \maketitle
 \fi
-\newgeometry{left=2cm,right=2cm,top=2cm,bottom=2cm}
 %from_here_to_type
+\section{problem}
 \begin{problem}\label{pro:1}
 Let $\phi$ is representation of $\gl_n(K)$ over $K^n$. And $\phi(A)\alpha:=A \alpha$. Prove:$\phi$ is faithful and irreducible and $n-$dimentional.
 \end{problem}
@@ -23,25 +28,70 @@ Let $\phi$ is representation of $\gl_n(K)$ over $K^n$. And $\phi(A)\alpha:=A \al
 For $A\in\gl_n(K)$, let $\psi(A)X=AX,\forall X\in M_n(K)$. Then:
 \begin{enumerate}
 \item $\psi$ is $n^2-$dimentional representation of $\gl_n(K)$ over $K$.
-\item For $j:1\leq j\leq n$, let $M_n^{(j)}(K):=\{(a_{ik})_{n\times n}:a_{ik}\neq 0\to k=j\}$. Prove $M_n^{(j)}$ is invariant subspace of $\gl_n(K)$. Let $\psi$ is subrepresentation of $\psi$ in $M_n^{(j)}$, prove $\psi_j$ is irreducible and $\psi=\bigoplus_{j=1}^n \psi_j$.
-\item Prove $\psi_j\cong \phi$, where $\phi=(\Cref{pro:1}).\phi$
+\item For $j:1\leq j\leq n$, let $M_n^{(j)}(K):=\{(a_{ik})_{n\times n}:a_{ik}\neq 0\to k=j\}$. Prove $M_n^{(j)}$ is invariant subspace of $\gl_n(K)$. Let $\psi_j$ is subrepresentation of $\psi$ in $M_n^{(j)}$, prove $\psi_j$ is irreducible and $\psi=\bigoplus_{j=1}^n \psi_j$.
+\item\label{it:1.3} Prove $\psi_j\cong \phi$, where $\phi=(\Cref{pro:1}).\phi$
 \end{enumerate}
 \end{problem}
 
 
 \begin{problem}
-Let $K=\mathbb{C}$ and $n=2$ in (Group representation second homework).(Problem 3), prove the subrepresentation of $\phi$ over $M_2^n(\mathbb{C})$ is irreducible.
+Let $K=\mathbb{C}$ and $n=2$ in (Group representation second homework).(\Cref{pro:old3}), prove the subrepresentation of $\phi$ over $M_2^0(\mathbb{C})$ is irreducible.
 \end{problem}
 
+
 \begin{problem}
-Assume $n\geq 3$ and $n\nmid \char K$, proof: then then $n-$ dimentional permutate representation of $S_n$ can be decomposed as the direct sum of a main representation and a $n-1-$ dimentional irreducible subrepresentation
+Assume $n\geq 3$ and $n\nmid \char K$, prove: the $n-$dimentional permutate representation of $S_n$ can be decomposed as the direct sum of a main representation and a $(n-1)-$dimentional irreducible subrepresentation
 \end{problem}
+
 
 \begin{problem}
 Caculate the $1- $ dimentional $\mathbb{C}$ representation:
 \begin{enumerate}
-\item $(2,4)-$type of $8-$ order elementary Abel group.
+\item $(2,4)-$type of $8-$order elementary Abel group.
 \item the addition group of $\mathbb{Z}_p^n$
 \end{enumerate}
 \end{problem}
 
+
+\section{appendix}
+\setcounter{problem}{0}
+\begin{problem}\label{pro:old1}
+Group $G$ has an action on set $\Omega=\left\{x_1, x_2, \cdots, x_n\right\}$, let $(\phi, V)$ be the $n-$ dimensional $K$ permutation representation of $G$, where $K$ is the field of vector space $V$, and
+$$
+V=\left\{\sum_{i=1}^n a_i x_i : a_i \in K, i=1,2, \cdots, n\right\} .
+$$
+Let
+$$
+\begin{aligned}
+& V_1=\left\langle\sum_{i=1}^n x_i\right\rangle, \\
+& V_2=\left\{\sum_{i=1}^n a_i x_i : \sum_{i=1}^n a_i=0, a_i \in K\right\} .
+\end{aligned}
+$$
+Prove: \begin{enumerate}
+\item $V_1$ and $V_2$ are  invariant subspaces of $G$ ;
+\item  If $\char K \nmid n$, then $\varphi=\varphi_{V_1} \oplus \varphi_{V_2}$.
+\end{enumerate}
+\end{problem}
+\setcounter{problem}{2}
+\begin{problem}\label{pro:old3}
+$\mathcal{O}(n):=\{A\in M_n(\mathbb{R}):AA^T=I_n\}$ is the set of all $n$-dimensional otheretic matrix over $\mathbb{R}$. Let:
+\begin{equation}
+\begin{aligned}
+\varphi: \mathcal{O}(n) &\rightarrow \mathrm{GL}\left(M_n(\mathbb{R})\right) \\
+A &\mapsto \varphi(A), \\
+\end{aligned}
+\end{equation}
+Where,
+\begin{equation}
+\varphi(A) X:=A X A^{-1}: \quad \forall X \in M_n(\mathbb{R})
+\end{equation}
+$M_n^{+}(\mathbb{R}):=\{A\in M_n^0(\mathbb{R}): A=A^T\}$, $M_n^{-}(\mathrm{R}):=\{A\in M_n^0(\mathbb{R}): A^T=-A\}$.
+\begin{enumerate}
+\item Proof: $M_n^{+}(\mathrm{R})$ and $M_n^{-}(\mathrm{R})$ are invariant spaces of $\varphi$;
+\item Let the subrepresentation of $\varphi$ on $\langle I \rangle$,$ M_n^{+}(\mathbb{R}), M_n^{-}(\mathbb{R})$ be  $\varphi_0, \varphi_1, \varphi_2$. Proof:
+$$
+\varphi=\varphi_0\oplus\varphi_1\oplus\varphi_2
+$$
+\item calculate a $\frac{1}{2} n(n-1)-$ dimensional $ \mathbb{R}$ representation of $\mathcal{O}(n)$.
+\end{enumerate}
+\end{problem}

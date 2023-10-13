@@ -15,7 +15,6 @@
 \usepackage{fontspec}
 \usepackage{fontawesome5}
 \usepackage{xcolor}
-\usepackage[placement=bottom,scale=1,opacity=1]{background}
 \newcounter{problem}
 \newcommand{\Problem}{\begin{tikzpicture}[baseline]%
     \node at (-0.02em,0.3em) {$\mathbb{P}$};%
@@ -66,3 +65,6 @@
 \end{center}}
 \fi
 \makeatother
+\ifpreface
+\usepackage[placement=bottom,scale=1,opacity=1]{background}
+\fi
