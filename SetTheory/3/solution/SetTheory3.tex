@@ -96,15 +96,13 @@
 
 \begin{problem}
  $\mathbb{N} \times \mathbb{N}$ is countable.
-$$
-\left[f(m, n)=2^m(2 n+1)-1 .\right]
-$$
 \end{problem}
 
 \begin{solution}
  We will prove $f:\mathbb{N}^2\to \mathbb{N},(m,n)\mapsto 2^m(2n+1)-1$ is bijection. First we prove it's injection. Assume $f(a,b)=f(c,d)$, then $2^a(2b+1)=2^c(2d+1)$. If $a\neq c$, assume $a<c$, then $2b+1=x^{c-a}(2d+1)$. But $2\mid x^{c-a}(2d+1),2\nmid 2b+1$, contridiction! So $a=c$. Then we get $2b+1=2d+1$, so $b=d$. So $f$ is injective. 
 
- Second we prove $f$ is surjective. 
+ Second we prove $f$ is surjective. For $t\in \mathbb{N}$, let $m:=\sup\{k:2^k\mid t+1\}$. Since $0<t+1<\omega$ and $2^k\mid t+1\to 2^k\leq t+1$ we get $m<\omega$. Assume $t+1=2^m\cdot l$, then easily $2\nmid l$. So we can assume $l=2n+1$. Then $t=f(m,n)$. 
+ All in all, we get $f$ is bijective.
 \end{solution}
 
 \begin{problem}
