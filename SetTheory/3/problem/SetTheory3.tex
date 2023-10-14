@@ -1,0 +1,69 @@
+%!Mode:: "TeX:UTF-8"
+%!TEX encoding = UTF-8 Unicode
+%!TEX TS-program = xelatex × 2
+\documentclass{ctexart}
+\newif\ifpreface
+\prefacetrue
+\input{../../../global/all}
+\crefname{enumi}{}{}
+\begin{document}
+\large
+\setlength{\baselineskip}{1.2em}
+\ifpreface
+\input{../../../global/preface}
+\else
+\maketitle
+\fi
+\newgeometry{left=2cm,right=2cm,top=2cm,bottom=2cm}
+%from_here_to_type
+\begin{problem}
+Prove the following statements.
+\begin{enumerate}
+\item If $x \cap y=\varnothing$ and $x \cup y \preccurlyeq y$, then $\omega \times x \preccurlyeq y$.
+\item If $x \cap y=\varnothing$ and $\omega \times x \preccurlyeq y$, then $x \cup y \approx y$.
+\end{enumerate}
+\end{problem}
+\newcommand{\peq}{\preccurlyeq}
+
+\begin{problem}
+\begin{enumerate}[ref=\theproblem.\arabic*]
+\item\label{it:2.1} A subset of a finite set is finite.
+\item\label{it:2.2} The union of a finite set of finite sets is finite.
+\item The power set of a finite set is finite.
+\item The image of a finite set (under a mapping) is finite.
+\end{enumerate}
+\end{problem}
+
+
+\begin{problem}
+\begin{enumerate}
+\item A subset of a countable set is at most countable.
+\item The union of a finite set of countable sets is countable.
+\item The image of a countable set (under a mapping) is at most countable.
+\end{enumerate}
+\end{problem}
+
+
+\begin{problem}
+$\mathbb{N} \times \mathbb{N}$ is countable.
+$$
+\left[f(m, n)=2^m(2 n+1)-1 .\right]
+$$
+\end{problem}
+
+
+\begin{problem}
+Prove that $\kappa^\kappa \leq 2^{\kappa \kappa \kappa}$.
+\end{problem}
+
+\begin{problem}
+If $A \preccurlyeq B$, then $A \preccurlyeq^* B$.
+\end{problem}
+
+\begin{problem}
+If $A \preccurlyeq^* B$, then $\mathscr{P}(A) \preccurlyeq \mathscr{P}(B) .^2$
+\end{problem}
+
+\begin{problem}
+Let $X$ be a set. If there is an injective function $f: X \rightarrow X$ such that $\operatorname{ran}(f) \subsetneq X$, then $X$ is infinite.
+\end{problem}
