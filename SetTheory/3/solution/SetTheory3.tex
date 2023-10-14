@@ -16,6 +16,7 @@
 \fi
 \newgeometry{left=2cm,right=2cm,top=2cm,bottom=2cm}
 %from_here_to_type
+\newcommand{\peq}{\preccurlyeq}
 \begin{problem}
  Prove the following statements.
  \begin{enumerate}
@@ -23,7 +24,7 @@
   \item If $x \cap y=\varnothing$ and $\omega \times x \preccurlyeq y$, then $x \cup y \approx y$.
  \end{enumerate}
 \end{problem}
-\newcommand{\peq}{\preccurlyeq}
+
 \begin{solution}
  \begin{enumerate}
   \item Assume $f:x\cup y\to y$ is injective, define $f_1=f,f_{n+1}=f_n\circ f$. Let $g:\omega\times x\to y,g(n,t)\mapsto f_{n+1}(t)$. We only need to prove $g$ is injective. 
@@ -106,18 +107,42 @@
 \end{solution}
 
 \begin{problem}
- Prove that $\kappa^\kappa \leq 2^{\kappa \kappa \kappa}$.
+ Prove that $\kappa^\kappa \leq 2^{\kappa \times \kappa}$.
 \end{problem}
+
+\begin{solution}
+ Only need to find a injection $h:\kappa^\kappa\to 2^{\kappa\times \kappa}$. For $f\in \kappa^\kappa$, let $h(f)\in 2^{\kappa\times \kappa}$, and for $u,v\in \kappa$ let $h(f)(u,v):=\begin{cases}
+  1 & u= f(v)\\
+  0 & u\neq f(v)
+ \end{cases}$. Then we prove $h$ is a injection. Assume $f,g\in \kappa^\kappa$ and $h(f)=h(g)$. Then $\forall v\in \kappa$, we have $h(g)(f(v),v)=h(f)(f(v),v)=1$, so $f(v)=g(v)$. So $h$ is injective. 
+\end{solution}
 
 \begin{problem}
  If $A \preccurlyeq B$, then $A \preccurlyeq^* B$.
 \end{problem}
 
+\begin{solution}
+ If $A=\varnothing$ then it's obvious. Now assume $A\neq \varnothing$ and $a\in A$. Assume $f:A\to B$ is injection. Let $h:B\to A,h(y):=\begin{cases}
+  f^{-1}(y) & y\in \ran(f)\\
+  a & y\notin \ran(f)
+ \end{cases}$
+ Then $\forall x\in A,h(f(x))=x$. So $h$ is surjective. 
+\end{solution}
+
 \begin{problem}
- If $A \preccurlyeq^* B$, then $\mathscr{P}(A) \preccurlyeq \mathscr{P}(B) .^2$
+ If $A \preccurlyeq^* B$, then $\mathscr{P}(A) \preccurlyeq \mathscr{P}(B)$
 \end{problem}
+
+\begin{solution}
+ If $A=\varnothing$ then $\mi{A}=1$. Let $f:\mi{A}\to \mi{B},0\mapsto B$, then $f$ is injective. Else we get $A\neq \varnothing$. Then assume $f:B\to A$ is surjective. Let $h:\mi{A}\to\mi{B},U\mapsto f^{-1}[U]$. Then we only need to prove $h$ is injective. Assume $U,V\subset A$ and $h(U)=h(V)$. We get $f^{-1}[U]=f^{-1}[V]$. If $U\neq V$, assume $U\setminus V\neq \varnothing$ and $x\in U\setminus V$, then since $f$ is surjective we get $\exists t\in A,f(t)=x$. So $t\in f^{-1}[U]$ but $t\notin f^{-1}[V]$, contridiction! So $h$ is injective. Then $\mi{A}\peq \mi{B}$. 
+\end{solution}
 
 \begin{problem}
  Let $X$ be a set. If there is an injective function $f: X \rightarrow X$ such that $\operatorname{ran}(f) \subsetneq X$, then $X$ is infinite.
 \end{problem}
+
+\begin{solution}
+ Use MI to prove $\forall n\in \omega,X\not\approx n$. For $n=0$, if $X\approx n$ then $X=0$. So $X\subset \ran(f)$, contridiction! Assume for certain $n\geq 1$ we get $\forall m<n,X\not\approx m$, then we need to prove $X\not\approx n$. If not, assume $h:X\to n$ is bijection. Consider $h[\ran(f)]\subsetneq n$, we get $\exists m<n,h[\ran(f)]\approx m$. Since $f$ is injective, and $h$ is bijection, we get $X\approx m$. Contridiction to the induction! So we finally proved $\forall n\in \omega,X\not\approx n$. 
+\end{solution}
+
 \end{document}
