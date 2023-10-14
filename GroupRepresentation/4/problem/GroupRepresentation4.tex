@@ -1,0 +1,49 @@
+%!Mode:: "TeX:UTF-8"
+%!TEX encoding = UTF-8 Unicode
+%!TEX TS-program = xelatex × 2
+\documentclass{ctexart}
+\newif\ifpreface
+\prefacetrue
+\input{../../../global/all}
+\begin{document}
+\large
+\setlength{\baselineskip}{1.2em}
+\ifpreface
+\input{../../../global/preface}
+\else
+\maketitle
+\fi
+\newgeometry{left=2cm,right=2cm,top=2cm,bottom=2cm}
+%from_here_to_type
+\iffalse
+作业：丘p40. 习题1.5：1，2，3，4，5， 7
+\fi
+\begin{problem}
+Find all of $1-$dimentional complex representation of the alternating group $A_4$.
+\end{problem}
+
+\begin{problem}
+Consider $N\trianglelefteq S_4$ and $N=\{(1),(12)(34),(13)(24),(14)(23)\}$.
+\begin{enumerate}
+\item Prove: $S_4/N\cong S_3$.
+\item Find a $2-$dimentional irreducible complex matrix representation of $S_4$.
+\end{enumerate}
+\end{problem}
+
+\begin{problem}
+Assuem $K$ is a field and $m\in \mathbb{N}^*$. Let $\phi_m(t):=t^m,\forall t\in K^*$, then $\phi_m$ is a $1-$dimentional $K-$representation of $(K^*,\cdot)$. Use $\phi_m$ to find a $1-$ dimentional $K-$ representation of $\gl_n(K)$.
+\end{problem}
+
+\begin{problem}
+Prove that if $\phi$ is $1-$dimentional complex representation of finite group $G$, then $G/\ker\phi$ is a cyclic group.
+\end{problem}
+
+\begin{problem}
+Prove: If $G$ is a non-cyclic finite group, then there is no faithful $1-$dimentional complex representation of $G$.
+\end{problem}
+
+\begin{problem}
+Assume $(\phi,V)$ and $(\psi,W)$ are two $K-$representation of group $G$.
+Prove: $(\phi \dot{+}\psi)\approx \phi^*\dot{+}\psi^*$.
+\end{problem}
+
