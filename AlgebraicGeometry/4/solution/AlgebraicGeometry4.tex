@@ -29,7 +29,15 @@
 \end{solution}
 
 \begin{problem}
- Let $D_f:=\{h\in \mathcal{O}_v(V)\}$
+ Assume $V$ is irreducible algebric set and $f$ is a fraction function on $V$. Let $D_f:=\{h\in \mathcal{O}_v(V):\exists g\in \mathcal{O}_v(V)\ s.t.\ f=\frac{g}{h}\}\cup\{0\}$. Prove that $D_f$ is ideal of $\mathcal{O}_v(V)$. 
 \end{problem}
+
+\begin{solution}
+ For $h_1,h_2\in D_f$, if $h_1=h_2$ then $h_1-h_2=0\in D_f$. Else, assume $f=\frac{g_1}{h_1}=\frac{g_2}{h_2}$, so $f=\frac{g_1-g_2}{h_1-h_2}$. So $h_1-h_2\in D_f$. 
+
+ For $h\in D_f$ and $j\in \mathcal{O}_v(V)$, if $hj=0$ then $hj\in D_f$. Else we get $hj\neq 0$, then $f=\frac{g}{h}=\frac{gj}{hj}$. So $hj\in D_f$. 
+
+ Above all, we get $D_f$ is a ideal. 
+\end{solution}
 
 \end{document}
