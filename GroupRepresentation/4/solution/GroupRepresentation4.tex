@@ -15,14 +15,26 @@
 \fi
 \newgeometry{left=2cm,right=2cm,top=2cm,bottom=2cm}
 %from_here_to_type
-\iffalse
-作业：丘p40. 习题1.5：1，2，3，4，5， 7
-\fi
 \begin{problem}
  Find all of $1-$dimentional complex representation of the alternating group $A_4$.
 \end{problem}
 
-\begin{problem}
+\begin{solution}
+ Consider the conjugacy classes of $A_4$. They are: $T_1=\{(1)\},T_2=\{(1\ 2)(3\ 4),(1\ 3)(2\ 4),(1\ 4)(2\ 3)\},T_3=\{(1\ 2\ 3),(1\ 4\ 2),(1\ 3\ 4),(2\ 4\ 3)\},T_4=\{(1\ 3\ 2),(1\ 2\ 4),(1\ 4\ 3),(2\ 3\ 4)\}$. Assume $\phi$ is the representation, then for $a\sim b$ we obtain $\phi(a)=\phi(g^{-1}bg)=\phi(g)^{-1}\phi(b)\phi(g)=\phi(b)$. 
+ So $\tau:G/\sim\to \mathbb{C},[a]\mapsto \phi(a)$ is well-defined. 
+ Since $T_2\subset A_4'$ we get $\tau(T_2)=1$. And easily $\tau(T_3)\tau(T_4)=1,\tau(T_3)^3=1$. So $\tau(T_3)=1,\omega,\bar{\omega}$, where $\omega=-\frac{1}{2}+\frac{\sqrt{3}\mathrm{i}}{2}$. 
+ \begin{enumerate}
+  \item $\tau(T_3)=1$, we get $\phi(a)=1,\forall a\in A_4$. 
+  \item $\tau(T_3)=\omega$, we get $\phi(a)=\begin{cases}
+   \omega & a\in T_3\\\bar{\omega} & a\in T_4 \\ 1 & otherwise 
+  \end{cases}$. 
+  \item $\tau(T_3)=\bar{\omega}$, we get $\phi(a)=\begin{cases}
+   \bar{\omega} & a\in T_3\\\omega & a\in T_4 \\ 1 & otherwise 
+  \end{cases}$. 
+ \end{enumerate} 
+\end{solution}
+
+\begin{problem}\label{pro:2}
  Consider $N\trianglelefteq S_4$ and $N=\{(1),(12)(34),(13)(24),(14)(23)\}$. 
  \begin{enumerate}
   \item Prove: $S_4/N\cong S_3$. 
@@ -30,21 +42,50 @@
  \end{enumerate}
 \end{problem}
 
+\begin{solution}
+ \begin{enumerate}
+  \item Since $|S_4/N|=6$ and obviously $S_4/N\not\cong C_6$, because $[(1\ 2)][(1\ 3)]\neq [(1\ 3)][(1\ 2)]$, we get $S_4/N\cong S_3$. 
+  \item Consider $\phi: S_3\to \gl_2(\mathbb{C}),(2\ 3)\mapsto \bar{\cdot},(1\ 2\ 3)\mapsto A$, where $A$ is the rotation of $\frac{2 \mathrm{\pi}}{3}$. Then easily $\phi$ is a group representation. 
+  Obviously $\phi$ is irreducible, so $\bar{\phi}$ is irreducible. So $\bar{\phi}$ satisfy the requirement. 
+ \end{enumerate}
+\end{solution}
+
 \begin{problem}
- Assuem $K$ is a field and $m\in \mathbb{N}^*$. Let $\phi_m(t):=t^m,\forall t\in K^*$, then $\phi_m$ is a $1-$dimentional $K-$representation of $(K^*,\cdot)$. Use $\phi_m$ to find a $1-$ dimentional $K-$ representation of $\gl_n(K)$. 
+ Assume $K$ is a field and $m\in \mathbb{N}^*$. Let $\phi_m(t):=t^m,\forall t\in K^*$, then $\phi_m$ is a $1-$dimentional $K-$representation of $(K^*,\cdot)$. Use $\phi_m$ to find a $1-$ dimentional $K-$ representation of $\gl_n(K)$. 
 \end{problem}
+
+\begin{solution}
+ Consider $f:\gl_n(K)\to K,f(A)=|A|$. Since $\phi_m$ is group representation, $\phi_m \circ f$ is group representation of $\gl_n(K)$. So $\bar{\phi_m}:\gl_n(K)\to K^*,A\mapsto |A|^m$ satisfy the requirement. 
+\end{solution}
 
 \begin{problem}
  Prove that if $\phi$ is $1-$dimentional complex representation of finite group $G$, then $G/\ker\phi$ is a cyclic group. 
 \end{problem}
 
+\begin{solution}
+ Let $\phi(G)=:T\subset \mathbb{C}$. Since $G$ is finite we get $\forall x\in T,|x|=1$. Let $a\in T$ and $\arg a\in [0,2 \mathrm{\pi})$ is minimum. For $b\in T$, if $\arg a\nmid \arg b$, then assume $\arg b=\arg a \cdot n+\theta$, where $\theta\in (0,\arg a)$. Then we get $\mathrm{e}^{\theta}=ba^{-n}\in T$ since $T$ is subgroup. Contridiction to $\arg a$ is minimum. So $\forall b\in T,\arg a \mid \arg b$. That means $\exists n\in \mathbb{N},b=a^n$. So $T$ is cyclic group. Noting $G/\ker f\cong \ran(f)=T$, we get $G/\ker f$ is cyclic group. 
+\end{solution}
+
 \begin{problem}
  Prove: If $G$ is a non-cyclic finite group, then there is no faithful $1-$dimentional complex representation of $G$. 
 \end{problem}
+
+\begin{solution}
+ Assume there is a faithful $\phi$. 
+ 
+ If $G$ is not Abel, then exists $a,b\in G$ such that $aba^{-1}b^{-1}\neq e$. \\
+ But $\phi(aba^{-1}b^{-1})=\phi(a)\phi(b)\phi(a)^{-1}\phi(b)^{-1}=1=\phi(e)$, contridiction! 
+
+ If $G$ is Abel, then assume $G=\oplus_{k=1}^n G_k$, where $G_k$ is cyclic, and $|G_k|=p_k^{\alpha_k}$. If $\forall i\neq j, p_i\neq p_j$, then $G$ is cyclic, contridiction! So exists $i\neq j$ such that $p_i=p_j$. Assume $p_1= p_2$. Let $f_i:G\to G_i$ is projection, then $\phi_i:=\phi\circ f_i$ is group representation of $G_i$. Assume $G_1=\langle x\rangle,G_2=\langle y\rangle$, then $o(\phi_1(x^{\alpha_1-1}))=p_1=p_2$. So $\exists z\in G_2$ such that $\phi_2(z)=\phi_1(\phi_1(x^{\alpha_1-1}))$. Contridiction to $\phi$ is faithful! 
+\end{solution}
 
 \begin{problem}
  Assume $(\phi,V)$ and $(\psi,W)$ are two $K-$representation of group $G$. 
  Prove: $(\phi \dot{+}\psi)\approx \phi^*\dot{+}\psi^*$. 
 \end{problem}
+
+\begin{solution}
+ 
+\end{solution}
 
 \end{document}

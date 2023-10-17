@@ -1,11 +1,1 @@
-{
-    "emeraldwalk.runonsave": {
-        "commands": [
-            {
-                "match": "\\.tex",
-		"isAsync": true,
-                "cmd": "sh sync.sh ${file}"
-            }
-        ]
-    }
-}
+
