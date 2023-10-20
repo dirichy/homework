@@ -1,0 +1,39 @@
+%!Mode:: "TeX:UTF-8"
+%!TEX encoding = UTF-8 Unicode
+%!TEX TS-program = xelatex × 2
+\documentclass{ctexart}
+\newif\ifpreface
+\prefacetrue
+\input{../../../global/all}
+\begin{document}
+\large
+\setlength{\baselineskip}{1.2em}
+\ifpreface
+    \input{../../../global/preface}
+\newgeometry{left=2cm,right=2cm,top=2cm,bottom=2cm}
+\else
+\newgeometry{left=2cm,right=2cm,top=2cm,bottom=2cm}
+\maketitle
+\fi
+%from_here_to_type
+\begin{problem}
+ If $f:V\to W,g:W\to U$ is two poly maps, then $(g\circ f)^*=f^*\circ g^*$. 
+\end{problem}
+
+\begin{solution}
+ For $u\in k[U]$, we have $(g\circ f)^* u=u\circ g\circ f=g^*(u)\circ f=f^*(g^*(u))=(f^*\circ g^*)(u)$, so $(g\circ f)^*=(f^*\circ g^*)$. 
+\end{solution}
+
+\begin{problem}
+ $\mathcal{O}_{V,p}$ is local ring. 
+\end{problem}
+
+\begin{solution}
+ To prove $\mathcal{O}_{V,p}$ is local ring, we only need to prove $\forall f\in \mathcal{O}_{V,p}$, one of $f$ and $1-f$ is unit. 
+
+ First we prove $f$ is unit iff $f(p)\neq 0$. If $f$ is unit then exists $g\in \mathcal{O}_{V,p}$ s.t. $fg=1$, so $f(p)g(p)=1$. Then we get $f(p)\neq 0$. If $f(p)\neq 0$, then we assume $f=\frac{g}{h},h(p)\neq 0$. Since $f(p)\neq 0$ we get $g(p)\neq 0$, so $\frac{h}{g}\in \mathcal{O}_{V,p}$, then $f$ is a unit. 
+
+ Now we prove $f$ or $1-f$ is a unit. Obviously $f(p)\neq 0$ or $1-f(p)\neq 0$, so one of them is unit. 
+\end{solution}
+
+\end{document}
