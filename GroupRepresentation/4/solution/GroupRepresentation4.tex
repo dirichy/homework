@@ -81,11 +81,13 @@
 
 \begin{problem}
  Assume $(\phi,V)$ and $(\psi,W)$ are two $K-$representation of group $G$. 
- Prove: $(\phi \dot{+}\psi)\approx \phi^*\dot{+}\psi^*$. 
+ Prove: $(\phi \dot{+}\psi)^*\approx \phi^*\dot{+}\psi^*$. 
 \end{problem}
 
 \begin{solution}
- 
+ First we prove $V^*\oplus W^*\cong(V\oplus W)^*$. Consider $\theta:V^*\oplus W^*\to(V\oplus W)^*,\theta(f,g)(u,v):=(f(u),g(v))$. Then obviously $\theta$ is a bijection. And $\theta(a(f,g)+b(h,l))(u,v)=\theta(af+bh,ag+bl)(u,v)=((af+bh)(u),(ag+bl)(v))=(af(u)+bh(u),ag(u)+bl(u))=a \theta(f,g)(u,v)+b \theta(h,l)(u,v)$, so $\theta$ is isomorphism. 
+
+ Now we only need to prove $(\phi\dot{+}\psi)^*(a)\theta=\theta(\phi^*\dot{+}\psi^*)(a),\forall a\in G$. Forall $f\in V^*,g\in W^*$, we have $ (\phi\dot{+}\psi)^*(a)\theta(f,g)=\theta(f,g)(\phi\dot{+}\psi)(a)$. And $\theta(\phi^*\dot{+}\psi^*)(a)(f,g)=\theta(\phi^*(a)(f),\psi^*(a)(g))=\theta(f\phi(a),g\psi(a))$. Easily $\theta(f\phi(a),g\psi(a))=\theta(f,g)(\phi\dot{+}\psi)(a)$, so $\theta$ is isomorphism of $(\phi \dot{+}\psi)^*$ and $\phi^*\dot{+}\psi^*$. 
 \end{solution}
 
 \end{document}
