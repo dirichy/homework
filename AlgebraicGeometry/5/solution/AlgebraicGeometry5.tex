@@ -36,4 +36,20 @@
  Now we prove $f$ or $1-f$ is a unit. Obviously $f(p)\neq 0$ or $1-f(p)\neq 0$, so one of them is unit. 
 \end{solution}
 
+\begin{problem}
+ Prove: $\{V_h:h\in k[V]\}$ is topological basis of $V$. 
+\end{problem}
+
+\begin{solution}
+ Only need to prove for any open set $U\subset V$, we can find a subclass of $\{V_h:h\in k[V]\}$ such that $U$ is union of the class. Obviously from \Cref{pro:5} we get exists a finite subclass satisfy the requirement, it's even stronger! 
+\end{solution}
+
+\begin{problem}\label{pro:5}
+ Prove: For open set $U\subset V,\exists h_1,h_2,\cdots h_n$ s.t. $U=\cup_{k=1}^n V_{h_k}$. 
+\end{problem}
+
+\begin{solution}
+ Since $U$ is open set in $V$, so $\exists I$ is ideal in $k[x_1,\cdots x_n]$ such that $\van I=U^c$. Since $k[x_1,\cdots x_n]$ is Noetherian, we obtain $\exists f_1,\cdots f_k,I=(f_1,\cdots f_n)$. Let $h_k:=f_k|_V$, then $U^c=\{p\in V:\forall k,h_k(p)=0\}$, so $U^c=\cap_{k=1}^n (V_{h_k}^c)$, i.e., $U=\cup_{k=1}^n V_{h_k}$. 
+\end{solution}
+
 \end{document}

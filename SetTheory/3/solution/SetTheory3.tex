@@ -1,6 +1,6 @@
 %!Mode:: "TeX:UTF-8"
 %!TEX encoding = UTF-8 Unicode
-%!TEX TS-program = xelatex × 2
+%!TEX TS-program = xelatex xelatex
 \documentclass{ctexart}
 \newif\ifpreface
 \prefacetrue
@@ -16,6 +16,7 @@
 \fi
 \newgeometry{left=2cm,right=2cm,top=2cm,bottom=2cm}
 %from_here_to_type
+\renewcommand{\phi}{\varphi}
 \newcommand{\peq}{\preccurlyeq}
 \begin{problem}
  Prove the following statements.
@@ -28,7 +29,7 @@
 \begin{solution}
  \begin{enumerate}
   \item Assume $f:x\cup y\to y$ is injective, define $f_1=f,f_{n+1}=f_n\circ f$. Let $g:\omega\times x\to y,g(n,t)\mapsto f_{n+1}(t)$. We only need to prove $g$ is injective. 
-  For $(n,u),(m,v)\in \omega\times x$, if $n=m$, then since $f$ is injective we get $f_n$ is injective, so $f_n(u)\neq f_n(v)$. Else, $m\neq n$, assume $n< m,m=n+k$. Obviously $f_{n+k}[x]=f_n[f_k[x]]\subset f_n[y]$. Use MI easily $f_n$ is injective, we get $f_n[x]\cap f_n[y]=\varnothing$. So $f_n[x]\ni g(n,u)\neq g(m,v)\in f_n[y]$. So $g$ is injective. 
+  For $(n,u),(m,v)\in \omega\times x$, if $n=m$, then since $f$ is injective we get $f_n$ is injective, so $f_n(u)\neq f_n(v)$. Else, $m\neq n$, assume $n< m,m=n+k$. Obviously $f_{n+k}[x]=f_n[f_k[x]]\subset f_n[y]$. Since $f_n$ is injective, we get $f_n[x]\cap f_n[y]=\varnothing$. So $f_n[x]\ni g(n,u)\neq g(m,v)\in f_n[y]$. So $g$ is injective. 
   \item Assume $f:\omega\times x\to y$ is injective. Let $x_n:=\{(n,t):t\in x\}$. Then $\omega\times x=\cup_{n\in \omega}x_n$. Consider $g:x\cup y\to y$, for $t\in x$ let $g(t):=f(0,t)$, for $t\in f[x_n]$, let $g(t)=f(n+1,t)$, for other $t$, let $g(t)=t$. Then we prove $g$ is bijection. 
   
   First we prove $g$ is injection. For $u,v\in x\cup y,u\neq v$, we will prove $g(u)\neq g(v)$. 
@@ -66,9 +67,13 @@
    g(t)=f(x) &f(t)=n
   \end{cases}$
   Easy to know $g$ is bijection, too. And since $x\notin B$ we get $B\subset g^{-1}[n]\approx n$, so by induction we get $\exists m\in \omega,B\approx m$. 
-  \item First we prove union of two disjoint finite sets is finite. It's almost obviously because $|m|+|n|=|m+n|=m+n$. For general two finite sets $A,B$ we have $A\cup B=A\cup (B\setminus A)$ and from \Cref{it:2.1} we know $B\setminus A$ is finite, so $A\cup B$ is finite. Now we use MI to prove $\phi(n):=\forall x\approx n((\forall y\in x,isFinite(y))\to isFinite(\bigcup x))$ for $n\in \omega$. When $n=0,1,2$ it's obvious. Assume for certain $n\geq 2$ we have $\phi(n)$, then we prove $\phi(n+1)$. Assume $f:x\to n+1$ is bijective, let $y=f^{-1}[n]\subset x$. Then $y\approx n$, by induction we know $\bigcup y$ is finite. Since $x=y\cup \{f^{-1}(n)\}$ we get $\bigcup x=(\bigcup y)\cup f^{-1}(t)$. So $\bigcup x$ is finite, too.
+  \item First we prove union of two disjoint finite sets $A$ and $B$ is finite. 
+  
+  Use MI to the card of the second set $B$. For $B=\varnothing$ it's obvious. For $B\approx 1$, assume $A\approx n$, Thrn $B\approx \{n\}$, so $A\cup B\approx n\cup\{n\}=n+1$ is finite. Assume for certain $n,\forall B\approx n$ it's right, now we prove it's right for $n+1$. Assume $f:B\to n+1$ is bijection, then $f^{-1}[n]\approx n$, so $A\cup f^{-1}[n]$ is finite. Since $B=f^{-1}[n]\cup\{f^{-1}(n)\}$ we get $A\cup B=A\cup f^{-1}[n]\cup\{f^{-1}(n)\}$. Since $\{f^{-1}(n)\}\approx 1$, so the union is finite. 
+
+  For general two finite sets $A,B$ we have $A\cup B=A\cup (B\setminus A)$ and from \Cref{it:2.1} we know $B\setminus A$ is finite, so $A\cup B$ is finite. Now we use MI to prove $\phi(n):=\forall x\approx n((\forall y\in x,isFinite(y))\to isFinite(\bigcup x))$ for $n\in \omega$. When $n=0,1,2$ it's obvious. Assume for certain $n\geq 2$ we have $\phi(n)$, then we prove $\phi(n+1)$. Assume $f:x\to n+1$ is bijective, let $y=f^{-1}[n]\subset x$. Then $y\approx n$, by induction we know $\bigcup y$ is finite. Since $x=y\cup \{f^{-1}(n)\}$ we get $\bigcup x=(\bigcup y)\cup f^{-1}(n)$. So $\bigcup x$ is finite, too.
   \item Use MI of the card. For $x\approx 0$ we know $\mi{x}=\{\varnothing\}\approx 1$. Assume for certain $n$ we have $\forall x\approx n,isFinite(\mi{x})$, then for $x\approx n+1$: Assume $f:x\to n+1$ is bijection. Let $y=f^{-1}[n]$ and $t=f^{-1}(n)$. Then $y\approx n$. Let $\theta:\mi{x}\setminus \mi{y}\to \mi{y},\theta(a):=a\setminus \{t\}$. Easily $\theta$ is bijective, so $\mi{x}\setminus\mi{y}\approx \mi{y}$ is finite. From \Cref{it:2.2} we know $\mi{x}=\mi{y}\cup(\mi{x}\setminus\mi{y})$ is finite. 
-  \item Use MI by card. For $A\approx 0$ it's obvious. Assume for $A\approx n$ it's right, now we prove for $A\approx n+1$ it's right, too. Let $f:A\to n+1$ is a bijection, and $g:A\to\mathrm{Set}$ is a map on $A$. Let $B:=f^{-1}[n]\subset A,t=f^{-1}(n)\in A$. Then $B\approx n$, so by induction we know $g[B]$ is finite. Since $A=B\cup\{t\}$ we get $g[A]=g[B]\cup g[\{t\}]=g[B]\cup \{g(t)\}$. Noting $ \{g(t)\}\approx 1$ is finite, from \Cref{it:2.2} we get $g[A]$ is finite, too.
+  \item Use MI by card. For $A\approx 0$ it's obvious. Assume for $A\approx n$ it's right, now we prove for $A\approx n+1$ it's right, too. Let $f:A\to n+1$ is a bijection, and $g:A\to\set$ is a map on $A$. Let $B:=f^{-1}[n]\subset A,t=f^{-1}(n)\in A$. Then $B\approx n$, so by induction we know $g[B]$ is finite. Since $A=B\cup\{t\}$ we get $g[A]=g[B]\cup g[\{t\}]=g[B]\cup \{g(t)\}$. Noting $ \{g(t)\}\approx 1$ is finite, from \Cref{it:2.2} we get $g[A]$ is finite, too.
  \end{enumerate}
  
 \end{solution}
@@ -83,15 +88,16 @@
 
 \begin{solution}
  \begin{enumerate}
-  \item Assume $A$ is countable and $\theta:A\to \omega$ is bijection. For $B\subset A$, we have $B\approx \theta[B]$. So we only need to prove every subset of $\omega$ is at most countable. Let $x\subset \omega$. If $x$ is finite, then there is nothing to do. Now assume $x$ is infinite. We define $f$ on $\omega$ by induction. Let $f(0)=\min x$ and $f(n)=\min x\setminus f[n]$. Since $x$ is infinite, we know $f[n]\subsetneqq x$, so $f$ is well-defined. And easily to prove $f$ is a bijection. So $x\approx \omega$ is countable. 
-  \item Use MI to the number of sets to be unit, write $n$. When $n=0,1$ it's obvious. For $n=2$, we should prove two countable sets $u,v$'s union $u\cup v$ is countable. Let $f:\omega\to u,g:\omega\to v$ is bijections, we need to find a bijection $h:\omega\to u\cup v$. 
+  \item Assume $A$ is countable and $\theta:A\to \omega$ is bijection. For $B\subset A$, we have $B\approx \theta[B]$. So we only need to prove every subset of $\omega$ is at most countable. Let $x\subset \omega$. If $x$ is finite, then there is nothing to do. Now assume $x$ is infinite. We define $f$ on $\omega$ by induction. 
+  Let $f(0)=\min x$ and $f(n)=\min (x\setminus f[n])$. Since $x$ is infinite, we know $f[n]\subsetneqq x$, so $f$ is well-defined. And easily to prove $f$ is a bijection. So $x\approx \omega$ is countable. 
+  \item Use MI to the number of sets to cup, write $n$. When $n=1$ it's obvious. For $n=2$, we should prove two countable sets $u,v$'s union $u\cup v$ is countable. Let $f:\omega\to u,g:\omega\to v$ is bijections, we need to find a bijection $h:\omega\to u\cup v$. 
   We define $h$ by induction. Let $h(n)=f(\min f^{-1}[u\setminus h[n]])$ for $2\mid n$ and let $h(n)=g(\min g^{-1}[v\setminus h[n]])$ for $n\nmid 2$. Since $u,v$ is infinite we obtain $h$ is well-defined. 
   Now we prove $h$ is bijective. First we prove $h$ is injective. For $m,n\in \omega,m\neq n$, assume $m<n$. If $x\mid n$, then $h(n)=f(\min f^{-1}[u\setminus h[n]])\in f[f^{-1}[u\setminus h[n]]]=u\setminus h[n]$ and $h(m)\in h[n]$. So $h(m)\neq h(n)$. If $x\nmid n$ for the same reason we get $h(m)\neq h(n)$. 
 
   Second we prove $h$ is surjective. Only need to prove $u,v\subset h[\omega]$. By symmetry we only need to peove $u\subset h[\omega]$. Since $u=f[\omega]$, we only need to prove $f[n]\subset h[2n-1],\forall n\in \omega$. Use MI to prove it. For $n=0$ it's obvious. Assume for certain $n$ it's right, for $n+1$, we only need to prove $a:=f(n)\in h[2n+1]$. If not, since $h(2n)=f(\min f^{-1}[u\setminus h[2n]])$ and $a\notin h[2n]$, we have $a\in u\setminus h[2n]$. Then $n=f^{-1}(a)\in f^{-1}[u\setminus h[2n]]$. For $m<n$, by induction we get $f(m)\in h[2m-1]\subset h[2n]$, so $m\notin f^{-1}[u\setminus h[2n]]$, thus $n=\min f^{-1}[u\setminus h[2n]]$. So $h(2n)=a$, contridiction! So $h$ is surjective. 
 
-  Now we assume for certain $n\geq 2$ we have union of $n$ countable sets is countable, we need to prove so do $n+1$ sets. Assume $A\approx n+1$ and $\forall x\in A,x\approx \omega$. Assume $f:A\to n+1$ is bijection, and let $B:=f^{-1}[n],t=f^{-1}(n)$, then $\bigcup A=\bigcup B \cup t$. By induction we know $\bigcup B$ is countable. And we have proved union of two countable sets is countable. So finally we get $\bigcup A$ is countable. 
-  \item Only need to prove image of $\omega$ is at most countable. For $f:\omega\to \mathrm{Set}$ is a map, we need to prove $\ran(f)$ is at most countable. Let $h:\ran(f)\to \omega,t\mapsto \min f^{-1}[\{t\}]$. Obviously $h$ is a injective, so $\ran(f)$ is at most countable. 
+  Now we assume for certain $n\geq 2$ we have union of $n$ countable sets is countable, we need to prove so do $n+1$ sets. Assume $A\approx n+1$ and $\forall x\in A,x\approx \omega$. Assume $f:A\to n+1$ is bijection, and let $B:=f^{-1}[n],t=f^{-1}(n)$, then $\bigcup A=(\bigcup B) \cup t$. By induction we know $\bigcup B$ is countable. And we have proved union of two countable sets is countable. So finally we get $\bigcup A$ is countable. 
+  \item Only need to prove image of $\omega$ is at most countable. For $f:\omega\to \set$ is a map, we need to prove $\ran(f)$ is at most countable. Let $h:\ran(f)\to \omega,t\mapsto \min f^{-1}[\{t\}]$. Obviously $h$ is a injective, so $\ran(f)$ is at most countable. 
  \end{enumerate}
 \end{solution}
 
@@ -111,10 +117,10 @@
 \end{problem}
 
 \begin{solution}
- Only need to find a injection $h:\kappa^\kappa\to 2^{\kappa\times \kappa}$. For $f\in \kappa^\kappa$, let $h(f)\in 2^{\kappa\times \kappa}$, and for $u,v\in \kappa$ let $h(f)(u,v):=\begin{cases}
+ Only need to find a injection $h:\fun{\kappa}{\kappa}\to \fun{\kappa\times \kappa}{2}$. For $f\in \fun{\kappa}{\kappa}$, let $h(f)\in \fun{\kappa\times \kappa}{2}$, and for $u,v\in \kappa$ let $h(f)(u,v):=\begin{cases}
   1 & u= f(v)\\
   0 & u\neq f(v)
- \end{cases}$. Then we prove $h$ is a injection. Assume $f,g\in \kappa^\kappa$ and $h(f)=h(g)$. Then $\forall v\in \kappa$, we have $h(g)(f(v),v)=h(f)(f(v),v)=1$, so $f(v)=g(v)$. So $h$ is injective. 
+ \end{cases}$. Then we prove $h$ is a injection. Assume $f,g\in \fun{\kappa}{\kappa}$ and $h(f)=h(g)$. Then $\forall v\in \kappa$, we have $h(g)(f(v),v)=h(f)(f(v),v)=1$, so $f(v)=g(v)$. So $h$ is injective. 
 \end{solution}
 
 \begin{problem}
