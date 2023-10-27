@@ -1,0 +1,45 @@
+%!Mode:: "TeX:UTF-8"
+%!TEX encoding = UTF-8 Unicode
+%!TEX TS-program = xelatex × 2
+\documentclass{ctexart}
+\newif\ifpreface
+%\prefacetrue
+\input{../../../global/all}
+\begin{document}
+\large
+\setlength{\baselineskip}{1.2em}
+\ifpreface
+    \input{../../../global/preface}
+    \newgeometry{left=2cm,right=2cm,top=2cm,bottom=2cm}
+\else
+\newgeometry{left=2cm,right=2cm,top=2cm,bottom=2cm}
+\maketitle
+\fi
+%from_here_to_type
+\begin{problem}
+ $K$ is a field, $A$ is algebra on $K$, $\emptyset\neq A_1\subset A$, we call $A_1$ is a subalgebra of $A$, if $A_1$ is a subring of $A$ which contains $1$ of $A$ and $A_1$ is a subspace of $A$ on K and is also an algebra on $K$. Let $Z(A):=\{c\in A:ca=ac,\forall a\in A\}$. Prove: $Z(A)$ is a subalgebra of $A$, we call $Z(A)$ is the center of algebra $A$.
+\end{problem}
+\begin{solution}
+ \begin{enumerate}
+     \item\label{it:1} $Z(A)$ is a subring of $A$ which contains $1$ of $A$: Since $\forall a\in A$, A is a ring, then $1a=a1$. So $1\in Z(A)$. $\forall c_1,c_2\in Z(A)$, $\forall a\in A$, $(c_1-c_2)a=(c_1+(-c_2))a=c_1a+(-1)c_2a=ac_1+(-1)ac_2=ac_1+a(-1)c_2=a(c_1+(-1)c_2)=a(c_1-c_2)$, then $c_1-c_2\in Z(A)$. $(c_1c_2)a=c_1(c_2a)=c_1(ac_2)=(c_1a)c_2=(ac_1)c_2=a(c_1c_2)$, then $c_1c_2\in A$.
+     \item\label{it:2} $Z(A)$ is a subspace of $A$ on K:$\forall k\in K$, $\forall c,c_1,c_2\in Z(A),\ \forall a\in A$, since $A$ is an algebra on $K$, then $(kc)a=k(ca)=k(ac)=a(kc)$, then $kc\in Z(A)$. And by \Cref{it:1}, we get $c_1+c_2\in Z(A)$.
+     \item By \Cref{it:1}, \Cref{it:2}, we get $Z(A)$ is also an algebra on $K$.
+ \end{enumerate}
+ So $Z(A)$ is a subalgebra of $A$.
+\end{solution}
+
+\begin{problem}
+ Let $G$ is infinite group, $K$ is a field. Prove:
+ \begin{enumerate}
+     \item $\sum_{g\in G}g\in Z(K[G])$;
+     \item $C_a:=\{gag^{-1}:g\in G\}$, $\sum_{x\in C_a}x\in Z(K[G])$.
+ \end{enumerate}
+\end{problem}
+\begin{solution}
+ \begin{enumerate}
+     \item $\forall \sum_{h\in G}a_hh\in K([G])$, then $\sum_{g\in G}g\sum_{h\in G}a_hh=\sum_{g\in G}\sum_{x\in G}xa_{x^{-1}g}x^{-1}g=\\
+     \sum_{g\in G}\sum_{x\in G}a_{x^{-1}g}g=\sum_{g\in G}\sum_{x\in G}a_{x}g=\sum_{g\in G}\sum_{x\in G}a_xxx^{-1}g=\sum_{x\in G}\sum_{g\in G}a_xxx^{-1}g=\sum_{h\in G}a_hh\sum_{g\in G}g$.
+     \item $\forall \sum_{h\in G}a_hh\in K([G])$, then $\sum_{x\in C_a}x\sum_{g\in G}a_gg=\sum_{x\in C_a}\sum_{g\in G}xa_gg=\sum_{x\in C_a}\sum_{g\in G}a_gxg=\sum_{g\in G}a_g\sum_{x\in C_a}xg$, $\sum_{g\in G}a_gg\sum_{x\in C_a}x=\sum_{g\in G}\sum_{x\in C_a}a_ggx=\sum_{g\in G}\sum_{x\in C_a}a_ggx=\sum_{g\in G}a_g\sum_{x\in C_a}gx$. Since $\forall g\in G$, then $\{hah^{-1}g:h\in G\}=\{g(g^{-1}h)a(h^{-1}g):h\in G\}=\{ghah^{-1}:h\in G\}$, then, $\sum_{x\in C_a}x\sum_{g\in G}a_gg=\sum_{g\in G}a_gg\sum_{x\in C_a}x$.
+ \end{enumerate}
+\end{solution}
+\end{document}

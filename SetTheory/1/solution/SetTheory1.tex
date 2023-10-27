@@ -1,6 +1,3 @@
-%# -*- coding:utf-8 -*-
-%! Mode:: "TeX:UTF-8"
-%!TEX encoding = UTF-8 Unicode
 %!TEX TS-program = xelatex
 \documentclass{ctexart}
 \usepackage{bbm}
@@ -114,9 +111,6 @@ On the other side, consider another emptyset $z$, we get $u\in y\iff u\neq u\iff
 \begin{problem}
 Verify that
 $$
-\forall x \forall y \forall x^{\prime} \forall y^{\prime}\left((x, y)=\left(x^{\prime}, y^{\prime}\right) \rightarrow x=x^{\prime} \wedge y=y^{\prime}\right) .
-$$
-By induction, ordered $n$-tuples can be defined as follows:
 $$
 \left(x_1, \ldots, x_{n+1}\right)=\left(\left(x_1, \ldots, x_n\right), x_{n+1}\right) .
 $$
@@ -214,9 +208,9 @@ $$
 \end{problem}
 \begin{solution}
     Let $x\in X\xand x\subset X$. Since $X$ is inductive, we get $x\cup\{x\}\in X$. Since $x\in X$ we get $\{x\}\subset X$. So $x\cup\{x\}\subset X$. So $\{x\in X:x\subset X\}$ is inductive. 
-    Obviously $\emptyset \in\{x\in X:x\subset X\}$, so by MI we can get $\N\subset \{x\in \N:x\subset \N\}$, so $ \N= \{x\in \N:x\subset \N\}$. i.e., $\N$ is transitive. 
+    Obviously $\emptyset \in\{x\in X:x\subset X\}$, so by MI we can get $\mathbb{N}\subset \{x\in \mathbb{N}:x\subset \mathbb{N}\}$, so $ \mathbb{N}= \{x\in \mathbb{N}:x\subset \mathbb{N}\}$. i.e., $\mathbb{N}$ is transitive. 
 
-    Since $\forall m,n\in \N(m<n\oto m\in n)$, so $\{m\in \N:m<n\}\subset n$. Since $\N$ is transitive, so $m\in n\to m\in \N$, so $n\subset \{m\in \N:m<n\}$. So finally we get $n=\{m\in \N:m<n\}$. 
+    Since $\forall m,n\in \mathbb{N}(m<n\oto m\in n)$, so $\{m\in \mathbb{N}:m<n\}\subset n$. Since $\mathbb{N}$ is transitive, so $m\in n\to m\in \mathbb{N}$, so $n\subset \{m\in \mathbb{N}:m<n\}$. So finally we get $n=\{m\in \mathbb{N}:m<n\}$. 
 \end{solution}
 \begin{problem}
     If $X$ is inductive, then the set
@@ -228,7 +222,7 @@ $$
 \begin{solution}
     Use $\tau(x)$ to reperesent $x$ is transitive. Let $x\in X\xand \tau(x)$, consider $x\cup\{x\}$. Let $y\in x\cup \{x\}$, if $y=x$, then $y\subset x\cup \{x\}$; else, $y\in x$, since $x$ is transitive, so $y\subset x\subset x\cup\{x\}$. Then we get $\tau(x\cup\{x\})$. So $\{x\in X:\tau(x)\}$ is inductive. 
 
-    For $\N$ we have $\{n\in\N:\tau(n)\}$ is inductive, and $0$ is transitive, so $\forall n\in\N,\tau(n)$.
+    For $\mathbb{N}$ we have $\{n\in\mathbb{N}:\tau(n)\}$ is inductive, and $0$ is transitive, so $\forall n\in\mathbb{N},\tau(n)$.
 \end{solution}
 
 \begin{problem}
@@ -242,7 +236,10 @@ $$
     Use $\tau(x)$ to reperesent $x$ is transitive. Let $x\in X\xand \tau(x)\xand x\notin x$, consider $x\cup\{x\}$. Let $y\in x\cup \{x\}$, if $y=x$, then $y\subset x\cup \{x\}$; else, $y\in x$, since $x$ is transitive, so $y\subset x\subset x\cup\{x\}$. Then we get $\tau(x\cup\{x\})$. If $x\cup\{x\}\in x\cup\{x\}$, then $x\cup\{x\}\in x\xor x\cup\{x\}=x$. Since $x\notin x$ so $x\cup\{x\}\neq x$, so $x\cup\{x\}\in x$. Since $x$ is transitive, so $x\cup\{x\}\subset x$. But $x\notin x$, so it's impossible. 
     So $\{x\in X:\tau(x)\xand x\notin x\}$ is inductive. 
 
-    For $\N$, we get $\{n\in \N:\tau(n)\xand x\notin x\}$ is inductive, so $\N=\{n\in \N:\tau(n)\xand x\notin x\}$, so $n\in\N\to n\notin n$. And since $n+1=n\cup\{n\}$, we get $n+1\neq n$. 
+    Use $\tau(x)$ to reperesent $x$ is transitive. Let $x\in X\xand \tau(x)\xand x\notin x$, consider $x\cup\{x\}$. Let $y\in x\cup \{x\}$, if $y=x$, then $y\subset x\cup \{x\}$; else, $y\in x$, since $x$ is transitive, so $y\subset x\subset x\cup\{x\}$. Then we get $\tau(x\cup\{x\})$. If $x\cup\{x\}\in x\cup\{x\}$, then $x\cup\{x\}\in x\xor x\cup\{x\}=x$. Since $x\notin x$ so $x\cup\{x\}\neq x$, so $x\cup\{x\}\in x$. Since $x$ is transitive, so $x\cup\{x\}\subset x$. But $x\notin x$, so it's impossible. 
+    So $\{x\in X:\tau(x)\xand x\notin x\}$ is inductive. 
+
+    For $\mathbb{N}$, we get $\{n\in \mathbb{N}:\tau(n)\xand x\notin x\}$ is inductive, so $\mathbb{N}=\{n\in \mathbb{N}:\tau(n)\xand x\notin x\}$, so $n\in\mathbb{N}\to n\notin n$. And since $n+1=n\cup\{n\}$, we get $n+1\neq n$. 
 \end{solution}
 
 \begin{problem}\label{pro:7}
@@ -265,10 +262,10 @@ is inductive.
 \end{solution}
 
 \begin{problem}
-    Every nonempty $X \subseteq \N$ has an $\in$-minimal element.
+    Every nonempty $X \subseteq \mathbb{N}$ has an $\in$-minimal element.
 \end{problem}
 \begin{solution}
-    Consider $X\subset\N\xand X\neq \emptyset$. Assume $n\in X$. Consider $Y:=n\cap X\subset n$. If $Y=\emptyset$, then $n$ is the $\in-$minimal element of $X$. Else, from Problem \ref{pro:7} we know $Y$ has $\in-$minimal element $u$. 
+    Consider $X\subset\mathbb{N}\xand X\neq \emptyset$. Assume $n\in X$. Consider $Y:=n\cap X\subset n$. If $Y=\emptyset$, then $n$ is the $\in-$minimal element of $X$. Else, from Problem \ref{pro:7} we know $Y$ has $\in-$minimal element $u$. 
     Now we just need to prove $u$ is $\in-$minimal element of $X$. 
     If not, $\exists m \in X,m\in u$, then since $u\in n$ we get $m\in u\subset n$, so $m\in n$ and thus $m\in Y$, contradiction with $u$ is $\in-$minimal element of $Y$. 
 \end{solution}
@@ -283,14 +280,14 @@ Hence each $n \neq \varnothing$ is $m+1$ for some $m$.
 \begin{solution}
     Consider $x\in X\xand (x=\emptyset \xor (\exists z x=z\cup\{z\}))$, then for $y=x\cup\{x\}$ we have $y\in X\xand y=x\cup\{x\}$, thus $y\in\{x\in X:x=\emptyset\xor (\exists y\in X) x=y\cup\{y\}\}$. So the set is inductive, too. 
 
-    For $\N$ we get $\forall n\in\N,n=\emptyset \xor \exists m\in \N,n=m\cup\{m\}$. If $n=\emptyset$ then $n=0$. If $n=m\cup\{m\}$ then $m\in n$. Since $\N$ is transitive, we get $m\in n\subset \N$. So $m\in \N$. So $n=m\cup\{m\}=m+1$. 
+    For $\mathbb{N}$ we get $\forall n\in\mathbb{N},n=\emptyset \xor \exists m\in \mathbb{N},n=m\cup\{m\}$. If $n=\emptyset$ then $n=0$. If $n=m\cup\{m\}$ then $m\in n$. Since $\mathbb{N}$ is transitive, we get $m\in n\subset \mathbb{N}$. So $m\in \mathbb{N}$. So $n=m\cup\{m\}=m+1$. 
 \end{solution}
 
 \begin{problem}
     Let $A$ be a subset of $N$ such that $0 \in A$, and if $n \in A$ then $n+1 \in A$. Then $A=N$. 
 \end{problem}
 \begin{solution}
-    Obviously $A$ is inductive, and $\N$ is the least inductive set, so $\N\subset A$. Noting $A\subset \N$, so $A=\N$. 
+    Obviously $A$ is inductive, and $\mathbb{N}$ is the least inductive set, so $\mathbb{N}\subset A$. Noting $A\subset \mathbb{N}$, so $A=\mathbb{N}$. 
 \end{solution}
 
 \end{document}
