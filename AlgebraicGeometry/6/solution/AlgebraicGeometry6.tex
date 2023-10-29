@@ -1,0 +1,57 @@
+%!Mode:: "TeX:UTF-8"
+%!TEX encoding = UTF-8 Unicode
+%!TEX TS-program = xelatex × 2
+\documentclass{ctexart}
+\newif\ifpreface
+\prefacetrue
+\input{../../../global/all}
+\begin{document}
+\large
+\setlength{\baselineskip}{1.2em}
+\ifpreface
+	\input{../../../global/preface}
+	\newgeometry{left=2cm,right=2cm,top=2cm,bottom=2cm}
+\else
+	\newgeometry{left=2cm,right=2cm,top=2cm,bottom=2cm}
+	\maketitle
+\fi
+%from_here_to_type
+\begin{problem}
+Assume $V$ is a set and $k$ is a field.
+Assume $k[V]\subset k^V$ is f.g. $k-$algebra, and exists a class of generators $x_1,\cdots x_n$, s.t. $\phi:V\to \mathbbm{A}_k^n,p\mapsto (x_1(p),\cdots x_n(p))$ embeds $V$ as an irreducible algebra set in $\mathbbm{A}_k^n$.
+Prove: $k[V]\cong k[y_1,\cdots,y_n]/\ide(\im(\phi))$.
+\end{problem}
+
+\begin{solution}
+	Consider $\psi:k[y_1,\cdots y_n]\to k[V],y_i\mapsto x_i$. Obviously $\psi$ is homomorphism, so we only need to prove $\ker \psi = \ide (\im(\phi))$.
+
+	$\forall f(y_1,\cdots,y_n)\in\ker\psi,\psi(f(y_1,\cdots,y_n))=f(x_1,\cdots x_n)=0$. So for $(x_1(p),\cdots,x_n(p))\in\im(\phi)$, we have $f(x_1(p),x_2(p),\cdots x_n(p))=f(x_1,\cdots,x_n)(p)=0$. So $f(y_1,\cdots,y_n)\in \ide(\im(\phi))$.
+
+	On the other hand, consider $f(y_1,\cdots,y_n)\in \ide(\im(\phi))$, we have $\forall p\in \mathbbm{A}_k^n,f(x_1(p),\cdots ,x_n(p))=0$. So $f(x_1,x_2,\cdots x_n)=0$, i.e., $f\in\ker \psi$.
+
+	So finally we get $k[V]\cong k[y_1,\cdots,y_n]/\ide(\im(\phi))$.
+\end{solution}
+
+\begin{problem}
+Assume $V$ is irreducible algebra set in $\mathbbm{A}_k^n$ and $h\in k[V]$.
+Assume $H\in k[x_1\cdots x_n],h(p)=H(p),\forall p\in V$.
+Let $\phi:V_h\to \mathbbm{A}_k^{n+1},p\mapsto (p,\frac{1}{H(p)})$.
+Let $J=\ide(V)\subset k[x_1,\cdots x_n]\subset k[x_1,\cdots x_n,y]$,
+and $J':=(J,yH-1)$.
+Prove: $\im(\phi)=\van(J')$.
+\end{problem}
+
+\begin{solution}
+	First we prove $\im(\phi)\subset \van(J')$.
+	Consider $(x_1,\cdots ,x_n,y)\in\im(\phi)$, we need to prove $p=(x_1,\cdots,x_n)\in \van(J)$ and $yH(p)-1=0$.
+	It's obvious from the definition of $V_h$ and $\phi$.
+
+	Second we prove $\van(J')\subset \im(\phi)$.
+	Assume $(p,y)\in \van(J')$, then $p\in \van(J)$ and $H(p)y=1$.
+	So we get $H(p)\neq 0$. Since $p\in\van(J)=V$, we get $p\in V_h$.
+	And $\phi(p)=(p,\frac{1}{H(p)})=(p,y)$. So $(p,y)\in J'$.
+\end{solution}
+\begin{problem}
+
+\end{problem}
+\end{document}

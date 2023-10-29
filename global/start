@@ -1,3 +1,4 @@
+\usepackage{fontspec}
 \usepackage{bbm}
 \usepackage{tikz}
 \usepackage{amsmath,amssymb,amsthm,color,mathrsfs}
@@ -6,13 +7,10 @@
 \usepackage{enumitem}%
 \usepackage{expl3}
 \usepackage{lipsum}
-\usepackage{stringstrings}
-\usepackage{currfile}
 \usepackage[margin=0pt]{geometry}
 \usetikzlibrary{calc}
 \theoremstyle{remark}
 \newtheorem{lemma}{Lemma}
-\usepackage{fontspec}
 \usepackage{fontawesome5}
 \usepackage{xcolor}
 \newcounter{problem}

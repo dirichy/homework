@@ -1,9 +1,9 @@
 %!Mode:: "TeX:UTF-8"
 %!TEX encoding = UTF-8 Unicode
-%!TEX TS-program = xelatex × 2
+%!TEX TS-program = xelatex
 \documentclass{ctexart}
 \newif\ifpreface
-\prefacetrue
+%\prefacetrue
 \input{../../../global/all}
 \begin{document}
 \large
@@ -44,7 +44,7 @@
  $\Leftarrow $:
 
  Consider $a\in A\minus M, N:=\{xp+ya:x,y\in A,p\in P\}$, we will prove $N=A$, which means $M$ is maximal. 
- Since $A/M$ is field, $\exists y\in A, [y]=[a]^{-1}$. Thats means $ay-1\in M\subset N$. Noting $ay\in N$, so $1\in N$, thus $N=A$. 
+ Since $A/M$ is field, $\exists y\in A, [y]=[a]^{-1}$. That's means $ay-1\in M\subset N$. Noting $ay\in N$, so $1\in N$, thus $N=A$. 
 \end{solution}
 
 \begin{problem}
@@ -84,7 +84,7 @@
 \begin{solution}
  \begin{lemma}
      \label{lem:2}
-     $K$ is a infinite field, $f\in K[x_1,x_2,\cdots x_n]\minus \{0\}$, then exists $p\in \A_K^n,f(p)\neq 0$. 
+     $K$ is a infinite field, $f\in K[x_1,x_2,\cdots x_n]\setminus \{0\}$, then exists $p\in \A_K^n,f(p)\neq 0$. 
  \end{lemma}
  \begin{proof}
      Use MI. When $n=0,K[x_1,x_2,\cdots x_n]=K$, so it's obvious. Assume for $n=k$ it's right, when goes to $k+1$:
