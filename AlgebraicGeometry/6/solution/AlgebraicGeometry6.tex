@@ -1,10 +1,11 @@
 %!Mode:: "TeX:UTF-8"
 %!TEX encoding = UTF-8 Unicode
-%!TEX TS-program = xelatex × 2
+%!TEX TS-program = xetex
 \documentclass{ctexart}
 \newif\ifpreface
 \prefacetrue
 \input{../../../global/all}
+\newcommand{\A}{\mathbbm{A}}
 \begin{document}
 \large
 \setlength{\baselineskip}{1.2em}
@@ -50,6 +51,31 @@ Prove: $\im(\phi)=\van(J')$.
 	Assume $(p,y)\in \van(J')$, then $p\in \van(J)$ and $H(p)y=1$.
 	So we get $H(p)\neq 0$. Since $p\in\van(J)=V$, we get $p\in V_h$.
 	And $\phi(p)=(p,\frac{1}{H(p)})=(p,y)$. So $(p,y)\in J'$.
+\end{solution}
+
+\begin{problem}
+Let \(u=\A_k^2 \setminus \{(0,0)\}\subseteq \A_k^n\),
+then \(u\) is not affine variety.
+\end{problem}
+\begin{solution}
+	Since \(k[u]=k[x_1,x_2,x_1^{-1}]\cap k[x_1,x_2,x_2^{-1}] \) we know \(k[u ]=k[x_1,x_2]\).
+	Now assume \(u \) is affine variety, assume \(\phi:u \to \A_k^n \) embeds \(u \) to an irreducible algebra set.
+	And assume \(\{f_1,f_2,\dots f_n\}\) is the generators of \(k[u]\).
+	Then \(\phi(p)=(f_1(p),f_2(p),\dots,f_n(p))\).
+	Assume \(\phi(u)=\van(I)\) for some prime ideal \(I=(g_1,g_2,\dots,g_n)\).
+	Then \(g_i(\phi(p))=0,\forall p \in u,i=1,\dots,n\).
+	Now we prove \(g_i(\phi(0,0))=0,\forall i=1,\dots ,n\).
+	If not, assume
+	\(h(x_1,x_2)=g_i(\phi(x_1,x_2))\neq 0\).
+	Consider \(h(x_1,x_2)\in k[x_1][x_2]\), we get \(x_2-1 \mid h(x_1,x_2)\).
+	Assume \(h(x_1,x_2)=(x_2-1)^n l(x_1,x_2), x_2-1 \nmid l(x_1,x_2)\).
+	Obviously \(x_2-1 \notin I\) because \((x_2-1)(0,0)=-1\neq 0\).
+	So \(l(x_1,x_2)\in I\). Since \(x_2-1 \nmid l(x_1,x_2)\) we get \(l(x_1,1)\neq 0\).
+	So \(\exists a \in k, l(a,2)\neq 0\). Then \((a,1)\not\in \van(I)=\im(\phi)\),
+	contradiction!
+	So \(g_i(\phi)=0\in k[x_1,x_2]\). Then \(\phi(0)\in \van(I)=\phi(u)\).
+	So \(\exists p\in u, \phi(p)=\phi(0)\).
+	So \(u\) is not affine variety.
 \end{solution}
 \begin{problem}
 

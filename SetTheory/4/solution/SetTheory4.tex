@@ -1,0 +1,44 @@
+%!Mode:: "TeX:UTF-8"
+%!TEX encoding = UTF-8 Unicode
+%!TEX TS-program = xelatex
+\documentclass{ctexart}
+\newif\ifpreface
+\prefacetrue
+\input{../../../global/all}
+\begin{document}
+\large
+\setlength{\baselineskip}{1.2em}
+\ifpreface
+	\input{../../../global/preface}
+\else
+	\maketitle
+\fi
+\newgeometry{left=2cm,right=2cm,top=2cm,bottom=2cm}
+%from_here_to_type
+\begin{problem}
+Consider \(\mathbb{Q}=\mathbb{Z} \times (\mathbb{Z} \setminus \{0\})/\sim\), where \((a,b)\sim(c,d) \iff ad=bc\).
+Define \(+_\mathbb{Q},\cdot_\mathbb{Q}\) and \(<_\mathbb{Q}\) and verify that your definitions
+doesn't depend on the choice of representatives.
+\end{problem}
+\begin{solution}
+	Let \([(a,b)]+_\mathbb{Q}[(c,d)]=[(ad+bc,bd)],[(a,b)]\cdot_\mathbb{Q}[(c,d)]=[(ac,bd)]\),
+	and \([(a,b)]<_\mathbb{Q} [(c,d)]\iff a b d^2<c d b^2\).
+	Now we prove they are well-defined, i.e., doesn't depend on the choice of representatives.
+
+	For \(+_\mathbb{Q}\), assume \((a,b)\sim (e,f)\), we need to prove
+	\((ad+bc,bd)\sim (ed+fc,df)\).
+	Since \(af=be\), we have \((ad+bc)bf=ad^2f+bdcf=bed^2+bdcf=(ed+fc)bd\).
+	So \(+_\mathbb{Q}\) is well defined.
+
+	For \(\cdot_\mathbb{Q}\), assume \((a,b)\sim (e,f)\), we need to prove
+	\((ac,bd)\sim (ec,fd)\).
+	Since \(af=be\), we have \(acfd=bced=bdec\).
+	So \(\cdot_\mathbb{Q}\) is well defined.
+
+	For \(<_\mathbb{Q}\), assume \((a_1,b_1)\sim (a_2,b_2),(c_1,d_1)\sim(c_2,d_2)\) and \((a_1,b_1)<(c_1,d_1)\).
+	Now we need to prove \((a_2,b_2)<(c_2,d_2)\).
+	Since \(a_1b_2=a_2b_1,c_1d_2=c_2d_1\) we get
+	\(a_1 b_1 d_2^2<c_2 d_2 b_1^2\)
+
+\end{solution}
+\end{document}
