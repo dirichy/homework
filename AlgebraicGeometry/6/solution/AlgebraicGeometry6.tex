@@ -1,6 +1,6 @@
 %!Mode:: "TeX:UTF-8"
 %!TEX encoding = UTF-8 Unicode
-%!TEX TS-program = xetex
+%!TEX TS-program = xelatex
 \documentclass{ctexart}
 \newif\ifpreface
 \prefacetrue
@@ -59,25 +59,11 @@ then \(u\) is not affine variety.
 \end{problem}
 \begin{solution}
 	Since \(k[u]=k[x_1,x_2,x_1^{-1}]\cap k[x_1,x_2,x_2^{-1}] \) we know \(k[u ]=k[x_1,x_2]\).
-	Now assume \(u \) is affine variety, assume \(\phi:u \to \A_k^n \) embeds \(u \) to an irreducible algebra set.
-	And assume \(\{f_1,f_2,\dots f_n\}\) is the generators of \(k[u]\).
-	Then \(\phi(p)=(f_1(p),f_2(p),\dots,f_n(p))\).
-	Assume \(\phi(u)=\van(I)\) for some prime ideal \(I=(g_1,g_2,\dots,g_n)\).
-	Then \(g_i(\phi(p))=0,\forall p \in u,i=1,\dots,n\).
-	Now we prove \(g_i(\phi(0,0))=0,\forall i=1,\dots ,n\).
-	If not, assume
-	\(h(x_1,x_2)=g_i(\phi(x_1,x_2))\neq 0\).
-	Consider \(h(x_1,x_2)\in k[x_1][x_2]\), we get \(x_2-1 \mid h(x_1,x_2)\).
-	Assume \(h(x_1,x_2)=(x_2-1)^n l(x_1,x_2), x_2-1 \nmid l(x_1,x_2)\).
-	Obviously \(x_2-1 \notin I\) because \((x_2-1)(0,0)=-1\neq 0\).
-	So \(l(x_1,x_2)\in I\). Since \(x_2-1 \nmid l(x_1,x_2)\) we get \(l(x_1,1)\neq 0\).
-	So \(\exists a \in k, l(a,2)\neq 0\). Then \((a,1)\not\in \van(I)=\im(\phi)\),
-	contradiction!
-	So \(g_i(\phi)=0\in k[x_1,x_2]\). Then \(\phi(0)\in \van(I)=\phi(u)\).
-	So \(\exists p\in u, \phi(p)=\phi(0)\).
-	So \(u\) is not affine variety.
+	Now assume \(u \) is affine variety.
+	Since $k[u]\cong k[\A_k^2]$, we get $u\cong A_k^2$.
+	So we can assume $\phi:\A_k^2\to u$ is the isomorphism, and $\phi(x_1,x_2)=(f_1(x_1,x_2),f_2(x_1,x_2))$.
+	Since $0\notin \ran(\phi)$, we know $V(f_1,f_2)=\varnothing$.
+	So $\exists a,b\in k,af_1+bf_2=1$. Then $\deg f_1,\deg f_2=0$.
+	But it's impossible because $\card\ran(\phi)>1$ since $\card k>1$.
 \end{solution}
-\begin{problem}
-
-\end{problem}
 \end{document}

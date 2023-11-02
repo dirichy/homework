@@ -1,0 +1,56 @@
+%!Mode:: "TeX:UTF-8"
+%!TEX encoding = UTF-8 Unicode
+%!TEX TS-program = xelatex
+\documentclass{ctexart}
+\newif\ifpreface
+%\prefacetrue
+\input{../../../global/all}
+\begin{document}
+\large
+\setlength{\baselineskip}{1.2em}
+\ifpreface
+	\input{../../../global/preface}
+	\newgeometry{left=2cm,right=2cm,top=2cm,bottom=2cm}
+\else
+	\newgeometry{left=2cm,right=2cm,top=2cm,bottom=2cm}
+	\maketitle
+\fi
+%from_here_to_type
+\begin{problem}\label{pro:1}
+ Assume $H_1$ and $H_2$ are sub module of left module $M$ over ring $R$, prove that $H_1+H_2$ is direct sum if and only if $H_1\cap H_2 = \{0\}$. 
+\end{problem}
+
+\begin{solution}
+ $\Rightarrow$: If $H_1 \cap H_2 \ neq \{0\}$, assume $a\in H_1\cap H_2\setminus \{0\}$. 
+ Then $a=a+0=0+a$ is two different method to compenent $a$ into sum of elements in $H_1,H_2$. Contridiction! 
+
+ $\Leftarrow$: Assume $a=x_1+y_1=x_2+y_2,x_1,y_1\in H_1,x_2,y_2\in H_2,a\in H_1+H_2$. 
+ Then $H_1\ni x_1-x_2=y_1-y_2\in H_2$, so $x_1-x_2=y_1-y_2\in H_1\cap H_2=\{0\}$, so $x_1=x_2,y_1=y_2$.  
+\end{solution}
+
+\begin{problem}\label{pro:2}
+ Assume $M$ is $R$-module and $M=H_1\oplus H_2$, prove $M/H_1\cong H_2$ and $M/H_2\cong H_1$. 
+\end{problem}
+
+\begin{solution}
+ By symmetry we only need to prove $M/H_2\cong H_1$. 
+ Consider $f:M\to H_2,h_1+h_2\mapsto h_2$, where $h_1\in H_1,h_2\in H_2$. 
+ Obviously $f$ is surjective homomorism, so $M/\ker f\cong H_2$. 
+ So we only need to prove $\ker f= H_1$. 
+ On one hand, for $h_2\in H_2$ we have $h_2=0+h_2$, so $f(h_2)=0,h_2\in \ker f$. 
+ On the other hand, assume $h=h_1+h_2\in \ker f$, then $f(h)=h_1=0$, so $h=h_2\in H_2$. 
+ So $\ker f=H_2$. So we get $M/H_2\cong H_1$. 
+\end{solution}
+
+\begin{problem}
+ Assume $M$ is $R$-module and $M=\oplus_{k=1}^s H_k$. Prove: $M/(\oplus_{k=2}^s H_k)\cong H_1$. 
+\end{problem}
+
+\begin{solution}
+ Noting \Cref{pro:2} we only need to prove $M=(\oplus_{k=2}^s H_k)\oplus H_1$. 
+ Obviously $H_1\oplus H_2\oplus H_3=H_1\oplus(H_2\oplus H_2)$, i.e., $\oplus$ has commulative law and associative law. 
+ So $M=\oplus_{k=1}^s H_k=(\oplus_{k=2}^s H_k)\oplus H_1$. 
+ So finally $M/\oplus_{k=2}^s H_k\cong H_1$. 
+\end{solution}
+
+\end{document}
