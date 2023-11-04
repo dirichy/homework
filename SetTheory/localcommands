@@ -1,0 +1,3 @@
+\newcommand{\ord}{\mathbb{O}\mathrm{rd}}
+\newcommand{\set}{\mathbb{S}\mathrm{et}}
+\newcommand{\fun}[2]{{}^{#1}#2}
