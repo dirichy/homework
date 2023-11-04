@@ -31,8 +31,8 @@ while read line; do
 		k=$j
 	fi
 done <"$openfile"
-if [ k = 0 ]; then
-	code --goto "$openfile:16:1"
-else
-	code --goto "$openfile:$k:1"
-fi
+#if [ k = 0 ]; then
+#	code --goto "$openfile:16:1"
+#else
+#	code --goto "$openfile:$k:1"
+#fi
