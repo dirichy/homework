@@ -39,6 +39,47 @@ doesn't depend on the choice of representatives.
 	Now we need to prove \((a_2,b_2)<(c_2,d_2)\).
 	Since \(a_1b_2=a_2b_1,c_1d_2=c_2d_1\) we get
 	\(a_1 b_1 d_2^2<c_2 d_2 b_1^2\)
+\end{solution}
+
+\begin{problem}
+The set of all continuous functions $f: \mathbb{R} \rightarrow \mathbb{R}$ has cardinality $\mathfrak{c}$ (while the set of all functions has cardinality $2^{\mathfrak{c}}$ ).
+[A continuous function on $\mathbb{R}$ is determined by its values at rational points.]
+\end{problem}
+
+\begin{solution}
+  Consider \(\theta:\fun{\mathbb{R}}{\mathbb{R}} \to 2^{\mathbb{Q}}, f \mapsto \{(a,b) \in \mathbb{Q}: f(a) < b\}\). 
+  Now we prove \(f\) is a injection. 
+  Assume \(\theta(f)=\theta(g)\), to prove \(f=g\). 
+  First we prove for \(x\in \mathbb{Q}\) we have \(f(x)=g(x)\). 
+  We have \(f(x)=\sup \{y \in \mathbb{Q}:y<f(x)\}=\sup\{y \in \mathbb{Q}:(x,y) \in \theta(f)\}=\sup\{y \in \mathbb{Q} : (x,y) \in \theta (g)\}=g(x)\).
+  For \(x \in \mathbb{R}\), choose a sequence \(x_n \in \mathbb{Q}\) such that \(x_n \to x\), 
+  then \(f(x)= \lim_{n \to \infty }f(x_n)=\lim_{n \to \infty }g(x_n)=g(x)\). 
+  So we get \(f=g\). So \(\card \fun{\mathbb{R}}{\mathbb{R}} \leq \card 2^{\mathbb{Q}}=2^{\aleph_0}\).
+  Obviously \(\card\fun{\mathbb{R}}{\mathbb{R}} \geq 2^{\aleph_0}\), so we get they are equal. 
+\end{solution}
+\begin{problem}
+There are at least $\mathfrak{c}$ countable order-types of linearly ordered sets.
+\end{problem}
+
+\begin{solution}
+For every sequence $a=\left\langle a_n: n \in \mathbb{N}\right\rangle$ of natural numbers consider the ordertype
+$$
+\tau_a=a_0+\xi+a_1+\xi+a_2+\ldots
+$$
+where $\xi$ is the order-type of the integers. Now we will show that if $a \neq b$, then $\tau_a \neq \tau_b$. 
+Assume \(\tau_a=\tau_b\), we need to prove \(a=b\). assume \(\theta:\tau_a \to \tau_b\) is the isomorfism. 
+Use MI to prove \(a_n=b_n\). When \(n=0\), we easily know \(a_0=\min\{t: \not \exists x \in \tau_a,x= \min\{y \in \tau_a:y>t\}\}\).
+So \(\theta(a_0)=b_0\), since this property can be discribe in 1-oredered logic. 
+Also, \(\theta[a_0]=b_0\) for the same reason. 
+So \(a_0=\card \theta[a_0]=b_0\), since \(\theta\) is bijection. 
 
 \end{solution}
+\begin{problem}
+The set of all algebraic reals is countable.
+\end{problem}
+
+\begin{problem}
+If $S$ is a countable set of reals, then $|\mathbb{R}-S|=\mathfrak{c}$.
+[Use $\mathbb{R} \times \mathbb{R}$ rather than $\mathbb{R}$ (because $|\mathbb{R} \times \mathbb{R}|=2^{\aleph_0}$ ).]
+\end{problem}
 \end{document}
