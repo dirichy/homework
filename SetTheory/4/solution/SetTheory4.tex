@@ -64,20 +64,30 @@ There are at least $\mathfrak{c}$ countable order-types of linearly ordered sets
 \begin{solution}
 For every sequence $a=\left\langle a_n: n \in \mathbb{N}\right\rangle$ of natural numbers consider the ordertype
 $$
-\tau_a=a_0+\xi+a_1+\xi+a_2+\ldots
+\tau_a=\{(x,y) \in \mathbb{Z}\times \mathbb{N}:2 \nmid y \vee 0<x<a_{\frac{y}{2}}\}
 $$
-where $\xi$ is the order-type of the integers. Now we will show that if $a \neq b$, then $\tau_a \neq \tau_b$. 
-Assume \(\tau_a=\tau_b\), we need to prove \(a=b\). assume \(\theta:\tau_a \to \tau_b\) is the isomorfism. 
-Use MI to prove \(a_n=b_n\). When \(n=0\), we easily know \(a_0=\min\{t: \not \exists x \in \tau_a,x= \min\{y \in \tau_a:y>t\}\}\).
-So \(\theta(a_0)=b_0\), since this property can be discribe in 1-oredered logic. 
-Also, \(\theta[a_0]=b_0\) for the same reason. 
-So \(a_0=\card \theta[a_0]=b_0\), since \(\theta\) is bijection. 
+And for \((x,y),(z,w) \in \tau_a\) we define \((x,y)<(z,w) \iff y<w \vee y=w,x<z\).
+Now we will show that if $a \neq b$, then $\tau_a \neq \tau_b$. 
+Assume \(\tau_a \cong \tau_b\), we need to prove \(a=b\). assume \(\theta:\tau_a \to \tau_b\) is the isomorfism. 
 
+We know \((x,0)\) can be defined as \(\phi(p)=\exists_{k=1}^{x-1} t_k,\vee_{1 \leq i < j \leq x-1}t_i \neq t_j, \forall k=1,\cdots x-1, t_k<p\). 
+And \(\theta\) is isomorphism. So \(\theta(x,0)=(x,0)\). 
+For \((x,1)\), we let \(b_0\) satisfy \(\theta(0,1)=(b_0,m)\). 
+Since the set \(\{(x,y):y=1\}\) can be defined by \(\psi(p)=\forall r,s(r,s<p \vee \tau(r)\vee \tau(s) \to \card[r,s] < \infty )\), 
+where \(\tau(r):= \{s:s<r\}\) and \([r,s]=\{y:r<y<s\}\). 
+we get \(\theta[\{(x,y):y=1\}]=\{(x,y):y=1\}\). 
+So we can delete the element whose second coordinary is \(0,1\), and \(\theta\) is isomorphism, too. 
+Do this repeatedly, we get \(\theta(x,2n+1)=(x,2n+1)\). 
+So \(a_n=\card\{(x,2n+1)\in \tau_a\}=\card \{(x,2n+1) \in \tau_b\}=b_n\) and thus \(a=b\).
 \end{solution}
 \begin{problem}
 The set of all algebraic reals is countable.
 \end{problem}
 
+\begin{solution}
+  Assume \(\{f_n:n \in \mathbb{N}\}\) is the set of all integral coefficient polynomial.
+  
+\end{solution}
 \begin{problem}
 If $S$ is a countable set of reals, then $|\mathbb{R}-S|=\mathfrak{c}$.
 [Use $\mathbb{R} \times \mathbb{R}$ rather than $\mathbb{R}$ (because $|\mathbb{R} \times \mathbb{R}|=2^{\aleph_0}$ ).]
