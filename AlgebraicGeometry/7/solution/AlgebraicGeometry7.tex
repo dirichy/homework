@@ -1,10 +1,11 @@
 %!Mode:: "TeX:UTF-8"
 %!TEX encoding = UTF-8 Unicode
-%!TEX TS-program = xelatex × 2
+%!TEX TS-program = xelatex
 \documentclass{ctexart}
 \newif\ifpreface
 \prefacetrue
 \input{../../../global/all}
+\crefname{enumi}{}{}
 \begin{document}
 \large
 \setlength{\baselineskip}{1.2em}
@@ -16,5 +17,114 @@
 \maketitle
 \fi
 %from_here_to_type
+\begin{problem}
+  Assume \(k\) is an infinite field. \(f \in k[x_0,\cdots ,x_n]\). 
+  knd \(\forall t \in t,f(t x_0,\cdots ,t x_n)=t^d f(x_0,\cdots ,x_n)\), where \(d \in \mathbb{N}\) is a constant. 
+  Prove \(f\) is homogeneous. 
+\end{problem}
 
+\begin{solution}
+  Consider \(g(t,x_0,\cdots ,x_n) = f(t x_0,\cdots t x_n)-t^d f(x_0,\cdots x_n) \in k[t,x_0,\cdots ,x_n]\). 
+  We get for \(p \in \mathbbm{A}_k^n,g(p)=0\). Since \(k\) is infinite, we get \(g=0\). 
+  Assume \(f(x_0,\cdots ,x_n)=\sum_{i}a_i x_1^{i_1} x_2^{i_2}\cdots x_n^{i_n} \). 
+Then we get \(g(t,x_0,\cdots x_n)=\sum_{i}(t^d-t^{|i|})x_1^{i_1} x_2^{i_2}\cdots x_n^{i_n}=0\). 
+Where \(|i|=\sum_{j=1}^{n} i_j\). So we get \(\sum_{j=1}^{n}i_j=d \). 
+So \(f\) is homogeneous with degree \(d\). 
+\end{solution}
+
+\begin{problem}
+  For an ideal \(I\) of \(k[x_0,\cdots ,x_n]\), prove following to definition of homogeneous ideal is equivalent. 
+  \begin{enumerate}[ref=\theproblem.\arabic*]
+    \item \label{it:21}\(\forall f \in I,f=\sum_{t}f_t \), where \(f_t\) are homogeneous poly with different degree. 
+      then \(f_t \in I, \forall t\). 
+    \item \label{it:22}\(\exists g_1,\cdots g_n\) are homogeneous such that \(I=(g_1,\cdots ,g_n)\). 
+  \end{enumerate}
+\end{problem}
+
+\begin{solution}
+  \begin{enumerate}[ref=\theproblem.\arabic*]
+   \item \(\Cref{it:21} \implies \Cref{it:22}\): 
+     Assume \(I=(f_1,f_2,\cdots ,f_n)\) and \(f_k=\sum_{t=1}^{a_k}g_{kt}  \), where \(g_{kt} \) are homogeneous. 
+     Then \(I=(g_{kt} :k=1,2,\cdots ,n,t =1,2,\cdots ,a_k)\). 
+   \item \(\Cref{it:22} \implies \Cref{it:21}\): 
+     Assume \(I=(g_1,\cdots ,g_n)\), where \(g_k\) are homogeneous. Now consider \(f \in I\). 
+     Assume \(f=\sum_{j=1}^{n}h_j g_j \). Assume \( h_j=\sum_{i=1}^{b_j}l_{ij}  \), where \(l_{ij} \) are homogeneous. 
+     Then \(f=\sum_{j=1}^{n}\sum_{i=1}^{b_j}l_{ij} g_j  \). 
+     Assume \(l_{ij} g_j\) has degree \(d_{ij} \), then we have \(f=\sum_{d} (\sum_{i,j:d_{ij} =d}l_{ij} g_j) \) is the homogeneous deconposition of \(f\). 
+     Easily \(\sum_{i,j:d_{ij} =d}l_{ij} g_j \in I \) since \(g_j \in I\). 
+ \end{enumerate} 
+\end{solution}
+
+\begin{problem}
+ \begin{enumerate}[ref=\theproblem.\arabic*]
+   \item Assume \(J_{\lambda}\) are homogeneous ideal. Prove that \(\van(\sum_{\lambda}J_{\lambda} )=\bigcap_{\lambda} \van (J_{\lambda})\). 
+   \item Assume \(J_1,J_2\) are homogeneous ideal, then \(\van (J_1 \cap J_2)=\van (J_1) \cup \van (J_2)\). 
+ \end{enumerate} 
+\end{problem}
+
+\begin{solution}
+  \begin{enumerate}
+    \item On one hand, assume \(p \in \van ( J_{\lambda}), \forall \lambda\), to prove \(p \in \van (\sum_{\lambda}J_{\lambda} )\). 
+      Consider \( f \in \sum_{\lambda}J_{\lambda},f=\sum_{t=1}^{n} f_t \), where \(f_t \in J_{\lambda_{t}} \) for some \(\lambda_{t}\). 
+      Then \(f(p)=\sum_{t=1}^{n}f_t(p)=0 \). So we get \( p \in \van ( \sum_{\lambda}J_{\lambda} )\). 
+
+      On the other hand, assume \(p \in \van(\sum_{\lambda} J_{\lambda})\), to prove \(p \in \van(J_{\lambda}), \forall \lambda\). 
+      Since \(J_{\lambda} \subset \sum_{\lambda}J_{\lambda} \), we get \(\van(\sum_{\lambda} J_{\lambda})\subset \van ( J_{\lambda})\). 
+      So \(p \in \van (J_{\lambda})\). 
+    \item On one hand, assume \(p \in \van(J_1 \cap J_2)\), to prove \(p \in \van(J_1) \vee p \in \van(J_2)\). 
+      If not, assuem \(f_1 \in J_1,f_2 \in J_2,f_1(p),f_2(p) \neq 0\), then we get \(f_1 f_2)(p) \neq 0\). 
+      But \(f_1 f_2 \in J_1 \cap J_2\), contradiction! 
+
+      On the other hand, assume \(p \in \van(J_1) \cup \van(J_2)\), to prove \(p \in \van(J_1 \cap J_2)\). 
+      Without loss of generality we assume \(p \in \van (J_1)\), then since \(J_1 \cap J_2 \subset J_1\) we get \(p \in \van(J_1 \cap J_2)\). 
+  \end{enumerate}
+\end{solution}
+\begin{problem}
+  Assume \(C=\{(x,y) \in \mathbb{C}^2:y^2=x(x-1)(x-2)\}\) and \(\hat{C}=\{[z,x,y]:y^2z=x(x-z)(x-2z)\} \in \mathbb{P}_{\mathbb{C}}^2 \). 
+  Prove \(\hat{C}\) is one point compactification of \(C\). 
+\end{problem}
+
+\begin{solution}
+  Write \(C=\{[z,x,y]:y^2z=x(x-z)(x-2z),z \neq 0\} \subset \mathbb{P}_{\mathbb{C}}^2\). 
+  Then \(\hat{C}\setminus C=\{[z,x,y]:y^2z=x(x-z)(x-2z),z=0\}=\{[0,x,y]:x^3=0\}=\{[0,0,y]\}=\{[0,0,1]\}\). 
+  So \(\hat{C}\) is one point compactification of \(C\). 
+\end{solution}
+
+\begin{problem}
+  Assume \(X \subset \mathbb{P}_k^n\) is an algebraic set, then \(\van(\ide(X))=X\). 
+\end{problem}
+
+\begin{solution}
+  Assume \(X=\van(J)\) for some homogeneous ideal \(J\). 
+  Easily we get \(X \subset \van(\ide(X))\) and \(J \subset \ide(\van(J))\). 
+  So we get \(\van(J) \supset \van(\ide(\van(J)))=\van(\ide(X))\). 
+  So \(X=\van(\ide(X))\). 
+\end{solution}
+
+\begin{problem}
+  Assume \(J\) is a homogeneous ideal, then \(\sqrt{J}\) is homogeneous ideal, too. 
+\end{problem}
+
+\begin{solution}
+  Consider \(g \in \sqrt{J}\) and \(g=\sum_{t=1}^{n} g_t\) and \(g_t\) are homogeneous poly with different degree. 
+  Without loss of generality assume \(d_1<d_2<\cdots<d_n\), where \(d_t\) is the degree of \(g_t\). 
+  Now we need to prove \(g_t \in \sqrt{J}\). If not, assume \(j\) is the least such that \(g_j \notin \sqrt{J}\). 
+  Let \(g'=g-\sum_{t=1}^{j-1} g_t\), then \(g' \in \sqrt{J}\) because \(g_j \in \sqrt{J}\) for \(t<j\). 
+  Assume \(g'^{m}\in J\), then \((\sum_{t=j}^{n} g_t)^{m} \in J\). 
+  We consider the homogeneous deconposition of \(g'^{m}\) with degree \(m d_j\).
+  Since \(d_j<d_{j+1}<\cdots<d_n\), we get the part is \(g_j^{m}\). 
+  Since \(J\) is homogeneous, we get \(g_j^{m} \in J\), i.e., \(g_j \in \sqrt{J}\), contradiction! 
+  So finally we get \(\forall t, g_t \in \sqrt{J}\)
+\end{solution}
+
+\begin{problem}
+  Assume \(J\) is a homogeneous ideal, then \(\sqrt{J}\subset \ide(\van(J))\). 
+\end{problem}
+
+\begin{solution}
+  Assume \(f \in \sqrt{J},f^{n} \in J\). From \Cref{pro:1} we know \(\sqrt{J}\) is homogeneous, 
+  so we only need to prove \(\forall p \in \van(J),f(p)=0\). 
+  Since \(f^n \in J\) we get \(f^n(p) =0\). So \(f(p)=0\). 
+  So we obtain \(\sqrt{J}\subset \ide(\van(J))\). 
+\end{solution}
 \end{document}
