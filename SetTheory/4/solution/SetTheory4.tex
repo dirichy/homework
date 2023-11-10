@@ -86,10 +86,33 @@ The set of all algebraic reals is countable.
 
 \begin{solution}
   Assume \(\{f_n:n \in \mathbb{N}\}\) is the set of all integral coefficient polynomial.
-  
+  Consider \(A_n:=\{x \in \mathbb{C}:f(x)=0\}\) is finite set. Then we get \(\cup_{n \in \mathbb{N}}A_n\) is at most countable. 
+  Obviouly \(\bigcup_{n \in \mathbb{N} } A_n\) is infinite, so it's countable. 
 \end{solution}
 \begin{problem}
 If $S$ is a countable set of reals, then $|\mathbb{R}-S|=\mathfrak{c}$.
 [Use $\mathbb{R} \times \mathbb{R}$ rather than $\mathbb{R}$ (because $|\mathbb{R} \times \mathbb{R}|=2^{\aleph_0}$ ).]
+\end{problem}
+
+\begin{solution}
+  Assume \(\theta:\mathbb{R} \to \mathbb{R} \times \mathbb{R}\) is bijection, and \(T=\theta(S)\). 
+  Then \(T\) is countable. And \(\card (\mathbb{R}\setminus S)= \card (\mathbb{R} \times \mathbb{R} \setminus T)\). 
+  So we only need to prove \(\mathbb{R}\times \mathbb{R} \approx \mathbb{R} \times \mathbb{R} \setminus T\). 
+  Obviously \(\card \mathbb{R}\times \mathbb{R} \setminus T \leq \card \mathbb{R} \times \mathbb{R}\), so we only need
+  \(\mathbb{R}\times \mathbb{R} \setminus T \geq \mathbb{R}\). 
+  Since \(T\) is countable, we get \(\{x:\exists y,(x,y) \in T\}\) is countable. 
+  Choose \(t \notin \{x:\exists y,(x,y) \in T\}\). 
+  Let \(f:\mathbb{R} \to \mathbb{R} \times \mathbb{R} \setminus T,x \mapsto (t,x)\). 
+  Easily we get \(f\) is injection. So \(\card \mathbb{R} \times \mathbb{R} \setminus T=\mathfrak{c}\). 
+\end{solution}
+
+\begin{problem}
+  Assume \(T\) is a tree. 
+  \begin{enumerate}
+    \item If \(s,t,u \in T\), then \(R_{stu} :=\{\delta_{st} ,\delta_{tu} ,\delta_{us} \}\) has at most \(2\) elements. 
+      And if \(p,q \in R_{stu}\), then \(p \subset q \wedge q \subset p\). 
+    \item \(\prec \) is a linear ordering of \(T\) which extends \(\sqsubset\).  
+      
+  \end{enumerate}
 \end{problem}
 \end{document}

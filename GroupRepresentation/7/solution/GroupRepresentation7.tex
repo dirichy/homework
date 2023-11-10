@@ -1,0 +1,52 @@
+%!Mode:: "TeX:UTF-8"
+%!TEX encoding = UTF-8 Unicode
+%!TEX TS-program = xelatex
+\documentclass{ctexart}
+\newif\ifpreface
+%\prefacetrue
+\input{../../../global/all}
+\begin{document}
+\large
+\setlength{\baselineskip}{1.2em}
+\ifpreface
+    \input{../../../global/preface}
+\newgeometry{left=2cm,right=2cm,top=2cm,bottom=2cm}
+\else
+\newgeometry{left=2cm,right=2cm,top=2cm,bottom=2cm}
+\maketitle
+\fi
+%from_here_to_type
+\begin{problem}
+  Find all of irreducible reperentation of \(C_4=\{e,a,a^2,a^3\}\) over \(\mathbb{C}\) by give the irreducible decomposation of it's regular reperentation. 
+\end{problem}
+
+\begin{solution}
+  Assume \(\phi:C_4 \to M_4(\mathbb{C})\) is the regular reperentation, and
+  \[
+    \phi(a)=\left(\begin{array}{cccc}
+      0 & 1 & 0 & 0 \\
+      0 & 0 & 1 & 0 \\
+      0 & 0 & 0 & 1 \\
+      1 & 0 & 0 & 0 \\
+    \end{array}\right)
+  \]
+  Let \(V_1=\{x \in \mathbb{C}^4:x_1=x_2=x_3=x_4\}, V_2=\{x \in \mathbb{C}^4:x_1=x_3=-x_2=-x_4\},V_3=\{x \in \mathbb{C}^4:x_1=-x_3,x_2=-x_4\}\). 
+  Easily we get \(V_1,V_2,V_3\) are invariant subspace over \(\phi\). Now we prove thry are irreducible. 
+  Obviously \(\dim V_1=\dim V_2=1\), so they are irreducible. Only need to prove \(V_3\) is irreducible. 
+  Consider \(W \subset V_3\) is a subspace and \(W \neq \{0\}\), to prove \(W=V_3\). 
+  Let \(x \in W\) and \(x \neq 0\). Then \(\phi(a)x=(x_2,x_3,x_4,x_1) \in W\). 
+  Consider the equation \(\begin{cases}
+    a x_1+b x_2=1 \\
+    a x_2 - b x_1 =0
+  \end{cases}\), Since \(x_1,x_2\) can't be all \(0\), we know this eauqtion has a solution \((a,b)\). 
+  Then \((1,0,-1,0)=ax+b \phi(x) \in W\). For the same reason we get \((0,1,0,-1) \in W\), too. 
+  So \(W=V_3\). So \(V_3\) is irreducible. 
+  Easily we find \(\phi|_{V_1}\) is ordinary reperentation, 
+  \(\phi|_{V_2}\) is isomorphic to \(\psi:C_4 \to \mathbb{C}, a \mapsto -1\), 
+  and \(\phi|_{V_3}\) is isomorphic to \(\tau:C_4 \to M_2(\mathbb{C}), a \mapsto \begin{pmatrix}
+    0 & 1 \\
+    -1 & 0 \\
+  \end{pmatrix}\). 
+  They are all of irreducible reperentation of \(C_4\) over \(\mathbb{C}\). 
+\end{solution}
+\end{document}
