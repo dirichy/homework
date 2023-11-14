@@ -64,16 +64,16 @@ There are at least $\mathfrak{c}$ countable order-types of linearly ordered sets
 \begin{solution}
 For every sequence $a=\left\langle a_n: n \in \mathbb{N}\right\rangle$ of natural numbers consider the ordertype
 $$
-\tau_a=\{(x,y) \in \mathbb{Z}\times \mathbb{N}:2 \nmid y \vee 0<x<a_{\frac{y}{2}}\}
+\tau_a=\{(x,y) \in \mathbb{Z}\times \mathbb{N}:2 \nmid y \wedge 0<x<a_{\frac{y}{2}}\}
 $$
-And for \((x,y),(z,w) \in \tau_a\) we define \((x,y)<(z,w) \iff y<w \vee y=w,x<z\).
+And for \((x,y),(z,w) \in \tau_a\) we define \((x,y)<(z,w) \iff y<w \wedge y=w,x<z\).
 Now we will show that if $a \neq b$, then $\tau_a \neq \tau_b$. 
 Assume \(\tau_a \cong \tau_b\), we need to prove \(a=b\). assume \(\theta:\tau_a \to \tau_b\) is the isomorfism. 
 
-We know \((x,0)\) can be defined as \(\phi(p)=\exists_{k=1}^{x-1} t_k,\vee_{1 \leq i < j \leq x-1}t_i \neq t_j, \forall k=1,\cdots x-1, t_k<p\). 
+We know \((x,0)\) can be defined as \(\phi(p)=\exists_{k=1}^{x-1} t_k,\wedge_{1 \leq i < j \leq x-1}t_i \neq t_j, \forall k=1,\cdots x-1, t_k<p\). 
 And \(\theta\) is isomorphism. So \(\theta(x,0)=(x,0)\). 
 For \((x,1)\), we let \(b_0\) satisfy \(\theta(0,1)=(b_0,m)\). 
-Since the set \(\{(x,y):y=1\}\) can be defined by \(\psi(p)=\forall r,s(r,s<p \vee \tau(r)\vee \tau(s) \to \card[r,s] < \infty )\), 
+Since the set \(\{(x,y):y=1\}\) can be defined by \(\psi(p)=\forall r,s(r,s<p \wedge \tau(r)\wedge \tau(s) \to \card[r,s] < \infty )\), 
 where \(\tau(r):= \{s:s<r\}\) and \([r,s]=\{y:r<y<s\}\). 
 we get \(\theta[\{(x,y):y=1\}]=\{(x,y):y=1\}\). 
 So we can delete the element whose second coordinary is \(0,1\), and \(\theta\) is isomorphism, too. 
@@ -108,11 +108,68 @@ If $S$ is a countable set of reals, then $|\mathbb{R}-S|=\mathfrak{c}$.
 
 \begin{problem}
   Assume \(T\) is a tree. 
-  \begin{enumerate}
-    \item If \(s,t,u \in T\), then \(R_{stu} :=\{\delta_{st} ,\delta_{tu} ,\delta_{us} \}\) has at most \(2\) elements. 
-      And if \(p,q \in R_{stu}\), then \(p \subset q \wedge q \subset p\). 
-    \item \(\prec \) is a linear ordering of \(T\) which extends \(\sqsubset\).  
-      
+  \begin{enumerate}[ref=\theproblem.\arabic*]
+    \item \label{it:1}If \(s,t,u \in T\), then \(R_{stu} :=\{\delta_{st} ,\delta_{tu} ,\delta_{us} \}\) has at most \(2\) elements. 
+      And if \(p,q \in R_{stu}\), then \(p \subset q \vee q \subset p\). 
+    \item \label{it:2}\(\prec \) is a linear ordering of \(T\) which extends \(\sqsubset\). 
+    \item For every \(t \in T\), Prove \(T^t:=\{s \in T:t \sqsubset s\}\) is an interval in \((T,\prec)\). 
   \end{enumerate}
 \end{problem}
+
+\begin{solution}
+  \begin{enumerate}
+    \item First we prove for \(p,q \in R_{stu} \) we have \(p \subset q \vee q \subset p\). 
+      Without loss of generality assume \(p = \delta_{st} ,q=\delta_{tu} \). We have 
+      \(p,q \subset (\cdot, t)\). Since \((\cdot,t)\) is well ordered, and easily \(p,q\) are initial segment, 
+      so \(p \subset q \vee q \subset p\). 
+
+      Now we prove there are at most two elements. 
+      From above we know \((R_{stu},\subset)\) is linear order set, and it's finite. 
+      Without loss of generality we assume \(\delta_{st} \subset \delta_{tu} \subset \delta_{us} \). 
+      Then we get \(\delta_{tu}=\delta_{tu}\cap \delta_{us}=(\cdot,t)\cap(\cdot,u)\cap(\cdot,s) \subset \delta_{st}\).
+      That means \(\delta_{st}=\delta_{tu}\), so there is at most two elements. 
+    \item Easily to prove \(\sqsubset \subset \prec \). Now we prove \(\prec\) is linear ordered. 
+      Consider a bigger linear ordered set \(Y\) is obtained by adding a minimum, \(-\infty\), in \(X\). 
+      Consider the tree \(U:=\fun{<\alpha}{Y}\). We try to make a map from \(T\) to \(B_U\). 
+      Let \(\theta:T \to B_U,\theta(f)(\beta):=\begin{cases}
+        f(\beta), \beta \in \dom f\\
+        -\infty,\beta \notin \dom f
+      \end{cases}\,\,\, \forall \beta \in \alpha,f \in T\). 
+      Then we it's easily to prove \(\theta\) is injective and \(f \prec g \iff \theta(f)(\beta)< \theta(g)(\beta)\), where \(\beta = \min\{t \in \alpha:\theta(f)(t) \neq \theta(g)(t)\}\). 
+      We define \(f,g \in B_U,f <g \iff f(\beta)<g(\beta)\), where \(\beta=\min\{t \in \alpha:f(t)\neq g(t)\}\). 
+      Now we only need to prove \((B_U,<)\) is linear ordered. 
+      Easily \(f \not< f , \forall f \in B_U\). And for \(f \neq g,f<g \vee g<f\). 
+      Assume \(f<g<h\), to prove \(f<h\).
+
+      If \(n_{fg}< n_{gh}\) then we get \(f(n_{fg})<g(n_{fg})=h(n_{fg})\). 
+      So \(n_{fh}\leq n_{fg}\). From \Cref{it:1} we get \(n_{fh}=n_{fg} \vee n_{fh}=n_{gh}\). 
+      So \(n_{fh}=n_{fg}\), and thus \(f<h\). 
+
+      If \(n_{fg}>n_{gh}\), then we get \(h(n_{gh})>g(n_{gh})=f(n_{gh})\). Same as above we get \(n_{fh}=n_{gh}\), so \(f<h\). 
+
+      If \(n_{fg}=n_{gh}\), it's obvious \(f<h\). 
+      
+      So we have proved \(B_U\) is linear ordered, and thus \((T,\prec)\) is linear orderd. 
+    \item Only need to prove if \(t \sqsubset u,t \sqsubset v,u \prec v\), then \(\forall s:u \prec s \prec v,t \sqsubset s\). 
+      If \(u \sqsubseteq s\) then \(t \sqsubset u \sqsubseteq s\). 
+      Else we get \(u \not \sqsubseteq s\). So we get \(s \not \sqsubseteq u \wedge s(n_{su})>u(n_{su})\). 
+      From \Cref{it:2} we get \(t \prec s\). So if \(t \not \sqsubset s \) then \(s \not \sqsubseteq t \wedge s(n_{st})>t(n_{st})\). 
+      Since \(t \sqsubseteq v\) we get \(s(n_{st})>t(n_{st})=v(n_{st})\). 
+      Since \(t \sqsubset v\) we get \(n_{st}=n_{sv}\), so \(v \prec s\), contradiction! 
+      So \(t \sqsubset s\). 
+  \end{enumerate}
+\end{solution}
+
+\begin{problem}
+  \begin{enumerate}
+    \item Prove that \(\prec\) is linear ordered on \(T \cup B_T\). 
+    \item For every \(t \in T\), prove that \(B_t = \{f \in T \cup B_T:t \in f\}\) is interval in \((T \cup B_T,\prec)\). 
+  \end{enumerate}
+\end{problem}
+
+\begin{solution}
+  \begin{enumerate}
+    \item We define \(\theta\) same as 
+  \end{enumerate}
+\end{solution}
 \end{document}
