@@ -1,1 +1,2 @@
 \renewcommand{\phi}{\varphi}
+\renewcommand{\hom}{\mathop{\mathrm{Hom}}}
