@@ -1,6 +1,6 @@
 %!Mode:: "TeX:UTF-8"
 %!TEX encoding = UTF-8 Unicode
-%!TEX TS-program = xelatex × 2
+%!TEX TS-program = xelatex
 \documentclass{ctexart}
 \newif\ifpreface
 \prefacetrue
@@ -44,4 +44,17 @@ Prove that \(\overline{\theta(V)} \subset \mathbb{P}_k^{n}\) is irreducible.
   So it's obvious. 
 \end{solution}
 
+\begin{problem}
+  Assume \(V\) is irreducible algebraic set in \(\mathbbm{A}_k^{n}\), and \(U \subset V\) is nonempty open set in \(V\). 
+  Assume \(f,g \in k(V)\) and \(\forall p \in U,f(p)=g(p)\). Prove that \(f=g\) in \(k(V)\). 
+\end{problem}
+
+\begin{solution}
+  Assume \(f=\frac{f_1}{f_2},g=\frac{g_1}{g_2}\), where \(f_1,f_2,g_1,g_2 \in k[x_1,\cdots,x_n]\).
+  And without loss of generality we assume \(U \subset \dom(f_2),\dom(g_2)\), or we use \(\dom(f_2) \cap \dom(g_2)\) replace \(U\). 
+  To prove \(f=g\) in \(k(V)\), we only need to prove \(f_1g_2-f_2g_1=0\). 
+  Consider \(h=f_1 g_2 - f_2 g_1 \in k[x_1,\cdots,x_n]\). We have \(U \subset \van(h)\). 
+  So \((V\setminus U) \cup \van(h)=V\). Since \(V\) is irreducible, we get \(V\setminus U=V \vee \van(h)=V\). 
+  Since \(U \neq \varnothing\), we get \(\van(h)=V\), so \(h=0\) in \(k(V)\).
+\end{solution}
 \end{document}

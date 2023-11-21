@@ -1,6 +1,6 @@
 %!Mode:: "TeX:UTF-8"
 %!TEX encoding = UTF-8 Unicode
-%!TEX TS-program = xelatex × 2
+%!TEX TS-program = xelatex
 \documentclass{ctexart}
 \newif\ifpreface
 \prefacetrue
