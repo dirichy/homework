@@ -1,0 +1,63 @@
+%!Mode:: "TeX:UTF-8"
+%!TEX encoding = UTF-8 Unicode
+%!TEX TS-program = xelatex
+\documentclass{ctexart}
+\newif\ifpreface
+\prefacetrue
+\input{../../../global/all}
+\begin{document}
+\large
+\setlength{\baselineskip}{1.2em}
+\ifpreface
+    \input{../../../global/preface}
+\newgeometry{left=2cm,right=2cm,top=2cm,bottom=2cm}
+\else
+\newgeometry{left=2cm,right=2cm,top=2cm,bottom=2cm}
+\maketitle
+\fi
+%from_here_to_type
+\begin{problem}
+  Assume \(V \subset \mathbb{P}_k^{n}\) is irreducible, let \(U_i:=\{[x_0,\cdots,x_n]:[x_0,\cdots,x_n] \in \mathbb{P}_k^n \wedge x_i \neq 0\}\), for \(i=0,1,\cdots,n\). 
+  Let \(\phi_i:U_i \to \mathbbm{A}_k^n,[x_0,\cdots,x_n] \mapsto \frac{1}{x_i}(x_0,\cdots,x_{i-1},x_{i+1},\cdots,x_n)\). 
+  Prove that \(\phi_i(V \cap U_i) \subset \mathbbm{A}_k^n\) is irreducible. 
+\end{problem}
+
+\begin{solution}
+  If not, we assume \(\phi_i(V \cap U_i)=W_1 \cup W_2\), where \(W_1,W_2 \subsetneq \phi_i(V \cap U_i)\) are closed algebraic set in \(\mathbbm{A}_k^n\). 
+  Since \(\phi_i\) is bijective, we can assume \(T_1=\phi_i^{-1}(W_1),T_2=\phi_i^{-1}(W_2)\). 
+  Let \(S_1=\van(\ide(T_1)), S_2=\van(\ide(T_2))\), then \(S_1=\van(\ide(T_1)) \subset \van(\ide(V))=V\). So \(S_1,S_2 \subset V\). 
+  And we know \(V \cap U_i=T_1 \cup T_2 \subset S_1 \cup S_2\), so \(V=(V \cap U_i^c) \cup S_1 \cup S_2\). 
+  Since \(V\) is irreducible, and \(V \cap U_i \neq \varnothing\), we get \(S_1=V \vee S_2=V\). 
+  Without loss of generality assume \(S_1=V\). 
+  Let \(\Phi:k[x_0,\cdots,x_n] \to k[x_0,\cdots,x_{i-1},x_{i+1},\cdots,x_n],f(x_0,\cdots,x_n)\mapsto f(x_0,\cdots,x_{i-1},1,x_{i+1},\cdots,x_n)\). 
+  Now we prove \( \Phi(\ide(T_1))=\ide(W_1)\). For \(f(x_0,\cdots,x_{i-1},x_{i+1},\cdots,x_n) \in \ide(W_1)\), 
+
+  On one hand, assume \(f(x_0,\cdots,x_{i-1},x_{i+1},\cdots,x_n)=\sum_{j} a_j \prod_{k \neq i} x_k^{j_k}\). 
+  Consider \(g(x_0,\cdots,x_n)=\sum_{j} a_jx_i^{d-\sum_{k \neq i} j_k} \prod_{k \neq i} x_k^{j_k} \in k[x_0,\cdots,x_n]\) is homogenous poly. 
+  Where \(d \geq \deg f\) is a integer. Easily \(\Phi(g)=f\). Now we prove \(g \in \ide(T_1)\). 
+  For \([x_0,\cdots,x_n] \in T_1\), we have \(g(x_0,\cdots,x_n)=0 \iff f(\phi_i(x_0,\cdots,x_n))=0\). 
+  Since \([x_0,\cdots,x_n]\in T_1\) we get \(\phi_i(x_0,\cdots,x_n) \in W_1\), so \(g(x_0,\cdots,x_n)=f(\phi_i(x_0,\cdots,x_n))=0\). 
+  So we get \(\ide(W_1)\subset \Phi(\ide(T_1))\). 
+
+  On the other hand, Assume \(g(x_0,\cdots,x_n) \in \ide(T_1)\) is homogenous poly. 
+  Consider 
+  \[f(x_0,\cdots,x_{i-1},x_{i+1},\cdots,x_n)=\Phi(g)(x_0,\cdots,x_n)=g(x_0,\cdots,x_{i-1},1,x_{i+1},\cdots,x_n)\] 
+  For \((x_0,\cdots,x_{i-1},x_{i+1},\cdots,x_n) \in W_1\), we have 
+  \[f(x_0,\cdots,x_{i-1},x_{i+1},\cdots,x_n)=g(x_0,\cdots,x_{i-1},1,x_{i+1},\cdots,x_n)\] 
+  Easily \(\phi_i(x_0,\cdots,x_{i-1},1,x_{i+1},\cdots,x_n)=(x_0,\cdots,x_{i-1},x_{i+1},\cdots,x_n) \in W_1\), \\
+  so \([x_0,\cdots,x_{i-1},1,x_{i+1},\cdots,x_n] \in T_1\). So \(g(x_0,\cdots,x_{i-1},x_{i+1},\cdots,x_n)=0\). 
+  So we get \(f=\Phi(g) \in \ide(W_1)\). 
+
+  So we get \(\Phi(\ide(T_1))=\ide(W_1)\). Since \(\ide(V)=\ide(S_1)=\ide(T_1)\), we get \(\Phi(\ide(V))=\ide(W_1)\). 
+  Now we prove \(W_1=\phi_i(V \cap U_i)\).
+
+  For \((x_0,\cdots,x_{i-1},x_{i+1},\cdots,x_n) \in \phi_i(V \cap U_i)\), we get \([x_0,\cdots,x_{i-1},1,x_{i+1},\cdots,x_n] \in V\). 
+  For any \(f(x_0,\cdots,x_{i-1},x_{i+1},\cdots,x_n) \in \Phi(\ide(V))\), there exists \(g \in \ide(V)\) such that \(f=\Phi(g)\). 
+  So \(f(x_0,\cdots,x_{i-1},x_{i+1},\cdots,x_n)=g(x_0,\cdots,x_{i-1},1,x_{i+1},\cdots,x_n)=0\). 
+  So \((x_0,\cdots,x_{i-1},x_{i+1},\cdots,x_n) \in \van(\Phi(\ide(V)))= \van(\ide(W_1))=W_1\). 
+  So \(W_1 = \phi_i(V \cap U_i)\). 
+
+  It's contradiction with \(W_1,W_2 \subsetneq \phi_i(V \cap U_i)\). 
+  So finally we get \(\phi_i(V \cap U_i)\) is irreducible. 
+\end{solution}
+\end{document}

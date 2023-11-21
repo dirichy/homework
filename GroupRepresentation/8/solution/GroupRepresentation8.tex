@@ -1,0 +1,68 @@
+%!Mode:: "TeX:UTF-8"
+%!TEX encoding = UTF-8 Unicode
+%!TEX TS-program = xelatex
+\documentclass{ctexart}
+\newif\ifpreface
+%\prefacetrue
+\input{../../../global/all}
+\begin{document}
+\large
+\setlength{\baselineskip}{1.2em}
+\ifpreface
+    \input{../../../global/preface}
+\newgeometry{left=2cm,right=2cm,top=2cm,bottom=2cm}
+\else
+\newgeometry{left=2cm,right=2cm,top=2cm,bottom=2cm}
+\maketitle
+\fi
+%from_here_to_type
+\begin{problem}
+  \(R\) is a ring with identity element.
+  If every non zero element in \(R\) is inversible, we call \(R\) is division ring.
+  Prove: if \( D\) is a division ring, then \(M_n(D)\) is a monocycle.
+\end{problem}
+\begin{solution}
+  Assume \(I\) is a non-zero two-sided ideal of \(M_n(D)\), now we only need to prove \(I=M_n(D)\). 
+  Only need to prove \(E_{ij} \in I,\forall i,j\). 
+  Since \(I \neq \{0\}\), assume \(A \in I\) and \(A_{st} \neq 0\). 
+  Then \(\forall i,j,E_{is}AE_{tj} \in I\). i.e., \(a_{st} E_{ij} \in I\). 
+  So \(a_{st}^{-1}I_n a_{st}E_{ij} \in I\), i.e., \(E_{ij} \in I\). 
+  So \(I = M_n(D)\). 
+\end{solution}
+
+\begin{problem}
+  \(V\) is right module of division ring \(D\), let \(\hom_D(V,V)\) is the set of all module isomorphic of \(V\). 
+  Given \(\dim_DV=n\), prove that \(\hom_D(V,V) \cong M_n(D)\). 
+\end{problem}
+
+\begin{solution}
+  Assume \(\{a_1,\cdots,a_n\} \) is a maximal linearly indenpendent set of \(V\). 
+  First we prove \(\forall x \in V,\exists ! d_1,\cdots,d_n \in D\) such that \(x = \sum_{k=1}^{n} d_ka_k\). 
+  
+  Existence: Since \(A\) is maximal linearly indenpendent set, we have \(A \cup \{ x \}\) is not linearly indenpendent. 
+  So \(\exists t_1,\cdots,t_n,t \in D\) such that \(\sum_{k=1}^{n} t_ka_k +tx =0\) and \(t_1,\cdots,t_n,t\) are not all \(0\). 
+  If \(t=0\),  then we get \(a_1,\cdots,a_n\) are not linearly indenpendent, contradiction! 
+  So \(t \neq 0\). Since \(D\) is division ring, we get \(\exists w \in D\) such that \(tw=wt =1\). 
+  Let \(d_k=-wt_k,k=1,\cdots,n\), then \(\sum_{k=1}^{n} d_ka_k=\sum_{k=1}^{n}-wd_ka_k=wtx=x \).
+
+  Uniqueness: If \(x=\sum_{k=1}^{n} d_ka_k=\sum_{k=1}^{n} t_k a_k\), then \(\sum_{k=1}^{n} (d_k-t_k)a_k=0\). 
+  Since \(a_k,k=1,\cdots,n\) is linearly indenpendent, we get \(d_k-t_k=0,k=1,\cdots,n\). 
+  So the form is unique. 
+
+  Now let \(f_j:V \to D,\sum_{k=1}^{n} d_ka_k \mapsto d_j\), for \(j=1,\cdots,n\). Then \(f_k\) is well-defined. 
+  Let \(F:\hom_D(V,V) \to M_n(D), F(\phi)_{ij}:=f_i(\phi(a_j))\). Now we prove \(F\) is isomorphic. 
+
+  Since  \(\phi(\sum_{k=1}^{n} d_ka_k)=\sum_{k=1}^{n} d_k \phi(a_k)\), so 
+  \(\phi(\sum_{k=1}^{n} d_ka_k)_i=\sum_{k=1}^{n} d_k F(\phi)_{ik}\). 
+  So \(\phi\) can be reperesented by \(F(\phi)\), so \(F\) is injection. 
+
+  For \(A \in M_n (D)\), assume \(A=(a_{ij})\). Let \(\phi(\sum_{k=1}^{n} d_ka_k)_i:=\sum_{k=1}^{n} d_ka_{ik}\). 
+  Easily we get \(\phi \in \hom_D(V,V)\). And \(F(\phi)=A\). So \(F\) is surjective. 
+
+  Easily \(F(\phi \psi)_{ij}=f_i(\phi \psi a_j)=f_i(\phi \sum_{k=1}^{n} f_k(\psi a_j)a_k)=\sum_{k=1}^{n} F(\phi)_{ik}F(\psi)_{kj}\). 
+  So \(F(\phi \psi)=F(\phi) F(\psi)\). 
+  And obviously \(F(a \phi+ b \psi)=aF(\phi)+b F(\psi)\). 
+
+  So all in all we get \(F\) is a isomorphic. 
+\end{solution}
+\end{document}
