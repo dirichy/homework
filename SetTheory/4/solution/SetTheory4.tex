@@ -5,6 +5,7 @@
 \newif\ifpreface
 \prefacetrue
 \input{../../../global/all}
+\crefname{enumi}{}{}
 \begin{document}
 \large
 \setlength{\baselineskip}{1.2em}
@@ -16,7 +17,7 @@
 \newgeometry{left=2cm,right=2cm,top=2cm,bottom=2cm}
 %from_here_to_type
 \begin{problem}
-Consider \(\mathbb{Q}=\mathbb{Z} \times (\mathbb{Z} \setminus \{0\})/\sim\), where \((a,b)\sim(c,d) \iff ad=bc\).
+Consider \(\mathbb{Q}=\mathbb{Z} \times (\mathbb{Z} \setminus \{0\})/\sim\), where \((a,b)\sim(c,d) \iff ad=bc\).j
 Define \(+_\mathbb{Q},\cdot_\mathbb{Q}\) and \(<_\mathbb{Q}\) and verify that your definitions
 doesn't depend on the choice of representatives.
 \end{problem}
@@ -112,7 +113,7 @@ If $S$ is a countable set of reals, then $|\mathbb{R}-S|=\mathfrak{c}$.
     \item \label{it:1}If \(s,t,u \in T\), then \(R_{stu} :=\{\delta_{st} ,\delta_{tu} ,\delta_{us} \}\) has at most \(2\) elements. 
       And if \(p,q \in R_{stu}\), then \(p \subset q \vee q \subset p\). 
     \item \label{it:2}\(\prec \) is a linear ordering of \(T\) which extends \(\sqsubset\). 
-    \item For every \(t \in T\), Prove \(T^t:=\{s \in T:t \sqsubset s\}\) is an interval in \((T,\prec)\). 
+    \item \label{it:3}For every \(t \in T\), Prove \(T^t:=\{s \in T:t \sqsubset s\}\) is an interval in \((T,\prec)\). 
   \end{enumerate}
 \end{problem}
 
@@ -163,13 +164,25 @@ If $S$ is a countable set of reals, then $|\mathbb{R}-S|=\mathfrak{c}$.
 \begin{problem}
   \begin{enumerate}
     \item Prove that \(\prec\) is linear ordered on \(T \cup B_T\). 
-    \item For every \(t \in T\), prove that \(B_t = \{f \in T \cup B_T:t \in f\}\) is interval in \((T \cup B_T,\prec)\). 
+    \item For every \(t \in T\), prove that \(B_t = \{f \in B_T:t \in f\}\cup\{f \in T:t \sqsubset f\}\) is interval in \((T \cup B_T,\prec)\). 
   \end{enumerate}
 \end{problem}
 
 \begin{solution}
   \begin{enumerate}
-    \item We define \(\theta\) same as 
+    \item consider a bigger tree \(U\). For \(f \in T\) let \(\theta(f)= f\), for \(f \in B_T\) we let \(\theta(f)\) is a map 
+      from \(ordertype(\dom(f))\) to \(X\), and \(\theta(f)(\beta):=g(\beta)\), where \(g \in f \) and \(\beta \in \dom(g)\). 
+      Let \(U=\theta(T \cup B_T)\). Then easily \(T \subset U\). Now we prove \(\theta\) is isomorphic from \((T \cup B_T,\prec)\) to \((U,\prec)\). 
+      Easily for \(f,g \in T\) we have \(f \sqsubset g \iff \theta(f) \sqsubset \theta(g)\). 
+ 
+      And for \(f \in T,g \in B_T\) we have \(f \in g \iff \theta(f)\sqsubset \theta(g)\). 
+      So from the defination of \(\prec\) we get \(\theta\) is isomorphic. 
+      Since we have proved \((U,\prec)\) is linear order(\Cref{it:2}), we get \((T \cup B_T,\prec)\) is linear order, too. 
+    \item Since \(\theta(B_t)=U^{\theta(t)}\) is an interval(\Cref{it:3}), we get \(B_t\) is interval, too.
   \end{enumerate}
 \end{solution}
+
+\begin{problem}
+  
+\end{problem}
 \end{document}
