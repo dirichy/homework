@@ -81,7 +81,7 @@ So we can delete the element whose second coordinary is \(0,1\), and \(\theta\) 
 Do this repeatedly, we get \(\theta(x,2n+1)=(x,2n+1)\). 
 So \(a_n=\card\{(x,2n+1)\in \tau_a\}=\card \{(x,2n+1) \in \tau_b\}=b_n\) and thus \(a=b\).
 \end{solution}
-\begin{problem}
+\begin{problem}\label{pro:2}
 The set of all algebraic reals is countable.
 \end{problem}
 
@@ -90,7 +90,7 @@ The set of all algebraic reals is countable.
   Consider \(A_n:=\{x \in \mathbb{C}:f(x)=0\}\) is finite set. Then we get \(\cup_{n \in \mathbb{N}}A_n\) is at most countable. 
   Obviouly \(\bigcup_{n \in \mathbb{N} } A_n\) is infinite, so it's countable. 
 \end{solution}
-\begin{problem}
+\begin{problem}\label{pro:1}
 If $S$ is a countable set of reals, then $|\mathbb{R}-S|=\mathfrak{c}$.
 [Use $\mathbb{R} \times \mathbb{R}$ rather than $\mathbb{R}$ (because $|\mathbb{R} \times \mathbb{R}|=2^{\aleph_0}$ ).]
 \end{problem}
@@ -107,6 +107,19 @@ If $S$ is a countable set of reals, then $|\mathbb{R}-S|=\mathfrak{c}$.
   Easily we get \(f\) is injection. So \(\card \mathbb{R} \times \mathbb{R} \setminus T=\mathfrak{c}\). 
 \end{solution}
 
+\begin{problem}
+  \begin{enumerate}
+    \item Prove that the set of all irrational number in \(\mathbb{R}\) has cardinality \(\mathfrak{c}\).  
+    \item Prove that the set of all transcendental numbers  in \(\mathbb{R}\) has cardinality \(\mathfrak{c}\). 
+  \end{enumerate}
+\end{problem}
+
+\begin{solution}
+  \begin{enumerate}
+    \item Since \(\card \mathbb{Q}\) is countable, from \Cref{pro:1} we get \(\card(\mathbb{R} \setminus \mathbb{Q})=\mathfrak{c}\). 
+    \item Since the set of all algebraic nbumber is countable(\Cref{pro:2}), for the same reason we get the set of transcendental number has cardinality \(\mathfrak{c}\). 
+  \end{enumerate}
+\end{solution}
 \begin{problem}
   Assume \(T\) is a tree. 
   \begin{enumerate}[ref=\theproblem.\arabic*]
@@ -142,7 +155,7 @@ If $S$ is a countable set of reals, then $|\mathbb{R}-S|=\mathfrak{c}$.
       Easily \(f \not< f , \forall f \in B_U\). And for \(f \neq g,f<g \vee g<f\). 
       Assume \(f<g<h\), to prove \(f<h\).
 
-      If \(n_{fg}< n_{gh}\) then we get \(f(n_{fg})<g(n_{fg})=h(n_{fg})\). 
+      If \(n_{fg}< n_{gh} \) then we get \(f(n_{fg})<g(n_{fg})=h(n_{fg})\). 
       So \(n_{fh}\leq n_{fg}\). From \Cref{it:1} we get \(n_{fh}=n_{fg} \vee n_{fh}=n_{gh}\). 
       So \(n_{fh}=n_{fg}\), and thus \(f<h\). 
 
@@ -180,9 +193,109 @@ If $S$ is a countable set of reals, then $|\mathbb{R}-S|=\mathfrak{c}$.
       Since we have proved \((U,\prec)\) is linear order(\Cref{it:2}), we get \((T \cup B_T,\prec)\) is linear order, too. 
     \item Since \(\theta(B_t)=U^{\theta(t)}\) is an interval(\Cref{it:3}), we get \(B_t\) is interval, too.
   \end{enumerate}
+  
 \end{solution}
 
 \begin{problem}
-  
+   Prove that if \(X\) is Suslinnnn line, then \(X^2\) is not c.c.c.
 \end{problem}
+
+\begin{solution}
+  Let \(\mathcal{A}:=\{Y \subset X:\card (X\setminus Y) \leq\omega\}\). 
+  For every \(Y \in \mathcal{A}\), let \(\theta(Y):=\{(a,c) \subset X:(a,c) \cap Y =\varnothing \wedge a<c\}\). 
+  Since \(X\) is not separable, we know \(Y\) is not dense in \(X\), so \(\theta(Y) \neq \varnothing\).
+  So we can use AC to get a map \(\tau:\mathcal{A} \to X \times X \times X,Y \mapsto (a,b,c)\), where \((a,c) \cap Y = \varnothing\) and \(a<b<c\). 
+  Now we give a map from \(\omega_1\) to \(X \times X \times X\) recursively. 
+  Assume for some cardinary \(\alpha\) we have defined \(f(\beta)\) for every \(\beta<\alpha\), now we give \(f(\alpha)\). 
+  Let \(f(\alpha):=\tau(\{b:\exists a,c \in X,(a,b,c) \in f[\alpha]\})\). 
+  Since \(\alpha<\omega_1\) is countable, we get the set \(\{b:\exists a,c \in X,(a,b,c) \in f[\alpha]\}\) is countalbe, so it's in \(\dom(\tau)\). 
+  So the defination of \(f\) is well. 
+
+  Now consider \(\{(a,b)\times(b,c):(a,b,c) \in \ran(f)\}\). From the defination of \(f\) we easily get they are disjoint open interval. 
+  And easily we get \(f\) is injective, so \(\ran(f)\) is uncountable. So we get a class of uncountable disjoint open interval in \(X \times X\). 
+  So we obtain \(X \times X \) is not c.c.c.
+\end{solution}
+
+\begin{problem}\label{pro:3}
+  Assume \(P\) is a perfect set and \(P \cap (a,b) \neq \varnothing\). Prove that \(\card(P \cap (a,b))=\mathfrak{c}\). 
+\end{problem}
+\begin{lemma}\label{lem:1}
+  If \(P\) is a perfect set and \(P \cap (a,b) \neq \varnothing\), then \(\exists c \in (a,b) \cap P\) such that \(P \cap (a,c),P \cap(c,b)\neq \varnothing\). 
+\end{lemma}
+\begin{proof}
+  Sicne \(P \cap(a,b) \neq \varnothing\), take \(x \in P \cap (a,b)\). 
+  Since \(P\) is perfect set, and \((a,b)\) is open, we get \(\exists y \neq x,y \in P \cap (a,b)\). 
+  without loss of generality we assume \(x<y\). Then \(y \in (x,c) \cap P\), so \(\exists z \neq y,z \in (x,c) \cap P\) for the same reason. 
+  Without loss of generality we assume \(y<z\). Now let \(c=y\), we get \(c \in P \cap (a,b)\) and \(x \in (a,c) \cap P,z \in (c,b) \cap P\). 
+  So the lemma have been proved. 
+\end{proof}
+\begin{solution}
+  To prove \(\card(P \cap(a,b))=\mathfrak{c}\), we only need to find a injective from \((0,1)\) to \((P \cap (a,b)) \). 
+  First we consider the tree \(T:=\fun{<\omega}{2}\). We define \(\tau:T \to \{(m,n) \in X \times X:m<n,\exists x \in P,m<x<n\}\) recursively. 
+  Let \(\tau(\varnothing)=(a,b)\). Assume for \(x \in T\) we have defined \(\tau\) on \((\cdot,x)_T\). Now we need to give \(\tau(x)\). 
+  Assume \(ordertype(x)=n+1\) for some \(n \in \mathbb{N}\). Then \(\dom(x)=n+1\). 
+  Consider \(y=x|_{n} <_T x\), assume \(\tau(y)=(m,n)\). 
+  From \Cref{lem:1} we know \(\exists l \in P \cap (m,n)\) such that \(P \cap (m,l),P \cap (l,n) \neq \varnothing\). 
+  If \(x(n)=0\) we let \(\tau(x)=(m,l)\); else we get \(x(n)=1\), we let \(\tau(x)=(l,n)\). 
+
+  From the defination of \(\tau\) we can easily get \(f \sqsubset g \to \tau(f)_1 \leq \tau(g)_1 \leq \tau(g)_2 let \tau(f)_2\). 
+  Now we construct \(\theta:(0,1) \to P \cap (a,b)\). For \(x=\sum_{k=1}^{\infty} \frac{a_k}{2^k} \in (0,1)\), let \(f:\omega \to 2,f(k)=a_k\). 
+  Consider \(f|_{n} \in T\), assume \(\theta(f|_{n})=(m_k,n_k)\). 
+  Then we get \(\bigcap_{k \in \mathbb{N}} [m_k,n_k]\cap P \neq \varnothing\) since they are descending compect set. 
+  Let \(\theta(x):= \min \bigcap_{k \in \mathbb{N}} [m_k,n_k]\cap P\). 
+
+  First we prove \(\theta(x) \in (a,b) \cap P\). Obviously \(\theta(x) \in P \cap [a,b]\), since \([m_k,n_k] \subset [a,b]\). 
+  Since \(x \in (0,1),\exists k,a_k =0\). Then \([m_k,n_k]= [m_{k-1},l_{k-1}]\), where \(l_{k-1}<m_{k-1} \leq b\). 
+  So we get \(\theta(x)<b\). For the same reason we get \(\theta(x)>a\). 
+
+  Now we only need to prove \(\theta\) is injective. Assume \(x \neq y\). 
+  Assume \(x=\sum_{k=1}^{\infty} \frac{a_k}{2^k},y=\sum_{k=1}^{\infty} \frac{b_k}{2^k}\). Without loss of generality we assume \(x<y\). 
+  And we can assume \(\lim a_k,\lim b_k \neq 1\). Assume \(t=\min\{k:a_k<b_k\}\). 
+  Let \(f(k)=a_k,g(k)=b_k\), and \(\tau(f|_{t+1})=(m,n),\tau(g|_{t+1})=(n,l)\). 
+  Then \(\theta(x) \leq n \leq \theta(y)\). Now we only need to prove \(\theta(x)<n\). 
+  Since \(\lim a_k neq 1\), we obtain \(\exists i>t,a_i=0\). Then \(\tau(f|_{k+1})_2<n\), and thus \(\theta(x)<n \leq \theta(y)\). 
+
+  So we have found a injective from \((0,1)\) to \(P cap (a,b)\). And obviously \((a,b) \cap P \subset \mathbb{R}\), we get \(\card((a,b) \cap P)=\mathfrak{c}\). 
+\end{solution}
+
+\begin{problem}
+  If \(P_1,P_2\) are perfect set and \(P_1 \subsetneq P_2\), then \(\card(P_2\setminus P_1)=\mathfrak{c}\). 
+\end{problem}
+
+\begin{solution}
+Take \(x \in P_2 \setminus P_1\). Since \(P_1\) is closed and \(x \notin P_1\), we know \(\exists a,b \in \mathbb{R},a<x<b,(a,b) \cap P_1 = \varnothing\). 
+Now consider \((a,b) \cap P_{2}\), since \(x \in (a,b) \cap P_2 \neq \varnothing\), from \Cref{pro:3} we get \(\card((a,b) \cap P_2)=\mathfrak{c}\). 
+Noting \((a,b) \cap P_2 \subset P_1^{c} \cap P_2 = P_2 \setminus P_1 \subset \mathbb{R}\), we finally get \(\card(P_2 \setminus P_1)=\mathfrak{c}\). 
+\end{solution}
+
+\begin{problem}
+  If \(P\) is perfect set, then \(P^{*}=P\). 
+\end{problem}
+
+\begin{solution}
+  First we prove \(P \subset P^{*}\). Take \(a \in P\), consider a neibor of \(a\), named \(I\). 
+  Since \(a \in I \cap P \neq \varnothing\), from \Cref{pro:3} we get \(\card(P \cap I)=\mathfrak{c}\). 
+  So \(a \in P^{*}\). 
+
+  Second we prove \(P^{*} \subset P\). From the defination of \(P^{*}\) we know \(P^{*}\subset \overline{P} = P\). 
+  So we get \(P = P^{*}\). 
+\end{solution}
+
+\begin{problem}\label{pro:4}
+  If \(F\) is colsed and \(P \subset F\) is a perfect set, then \(P \subset F^{*}\). 
+\end{problem}
+
+\begin{solution}
+  From the defination of \({}^{*}\) we easily get \(A \subset B \to A^{*} \subset B^{*}\). 
+  So we get \(P = P^{*} \subset F^{*}\). 
+\end{solution}
+
+\begin{problem}
+  Assume \(F=P \cup S\) is closed set, where \(P\) is perfect and \(S\) is at most countable. 
+  Prove that \(F^{*}=P\). 
+\end{problem}
+
+\begin{solution}
+  From 
+\end{solution}
 \end{document}
