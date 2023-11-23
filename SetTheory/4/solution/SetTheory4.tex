@@ -238,7 +238,7 @@ If $S$ is a countable set of reals, then $|\mathbb{R}-S|=\mathfrak{c}$.
   From \Cref{lem:1} we know \(\exists l \in P \cap (m,n)\) such that \(P \cap (m,l),P \cap (l,n) \neq \varnothing\). 
   If \(x(n)=0\) we let \(\tau(x)=(m,l)\); else we get \(x(n)=1\), we let \(\tau(x)=(l,n)\). 
 
-  From the defination of \(\tau\) we can easily get \(f \sqsubset g \to \tau(f)_1 \leq \tau(g)_1 \leq \tau(g)_2 let \tau(f)_2\). 
+  From the defination of \(\tau\) we can easily get \(f \sqsubset g \to \tau(f)_1 \leq \tau(g)_1 \leq \tau(g)_2 \leq \tau(f)_2\). 
   Now we construct \(\theta:(0,1) \to P \cap (a,b)\). For \(x=\sum_{k=1}^{\infty} \frac{a_k}{2^k} \in (0,1)\), let \(f:\omega \to 2,f(k)=a_k\). 
   Consider \(f|_{n} \in T\), assume \(\theta(f|_{n})=(m_k,n_k)\). 
   Then we get \(\bigcap_{k \in \mathbb{N}} [m_k,n_k]\cap P \neq \varnothing\) since they are descending compect set. 
@@ -258,7 +258,7 @@ If $S$ is a countable set of reals, then $|\mathbb{R}-S|=\mathfrak{c}$.
   So we have found a injective from \((0,1)\) to \(P cap (a,b)\). And obviously \((a,b) \cap P \subset \mathbb{R}\), we get \(\card((a,b) \cap P)=\mathfrak{c}\). 
 \end{solution}
 
-\begin{problem}
+\begin{problem}\label{pro:6}
   If \(P_1,P_2\) are perfect set and \(P_1 \subsetneq P_2\), then \(\card(P_2\setminus P_1)=\mathfrak{c}\). 
 \end{problem}
 
@@ -290,12 +290,95 @@ Noting \((a,b) \cap P_2 \subset P_1^{c} \cap P_2 = P_2 \setminus P_1 \subset \ma
   So we get \(P = P^{*} \subset F^{*}\). 
 \end{solution}
 
-\begin{problem}
+\begin{problem}\label{pro:5}
   Assume \(F=P \cup S\) is closed set, where \(P\) is perfect and \(S\) is at most countable. 
   Prove that \(F^{*}=P\). 
 \end{problem}
 
 \begin{solution}
-  From 
+  From \Cref{pro:4} we get \(F^{*} \supset P\), now we only need to prove \(F^{*}\subset P\). 
+  Assume \(a \in F^{*}\), then for any neibor of \(a\), named \(I\), we get \(I \cap F\) is uncountable. 
+  Since \(F=P \cup S\) and \(S\) is countable, we easily get \(I \cap P \neq \varnothing\). 
+  So we get \(a \in \overline{P}=P\). So \(F^{*} \subset P\). 
+\end{solution}
+
+\begin{problem}
+  Assume \(F\) is uncountable closed set, prove that \(F=F^{*} \cup (F\setminus F^{*})\) is the unique way to part \(F\) into a perfect set and an at most countable set. 
+\end{problem}
+
+\begin{solution}
+  First we prove \(F^{*} \neq \varnothing\). If \(F^{*}=\varnothing\), then \(\forall a \in F^{*},\exists I_a\) is neibor of \(a\) such that 
+  \(I_a \cap F\) is at most countable. 
+  Since \(F= \bigcup_{n \in \mathbb{N}} F \cap [-n,n]\) is uncountable, we know at least one of \(F \cap [-n,n]\) is uncountable, name it \(E\). 
+  Then \(E\) is compect. Notin \(\{I_a:a \in E\}\) is a covery of \(E\), so there exists finite subcovery. 
+  Then we get \(E=\bigcap_{k=1}^{n} I_{a_k}\) is countable, contradiction! 
+  So \(F^{*} \neq \varnothing\).
+
+  Next we prove \(F^{*}\) is colsed. From the defination of \({}^{*}\) it's obvious.
+
+  Then we prove \(F \setminus F^{*}\) is at most countable. 
+  Consider \(F_n:=\{x \in F\setminus F^{*}:d(x,F^{*})\geq\frac{1}{n}\}\). We get \(F \setminus F^{*}=\bigcup_{n \in \mathbb{N}^{+}} F_n \). 
+  So we only need to prove \(F_n\) is countable. If not, since \(F_n\) is uncountable colsed set, from above we easily know \(F_n^{*} \neq \varnothing\). 
+  But \(F_n^{*} \subset F_n \subset F\setminus F^{*}\) and since \(F_n \subset F\) we know \(F_n^{*}\subset F^{*}\), contradiction! 
+  So we get \(F\setminus F^{*}\) is at most countable. 
+
+  Now we prove \(F^{*}\) is perfect set. Only need to prove every \(a \in F^{*}\) is limit point. 
+  For any neibor \(I\) of \(a\), we easily know \(I \cap F\) is uncountable. 
+  Sicne \(F \setminus F^{*}\) is countable, we get \(I \cap F^{*}\neq \varnothing\). 
+  So \(a\) is limit point. 
+
+  Finally we prove it's unique. Assume \(F=P_1 \cup S_1=P_2 \cup S_2\), where \(P_1,P_2\) are perfect sets and \(S_1,S_2\) are atmost countable. 
+  Consider \(S:=S_1 \cup S_2,P:=P_1 \cap P_2 = F\setminus S\). Since \(S\) is atmost countable, we get \(P \neq \varnothing\). 
+  So \(P\) is perfect, too. 
+  If \(P \subsetneq P_1\), then from \Cref{pro:6} we get \(\card(P_1\setminus P)=\mathfrak{c}\). 
+  But \(P_1\setminus P \subset S_2\) is at most countable, contradiction! 
+  So \(P=P_1\). For the same reason we get \(P=P_2\). So \(P_1=P_2\) and thus \(S_1=S_2\). 
+\end{solution}
+
+\begin{problem}
+  If \(B\) is Borel and \(f\) is continuous, then \(f_{-1}(B)\) is Borel. 
+\end{problem}
+
+\begin{solution}
+  Let \(\mathcal{A}:=\{A \in \mathcal{B}:f_{-1}(A) \in \mathcal{B}\}\). 
+  Since \(f\) is continuous we get for open set \(I \subset \mathbb{R}, f_{-1}(I)\) is open, thus Borel. 
+  So \(I \in \mathcal{A}\). Now we need to prove \(\mathcal{A}=\mathcal{B}\), only need to prove \(\mathcal{A}\) is \(\sigma\)-field. 
+  
+  First, for \(A \in \mathcal{A}\), we have \(f_{-1}(A^{c})=(f_{-1}(A))^{c} \in \mathcal{B}\). 
+
+  Second, for \(A_n \in \mathcal{A}, \forall n \in \mathbb{N}\), we have \(f_{-1}(\bigcup_{n \in \mathbb{N}} A_n)=\bigcup_{n \in \mathbb{N}} f_{-1}(A_n) \in \mathcal{B}\). 
+
+  Finally, it's obviously that \(\varnothing,\mathbb{R} \in \mathcal{A}\). 
+
+  So we get \(\mathcal{A}\) is \(\sigma\)-field, thus \(\mathcal{B}=\mathcal{A}\). 
+  So \(B \in \mathcal{A}\), thus \(f_{-1}(B) \in \mathcal{B}\). 
+\end{solution}
+
+\begin{problem}
+  For closed set \(F \subset \mathcal{N}\), let \(T_F:=\{s \in \mathrm{Seq}:\exists f \in F,s \subset f\}\). 
+  Prove that \(T_F\) has no maximal node. And prove \(F \mapsto T_F\) is bijection from closed set in \(\mathcal{N}\) and sequnetial trees with no maximal node. 
+\end{problem}
+
+\begin{solution}
+  For \(s \in T_F\), we assume \(s \subset f \in F\). 
+  Since \(s\) is finite, we can assume \(s = f|_{n}\). Then \(s \subsetneq f|_{n+1} \in T_F\), 
+  so \(s\) is not maximal node. So \(T_F\) has no maximal node. 
+
+  Now we prove \(F \mapsto T_F\) is injective. 
+  Assume \(T_F=T_G\), where \(F,G\) are closed subset of \(\mathcal{N}\). 
+  Only need to prove \(F=G\). By symetry we only need to prove \(F \subset G\). 
+  For \(f \in F\), from the defination of \(T_F\) we know \(\forall n \in \mathbb{N},f_n:=f|_{n} \in T_F=T_G\). 
+  From defination of \(T_G\) we get \(\exists g_n \in G,g_n|_{n} = f|_{n}\). Then \(d(g_n,f) \leq \frac{1}{2^{n}}\). 
+  So \(g_n \to f\). Since \(G\) is closed, we get \(f \in G\). 
+
+  Finally we prove \(F \to T_F\) is surjective. 
+  Assume \(T \subset \mathrm{Seq}\) has no maximal node. Let \(F:=\{f \in \mathcal{N}:\forall n,f|_{n} \in T\}\). 
+  Now we prove \(T_F = T\). Easily we get \(T_F \subset T\), only need \(T \subset T_F\). 
+  For \(s \in T\), we need to prove \(s \in T_F\), i.e., \(\exists f \in F,s \subset f\). 
+  Now we construct \(f\) recursively. For \(n \in \dom(s)\) we let \(f(n)=s(n)\). 
+  Now assume \(n \notin \dom(s)\) and for \(m<n\) we have defined \(f(m)\) and \(f|_{n} \in T\). 
+  Since \(T\) has no maximal, we get \(f|_{n}\) is not maximal. So \(\{t \in \mathbb{N}:f|_{n}\cup \{(n,t)\} \in T\} \neq \varnothing\). 
+  Let \(f(n):=\min \{t \in \mathbb{N}:f|_{n} \cup \{(n,t)\} \in T\}\) is OK. 
+  Easily we get \(f|_{n} \in T,\forall n \in \mathbb{N}\). So \(f \in F\), and \(s \subset f\). 
 \end{solution}
 \end{document}
