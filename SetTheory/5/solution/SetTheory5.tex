@@ -1,6 +1,6 @@
 %!Mode:: "TeX:UTF-8"
 %!TEX encoding = UTF-8 Unicode
-%!TEX TS-program = xelatex × 2
+%!TEX TS-program = xelatex
 \documentclass{ctexart}
 \newif\ifpreface
 \prefacetrue
@@ -16,5 +16,18 @@
 \newgeometry{left=2cm,right=2cm,top=2cm,bottom=2cm}
 \crefname{enumi}{}{}
 %from_here_to_type
+\begin{problem}
+  Prove:\(F \subset \mathcal{N}\) is closed set \(\iff F = [T]\) for some \(T \subset \fun{<\omega}{\omega}\). 
+\end{problem}
+\begin{solution}
+  \begin{itemize}
+    \item \(\implies\): Let \(T:=T_F\), now we need to prove \(F=[T]\). 
+      Form the defination of \(T_F\) and \([T]\) easily we get \(F \subset [T]\). 
+      Now we prove \([T] \subset F\). For \(f \in [T]\), we get \(f\upharpoonright n \in T\). 
+      i.e., \(\forall n \in \mathbb{N}, \res{f}{n}=\res{g}{n}\) for some \(g \in F\). 
+      So \(d(f,F) \leq d(f,g)=\frac{1}{2^n}\). Since \(F\) is closed, we get \(f \in F\). 
 
+    \item 123
+  \end{itemize}
+\end{solution}
 \end{document}
