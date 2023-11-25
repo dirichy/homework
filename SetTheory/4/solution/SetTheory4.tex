@@ -376,9 +376,3 @@ Noting \((a,b) \cap P_2 \subset P_1^{c} \cap P_2 = P_2 \setminus P_1 \subset \ma
   Now we prove \(T_F = T\). Easily we get \(T_F \subset T\), only need \(T \subset T_F\). 
   For \(s \in T\), we need to prove \(s \in T_F\), i.e., \(\exists f \in F,s \subset f\). 
   Now we construct \(f\) recursively. For \(n \in \dom(s)\) we let \(f(n)=s(n)\). 
-  Now assume \(n \notin \dom(s)\) and for \(m<n\) we have defined \(f(m)\) and \(f|_{n} \in T\). 
-  Since \(T\) has no maximal, we get \(f|_{n}\) is not maximal. So \(\{t \in \mathbb{N}:f|_{n}\cup \{(n,t)\} \in T\} \neq \varnothing\). 
-  Let \(f(n):=\min \{t \in \mathbb{N}:f|_{n} \cup \{(n,t)\} \in T\}\) is OK. 
-  Easily we get \(f|_{n} \in T,\forall n \in \mathbb{N}\). So \(f \in F\), and \(s \subset f\). 
-\end{solution}
-\end{document}
