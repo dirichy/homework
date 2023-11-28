@@ -1,0 +1,49 @@
+%!Mode:: "TeX:UTF-8"
+%!TEX encoding = UTF-8 Unicode
+%!TEX TS-program = xelatex
+\documentclass{ctexart}
+\newif\ifpreface
+\prefacetrue
+\input{../../../global/all}
+\begin{document}
+\large
+\setlength{\baselineskip}{1.2em}
+\ifpreface
+    \input{../../../global/preface}
+\newgeometry{left=2cm,right=2cm,top=2cm,bottom=2cm}
+\else
+\newgeometry{left=2cm,right=2cm,top=2cm,bottom=2cm}
+\maketitle
+\fi
+%from_here_to_type
+\begin{problem}
+  Assume \(V \subset \mathbbm{A}_k^{n}\) is irreducible, and \(p \in V\). 
+  Let \(m_p := \{f \in k[V] : f(p) = 0\}, M_p := \{f \in k[x_1,\cdots,x_n]: f(p) = 0\}\). 
+  Prove that \(m_p \cong M_p/\ide(V)\). 
+\end{problem}
+
+\begin{solution}
+  Consider \( \theta : M_p \to m_p ,\theta(f) := f + \ide(V)\).
+  Since \( p \in V\) we get \(\theta\) is well-defined. 
+  And easily we get \(\theta\) is homomorphism. Now consider \(\ker \theta\). 
+  Obviously \(\ide(V) \subset \ker \theta\), now we prove \(\ker \theta \subset \ide(V)\). 
+  Assume \( f \in \ker\theta\), to prove \(f \in \ide(V)\). 
+  Since \(\theta(f)=\ide(V)\), we get \(f+\ide(V)=\ide(V)\), so \(f \in \ide(V)\). 
+  So \(\ker \theta = \ide(V)\). And easily \(\theta\) is surjective, so we get 
+  \(m_p=M_p/\ker \theta=M_p/\ide(V)\). 
+\end{solution}
+
+\begin{problem}
+  Assume \(V \subset \mathbbm{A}_k^n\) is irreducible, and \(p \in V,f \in k[V], f(p)\neq 0\). 
+  Consider \(V_f:= \{x \in V: f(x)\neq 0 \}\). Let \(\theta: V_f \to \mathbbm{A}_k^{n+1},x \mapsto (x,\frac{1}{f(x)})\). 
+  Let \(U = \theta(V_f)\), prove that \(T_p V \cong T_{\theta(p)} U\). 
+\end{problem}
+
+\begin{solution}
+  Write \(k[\mathbbm{A}_k^n]=k[x_1,\cdots , x_n ,y]\). Assume \(V = \van(I)= \van(f_1,\cdots, f_m)\), where \(f_i \in k[x_1,\cdots,x_n ]\). 
+  Then \(U = \van(f_1,\cdots,f_n, yf-1)\). Now consider \(\tau: T_p(V) \to \mathbbm{A}_k^{n+1}, \tau(x):=(x,\frac{1}{f(p)}-\frac{f_p^{(1)}(x)}{f^2(p)})\). 
+  Now we prove \(\tau(T_p V)=T_{\theta(p)} U\). 
+  Only need to prove \((yf-1)_{\theta(p)}^{(1)}(x,\frac{f_p^{(1)}}{f(p)})=0\). 
+  
+\end{solution}
+\end{document}

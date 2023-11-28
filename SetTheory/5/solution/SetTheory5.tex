@@ -27,7 +27,127 @@
       i.e., \(\forall n \in \mathbb{N}, \res{f}{n}=\res{g}{n}\) for some \(g \in F\). 
       So \(d(f,F) \leq d(f,g)=\frac{1}{2^n}\). Since \(F\) is closed, we get \(f \in F\). 
 
-    \item 123
+    \item \(\impliedby\): For any \([T] \in \fun{<\omega}{\omega}\), we need to prove \([T]\) is closed. 
+      Assume \(f \in \overline{[T]}\), then \(\forall n \in \mathbb{N},\exists g \in [T],\res{f}{n}=\res{g}{n}\). 
+      Since \(g \in [T]\) we get \(\res{f}{n}=\res{g}{n} \in T\). So \(f \in [ T]\). 
+      So \([T]\) is closed. 
   \end{itemize}
+\end{solution}
+
+\begin{problem}
+  Assume \(f\) is isolated point in closed set \(F \subset \mathcal{N}\), then 
+  \(\exists n \in \mathbb{N},\forall g \in F,g \neq f \to \res{g}{n} \neq \res{f}{n}\). 
+\end{problem}
+
+\begin{solution}
+  Since \(f\) is isolated, we get \(\exists n \in \mathbb{N},\forall g \in F \setminus \{f\},d(f,g)>\frac{1}{2^n}\). 
+  Then \(\res{f}{n} \neq \res{g}{n}\). 
+\end{solution}
+
+\begin{problem}
+  A closed set \(F \subset \mathcal{N}\) is perfect \(\iff T_F\) is perfecr tree. 
+\end{problem}
+
+\begin{solution}
+  \begin{itemize}
+    \item \(\implies\): For \(t \in T_F\), by defination we know \(\exists f \in F,n \in \mathbb{N},t =\res{f}{n}\).
+      Since \(f\) is perfect we know \(\exists g \in F \wedge g \neq f,d(f,g)<\frac{1}{2^{n+1}}\). 
+      Then \(t =\res{f}{n} \sqsubset g\). Since \(f \neq g\), we get \(\exists m \in \mathbb{N} \wedge m >n,\res{f}{m}\neq \res{g}{m}\). 
+      So \(t \sqsubset \res{f}{m},t \sqsubset \res{g}{m}\), and \(\res{f}{m},\res{g}{m}\) are incomparable. 
+    \item \(\impliedby\): For \(f \in F\), we need to prove \(f\) is limit point. 
+      \(\forall n \in \mathbb{N},t:=\res{f}{n} \in T_F\). 
+      So \(\exists s_1,s_2 \in T_F\) such that \(t \sqsubset s_1,s_2\) and \(s_1,s_2\) are incomparable. 
+      Then \(s_1,s_2 \sqsubset f\) is impossible. Without loss of generality assume \(s_1 \not \sqsubset f\). 
+      Then \(s_1=\res{g}{m}\) for some \(g \in F,m \in \mathbb{N}\). 
+      So \(d(f,g) \leq \frac{1}{2^n}\). So \(f\) is not isolated. 
+  \end{itemize}
+\end{solution}
+
+\begin{problem}
+  For \(\alpha <\omega_1\), we let \(\Sigma_0=\) the set of all open set in \(\mathbb{R}\), 
+  and \(\Pi_0=\) the set of all closed set in \(\mathbb{R}\). 
+  And \(\Sigma_{\alpha+1}=\{\bigcup_{n \in \mathbb{N}} A(n):A \in \fun{\mathbb{N}}{\Pi_{\alpha}}\). 
+  \(\Pi_{\alpha+1}=\{\mathbb{R}\setminus A:A \in \Sigma_{\alpha}\}\). 
+  \(\Sigma_{\alpha}=\bigcup_{\beta<\alpha} \Sigma_{\beta},\Pi_{\alpha}=\bigcup_{\beta<\alpha} \Pi _{\beta}\) for limit ordinal \(\alpha\). 
+  Prove that \(\mathcal{B}(\mathbb{R})=\bigcup_{\alpha<\omega_1} \Sigma_{\alpha}\). 
+\end{problem}
+
+\begin{solution}
+  Use MI easily we get \(\bigcup_{\alpha < \omega_1} \Sigma_{\alpha} \subset \mathcal{B}(\mathbb{R})\). 
+  Now we prove \(\mathcal{B}(\mathbb{R})\subset \bigcup_{\alpha<\omega_1} \Sigma_{\alpha}\). 
+  Since open sets is subset of \(\bigcup_{\alpha<\omega_1} \Sigma_{\alpha}\), we only need to prove \(\bigcup_{\alpha<\omega_1} \Sigma_{\alpha}=:\mathcal{A}\) is \(\sigma\)-field. 
+  Easily we get \(\Sigma_{\alpha} \subset \Sigma_{\alpha+2}\). 
+  Obviously \(\mathbb{R} \in \mathcal{A}\). For \(A \in \mathcal{A}\), assume \(A \in \Sigma_{\alpha}\). 
+  Then \(\mathbb{R}\setminus A \in \Pi_{\alpha+1} \subset \Sigma_{\alpha+1}\subset \mathcal{A}\). 
+  Assume \(A \in \fun{\mathbb{N}}{\mathcal{A}}\), let \(f \in \fun{\mathbb{N}}{\omega_1},f(n)=\min\{\alpha \in \omega_1:A(n) \in \Sigma_{\alpha}\}\). 
+  Consider \(\sup \ran f =:\gamma\). Since \(\forall \alpha \in \ran f,\alpha\) is countable. And \(\ran f\) is countable. 
+  So \(\sup \ran f\) is countable, thus \(\sup \ran f <\omega_1\). 
+  Then \(\ran A \subset \Pi_{\gamma+1} \). So we get \(\bigcup_{n \in \mathbb{N}} A(n) \subset \Sigma_{\gamma+2} \subset \mathcal{A}\). 
+  So we get \(\mathcal{A} \) is \(\sigma\)-field. So \(\mathcal{B}(\mathbb{R}) \subset \mathcal{A}\), thus \(\mathcal{A}=\mathcal{B}(\mathbb{R})\). 
+\end{solution}
+
+\begin{problem}
+  Show that \(\mathcal{M}:=\{A \subset \mathbb{R}:A \text{ is measurable}\}\) is a \(\sigma\)-field. 
+\end{problem}
+
+\begin{lemma}\label{lem:0}
+  For \(A \in \fun{\mathbb{N}}{\mathcal{P}(\mathbb{R})}\), we have \(\mu^{*}(\bigcup_{n \in \mathbb{N}} A(n)) \leq \sum_{n \in \mathbb{N}} \mu^{*}(A(n))\). 
+\end{lemma}
+
+\begin{proof}
+  For any \(\varepsilon>0,n \in \mathbb{N}, \exists O(n) \in \mathcal{O},A(n)\subset O(n) \wedge \mu^{*} (A(n)) \leq |O(n)|+\frac{\varepsilon}{2^{n+1}}\). 
+  Let \(U:= \bigcup_{ n \in \mathbb{N}} O(n)\), then \(\bigcup_{ n \in \mathbb{N}} A(n)\subset U\). 
+  So \(\mu^{*}(\bigcup_{n \in \mathbb{N}} A(n)) \leq |U| \leq \sum_{n \in \mathbb{N}} |O(n)| \leq \sum_{ n \in \mathbb{N}} \mu ^{*}(A(n))+\varepsilon\). 
+  Since \(\varepsilon\) is arbitry, we get the lemma. 
+\end{proof}
+\begin{lemma}\label{lem:1}
+  If \(G \in G_{\delta}\), then \(\forall \varepsilon >0,\exists O \in \mathcal{O},G \subset O \wedge \mu^{*}(O\setminus G)\leq \varepsilon\). 
+\end{lemma}
+
+\begin{proof}
+  We first consider \(G\) is bonded. Assume \(G \subset [-M,M],M >0\). Assume \(G =\bigcap_{n \in \mathbb{N}} O_n\), where \(O_n \in \mathcal{O}\). 
+  Then \(G=\bigcap_{n \in \mathbb{N}} (O_n \cap (-M-1,M+1))\). By convinence we assume \(O_n \subset (-M-1,M+1)\). 
+  And \(G=\bigcap_{n \in \mathbb{N}} \bigcap_{m=1}^n O_m \), by convinence we assume \(O_n \supset O_{n+1} \). 
+  
+\end{proof}
+\begin{solution}
+  First, for \(A=\mathbb{R}\), easily we can let \(F=G=\mathbb{R}\). Then \(F\) is \(F_{\sigma}\) and \(G\) is \(G_{\delta}\). 
+  Second, assume \(A \in \mathcal{M}\), consider \(B=\mathbb{R}\setminus A\). 
+  Assume \(F \subset A \subset G\) and \(\mu^{*}(G\setminus F)=0\). Then \(G^c \subset B \subset F^c\). 
+  And \(G^c\) is \(F_{\sigma}\), \(F^c\) is \(G_{\delta}\). And \(\mu^{*}(F^c\setminus G^c)=\mu^{*}(G\setminus F)=0\). 
+  So \(B \in \mathcal{M}\). 
+  Finally, assume \(A \in \fun{\mathbb{N}}{\mathcal{M}}\), we need to prove \(\bigcup_{n \in \mathbb{N}} A(n) =:A\in \mathcal{M}\). 
+  Use AC we can find \(F \in \fun{ \mathbb{N}}{F_{\sigma}},G \in \fun{ \mathbb{N}}{G_{\delta}}\) such that \(F(n)\subset A(n) \subset G(n),\mu^{*}(G(n)-F(n))=0\). 
+  Let \(T=\bigcup_{n \in \mathbb{N}} F(n)\). Since \(F(n)\) is \(F_{\sigma}\), we get \(T \in F_{\sigma}\). 
+  And easily \(T=\bigcup_{n \in \mathbb{N}} F(n) \subset \bigcup_{n \in \mathbb{N}} A(n)=A\). 
+\end{solution}
+
+\begin{problem}
+  Show that \(\mathcal{A}:=\{A \subset \mathbb{R}:A \text{ has property of Baire}\}\) is \(\sigma\)-field. 
+\end{problem}
+
+\begin{solution}
+  Easily \(\mathbb{R} \Delta \mathbb{R}\) is meager, so \(\mathbb{R} \in \mathcal{A}\). 
+
+  If \(A \in \mathcal{A}\), we need to prove \(\mathbb{R} \setminus A \in \mathcal{A}\). 
+  Assume \(G \in \mathcal{O}\) and \( A \Delta G\) is meager, write \(B=\mathbb{R}\setminus A\), 
+  only need to prove \(\exists U \in \mathcal{O}\), such that \(B\setminus U,U\setminus B\) are meager. 
+  Let \(U=\mathbb{R} \setminus \overline{G}\). Then \(B \setminus U = A \setminus \overline{G}\) is meager. 
+  Now only need to prove \(U \setminus B = \overline{ G}\setminus A\) is meager. 
+  Since \(G \setminus A\) is meager, we only need to prove \(\overline{G}\setminus G\) is meager. 
+  In fact, we can prove \(\overline{G}\setminus G\) is nowhere dense. 
+  Consider \(I \in \mathcal{O}\), we need to prove \(\exists J \subset I,J \in \mathcal{O}, J \cap \partial G = \varnothing\). 
+  If \(I \cap \partial G = \varnothing\), we can let \(J = I\). 
+  Else, assume \( a \in I \cap \partial G\). Form the defination of \(\partial G\), 
+  we get \(\exists b \in I \cap G\). Let \(J = I \cap G \neq \varnothing\) is OK. 
+  So \(B \Delta U\) is meager. 
+
+  Assume \(A \in \fun{\mathbb{N}}{\mathcal{P}(\mathcal{A})}\), we need to prove \(\bigcup_{n \in \mathbb{N}} A(n)=:A \in \mathcal{A}\). 
+  Assume \(G(n) \in \mathcal{O}\) and \(A(n) \Delta G(n)\) is meager. Consider \(G:= \bigcup_{ n \in \mathbb{N}} G(n)\). 
+  We only need to prove \(G \Delta A\) is meager. Only need \(G \setminus A,A \setminus G\) is meager. 
+  Since \(G \setminus A \subset \bigcup_{n \in \mathbb{N}} G(n) \setminus A(n)\) and \(G(n)\setminus A(n)\) is meager, we get \(G \setminus A\) is meager. 
+  For the same reason, we get \(A \setminus G \subset \bigcup_{n \in \mathbb{N}} A(n)\setminus G(n)\) is meager. 
+
+  So finally we get \(\mathcal{A}\) is \(\sigma\)-field. 
 \end{solution}
 \end{document}
