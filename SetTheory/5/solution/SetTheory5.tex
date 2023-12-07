@@ -160,10 +160,66 @@
   Then \(O \setminus A,A \setminus O\) are meager. Since \(A\) is nonmeager, \(A \setminus O\) is meager, we get \(O \neq \varnothing\). 
 
   \(\impliedby\): Assume \(O \in \mathcal{O}, O \neq \varnothing, O \setminus A\) is meager. 
-  Noting \(O \subset O \setminus A \cup A\) and \(O\) is nonmeager, we get \(A\) is nonmeager. 
+ Noting \(O \subset O \setminus A \cup A\) and \(O\) is nonmeager, we get \(A\) is nonmeager. 
 \end{solution}
 
 \begin{problem}
-  
+  Let \(C_A:= \bigcup \{O_s:s \in \fun{<\omega}{\omega},O_s\setminus A \text{ is meager}\} \). 
+  Prove that \(C_A \setminus A \) is meager. 
 \end{problem}
+
+\begin{solution}
+  We know \(\mathbb{R}\) satisfy the second countable axiom, i.e., \(\exists \mathcal{B} \subset \mathcal{O}(\fun{\omega}{\omega})\) such that \(\forall O \in \mathcal{O},\forall x \in O,\exists B \in \mathcal{B},x \in B \subset O\). 
+  Now we consider \(\mathcal{X}:=\{X \in \mathcal{B}:\exists O_s,X \subset O_s \wedge O_s \setminus A \text{ is meager }\}\). 
+  Consider \(Y= \bigcup \mathcal{X} \), we will prove \(C_A = Y\). 
+
+  On one hand, for \(x \in Y\), we get \(\exists X \in \mathcal{X}\) such that \(x \in X\). 
+  So \(\exists O_s\) such that \(x \in X \subset O_s \wedge O_s \setminus A\) is meager. So \(x \in C_A\). 
+
+  On the other hand, for \(x \in C_A\), we get \(\exists O_s,x \in O_s,O_s \setminus A\) is meager.  
+  Since \(O_s\) is open, we get \(\exists B \in \mathcal{B},x \in B \subset O_s\). 
+  So \(B \in \mathcal{X}\). Thus \(x \in Y\). 
+
+  So we get \(Y = C_A\). So \(C_A\setminus A=Y\setminus A = \bigcup_{X \in \mathcal{X}} X \setminus A \). 
+  From the defination of \(\mathcal{X}\) we know \(X \setminus A\) is meager, and Since \(\mathcal{X} \subset \mathcal{B}\) we get \(\mathcal{X}\) is countable. 
+  So finally we get \(C_A \setminus A = \bigcup_{X \in \mathcal{X}} X \setminus A\) is meager. 
+\end{solution}
+
+\begin{problem}
+  Let \(\pi:\fun{\omega}{\omega} \to \fun{\omega}{2},\pi(x)=s_{x(0)}\madd s_{x(1)}\madd\cdots\). 
+  Where \(s_{x(k)}=11\cdots10\) for even \(k\), there is \(k\) ``\(1\)'' in total, and \(s_{x(k)}=00\cdots0 1\) for odd \(k\), there is \(k\) ``\(0\)'' in total. 
+  Prove that \(\fun{\omega}{2} \setminus \ran \pi\) is countable. 
+\end{problem}
+
+\begin{solution}
+  As we all know, \(\{f \in \fun{\omega}{2}:\limsup f=\liminf f\}\) is countable. So we only need to prove \(\forall f \in \fun{\omega}{2}\setminus \ran \pi,\limsup f = \liminf f\). 
+  Consider \(g \in \fun{\omega}{2}\) and \(\liminf g=0,\limsup g=1\). We only need to prove \(g \in \ran \pi\). 
+  Only need to prove \(\exists h \in \fun{ \omega}{\omega},\pi(h)=g\). 
+  We construct \(h\) rescusively. Let \(h(0):=\min\{n \in \omega:g(n)=0\}\). 
+  Assume \(\res{h}{n}\) is already defined. Let \(M(n)=\sum_{k=0}^{n-1} (h(k)+1) \). 
+  Let \(h(n)= \min\{k:g(M(n)+k)=a_n\}\), where \(a_n=0\) for even \(n\) and \(a_n=1\) for odd \(n\). 
+  Since \(\liminf g=0 \wedge \limsup g=1\), we know \(h\) is well-defined. Now we prove \(\pi(h)=g\). 
+  For \(k<h(0)\), form the defination of \(h(0)\) we know \(g(k)=1=\pi(h)(k)\). 
+  For \(k=h(0)\) we get \(g(k)=0=\pi(h)(k)\). 
+  Now assume \(\sum_{i=0}^{n} (h(i)+1) <k \leq \sum_{i=0}^{n+1} (h(i)+1)\). 
+  Easily we know \(\mathrm{len}(s_{h(k)}=h(k)+1)\), so we get \(\pi(h)(k)=s_{h(n)}(k-M(n) )\). 
+  So from the defination of \(h(n)\) we easily get \(\pi(h)(k)=g(k)\). 
+\end{solution}
+
+\begin{problem}
+  Assume AD, then \(\mathrm{AC}_\omega(\fun{\omega}{\omega}) \). Consequently, \(\omega_1\) is regular. 
+\end{problem}
+
+\begin{solution}
+  Assume \(X:\omega \to \mathcal{P}(\fun{\omega}{\omega})\) and \(\forall n \in \omega,X(n)\neq \varnothing\). 
+  Let \(\theta:\fun{\omega}{\omega}\to \fun{\omega}{\omega},\theta(f)(n):=f(2n+1)\). 
+  Consider \(A:=\{x \in \fun{\omega}{\omega}:\theta(x) \in X(x(0))\}\). 
+  Since \(I\) have no w.s because \(\forall n \in \omega,X(n)\neq \varnothing\). 
+  By AD we get \(II\) has a w.s., write \(\tau\). 
+  Now consider \(\gamma:\omega \to \fun{\omega}{\omega},\gamma(n):=\theta((n,0,0,\cdots)*\tau)\). 
+  Since \(\theta((n,0,\cdots)*\tau) \in X(n)\). So \(\gamma\) is the choose function. 
+  
+  Nov we prove \(\omega_1\) is regular. Only need to prove union countable many countable ordinal is countable. 
+  
+\end{solution}
 \end{document}
