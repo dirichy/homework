@@ -108,7 +108,11 @@
   We first consider \(G\) is bonded. Assume \(G \subset [-M,M],M >0\). Assume \(G =\bigcap_{n \in \mathbb{N}} O_n\), where \(O_n \in \mathcal{O}\). 
   Then \(G=\bigcap_{n \in \mathbb{N}} (O_n \cap (-M-1,M+1))\). By convinence we assume \(O_n \subset (-M-1,M+1)\). 
   And \(G=\bigcap_{n \in \mathbb{N}} \bigcap_{m=1}^n O_m \), by convinence we assume \(O_n \supset O_{n+1} \). 
-  
+  Use LCDT we easily get \(\lim \mu (O_n)=\mu^{*} (G)\). So we easily get the lemma. 
+
+  Now consider general \(G\). We can write \(G = \bigcup_{n \in \mathbb{N}} G_n\), where \(G_n\) is bounded \(G_{\delta}\) set. 
+  So \(\exists O_n,G_n \subset O_n,\mu^{*}(O_n\setminus G_n) <\frac{\varepsilon}{2^n}\). 
+  Let \(O=\bigcup_{n \in \mathbb{N}} O_n\) is OK. 
 \end{proof}
 \begin{solution}
   First, for \(A=\mathbb{R}\), easily we can let \(F=G=\mathbb{R}\). Then \(F\) is \(F_{\sigma}\) and \(G\) is \(G_{\delta}\). 
@@ -120,6 +124,11 @@
   Use AC we can find \(F \in \fun{ \mathbb{N}}{F_{\sigma}},G \in \fun{ \mathbb{N}}{G_{\delta}}\) such that \(F(n)\subset A(n) \subset G(n),\mu^{*}(G(n)-F(n))=0\). 
   Let \(T=\bigcup_{n \in \mathbb{N}} F(n)\). Since \(F(n)\) is \(F_{\sigma}\), we get \(T \in F_{\sigma}\). 
   And easily \(T=\bigcup_{n \in \mathbb{N}} F(n) \subset \bigcup_{n \in \mathbb{N}} A(n)=A\). 
+  Now we let \(O(n,m)\in \mathcal{O},G(n) \subset O(n,m),\mu^{*}(O(n,m)\setminus G(n)) <\frac{1}{m2^n}\) by \Cref{lem:1}. 
+  Let \(G:= \bigcap_{m \in \mathbb{N}} \bigcup_{n \in \mathbb{N}} O(n,m)\) is \(G_\delta\). 
+  Easily \(\mu^{*}(G \setminus A) \leq \mu^{*}(G \setminus \bigcup_{n \in \mathbb{N}} G(n))=0\). And \(A \subset G\). 
+  So we get \(\mu^{*}(G\setminus F)\leq \mu^{*}(G\setminus A)+\mu^{*}(A \setminus F)=0+0=0\). 
+  So \(A \in \mathcal{M}\). 
 \end{solution}
 
 \begin{problem}
@@ -220,6 +229,13 @@
   Since \(\theta((n,0,\cdots)*\tau) \in X(n)\). So \(\gamma\) is the choose function. 
   
   Nov we prove \(\omega_1\) is regular. Only need to prove union countable many countable ordinal is countable. 
-  
+  Assume \(f: \omega \to \omega_1\), now we only need to prove \( \bigcup \ran f \in \omega_1\). 
+  Consider \(F:\ran f \to \mathcal{P}(\omega \times \omega)\), \(F(\alpha):=\{R \subset \omega \times \omega:(\omega,R)\cong \alpha\}\). 
+  Since \(\fun{\omega}{\omega}\approx \mathcal{P}(\omega \times \omega)\), we get \(\text{AC}_\omega(\mathcal{P}(\omega \times \omega))\). 
+  So \(\exists \theta:\ran f \to \omega \times \omega,\theta(\alpha) \in F(\alpha),\forall \alpha \in \ran f\). 
+  Consider \(G:\omega \to \fun{\omega}{\omega_1},G(n)\) is the isomorphic from \((\omega,\theta(\omega))\) to \(f(n)\). 
+  Let \(h:\omega \times \omega \to \bigcup \ran f,h(n,m):=G(n)(m) \). Easily \(h\) is surjective. 
+  And since we have \(\text{AC}_\omega(\mathcal{P}(\omega \times \omega))\), we get \(\bigcup \ran f \approx A \) for some \(A \subset \omega \times \omega\). 
+  So we get \(\bigcup \ran f \) is countable. So \(\omega_1\) is regular. 
 \end{solution}
 \end{document}

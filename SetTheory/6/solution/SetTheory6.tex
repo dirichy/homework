@@ -1,0 +1,143 @@
+%!Mode:: "TeX:UTF-8"
+%!TEX encoding = UTF-8 Unicode
+%!TEX TS-program = xelatex
+\documentclass{ctexart}
+\newif\ifpreface
+\prefacetrue
+\input{../../../global/all}
+\begin{document}
+\large
+\setlength{\baselineskip}{1.2em}
+\ifpreface
+    \input{../../../global/preface}
+\else
+\maketitle
+\fi
+\newgeometry{left=2cm,right=2cm,top=2cm,bottom=2cm}
+\crefname{enumi}{}{}
+%from_here_to_type
+\begin{problem}
+  Assume \(A\) can be well-ordered, prove that \(\mathcal{P}(A)\) can be linear-orderd. 
+\end{problem}
+\begin{solution}
+  Assume \((A,<)\) is a well-ordered set. 
+  For \(X,Y \in \mathcal{P}(A),X \neq Y\), let \(X \prec Y \iff \min X \Delta Y \in X\). Now we prove \(\prec\) is linear-order. 
+  
+  First by defination we get \(X \not \prec X,\forall X \subset A\). 
+
+  Second, for \(X,Y \in \mathcal{P},X \neq Y\), we have \(X \Delta Y \neq \varnothing\). 
+  Since \(A\) is well-ordered, we get \(\min X \Delta Y\) exists. 
+  And \(\min X \Delta Y \in X \Delta Y \in X \cup Y\). 
+  So we get \(X \prec Y \vee Y \prec X\). 
+
+  Finally, assume \(X \prec Y,Y \prec Z\), now we prove \(X \prec Z\). 
+  Let \(x = \min X \Delta Y \in X,y=\min Y \Delta Z \in Y\). 
+  Easily we get \(X \Delta Z = (X \Delta Y)\Delta (Y \Delta Z)\). 
+  Assume \(t = \min X \Delta Z\). Only need to prove \(t \in X\). If not, we get \(t \in Z\). 
+  If \(t \in X \Delta Y\), then \(t \geq x\). Since \(t \notin X \wedge x \in X\), we get \(t>x\). 
+  So \(x \notin X \Delta Z\), so \(x \in Z\). Noting \(x \notin Y\), we get \(x \in Y \Delta Z\), so \(x >y\). 
+  So \(y \notin X \Delta Y\), so \(y \in X\). Since \(y \notin Z\), we get \(y \in X \Delta Z\). 
+  So \(t<y\). So \(t<y<x<t\), contradiction! 
+  Else we get \(t \in Y \Delta Z\). Since \(t \in Z\) we get \(t \notin Y\). Then \(t>y\). 
+  So \(y \notin X \Delta Z\). Since \(y \notin Z\), we get \(y \notin X\). 
+  So \(y \in X \Delta Y\), thus \(y>x\). So \(t>x\), thus \(x \notin X \Delta Z\). 
+  So \(x \in Z\), thus \(x \in Y \Delta Z\). Then \(x > y\), contradiction! 
+
+  So we get \(\prec\) is a linear-order on \(\mathcal{P}(A)\). 
+\end{solution}
+
+\begin{problem}
+  Assume \(\{X_i:i \in I\}\) and \(\{Y_i:i \in I\}\) are two disjoint families such that \(X_i \approx Y_i\). 
+  Prove that \(\bigcup_{i \in I}X_i \approx \bigcup_{ i \in I} Y_i\)
+\end{problem}
+
+\begin{solution}
+  Since \(X_i \approx Y_i\), we get \(\text{bij}(X_i,Y_i)\neq \varnothing\). 
+  Let \(\theta:I \to \bigcup_{i \in I} \text{bij}(X_i,Y_i)\) is a choice function. i.e., \(\theta(i)\in \text{bij}(X_i,Y_i)\). 
+  Now consider \(\tau=\bigcup \ran(\theta) \). We will prove \(\tau\) is bijection from \(X:=\bigcup_{i \in I} X_i\) to \(\bigcup_{i \in I} Y_i\). 
+
+  First we prove \(\tau\) is a map. i.e., \(\forall x \in X,\exists ! y \in Y,(x,y)\in \tau\). 
+  Since \(X_i \cap X_j = \varnothing , \forall i \neq j\), we get \(x \in X \to \exists ! i \in I,x \in X_i\). 
+  So \((x,\theta(i)(x)) \in \tau\). If \((x,z)\in \tau\), we get \(\exists j \in I,(x,z)\in \theta(j)\). 
+  Since \(x \in\dom(\theta(j))=X_j\), we get \(j=i\). Since \(\theta(i)\) is a map, we get \(z = \theta(i)(x)\). 
+
+  Second we prove \(\tau\) is injection. Assume \(x,t \in X,\tau(x)=\tau(t)\). Now we prove \(x=t\). 
+  Since \(Y_i \cap Y_j=\varnothing,\forall i \neq j\), we get \(\exists ! i \in I,\tau(x) \in Y_i\). 
+  Since \(\ran(\theta(j))=Y_j,\forall j \in I\), we get \((x,\tau(x)) \in \theta(i)\). So \(\theta(i)(x)=\tau(x)\). 
+  For the same reason we get \(\theta(i)(t)=\tau(t)\). So \(\theta(i)(x)=\theta(i)(t)\). 
+  Since \(\theta(i)\) is bijection, we get \(x=t\). 
+
+  Finally we prove \(\tau\) is surjection. Assume \(y \in Y\), then \(\exists i \in I,y \in Y_i\). 
+  So \(\exists x \in X_i,\theta(i)(x)=y\). So \(\tau(x)=y\). So \(\tau\) is surjective. 
+\end{solution}
+
+\begin{problem}
+  Prove that \(\prod_{0 < n < \omega} n=2^{\aleph_0}\). 
+\end{problem}
+
+\begin{solution}
+  Obviously \(\prod_{0 < n < \omega} n=\prod_{n < \omega} (n+1)=\left(\sup_{n<\omega}(n+1) \right)^{|\omega|}=\aleph_0^{\aleph_0}=2^{\aleph_0} \). 
+\end{solution}
+
+\begin{problem}
+  Prove that \(\prod_{n<\omega} \aleph_n=\aleph_\omega^{\aleph_0}\). 
+\end{problem}
+
+\begin{solution}
+  Obviously \(\aleph_n>0\), so we get \(\prod_{n<\omega} \aleph_n = \left(\sup_{n<\omega}\aleph_n\right)^{\omega}=\aleph_\omega^{\aleph_0}\). 
+\end{solution}
+
+\begin{problem}
+  Prove that \(\prod_{n<\omega+\omega} \aleph_n=\aleph_{\omega+\omega}^{\aleph_0}\).
+\end{problem}
+
+\begin{solution}
+  Let \(f:\omega \to \omega+\omega\) be a bijection. Then \(\prod_{n<\omega + \omega} \aleph_n=\prod_{n<\omega} \aleph_{f(n)}\). 
+  So we get \(\prod_{n<\omega+\omega} = \left(\sup_{n<\omega}\aleph_{f(n)}\right)^{\aleph_0}=\aleph_{\omega+\omega}^{\aleph_0}\). 
+\end{solution}
+
+\begin{problem}
+  For every ordinal \(\alpha\) less than \(\omega_1\), prove that \(\exists X:\omega \to \mathcal{P}(\alpha)\) such that \(\text{ordertype}(X(n))\leq \alpha^n\) and \(\alpha=\bigcup \ran X \). 
+\end{problem}
+
+\begin{solution}
+  If not, assume \(\beta\) is the least ordinal less than \(\omega_1\) don't meet the requirement. 
+  If \(\beta=\alpha+1\), Since \(\alpha<\beta\), we get \(\exists X \in \fun{\omega}{\mathcal{P}(\alpha)}\) meet the requirement. 
+  Now we let \(Y:\omega \to \mathcal{P}(\beta)\) and \(Y(0)=\{\alpha\},Y(n+1)=X(n)\). 
+  Then easily \(Y\) meet the requirement, contradiction! 
+  Else, \(\beta\) is limit ordinal. Since \(\beta<\omega_1\) we get \(\text{cf}(\beta)\leq \omega\). 
+  Since \(\beta\) is limit ordinal we get \(\text{cf}(\beta)=\omega\). 
+  Consider \(\theta \text{cf}(\beta) \to \beta\) is unbounded, then \(\beta=\bigcup \ran \theta \). 
+  For \(n \in \text{cf}(\beta)\), we have \(\theta(n)<\beta\), so by AC, \(\exists X:\text{cf}(\beta) \times \omega \to \mathcal{P}(\beta)\) such that
+  \(\text{ordertype}(X(n,m)) \leq \theta(n)^m\) and \(\theta(n) = \bigcup_{m \in \omega} X(n,m) \). 
+  Now let \(Y:\omega \to \mathcal{P}(\beta)\) and \(Y(2^n(2m+1)-1)=X(n,m)\). 
+  Then easily \(\text{ordertype}(Y(k)) \leq \beta^k\) and \(\beta=\bigcup \ran \theta=\bigcup_{n,m \in \omega} X(n,m)=\bigcup_{k \in \omega} Y(k) \). 
+  contradiction! 
+  So such \(\beta\) doesn't exist. 
+\end{solution}
+\begin{problem}
+  If \(\kappa\) is a cardinal and \(\lambda < \cof(\kappa)\), then \(\kappa^\lambda=\sum_{\alpha<\kappa} |\alpha|^\lambda\). 
+\end{problem}
+
+\begin{solution}
+  When \(\lambda=0\) it's obvious, now we assume \(\lambda>0\). 
+  Easily \(\kappa \geq \omega\) is a cardinal, so we get \(\sum_{\alpha<\kappa} |\alpha|^\lambda=\kappa \sup_{\alpha<\kappa} |\alpha|^\lambda \leq \kappa \cdot \kappa^\lambda=\kappa^\lambda\). 
+  Now consider \(f \in \fun{\lambda}{\kappa}\), we get \(f\) is bounded. So \(\fun{\lambda}{\kappa}=\bigcup_{\alpha<\kappa} \fun{\lambda}{\alpha}\). 
+  So we get \(\kappa^{\lambda}\leq \sum_{\alpha<\kappa} |\alpha|^\lambda\). 
+  Finally we get \(\kappa^\lambda=\sum_{\alpha<\kappa} |\alpha|^\lambda\).  
+\end{solution}
+
+\begin{problem}
+  Prove that \(\aleph_\omega^{\aleph_1}=2^{\aleph_1}\cdot \aleph_\omega^{\aleph_0}\). 
+\end{problem}
+
+\begin{solution}
+  Since \(2^{\aleph_1},\aleph_\omega^{\aleph_0} \leq \aleph_\omega^{\aleph_1}\), we get \(\aleph_\omega^{\aleph_1}\geq 2^{\aleph_1}\cdot \aleph_\omega^{\aleph_0}\). 
+  Since \(\aleph_\omega=\sup_{n<\omega}\aleph_n\), we get \(\aleph_\omega=\prod_{n<\omega} \aleph_n^{\aleph_1}\). 
+  By Hausdoff formula we get \(\aleph_{n+1}^{\aleph_1}=\aleph_n^{\aleph_1} \cdot \aleph_{n+1}\). 
+  By MI we can easily get \(\aleph_n^{\aleph_1}\leq \aleph_{\omega}\cdot \aleph_0^{\aleph_1}\). 
+  So finally we get \(\aleph_\omega^{\aleph_1}\leq \prod_{n<\omega} \aleph_{\omega}\cdot \aleph_0^{\aleph_1}=\aleph_\omega^{\aleph_0}\cdot \aleph_0^{\aleph_1 \cdot \aleph_0}\). 
+  Easily we get \(\aleph_0^{\aleph_1 \cdot \aleph_0}=\aleph_0^{\aleph_1}=2^{\aleph_1}\), 
+  so finally we get \(\aleph_\omega^{\aleph_1}=2^{\aleph_1} \cdot \aleph_\omega^{\aleph_0}\). 
+\end{solution}
+\end{document}
