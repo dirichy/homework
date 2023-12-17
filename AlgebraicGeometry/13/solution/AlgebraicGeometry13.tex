@@ -1,0 +1,110 @@
+%!Mode:: "TeX:UTF-8"
+%!TEX encoding = UTF-8 Unicode
+%!TEX TS-program = xelatex
+\documentclass{ctexart}
+\newif\ifpreface
+\prefacetrue
+\input{../../../global/all}
+\begin{document}
+\large
+\setlength{\baselineskip}{1.2em}
+\ifpreface
+    \input{../../../global/preface}
+\newgeometry{left=2cm,right=2cm,top=2cm,bottom=2cm}
+\else
+\newgeometry{left=2cm,right=2cm,top=2cm,bottom=2cm}
+\maketitle
+\fi
+%from_here_to_type
+\begin{problem}
+  Assume \(\Omega \subset \mathbb{C}\) is a domain. Prove that \(f\) is meromorphic map over \(\Omega\) is equiv for \(\Omega\) as opensubset of \(\mathbb{C}\) and as Remian surface. 
+\end{problem}
+
+\begin{solution}
+  First we assume \(f:\Omega \to \mathbb{C}_{\infty}\) is holomorphic. Let \(T:=\{x \in \Omega:f(x)=\infty\}\). 
+  Now we prove \(f\) is meromorphic over \(\Omega\). 
+  Since \(\forall x \in T,f(x)=\infty\) and \(f\) is continous, we get \(\forall x \in T,\lim_{y \to x}f(y)=\infty\). 
+  Now we only need to prove every \(x \in T\) is isolated point. If not, we will prove \(f \equiv \infty\). 
+  Let \(V:=\{x \in \Omega:f(x)=\infty \wedge \exists x_n \in \Omega,x_n \neq x,x_n \to x,f(x_n)=\infty\} \neq \varnothing\). 
+  Easily \(V\) is closed in \(\Omega\), now we prove it's open, too. 
+  Assume \(x \in V\), and \(x_n \in \Omega,x_n \neq x,x_n \to x,f(x_n)=\infty\). 
+  Since \(f\) is holomorphic, we get \(\exists V:\infty \in V \subset \mathbb{C}_{\infty}\) is open, \(\exists U:x \in U \subset \Omega\) is open, 
+  such that \(g:=\phi \circ \res{f}{U} \circ \text{id}:U \to \mathbb{C}\) is holomorphic, where \(\phi(x)=\frac{1}{x}\). 
+  Then \(g(x)=g(x_n)=0\). So \(\res{g}{U}\equiv 0\). So we get \(\res{f}{U} \equiv 0\). So \(U \subset V\). 
+  So \(V\) is open in \(\Omega\). Since \(\Omega \) is connected, we get \(V=\Omega\). 
+  So \(f \equiv \infty\). 
+
+  Second we assume \(f:W \to \mathbb{C}\) is holomorphic, where \(W \subset \Omega\) is open, 
+  and \(\forall x \in T:=\Omega \setminus W,\lim_{y \to x}f(y)=\infty\), and \(x\) is isolated point. 
+  Now let \(h:\Omega \to \mathbb{C}_{\infty},\res{h}{W}=f,\res{h}{T}\equiv \infty\). 
+  We only need to prove \(h\) is holomorphic from \(\Omega\)(as Remian surface) to \(\mathbb{C}_{\infty}\). 
+  Only need to prove \( h\) is holomorphic on \(x \in T\). Let \(\phi:\mathbb{C}\setminus \{0\}\to \mathbb{C},x \mapsto \frac{1}{x}\). 
+  Let \(U \subset h^{-1}(\mathbb{C} \setminus \{0\}) \subset \Omega\) is a neibor of \(x\) and \(\forall y \in U \setminus \{x\},h(y)\neq \infty\). 
+  Now we prove \(g:=\phi \circ h \circ \text{id}:U \to \mathbb{C}\) is holomorphic. 
+  Easily \(h(z)= \frac{\psi(z)}{(z-x)^n}\) for some \(n \in \mathbb{N}^+\) and holomorphic map \(\psi\) where \(0 \notin \psi(U)\). 
+  So we get \(g(z)=\frac{1}{h(z)}=\frac{(z-x)^n}{\psi(z)}\) is holomorphic over \(U\). 
+\end{solution}
+
+\begin{problem}
+  Let \(M\) is a Remian surface, \(f:M \to \mathbb{C}_{\infty}\) is holomorphic. Assume \(p \in M\). 
+  Prove that \(\ord_p(f)\) is well-defined. 
+\end{problem}
+
+\begin{solution}
+  Assume \(U \subset M\) is openset and \(p \in U\), and \(\phi,\psi:U \to \mathbb{C}_{\infty}\) are holomorphic. 
+  Consider \(f_\phi:=f \circ \phi^{-1}:\phi(U)\to \mathbb{C}\) and \(f_\psi:=f \circ \psi^{-1}:\psi(U) \to \mathbb{C}\) are meromorphic. 
+  We only need prove \(f_\phi\) at \(\phi(p)\) and \(f_\psi\) at \(\psi(p)\) have the same ord. 
+  Since \(M\) is Remian surface we know \(\phi \circ \psi^{-1}:\psi(U)\to \phi(U)\) is holomorphic. 
+  Without loss of generality we can assume \(\phi(p)=\psi(p)=0\). 
+  Assume \(f_\phi(z)=z^nh(z)\), where \(h(z)\) is holomorphic near \(0\) and \(h(0)\neq 0\). 
+  Then \(f_\psi(z)=f_{\phi}\circ (\phi \circ \psi^{-1})(z)=\phi \circ \psi^{-1} (z)^n h(\phi \circ \psi^{-1}(z))\)
+  Since \(\phi(p)=\psi(p)=0\) we get \(\phi \circ \psi^{-1}(0)=0\). So \(h(\phi \circ \psi^{-1}(0)) \neq 0\). 
+  And \(\lim_{z \to 0}\frac{1}{z}\phi \circ \psi^{-1}(z)\) exists. 
+  For the same reason we get \(\lim_{z \to 0}\frac{1}{z}\psi \circ \phi^{-1}(z)\) exists. 
+  So \(\lim_{z \to 0}\phi \circ \psi^{-1}(z)\neq 0\). 
+  So finally we get \(\ord_p(f)\) is well-defined. 
+\end{solution}
+
+\begin{problem}
+  Assume \(p(z)\in \mathbb{C}[z]\) is a poly and not const. 
+  Consider \(f:\mathbb{C}_{\infty}\to \mathbb{C}_{\infty},f(z)= \begin{cases}
+  p(z) & z \in \mathbb{C}\\
+  \infty & z=\infty
+  \end{cases}\). 
+  Prove that \(f\) is holomorphic. 
+\end{problem}
+
+\begin{solution}
+  Obviously for \(z \in \mathbb{C}\) we have \(f\) is holomorphic near \(z\). So we only need to prove \(f\) is holomorphic near \(\infty\). 
+  Let \(V \subset \mathbb{C}_{\infty}\) is a neibor of \(\infty\) and \(0 \notin V\). 
+  Since \(\deg p>0\), we get \(\lim_{z \to \infty}p(z)=\infty\). 
+  So \(\exists U \subset \mathbb{C}_{\infty}\) such that \(f(U)\subset V\). without loss of generality assume \(0 \notin U\). 
+  Now we only need to prove \(\phi \circ f \circ \phi\) is holomorphic at \(0\), where \(\phi(z)=\frac{1}{z}\). 
+  Assume \(f(z)=\sum_{i=0}^n a_i z^i\) and \(a_n \neq 0\), then \(\frac{1}{f(\frac{1}{z})}=\frac{z^n}{\sum_{i=0}^n a_i z^{n-i}}\). 
+  Since \(a_n \neq 0\) we get \(\frac{1}{f(\frac{1}{z})}\) is holomorphic near \(0\). 
+\end{solution}
+
+\begin{problem}
+  Let \(\omega_1,\omega_1 \in \mathbb{C}^*\) and are \(\mathbb{R}\)-linear independent. 
+  Let \(\Lambda\) is the addtive group generated by \(\omega_1,\omega_2\) and \(k \in \mathbb{N}^+,k \geq 3 \). 
+  Prove that \(\sum_{\omega \in \Lambda} \frac{1}{(z-\omega)^k}\) locally uniformly converge in \(\mathbb{C} \setminus \Lambda\). 
+\end{problem}
+
+\begin{solution}
+  Write \(\Lambda=\{z_n:n \in \mathbb{N}^+\}\), then we only need to prove \(\sum_{n=1}^{\infty} \frac{1}{(z-z_n)^k}\) locally uniformly converge in \(\mathbb{C} \setminus \Lambda\). 
+  Without loss of generality we can assume \(|z_n| \leq |z_{n+1}|,\forall n \in \mathbb{N}^+\). 
+  Easily we know \(\card(B(0,n)\cap \Lambda)=O(n^2),n \to \infty\). 
+  So we get \(|z_n|=O(\sqrt{n}),n \to \infty\). 
+  Assume \(M \subset \mathbb{C}\setminus L\) is cpt, now we need to prove the series converge uniformly in \(M\). 
+  Let \(\lambda:=d(M,\Lambda)>0\), then we get \(|z-z_n|>\lambda\). 
+  And \(|z_n-z| \geq |z_n|-|z| \geq |z_n|-\max\{|z|:z \in M\}=O(\sqrt{n}),n \to \infty\). 
+  So \(\exists N \in \mathbb{N}^+,t \in \mathbb{R}^+,\forall n>N,|z_n-z| \geq t \sqrt{n}\). 
+  For \(n \leq N\), we have \(|z_n-z| \geq \lambda\), without loss of generality assume \(t<\frac{\lambda}{\sqrt{N}}\), then \(|z_n-z| >t \sqrt{n}\), too. 
+  So finally we get \(\left|\frac{1}{(z_n-z)^k}\right| \leq \frac{t}{n^{ \frac{k}{2}}}, \forall z \in M\). 
+  Since \(\sum_{n \in \mathbb{N}^+} \frac{t}{n^{ \frac{k}{2}}}<\infty\), we get the series converge uniformly in \(M\). 
+\end{solution}
+
+\begin{problem}
+  
+\end{problem}
+\end{document}

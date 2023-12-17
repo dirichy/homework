@@ -1,2 +1,4 @@
 \newcommand{\ide}{\mathbb{I}}
 \newcommand{\van}{\mathbb{V}}
+\newcommand{\res}[2]{#1|_#2}
+\newcommand{\ord}{\mathop{\mathrm{ord}}}
