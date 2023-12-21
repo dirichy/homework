@@ -1,2 +1,3 @@
 \renewcommand{\phi}{\varphi}
 \renewcommand{\hom}{\mathop{\mathrm{Hom}}}
+\newcommand{\Span}{\mathop{\mathrm{Span}}}

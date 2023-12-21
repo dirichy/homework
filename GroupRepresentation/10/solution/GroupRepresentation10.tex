@@ -9,12 +9,69 @@
 \large
 \setlength{\baselineskip}{1.2em}
 \ifpreface
-    \input{../../../global/preface}
-\newgeometry{left=2cm,right=2cm,top=2cm,bottom=2cm}
+	\input{../../../global/preface}
+	\newgeometry{left=2cm,right=2cm,top=2cm,bottom=2cm}
 \else
-\newgeometry{left=2cm,right=2cm,top=2cm,bottom=2cm}
-\maketitle
+	\newgeometry{left=2cm,right=2cm,top=2cm,bottom=2cm}
+	\maketitle
 \fi
 %from_here_to_type
+\begin{problem}
+Assume \((\phi,V),(\psi,W)\) are two finite-dim reperentation of group \(G\), find the matrix of \(\phi \otimes \psi\).
+\end{problem}
 
+\begin{solution}
+	Assume \(\{ v_i:i=1,\cdots,n\},\{ w_i:i=1,\cdots ,m\}\) are basis of \(V,W\). Then we get \(\{ v_i \otimes w_j:1 \leq i \leq n,1 \leq j \leq m\}\) is a basis of \(V \otimes W\).
+	Assume \(\Phi,\Psi,\Gamma\) is the matrix of \(\phi,\psi,\phi \otimes \psi\).
+	Then we get \(( \phi \otimes \psi)( g)( v_i \otimes w_j)=\phi( g)( v_i)\otimes \psi( g)( w_j)\).
+	So \(\Gamma( g)( i \otimes j)=( \sum_{k=1}^{n}\sum_{t=1}^{m} \Phi( g)_{ki} \Psi( g)_{tj} k \otimes t)\).
+	So finally we get \(\Gamma( g)_{k \otimes t,i \otimes j}=\Phi( g)_{ki}\Psi( g)_{tj}\).
+\end{solution}
+
+\begin{problem}
+Assume \(\text{Sym}^2 V:=\{ v \otimes w + w \otimes v:v,w \in V\}\) and \(\bigwedge^2 V:=\{ v \otimes w - w \otimes v:v,w \in V\}\).
+Prove that \(V \otimes V = \text{Sym}^2 V \oplus \bigwedge^2 V\).
+\end{problem}
+
+\begin{solution}
+	First since \(x \otimes y = \frac{x}{2} \otimes y + y \otimes \frac{x}{2} + \frac{x}{2}\otimes y - y \otimes \frac{x}{2}\) we get \(V \otimes V = \text{Sym}^2 V + \bigwedge^2 V\).
+	Now assume \(\dim V=n\), we only need to prove \(\dim\text{Sym}^2 V + \dim \bigwedge^2 V \leq n^2\).
+	Assume \(\{ v_i:1 \leq i \leq n\}\) is a basis of \(V\), then \(\{v_i \otimes v_j:1 \leq i,j \leq n\}\) is basis of \(V \otimes V\).
+	Then easily \(\Span\{ v_i \otimes v_j + v,j \otimes v_i:1 \leq i,j \leq n\}=\text{Sym}^2 V,\Span\{ v_i \otimes v_j - v_j \otimes v_i : 1 \leq i,j \leq n\}=\bigwedge^2 V\).
+	Since for \(i \neq j\) we get \(v_i \otimes v_j+v_j \otimes v_i=v_j \otimes v_i + v_i \otimes v_j\) we get \(\dim \text{Sym}^2 V \leq n+\frac{n^2-n}{2}\).
+	Since for \(i \neq j\) we have \(v_i \otimes v_j - v_j \otimes v_i = -( v_j \otimes v_i - v_i \otimes v_j)\) and for \(i = j \) we have \(v_i \otimes v_j - v_j \otimes v_i=0\) we get \(\dim \bigwedge^2 V \leq \frac{n^2-n}{2}\).
+	So finally we get \(\dim \text{ Sym}^2 V +\dim \bigwedge^2 V \leq n+\frac{n^2-n}{2}+\frac{n^2-n}{2}=n^2\).
+	So \(V \otimes V=\text{Sym}^2 V \oplus \bigwedge^2 V\).
+\end{solution}
+
+\begin{problem}
+Find the complex character table of the group \(D_5\).
+\end{problem}
+
+\begin{solution}
+	First we should find all of irreducible complex reperentation of \(D_5\).
+	Easily all of conjugate of \(D_5\) are \(\{ e\},\{ \sigma,\sigma^4\}, \{ \sigma^2,\sigma^3\},\{ \tau,\sigma \tau,\sigma^2 \tau,\sigma^3 \tau,\sigma^4 \tau\}\).
+	So there are four different irreducible complex reperentation of \(D_5\).
+	Now we try to find the one-dim irreducible complex reperentation. Easily we get \(D_5' = \left\langle  \sigma\right\rangle \).
+	So \(D_5 / D_5' \cong \mathbb{Z}_2\). So \(D_5\) has two different irreducible complex reperentation, \(\phi_0,\phi_1\).
+	Where \(\phi_0\) is the main reperentation, and \(\phi_1( \sigma^i )=1,\phi_1( \sigma^i \tau)=-1\).
+	Now we try to find other reperentation of \(D_5\). Since \(| D_5|=10=1^2+1^2+2^2+2^2\), we get \(D_5\) has two different two-dim irreducible reperentation.
+	Consider \(\phi_\theta( \sigma)=\begin{pmatrix}
+		\cos \theta & -\sin \theta \\
+		\sin \theta & \cos \theta  \\
+	\end{pmatrix}\) and \(\phi_\theta( \tau)=\begin{pmatrix}
+		-1 & 0 \\
+		0  & 1 \\
+	\end{pmatrix}\), let \(\phi_2=\phi_{\frac{2 \pi}{5}},\phi_3=\phi_{\frac{4 \pi}{5}}\). Easily \(\phi_2,\phi_3\) are irreducible and different.
+	So all of different irreducible complex reperentation of \(D_5\) are \(\phi_0,\phi_1,\phi_2,\phi_3\).
+	Now we let \(g_1=e,g_2=\sigma,g_3=\sigma^2,g_4=\tau\) and \(W_{ij}=\chi_{i-1}( g_j)\), we have
+	\[
+		W=\begin{pmatrix}
+			1 & 1                      & 1                      & 1  \\
+			1 & 1                      & 1                      & -1 \\
+			2 & 2\cos \frac{2 \pi}{5}  & 2 \cos \frac{4 \pi}{5} & 0  \\
+			2 & 2 \cos \frac{4 \pi}{5} & 2\cos \frac{2 \pi}{5}  & 0  \\
+		\end{pmatrix}
+	\]
+\end{solution}
 \end{document}
