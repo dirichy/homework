@@ -1,0 +1,54 @@
+%!Mode:: "TeX:UTF-8"
+%!TEX encoding = UTF-8 Unicode
+%!TEX TS-program = xelatex
+\documentclass{ctexart}
+\newif\ifpreface
+%\prefacetrue
+\input{../../../global/all}
+\begin{document}
+\large
+\setlength{\baselineskip}{1.2em}
+\ifpreface
+    \input{../../../global/preface}
+\newgeometry{left=2cm,right=2cm,top=2cm,bottom=2cm}
+\else
+\newgeometry{left=2cm,right=2cm,top=2cm,bottom=2cm}
+\maketitle
+\fi
+%from_here_to_type
+\begin{problem}
+  Compute the characters of \(\sym^k V \) and \(\bigwedge^k V\).
+\end{problem}
+
+\begin{solution}
+  Assume \(\{ v_i:1 \leq i \leq n\}\) is a basis of \(V\), assume \(\phi( g)\) has characters \(\{ \lambda_i:1 \leq i \leq n\}\). 
+  Then \(\left\{ \sum_{\sigma \in S_k} \bigotimes_{i=1}^{k} v_{\tau\sigma ( i)}:\tau \in \mathcal{A}\right\}\) is a basis of \(\sym^k V\), where \(\mathcal{A}=\left\{f \in \fun{\{ 1,2,\cdots,k\}}{\{ 1,\cdots,n\}}: f \text{ is injection}\right\}\). 
+  And \(\left\{\sum_{\sigma \in S_k} \prod_{i=1}^{k} \lambda_{\tau \sigma( i)}:\tau \in \mathcal{A}\right\}\) are it's characters. 
+  For the same reason, we get \\
+  \(\left\{ \sum_{\sigma \in S_k} \bigotimes_{i=1}^{k} ( -1)^{\sgn \sigma}v_{\tau\sigma ( i)}:\tau \in \mathcal{A}\right\}\) is a basis of \(\bigwedge^k V\).
+  And \(\left\{\sum_{\sigma \in S_k} ( -1)^{\sgn \sigma}\prod_{i=1}^{k} \lambda_{\tau \sigma( i)}:\tau \in \mathcal{A}\right\}\) are it's characters. 
+\end{solution}
+
+\begin{problem}
+  Find the decomposition of the reperesentation \(V^{\otimes n}\) using character theory.  
+\end{problem}
+
+\begin{solution}
+  Assume \(V^{\otimes n}=U_1^{\oplus a_n}\oplus U_2^{\oplus b_n}\oplus V^{\oplus c_n}\). 
+  And \(V \otimes V = U_1 \oplus U_2 \oplus V\). Now we try to caculate \(a_n,b_n,c_n\). 
+  Since \(U_1 \otimes V \cong V\) and \(U_2 \otimes V \cong V\), we get 
+  \[
+    V^{\otimes n+1} = V^{\otimes n} \otimes V =( U_1^{\oplus a_n}\oplus U_2^{\oplus b_n} \oplus V^{\oplus c_n})\otimes V \cong U_1^{\oplus c_n}\oplus U_2^{\oplus c_n} \oplus V^{a_n+b_n+c_n}
+  \]
+  So we get 
+  \[
+    \begin{cases}
+    a_{n+1}=c_n\\
+    b_{n+1}=c_n\\
+    c_{n+1}=a_n+b_n+c_n
+    \end{cases}
+  \]
+  Then \(c_{n+2}=c_{n+1}+2c_n\). Since \(c_1=c_2=1\), we get \(c_n=\frac{2^n-( -1)^n}{3}\). 
+  Thus \(a_n=b_n=\frac{2^{n-1}-( -1)^{n-1}}{3}\).
+\end{solution}
+\end{document}
