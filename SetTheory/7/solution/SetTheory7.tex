@@ -1,0 +1,141 @@
+%!Mode:: "TeX:UTF-8"
+%!TEX encoding = UTF-8 Unicode
+%!TEX TS-program = xelatex
+\documentclass[a5paper]{ctexart}
+\newif\ifpreface
+\prefacetrue
+\input{../../../global/all}
+\begin{document}
+\large
+\setlength{\baselineskip}{1.2em}
+\ifpreface
+    \input{../../../global/preface}
+\else
+\maketitle
+\fi
+\newgeometry{a5paper,left=0cm,right=0cm,top=0cm,bottom=0cm}
+\crefname{enumi}{}{}
+%from_here_to_type
+\begin{problem}\label{pro:1}
+  Prove that there are arbitrarily large singular cardinals
+\end{problem}
+\begin{solution}
+  For cardinal \(\lambda\), we cansider \(\aleph_{\lambda+\omega}\). 
+  Easily \(\cof( \aleph_{\lambda+\omega})=\cof( \lambda+\omega)=\cof( \omega)=\aleph_0<\aleph_{\lambda+\omega}\), and 
+  \(\aleph_{\lambda+\omega}\geq \lambda+\omega \geq \lambda\). 
+\end{solution}
+\begin{problem}\label{pro:2}
+  There are arbitrarily large singular cardinals \(\aleph_{\alpha}\) such that \(\aleph_{\alpha}=\alpha\). 
+\end{problem}
+\begin{solution}
+  For cardinal \(\lambda\), we let \(x_0=\lambda,x_{n+1}=\aleph_{x_{n}}\). Now consider \(\kappa=\sup_{n \in \omega}x_n\). 
+  Easily \(\kappa\) is limit ordinal, so \(\aleph_{\kappa}=\sup_{\alpha<\kappa}\aleph_{\alpha}=\sup_{n \in \omega}\aleph_{x_n}=\sup_{n \in \omega}\aleph_{x_{n+1}}=\kappa\). 
+  And since \(\kappa=\bigcup_{n \in \omega}x_n\), we get \(\cof( \kappa)\leq \omega\). Easily \(\kappa \geq x_2 =\aleph_{\aleph_{\lambda}} \geq \aleph_{\aleph_0}>\omega\). 
+  So we get \(\kappa>\cof( \kappa)\). So \(\kappa\) is singular.
+\end{solution}
+\begin{problem}\label{pro:3}
+  \begin{enumerate}
+    \item \(\cof( \aleph+\beta)=\cof( \beta)\).
+    \item \(\cof( \aleph_{\alpha})=\cof( \alpha)\) for limit ordinal \(\alpha\). 
+    \item \(\cof( \aleph_{\alpha+1})=\aleph_{\alpha+1}\).
+  \end{enumerate}
+\end{problem}
+\begin{solution}
+  \begin{enumerate}
+    \item First we prove \(\cof( \alpha+\beta) \leq \cof( \beta)\). Consider \(\theta:\cof( \beta) \to \beta\) is unbound. 
+      Then we let \(\tau:\cof( \beta) \to \alpha+\beta,x \mapsto \alpha+\theta( x)\). Easily we get \(\tau\) is unbound. 
+      So we get \(\cof( \alpha+\beta)\leq \cof( \beta)\). 
+
+      Second we prove \(\cof( \alpha+\beta) \geq \cof( \beta)\). Consider \(\theta:\cof( \alpha+\beta) \to \alpha+\beta\) is unbound. 
+      Now we consider \(B:=\{ x \in \alpha+\beta:x \geq \alpha\}\) and \(A=\theta_{-1}[ B]\). 
+      Easily we get \(B \cong \beta\), and \(\text{ordertype}( A)\leq \cof( \alpha+\beta)\). 
+      And \(\res{\theta}{A}:A \to B\) is unbounded, so easily we get \(\cof( \beta)\leq \cof( \alpha+\beta)\). 
+
+      Finally we get \(\cof( \alpha+\beta)=\cof( \beta)\). 
+    \item First we prove \(\cof( \aleph_{\alpha})\leq \cof( \alpha)\). Assume \(\theta:\cof( \alpha) \to \alpha\) is unbound. 
+      Consider \(\tau:\cof( \alpha) \to \aleph_\alpha,x \mapsto \aleph_{\theta( x)}\). 
+      Since \(\alpha\) is limit ordinal, we get \(\aleph_\alpha=\sup_{\beta<\alpha}\aleph_\beta\). 
+      So we get \(\tau\) is unbounded. So we get \(\cof( \aleph_\alpha)\leq \alpha\). 
+
+      Second we prove \(\cof( \alpha) \leq \cof( \aleph_\alpha)\). Assume \(\theta:\cof( \aleph_\alpha) \to \aleph_\alpha\) is unbounded. 
+      Let \(f:\ord \to \ord,f( x):=\min\{ y \in \ord:\aleph_y \geq x\}\). 
+      Let \(\tau:\cof( \aleph_\alpha)\to \alpha,x \mapsto f( \theta( x))\). 
+      Since \(\theta( x)<\aleph_\alpha = \sup_{\beta<\alpha}\aleph_\beta\), we get \(\exists \beta < \alpha,\theta( x)<\aleph_\beta\). 
+      So we get \(f( \theta( x)) \leq \beta < \alpha\). So \(\tau\) is well-defined. 
+      Easily to get \(\tau\) is unbounded. So we get \(\cof( \aleph_\alpha)\leq \cof( \alpha)\). 
+
+      Finally we get \(\cof( \aleph_\alpha)=\cof( \alpha)\). 
+  \end{enumerate}
+\end{solution}
+\begin{problem}\label{pro:4}
+  Assume GCH, prove that for cardinal \(\lambda,\kappa>\omega\), we have:
+    \[\kappa^\lambda=\begin{cases}
+    \kappa & \lambda<\cof( \kappa)\\
+    \kappa^+ & \cof( \kappa)\leq \lambda \leq \kappa\\
+    \lambda^+ & \kappa<\lambda
+    \end{cases}\]
+\end{problem}
+\begin{solution}
+  Use MI to \(\kappa\). For \(\kappa=\omega\), when \(\lambda = \omega\) we get \(\kappa^\lambda=2^\omega=\omega^+\). 
+  When \(\lambda>\omega\), we get \(\kappa^\lambda \geq 2^\lambda=\lambda^+\). And \(\kappa^\lambda \leq (2^\lambda)^\lambda=2^{\lambda \times \lambda}=2^\lambda=\lambda^+\). 
+  Now assume for \(\alpha:\omega \leq \alpha <\kappa\) it's right, consider \(\kappa\). 
+  \begin{itemize}
+    \item \(\lambda<\cof( \kappa)\). 
+
+      Since \(\lambda < \cof( \kappa)\), we get every \(f:\lambda \to \kappa\) is bounded. 
+      So we get \(\fun{\lambda}{\kappa}=\bigcup_{\alpha<\kappa}\fun{\lambda}{\alpha}\). 
+      So we get \(\kappa^\lambda \leq \sum_{\alpha<\kappa}\alpha^\lambda=\kappa \sup_{\alpha<\kappa}\alpha^\lambda\).
+      Since \(\alpha<\kappa\), we get \(\alpha^\lambda=\begin{cases}
+      \alpha & \lambda < \cof( \alpha)\\
+      \alpha^+ & \cof( \alpha)\leq \lambda \leq \alpha\\
+      \lambda^+ & \alpha<\lambda
+      \end{cases}\). Anyway, since \(\alpha,\lambda<\kappa\), we get \(\alpha^\lambda \leq \kappa\). 
+      So we get \(\kappa^\lambda \leq \kappa \sup_{\alpha<\kappa}\alpha^\lambda \leq \kappa \kappa = \kappa\). 
+    \item \(\cof( \kappa)\leq \lambda \leq \kappa\). 
+
+      Easily \(\kappa^\lambda \leq \kappa^\kappa \leq 2^{\kappa \kappa}=2^\kappa = \kappa^+\). Now we only need \(\kappa^+ \leq \kappa^\lambda\). 
+      Only need to prove \(\kappa^{\cof( \kappa)} >\kappa\). 
+      If not, assume \(f:\kappa \to \fun{\cof( \kappa)}{\kappa}\) is bijection. 
+      Assume \(\theta:\cof( \kappa) \to \kappa\) is unbounded. Without loss of generality assume \(\theta\) is injective.  Let \(\tau:\kappa \to \cof( \kappa),x \mapsto \min\{ y \in \cof( \kappa):\theta( y)\geq x\}\). 
+      Now consider \(A_\alpha :=\tau_{-1}[ \alpha]\) for \(\alpha < \cof( \kappa)\). 
+      Easily we get \(\forall y \in \tau_{-1}[ \alpha],\alpha > \theta( y)\). Since \(\theta\) is injective, we get \(\card( A_\alpha) \leq \card( \alpha) <\kappa\). 
+      Let \(B_\alpha:=\{f(x)( \alpha):x \in A_\alpha\}\), then easily \(\card( B_\alpha) \leq \card( A_\alpha)<\kappa\). 
+      Now consider \(g:\cof( \kappa)\to \kappa,g( \alpha):=\min( \kappa \setminus B_\alpha)\). 
+      Since \(f\) is bijection, we get \(\exists x \in \kappa,g=f( x)\). 
+      But \(f( x)( \tau( x)) \in B_{\tau( x)}\), and \(g( \tau( x))=\min( \kappa \setminus B_{\tau( x)}) \notin B_{\tau( x)}\), contradiction! 
+      So we get \(\kappa^\lambda \geq \kappa^{\cof( \kappa)} > \kappa\), then \(\kappa^\lambda \geq \kappa^+\). 
+    \item \(\kappa<\lambda\). 
+
+      We get \(\lambda^+=2^\lambda \leq \kappa^\lambda \leq 2^{\lambda \lambda}=2^\lambda =\lambda^+\). 
+      So \(\kappa^\lambda = \lambda^+\). 
+  \end{itemize}
+\end{solution}
+\begin{problem}\label{pro:5}
+  Assume a linearly ordered set \(P\) has a countable dense subset, then \(\card P \leq 2^{\aleph_0}\). 
+\end{problem}
+\begin{solution}
+  Assume \(A \subset P\) is a countable dense subset. Now consider \(f:P \to \mathcal{P}( A),x \mapsto \{ y \in A:y < x\}\). 
+  Easily \(\card \mathcal{P}( A)=2^{\aleph_0}\), so we only need to prove \(f\) is injection. 
+  Assume \(f( x)=f( y)\). Without loss of generality assume \(x \leq y\). If \(x \neq y\), then we get \(x < y\). 
+  Since \(A\) is dense, we get \(\exists z,w \in A\) such that \(x \leq z < w \leq y\).
+  So we get \(z \in f( y)\) but \(z \notin f( x)\), contradiction! 
+  So we get \(x = y\). So \(f\) is injective, so \(\card P \leq 2^{\aleph_0}\). 
+\end{solution}
+\begin{problem}\label{pro:6}
+  Find the cardinal of all null sets of reals.
+\end{problem}
+\begin{solution}
+  Let \(\mathcal{A} \subset \mathcal{P}( \mathbb{R})\) is the set of all of null sets. 
+  Then we get \(\card \mathcal{A} \leq \card \mathcal{P}( \mathbb{R})=2^{\mathfrak{c}}\). 
+  Now we prove \(\card \mathcal{A} \geq 2^\mathfrak{c}\). 
+  Consider \(C \subset \mathbb{R}\) is the Canter set. We have \(C\) is null and \(\card C=\mathfrak{c}\). 
+  So we get \(\mathcal{P}( C)\subset \mathcal{A}\), then \(\card \mathcal{A} \geq \card \mathcal{P}( C)=2^\mathfrak{c}\). 
+\end{solution}
+\begin{problem}\label{pro:7}
+  Prove that \(\fun{\mathbb{N}}{\mathbb{N}}\) is uncountable. 
+\end{problem}
+\begin{solution}
+  Easily we have \(\card \fun{\mathbb{N}}{\mathbb{N}}=\aleph_0^{\aleph_0} \geq 2^{\aleph_0}>\aleph_0\) is uncountable.
+\end{solution}
+
+\end{document}
