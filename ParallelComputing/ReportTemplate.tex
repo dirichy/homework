@@ -1,4 +1,5 @@
-%!Tex program = xelatex
+%!Tex Ts-program = xelatex
+%!figpath = .
 \documentclass[11pt,openany]{book}              % Book class in 11 points
 
 %\documentclass[justified,twoside]{tufte-book}
@@ -33,6 +34,8 @@
 \definecolor{echodrk}{HTML}{0099cc}
 \definecolor{mymauve}{rgb}{0.58,0,0.82}
 \usepackage[colorlinks,linkcolor=mymauve,citecolor=echodrk]{hyperref}
+\usepackage{cleveref}
+\usepackage{pgfplots}
 
 \definecolor{boxgray}{rgb}{0.9,0.9,0.9}
 \definecolor{boxpink}{rgb}{0.9,0.7,0.7}
@@ -42,9 +45,9 @@
 
 \makeatletter
 \renewcommand{\thesection}{%
-	\ifnum\c@chapter<1 \@arabic\c@section
-	\else \thechapter.\@arabic\c@section
-	\fi
+  \ifnum\c@chapter<1 \@arabic\c@section
+  \else \thechapter.\@arabic\c@section
+  \fi
 }
 \makeatother
 
@@ -85,6 +88,8 @@
 \newtheorem{corollary}{Corollary}
 \newtheorem{consequence}{Consequence}
 \newtheorem{conjecture}{Conjecture}
+\newtheorem{problem}{Problem}
+\newtheorem{solution}{Solution}
 \newcommand{\sign}{{\rm sign}}
 \newcommand{\argmin}{\mathop{\rm argmin}}
 \newcommand{\argmax}{\mathop{\rm argmax}}
@@ -94,27 +99,27 @@
 \usepackage{fancyhdr}
 
 \fancypagestyle{plain}{ %
-	\fancyhf{} % remove everything
-	\renewcommand{\headrulewidth}{0pt} % remove lines as well
-	\renewcommand{\footrulewidth}{0pt}
+  \fancyhf{} % remove everything
+  \renewcommand{\headrulewidth}{0pt} % remove lines as well
+  \renewcommand{\footrulewidth}{0pt}
 }
 
 
 \fancypagestyle{fancybook}{%
-	\fancyhf{}%
-	% Note the ## here. It's required because \fancypagestyle is making a macro (\ps@fancybook).
-	% If we just wrote #1, TeX would think that it's the argument to \ps@fancybook, but
-	% \ps@fancybook doesn't take any arguments, so TeX would complain with an error message.
-	% You are not expected to understand this.
-	\renewcommand*{\sectionmark}[1]{ \markright{\thesection\ ##1} }%
-	%\renewcommand*{\chaptermark}[1]{ \markboth{\chaptername\ \thechapter: ##1}{} }%
-	% Increase the length of the header such that the folios 
-	% (typography jargon for page numbers) move into the margin
-	\fancyhfoffset[LE]{6mm}% slightly less than 0.25in
-	\fancyhfoffset[RO]{6mm}%
-	% Put some space and a vertical bar between the folio and the rest of the header
-	\fancyhead[LE]{\thepage\hskip3mm\vrule\hskip3mm}%
-	\fancyhead[RO]{\rightmark\hskip3mm\vrule\hskip3mm\thepage}%
+  \fancyhf{}%
+  % Note the ## here. It's required because \fancypagestyle is making a macro (\ps@fancybook).
+  % If we just wrote #1, TeX would think that it's the argument to \ps@fancybook, but
+  % \ps@fancybook doesn't take any arguments, so TeX would complain with an error message.
+  % You are not expected to understand this.
+  \renewcommand*{\sectionmark}[1]{ \markright{\thesection\ ##1} }%
+  %\renewcommand*{\chaptermark}[1]{ \markboth{\chaptername\ \thechapter: ##1}{} }%
+  % Increase the length of the header such that the folios 
+  % (typography jargon for page numbers) move into the margin
+  \fancyhfoffset[LE]{6mm}% slightly less than 0.25in
+  \fancyhfoffset[RO]{6mm}%
+  % Put some space and a vertical bar between the folio and the rest of the header
+  \fancyhead[LE]{\thepage\hskip3mm\vrule\hskip3mm}%
+  \fancyhead[RO]{\rightmark\hskip3mm\vrule\hskip3mm\thepage}%
 }
 \pagestyle{fancybook}
 
@@ -128,94 +133,136 @@
 
 \newcommand{\rarr}{\rightarrow}
 
-\begin{document}                        
-\chapter*{Title of project}
+\begin{document}
+\chapter*{Some Property of Ising Model}
 \vspace{-1cm}
-{\fontsize{18.0pt}{\baselineskip}\selectfont  Yinya Wang 201911010205}
+{\fontsize{18.0pt}{\baselineskip}\selectfont  Yongle Bai 202011150087}
 
-\section{The detailed setup of the problem }
-Ising model is used to successfully explain 
-the phase transition between paramagnetism and ferromagnetism in Statistical Physics.
-The phenomenon that a magnet disappears its magnetism after being heated over a critical 
-temperature and obtains its magnetism through cooling down the same critical temperature, is called
-the phase transition between paraamagnetism and ferromagnetism.
+\section{The detailed setup of the problem}
+The Ising model (or Lenz-Ising model or Ising-Lenz model), named after the physicists Ernst Ising and Wilhelm Lenz, is a mathematical model of ferromagnetism in statistical mechanics.
+The model consists of discrete variables that represent magnetic dipole moments of atomic "spins" that can be in one of two states (+1 or −1).
+The spins are arranged in a graph, usually a lattice (where the local structure repeats periodically in all directions), allowing each spin to interact with its neighbors.
+Neighboring spins that agree have a lower energy than those that disagree; the system tends to the lowest energy but heat disturbs this tendency, thus creating the possibility of different structural phases.
+The model allows the identification of phase transitions as a simplified model of reality.
+The two-dimensional square-lattice Ising model is one of the simplest statistical models to show a phase transition.
 
-This model assumes that magnet is made by small needles regularly arranged. 
-Each needle only has two different directions (upwards and downwards).
-Generally we consider a magnet as a square matrix with period boundary, call it \(A\). 
-The direction of each needle in magnet is regarded as an element in \(A\), and \(\pm 1\) represent
-two direction. Thus, we can use a matrix \(A \in M_n(\mathbb{R})\) to represent the 
-state of a magnet.
-The macroeconomic appearance of magnet (that is whether to appear magnetism)
-is depended on directions of all needles. 
-We use Hamiltonian to measure a microstate of magnet, i.e. \(A\):
-\begin{equation}
-\, H(A)=-\sum_{\sigma_i \in A} \sum_{i \sim j} J \sigma_i \sigma_j-\sum_{\sigma_i \in A}H \sigma_j 
+Now we consider a \(2\)-dimensional lattice with period boundary and size \(n \times n\).
+We use \(\Lambda:=\mathbb{Z}_n \times \mathbb{Z}_n\) as the index set.
+Let \(\sigma=\{ \sigma_k\}_{k \in \Lambda}\) be the state of the lattice.
+The direction of each spin in the lattice is regarded as an element in \(\sigma\), and \(\pm 1\) represent two direction.
+For any two adjacent sites \(i,j\in \Lambda \) there is an spin-spin interaction \(J\).
+Also a site \(j\in \Lambda \) has an external magnetic field \(H\) interacting with it. The energy of a configuration \(\sigma\) is given by the Hamiltonian function
+\begin{equation}\label{equ:1}
+	H(\sigma)=-\sum_{i,j\in\Lambda,i \sim j} J \sigma_i \sigma_j-\sum_{i \in \Lambda}H \sigma_i
 \end{equation}
-, where \(J\) represents the spin-spin interaction, \(H\) represents the external field, 
-\(\sigma_i\) is individual spins on eacch of lattice sites.
-Since each needle will interact with sourrounding needles 
-(these needles on it's left, right, up and down).
-The first sum represents the interactions between each small needle; 
-latter one means the external field trying to align in one direction.\\
+where \(i \sim j\) means \(i\) and \(j\) is adjacent.
+The configuration probability is given by the Boltzmann distribution with inverse temperature \( \beta \geq 0\):
 
-How does temperature influence magnetism? It turns out 
-that each needle can convert its direction randomly influenced by temperature \(T\).
-Assume that each needle convert in different time.
-Whether to accept the convert of a needle is deicided by the change of Hamiltonian before and after the convert,
-, and temperature at the same time, let's call the change as \(\Delta H\).
+\[ \mathbb{P}(\sigma )={\frac {e^{-\beta H(\sigma )}}{Z}},\]
 
-If \(\Delta H>0\), then accept the convert. If \(\Delta H > 0 \), then we accept the convert with
-probabilty of \(\mathrm{e}^{\frac{- \Delta H}{k_BT}}\) where \(k_{B}\) is a constant.
-After the convert of the needle, a convert will happen afterwards. After enough long time,
-the process may reach a dynamic balance. Thus, the magnet will perform may different property.
+where \( \beta =1/(k_{B}T)\), and the normalization constant
 
-Our aim is to find out how does the temperature influence the property of magnet and determine 
-the critical temperature. In this article, we focus on these two problem:
-\begin{enumerate}
-  
-  \item Take \(J=1, k_B=1, H=0\), \(N\) is the size of \(A\). Fixing \(T\), 
-    choosing an initial microstate and initial needle randomly, 
-    let \(a\) convert, and judge whether to accept it, and then repaet the process as before.
-    We will get a chain of microstates.
-    Caculate internal energy \(u\) in the process:
-    \begin{equation}
-    \, u=\frac{U}{N^2}    \, U=\mathbb{E}(H)
-    \end{equation}
-    and specific heat \(c\):
-    \begin{equation}
-    \, c=\frac{C}{N^2}, C=\frac{k_B}{T^2} \mathbb{D}(H)
-    \end{equation}
-    where \(\mathbb{D}\) is the variance.
-    And plot \(u-T, c-T\) graph.
-  \item Take \(J=1, k_B=1\), \(H \neq 0\). Fixing \(T, H\), 
-    choosing an initial microstate and initial needle randomly, 
-    let \(a\) convert, and judge whether to accept it, and then repaet the process as before.
-    We will get a chain of microstates.
-    Caculate magnetization \(m\) in the process:
-    \begin{equation}
-    \, m=\frac{M}{N^2}, M=\mathbb{E}(\sum_{\sigma_i \in A} \sigma_i ).
-    \end{equation}
-    And plot \(m-(T, H)\) graph.
-\end{enumerate}
+\[ Z=\sum _{\sigma }e^{-\beta H(\sigma )}\]
 
+is the partition function.
 
+Our aim is to find out how does the temperature influence the property of lattice and determine the critical temperature.
+In this article, we will use Metropolis sampling to solve following two problem:
+
+\begin{problem}\label{pro:1}
+Take \(J=1, k_B=1, H=0\), let \(N\) be the size of the lattice and \(T\) be the temperature.
+Caculate internal energy \(u\) in the process:
+\begin{equation}
+	u=\frac{U}{N^2},U=\mathbb{E}(H)=\sum_{\sigma\in 2^\Lambda}\mathbb{P}(\sigma)H( \sigma)
+\end{equation}
+and specific heat \(c\):
+\begin{equation}
+	c=\frac{C}{N^2}, C=\frac{k_B}{T^2}\mathbb{V}\mathrm{ar}(H)=\frac{k_B}{T^2}( \mathbb{E}( H^2)-\mathbb{E}( H)^2)
+\end{equation}
+where \(\mathbb{V}\mathrm{ar}\) is the variance.
+And plot graph of \(u-T, c-T\).
+And check the temperature near the critical temperature \(T_c = \frac{2| J|}{k_B \ln ( 1+\sqrt{2})}\).
+
+\end{problem}
+\begin{problem}\label{pro:2}
+Take \(J=1, k_B=1\), \(H \neq 0\). Fixing \(T, H\),
+Caculate magnetization \(m\) in the process:
+\begin{equation}
+	m=\frac{M}{N^2}, M=\mathbb{E}(\sum_{i \in \Lambda} \sigma_i ).
+\end{equation}
+And plot graph of \(m-(T, H)\). You may find some interesting result near \(T = T_c\).
+
+\end{problem}
 
 \section{The procedure you take to do the computation }
-
+Whether to accept the convert of a spin is deicided by the change of Hamiltonian before and after the convert, write \(\Delta H\), and temperature \(T\).
+If \(\Delta H<0\), then accept the convert.
+If \(\Delta H > 0 \), then we accept the convert with probabilty of \(\mathrm{e}^{\frac{- \Delta H}{\beta}}\).
+After the convert of the spin, a convert will happen afterwards.
+The procedure of the computation is following:
+\begin{enumerate}
+	\item First of all, set the initial paraments: Set up the grid to imitate the magnet.
+	      Choose a state \(X_1\) randomly in \(2^\Lambda\).
+	\item Secondly, we randomly choose a point in \(X_n\) to try to change its direction of magnet, and caculate the changed energy \(\Delta H\).
+	      And then, judge whether to accept the direction change of this point.
+	      If accepted, then the point will change direction; else, it will remain the old direction. Then we get \(X_{n+1}\).
+	\item Repeat the process above for a long time, write \(Y\).
+	\item Use \(\mathbb{E}'( f):=\sum_{t=X}^{Y} f( X_t)\) to estimate \(\mathbb{E}( f)\), to caculate \(c,u\) and \(m\), where \(X\) is a certain number choosed between \(0\) and \(Y\).
+	\item Last, plot the graphs and analysis the results.
+\end{enumerate}
 
 
 
 
 \section{Analysis of the numerical results }
+\begin{solution}
+	In \Cref{pro:1}, we let \(T\) ranges in \(0.5\sim 4\) and convert \(1000000\) steps.
+	In \Cref{fig:Tu} we can see as temperature become higher and higher, the value of the average Hamiltonian, \(u\), become bigger and bigger.
+	That's means high temperature will supply more energy for the spins to get a state with high Hamiltonian.
+	More over, we can find that the growth rate of \(u\) is highest near \(T=T_c\).
+	When \(T\) is far from \(T_c\), the value of \(u\) is a virtual constant.
+	\begin{figure}\label{fig:Tu}
+		\centering
+		\includegraphics[width=0.8\linewidth]{Tu.pdf}
+		\caption{T-u}
+	\end{figure}
+
+	\begin{figure}\label{fig:Tc}
+		\centering
+		\includegraphics[width=0.8\linewidth]{Tu.pdf}
+		\caption{T-c}
+	\end{figure}
+	\begin{figure}\label{fig:THM}
+		\centering
+		\includegraphics[width=0.8\linewidth]{THM.pdf}
+		\caption{T-H-m}
+	\end{figure}
+
+
+
+
+\end{solution}
 
 \section{The issues you encounter and how you overcome }
+First of all, when we was running our program, our compute is not capable enough. But fortunately,
+we have a generous teacher, who borrowed us his compute to complete our program.
 
 \section{ Possible discussion about the results and further thinking }
 Ising model can be applied to many other situations and fields. For example, opinion dynamics.
-Consider a group of people, each person can support one of two different candidates (like A and B),
-let the 
+Consider a group of people, each person can support one of two different candidates (like A and B).
+The candidate one support may change after exchanging ideas with sourroundings.
+What's more, the residents there may be influenced by advertisement of candidates. This is a typical
+reality situation for Ising model.
 
+Besides, we can apply the Ising model to neuroscience. The activity of neuros in the brain can be
+modelled statistically. Each neuron at anytime is either active or inactive. Hopfield suggested in 1982
+that a dynamic Ising model would provide a first approximate to a neural network which is capable of learning.
+And following the general approach of a lot scientists, we can model the process of neurons by the following
+model. Given a collection of neurons, we assume the energy as:
+\begin{equation}
+	\, E = -1/2 \sum_{ij}J_{ij}SiSj-\sum_i h_iS_i
+\end{equation}
+In this process, we can apply Ising model to simulate it.
 %\bibliographystyle{plainnat}
 %\bibliography{report}
 

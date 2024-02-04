@@ -1,0 +1,54 @@
+%!Mode:: "TeX:UTF-8"
+%!TEX encoding = UTF-8 Unicode
+%!TEX TS-program = xelatex
+%!language = zh
+\documentclass{ctexart}
+\newif\ifpreface
+\prefacetrue
+\input{../../../global/all}
+\begin{document}
+\large
+\setlength{\baselineskip}{1.2em}
+\ifpreface
+	\input{../../../global/preface}
+\else
+	\maketitle
+\fi
+\newgeometry{left=2cm,right=2cm,top=2cm,bottom=2cm}
+\crefname{enumi}{}{}
+%from_here_to_type
+若\(m,n \in \mathbb{Z}\)，且\(\gcd( m,n)=1\)，则\(\exists u,v \in \mathbb{Z}\)，使得\(um+vn=1\)。
+\begin{proof}
+	令\(A:=\{ um+vn:u,v \in \mathbb{Z}\}\)。
+	注意到\(\forall x,y \in A\)，\(\forall s,t \in \mathbb{Z},\exists u,v \in \mathbb{Z},sx+ty=um+vn\)。
+	令\(B:=\{ x \in A:x>0\}\)。
+	令\(x=\min B\)。
+	若\(y \in A,x \nmid y\)，则\(y=kx+r,0<r<x\)。
+	由\(r=y-kx=( -k)x+1y\)得\(r \in A\)，又\(r>0\)，故\(r \in B\)，矛盾！
+	故\(\forall y \in A,x \mid y\)。
+	故\(x \mid m,x \mid n\)。
+	故\(x \mid \gcd( m,n)\)。
+	从而\(x=1\)。
+\end{proof}
+
+设\(d,m,n\in \mathbb{Z}\)，则关于\(x,y\)的方程\(xm+yn=d\)有整数解的充分必要条件是什么？
+\begin{proof}
+	充分必要条件为\(\gcd( m,n) \mid d\)，理由如下：
+
+	``\(\implies\)''：
+	取一组解\(x,y\)，则\(d=xm+yn\)。由\(\gcd( m,n) \mid m,n\)得\(\gcd( m,n)\mid xm+yn=d\)。
+
+	``\(\impliedby\)''：
+	令\(A:=\{ um+vn:u,v \in \mathbb{Z}\}\)。
+	注意到\(\forall x,y \in A\)，\(\forall s,t \in \mathbb{Z},\exists u,v \in \mathbb{Z},sx+ty=um+vn\)。
+	令\(B:=\{ x \in A:x>0\}\)。
+	令\(x=\min B\)。
+	若\(y \in A,x \nmid y\)，则\(y=kx+r,0<r<x\)。
+	由\(r=y-kx=( -k)x+1y\)得\(r \in A\)，又\(r>0\)，故\(r \in B\)，矛盾！
+	故\(\forall y \in A,x \mid y\)。
+	故\(x \mid m,x \mid n\)。
+	故\(x \mid \gcd( m,n)\)。
+	故\(x \mid d\)。
+	设\(x=um+vn,d=kx\)，则\(d=( ku)m+( kv)n \in A\)。
+\end{proof}
+\end{document}
