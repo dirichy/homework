@@ -3,4 +3,5 @@
 \newcommand{\fun}[2]{{}^{#1}#2}
 \newcommand{\res}[2]{#1 \upharpoonright #2}
 \newcommand{\madd}{{}^{\frown}}
-\newcommand{\cof}{\mathop{\mathrm{ordertype}}}
+\newcommand{\cof}{\mathop{\mathrm{cf}}}
+\newcommand{\odt}{\mathop{\mathrm{ordertype}}}

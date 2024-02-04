@@ -1,3 +1,6 @@
 \renewcommand{\phi}{\varphi}
 \renewcommand{\hom}{\mathop{\mathrm{Hom}}}
 \newcommand{\Span}{\mathop{\mathrm{Span}}}
+\newcommand{\sym}{\mathop{\mathrm{Sym}}}
+\newcommand{\fun}[2]{{#2}^{#1}}
+\newcommand{\sgn}{\mathop{\mathrm{sgn}}}

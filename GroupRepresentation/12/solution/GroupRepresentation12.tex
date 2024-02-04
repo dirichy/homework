@@ -1,0 +1,72 @@
+%!Mode:: "TeX:UTF-8"
+%!TEX encoding = UTF-8 Unicode
+%!TEX TS-program = xelatex
+\documentclass{ctexart}
+\newif\ifpreface
+%\prefacetrue
+\input{../../../global/all}
+\begin{document}
+\large
+\setlength{\baselineskip}{1.2em}
+\ifpreface
+    \input{../../../global/preface}
+\newgeometry{left=2cm,right=2cm,top=2cm,bottom=2cm}
+\else
+\newgeometry{left=2cm,right=2cm,top=2cm,bottom=2cm}
+\maketitle
+\fi
+%from_here_to_type
+\begin{problem}
+  Assume \(G=\langle  a\rangle \) is the \(n\)-ranked cyclic group. Prove that 
+  \[
+    f(a^r)=\sum_{j=0}^{n-1}k_j \xi^{rj}
+  \]
+  where \(f:G \to \mathbb{C}\) is a function and \(\xi=\mathrm{e}^{\frac{2\pi \mathrm{i}}{n}}\) and 
+  \[
+    k_j=\frac{1}{n} \sum_{r=0}^{n-1}f( a^r)\xi^{-rj}
+  \]
+\end{problem}
+
+\begin{solution}
+  Easily we have \(\hat{G} = \{ \phi^j:j=0,\cdots,n-1\}\), where \(\phi( a^r)=\xi^r\). 
+  So we have \(f( a^r)=\frac{1}{\sqrt{n}}\sum_{j=0}^{n-1}\hat{f}( \phi^j) \phi^j( a^r)=\frac{1}{\sqrt{n}}\sum_{j=0}^{n-1}\hat{f}( \phi^j) \xi^{rj}\). 
+  And \(\hat{f}( \phi^j)=\frac{1}{\sqrt{n}}\sum_{r=0}^{n-1}f( a^r)\overline{\phi^j( a^r)}=\frac{1}{\sqrt{n}}\sum_{r=0}^{n-1}f( a^r)\xi^{-rj}\). 
+  So we finally get the given equation. 
+\end{solution}
+
+\begin{problem}
+  Assume \(f:G \to \mathbb{C}\) and \(G\) is Abel group. Prove that \(f\) is const \(\iff \hat{f}( \phi)=0,\forall \phi \in \hat{G} \setminus \{ 1\}\). 
+\end{problem}
+
+\begin{solution}
+  ``\(\implies\)'': Easily we have \(\hat{f}( \phi)=\frac{1}{\sqrt{n}}\sum_{g \in G}f( g)\phi( g)\). 
+  Assume \(\phi \neq 1\), since \(f\) is const, we only need to prove \(\sum_{g \in G}\phi( g)=0\). 
+  Since \(\phi \perp 1\), we get \(\sum_{g \in G}\phi( g) =0\). 
+  ``\(\impliedby\)'': Easily we have \(f( g)=\sum_{\phi \in \hat{G}}\frac{1}{\sqrt{n}}\sum_{\phi \in \hat{G}} \hat{f}( \phi)\phi( g)\). 
+  Since \(\phi \neq 1 \to \hat{f}( \phi)=0\), we get \(f( g)=\frac{1}{\sqrt{n}} \hat{f}( 1)\) is a const. 
+\end{solution}
+
+\begin{problem}
+  Find a \(3\)-dim irriducible complex character of \(S_4\).
+\end{problem}
+
+\begin{solution}
+  Consider \(S_4 \times \Omega:=\{ 1,2,3,4\} \to \Omega,\sigma x=\sigma( x)\). Easily this group action is double transitive. 
+  Let \(\phi\) is the reperesentation obtained by this group action, then \(\phi=\phi_0 \oplus \phi_1\), where \(\phi_0\) is main reperesentation and \(\dim \phi_1=3\) and \(\phi_1\) is irriducible. 
+  Easily \(S_4\) has \(5\) conjugate classes and \(\{ ( 1),( 12),( 123),( 12)( 34),( 1234)\}\) is reperesentation element. 
+  Let \(\chi,\chi_0,\chi_1\) are character of \(\phi,\phi_0,\phi_1\), then \(\chi=\chi_0+\chi_1=1+\chi_1\). 
+  So \(\chi_1( ( 1))=\chi( ( 1))-1=3,\chi_1( ( 12))=\chi( ( 12))-1=1,\chi_1( ( 123))=\chi(( 123))-1=0,\chi_1( ( 12)( 34))=\chi( ( 12)( 34))-1=-1,\chi_1( ( 1234))=\chi( ( 1234))-1=-1\). 
+\end{solution}
+
+\begin{problem}
+  Find a \(4\)-dim irriducible complex character of \(A_5\).
+\end{problem}
+
+\begin{solution}
+  Consider \(A_5 \times \Omega:=\{ 1,2,3,4,5\} \to \Omega,\sigma x:=\sigma( x)\), easily it's double transitive. 
+  Let \(\phi\) is the reperesentation obtained by this group action, then \(\phi=\phi_0 \oplus \phi_1\), where \(\phi_0\) is main reperesentation and \(\phi_1\) is \(4\)-dim irriducible. 
+  Let \(\chi,\chi_0,\chi_1\) are character of \(\phi,\phi_0,\phi_1\), then \(\chi=\chi_0+\chi_1=1+\chi_1\). 
+  Easily \(A_5\) has \(5\) conjugate classes and \(\{ ( 1),( 123),( 12)( 34),( 12345),( 12543)\}\) is a group of reperesentation elements. 
+  Finally we get \(\chi_1( ( 1))=4,\chi_1( ( 123))=1,\chi_1( ( 12)( 34))=0,\chi_1( ( 12345))=\chi_1( ( 12543))=-1\).
+\end{solution}
+\end{document}
