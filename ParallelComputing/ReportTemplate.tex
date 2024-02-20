@@ -1,19 +1,23 @@
-%!Tex Ts-program = xelatex
+%!Tex Ts-program = lualatex
 %!figpath = .
 \documentclass[11pt,openany]{book}              % Book class in 11 points
-
+\usepackage{luacode}
 %\documentclass[justified,twoside]{tufte-book}
 %\usepackage[UTF8]{ctex}
+%\usepackage[english]{babel}
 
 
 \parindent0pt  \parskip10pt             % make block paragraphs
 %\raggedright                            % do not right justify
 \usepackage{xcolor}
+\usepackage{float}
 \usepackage{amsmath}
 \usepackage{amssymb}
 \usepackage{bm}
 \usepackage[round]{natbib}
 \usepackage{graphicx}
+\usepackage{animate}
+\usepackage{matlab-prettifier}
 \usepackage{subfigure}
 \usepackage{amsthm}
 \usepackage{tgpagella}
@@ -72,9 +76,7 @@
 
 
 \newcommand*{\horzbar}{\rule[.5ex]{2.5ex}{0.5pt}}
-
-
-\newtheoremstyle{break}
+\newtheoremstyle{break}%
 {\topsep}{\topsep}%
 {\itshape}{}%
 {\bfseries}{}%
@@ -150,8 +152,8 @@ Now we consider a \(2\)-dimensional lattice with period boundary and size \(n \t
 We use \(\Lambda:=\mathbb{Z}_n \times \mathbb{Z}_n\) as the index set.
 Let \(\sigma=\{ \sigma_k\}_{k \in \Lambda}\) be the state of the lattice.
 The direction of each spin in the lattice is regarded as an element in \(\sigma\), and \(\pm 1\) represent two direction.
-For any two adjacent sites \(i,j\in \Lambda \) there is an spin-spin interaction \(J\).
-Also a site \(j\in \Lambda \) has an external magnetic field \(H\) interacting with it. The energy of a configuration \(\sigma\) is given by the Hamiltonian function
+For any two adjacent sites \(i,j\in \Lambda \) there is a spin-spin interaction \(J\).
+Also, a site \(j\in \Lambda \) has an external magnetic field \(H\) interacting with it. The energy of a configuration \(\sigma\) is given by the Hamiltonian function
 \begin{equation}\label{equ:1}
 	H(\sigma)=-\sum_{i,j\in\Lambda,i \sim j} J \sigma_i \sigma_j-\sum_{i \in \Lambda}H \sigma_i
 \end{equation}
@@ -161,17 +163,15 @@ The configuration probability is given by the Boltzmann distribution with invers
 \[ \mathbb{P}(\sigma )={\frac {e^{-\beta H(\sigma )}}{Z}},\]
 
 where \( \beta =1/(k_{B}T)\), and the normalization constant
-
 \[ Z=\sum _{\sigma }e^{-\beta H(\sigma )}\]
-
 is the partition function.
 
 Our aim is to find out how does the temperature influence the property of lattice and determine the critical temperature.
-In this article, we will use Metropolis sampling to solve following two problem:
+In this article, we will use Metropolis sampling to solve following two problems:
 
 \begin{problem}\label{pro:1}
 Take \(J=1, k_B=1, H=0\), let \(N\) be the size of the lattice and \(T\) be the temperature.
-Caculate internal energy \(u\) in the process:
+Calculate internal energy \(u\) in the process:
 \begin{equation}
 	u=\frac{U}{N^2},U=\mathbb{E}(H)=\sum_{\sigma\in 2^\Lambda}\mathbb{P}(\sigma)H( \sigma)
 \end{equation}
@@ -186,7 +186,7 @@ And check the temperature near the critical temperature \(T_c = \frac{2| J|}{k_B
 \end{problem}
 \begin{problem}\label{pro:2}
 Take \(J=1, k_B=1\), \(H \neq 0\). Fixing \(T, H\),
-Caculate magnetization \(m\) in the process:
+Calculate magnetization \(m\) in the process:
 \begin{equation}
 	m=\frac{M}{N^2}, M=\mathbb{E}(\sum_{i \in \Lambda} \sigma_i ).
 \end{equation}
@@ -194,77 +194,148 @@ And plot graph of \(m-(T, H)\). You may find some interesting result near \(T = 
 
 \end{problem}
 
-\section{The procedure you take to do the computation }
-Whether to accept the convert of a spin is deicided by the change of Hamiltonian before and after the convert, write \(\Delta H\), and temperature \(T\).
+\section{The procedure you take to do the computation}
+Whether to accept the convert of a spin is decided by the change of Hamiltonian before and after the convert, write \(\Delta H\), and temperature \(T\).
 If \(\Delta H<0\), then accept the convert.
-If \(\Delta H > 0 \), then we accept the convert with probabilty of \(\mathrm{e}^{\frac{- \Delta H}{\beta}}\).
-After the convert of the spin, a convert will happen afterwards.
+If \(\Delta H > 0 \), then we accept the convert with probability of \(\mathrm{e}^{\frac{- \Delta H}{\beta}}\).
+After the convert of the spin, a convert will happen afterward.
 The procedure of the computation is following:
 \begin{enumerate}
-	\item First of all, set the initial paraments: Set up the grid to imitate the magnet.
-	      Choose a state \(X_1\) randomly in \(2^\Lambda\).
-	\item Secondly, we randomly choose a point in \(X_n\) to try to change its direction of magnet, and caculate the changed energy \(\Delta H\).
-	      And then, judge whether to accept the direction change of this point.
-	      If accepted, then the point will change direction; else, it will remain the old direction. Then we get \(X_{n+1}\).
+	\item First, set the initial parameters: Set up the grid to imitate the magnet.
+		Choose a state \(X_1\) randomly in \(2^\Lambda\).
+	\item Secondly, we randomly pick a point in \(X_n\) to try to change its direction of magnet, and calculate the changed energy \(\Delta H\).
+		And then, judge whether to accept the direction change of this point.
+		If accepted, then the point will change direction; else, it will remain the old direction. Then we get \(X_{n+1}\).
 	\item Repeat the process above for a long time, write \(Y\).
-	\item Use \(\mathbb{E}'( f):=\sum_{t=X}^{Y} f( X_t)\) to estimate \(\mathbb{E}( f)\), to caculate \(c,u\) and \(m\), where \(X\) is a certain number choosed between \(0\) and \(Y\).
+	\item Use \(\mathbb{E}'( f):=\sum_{t=X}^{Y} f( X_t)\) to estimate \(\mathbb{E}( f)\), to calculate \(c,u\) and \(m\), where \(X\) is a certain number chose between \(0\) and \(Y\).
 	\item Last, plot the graphs and analysis the results.
 \end{enumerate}
 
-
-
-
-\section{Analysis of the numerical results }
+\section{Analysis of the numerical results}
 \begin{solution}
+	\begin{figure}
+		\centering
+		\includegraphics[width=\linewidth]{figs/Tu.pdf}
+		\caption{T-u}\label{fig:Tu}
+	\end{figure}
 	In \Cref{pro:1}, we let \(T\) ranges in \(0.5\sim 4\) and convert \(1000000\) steps.
 	In \Cref{fig:Tu} we can see as temperature become higher and higher, the value of the average Hamiltonian, \(u\), become bigger and bigger.
 	That's means high temperature will supply more energy for the spins to get a state with high Hamiltonian.
 	More over, we can find that the growth rate of \(u\) is highest near \(T=T_c\).
 	When \(T\) is far from \(T_c\), the value of \(u\) is a virtual constant.
-	\begin{figure}\label{fig:Tu}
+
+	In \Cref{fig:Tc} we can see that the more temperature \(T\) go near \(T_c\), the higher the specific heat is.
+	\begin{figure}
 		\centering
-		\includegraphics[width=0.8\linewidth]{Tu.pdf}
-		\caption{T-u}
+		\includegraphics[width=\linewidth]{figs/Tc.pdf}
+		\caption{T-c}\label{fig:Tc}
 	\end{figure}
-	In \Cref{fig:Tc} we can see the more temperature \(T\) go near \(T_c\), the higher the critical
-
-	\begin{figure}\label{fig:Tc}
-		\centering
-		\includegraphics[width=0.8\linewidth]{Tc.pdf}
-		\caption{T-c}
-	\end{figure}
-	\begin{figure}\label{fig:THM}
-		\centering
-		\includegraphics[width=0.8\linewidth]{THM.pdf}
-		\caption{T-H-m}
-	\end{figure}
-
-
-
+	Since the specific heat \(c\) is related to the variance of the Hamiltonian, we know that when \(T\) is near \(T_c\), the Hamiltonian will be very unstable.
+	In fact, when the temperature is low, the spins will finally get into the same direction, so the Hamiltonian will be very small;
+	when the temperature is high, the lattice will get very mess, every spin will get up or down randomly, so the Hamiltonian will be very big;
+	when the temperature is very near to \(T_c\), the lattice will behave between them, thus the value of Hamiltonian will be big or small from time to time.
+	So when \(T=T_c\) the variance of Hamiltonian will be very big.
 
 \end{solution}
 
-\section{The issues you encounter and how you overcome }
-First of all, when we was running our program, our compute is not capable enough. But fortunately,
-we have a generous teacher, who borrowed us his compute to complete our program.
+\begin{solution}
+	\begin{figure}
+		\centering
+		\includegraphics[width=\linewidth]{figs/THM.pdf}
+		\caption{T-H-m}
+		\label{fig:THM}
+	\end{figure}
+	We let \(T\) range from \(0.5\) to \(4\) and \(H\) range from \(0\) to \(1\) and run the program \(1000000\) steps, then compute the value of \(m\) for every pair of \(( T,H)\).
+	From \Cref{fig:THM} we can find that when \(T<T_c\), the value of \(m\) will be near \(1\) not matter how small \(H\) is;
+	when \(T>T_c\), the value of \(m\) just increasing follow \(H\):
+	when \(H\) is small, \(m\) is near \(0\);
+	when \(H\) is big, \(m\) also is big but can't reach \(1\).
 
-\section{ Possible discussion about the results and further thinking }
-Ising model can be applied to many other situations and fields. For example, opinion dynamics.
-Consider a group of people, each person can support one of two different candidates (like A and B).
-The candidate one support may change after exchanging ideas with sourroundings.
-What's more, the residents there may be influenced by advertisement of candidates. This is a typical
-reality situation for Ising model.
+	We can imagine, if this lattice is a magnet, then when the temperature is low, this magnet can easily be magnetized; when the temperature is high, this magnet can't be permanently magnetized.
+\end{solution}
 
-Besides, we can apply the Ising model to neuroscience. The activity of neuros in the brain can be
-modelled statistically. Each neuron at anytime is either active or inactive. Hopfield suggested in 1982
-that a dynamic Ising model would provide a first approximate to a neural network which is capable of learning.
-And following the general approach of a lot scientists, we can model the process of neurons by the following
-model. Given a collection of neurons, we assume the energy as:
+\section{The issues you encounter and how you overcome}
+The program cost several weeks every run, but we can't let our computer work so long.
+So we used our teacher's computer as server, and learned how to use ssh and sftp to work with a linux server.
+\section{Possible discussion about the results and further thinking}
+Ising model can not only work on a lattice but also work on a graph.
+The value of \(J,H\) also can change by the index.
+Using Ising on a general graph can help to solve the graph maximum cut problem.
+The graph maximum cut problem is set up as following:
+
+Let \(G\) be a weighted undirected graph.
+A subset \(S\) of the vertex set \(V(G)\) of \(G\) determines a cut of the graph \(G\) into \(S\) and its complementary subset \(G\setminus S\).
+The size of the cut is the sum of the weights of the edges between \(S\) and \(G\setminus S\).
+A maximum cut size is at least the size of any other cut, varying \(S\).
+For the Ising model without an external field on a graph \(G\), the Hamiltonian becomes the following sum over the graph edges \(E(G)\).
+
 \begin{equation}
-	\, E = -1/2 \sum_{ij}J_{ij}SiSj-\sum_i h_iS_i
+	H(\sigma )=-\sum _{ij\in E(G)}J_{ij}\sigma _{i}\sigma _{j}
 \end{equation}
-In this process, we can apply Ising model to simulate it.
+
+Here each vertex \(i\) of the graph is a spin site that takes a spin value \(\sigma _{i}=\pm 1\), and \(J_{ij}\) is the interaction of \(\sigma_i,\sigma_j\).
+A given spin configuration \( \sigma \) partitions the set of vertices \( V(G)\) into two σ \( \sigma \)-depended subsets, those with spin up \( V^{+}\) and those with spin down \(V^{-}\).
+We denote by \( \delta (V^{+})\) the \( \sigma\)-depended set of edges that connects the two complementary vertex subsets \( V^{+}\) and \( V^{-}\).
+The size \( \left|\delta (V^{+})\right|\) of the cut \( \delta (V^{+})\) to bipartite the weighted undirected graph \(G\) can be defined as
+\begin{equation}
+	\left|\delta (V^{+})\right|={\frac {1}{2}}\sum _{ij\in \delta (V^{+})}W_{ij}
+\end{equation}
+
+where \( W_{ij}\) denotes a weight of the edge \( ij\) and the scaling \(\frac{1}{2}\) is introduced to compensate for double counting the same weights \( W_{ij}=W_{ji}\).
+
+The identities
+
+\begin{equation}
+	\begin{aligned}H(\sigma )&=-\sum _{ij\in E(V^{+})}J_{ij}-\sum _{ij\in E(V^{-})}J_{ij}+\sum _{ij\in \delta (V^{+})}J_{ij}\\&=-\sum _{ij\in E(G)}J_{ij}+2\sum _{ij\in \delta (V^{+})}J_{ij}\end{aligned}
+\end{equation}
+where the total sum in the first term does not depend on \( \sigma\), imply that minimizing \( H(\sigma )\) in \( \sigma\) is equivalent to minimizing \( \sum _{ij\in \delta (V^{+})}J_{ij}\).
+Defining the edge weight \( W_{ij}=-J_{ij}\) thus turns the Ising problem without an external field into a graph Max-Cut problem [4] maximizing the cut size \( \left|\delta (V^{+})\right|\), which is related to the Ising Hamiltonian as follows,
+
+\begin{equation}
+	H(\sigma )=\sum _{ij\in E(G)}W_{ij}-4\left|\delta (V^{+})\right|.
+\end{equation}
 %\bibliographystyle{plainnat}
 %\bibliography{report}
-
+\appendix
+\begin{center}
+	\large Appendix
+\end{center}
+\section{Vedios}
+Following videos only can be played with pdf viewer supporting javascript, such as AdobeReader or Okular. Or you can play the avi file with any video player.
+\begin{figure}[H]
+	\centering
+	\animategraphics[width=0.75\linewidth,autoplay=true,loop=true,type=pdf]{20}{./TTc/}{1}{300}
+	\caption{T=Tc}
+	\label{vid:Tc}
+\end{figure}
+\begin{figure}[H]
+	\centering
+	\animategraphics[width=0.75\linewidth,autoplay=true,loop=true,type=pdf]{20}{./T1/}{1}{300}
+	\caption{T=1}
+	\label{vid:1}
+\end{figure}
+\begin{figure}[H]
+	\centering
+	\animategraphics[width=0.75\linewidth,autoplay=true,loop=true,type=pdf]{20}{./T3/}{1}{300}
+	\caption{T=3}
+	\label{vid:3}
+\end{figure}
+\section{Codes}
+\newcommand{\code}[1]{\subsection{#1}\lstinputlisting[frame=single, numbers=left, style=Matlab-editor]{codes/#1.m}}
+% \lstinputlisting[frame=single, numbers=left, style=Matlab-editor]{codes/main.m}
+\code{main}
+\code{GenerateGrid}
+\code{WhetherAccept}
+\code{getDeltaEnergy}
+\code{getEnergyOfGrid}
+\code{pro1}
+\code{pro2}
+\begin{luacode*}
+	tex.print([[\begin{lstlisting}]])
+    for k,v in pairs(debug.getinfo(tex.print)) do 
+    tex.print(string.format("%s=%s",tostring(k),tostring(v)))
+    end
+    tex.print(debug.getinfo(tex.print)["source"])
+  tex.print([[\end{lstlisting}]])
+\end{luacode*}
 \end{document}                          % The required last line

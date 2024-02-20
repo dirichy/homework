@@ -24,7 +24,7 @@ Assume \((\phi,V),(\psi,W)\) are two finite-dim reperentation of group \(G\), fi
 \begin{solution}
 	Assume \(\{ v_i:i=1,\cdots,n\},\{ w_i:i=1,\cdots ,m\}\) are basis of \(V,W\). Then we get \(\{ v_i \otimes w_j:1 \leq i \leq n,1 \leq j \leq m\}\) is a basis of \(V \otimes W\).
 	Assume \(\Phi,\Psi,\Gamma\) is the matrix of \(\phi,\psi,\phi \otimes \psi\).
-  We use \(\{ 1,\cdots,n\}^4\) as the dom of \(\Gamma( g)\). 
+	We use \(\{ 1,\cdots,n\}^4\) as the dom of \(\Gamma( g)\).
 	Then we get \(( \phi \otimes \psi)( g)( v_i \otimes w_j)=\phi( g)( v_i)\otimes \psi( g)( w_j)\).
 	So \(\Gamma( g)( e_{ij})=( \sum_{k=1}^{n}\sum_{t=1}^{m} \Phi( g)_{ki} \Psi( g)_{tj} e_{kt})\).
 	So finally we get \(\Gamma( g)_{k t,i j}=\Phi( g)_{ki}\Psi( g)_{tj}\).
@@ -36,9 +36,9 @@ Prove that \(V \otimes V = \sym^2 V \oplus \bigwedge^2 V\).
 \end{problem}
 
 \begin{solution}
-	First since \(x \otimes y = \frac{x}{2} \otimes y + y \otimes \frac{x}{2} + \frac{x}{2}\otimes y - y \otimes \frac{x}{2}\) we get 
-  \(x \otimes y \in \sym^2 V+ \bigwedge^2 V\). Since \(\Span\{ x \otimes y:x,y \in V\}=V \otimes V\), we get
-  \(V \otimes V = \sym^2 V + \bigwedge^2 V\).
+	First since \(x \otimes y = \frac{x}{2} \otimes y + y \otimes \frac{x}{2} + \frac{x}{2}\otimes y - y \otimes \frac{x}{2}\) we get
+	\(x \otimes y \in \sym^2 V+ \bigwedge^2 V\). Since \(\Span\{ x \otimes y:x,y \in V\}=V \otimes V\), we get
+	\(V \otimes V = \sym^2 V + \bigwedge^2 V\).
 	Now assume \(\dim V=n\), we only need to prove \(\dim\sym^2 V + \dim \bigwedge^2 V \leq n^2\).
 	Assume \(\{ v_i:1 \leq i \leq n\}\) is a basis of \(V\), then \(\{v_i \otimes v_j:1 \leq i,j \leq n\}\) is basis of \(V \otimes V\).
 	Then easily \(\Span\{ v_i \otimes v_j + v_j \otimes v_i:1 \leq i,j \leq n\}=\sym^2 V,\Span\{ v_i \otimes v_j - v_j \otimes v_i : 1 \leq i,j \leq n\}=\bigwedge^2 V\).
@@ -71,7 +71,7 @@ Find the complex character table of the group \(D_5\).
 	Now we let \(g_1=e,g_2=\sigma,g_3=\sigma^2,g_4=\tau\) and \(W_{ij}=\chi_{i-1}( g_j)\), we have
 	\[
 		W=\begin{pmatrix}
-		  1 & 1                      & 1                      & 1  \\
+			1 & 1                      & 1                      & 1  \\
 			1 & 1                      & 1                      & -1 \\
 			2 & 2\cos \frac{2 \pi}{5}  & 2 \cos \frac{4 \pi}{5} & 0  \\
 			2 & 2 \cos \frac{4 \pi}{5} & 2\cos \frac{2 \pi}{5}  & 0  \\

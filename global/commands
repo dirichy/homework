@@ -1,5 +1,7 @@
 \def\to{\rightarrow}
 \newcommand{\xor}{\vee}
+\newcommand{\AND}{\wedge}
+\newcommand{\OR}{\vee}
 \newcommand{\bor}{\bigvee}
 \newcommand{\band}{\bigwedge}
 \newcommand{\xand}{\wedge}

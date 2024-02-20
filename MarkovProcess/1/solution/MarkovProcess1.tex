@@ -1,0 +1,98 @@
+%!Mode:: "TeX:UTF-8"
+%!TEX TS-program = xelatex
+\documentclass{ctexart}
+\newif\ifpreface
+\prefacetrue
+\input{../../../global/all}
+\begin{document}
+\large
+\setlength{\baselineskip}{1.2em}
+\ifpreface
+	\input{../../../global/preface}
+\else
+	\maketitle
+\fi
+\newgeometry{left=2cm,right=2cm,top=2cm,bottom=2cm}
+%from_here_to_type
+\begin{problem}\label{pro:1}
+Assume \((\mathscr{F}_t:t \geq 0,t \in \mathbb{R})\) is a filtration.
+For \(t \geq 0\) we let \(\mathscr{F}_{t +}:=\bigcap_{s>t}\mathscr{F}_s\).
+Prove that \(\mathscr{F}_t \subset \mathscr{F}_{t +}\) and \((\mathscr{F}_{t +}:t \geq 0)\) is a filtration.
+\end{problem}
+\begin{solution}
+	To prove \(\mathscr{F}_t \subset \mathscr{F}_{t +}=\bigcap_{s>t}\mathscr{F}_s\), we only need to prove \(\forall s>t,\mathscr{F}_t \subset \mathscr{F}_s\).
+	By the definition of filtration it's obvious.
+	Now we will prove \((\mathscr{F}_{t +}:t \geq 0)\) is a filtration.
+	Only need to prove \(\forall t,s \in \mathbb{R} \AND t \leq s,\mathscr{F}_{t +}\subset \mathscr{F}_{s +}\).
+	By the definition of \(\mathscr{F}_{\dot{c} +}\) we know that
+	\(\mathscr{F}_{t +}=\bigcap_{x>t}\mathscr{F}_x=\bigcap_{x>s}\mathscr{F}_x \cap \bigcap_{x:t<x \leq s}\mathscr{F}_x \subset \bigcap_{x>s}\mathscr{F}_x = \mathscr{F}_{s +}\).
+	So \((\mathscr{F}_{t +}:t \geq 0)\) is a filtration.
+\end{solution}
+\begin{problem}\label{pro:2}
+Assume \((X_t:t \geq 0,t \in \mathbb{R})\) is a stochastic process on probability space \((\Omega,\mathscr{F},\mathbb{P})\).
+Prove that \(\forall s,t \geq 0,\varepsilon >0,\{\rho(X_s,X_t) \geq \varepsilon\} \in \mathscr{F}\).
+\end{problem}
+\begin{solution}
+	Easily \(\{\rho(X_s,X_t)\geq \varepsilon\}=\bigcup_{k=1}^{\infty}\{\rho(X_s,X_t)>\varepsilon-\frac{1}{k}\varepsilon\}\).
+	So we only need to prove \(\forall k \in \mathbb{N}^+,\{\rho(X_s,X_t)>\varepsilon(1-\frac{1}{k})\} \in \mathscr{F}\).
+	Take \(\delta=\varepsilon(1-\frac{1}{k})\), only need to prove \(\forall \delta>0,\{\rho(X_s,X_t)>\delta\}\in \mathscr{F}\).
+
+	\(\forall t \geq 0,X_t:\Omega \to E\) is measurable, where \(E \subset \mathbb{R}^d\).
+	So we can find a countable dense set in \(\mathbb{R}^d\), write \(D\).
+	We will prove that \(\{\rho(X_s,X_t)>\delta\}=\bigcup_{q \in D} \{\rho(X_s,q)-\rho(X_t,q)>\delta\}\).
+	On one hand, easily \(\rho(X_s,q)-\rho(X_t,q)>\delta \implies \rho(X_s,X_t)>\delta\) from triangle inequality.
+	So we easily get \(\{\rho(X_s,X_t)>\delta\}\supset\bigcup_{q \in D} \{\rho(X_s,q)-\rho(X_t,q)>\delta\}\).
+	On the other hand, assume for certain \(\omega \in \Omega\) we have \(\rho(X_s(\omega),X_t(\omega))>\delta\), we will prove \(\exists q \in D,\rho(X_s(\omega),q)-\rho(X_t(\omega),q)>\delta\).
+	For convenience, we omit \((\omega)\) from now on to the end of this paragraph.
+	Since \(\rho(X_s,X_t)>\delta\), we know \(\gamma:=\frac{\rho(X_s,X_t)-\delta}{2}>0\).
+	Since \(D\) is dense, we obtain \(\exists q \in D,\rho(X_t,q)<\gamma\).
+	So from triangle inequality we get \(\rho(X_s,q)\geq\rho(X_s,X_t)-\rho(X_t,q)>2 \gamma+\delta-\gamma=\gamma+\delta\).
+	So we get \(\rho(X_s,q)-\rho(X_t,q)>\gamma + \delta - \gamma =\delta\).
+	Finally, we get \(\{\rho(X_s,X_t)>\delta\}= \bigcup_{q \in D}\{\rho(X_s,q)-\rho(X_t,q)>\delta\}\).
+
+	Noting \(\bigcup_{q \in D}\{\rho(X_s,q)-\rho(X_t,q)>\delta\}=\bigcup_{q \in D}\bigcup_{p \in \mathbb{Q}^+}\{\rho(X_s,q)>\delta+p,\rho(X_t,q)<p\}\),
+	and \(D,\mathbb{Q}^+\) are countable, so we only need to check \(\{\rho(X_s,q)>\delta+p,\rho(X_t,q)<p\} \in \mathscr{F},\forall q \in D,p \in \mathbb{Q}^+\).
+	Noting \(\{\rho(X_s,q)>\delta+p,\rho(X_t,q)<p\}=\{\rho(X_s,q)>\delta+p\}\cap\{\rho(X_t,q)<p\}\),
+	and \(X_s,X_t\) are measurable from \(\Omega\) to \(E\), we obtain \(\{\rho(X_s,q)>\delta+p\},\{\rho(X_t,q)<p\} \in \mathscr{F}\).
+	So we proved \(\{\rho(X_s,X_t) >\delta\} \in \mathscr{F},\forall s,t \geq 0,\forall \delta>0\).
+
+	Finally, we obtain \(\{\rho(X_s,X_t)\geq \varepsilon\} \in \mathscr{F},\forall s,t \geq 0,\varepsilon>0\).
+\end{solution}
+\begin{problem}\label{pro:3}
+Let \(\mathscr{D}_X:=\{\mu_J^X:J \in S(I)\}\) be the family of finite-dimentional distributions of a stochastic process \((X_t:t \geq 0,t \in \mathbb{R})\).
+\(\forall (s_1,s_2)\in S(I)\) and \(J=(t_1,\cdots,t_n)\in S(I)\), write \(K_1:=(s_1,s_2,t_1,\cdots,t_n) \in S(I),K_2:=(s_2,s_1,t_1,\cdots,t_n) \in S(I)\).
+Take \(A_1,A_2 \in \mathscr{E},B \in \mathscr{E}^n\), prove that
+\[
+	\mu^X_{K_1}(A_1 \times A_2 \times B)=\mu^X_{K_2}(A_2 \times A_1 \times B)
+\]
+and
+\[
+	\mu^X_{K_1}(E \times E \times B)=\mu^X_{K_2}(E \times E \times B)=\mu^X_{J}(B)
+\]
+\end{problem}
+
+\begin{problem}\label{pro:4}
+Assume \((\tau_k:k \in \mathbb{N}^+)\) is an i.i.d sequence of r.v. with exponential distribution with parameter \(\alpha>0\).
+Let \(S_n:=\sum_{k=1}^{n}\tau_k\). For \(t \geq 0,t \in \mathbb{R}\), let:
+\[
+	N_t:=\sum_{n=1}^{\infty}\mathbbm{1}_{\{S_n \leq t\}},
+	X_t:=\sum_{n=1}^{\infty}\mathbbm{1}_{\{S_n < t\}}
+\]
+Prove that \(N\) and \(X\) are modifications of each other, but they are not indistinguishable.
+\end{problem}
+
+\begin{problem}\label{pro:5}
+Assume \(T\) is non-negetive r.v. with distribution function \(F\) continuous on \(\mathbb{R}\).
+Let \(X_t=\mathbbm{1}_{\{T \leq t\}}\).
+Prove that \(X\) is stochastically continuous.
+\end{problem}
+\begin{problem}\label{pro:6}
+Assume \(I=\mathbb{Z}^+\), then the stochastic process \(X=(X_0,X_1,\cdots)\) is a r.v. from \(\Omega\) to \(E^\infty\).
+Define the distribution of \(X\), \(\mu_X\), as follows:
+\[
+	\mu_X(A)=\mathbb{P}(X \in A),A \in \mathscr{E}^\infty
+\]
+Then stochastic process \(X,Y\) are indistinguishable \(\iff \mu_X=\mu_Y\).
+\end{problem}
+
+\end{document}

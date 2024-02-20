@@ -4,5 +4,6 @@
 	"dsjh":"AlgebraicGeometry",
 	"algebra":"AlgebraicGeometry",
 	"com":"Combination",
-	"fun":"FunctionalAnalysis"
+	"fun":"FunctionalAnalysis",
+	"mac":"MarkovProcess"
 }
