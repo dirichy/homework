@@ -8,11 +8,44 @@
 \large
 \setlength{\baselineskip}{1.2em}
 \ifpreface
-    \input{../../../global/preface}
+	\input{../../../global/preface}
 \else
-\maketitle
+	\maketitle
 \fi
 \newgeometry{left=2cm,right=2cm,top=2cm,bottom=2cm}
 %from_here_to_type
+
+\begin{problem}\label{pro:1}
+	Prove that if \((X_n:n \geq 0)\) is a simple random walk, then so is \((-X_n:n \geq 0)\).
+\end{problem}
+
+\begin{solution}
+	Let \(\xi_n:=X_n-X_{n-1}\) for \(n \in \mathbb{N}^+\). Then Since \((X_n:n \in \mathbb{N})\) is simple random walk we have
+	\(X_0,\xi_1,\xi_2,\cdots\) are independent r.v. ranges in \(\mathbb{Z}\), and
+	\(\xi_i,i=1,2\cdots\) are i.i.d., and \(\mathbb{P}(|\xi_i|=1)=1\).
+	So we easily get \(-X_0,-\xi_1,-\xi_2,\cdots\) are independent r.v. ranges in \(\mathbb{Z}\),
+	and \(-\xi_i,i=1,2,\cdots\) are i.i.d., and \(\mathbb{P}(|-\xi_i|=1)=1\).
+	Since \(-X_n=X_0+\sum_{k=1}^{n}\xi_k\), by the definition of simple random walk we obtain \((-X_n:n \in \mathbb{N})\) is a simple random walk.
+\end{solution}
+
+\begin{problem}\label{pro:2}
+	Let \((X_n:n \geq 0)\) be a \(d\)-dimentional random walk, prove that \(\mathbb{P}(\sup_{n}|X_n|=\infty)=1\).
+\end{problem}
+
+\begin{problem}\label{pro:3}
+	Let \((X_n:n \geq 0)\) be a symmtry simple random walk with \(X_0=0\), for \(d=2\), prove that
+	\[
+		\mathbb{P}(S_{2n}=0)=\frac{1}{4^{2n}}\left(\frac{(2n)!}{(n!)^2}\right)^2
+	\]
+	For \(d=3\), prove that
+	\[
+		\mathbb{P}(S_{2n}=0)=\frac{1}{2^{2n}}\frac{(2n)!}{(n!)^2}\sum_{i + j + k = n} \left(\frac{1}{3^n}\frac{n!}{i!j!k!}\right)^2
+	\]
+\end{problem}
+
+\begin{problem}\label{pro:4}
+	Assume \((S_n:n \geq 0)\) is a symmtry simple random walk with \(S_0 = i \in \mathbb{Z}\).
+	Prove that \(\forall a \in \mathbb{Z}\), let \(\tau_a:=\min\{n \in \mathbb{N}:S_n=a \}\), then \(\mathbb{P}(\tau_a < \infty) = 1 \).
+\end{problem}
 
 \end{document}
