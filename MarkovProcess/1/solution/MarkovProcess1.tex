@@ -4,9 +4,11 @@
 \newif\ifpreface
 \prefacetrue
 \input{../../../global/all}
+\everymath{\displaystyle}
 \begin{document}
 \large
 \setlength{\baselineskip}{1.2em}
+\date{北京师范大学数学科学学院}
 \ifpreface
 	\input{../../../global/preface}
 \else
@@ -15,9 +17,9 @@
 \newgeometry{left=2cm,right=2cm,top=2cm,bottom=2cm}
 %from_here_to_type
 \begin{problem}\label{pro:1}
-Assume \((\mathscr{F}_t:t \geq 0,t \in \mathbb{R})\) is a filtration.
-For \(t \geq 0\) we let \(\mathscr{F}_{t +}:=\bigcap_{s>t}\mathscr{F}_s\).
-Prove that \(\mathscr{F}_t \subset \mathscr{F}_{t +}\) and \((\mathscr{F}_{t +}:t \geq 0)\) is a filtration.
+	Assume \((\mathscr{F}_t:t \geq 0,t \in \mathbb{R})\) is a filtration.
+	For \(t \geq 0\) we let \(\mathscr{F}_{t +}:=\bigcap_{s>t}\mathscr{F}_s\).
+	Prove that \(\mathscr{F}_t \subset \mathscr{F}_{t +}\) and \((\mathscr{F}_{t +}:t \geq 0)\) is a filtration.
 \end{problem}
 \begin{solution}
 	To prove \(\mathscr{F}_t \subset \mathscr{F}_{t +}=\bigcap_{s>t}\mathscr{F}_s\), we only need to prove \(\forall s>t,\mathscr{F}_t \subset \mathscr{F}_s\).
@@ -29,8 +31,8 @@ Prove that \(\mathscr{F}_t \subset \mathscr{F}_{t +}\) and \((\mathscr{F}_{t +}:
 	So \((\mathscr{F}_{t +}:t \geq 0)\) is a filtration.
 \end{solution}
 \begin{problem}\label{pro:2}
-Assume \((X_t:t \geq 0,t \in \mathbb{R})\) is a stochastic process on probability space \((\Omega,\mathscr{F},\mathbb{P})\).
-Prove that \(\forall s,t \geq 0,\varepsilon >0,\{\rho(X_s,X_t) \geq \varepsilon\} \in \mathscr{F}\).
+	Assume \((X_t:t \geq 0,t \in \mathbb{R})\) is a stochastic process on probability space \((\Omega,\mathscr{F},\mathbb{P})\).
+	Prove that \(\forall s,t \geq 0,\varepsilon >0,\{\rho(X_s,X_t) \geq \varepsilon\} \in \mathscr{F}\).
 \end{problem}
 \begin{solution}
 	Easily \(\{\rho(X_s,X_t)\geq \varepsilon\}=\bigcup_{k=1}^{\infty}\{\rho(X_s,X_t)>\varepsilon-\frac{1}{k}\varepsilon\}\).
@@ -59,40 +61,120 @@ Prove that \(\forall s,t \geq 0,\varepsilon >0,\{\rho(X_s,X_t) \geq \varepsilon\
 	Finally, we obtain \(\{\rho(X_s,X_t)\geq \varepsilon\} \in \mathscr{F},\forall s,t \geq 0,\varepsilon>0\).
 \end{solution}
 \begin{problem}\label{pro:3}
-Let \(\mathscr{D}_X:=\{\mu_J^X:J \in S(I)\}\) be the family of finite-dimentional distributions of a stochastic process \((X_t:t \geq 0,t \in \mathbb{R})\).
-\(\forall (s_1,s_2)\in S(I)\) and \(J=(t_1,\cdots,t_n)\in S(I)\), write \(K_1:=(s_1,s_2,t_1,\cdots,t_n) \in S(I),K_2:=(s_2,s_1,t_1,\cdots,t_n) \in S(I)\).
-Take \(A_1,A_2 \in \mathscr{E},B \in \mathscr{E}^n\), prove that
-\[
-	\mu^X_{K_1}(A_1 \times A_2 \times B)=\mu^X_{K_2}(A_2 \times A_1 \times B)
-\]
-and
-\[
-	\mu^X_{K_1}(E \times E \times B)=\mu^X_{K_2}(E \times E \times B)=\mu^X_{J}(B)
-\]
+	Let \(\mathscr{D}_X:=\{\mu_J^X:J \in S(I)\}\) be the family of finite-dimentional distributions of a
+	stochastic process \((X_t:t \geq 0,t \in \mathbb{R})\).
+	\(\forall (s_1,s_2)\in S(I)\) and \(J=(t_1,\cdots,t_n)\in S(I)\),
+	write \(K_1:=(s_1,s_2,t_1,\cdots,t_n) \in S(I),K_2:=(s_2,s_1,t_1,\cdots,t_n) \in S(I)\).
+	Take \(A_1,A_2 \in \mathscr{E},B \in \mathscr{E}^n\), prove that
+	\[
+		\mu^X_{K_1}(A_1 \times A_2 \times B)=\mu^X_{K_2}(A_2 \times A_1 \times B)
+	\]
+	and
+	\[
+		\mu^X_{K_1}(E \times E \times B)=\mu^X_{K_2}(E \times E \times B)=\mu^X_{J}(B)
+	\]
 \end{problem}
+\begin{solution}
+	By the definition of finite-dimentional distributions we get
+	\[
+		\begin{aligned}
+			\mu^X_{K_1}(A_1 \times A_2 \times B) & =\mathbb{P}((X_{s_1},X_{s_2},X_{t_1},\cdots,X_{t_n}) \in A_1 \times A_2 \times B)                         \\
+			                                     & =\mathbb{P}(X_{s_1} \in A_1)\mathbb{P}(X_{s_2} \in A_2)\mathbb{P}((X_{t_1},X_{t_2},\cdots,X_{t_n}) \in B)
+		\end{aligned}
+	\]
+	For the same reason, we obtain
+	\[
+		\begin{aligned}
+			\mu^X_{K_2}(A_2 \times A_1 \times B)                                                                         \\
+			 & =\mathbb{P}((X_{s_2},X_{s_1},X_{t_1},\cdots,X_{t_n}) \in A_2 \times A_1 \times B)                         \\
+			 & =\mathbb{P}(X_{s_2} \in A_2)\mathbb{P}(X_{s_1} \in A_1)\mathbb{P}((X_{t_1},X_{t_2},\cdots,X_{t_n}) \in B)
+		\end{aligned}
+	\]
+	So we get
+	\[
+		\mu^X_{K_1}(A_1 \times A_2 \times B)=\mu^X_{K_2}(A_2 \times A_1 \times B)
+	\]
+	Also, let \(A_1=A_2=E\), we get
+	\[
+		\begin{aligned}
+			\mu^X_{K_1}(E \times E \times B) & =\mu^X_{K_2}(E \times E \times B)                                                             \\
+			                                 & =\mathbb{P}(X_{s_1} \in E)\mathbb{P}(X_{s_2} \in E)\mathbb{P}((X_{t_1},\cdots,X_{t_n}) \in B) \\
+			                                 & =\mathbb{P}((X_{t_1},\cdots,X_{t_n}) \in B)
+		\end{aligned}
+	\]
+	By the definition of finite-dimentional distributions we get
+	\[
+		\mu^X_{J}(B)=\mathbb{P}((X_{t_1},\cdots,X_{t_n}) \in B)
+	\]
+	So finally we get
+	\[
+		\mu^X_{K_1}(E \times E \times B)=\mu^X_{K_2}(E \times E \times B)=\mu^X_{J}(B)
+	\]
+\end{solution}
 
 \begin{problem}\label{pro:4}
-Assume \((\tau_k:k \in \mathbb{N}^+)\) is an i.i.d sequence of r.v. with exponential distribution with parameter \(\alpha>0\).
-Let \(S_n:=\sum_{k=1}^{n}\tau_k\). For \(t \geq 0,t \in \mathbb{R}\), let:
-\[
-	N_t:=\sum_{n=1}^{\infty}\mathbbm{1}_{\{S_n \leq t\}},
-	X_t:=\sum_{n=1}^{\infty}\mathbbm{1}_{\{S_n < t\}}
-\]
-Prove that \(N\) and \(X\) are modifications of each other, but they are not indistinguishable.
+	Assume \((\tau_k:k \in \mathbb{N}^+)\) is an i.i.d sequence of r.v.
+	with exponential distribution with parameter \(\alpha>0\).
+	Let \(S_n:=\sum_{k=1}^{n}\tau_k\). For \(t \geq 0,t \in \mathbb{R}\), let:
+	\[
+		N_t:=\sum_{n=1}^{\infty}\mathbbm{1}_{\{S_n \leq t\}},
+		X_t:=\sum_{n=1}^{\infty}\mathbbm{1}_{\{S_n < t\}}
+	\]
+	Prove that \(N\) and \(X\) are modifications of each other, but they are not indistinguishable.
 \end{problem}
+\begin{solution}
+	First we prove \(N\) and \(X\) are modifications of each other.
+	Fix \(t \in [0,\infty)\), we need to prove \(\mathbb{P}(N_t=X_t)=1\).
+	Noting \(N_t-X_t = \sum_{n=1}^{\infty}\mathbbm{1}_{S_n \leq t}-\mathbbm{1}_{S_n<1}=\sum_{n=1}^{\infty}\mathbbm{1}_{S_n=t}\),
+	we get \(\mathbb{P}(N_t=X_t)=\mathbb{P}(\sum_{n=1}^{\infty}\mathbbm{1}_{S_n=t})=\mathbb{P}(\forall n \in \mathbb{N}^+,S_n \neq t)\).
+	So we only need to prove \(\mathbb{P}(S_n=t)=0,\forall n \in \mathbb{N}^+\).
+	Since \(\tau_k,k \in \mathbb{N}^+\) are continuous-distributed, we know \(S_n=\sum_{k=1}^{n}\tau_k\) is continuous-distributed,
+	so \(\mathbb{P}(S_n=t)=0\).
+	So we proved \(N\) and \(X\) are modifications of each other.
+
+	Next we will prove they are not indistinguishable.
+	Only need to prove \(\mathbb{P}(\forall t \in [0,\infty),X_t=N_t)=0 \neq 1\).
+	Since \(N_t-X_t = \sum_{n=1}^{\infty}\mathbbm{1}_{S_n \leq t}-\mathbbm{1}_{S_n<1}=\sum_{n=1}^{\infty}\mathbbm{1}_{S_n=t}\),
+	we know \(\forall t,N_t=X_t \iff \forall t,\forall n \in \mathbb{N}^+,S_n \neq t\).
+	But \(S_n\) is ranged in \([0,\infty)\), so R.H.S is an impossible event.
+	So we finally get \(\mathbb{P}(\forall t \in [0,\infty),X_t=N_t)=0\) and thus \(X\) and \(N\) are not indistinguishable.
+\end{solution}
 
 \begin{problem}\label{pro:5}
-Assume \(T\) is non-negetive r.v. with distribution function \(F\) continuous on \(\mathbb{R}\).
-Let \(X_t=\mathbbm{1}_{\{T \leq t\}}\).
-Prove that \(X\) is stochastically continuous.
+	Assume \(T\) is non-negetive r.v. with distribution function \(F\) continuous on \(\mathbb{R}\).
+	Let \(X_t=\mathbbm{1}_{\{T \leq t\}}\).
+	Prove that \(X\) is stochastically continuous.
 \end{problem}
+\begin{solution}
+	Only need to check \(\forall t \geq 0,X_s \overset{\mathbb{P}}{\to}X_t,s \to t\).
+	Take \(\varepsilon >0\), we need to prove \(\lim_{s \to t}\mathbb{P}(\rho(X_s,X_t)>\varepsilon)=0\).
+	For \(u>v \geq 0\), we have \(X_u-X_v=\mathbbm{1}_{v<T \leq u}\).
+	So \(\mathbb{P}(\rho(X_u-X_v)>\varepsilon) \leq \mathbb{P}(X_u \neq X_v)=\mathbb{P}(v<T \leq u)\leq \mathbb{P}(T \in [v,u])\).
+	So we easily get \(\lim_{s \to t+}\mathbb{P}(\rho(X_s,X_t)>\varepsilon)\leq \lim_{s \to t+}\mathbb{P}(T \in [t,s])=0\) and \(\lim_{s \to t-}\mathbb{P}(\rho(X_s,X_t)>\varepsilon)\leq \lim_{s \to t-}\mathbb{P}(T \in [s,t])=0\).
+	So \(\lim_{s \to t}\mathbb{P}(\rho(X_s,X_t)>\varepsilon)=0\).
+\end{solution}
+
 \begin{problem}\label{pro:6}
-Assume \(I=\mathbb{Z}^+\), then the stochastic process \(X=(X_0,X_1,\cdots)\) is a r.v. from \(\Omega\) to \(E^\infty\).
-Define the distribution of \(X\), \(\mu_X\), as follows:
-\[
-	\mu_X(A)=\mathbb{P}(X \in A),A \in \mathscr{E}^\infty
-\]
-Then stochastic process \(X,Y\) are indistinguishable \(\iff \mu_X=\mu_Y\).
+	Assume \(I=\mathbb{Z}^+\), then the stochastic process \(X=(X_0,X_1,\cdots)\) is a r.v. from \(\Omega\) to \(E^\infty\).
+	Define the distribution of \(X\), \(\mu_X\), as follows:
+	\[
+		\mu_X(A)=\mathbb{P}(X \in A),A \in \mathscr{E}^\infty
+	\]
+	Then stochastic process \(X,Y\) are equivalent \(\iff \mu_X=\mu_Y\).
 \end{problem}
+\begin{solution}
+	``\(\implies\)'':Assume \(X,Y\) are equivalent, now we will prove \(\mu_X=\mu_Y\).
+	Let \(\mathscr{A}:=\{A \in \mathscr{P}(E^\infty):\exists n \in \mathbb{N}^+,A=A_1 \times A_2 \times \cdots \times A_n \times E \times E \times \cdots\}\).
+	Then we can get \(\mu_X(A)=\mu^X_{(1,2,\cdots,n)}(A_1 \times \cdots \times A_n)\).
+	So for \(A \in \mathscr{A}\) we know \(\mu_X(A)=\mu_Y(A)\).
+	By the definition of \(\mathscr{E}^\infty=\sigma(\mathscr{A})\),
+	and noting \(\mathscr{A}\) is a Semiset algebra, by the Measure extension theorem we get
+	\(\mu_X=\mu_Y\).
+
+	``\(\impliedby\)'': Assume \(\mu_X=\mu_Y\), then easily
+	\(\mu^X_{(s_1,\cdots,s_n)}(A_{s_1} \times \cdots \times A_{s_n})=\mu_X(\prod_{k \in \mathbb{N}^+} B_k)\),
+	where \(B_k=A_{s_t}\) for \(k=s_t\) and \(B_k=E\) for \(k \neq s_t,\forall t=1,\cdots,n\).
+	So easily \(\mu^X_{J}=\mu^Y_{J},\forall J \subset I \AND |J|<\infty\).
+\end{solution}
 
 \end{document}

@@ -1,6 +1,7 @@
 %!Mode:: "TeX:UTF-8"
 %!TEX encoding = UTF-8 Unicode
 %!TEX TS-program = xelatex
+%!language = zh
 \documentclass{ctexart}
 \newif\ifpreface
 %\prefacetrue
@@ -18,7 +19,7 @@
 %from_here_to_type
 \newcommand{\A}{\mathbbm{A}}
 \begin{problem}
-$P$ is an ideal of a unitary commutative ring $A$, then $P$ is prime ideal of $A\iff A/P$ is integral domain.
+	$P$ is an ideal of a unitary commutative ring $A$, then $P$ is prime ideal of $A\iff A/P$ is integral domain.
 \end{problem}
 \begin{solution}
 	$\Rightarrow $:
@@ -32,7 +33,7 @@ $P$ is an ideal of a unitary commutative ring $A$, then $P$ is prime ideal of $A
 \end{solution}
 
 \begin{problem}
-$M$ is an ideal of a unitary commutative ring $A$, then $M$ is maximal ideal of $A \iff A/M$ is a field.
+	$M$ is an ideal of a unitary commutative ring $A$, then $M$ is maximal ideal of $A \iff A/M$ is a field.
 \end{problem}
 \begin{solution}
 	$\Rightarrow $:
@@ -48,7 +49,7 @@ $M$ is an ideal of a unitary commutative ring $A$, then $M$ is maximal ideal of 
 \end{solution}
 
 \begin{problem}
-A ring $A$ is noetherian, $I\subset A$ is an ideal of $A$, then $A/I$ is noetherian.
+	A ring $A$ is noetherian, $I\subset A$ is an ideal of $A$, then $A/I$ is noetherian.
 \end{problem}
 \begin{solution}
 	Consider an ideal $J\subset A/I$, let $M:=\{x\in A:[x]\in J\}$. Then $\forall a\in A,x\in M,[ax]=[a][x]\in J$, so $ax\in M$. $\forall a,b\in M,[a-b]=[a]-[b]\in J$, so $a-b\in M$. So $M$ is an ideal of $A$.
@@ -57,8 +58,8 @@ A ring $A$ is noetherian, $I\subset A$ is an ideal of $A$, then $A/I$ is noether
 \end{solution}
 
 \begin{problem}
-\label{pro:4}
-$K$ is a field, $A=K[x_1,x_2,\cdots x_n],\A^n_K=K^n$. For ideal $I$ of $A$ let $V(I):=\{p\in\A_K^n:f(p)=0,\forall f\in I\}$. Then $V(I_1)\cup V(I_2)=V(I_1\cap I_2)=V(I_1I_2)$
+	\label{pro:4}
+	$K$ is a field, $A=K[x_1,x_2,\cdots x_n],\A^n_K=K^n$. For ideal $I$ of $A$ let $V(I):=\{p\in\A_K^n:f(p)=0,\forall f\in I\}$. Then $V(I_1)\cup V(I_2)=V(I_1\cap I_2)=V(I_1I_2)$
 \end{problem}
 \begin{solution}
 	\begin{lemma}
@@ -79,7 +80,7 @@ $K$ is a field, $A=K[x_1,x_2,\cdots x_n],\A^n_K=K^n$. For ideal $I$ of $A$ let $
 \end{solution}
 
 \begin{problem}
-$K$ is an infinite field, then $\A_k^n$ is not Hausdorff.
+	$K$ is an infinite field, then $\A_k^n$ is not Hausdorff.
 \end{problem}
 \begin{solution}
 	\begin{lemma}
@@ -101,4 +102,5 @@ $K$ is an infinite field, then $\A_k^n$ is not Hausdorff.
 	\(\phi\)
 	So there is not a pair of points can be seperated by two disjoint open set.
 \end{solution}
+
 \end{document}
