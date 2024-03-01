@@ -1,0 +1,146 @@
+%!Mode:: "TeX:UTF-8"
+%!TEX TS-program = xelatex
+\documentclass{ctexart}
+\newif\ifpreface
+\prefacetrue
+\input{../../../global/all}
+\begin{document}
+\large
+\iffalse
+	\setlength{\baselineskip}{1.2em}
+	\ifpreface
+		\input{../../../global/preface}
+	\else
+		\maketitle
+	\fi
+\fi
+\newgeometry{left=2cm,right=2cm,top=2cm,bottom=2cm}
+%from_here_to_type
+%作业：第一章第4节习题5; 第5节习题1，2，4(iii)； 第二章第1节习题1(b), 3; 第2节习题2
+
+\begin{problem}\label{pro:p14.5}
+Assume \(n \in \mathbb{N}^+\) and \(2^n + 1\) is prime. Prive that \(\exists k \in \mathbb{N},n=2^k\).
+\end{problem}
+\begin{lemma}\label{lem:1}
+	Assume \(b=ka\) and \(k\) is odd, then for \(x,y \in \mathbb{N}\), we have \(x^a + y^a \mid x^b + y^b\).
+\end{lemma}
+\begin{proof}
+	Easily \(x^b + y^b \equiv (x^a)^k + y^b \equiv (x^a + y^a - y^a)^k + y^b \equiv (-y^a)^k + y^b \equiv 0 \mod x^a + y^a\).
+	So \(x^a + y^a \mid x^b + y^b\).
+\end{proof}
+
+\begin{solution}
+	Assume \(n\) is not power of \(2\), then \(\exists p>2\) is prime such that \(p \mid n\).
+	Let \(a=\frac{n}{p}\), then from Lemma \ref{lem:1} we have \(2^a+1^a \mid 2^n+1^n\).
+	Easily \(a=\frac{n}{p}<n\), so \(2^a+1<2^n+1\). And easily \(1<2^a+1\).
+	So \(\frac{2}^n+1\) is not prime, contradiction!
+	So \(\exists k \in \mathbb{N},n=2^k\).
+\end{solution}
+\begin{problem}\label{pro:p16.1}
+Find the standrad decomposition of \(30!\).
+\end{problem}
+\begin{solution}
+	There are \(2,3,5,7,11,13,17,19,23,29\), \(10\) primes, below \(30\).
+	So we know \(30!\) can be break down into power and product of them.
+	By calculation we can get that:
+	\begin{equation}\label{equ:1}
+		\begin{aligned}
+			v_2(30!)    & =\sum_{k=1}^{\infty}\left[\frac{30}{2^k}\right]    & =15+7+3+1=26 \\
+			v_3(30!)    & =\sum_{k=1}^{\infty}\left[\frac{30}{3^k}\right]    & =10+3+1=14   \\
+			v_5(30!)    & =\sum_{k=1}^{\infty}\left[\frac{30}{5^k}\right]    & =6+1=7       \\
+			v_7(30!)    & =\sum_{k=1}^{\infty}\left[\frac{30}{7^k}\right]    & =4           \\
+			v_{11}(30!) & =\sum_{k=1}^{\infty}\left[\frac{30}{{11}^k}\right] & =2           \\
+			v_{13}(30!) & =\sum_{k=1}^{\infty}\left[\frac{30}{{13}^k}\right] & =2           \\
+			v_{17}(30!) & =\sum_{k=1}^{\infty}\left[\frac{30}{{17}^k}\right] & =1           \\
+			v_{19}(30!) & =\sum_{k=1}^{\infty}\left[\frac{30}{{19}^k}\right] & =1           \\
+			v_{23}(30!) & =\sum_{k=1}^{\infty}\left[\frac{30}{{23}^k}\right] & =1           \\
+			v_{29}(30!) & =\sum_{k=1}^{\infty}\left[\frac{30}{{29}^k}\right] & =1           \\
+		\end{aligned}
+	\end{equation}
+	So finally we get \(30! = 2^{26} 3^{14} 5^7 7^4 11^2 13^2 17^1 19^1 23^1 29^1\).
+\end{solution}
+\begin{problem}\label{pro:p16.2}
+Assume \(n \in \mathbb{N}^+\) and \(\alpha \in \mathbb{R}\), prove that:
+\begin{enumerate}
+	\item \(\left[\frac{[n \alpha]}{n}\right]=[\alpha]\).
+	\item \(\sum_{k=0}^{n-1}[\alpha+\frac{k}{n}]=[n \alpha]\).
+\end{enumerate}
+\end{problem}
+
+\begin{solution}
+	\begin{enumerate}
+		\item \label{it:2.1} Easily \(\left[\frac{[n \alpha]}{n}\right]\leq\left[\frac{n \alpha}{n}\right] \leq[\alpha]\).
+		      Now we will prove \(\left[\frac{[n \alpha]}{n}\right]\geq [\alpha]\).
+		      By the definition of \([\cdot]\) we only need to prove \(\frac{[n \alpha]}{n}\geq [\alpha]\).
+		      So we only need \([n \alpha]\geq n [\alpha]\).
+		      By the definition of \([\cdot]\) we only need \(n \alpha \geq n[\alpha]\), which is obvious.
+		\item By \ref{it:2.1} easily to know \([\alpha+\frac{k}{n}]=\left[\frac{[n(\alpha+\frac{k}{n})]}{n}\right]=
+		      \left[\frac{[n \alpha]+k}{n}\right]\).
+		      Let \(f:\mathbb{Z} \to \{0,\cdots,n-1\}\) and \(f(x)\equiv x \mod n\).
+		      Then easily \([\frac{x}{n}]=\frac{x}{n}-\frac{f(x)}{n}\).
+		      So we know \(\sum_{k=0}^{n-1}[\alpha+\frac{k}{n}]=\sum_{k=0}^{n-1}[\frac{[n \alpha]+k}{n}]=
+		      \sum_{k=0}^{n-1}\frac{[n \alpha]+k}{n}-\sum_{k=0}^{n-1}\frac{f([n \alpha]+k)}{n}\).
+		      Easily to know \((f([n \alpha]+k):k=1,\cdots,n-1)\) is a replacement of \((k:k=0,\cdots,n-1)\).
+		      So finally we get \(\sum_{k=0}^{n-1}\frac{[n \alpha]+k}{n}-\sum_{k=0}^{n-1}\frac{f([n \alpha]+k)}{n}=\sum_{k=0}^{n-1}\frac{[n \alpha]+k}{n}-\sum_{k=0}^{n-1}\frac{k}{n}=\sum_{k=0}^{n-1}\frac{[n \alpha]}{n}=[n \alpha]\).
+	\end{enumerate}
+\end{solution}
+\begin{problem}\label{pro:p16.4.3}
+Assume \(r>0,r \in \mathbb{R}\). Let \(T\) be the number of integer point in  \(x^2 + y^2 \leq r^2\).
+Prove that \(T = 1 + 4[r] + 8 \sum_{0<x \leq \frac{r}{\sqrt{2}}}[\sqrt{r^2-x^2}] -4\left[\frac{r}{\sqrt{2}}\right]^2\).
+\end{problem}
+\begin{solution}
+	\(T=\sum_{x,y \in \mathbb{Z},x^2 + y^2 \leq r^2}1=\sum_{x^2 + y^2 \leq r^2,xy=0} 1 +\sum_{x^2+y^2 \leq r^2,xy \neq 0} 1=
+	1+\sum_{0<x^2 + y^2 \leq r^2,xy=0} 1 +4 \sum_{x^2 + y^2 \leq r^2,x>0,y>0} 1\).
+	By symmetry, we know \(\sum_{0<x^2 + y^2 \leq r^2,xy=0} 1 =4\sum_{x^2 + y^2 \leq r^2,x >0,y=0} 1=4[r]\).
+	And \(\sum_{x^2 + y^2 \leq r^2,x,,y>0} 1 =\sum_{x^2+y^2 \leq r^2,0<x \leq \frac{r}{\sqrt{2}},0<y} 1 + \sum_{x^2+y^2 \leq r^2,0<y \leq \frac{r}{\sqrt{2}},0<x} 1 -\sum_{x^2+y^2 \leq r^2,0<x \leq \frac{r}{\sqrt{2}},0<y \leq \frac{r}{\sqrt{2}}} 1\).
+	Easily to know \(\sum_{x^2+y^2 \leq r^2,0<y \leq \frac{r}{\sqrt{2}},0<x} 1 =\sum_{x^2+y^2 \leq r^2,0<x \leq \frac{r}{\sqrt{2}},0<y} 1 =\sum_{0<x \leq \frac{r}{\sqrt{2}}}[\sqrt{r^2-x^2}]\),
+	and \(\sum_{x^2+y^2 \leq r^2,0<x \leq \frac{r}{\sqrt{2}},0<y \leq \frac{r}{\sqrt{2}}} 1=\left[\frac{r}{\sqrt{2}}\right]^2\).
+	So finally we get \(T = 1 + 4[r] + 8 \sum_{0<x \leq \frac{r}{\sqrt{2}}}[\sqrt{r^2-x^2}] -4\left[\frac{r}{\sqrt{2}}\right]^2\).
+\end{solution}
+
+\begin{problem}\label{pro:p23.1.b}
+Find all integer solution of \(306x-360y=630\).
+\end{problem}
+\begin{solution}
+	The origin equation is equavilent to \(17x-20y=35\).
+	Consider \(\mod 5\), we get \(5 \mid 17 x\). So \(5 \mid x\).
+	Assume \(x=5k\), then \(17k-4y=7\).
+	Then \(17(k+1)-4y=24\), consider \(\mod 4\), we get \(4 \mid k+1\), so \(k+1=4s\) and \(17s-y=6\).
+	So \(y=17s-6\) and easily \(x=5s=5(4s-1)=20s-5\).
+	So \(\begin{cases}
+		x=20s-5 \\
+		y=172-6
+	\end{cases}\) is all of solutions of the equation.
+\end{solution}
+\begin{problem}\label{pro:p23.3}
+Assume \(N,a,b \in \mathbb{N},a,b>0,\gcd(a,b)=1\).
+Prove that the number of positive integer solutions of the equation \(ax+by=N\)
+is \(\left[\frac{N}{ab}\right]\) or \(\left[\frac{N}{ab}\right]+1\).
+\end{problem}
+
+\begin{solution}
+	Since \(\gcd(a,b)=1\), we know \(\exists s,t \in \mathbb{Z},as+bt=N\).
+	So we know \(x=s+kb,y=t-ka\). Let \(x,y>0\), we get \(k> -\frac{s}{b},k<\frac{t}{a}\).
+	So we know the number of solution is \(\left[\frac{t}{a}\right]+\left[\frac{s}{b}\right]+1\).
+	Now we only need \(\left[\frac{N}{ab}\right]\leq\left[\frac{t}{a}\right]+\left[\frac{s}{b}\right]+1 \leq \left[\frac{N}{ab}\right]+1\).
+
+	To prove \(\left[\frac{N}{ab}\right]\leq\left[\frac{t}{a}\right]+\left[\frac{s}{b}\right]+1\) we only need
+	\(\left[\frac{N}{ab}\right]\leq\left[\frac{t}{a}\right]+\frac{s}{b}+1\).
+	Only need \(\left[\frac{N}{ab}\right]\leq\frac{t}{a}+\frac{s}{b}\).
+	Noting \(ab \left[\frac{N}{ab}\right] \leq ab \frac{N}{ab}=N=as+bt=ab(\frac{t}{a}+\frac{s}{b})\) it's obvious.
+
+	To prove \(\left[\frac{t}{a}\right]+\left[\frac{s}{b}\right]+1 \leq \left[\frac{N}{ab}\right]+1\),
+	we only need \(\left[\frac{t}{a}\right]+\left[\frac{s}{b}\right] \leq \frac{N}{ab}\).
+	Noting \(ab(\left[\frac{t}{a}\right]+\left[\frac{s}{b}\right]) \leq ab(\frac{t}{a}+\frac{s}{b})=as+bt=N=ab(\frac{N}{ab})\) it's obvious.
+\end{solution}
+\begin{problem}\label{pro:p24.2}
+Write \(\frac{17}{60}\) as sum of three reduced fraction whose denominators are coprime to each other.
+\end{problem}
+\begin{solution}
+	Consider \(\frac{17}{60}=\frac{x}{4}+\frac{y}{3}+\frac{z}{5}\), i.e., \(17=15x+20y+12z\).
+	Since \(\gcd(15,20,12)=1\), we know this equation has some solution.
+	Easy to know \(x=-1,y=1,z=1\) is a solution.
+	So \(\frac{17}{60}=-\frac{1}{4}+\frac{1}{3}+\frac{1}{5}\) satisfy the condition.
+\end{solution}
+
+\end{document}
