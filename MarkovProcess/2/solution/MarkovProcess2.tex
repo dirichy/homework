@@ -8,44 +8,89 @@
 \large
 \setlength{\baselineskip}{1.2em}
 \ifpreface
-	\input{../../../global/preface}
+  \input{../../../global/preface}
 \else
-	\maketitle
+  \maketitle
 \fi
 \newgeometry{left=2cm,right=2cm,top=2cm,bottom=2cm}
 %from_here_to_type
 
 \begin{problem}\label{pro:1}
-	Prove that if \((X_n:n \geq 0)\) is a simple random walk, then so is \((-X_n:n \geq 0)\).
+  Prove that if \((X_n:n \geq 0)\) is a simple random walk, then so is \((-X_n:n \geq 0)\).
 \end{problem}
 
 \begin{solution}
-	Let \(\xi_n:=X_n-X_{n-1}\) for \(n \in \mathbb{N}^+\). Then Since \((X_n:n \in \mathbb{N})\) is simple random walk we have
-	\(X_0,\xi_1,\xi_2,\cdots\) are independent r.v. ranges in \(\mathbb{Z}\), and
-	\(\xi_i,i=1,2\cdots\) are i.i.d., and \(\mathbb{P}(|\xi_i|=1)=1\).
-	So we easily get \(-X_0,-\xi_1,-\xi_2,\cdots\) are independent r.v. ranges in \(\mathbb{Z}\),
-	and \(-\xi_i,i=1,2,\cdots\) are i.i.d., and \(\mathbb{P}(|-\xi_i|=1)=1\).
-	Since \(-X_n=X_0+\sum_{k=1}^{n}\xi_k\), by the definition of simple random walk we obtain \((-X_n:n \in \mathbb{N})\) is a simple random walk.
+  Let \(\xi_n:=X_n-X_{n-1}\) for \(n \in \mathbb{N}^+\). Then Since \((X_n:n \in \mathbb{N})\) is simple random walk we have
+  \(X_0,\xi_1,\xi_2,\cdots\) are independent r.v. ranges in \(\mathbb{Z}\), and
+  \(\xi_i,i=1,2\cdots\) are i.i.d., and \(\mathbb{P}(|\xi_i|=1)=1\).
+  So we easily get \(-X_0,-\xi_1,-\xi_2,\cdots\) are independent r.v. ranges in \(\mathbb{Z}\),
+  and \(-\xi_i,i=1,2,\cdots\) are i.i.d., and \(\mathbb{P}(|-\xi_i|=1)=1\).
+  Since \(-X_n=X_0+\sum_{k=1}^{n}\xi_k\), by the definition of simple random walk we obtain \((-X_n:n \in \mathbb{N})\) is a simple random walk.
 \end{solution}
 
 \begin{problem}\label{pro:2}
-	Let \((X_n:n \geq 0)\) be a \(d\)-dimentional random walk, prove that \(\mathbb{P}(\sup_{n}|X_n|=\infty)=1\).
+  Let \((X_n:n \geq 0)\) be a \(d\)-dimentional random walk with \(\mathbb{P}(|\xi_i|\geq 1)>0\), prove that \(\mathbb{P}(\sup_{n}|X_n|=\infty)=1\).
 \end{problem}
+\begin{solution}
+  Let \(t \in \mathbb{Z}^d,t \neq 0\) and \(\mathbb{P}(\xi_i=t)>0\).
+  Since \(\mathbb{P}(\sup_{n}|X_n|=\infty)=\inf_{k \in \mathbb{N}}\mathbb{P}(\sup_{n}|X_n| \geq k)\),
+  we only need to prove \(\mathbb{P}(\sup_{n}|X_n|\geq k)=1\) for every \(k \in \mathbb{N}\).
+  Take \(K>3k,K \in \mathbb{N}\).
+  Let \(A_s:=\{\xi_i=t:i=sK+1,sK+2,\cdots,sK+K-1\}\).
+  Then for \(\omega \in A_s\), we have \(|X_{sK+K}-X_{sK}|=|\sum_{u=1}^{K-1} t|=K|t|\geq K \geq 3k\).
+  Then \(\sup_n|X_n|\geq \max\{|X_{sK+K}|,|X_{sK}|\}\geq \frac{1}{2}|X_{sK+K}-X_{sK}|\geq k\).
+  So we get \(\forall s,A_s \subset \{\sup_n|X_n| \geq k\}\).
+  Since \(\xi_i\) are independent, easily get \(A_s,s=1,2,\cdots\) are independent.
+  Noting \(\mathbb{P}(A_s)=\mathbb{P}(\xi_i=t)^K>0\), we get \(\sum_{s \in \mathbb{N}} \mathbb{P}(A_s)=\infty\).
+  So from BC-theorem we get \(\mathbb{P}(A_s,i.o.)=1\), thus \(\mathbb{P}(\bigcup_{s \in \mathbb{N}}A_s)=1\).
+  Thus \(\mathbb{P}(\sup_n|X_n| \geq k)=1\), for every \(k \in \mathbb{N}\).
+  Thus \(\mathbb{P}(\sup_n|X_n|=\infty)=\mathbb{P}(\bigcap_{k \in \mathbb{N}}\{\sup_n|X_n|\geq k\})=1\).
+\end{solution}
 
 \begin{problem}\label{pro:3}
-	Let \((X_n:n \geq 0)\) be a symmtry simple random walk with \(X_0=0\), for \(d=2\), prove that
-	\[
-		\mathbb{P}(S_{2n}=0)=\frac{1}{4^{2n}}\left(\frac{(2n)!}{(n!)^2}\right)^2
-	\]
-	For \(d=3\), prove that
-	\[
-		\mathbb{P}(S_{2n}=0)=\frac{1}{2^{2n}}\frac{(2n)!}{(n!)^2}\sum_{i + j + k = n} \left(\frac{1}{3^n}\frac{n!}{i!j!k!}\right)^2
-	\]
+  Let \((S_n:n \geq 0)\) be a symmtry simple random walk with \(S_0=0\), for \(d=2\), prove that
+  \[
+    \mathbb{P}(S_{2n}=0)=\frac{1}{4^{2n}}\left(\frac{(2n)!}{(n!)^2}\right)^2
+  \]
+  For \(d=3\), prove that
+  \[
+    \mathbb{P}(S_{2n}=0)=\frac{1}{2^{2n}}\frac{(2n)!}{(n!)^2}\sum_{i + j + k = n} \left(\frac{1}{3^n}\frac{n!}{i!j!k!}\right)^2
+  \]
 \end{problem}
+\begin{solution}
+  First we consider \(d=2\). Write \(\xi_i=S_i-S_{i-1}\).
+  Then we know \(S_{2n}\) occur \(\iff\) the number of \((1,0)\) and \((-1,0)\) in \(\{\xi_i:i=1,\cdots,2n\}\),
+  and the number of \((0,1)\) and \((0,-1)\) in \(\{\xi_i:i=1,\cdots,2n\}\).
+  We assume there is \(k\) pairs of \((1,0),(-1,0)\), then easily there is \(n-k\) pairs of \((0,1),(0,-1)\).
+  The probility is \(\binom{2n}{k}\binom{2n-k}{k}\binom{2n-2k}{n-k}\frac{1}{4^{2n}}\).
+  So the total probility is
+  \(\mathbb{P}(S_{2n}=0)=\sum_{k=0}^{n}\binom{2n}{k}\binom{2n-k}{k}\binom{2n-2k}{n-k}\frac{1}{4^{2n}}=\sum_{k=0}^{n}\frac{(2n)!}{k!k!(n-k)!(n-k)!4^{2n}}\).
+  Noting that \(\sum_{k=0}^{n}\frac{(n!)^2}{k!k!(n-k)!(n-k)!}=\sum_{k=0}^{n}\binom{n}{k}\binom{n}{n-k}=\binom{2n}{n}=\frac{(2n)!}{n!n!}\),
+  we finally get \(\mathbb{P}(S_{2n}=0)=\frac{1}{4^{2n}}\left(\frac{(2n)!}{n!n!}\right)^2\).
+
+  Use the same method, consider \(d=3\), we have
+  \(\mathbb{P}(S_{2n}=0)=\sum_{i+j+k=n} \binom{2n}{i}\binom{2n-i}{i}\binom{2n-2i}{j}\binom{2n-2i-j}{j}\binom{2n-2i-2j-k}{k} \frac{1}{6^{2n}}\).
+  So easily to get \(\mathbb{P}(S_{2n}=0)=\frac{1}{2^{2n}}\frac{(2n)!}{(n!)^2}\sum_{i + j + k = n} \left(\frac{1}{3^n}\frac{n!}{i!j!k!}\right)^2\).
+\end{solution}
 
 \begin{problem}\label{pro:4}
-	Assume \((S_n:n \geq 0)\) is a symmtry simple random walk with \(S_0 = i \in \mathbb{Z}\).
-	Prove that \(\forall a \in \mathbb{Z}\), let \(\tau_a:=\min\{n \in \mathbb{N}:S_n=a \}\), then \(\mathbb{P}(\tau_a < \infty) = 1 \).
+  Assume \((S_n:n \geq 0)\) is a symmetry simple random walk with \(S_0 = i \in \mathbb{Z}\).
+  Prove that \(\forall a \in \mathbb{Z}\), let \(\tau_a:=\min\{n \in \mathbb{N}:S_n=a \}\), then \(\mathbb{P}(\tau_a < \infty) = 1 \).
 \end{problem}
+\begin{solution}
+  Without loss of generality assume \(a<0,i=0\). Take \(N \in \mathbb{N}^+\). Consider \(\tau:=\min\{n \in \mathbb{N}:S_n=a \OR S_n=N\}\).
+  From Problem \ref{pro:2} we can easily know \(\mathbb{P}(\tau < \infty)=1\) because \(\{\sup_n|S_n|=\infty\}\subset \{\tau<\infty\},\text{a.s.}\).
+  So we get \(\{\tau_a = \tau\} \subset \{\tau_a<\infty\},\text{a.s.}\).
+  Let \(Y_n:=S_{n \AND \tau}:=S_{\min\{n,\tau\}}\).
+  Easily \((S_n:n \in \mathbb{N})\) is a martingale, and \(\tau\) is a stopping time, so we get
+  \((Y_n:n \in \mathbb{N})\) is a martingale, too.
+  And easily \(Y_n \in [a,N]\), so \(Y_n\) is bounded.
+  So we get \(\mathbb{E}(S_{\tau})=\lim_{n \to \infty}\mathbb{E}(Y_n)=\mathbb{E}(Y_0)=0\).
+  Easily to know \(\mathbb{E}(S_{\tau})=\mathbb{P}(\tau=\tau_a)a+\mathbb{P}(\tau \neq \tau_a)N=0\).
+  And \(\mathbb{P}(\tau=\tau_a)+\mathbb{P}(\tau \neq \tau_a)=1\),
+  so easily \(\mathbb{P}(\tau=\tau_a)=\frac{N}{N-a}\).
+  So \(\mathbb{P}(\tau_a<\infty)\geq \frac{N}{N-a}\).
+  Let \(N \to \infty\), we get \(\mathbb{P}(\tau_a<\infty)=1\).
+\end{solution}
 
 \end{document}

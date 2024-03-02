@@ -155,7 +155,7 @@ The direction of each spin in the lattice is regarded as an element in \(\sigma\
 For any two adjacent sites \(i,j\in \Lambda \) there is a spin-spin interaction \(J\).
 Also, a site \(j\in \Lambda \) has an external magnetic field \(H\) interacting with it. The energy of a configuration \(\sigma\) is given by the Hamiltonian function
 \begin{equation}\label{equ:1}
-	H(\sigma)=-\sum_{i,j\in\Lambda,i \sim j} J \sigma_i \sigma_j-\sum_{i \in \Lambda}H \sigma_i
+  H(\sigma)=-\sum_{i,j\in\Lambda,i \sim j} J \sigma_i \sigma_j-\sum_{i \in \Lambda}H \sigma_i
 \end{equation}
 where \(i \sim j\) means \(i\) and \(j\) is adjacent.
 The configuration probability is given by the Boltzmann distribution with inverse temperature \( \beta \geq 0\):
@@ -170,27 +170,27 @@ Our aim is to find out how does the temperature influence the property of lattic
 In this article, we will use Metropolis sampling to solve following two problems:
 
 \begin{problem}\label{pro:1}
-Take \(J=1, k_B=1, H=0\), let \(N\) be the size of the lattice and \(T\) be the temperature.
-Calculate internal energy \(u\) in the process:
-\begin{equation}
-	u=\frac{U}{N^2},U=\mathbb{E}(H)=\sum_{\sigma\in 2^\Lambda}\mathbb{P}(\sigma)H( \sigma)
-\end{equation}
-and specific heat \(c\):
-\begin{equation}
-	c=\frac{C}{N^2}, C=\frac{k_B}{T^2}\mathbb{V}\mathrm{ar}(H)=\frac{k_B}{T^2}( \mathbb{E}( H^2)-\mathbb{E}( H)^2)
-\end{equation}
-where \(\mathbb{V}\mathrm{ar}\) is the variance.
-And plot graph of \(u-T, c-T\).
-And check the temperature near the critical temperature \(T_c = \frac{2| J|}{k_B \ln ( 1+\sqrt{2})}\).
+  Take \(J=1, k_B=1, H=0\), let \(N\) be the size of the lattice and \(T\) be the temperature.
+  Calculate internal energy \(u\) in the process:
+  \begin{equation}
+    u=\frac{U}{N^2},U=\mathbb{E}(H)=\sum_{\sigma\in 2^\Lambda}\mathbb{P}(\sigma)H( \sigma)
+  \end{equation}
+  and specific heat \(c\):
+  \begin{equation}
+    c=\frac{C}{N^2}, C=\frac{k_B}{T^2}\mathbb{V}\mathrm{ar}(H)=\frac{k_B}{T^2}( \mathbb{E}( H^2)-\mathbb{E}( H)^2)
+  \end{equation}
+  where \(\mathbb{V}\mathrm{ar}\) is the variance.
+  And plot graph of \(u-T, c-T\).
+  And check the temperature near the critical temperature \(T_c = \frac{2| J|}{k_B \ln ( 1+\sqrt{2})}\).
 
 \end{problem}
 \begin{problem}\label{pro:2}
-Take \(J=1, k_B=1\), \(H \neq 0\). Fixing \(T, H\),
-Calculate magnetization \(m\) in the process:
-\begin{equation}
-	m=\frac{M}{N^2}, M=\mathbb{E}(\sum_{i \in \Lambda} \sigma_i ).
-\end{equation}
-And plot graph of \(m-(T, H)\). You may find some interesting result near \(T = T_c\).
+  Take \(J=1, k_B=1\), \(H \neq 0\). Fixing \(T, H\),
+  Calculate magnetization \(m\) in the process:
+  \begin{equation}
+    m=\frac{M}{N^2}, M=\mathbb{E}(\sum_{i \in \Lambda} \sigma_i ).
+  \end{equation}
+  And plot graph of \(m-(T, H)\). You may find some interesting result near \(T = T_c\).
 
 \end{problem}
 
@@ -201,57 +201,57 @@ If \(\Delta H > 0 \), then we accept the convert with probability of \(\mathrm{e
 After the convert of the spin, a convert will happen afterward.
 The procedure of the computation is following:
 \begin{enumerate}
-	\item First, set the initial parameters: Set up the grid to imitate the magnet.
-		Choose a state \(X_1\) randomly in \(2^\Lambda\).
-	\item Secondly, we randomly pick a point in \(X_n\) to try to change its direction of magnet, and calculate the changed energy \(\Delta H\).
-		And then, judge whether to accept the direction change of this point.
-		If accepted, then the point will change direction; else, it will remain the old direction. Then we get \(X_{n+1}\).
-	\item Repeat the process above for a long time, write \(Y\).
-	\item Use \(\mathbb{E}'( f):=\sum_{t=X}^{Y} f( X_t)\) to estimate \(\mathbb{E}( f)\), to calculate \(c,u\) and \(m\), where \(X\) is a certain number chose between \(0\) and \(Y\).
-	\item Last, plot the graphs and analysis the results.
+  \item First, set the initial parameters: Set up the grid to imitate the magnet.
+    Choose a state \(X_1\) randomly in \(2^\Lambda\).
+  \item Secondly, we randomly pick a point in \(X_n\) to try to change its direction of magnet, and calculate the changed energy \(\Delta H\).
+    And then, judge whether to accept the direction change of this point.
+    If accepted, then the point will change direction; else, it will remain the old direction. Then we get \(X_{n+1}\).
+  \item Repeat the process above for a long time, write \(Y\).
+  \item Use \(\mathbb{E}'( f):=\sum_{t=X}^{Y} f( X_t)\) to estimate \(\mathbb{E}( f)\), to calculate \(c,u\) and \(m\), where \(X\) is a certain number chose between \(0\) and \(Y\).
+  \item Last, plot the graphs and analysis the results.
 \end{enumerate}
 
 \section{Analysis of the numerical results}
 \begin{solution}
-	\begin{figure}
-		\centering
-		\includegraphics[width=\linewidth]{figs/Tu.pdf}
-		\caption{T-u}\label{fig:Tu}
-	\end{figure}
-	In \Cref{pro:1}, we let \(T\) ranges in \(0.5\sim 4\) and convert \(1000000\) steps.
-	In \Cref{fig:Tu} we can see as temperature become higher and higher, the value of the average Hamiltonian, \(u\), become bigger and bigger.
-	That's means high temperature will supply more energy for the spins to get a state with high Hamiltonian.
-	More over, we can find that the growth rate of \(u\) is highest near \(T=T_c\).
-	When \(T\) is far from \(T_c\), the value of \(u\) is a virtual constant.
+  \begin{figure}
+    \centering
+    \includegraphics[width=\linewidth]{figs/Tu.pdf}
+    \caption{T-u}\label{fig:Tu}
+  \end{figure}
+  In \Cref{pro:1}, we let \(T\) ranges in \(0.5\sim 4\) and convert \(1000000\) steps.
+  In \Cref{fig:Tu} we can see as temperature become higher and higher, the value of the average Hamiltonian, \(u\), become bigger and bigger.
+  That's means high temperature will supply more energy for the spins to get a state with high Hamiltonian.
+  More over, we can find that the growth rate of \(u\) is highest near \(T=T_c\).
+  When \(T\) is far from \(T_c\), the value of \(u\) is a virtual constant.
 
-	In \Cref{fig:Tc} we can see that the more temperature \(T\) go near \(T_c\), the higher the specific heat is.
-	\begin{figure}
-		\centering
-		\includegraphics[width=\linewidth]{figs/Tc.pdf}
-		\caption{T-c}\label{fig:Tc}
-	\end{figure}
-	Since the specific heat \(c\) is related to the variance of the Hamiltonian, we know that when \(T\) is near \(T_c\), the Hamiltonian will be very unstable.
-	In fact, when the temperature is low, the spins will finally get into the same direction, so the Hamiltonian will be very small;
-	when the temperature is high, the lattice will get very mess, every spin will get up or down randomly, so the Hamiltonian will be very big;
-	when the temperature is very near to \(T_c\), the lattice will behave between them, thus the value of Hamiltonian will be big or small from time to time.
-	So when \(T=T_c\) the variance of Hamiltonian will be very big.
+  In \Cref{fig:Tc} we can see that the more temperature \(T\) go near \(T_c\), the higher the specific heat is.
+  \begin{figure}
+    \centering
+    \includegraphics[width=\linewidth]{figs/Tc.pdf}
+    \caption{T-c}\label{fig:Tc}
+  \end{figure}
+  Since the specific heat \(c\) is related to the variance of the Hamiltonian, we know that when \(T\) is near \(T_c\), the Hamiltonian will be very unstable.
+  In fact, when the temperature is low, the spins will finally get into the same direction, so the Hamiltonian will be very small;
+  when the temperature is high, the lattice will get very mess, every spin will get up or down randomly, so the Hamiltonian will be very big;
+  when the temperature is very near to \(T_c\), the lattice will behave between them, thus the value of Hamiltonian will be big or small from time to time.
+  So when \(T=T_c\) the variance of Hamiltonian will be very big.
 
 \end{solution}
 
 \begin{solution}
-	\begin{figure}
-		\centering
-		\includegraphics[width=\linewidth]{figs/THM.pdf}
-		\caption{T-H-m}
-		\label{fig:THM}
-	\end{figure}
-	We let \(T\) range from \(0.5\) to \(4\) and \(H\) range from \(0\) to \(1\) and run the program \(1000000\) steps, then compute the value of \(m\) for every pair of \(( T,H)\).
-	From \Cref{fig:THM} we can find that when \(T<T_c\), the value of \(m\) will be near \(1\) not matter how small \(H\) is;
-	when \(T>T_c\), the value of \(m\) just increasing follow \(H\):
-	when \(H\) is small, \(m\) is near \(0\);
-	when \(H\) is big, \(m\) also is big but can't reach \(1\).
+  \begin{figure}
+    \centering
+    \includegraphics[width=\linewidth]{figs/THM.pdf}
+    \caption{T-H-m}
+    \label{fig:THM}
+  \end{figure}
+  We let \(T\) range from \(0.5\) to \(4\) and \(H\) range from \(0\) to \(1\) and run the program \(1000000\) steps, then compute the value of \(m\) for every pair of \(( T,H)\).
+  From \Cref{fig:THM} we can find that when \(T<T_c\), the value of \(m\) will be near \(1\) not matter how small \(H\) is;
+  when \(T>T_c\), the value of \(m\) just increasing follow \(H\):
+  when \(H\) is small, \(m\) is near \(0\);
+  when \(H\) is big, \(m\) also is big but can't reach \(1\).
 
-	We can imagine, if this lattice is a magnet, then when the temperature is low, this magnet can easily be magnetized; when the temperature is high, this magnet can't be permanently magnetized.
+  We can imagine, if this lattice is a magnet, then when the temperature is low, this magnet can easily be magnetized; when the temperature is high, this magnet can't be permanently magnetized.
 \end{solution}
 
 \section{The issues you encounter and how you overcome}
@@ -270,7 +270,7 @@ A maximum cut size is at least the size of any other cut, varying \(S\).
 For the Ising model without an external field on a graph \(G\), the Hamiltonian becomes the following sum over the graph edges \(E(G)\).
 
 \begin{equation}
-	H(\sigma )=-\sum _{ij\in E(G)}J_{ij}\sigma _{i}\sigma _{j}
+  H(\sigma )=-\sum _{ij\in E(G)}J_{ij}\sigma _{i}\sigma _{j}
 \end{equation}
 
 Here each vertex \(i\) of the graph is a spin site that takes a spin value \(\sigma _{i}=\pm 1\), and \(J_{ij}\) is the interaction of \(\sigma_i,\sigma_j\).
@@ -278,7 +278,7 @@ A given spin configuration \( \sigma \) partitions the set of vertices \( V(G)\)
 We denote by \( \delta (V^{+})\) the \( \sigma\)-depended set of edges that connects the two complementary vertex subsets \( V^{+}\) and \( V^{-}\).
 The size \( \left|\delta (V^{+})\right|\) of the cut \( \delta (V^{+})\) to bipartite the weighted undirected graph \(G\) can be defined as
 \begin{equation}
-	\left|\delta (V^{+})\right|={\frac {1}{2}}\sum _{ij\in \delta (V^{+})}W_{ij}
+  \left|\delta (V^{+})\right|={\frac {1}{2}}\sum _{ij\in \delta (V^{+})}W_{ij}
 \end{equation}
 
 where \( W_{ij}\) denotes a weight of the edge \( ij\) and the scaling \(\frac{1}{2}\) is introduced to compensate for double counting the same weights \( W_{ij}=W_{ji}\).
@@ -286,43 +286,42 @@ where \( W_{ij}\) denotes a weight of the edge \( ij\) and the scaling \(\frac{1
 The identities
 
 \begin{equation}
-	\begin{aligned}H(\sigma )&=-\sum _{ij\in E(V^{+})}J_{ij}-\sum _{ij\in E(V^{-})}J_{ij}+\sum _{ij\in \delta (V^{+})}J_{ij}\\&=-\sum _{ij\in E(G)}J_{ij}+2\sum _{ij\in \delta (V^{+})}J_{ij}\end{aligned}
+  \begin{aligned}H(\sigma )&=-\sum _{ij\in E(V^{+})}J_{ij}-\sum _{ij\in E(V^{-})}J_{ij}+\sum _{ij\in \delta (V^{+})}J_{ij}\\&=-\sum _{ij\in E(G)}J_{ij}+2\sum _{ij\in \delta (V^{+})}J_{ij}\end{aligned}
 \end{equation}
 where the total sum in the first term does not depend on \( \sigma\), imply that minimizing \( H(\sigma )\) in \( \sigma\) is equivalent to minimizing \( \sum _{ij\in \delta (V^{+})}J_{ij}\).
 Defining the edge weight \( W_{ij}=-J_{ij}\) thus turns the Ising problem without an external field into a graph Max-Cut problem [4] maximizing the cut size \( \left|\delta (V^{+})\right|\), which is related to the Ising Hamiltonian as follows,
 
 \begin{equation}
-	H(\sigma )=\sum _{ij\in E(G)}W_{ij}-4\left|\delta (V^{+})\right|.
+  H(\sigma )=\sum _{ij\in E(G)}W_{ij}-4\left|\delta (V^{+})\right|.
 \end{equation}
 %\bibliographystyle{plainnat}
 %\bibliography{report}
 \appendix
 \begin{center}
-	\large Appendix
+  \large Appendix
 \end{center}
 \section{Vedios}
 Following videos only can be played with pdf viewer supporting javascript, such as AdobeReader or Okular. Or you can play the avi file with any video player.
 \begin{figure}[H]
-	\centering
-	\animategraphics[width=0.75\linewidth,autoplay=true,loop=true,type=pdf]{20}{./TTc/}{1}{300}
-	\caption{T=Tc}
-	\label{vid:Tc}
+  \centering
+  \animategraphics[width=0.75\linewidth,autoplay=true,loop=true,type=pdf]{20}{./TTc/}{1}{300}
+  \caption{T=Tc}
+  \label{vid:Tc}
 \end{figure}
 \begin{figure}[H]
-	\centering
-	\animategraphics[width=0.75\linewidth,autoplay=true,loop=true,type=pdf]{20}{./T1/}{1}{300}
-	\caption{T=1}
-	\label{vid:1}
+  \centering
+  \animategraphics[width=0.75\linewidth,autoplay=true,loop=true,type=pdf]{20}{./T1/}{1}{300}
+  \caption{T=1}
+  \label{vid:1}
 \end{figure}
 \begin{figure}[H]
-	\centering
-	\animategraphics[width=0.75\linewidth,autoplay=true,loop=true,type=pdf]{20}{./T3/}{1}{300}
-	\caption{T=3}
-	\label{vid:3}
+  \centering
+  \animategraphics[width=0.75\linewidth,autoplay=true,loop=true,type=pdf]{20}{./T3/}{1}{300}
+  \caption{T=3}
+  \label{vid:3}
 \end{figure}
 \section{Codes}
 \newcommand{\code}[1]{\subsection{#1}\lstinputlisting[frame=single, numbers=left, style=Matlab-editor]{codes/#1.m}}
-% \lstinputlisting[frame=single, numbers=left, style=Matlab-editor]{codes/main.m}
 \code{main}
 \code{GenerateGrid}
 \code{WhetherAccept}
@@ -330,12 +329,4 @@ Following videos only can be played with pdf viewer supporting javascript, such 
 \code{getEnergyOfGrid}
 \code{pro1}
 \code{pro2}
-\begin{luacode*}
-	tex.print([[\begin{lstlisting}]])
-    for k,v in pairs(debug.getinfo(tex.print)) do 
-    tex.print(string.format("%s=%s",tostring(k),tostring(v)))
-    end
-    tex.print(debug.getinfo(tex.print)["source"])
-  tex.print([[\end{lstlisting}]])
-\end{luacode*}
 \end{document}                          % The required last line

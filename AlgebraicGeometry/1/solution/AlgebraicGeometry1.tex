@@ -10,97 +10,97 @@
 \large
 \setlength{\baselineskip}{1.2em}
 \ifpreface
-	\input{../../../global/preface}
-	\newgeometry{left=2cm,right=2cm,top=2cm,bottom=2cm}
+  \input{../../../global/preface}
+  \newgeometry{left=2cm,right=2cm,top=2cm,bottom=2cm}
 \else
-	\newgeometry{left=2cm,right=2cm,top=2cm,bottom=2cm}
-	\maketitle
+  \newgeometry{left=2cm,right=2cm,top=2cm,bottom=2cm}
+  \maketitle
 \fi
 %from_here_to_type
 \newcommand{\A}{\mathbbm{A}}
 \begin{problem}
-	$P$ is an ideal of a unitary commutative ring $A$, then $P$ is prime ideal of $A\iff A/P$ is integral domain.
+  $P$ is an ideal of a unitary commutative ring $A$, then $P$ is prime ideal of $A\iff A/P$ is integral domain.
 \end{problem}
 \begin{solution}
-	$\Rightarrow $:
+  $\Rightarrow $:
 
-	Since $A$ is a unitary commutative ring, so $A/P$ is unitary commutative ring, too. So we only need to prove $[ab]=[0]\Rightarrow [a]=[0]\xor [b]=[0]$.
-	Obviously $[ab]=0\iff ab\in P\iff a\in P\xor b\in P\iff [a]=[0]\xor [b]=[0]$.
+  Since $A$ is a unitary commutative ring, so $A/P$ is unitary commutative ring, too. So we only need to prove $[ab]=[0]\Rightarrow [a]=[0]\xor [b]=[0]$.
+  Obviously $[ab]=0\iff ab\in P\iff a\in P\xor b\in P\iff [a]=[0]\xor [b]=[0]$.
 
-	$\Leftarrow $:
+  $\Leftarrow $:
 
-	As the same, $ab\in P\iff [ab]=[0]\Rightarrow [a]=[0]\xor [b]=[0]\iff a\in P\xor b\in P$, so $P$ is prime ideal.
+  As the same, $ab\in P\iff [ab]=[0]\Rightarrow [a]=[0]\xor [b]=[0]\iff a\in P\xor b\in P$, so $P$ is prime ideal.
 \end{solution}
 
 \begin{problem}
-	$M$ is an ideal of a unitary commutative ring $A$, then $M$ is maximal ideal of $A \iff A/M$ is a field.
+  $M$ is an ideal of a unitary commutative ring $A$, then $M$ is maximal ideal of $A \iff A/M$ is a field.
 \end{problem}
 \begin{solution}
-	$\Rightarrow $:
+  $\Rightarrow $:
 
-	Consider $[a]\in A/M\minus [0]$, we will prove it has a reverse.  Consider $N:=\{xm+ya:x,y\in A,m\in M\}$ is the minimum ideal of $A$ contains $M$ and $a$.
-	Since $[a]\neq [0]$ we know $a\notin M$, so $M\subsetneqq N$.
-	Noting $M$ is maximal, so $N=A$. That means $\exists x,y\in A,m\in M,xm+ya=1$. So $[xm+ya]=[1]$. Since $[xm]=[0]$ we get $[y][a]=1$, i.e., $[y]=[a]^{-1}$.
+  Consider $[a]\in A/M\minus [0]$, we will prove it has a reverse.  Consider $N:=\{xm+ya:x,y\in A,m\in M\}$ is the minimum ideal of $A$ contains $M$ and $a$.
+  Since $[a]\neq [0]$ we know $a\notin M$, so $M\subsetneqq N$.
+  Noting $M$ is maximal, so $N=A$. That means $\exists x,y\in A,m\in M,xm+ya=1$. So $[xm+ya]=[1]$. Since $[xm]=[0]$ we get $[y][a]=1$, i.e., $[y]=[a]^{-1}$.
 
-	$\Leftarrow $:
+  $\Leftarrow $:
 
-	Consider $a\in A\minus M, N:=\{xp+ya:x,y\in A,p\in P\}$, we will prove $N=A$, which means $M$ is maximal.
-	Since $A/M$ is field, $\exists y\in A, [y]=[a]^{-1}$. That's means $ay-1\in M\subset N$. Noting $ay\in N$, so $1\in N$, thus $N=A$.
+  Consider $a\in A\minus M, N:=\{xp+ya:x,y\in A,p\in P\}$, we will prove $N=A$, which means $M$ is maximal.
+  Since $A/M$ is field, $\exists y\in A, [y]=[a]^{-1}$. That's means $ay-1\in M\subset N$. Noting $ay\in N$, so $1\in N$, thus $N=A$.
 \end{solution}
 
 \begin{problem}
-	A ring $A$ is noetherian, $I\subset A$ is an ideal of $A$, then $A/I$ is noetherian.
+  A ring $A$ is noetherian, $I\subset A$ is an ideal of $A$, then $A/I$ is noetherian.
 \end{problem}
 \begin{solution}
-	Consider an ideal $J\subset A/I$, let $M:=\{x\in A:[x]\in J\}$. Then $\forall a\in A,x\in M,[ax]=[a][x]\in J$, so $ax\in M$. $\forall a,b\in M,[a-b]=[a]-[b]\in J$, so $a-b\in M$. So $M$ is an ideal of $A$.
-	Since $A$ is noetherian, we can assume $M=(f_i,i=1,2,\cdots n)$. Now we will prove $J=([f_i],i=1,2,\cdots n)$.
-	Consider $[f]\in J$, from definition of $M$ we know $f\in M$, so $f=\sum_{i=1}^na_if_i,a_i\in A$, thus $[f]=\left[\sum_{i=1}^na_if_i\right]=\sum_{i=1}^n[a_i][f_i]$. So $J=([f_i],i=1,2,\cdots n)$.
+  Consider an ideal $J\subset A/I$, let $M:=\{x\in A:[x]\in J\}$. Then $\forall a\in A,x\in M,[ax]=[a][x]\in J$, so $ax\in M$. $\forall a,b\in M,[a-b]=[a]-[b]\in J$, so $a-b\in M$. So $M$ is an ideal of $A$.
+  Since $A$ is noetherian, we can assume $M=(f_i,i=1,2,\cdots n)$. Now we will prove $J=([f_i],i=1,2,\cdots n)$.
+  Consider $[f]\in J$, from definition of $M$ we know $f\in M$, so $f=\sum_{i=1}^na_if_i,a_i\in A$, thus $[f]=\left[\sum_{i=1}^na_if_i\right]=\sum_{i=1}^n[a_i][f_i]$. So $J=([f_i],i=1,2,\cdots n)$.
 \end{solution}
 
 \begin{problem}
-	\label{pro:4}
-	$K$ is a field, $A=K[x_1,x_2,\cdots x_n],\A^n_K=K^n$. For ideal $I$ of $A$ let $V(I):=\{p\in\A_K^n:f(p)=0,\forall f\in I\}$. Then $V(I_1)\cup V(I_2)=V(I_1\cap I_2)=V(I_1I_2)$
+  \label{pro:4}
+  $K$ is a field, $A=K[x_1,x_2,\cdots x_n],\A^n_K=K^n$. For ideal $I$ of $A$ let $V(I):=\{p\in\A_K^n:f(p)=0,\forall f\in I\}$. Then $V(I_1)\cup V(I_2)=V(I_1\cap I_2)=V(I_1I_2)$
 \end{problem}
 \begin{solution}
-	\begin{lemma}
-		\label{lem:1}
-		$I\subset J\Rightarrow V(I)\supset V(J)$.
-	\end{lemma}
-	\begin{proof}
-		Consider $p\in V(J)$, we get $\forall f\in J,f(p)=0$. Since $I\subset J$, so $\forall f\in I,f(p)=0$, i.e., $f\in V(I)$.
-	\end{proof}
-	From Lemma \Cref{lem:1} we know $V(I_1\cap I_2)\subset V(I_1I_2)$, so we only need to prove $V(I_1)\cup V(I_2)\subset V(I_1\cap I_2),V(I_1I_2)\subset V(I_1)\cup V(I_2)$.
-	\begin{itemize}
-		\item $V(I_1)\cup V(I_2)\subset V(I_1\cap I_2)$:
-			From \Cref{lem:1} It's obvious.
-		\item $V(I_1I_2)\subset V(I_1)\cup V(I_2)$:
-			Consider $p\in V(I_1I_2)$.
-			If $p\notin V(I_1)\cup V(I_2)$, then $\exists f_1\in I_1,f_2\in I_2, f_1(p)\neq 0,f_2(p)\neq 0$. Now consider $f=f_1f_2\in I_1I_2$, we get $f(p)=f_1(p)f_2(p)\neq 0$, so $p\notin V(I_1I_2)$, it's a contradiction.
-	\end{itemize}
+  \begin{lemma}
+    \label{lem:1}
+    $I\subset J\Rightarrow V(I)\supset V(J)$.
+  \end{lemma}
+  \begin{proof}
+    Consider $p\in V(J)$, we get $\forall f\in J,f(p)=0$. Since $I\subset J$, so $\forall f\in I,f(p)=0$, i.e., $f\in V(I)$.
+  \end{proof}
+  From Lemma \Cref{lem:1} we know $V(I_1\cap I_2)\subset V(I_1I_2)$, so we only need to prove $V(I_1)\cup V(I_2)\subset V(I_1\cap I_2),V(I_1I_2)\subset V(I_1)\cup V(I_2)$.
+  \begin{itemize}
+    \item $V(I_1)\cup V(I_2)\subset V(I_1\cap I_2)$:
+      From \Cref{lem:1} It's obvious.
+    \item $V(I_1I_2)\subset V(I_1)\cup V(I_2)$:
+      Consider $p\in V(I_1I_2)$.
+      If $p\notin V(I_1)\cup V(I_2)$, then $\exists f_1\in I_1,f_2\in I_2, f_1(p)\neq 0,f_2(p)\neq 0$. Now consider $f=f_1f_2\in I_1I_2$, we get $f(p)=f_1(p)f_2(p)\neq 0$, so $p\notin V(I_1I_2)$, it's a contradiction.
+  \end{itemize}
 \end{solution}
 
 \begin{problem}
-	$K$ is an infinite field, then $\A_k^n$ is not Hausdorff.
+  $K$ is an infinite field, then $\A_k^n$ is not Hausdorff.
 \end{problem}
 \begin{solution}
-	\begin{lemma}
-		\label{lem:2}
-		$K$ is a infinite field, $f\in K[x_1,x_2,\cdots x_n]\setminus \{0\}$, then exists $p\in \A_K^n,f(p)\neq 0$.
-	\end{lemma}
-	\begin{proof}
-		Use MI. When $n=0,K[x_1,x_2,\cdots x_n]=K$, so it's obvious. Assume for $n=k$ it's right, when goes to $k+1$:
+  \begin{lemma}
+    \label{lem:2}
+    $K$ is a infinite field, $f\in K[x_1,x_2,\cdots x_n]\setminus \{0\}$, then exists $p\in \A_K^n,f(p)\neq 0$.
+  \end{lemma}
+  \begin{proof}
+    Use MI. When $n=0,K[x_1,x_2,\cdots x_n]=K$, so it's obvious. Assume for $n=k$ it's right, when goes to $k+1$:
 
-		Consider $h\in K(x_1,x_2,\cdots x_k)[x_{k+1}],h(x_{k+1}):=f(x_1,x_2,\cdots x_k,x_{k+1})$ is a non-zero polynomial so it has finite root. So exists $a\in K,h(a)\neq 0$. So $g:=f(x_1,x_2,\cdots x_k,a)\in K[x_1,x_2,\cdots x_k]\neq 0$.
-		By induction hypothesis we get $\exists b\in \A_K^k,g(b)\neq 0$. Let $p:=(b,a)\in \A_K^{k+1}$, then $f(p)\neq 0$.
-	\end{proof}
-	In fact, it's not only not Hausdorff, it's kind of ''absolutly not Hausdorff'' because every pair of point can't be seperated.
-	Consider two point $p\neq q,p,q\in \A_K^n$.
-	Assume $p=(p_1,p_2,\cdots p_n),q=(q_1,q_2,\cdots q_n),p_1\neq q_1$. Assume two open set $V(I_1)^c,V(I_2)^c$ can seperate $p,q$, then $V(I_1)\cup V(I_2)=\A_K^n$.
-	From \Cref{pro:4} we know $V(I_1I_2)=\A_K^n$. So $\forall f\in V(I_1I_2),\forall p\in \A_K^n,f(p)=0$.
-	Then from Lemma\Cref{lem:2} we can get $f=0$. So $I_1I_2=\{0\}$.
-	Since $p\notin V(I_1),q\notin V(I_2)$, we know $I_1,I_2\neq \{0\}$. So $\exists f_1\in I_1\neq 0,\exists f_2\in I_2\neq 0$, and thus $f=f_1f_2\in I_1I_2\neq 0$, contradiction!
-	\(\phi\)
-	So there is not a pair of points can be seperated by two disjoint open set.
+    Consider $h\in K(x_1,x_2,\cdots x_k)[x_{k+1}],h(x_{k+1}):=f(x_1,x_2,\cdots x_k,x_{k+1})$ is a non-zero polynomial so it has finite root. So exists $a\in K,h(a)\neq 0$. So $g:=f(x_1,x_2,\cdots x_k,a)\in K[x_1,x_2,\cdots x_k]\neq 0$.
+    By induction hypothesis we get $\exists b\in \A_K^k,g(b)\neq 0$. Let $p:=(b,a)\in \A_K^{k+1}$, then $f(p)\neq 0$.
+  \end{proof}
+  In fact, it's not only not Hausdorff, it's kind of ''absolutly not Hausdorff'' because every pair of point can't be seperated.
+  Consider two point $p\neq q,p,q\in \A_K^n$.
+  Assume $p=(p_1,p_2,\cdots p_n),q=(q_1,q_2,\cdots q_n),p_1\neq q_1$. Assume two open set $V(I_1)^c,V(I_2)^c$ can seperate $p,q$, then $V(I_1)\cup V(I_2)=\A_K^n$.
+  From \Cref{pro:4} we know $V(I_1I_2)=\A_K^n$. So $\forall f\in V(I_1I_2),\forall p\in \A_K^n,f(p)=0$.
+  Then from Lemma\Cref{lem:2} we can get $f=0$. So $I_1I_2=\{0\}$.
+  Since $p\notin V(I_1),q\notin V(I_2)$, we know $I_1,I_2\neq \{0\}$. So $\exists f_1\in I_1\neq 0,\exists f_2\in I_2\neq 0$, and thus $f=f_1f_2\in I_1I_2\neq 0$, contradiction!
+  \(\phi\)
+  So there is not a pair of points can be seperated by two disjoint open set.
 \end{solution}
 
 \end{document}
