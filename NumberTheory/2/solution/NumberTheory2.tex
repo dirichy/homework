@@ -2,7 +2,7 @@
 %!TEX TS-program = xelatex
 \documentclass{ctexart}
 \newif\ifpreface
-\prefacetrue
+% \prefacetrue
 \input{../../../global/all}
 \begin{document}
 \large
@@ -19,7 +19,7 @@
 %作业：第一章第4节习题5; 第5节习题1，2，4(iii)； 第二章第1节习题1(b), 3; 第2节习题2
 
 \begin{problem}\label{pro:p14.5}
-  Assume \(n \in \mathbb{N}^+\) and \(2^n + 1\) is prime. Prive that \(\exists k \in \mathbb{N},n=2^k\).
+  Assume \(n \in \mathbb{N}^+\) and \(2^n + 1\) is prime. Prove that \(\exists k \in \mathbb{N},n=2^k\).
 \end{problem}
 \begin{lemma}\label{lem:1}
   Assume \(b=ka\) and \(k\) is odd, then for \(x,y \in \mathbb{N}\), we have \(x^a + y^a \mid x^b + y^b\).
@@ -37,12 +37,12 @@
   So \(\exists k \in \mathbb{N},n=2^k\).
 \end{solution}
 \begin{problem}\label{pro:p16.1}
-  Find the standrad decomposition of \(30!\).
+  Find the standard decomposition of \(30!\).
 \end{problem}
 \begin{solution}
   There are \(2,3,5,7,11,13,17,19,23,29\), \(10\) primes, below \(30\).
-  So we know \(30!\) can be break down into power and product of them.
-  By calculation we can get that:
+  So we know \(30!\) can be broken down into power and product of them.
+  By calculation, we can get that:
   \begin{equation}\label{equ:1}
     \begin{aligned}
       v_2(30!)    & =\sum_{k=1}^{\infty}\left[\frac{30}{2^k}\right]    & =15+7+3+1=26 \\
@@ -73,7 +73,7 @@
       Now we will prove \(\left[\frac{[n \alpha]}{n}\right]\geq [\alpha]\).
       By the definition of \([\cdot]\) we only need to prove \(\frac{[n \alpha]}{n}\geq [\alpha]\).
       So we only need \([n \alpha]\geq n [\alpha]\).
-      By the definition of \([\cdot]\) we only need \(n \alpha \geq n[\alpha]\), which is obvious.
+      By the definition of \([\cdot]\) it is sufficient to show \(n \alpha \geq n[\alpha]\), which is obvious.
     \item By \ref{it:2.1} easily to know \([\alpha+\frac{k}{n}]=\left[\frac{[n(\alpha+\frac{k}{n})]}{n}\right]=
       \left[\frac{[n \alpha]+k}{n}\right]\).
       Let \(f:\mathbb{Z} \to \{0,\cdots,n-1\}\) and \(f(x)\equiv x \mod n\).
@@ -86,23 +86,43 @@
 \end{solution}
 \begin{problem}\label{pro:p16.4.3}
   Assume \(r>0,r \in \mathbb{R}\). Let \(T\) be the number of integer point in  \(x^2 + y^2 \leq r^2\).
-  Prove that \(T = 1 + 4[r] + 8 \sum_{0<x \leq \frac{r}{\sqrt{2}}}[\sqrt{r^2-x^2}] -4\left[\frac{r}{\sqrt{2}}\right]^2\).
+  Prove that
+  \[
+    T = 1 + 4[r] + 8 \sum_{0<x \leq \frac{r}{\sqrt{2}}}[\sqrt{r^2-x^2}] -4\left[\frac{r}{\sqrt{2}}\right]^2
+  \]
 \end{problem}
 \begin{solution}
-  \(T=\sum_{x,y \in \mathbb{Z},x^2 + y^2 \leq r^2}1=\sum_{x^2 + y^2 \leq r^2,xy=0} 1 +\sum_{x^2+y^2 \leq r^2,xy \neq 0} 1=
-  1+\sum_{0<x^2 + y^2 \leq r^2,xy=0} 1 +4 \sum_{x^2 + y^2 \leq r^2,x>0,y>0} 1\).
-  By symmetry, we know \(\sum_{0<x^2 + y^2 \leq r^2,xy=0} 1 =4\sum_{x^2 + y^2 \leq r^2,x >0,y=0} 1=4[r]\).
-  And \(\sum_{x^2 + y^2 \leq r^2,x,,y>0} 1 =\sum_{x^2+y^2 \leq r^2,0<x \leq \frac{r}{\sqrt{2}},0<y} 1 + \sum_{x^2+y^2 \leq r^2,0<y \leq \frac{r}{\sqrt{2}},0<x} 1 -\sum_{x^2+y^2 \leq r^2,0<x \leq \frac{r}{\sqrt{2}},0<y \leq \frac{r}{\sqrt{2}}} 1\).
-  Easily to know \(\sum_{x^2+y^2 \leq r^2,0<y \leq \frac{r}{\sqrt{2}},0<x} 1 =\sum_{x^2+y^2 \leq r^2,0<x \leq \frac{r}{\sqrt{2}},0<y} 1 =\sum_{0<x \leq \frac{r}{\sqrt{2}}}[\sqrt{r^2-x^2}]\),
-  and \(\sum_{x^2+y^2 \leq r^2,0<x \leq \frac{r}{\sqrt{2}},0<y \leq \frac{r}{\sqrt{2}}} 1=\left[\frac{r}{\sqrt{2}}\right]^2\).
-  So finally we get \(T = 1 + 4[r] + 8 \sum_{0<x \leq \frac{r}{\sqrt{2}}}[\sqrt{r^2-x^2}] -4\left[\frac{r}{\sqrt{2}}\right]^2\).
+  \[
+    T=\sum_{x,y \in \mathbb{Z},x^2 + y^2 \leq r^2}1=\sum_{x^2 + y^2 \leq r^2,xy=0} 1 +\sum_{x^2+y^2 \leq r^2,xy \neq 0} 1=
+    1+\sum_{0<x^2 + y^2 \leq r^2,xy=0} 1 +4 \sum_{x^2 + y^2 \leq r^2,x>0,y>0} 1
+  \]
+  By symmetry, we know
+  \[
+    \sum_{0<x^2 + y^2 \leq r^2,xy=0} 1 =4\sum_{x^2 + y^2 \leq r^2,x >0,y=0} 1=4[r]
+  \]
+  And
+  \[
+    \sum_{x^2 + y^2 \leq r^2,x,,y>0} 1 =\sum_{x^2+y^2 \leq r^2,0<x \leq \frac{r}{\sqrt{2}},0<y} 1 + \sum_{x^2+y^2 \leq r^2,0<y \leq \frac{r}{\sqrt{2}},0<x} 1 -\sum_{x^2+y^2 \leq r^2,0<x \leq \frac{r}{\sqrt{2}},0<y \leq \frac{r}{\sqrt{2}}} 1
+  \]
+  Easily to know
+  \[
+    \sum_{x^2+y^2 \leq r^2,0<y \leq \frac{r}{\sqrt{2}},0<x} 1 =\sum_{x^2+y^2 \leq r^2,0<x \leq \frac{r}{\sqrt{2}},0<y} 1 =\sum_{0<x \leq \frac{r}{\sqrt{2}}}[\sqrt{r^2-x^2}]
+  \]
+  and
+  \[
+    \sum_{x^2+y^2 \leq r^2,0<x \leq \frac{r}{\sqrt{2}},0<y \leq \frac{r}{\sqrt{2}}} 1=\left[\frac{r}{\sqrt{2}}\right]^2
+  \]
+  So finally we get
+  \[
+    T = 1 + 4[r] + 8 \sum_{0<x \leq \frac{r}{\sqrt{2}}}[\sqrt{r^2-x^2}] -4\left[\frac{r}{\sqrt{2}}\right]^2
+  \]
 \end{solution}
 
 \begin{problem}\label{pro:p23.1.b}
   Find all integer solution of \(306x-360y=630\).
 \end{problem}
 \begin{solution}
-  The origin equation is equavilent to \(17x-20y=35\).
+  The origin equation is equivalent to \(17x-20y=35\).
   Consider \(\mod 5\), we get \(5 \mid 17 x\). So \(5 \mid x\).
   Assume \(x=5k\), then \(17k-4y=7\).
   Then \(17(k+1)-4y=24\), consider \(\mod 4\), we get \(4 \mid k+1\), so \(k+1=4s\) and \(17s-y=6\).
@@ -110,7 +130,7 @@
   So \(\begin{cases}
     x=20s-5 \\
     y=172-6
-  \end{cases}\) is all of solutions of the equation.
+  \end{cases}\) is all solutions of the equation.
 \end{solution}
 \begin{problem}\label{pro:p23.3}
   Assume \(N,a,b \in \mathbb{N},a,b>0,\gcd(a,b)=1\).
@@ -124,9 +144,9 @@
   So we know the number of solution is \(\left[\frac{t}{a}\right]+\left[\frac{s}{b}\right]+1\).
   Now we only need \(\left[\frac{N}{ab}\right]\leq\left[\frac{t}{a}\right]+\left[\frac{s}{b}\right]+1 \leq \left[\frac{N}{ab}\right]+1\).
 
-  To prove \(\left[\frac{N}{ab}\right]\leq\left[\frac{t}{a}\right]+\left[\frac{s}{b}\right]+1\) we only need
+  To prove \(\left[\frac{N}{ab}\right]\leq\left[\frac{t}{a}\right]+\left[\frac{s}{b}\right]+1\), it is sufficient to show
   \(\left[\frac{N}{ab}\right]\leq\left[\frac{t}{a}\right]+\frac{s}{b}+1\).
-  Only need \(\left[\frac{N}{ab}\right]\leq\frac{t}{a}+\frac{s}{b}\).
+  Only need to show \(\left[\frac{N}{ab}\right]\leq\frac{t}{a}+\frac{s}{b}\).
   Noting \(ab \left[\frac{N}{ab}\right] \leq ab \frac{N}{ab}=N=as+bt=ab(\frac{t}{a}+\frac{s}{b})\) it's obvious.
 
   To prove \(\left[\frac{t}{a}\right]+\left[\frac{s}{b}\right]+1 \leq \left[\frac{N}{ab}\right]+1\),
