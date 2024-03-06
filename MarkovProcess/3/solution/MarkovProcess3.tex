@@ -1,0 +1,72 @@
+%!Mode:: "TeX:UTF-8"
+%!TEX TS-program = xelatex
+\documentclass{ctexart}
+\newif\ifpreface
+%\prefacetrue
+\input{../../../global/all}
+\begin{document}
+\large
+\iffalse
+  \setlength{\baselineskip}{1.2em}
+  \ifpreface
+    \input{../../../global/preface}
+  \else
+    \maketitle
+  \fi
+\fi
+\newgeometry{left=2cm,right=2cm,top=2cm,bottom=2cm}
+%from_here_to_type
+\begin{problem}\label{pro:1}
+  Assume \((B_t:t \geq 0)\) is Brownian motion, prove that for \(r>0\), we have \((B_{t + r}-B_r:t \geq 0)\) is Brownian motion, too.
+\end{problem}
+\begin{solution}
+  Assume \(B_t-B_s \sim N(0,a(t-s)),a >0\).
+  Let \(\mathcal{F}_t:=\sigma(B_s:0 \leq s \leq t)\) and \(\mathcal{G}_t:=\sigma(B_{r+s}-B_r:0 \leq s \leq t)\).
+  For \(0 \leq s \leq t\), we have \(B_{t+r}-B_r -(B_{s+r}-B_r)=B_{t+r}-B_{s+r} \sim N(0,a(t-s))\).
+  And easily to know \(B_{r + s}-B_r \in \mathcal{F}_{r+s}\), so \(\mathcal{G}_t \subset \mathcal{F}_{t+r},\forall t \geq 0\).
+  Since \((B_t:t \geq 0)\) is Brownian motion, easily \(\mathcal{F}_{s+r} \perp B_{t+r}-B_{s+r}\).
+  Since \(\mathcal{G}_{t}\subset \mathcal{F}_{t +r}\), we obtain \(\mathcal{G}_t \perp B_{t + r}-B_{s + r}=B_{t+r}-B_r -(B_{s+r}-B_r)\).
+  So \((B_{t+r}:t \geq 0)\) is Brownian motion.
+\end{solution}
+
+\begin{problem}\label{pro:2}
+  Assume \((B_t:t \geq 0)\) is standrad Brownian motion start at \(0\).
+  Prove that \(\forall c>0,(c B_{\frac{t}{c^2}}:t \geq 0)\) is standrad Brownian motion start at \(0\), too.
+\end{problem}
+\begin{solution}
+  Since \(B_0=0\) we get \(c B_{\frac{0}{c^2}}=0\).
+  Let \(\mathcal{F}_t:=\sigma(B_s:0 \leq s \leq t)\) and \(\mathcal{G}_t:=\sigma(c B_{\frac{s}{c^2}}:0 \leq s \leq t)\).
+  Easily to know \(\mathcal{G}_t=\mathcal{F}_{\frac{t}{c^2}}\).
+  For \(0 \leq s \leq t\), we have \(c B_{\frac{t}{c^2}}-c B_{\frac{s}{c^2}}= c(B_{\frac{t}{c^2}}-B_{\frac{s}{c^2}}) \sim N(0,t-s)\),
+  because \(B_{\frac{t}{c^2}}-B_{\frac{s}{c^2}} \sim N(0,\frac{t-s}{c^2})\).
+  And since \((B_t:t \geq 0)\) is Brownian motion, we get \(B_{\frac{t}{c^2}}-B_{\frac{s}{c^2}} \perp \mathcal{F}_{\frac{s}{c^2}}=\mathcal{G}_s\).
+  So \((c B_{\frac{t}{c^2}}:t \geq 0)\) is standrad Brownian motion starts at \(0\), too.
+\end{solution}
+\begin{problem}\label{pro:3}
+  Assume \((X_t:t \geq 0)\) and \((Y_t:t \geq 0)\) are two independent standrad Brownian motion, \(a,b \in \mathbb{R}\) and \(\sqrt{a^2 + b^2} >0\).
+  Prove that \((aX_t + bY_t:t \geq 0)\) is a Brownian motion with parameter \(c=\sqrt{a^2 + b^2}\).
+\end{problem}
+\begin{solution}
+  Let \(\mathcal{F}_t:=\sigma(X_s:0 \leq s \leq t)\) and \(\mathcal{G}_t:=\sigma(Y_s:0 \leq s \leq t)\).
+  Let \(\mathcal{H}_t:=\sigma(a X_s + b Y_s:0 \leq s \leq t)\).
+  Since \((X_t:t \geq 0),(Y_t:t \geq 0)\) are two independent Brownian motion, we know \(\forall 0 \leq s \leq t,X_t - X_s \perp \mathcal{F}_s,\mathcal{G}_s;Y_t-Y_s \perp \mathcal{F}_s,\mathcal{G}_s\).
+  So we get \(aX_t+bY_t-aX_s-bY_s \perp \mathcal{F}_s,\mathcal{G}_s\), thus \(aX_t+bY_t-aX_s-bY_s \perp \sigma(\mathcal{F}_s,\mathcal{G}_s)\)
+  Easily \(a X_s+bY_s \in \sigma(\mathcal{F}_s,\mathcal{G}_s)\), so \(\mathcal{H}_t \subset \sigma(\mathcal{F}_t,\mathcal{G},t),\forall t \geq 0\).
+  So \(a X_t+bY_t-aX_s-bY_s \perp \mathcal{H}_s\).
+  And easily \(a(X_t-X_s) \sim N(0,a^2(t-s)),b(Y_t-Y_s) \sin N(0,b^2(t-s))\), and since \(\mathcal{F}_t \perp \mathcal{G}_t\) we get \(a(X_t-X_s) \perp b(Y_t-Y_s)\),
+  so \(a X_t+bY_t-aX_s-bY_s \sim N(0,(a^2 + b^2)(t-s))\).
+  So \((a X_t + b Y_t:t \geq 0)\) is a Brownian motion with parameter \(a^2 + b^2 = c^2\).
+\end{solution}
+\begin{problem}\label{pro:4}
+  Assume \((B_t:t \geq 0)\) is standrad Brownian motion start at \(0\).
+  Let \(X_0=0\) and \(X_t:=t B_{\frac{1}{t}}\).
+  Given
+  \[
+    \limsup_{t \to \infty}\frac{B_{t}}{\sqrt{2t \log \log t}}=1
+  \]
+  Prove that \((X_t:t \geq 0)\) is standrad Brownian motion start at \(0\).
+\end{problem}
+\begin{solution}
+
+\end{solution}
+\end{document}

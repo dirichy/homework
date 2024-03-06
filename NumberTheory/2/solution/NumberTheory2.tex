@@ -104,11 +104,12 @@
   \[
     \sum_{x^2 + y^2 \leq r^2,x,,y>0} 1 =\sum_{x^2+y^2 \leq r^2,0<x \leq \frac{r}{\sqrt{2}},0<y} 1 + \sum_{x^2+y^2 \leq r^2,0<y \leq \frac{r}{\sqrt{2}},0<x} 1 -\sum_{x^2+y^2 \leq r^2,0<x \leq \frac{r}{\sqrt{2}},0<y \leq \frac{r}{\sqrt{2}}} 1
   \]
-  Easily to know
+  Since for \(y:0<y \leq \frac{r}{\sqrt{2}}\) we have \(0<x<\sqrt{r^2-y^2}\), so there are \([\sqrt{r^2-y^2}]\) different \(x\) for each \(y\).
+  So easily
   \[
     \sum_{x^2+y^2 \leq r^2,0<y \leq \frac{r}{\sqrt{2}},0<x} 1 =\sum_{x^2+y^2 \leq r^2,0<x \leq \frac{r}{\sqrt{2}},0<y} 1 =\sum_{0<x \leq \frac{r}{\sqrt{2}}}[\sqrt{r^2-x^2}]
   \]
-  and
+  For \(x,y:0<x \leq \frac{r}{\sqrt{2}}\) we have \(x^2+y^2 \leq r^2\), so:
   \[
     \sum_{x^2+y^2 \leq r^2,0<x \leq \frac{r}{\sqrt{2}},0<y \leq \frac{r}{\sqrt{2}}} 1=\left[\frac{r}{\sqrt{2}}\right]^2
   \]
@@ -129,7 +130,7 @@
   So \(y=17s-6\) and easily \(x=5s=5(4s-1)=20s-5\).
   So \(\begin{cases}
     x=20s-5 \\
-    y=172-6
+    y=17s-6
   \end{cases}\) is all solutions of the equation.
 \end{solution}
 \begin{problem}\label{pro:p23.3}
@@ -162,5 +163,4 @@
   Easy to know \(x=-1,y=1,z=1\) is a solution.
   So \(\frac{17}{60}=-\frac{1}{4}+\frac{1}{3}+\frac{1}{5}\) satisfy the condition.
 \end{solution}
-
 \end{document}
