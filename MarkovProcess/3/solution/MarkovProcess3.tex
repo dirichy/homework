@@ -26,12 +26,13 @@
   And easily to know \(B_{r + s}-B_r \in \mathcal{F}_{r+s}\), so \(\mathcal{G}_t \subset \mathcal{F}_{t+r},\forall t \geq 0\).
   Since \((B_t:t \geq 0)\) is Brownian motion, easily \(\mathcal{F}_{s+r} \perp B_{t+r}-B_{s+r}\).
   Since \(\mathcal{G}_{t}\subset \mathcal{F}_{t +r}\), we obtain \(\mathcal{G}_t \perp B_{t + r}-B_{s + r}=B_{t+r}-B_r -(B_{s+r}-B_r)\).
+  Easily since \(B_t\) is continuous we get \(B_{t + r}-B_r\) is continuous.
   So \((B_{t+r}:t \geq 0)\) is Brownian motion.
 \end{solution}
 
 \begin{problem}\label{pro:2}
-  Assume \((B_t:t \geq 0)\) is standrad Brownian motion start at \(0\).
-  Prove that \(\forall c>0,(c B_{\frac{t}{c^2}}:t \geq 0)\) is standrad Brownian motion start at \(0\), too.
+  Assume \((B_t:t \geq 0)\) is standard Brownian motion start at \(0\).
+  Prove that \(\forall c>0,(c B_{\frac{t}{c^2}}:t \geq 0)\) is standard Brownian motion start at \(0\), too.
 \end{problem}
 \begin{solution}
   Since \(B_0=0\) we get \(c B_{\frac{0}{c^2}}=0\).
@@ -40,11 +41,12 @@
   For \(0 \leq s \leq t\), we have \(c B_{\frac{t}{c^2}}-c B_{\frac{s}{c^2}}= c(B_{\frac{t}{c^2}}-B_{\frac{s}{c^2}}) \sim N(0,t-s)\),
   because \(B_{\frac{t}{c^2}}-B_{\frac{s}{c^2}} \sim N(0,\frac{t-s}{c^2})\).
   And since \((B_t:t \geq 0)\) is Brownian motion, we get \(B_{\frac{t}{c^2}}-B_{\frac{s}{c^2}} \perp \mathcal{F}_{\frac{s}{c^2}}=\mathcal{G}_s\).
-  So \((c B_{\frac{t}{c^2}}:t \geq 0)\) is standrad Brownian motion starts at \(0\), too.
+  Easily since \(B_t\) is continuous we get \(c B_{t_c^2}\) is continuous.
+  So \((c B_{\frac{t}{c^2}}:t \geq 0)\) is standard Brownian motion starts at \(0\), too.
 \end{solution}
 \begin{problem}\label{pro:3}
-  Assume \((X_t:t \geq 0)\) and \((Y_t:t \geq 0)\) are two independent standrad Brownian motion, \(a,b \in \mathbb{R}\) and \(\sqrt{a^2 + b^2} >0\).
-  Prove that \((aX_t + bY_t:t \geq 0)\) is a Brownian motion with parameter \(c=\sqrt{a^2 + b^2}\).
+  Assume \((X_t:t \geq 0)\) and \((Y_t:t \geq 0)\) are two independent standard Brownian motion, \(a,b \in \mathbb{R}\) and \(\sqrt{a^2 + b^2} >0\).
+  Prove that \((aX_t + bY_t:t \geq 0)\) is a Brownian motion with parameter \(c^2=a^2 + b^2\).
 \end{problem}
 \begin{solution}
   Let \(\mathcal{F}_t:=\sigma(X_s:0 \leq s \leq t)\) and \(\mathcal{G}_t:=\sigma(Y_s:0 \leq s \leq t)\).
@@ -55,18 +57,44 @@
   So \(a X_t+bY_t-aX_s-bY_s \perp \mathcal{H}_s\).
   And easily \(a(X_t-X_s) \sim N(0,a^2(t-s)),b(Y_t-Y_s) \sin N(0,b^2(t-s))\), and since \(\mathcal{F}_t \perp \mathcal{G}_t\) we get \(a(X_t-X_s) \perp b(Y_t-Y_s)\),
   so \(a X_t+bY_t-aX_s-bY_s \sim N(0,(a^2 + b^2)(t-s))\).
+  Easily since \(X_t,Y_t\) is continuous we get \(a X_t + b Y_t\) is continuous.
   So \((a X_t + b Y_t:t \geq 0)\) is a Brownian motion with parameter \(a^2 + b^2 = c^2\).
 \end{solution}
 \begin{problem}\label{pro:4}
-  Assume \((B_t:t \geq 0)\) is standrad Brownian motion start at \(0\).
+  Assume \((B_t:t \geq 0)\) is standard Brownian motion start at \(0\).
   Let \(X_0=0\) and \(X_t:=t B_{\frac{1}{t}}\).
   Given
   \[
     \limsup_{t \to \infty}\frac{B_{t}}{\sqrt{2t \log \log t}}=1
   \]
-  Prove that \((X_t:t \geq 0)\) is standrad Brownian motion start at \(0\).
+  Prove that \((X_t:t \geq 0)\) is standard Brownian motion start at \(0\).
 \end{problem}
 \begin{solution}
+  First consider the distribution of \(X_t-X_s\) for \(s <t\).
+  If \(s=0\) then \(X_t-X_s=t B_{\frac{1}{t}} \sim N(0,t^2 \times \frac{1}{t})=N(0,t)\).
+  Else, \(s >0\), then \(X_t-X_s =s(B_{\frac{1}{t}}-B_{\frac{1}{s}})+(t-s)B_{\frac{1}{t}}\).
+  Easily \(B_{\frac{1}{s}}-B_{\frac{1}{t}} \sim N(0,\frac{1}{s})-\frac{1}{t})\),
+  and \(B_{\frac{1}{t}} \sim N(0,\frac{1}{t})\), and since \(\frac{1}{t}<\frac{1}{s}\) we know
+  \(B_{\frac{1}{s}}-B_{\frac{1}{t}}\perp B_{\frac{1}{t}}\).
+  So \(X_t-X_s \sim N(0,s^2(\frac{1}{s}-\frac{1}{t})+(t-s)^2 \frac{1}{t})=N(0,t-s)\).
 
+  Second let \(\mathcal{G}_t:=\sigma(X_s:0 \leq s \leq t)\),
+  we need to check \(X_t-X_s \perp \mathcal{G}_s,\forall 0 \leq s \leq t\).
+  For \(s=0\) we get \(\mathcal{G}_s=\{\emptyset,\Omega\}\), so it's obvious.
+  Now assume \(s>0\). Then \(\mathcal{G}_s=\sigma(B_{\frac{1}{r}}:0 \leq r \leq s)\).
+  Only need to check \(\mathbb{E}(B_{\frac{1}{r}}(X_t-X_s))=0\) because they are all normal distributed random variable.
+  Easily \(\mathbb{E}(B_{\frac{1}{r}}X_t)=\mathbb{E}((B_{\frac{1}{r}}-B_{\frac{1}{t}})tB_{\frac{1}{t}})+\mathbb{E}(t B_{\frac{1}{t}}^2)=1\),
+  and \(\mathbb{E}(B_{\frac{1}{r}}X_s)=\mathbb{E}((B_{\frac{1}{r}}-B_{\frac{1}{s}})sB_{\frac{1}{s}})+\mathbb{E}(s B_{\frac{1}{s}}^2)=1\)
+  So \(\mathbb{E}(B_{\frac{1}{r}}(X_t-X_s))=0\).
+
+  Finally we need to check \(X_t\) is continuous a.s.
+  Easily for \(t \neq 0\) we know \(X_t\) is continuous at \(t\).
+  Only need to check \(X_t\) is continuous at \(0\) with probability \(1\).
+  Easily to know \((-B_t:t \geq 0)\) is standard Brownian motion, too.
+  So \(\limsup_{t \to \infty}\frac{-B_t}{\sqrt{2t \log \log t}}=1\).
+  So \(\limsup_{t \to \infty}\frac{|B_t|}{2t \log \log t}=1\).
+  So \(\limsup_{t \to 0+}|X_t|=\lim_{t \to \infty} |\frac{1}{t}B_{t}| \leq \limsup_{t \to \infty}\frac{\sqrt{2 t \log \log t}}{t}=0\).
+  So \(\lim_{t \to 0+}|X_t|=0\).
+  So \(X_t\) is continuous with probability \(1\).
 \end{solution}
 \end{document}
