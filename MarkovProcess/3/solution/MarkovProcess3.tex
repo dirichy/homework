@@ -22,20 +22,18 @@
   Let \(\mathcal{F}_t:=\sigma(B_s:0 \leq s \leq t)\).
   Then \((B_t:t \geq 0)\) is Brownian motion \(\iff \forall 0 \leq s \leq t,B_t - B_s \perp \mathcal{F}_s\).
 \end{lemma}
-
 \begin{proof}
-  ``\(\implies\)'': To prove \(B_t-B_s \perp \mathcal{F}_s\), we only need to prove for \(t_0 \leq t_1 \leq \cdots \leq t_n=s \leq t=t_{n+1},B_t-B_s \perp \sigma(B_{t_k}:0 \leq k \leq n-1)\).
-  Easily \(\sigma(B_{t_k}:0 \leq k \leq n-1)=\sigma(B_{t_0},B_{t_{k+1}}-B_{t_{k}}:0 \leq k \leq n-2)\).
-  So by the definition of Brownian motion we get \(B_t-B_s \perp \sigma(B_{t_k}:0 \leq k \leq n-1)\).
-  So \(B_t-B_s \perp \mathcal{F}_s\).
+  ``\(\implies\)'': To prove \(B_t-B_s \perp \mathcal{F}_s\), only need to prove for \(t_1 < t_2 < \cdots <t_{n-1}=s<t=t_n\), we have
+  \(B_t-B_s \perp \sigma(B_{t_k}:k=1,\cdots,n-1)\).
+  Easily \(B_t-B_s \perp \sigma(B_{t_{k+1}}-B_{t_k},B_{t_1}:k=1,\cdots,n-2)=\sigma(B_{t_k}:k=1,\cdots,n-1)\), so \(B_t-B_s \perp \mathcal{F}_s\).
 
-  ``\(\impliedby\)'': For \(0 \leq t_0 \leq \cdots \leq t_n\), we need to prove \(B_{t_0},B_{t_{k+1}}-B_{t_k}:0 \leq k \leq n-1\) are independent.
-  Use MI to \(n\). When \(n=0\) it's obvious. When \(n=1\) we have \(B_{t_0} \in \mathcal{F}_{t_0} \perp B_{t_1}-B_{t_0}\).
-  Assume we have prove it for certain \(n \geq 1\), now consider \(n+1\).
-  Since \(B_{t_{k+1}-B_{t_k}} \in \mathcal{F}_{t_n},k=0,\cdots,n-1\), we have \(B_{t_{n+1}}-B_{t_n} \perp \sigma(B_{t_0},B_{t_{k+1}}-B_{t_k}:k=0,\cdots,n-1)\).
-  So \(\mathbb{P}(B_{t_0} \in A_0,B_{t_{k+1}}-B_{t_k} \in A_{k+1},k=0,\cdots,n)=\mathbb{P}(B_{t_0} \in A_0,B_{t_{k+1}}-B_{t_k} \in A_{k+1},k=0,\cdots,n-1)\mathbb{P}(B_{t_{n+1}}-B_{t_n} \in A_{n+1})\).
-  By Induction assumption we get \(\mathbb{P}(B_{t_0} \in A_0,B_{t_{k+1}}-B_{t_k} \in A_{k+1},k=0,\cdots,n)=\mathbb{P}(B_{t_0}\in A_0) \prod_{k=0}^{n}\mathbb{P}(B_{t_{k+1}}-B_{t_k} \in A_{k+1})\).
-  So finally we get \(B_{t_0},B_{t_{k+1}}-B_{t_k}:0 \leq k \leq n\) are independent.
+  ``\(\impliedby\)'': For \(t_1 < \cdots < t_n\), we need to prove \(B_{t_1},B_{t_{k+1}}-B_{t_k}:1 \leq k \leq n-1\) are independent.
+  Use MI to \(n\). When \(n=1\) it's obvious.
+  Assume we have proved it for certain \(n \geq 1\), now consider \(n+1\).
+  Since \(B_{t_{k+1}}-B_{t_k} \in \mathcal{F}_{t_n},k=1,\cdots,n-1\), we have \(B_{t_{n+1}}-B_{t_n} \perp \sigma(B_{t_1},B_{t_{k+1}}-B_{t_k}:k=1,\cdots,n-1)\).
+  So \(\mathbb{P}(B_{t_1} \in A_1,B_{t_{k+1}}-B_{t_k} \in A_{k+1},k=1,\cdots,n)=\mathbb{P}(B_{t_1} \in A_1,B_{t_{k+1}}-B_{t_k} \in A_{k+1},k=1,\cdots,n-1)\mathbb{P}(B_{t_{n+1}}-B_{t_n} \in A_{n+1})\).
+  By Induction assumption we get \(\mathbb{P}(B_{t_1} \in A_1,B_{t_{k+1}}-B_{t_k} \in A_{k+1},k=1,\cdots,n)=\mathbb{P}(B_{t_1}\in A_1) \prod_{k=1}^{n}\mathbb{P}(B_{t_{k+1}}-B_{t_k} \in A_{k+1})\).
+  So finally we get \(B_{t_1},B_{t_{k+1}}-B_{t_k}:1 \leq k \leq n\) are independent.
 \end{proof}
 
 \begin{problem}\label{pro:1}
