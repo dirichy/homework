@@ -7,18 +7,105 @@
 \begin{document}
 \large
 \iffalse
-\setlength{\baselineskip}{1.2em}
-\ifpreface
+  \setlength{\baselineskip}{1.2em}
+  \ifpreface
     \input{../../../global/preface}
-\else
-\maketitle
-\fi
+  \else
+    \maketitle
+  \fi
 \fi
 \newgeometry{left=2cm,right=2cm,top=2cm,bottom=2cm}
 %from_here_to_type
 %作业：p53.1(ii);2,3.p55.1(ii),3.（一些同学习惯             于直接“参考”网上流传的答案，但是，友情提醒，那些现成的解答有些是有错的哦！并且考试的时候是不能参考的……所以尽量还是自己动手做啊，要不然考试的时候会卡壳……）
 \begin{problem}\label{pro:p53.1ii}
-  
+  Solve this equation: \(1215x \equiv 560 \mod 2755\).
 \end{problem}
+\begin{solution}
+  Easily \(1215x \equiv 560 \mod 2755 \iff 243 x \equiv 112 \mod 551 \).
+  Obviously \(x=200\) is a solution, and \(\gcd(243,551)=1\), so all the solutions are
+  \(x=200+551t,t \in \mathbb{Z}\).
+\end{solution}
+\begin{problem}\label{pro:p53.2}
+  Find the solution of \(\begin{cases}
+    x+4y-29\equiv 0 \mod 143 \\
+    2x-9y+84 \equiv 0 \mod 143
+  \end{cases}\)
+\end{problem}
+\begin{solution}
+  Double the first equation then minus the second, we get \(17 y -142 \equiv 0 \mod 143\).
+  Then \(y \equiv 42 \mod 143\).
+  Subsititute it in the first equation, we get \(x \equiv 4 \mod 143\).
+\end{solution}
+\begin{problem}\label{pro:p53.3}
+  \begin{enumerate}
+    \item Assume \(m \in \mathbb{N}^+,\gcd(a,m)=1\), prove that
+      \(x \equiv b a^{\phi(n)-1} \mod m\) is the solution of \(ax \equiv b \mod m\).
+    \item Assume \(p\) is prime and \(0<a<p\). Prove that \(x=b(-1)^{a-1} \frac{\binom{p}{a}}{p} \mod p\) is solution of \(ax \equiv b \mod p\).
+  \end{enumerate}
+\end{problem}
+\begin{solution}
+  \begin{enumerate}
+    \item Only need to check \(aba^{\phi(m)-1}\equiv b \mod m\).
+      Since \(\gcd(a,m)=1\), easily \(a^{\phi(m)} \equiv 1 \mod m\), so it's obvious.
+    \item
+      We multiply \(a!\) to the equation, we get \(a! x \equiv b(-1)^{a-1} \prod_{k=1}^{a-1} (-k) \equiv b (a-1)! \mod p\).
+      Since \(0<a<p\), we get \(\gcd((a-1)!,p)=1\), so \(a x \equiv b \mod p\).
+  \end{enumerate}
+\end{solution}
+\begin{problem}\label{pro:p55.1ii}
+  Solve the equation:
+  \[
+    \begin{cases}
+      x \equiv 1 \mod 2 \\
+      x \equiv 2 \mod 5 \\
+      x \equiv 3 \mod 7 \\
+      x \equiv 4 \mod 9
+    \end{cases}
+  \]
+\end{problem}
+\begin{solution}
+  Let \(m_1=2,m_2=5,m_3=7,m_4=9\), and \(M_1=315,M_2=126,M_3=90,M_4=70\).
+  Then \(M_1'=1,M_2'=1,M_3'=-1,M_4'=4\).
+  So \(x \equiv 1 \times 315 \times 1 + 1 \times 126 \times 2 - 1 \times 90 \times 3 + 4 \times 70 \times 4 \equiv 1417\equiv 157\mod 630\)
+\end{solution}
+\begin{problem}\label{pro:3}
+  \begin{enumerate}
+    \item
+      Assume \(m_1,\cdots,m_k \in \mathbb{N}^+,b_1,\cdots,b_k \in \mathbb{Z}\), and \(\forall i,j,\gcd(m_i,m_j) \mid b_i-b_j\).
+      Let \(m_i':=\prod_{p \in \mathbb{P},\forall j <i,v_p(m_j)<v_p(m_i) \AND \forall j,v_p(m_j) \leq v_p(m_i)} p^{v_p(m_i)}\), where
+      \(\mathbb{P}\) is the set of primes, and \(v_p(x)\) is the biggest integer \(t\) such that \(p^t \mid x\).
+      Then following two equation has same solution:
+      \begin{equation}\label{equ:1}
+        x \equiv b_i \mod m_i,\forall i
+      \end{equation}
+      \begin{equation}\label{equ:2}
+        x \equiv b_i \mod m_i',\forall i
+      \end{equation}
+    \item find the solution of
+      \[
+        \begin{cases}
+          x \equiv 0 \mod 5     \\
+          x \equiv 10 \mod 715  \\
+          x \equiv 140 \mod 247 \\
+          x \equiv 245 \mod 391 \\
+          x \equiv 109 \mod 187
+        \end{cases}
+      \]
+  \end{enumerate}
+\end{problem}
+\begin{solution}
+  \begin{enumerate}
+    \item
+      Easily solution of Equation \eqref{equ:1} must be solution of Equation \eqref{equ:2}, now we will prove the reverse.
+      Assume \(x \equiv b_i \mod m_i',\forall i\). Now we will prove \(x \equiv b_i \mod m_i\).
+      Only need to prove \(\forall p \in \mathbb{P},x \equiv b_i \mod p^{v_p(m_i)}\).
+      Assume \(j=\min \{t:v_p(m_t)=\max_{r}v_p(m_r)\}\), then by the defination of \(m_i'\), we know that \(p^{v_p(m_j)} \mid m_j'\).
+      And easily \(p^{v_p(m_i)} \mid p^{v_p(m_j)}\), so we get \(x \equiv b_j \mod p^{v_p(m_i)}\).
+      More over, easily to know \(p^{v_p(m_i)} \mid \gcd(m_i,m_j)\), so \(b_j \equiv b_i \mod p^{v_p(m_i)}\).
+      So finally we get the result.
+    \item
+  \end{enumerate}
+
+\end{solution}
 
 \end{document}

@@ -129,16 +129,18 @@
   We know that \(\forall t \geq 0,\forall r:0 \leq r \leq t,Y_r \in \sigma(N(B):B \subset [0,r]\times \mathbb{R} \times [0,\alpha])\).
   And \(\forall w \geq t\), \(Y_w-Y_t \in \sigma(N(B):B \subset (t,w] \times \mathbb{R} \times [0,\alpha])\).
   Easily \((t,w] \cap [0,r]=\emptyset\), so we get \(Y_w-Y_t \perp (Y_r:0 \leq r \leq t)\).
-  Now we only need to check the distribution of \(Y_w - Y_t\).
-  Since \(\d s \mu(\d z) \d u\) has the same distribution with \(\d(s-t) \mu(\d z)\d u\), we get that \(Y_w - Y_t \overset{d}{=} Y_{w-t}-Y_0\).
-  So we only need to check the distribution of \(Y_t-Y_0\).
+  Now we only need to check the distribution of \(Y_t+w - Y_t\) for \(t,w \geq 0\).
 
-  Since the distribution of \(Y_t-Y_0\) is determined by the distribution of \(N\) on the set \([0,t]\times \mathbb{R} \times [0,\alpha]\), so we can assume \(N\) is constructed as 1.5.5,
-  because this will not change the distribution of \(N\) on \([0,t] \times \mathbb{R} \times [0,\alpha]\).
-  Let \(\eta \sim Possion(\alpha t)\) and \(\xi_1,\cdots\) are i.i.d r.v. range in \([0,t] \times \mathbb{R} \times [0,\alpha]\) with distribution \(\d s \mu(\d z)\d u\), and \(\eta \perp (\xi_n:n \in \mathbb{N}'+)\).
-  Assume for \(B \subset [0,t]\times \mathbb{R} \times [0,\alpha]\) we have \(N(B)=\sum_{j=1}^{\eta} \delta_{\xi_j}(B)\).
-  Then we get \(Y_t-Y_0=\sum_{j=1}^{\eta} \xi_j(2)\), where \(\xi_j(2)\) is the second ordinate of \(\xi_j\).
-  Easily \(\xi_j(2)\sim \mu,\eta \sim Possion(\alpha t)\), so finally we get \((Y_t:t \geq 0)\) is the compound distribution with rate \(\alpha\) and jumping distribution \(\mu\).
+  Easily to know that:
+  \[
+    \begin{aligned}
+      \mathbb{E}\left(\mathrm{e}^{\mathrm{i} \theta(Y_{t+w} -Y_t)}\right)= & \mathbb{E}\exp\left(\int_{s}^{s+t} \int_{\mathbb{R}}\int_{0}^\alpha i \theta z N(\d s,\d u,\d z) \right)                             \\
+      =                                                                    & \exp\left(t \alpha \int_{\mathbb{R}}(\mathrm{e}^{\mathrm{i} \theta z}-1)\mu(\d z)\right)                                             \\
+      =                                                                    & \exp(-t \alpha)\sum_{k=0}^{\infty}  \frac{1}{k!}(t \alpha \int_{\mathbb{R}}\mathrm{e}^{\mathrm{i} \theta z} \mu(\d z))^k             \\
+      =                                                                    & \mathrm{e}^{-t \alpha} \sum_{k=0}^{\infty} \frac{(\alpha k)^k}{k!}\int_{\mathbb{R}} \mathrm{e}^{\mathrm{i} \theta z} \mu^{* k}(\d z)
+    \end{aligned}
+  \]
+  So we get the result.
 \end{solution}
 \begin{problem}\label{pro:5}
   Assume \(X\) is Possion random measure on \((E,\mathcal{E})\) with intensity \(\mu\), a finite measure.
