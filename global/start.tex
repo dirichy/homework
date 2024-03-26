@@ -2,6 +2,7 @@
 \usepackage{bbm}
 \usepackage{tikz}
 \usepackage{amsmath,amssymb,amsthm,color,mathrsfs}
+\usepackage{fixdif}
 \usepackage{hyperref}
 \usepackage{cleveref}
 \usepackage{enumitem}%
@@ -15,23 +16,23 @@
 \definecolor{backgroundColour}{rgb}{0.95,0.95,0.92}
 
 \lstdefinestyle{CStyle}{
-	backgroundcolor=\color{backgroundColour},
-	commentstyle=\color{mGreen},
-	keywordstyle=\color{magenta},
-	numberstyle=\tiny\color{mGray},
-	stringstyle=\color{mPurple},
-	basicstyle=\footnotesize,
-	breakatwhitespace=false,
-	breaklines=true,
-	captionpos=b,
-	keepspaces=true,
-	numbers=left,
-	numbersep=5pt,
-	showspaces=false,
-	showstringspaces=false,
-	showtabs=false,
-	tabsize=2,
-	language=C
+  backgroundcolor=\color{backgroundColour},
+  commentstyle=\color{mGreen},
+  keywordstyle=\color{magenta},
+  numberstyle=\tiny\color{mGray},
+  stringstyle=\color{mPurple},
+  basicstyle=\footnotesize,
+  breakatwhitespace=false,
+  breaklines=true,
+  captionpos=b,
+  keepspaces=true,
+  numbers=left,
+  numbersep=5pt,
+  showspaces=false,
+  showstringspaces=false,
+  showtabs=false,
+  tabsize=2,
+  language=C
 }
 \usetikzlibrary{calc}
 \theoremstyle{remark}
@@ -40,54 +41,54 @@
 \usepackage{xcolor}
 \newcounter{problem}
 \newcommand{\Problem}{\begin{tikzpicture}[baseline]%
-		\node at (-0.02em,0.3em) {$\mathbb{P}$};%
-		\node[scale=0.7] at (0.2em,-0.0em) {R};%
-		\node[scale=0.7] at (0.6em,0.4em) {O};%
-		\node[scale=0.8] at (1.05em,0.25em) {B};%
-		\node at (1.55em,0.3em) {L};%
-		\node[scale=0.7] at (1.75em,0.45em) {E};%
-		\node at (2.35em,0.3em) {M};%
-	\end{tikzpicture}%
+    \node at (-0.02em,0.3em) {$\mathbb{P}$};%
+    \node[scale=0.7] at (0.2em,-0.0em) {R};%
+    \node[scale=0.7] at (0.6em,0.4em) {O};%
+    \node[scale=0.8] at (1.05em,0.25em) {B};%
+    \node at (1.55em,0.3em) {L};%
+    \node[scale=0.7] at (1.75em,0.45em) {E};%
+    \node at (2.35em,0.3em) {M};%
+  \end{tikzpicture}%
 }
 \renewcommand{\theproblem}{\Roman{problem}}
 \newenvironment{problem}{\refstepcounter{problem}\noindent\color{blue}\Problem\theproblem}{}
 
 \crefname{problem}{\protect\Problem}{Problem}
 \newcommand\Solution{\begin{tikzpicture}[baseline]%
-		\node at (-0.04em,0.3em) {$\mathbb{S}$};%
-		\node[scale=0.7] at (0.35em,0.4em) {O};%
-		\node at (0.7em,0.3em) {\textit{L}};%
-		\node[scale=0.7] at (0.95em,0.4em) {U};%
-		\node[scale=1.1] at (1.19em,0.32em){T};%
-		\node[scale=0.85] at (1.4em,0.24em){I};%
-		\node at (1.9em,0.32em){$\mathcal{O}$};%
-		\node[scale=0.75] at (2.3em,0.21em){\texttt{N}};%
-	\end{tikzpicture}}
+    \node at (-0.04em,0.3em) {$\mathbb{S}$};%
+    \node[scale=0.7] at (0.35em,0.4em) {O};%
+    \node at (0.7em,0.3em) {\textit{L}};%
+    \node[scale=0.7] at (0.95em,0.4em) {U};%
+    \node[scale=1.1] at (1.19em,0.32em){T};%
+    \node[scale=0.85] at (1.4em,0.24em){I};%
+    \node at (1.9em,0.32em){$\mathcal{O}$};%
+    \node[scale=0.75] at (2.3em,0.21em){\texttt{N}};%
+  \end{tikzpicture}}
 \newenvironment{solution}{\begin{proof}[\Solution]}{\end{proof}}
 \title{\input{../../.subject}\input{../.number}}
 \makeatletter
 \newcommand\email[1]{\def\@email{#1}\def\@refemail{mailto:#1}}
 \newcommand\schoolid[1]{\def\@schoolid{#1}}
 \ifpreface
-	\def\@maketitle{
-	\raggedright
-	{\Huge \bfseries \sffamily \@title }\\[1cm]
-	{\Huge  \bfseries \sffamily\heiti\@author}\\[1cm]
-	{\Huge \@schoolid}\\[1cm]
-	{\Huge\href\@refemail\@email}\\[0.5cm]
-	\Huge\@date\\[1cm]}
+  \def\@maketitle{
+  \raggedright
+  {\Huge \bfseries \sffamily \@title }\\[1cm]
+  {\Huge  \bfseries \sffamily\heiti\@author}\\[1cm]
+  {\Huge \@schoolid}\\[1cm]
+  {\Huge\href\@refemail\@email}\\[0.5cm]
+  \Huge\@date\\[1cm]}
 \else
-	\def\@maketitle{
-		\raggedright
-		\begin{center}
-			{\Huge \bfseries \sffamily \@title }\\[4ex]
-			{\Large  \@author}\\[4ex]
-			{\large \@schoolid}\\[4ex]
-			{\href\@refemail\@email}\\[4ex]
-			\@date\\[8ex]
-		\end{center}}
+  \def\@maketitle{
+    \raggedright
+    \begin{center}
+      {\Huge \bfseries \sffamily \@title }\\[4ex]
+      {\Large  \@author}\\[4ex]
+      {\large \@schoolid}\\[4ex]
+      {\href\@refemail\@email}\\[4ex]
+      \@date\\[8ex]
+    \end{center}}
 \fi
 \makeatother
 \ifpreface
-	\usepackage[placement=bottom,scale=1,opacity=1]{background}
+  \usepackage[placement=bottom,scale=1,opacity=1]{background}
 \fi
