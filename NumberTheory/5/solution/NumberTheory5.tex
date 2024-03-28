@@ -68,6 +68,7 @@
   Then \(M_1'=1,M_2'=1,M_3'=-1,M_4'=4\).
   So \(x \equiv 1 \times 315 \times 1 + 1 \times 126 \times 2 - 1 \times 90 \times 3 + 4 \times 70 \times 4 \equiv 1417\equiv 157\mod 630\)
 \end{solution}
+I think this question should be as follows, but may be I make a mistake.
 \begin{problem}\label{pro:3}
   \begin{enumerate}
     \item
@@ -103,7 +104,26 @@
       And easily \(p^{v_p(m_i)} \mid p^{v_p(m_j)}\), so we get \(x \equiv b_j \mod p^{v_p(m_i)}\).
       More over, easily to know \(p^{v_p(m_i)} \mid \gcd(m_i,m_j)\), so \(b_j \equiv b_i \mod p^{v_p(m_i)}\).
       So finally we get the result.
+
+      It is easy to prove that \(\forall i \neq j,\gcd(m_i',m_j')=1\), so we can solve the second equation.
     \item
+      From above we get the given equation is equvilate to
+      \[
+        \begin{cases}
+          x \equiv 0 \mod 5     \\
+          x \equiv 10 \mod 143  \\
+          x \equiv 7 \mod 19    \\
+          x \equiv 245 \mod 391 \\
+          x \equiv 0 \mod 1
+        \end{cases}
+      \]
+      Assume \(x=5y\), then we get \(\begin{cases}
+        y \equiv 2 \mod 143 \\
+        y \equiv 9 \mod 19  \\
+        y \equiv 49 \mod 391
+      \end{cases}\).
+      Solve this equation, we get \(y \equiv 2004 \mod 1062347\).
+      So finally we get \(x \equiv 10020 \mod 5311735\).
   \end{enumerate}
 
 \end{solution}

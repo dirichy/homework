@@ -1,0 +1,67 @@
+%!Mode:: "TeX:UTF-8"
+%!TEX TS-program = xelatex
+\documentclass{ctexart}
+\newif\ifpreface
+%\prefacetrue
+\input{../../../global/all}
+\begin{document}
+\large
+\iffalse
+  \setlength{\baselineskip}{1.2em}
+  \ifpreface
+    \input{../../../global/preface}
+  \else
+    \maketitle
+  \fi
+\fi
+\newgeometry{left=2cm,right=2cm,top=2cm,bottom=2cm}
+%from_here_to_type
+\begin{problem}\label{pro:1}
+  Assume \((\Omega,\mathcal{F},\mathbb{P})\) is a probability space, and \(C \in \mathcal{F}\) satisfy \(\mathbb{P}(C)>0\).
+  Let \(\mathbb{P}_C:\mathcal{F} \to \mathbb{R},\mathbb{P}_C(X)=\frac{\mathbb{P}(C \cap X)}{\mathbb{P}(C)}\).
+  Assume \(A,B \in \mathcal{F}\), and \(\mathbb{P}(B \cap C)>0\), prove that
+  \(\mathbb{P}_C(A \mid B) = \mathbb{P}(A \mid B \cap C)\).
+\end{problem}
+\begin{solution}
+  Easily \(\mathbb{P}_C(B)=\frac{\mathbb{P}(B \cap C)}{\mathbb{P}(C)}>0\), so \(\mathbb{P}_C(A \mid B)\) is well-defined.
+  Easily to get that
+  \[
+    \mathbb{P}_C(A \mid B)=\frac{\mathbb{P}_C(A \cap B)}{\mathbb{P}_C(B)}=\frac{\frac{\mathbb{P}(A \cap B \cap C)}{\mathbb{P}(C)}}{\frac{\mathbb{P}(B \cap C)}{\mathbb{P}(C)}}=\frac{\mathbb{P}(A \cap B \cap C)}{\mathbb{P}(B \cap C)}=\mathbb{P}(A \mid B \cap C)
+  \]
+\end{solution}
+\begin{problem}\label{pro:2}
+  Assume that \((X_n:n \geq 0)\) is \(1\)-dimentional simple symetry random walk, prove that \((|X_n|:n \geq 0)\) is a Markov chain ranges in \(\mathbb{N}\).
+\end{problem}
+\begin{solution}
+  Easy to know that \((X_n:n \geq 0)\) is a Markov chain in \(\mathbb{Z}\).
+  Let \(\mathcal{F}_n:=\sigma(X_1,\cdots,X_n),\mathcal{G}_n:=\sigma(|X_1|,\cdots,|X_n|)\), then easily \(\mathcal{G}_n \subset \mathcal{F}_n\).
+  Then we get that \(\mathbb{P}(|X_{n+1}|=i \mid \mathcal{F}_n)=\mathbb{P}(X_{n+1}=i \mid \mathcal{F}_n)+\mathbb{P}(X_{n+1}=-i \mid \mathcal{F}_n)=\mathbb{P}(X_{n+1}=i \mid X_n)+\mathbb{P}(X_{n+1}=-i \mid X_n)=\mathbb{P}(|X_{n+1}|=i \mid X_n)=\frac{1}{2}\mathbbm{1}(|X_n-i|=1)\).
+  Noting \(i \geq 0\), we get that \(|X_n-i|=1 \iff ||X_n|-i|=1\), so \(\mathbb{P}(|X_{n+1}|=i \mid \mathcal{F}_n)\) is measureable about \(\sigma(|X_n|)\).
+  Since \(\sigma(|X_n|)\subset \mathcal{G}_n \subset \mathcal{F}_n\), so we finally get that
+  \(\mathbb{P}(|X_{n+1}|=i \mid \mathcal{G}_n)=\mathbb{P}(|X_{n+1}|=i \mid |X_n|)\).
+  So \((|X_n|:n \geq 0)\) is a Markov chain.
+\end{solution}
+\begin{problem}\label{pro:3}
+  Assume \((X_n:n \geq 0)\) is a Markov chain ranges in \(E\).
+  Assume \(\phi:E \to F\) is injection.
+  Prove that \((\phi(X_n):n \geq 0)\) is a Markov chain ranges in \(\phi(E)\).
+\end{problem}
+\begin{solution}
+  Without loss of generality assume \(F=\phi(E)\), then \(\phi\) is bijection.
+  Now let \(\mathcal{F}_n:=\sigma(X_1,\cdots,X_n)\).
+  Since \(\phi\) is bijection we easily get that \(\sigma(X_n)=\sigma(\phi(X_n))\), so \(\mathcal{F}_n=\sigma(\phi(X_1),\cdots,\phi(X_n))\).
+  Then \(\mathbb{P}(\phi(X_{n+1} =i \mid \mathcal{F}_n))=\mathbb{P}(X_{n+1}=\phi^{-1}(i) \mid \mathcal{F}_n)=\mathbb{P}(X_{n+1}=\phi^{-1}(i) \mid X_{n+1})=\mathbb{P}(\phi(X_{n+1})=i \mid \phi(X_n))\).
+  So \((\phi(X_n):n \geq 0)\) is Markov chain.
+\end{solution}
+\begin{problem}\label{pro:4}
+  Assume \((X_n:n \geq 0),(Y_n:n \geq 0)\) are two independent Markov chains on \(E,F\) respectively.
+  Prove that \(((X_n,Y_n): n \geq 0)\) is Markov chain on \(E \times F\).
+\end{problem}
+\begin{solution}
+  Let \(\mathcal{F}_n=\sigma(X_0,\cdots,X_n)\) and \(\mathcal{G}_n,=\sigma(Y_0,\cdots,Y_n)\),
+  Let \(\mathcal{H}_n=\sigma((X_0,Y_0),\cdots,(X_n,Y_n))\).
+  Then easily \(\mathcal{H}_n=\sigma(\mathcal{F}_n,\mathcal{G}_n)\).
+
+\end{solution}
+
+\end{document}
