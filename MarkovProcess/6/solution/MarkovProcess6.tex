@@ -61,7 +61,72 @@
   Let \(\mathcal{F}_n=\sigma(X_0,\cdots,X_n)\) and \(\mathcal{G}_n,=\sigma(Y_0,\cdots,Y_n)\),
   Let \(\mathcal{H}_n=\sigma((X_0,Y_0),\cdots,(X_n,Y_n))\).
   Then easily \(\mathcal{H}_n=\sigma(\mathcal{F}_n,\mathcal{G}_n)\).
-
+  Easy to get that
+  \[
+    \begin{aligned}
+      \mathbb{P}(X_{n+1} =i,Y_{n+1} =j \mid \mathcal{H}_n)
+      =                                       & \mathbb{E}(\mathbb{P}(X_{n+1} =i,Y_{n+1} =j \mid \mathcal{H}_n,X_{n+1} )\mid \mathcal{H}_n)                            \\
+      =                                       & \mathbb{E}(\mathbbm{1}_i(X_{n+1} )\mathbb{P}(Y_{n+1} =j \mid \mathcal{F}_n,\mathcal{G}_n,X_{n+1} ) \mid \mathcal{H}_n) \\
+      (Y_{n+1} \perp \mathcal{F}_n,X_{n+1} )= & \mathbb{E}(\mathbbm{1}_i(X_{n+1} )\mathbb{P}(Y_{n+1} =j \mid Y_n) \mid \mathcal{H}_n)                                  \\
+      (Y_n \in \mathcal{H}_n)=                & \mathbb{P}(Y_{n+1} =j \mid Y_n)\mathbb{P}(X_{n+1} =i \mid \mathcal{H}_n)                                               \\
+      =                                       & \mathbb{P}(Y_{n+1} =j \mid Y_n)\mathbb{P}(X_{n+1} =i \mid X_n)                                                         \\
+      =                                       & \mathbb{P}(Y_{n+1} =j \mid X_n,Y_n)\mathbb{P}(X_{n+1} =i \mid X_n,Y_n)                                                 \\
+      =                                       & \mathbb{P}(X_{n+1} =i,Y_{n+1} =j \mid X_n,Y_n)
+    \end{aligned}
+  \]
+  So \(((X_n,Y_n):n \geq 0)\) is Markov chain.
+\end{solution}
+\begin{problem}\label{pro:5}
+  Assume \((X_n:n \geq 0),(Y_n:n \geq 0)\) are two independent Markov chains on \(E,F\) respectively.
+  Let \(\mathcal{H}_n:=\sigma((X_0,Y_0),\cdots,(X_n,Y_n))\).
+  Prove that \((X_n:n \geq 0)\) is Markov chain over \((\mathcal{H}_n:n \geq 0)\).
+\end{problem}
+\begin{solution}
+  Take \(\mathcal{F}_n,\mathcal{G}_n\) as above.
+  Obviously \(X_n \in \mathcal{F}_n \subset \mathcal{H}_n\).
+  Easily \(\mathbb{P}(X_{n+1}=i \mid \mathcal{H}_n)=\mathbb{P}(X_{n+1} =i \mid \mathcal{F}_n,\mathcal{G}_n)=\mathbb{P}(X_{n+1} =i \mid \mathcal{F}_n)=\mathbb{P}(X_{n+1} \mid X_n)\).
+  So \((X_n:n \geq 0)\) is Markov chain over \((\mathcal{H}_n:n \geq 0)\).
+\end{solution}
+\begin{problem}\label{pro:6}
+  Let \(\mu_0\) be a probability distribution on \(\mathbb{N}\).
+  For \(n \geq 1\), let
+  \[
+    \mu_n(0)=\mu^{*2}_{n-1} (0)+\mu^{*2}_{n-1} (1),\mu_n(j)=\mu^{*2}_{n-1} (j+1),\forall j \geq 1
+  \]
+  Where \(\mu^{*2}=\mu*\mu\).
+  Let \(F_n\) be distribution function of \(\mu_n\).
+  Let \(F^{-1}_{n-1} (y):=\inf \{x \geq 0:y \leq F_{n-1} (x)\}\) for \(y \in [0,1]\).
+  Assume \(X_0 \sim \mu_0\), and \((U_n:n \geq 0)\) are i.i.d r.v. with distribution \(U(0,1)\).
+  Let \(X_{n+1} :=\max\{0,X_n +F^{-1}_n (U_n)-1\}\).
+  Then \((X_n:n \geq 0)\) is Markov chain.
+\end{problem}
+\begin{solution}
+  Let \(\mathcal{F}:=\sigma(X_0,\cdots,X_n)\).
+  For \(i > 0\), we have
+  \[
+    \begin{aligned}
+      \mathbb{P}(X_{n+1}=i \mid \mathcal{F}_n)
+       & =\mathbb{P}(X_n+F^{-1}_n(U_n)-1=i \mid \mathcal{F}_n)                              \\
+       & =\sum_{k \in \mathbb{Z}}\mathbb{P}(X_n=k,F^{-1}_n(U_n)=i+1-k \mid \mathcal{F}_n)   \\
+       & =\sum_{k \in \mathbb{Z}}\mathbbm{1}_k(X_n)\mathbb{P}(F^{-1}_n(U_n)=i+1-k)          \\
+       & =\sum_{k \in \mathbb{Z}}\mathbbm{1}_k(X_n)\mathbb{P}(F^{-1}_n(U_n)=i+1-k \mid X_n) \\
+       & =\sum_{k \in \mathbb{Z}}\mathbb{P}(X_n=k,F^{-1}_n(U_n)=i+1-k \mid X_n)             \\
+       & =\mathbb{P}(X_n+F^{-1}_n(U_n)-1=i \mid X_n) =\mathbb{P}(X_{n+1} =i \mid X_n)       \\
+    \end{aligned}
+  \]
+  For \(i=0\), we have
+  \[
+    \begin{aligned}
+      \mathbb{P}(X_{n+1}=0 \mid \mathcal{F}_n)
+       & =\mathbb{P}(X_n+F^{-1}_n(U_n)-1\leq 0 \mid \mathcal{F}_n)                            \\
+       & =\sum_{k \in \mathbb{Z}}\mathbb{P}(X_n=k,F^{-1}_n(U_n)\leq 1-k \mid \mathcal{F}_n)   \\
+       & =\sum_{k \in \mathbb{Z}}\mathbbm{1}_k(X_n)\mathbb{P}(F^{-1}_n(U_n)\leq 1-k)          \\
+       & =\sum_{k \in \mathbb{Z}}\mathbbm{1}_k(X_n)\mathbb{P}(F^{-1}_n(U_n)\leq 1-k \mid X_n) \\
+       & =\sum_{k \in \mathbb{Z}}\mathbb{P}(X_n=k,F^{-1}_n(U_n)\leq 1-k \mid X_n)             \\
+       & =\mathbb{P}(X_n+F^{-1}_n(U_n)-1\leq 0 \mid X_n) =\mathbb{P}(X_{n+1} = 0 \mid X_n)    \\
+    \end{aligned}
+  \]
+  So \((X_n:n \geq 0)\) is Markov chain.
 \end{solution}
 
 \end{document}

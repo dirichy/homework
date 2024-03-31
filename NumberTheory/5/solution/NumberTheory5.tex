@@ -45,8 +45,10 @@
 \end{problem}
 \begin{solution}
   \begin{enumerate}
-    \item Only need to check \(aba^{\phi(m)-1}\equiv b \mod m\).
+    \item First to check \(aba^{\phi(m)-1}\equiv b \mod m\).
       Since \(\gcd(a,m)=1\), easily \(a^{\phi(m)} \equiv 1 \mod m\), so it's obvious.
+      Second to check \(ax \equiv b \mod m \implies x \equiv ba^{\phi(m)-1} \mod m\).
+      Multiply \(a^{\phi(m)-1}\), easily \(x \equiv a^{\phi(m)} x \equiv b a^{\phi(m)-1} \mod m\).
     \item
       We multiply \(a!\) to the equation, we get \(a! x \equiv b(-1)^{a-1} \prod_{k=1}^{a-1} (-k) \equiv b (a-1)! \mod p\).
       Since \(0<a<p\), we get \(\gcd((a-1)!,p)=1\), so \(a x \equiv b \mod p\).
