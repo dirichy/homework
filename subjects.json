@@ -6,5 +6,6 @@
 	"com":"Combination",
 	"fun":"FunctionalAnalysis",
 	"mak":"MarkovProcess",
-  "num":"NumberTheory"
+  "num":"NumberTheory",
+  "wat":"WaterClass"
 }

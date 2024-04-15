@@ -1,0 +1,238 @@
+%!Mode:: "TeX:UTF-8"
+%!TEX encoding = UTF-8 Unicode
+%!TEX TS-program = xelatex
+\documentclass{ctexart}
+\newif\ifpreface
+%\prefacetrue
+\input{../../../global/all}
+\title{逻辑学第一次作业}
+\begin{document}
+\large
+\setlength{\baselineskip}{1.2em}
+\ifpreface
+  \input{../../../global/preface}
+  \newgeometry{left=2cm,right=2cm,top=2cm,bottom=2cm}
+\else
+  \newgeometry{left=2cm,right=2cm,top=2cm,bottom=2cm}
+  \maketitle
+\fi
+%from_here_to_type
+\begin{problem}\label{pro:1}
+  下列语句是否表达命题? 为什么?
+  \begin{enumerate}
+    \item 没有耕耘, 哪来收获?
+    \item 飞翔吧, 祖国的雄鹰!
+    \item 为胜利而干杯!
+  \end{enumerate}
+\end{problem}
+
+\begin{solution}
+  \begin{enumerate}
+    \item 不是，命题是陈述句，而它不是陈述句。
+    \item 不是，命题是陈述句，而它不是陈述句。
+    \item 不是，命题是陈述句，而它不是陈述句。
+  \end{enumerate}
+
+\end{solution}
+\begin{problem}\label{pro:2}
+  请根据假言推理的有关知识, 回答下列问题:
+  \begin{enumerate}
+    \item “要是降落的球不受外力影响, 它就不会改变降落的方向, 既然球受到了外力的影响, 因此, 它改变了降落方向。”这个推理对不对? 为什么?
+    \item “了解情况, 才能避免主观性; 此人主观, 可见, 他不了解情况。”这个推理对不对? 为什么?
+    \item “只有甲队体力强, 技术高, 配合好, 才能战胜乙队, 甲队体力不强, 或技术不高, 或配合不好; 所以,甲队不能战胜乙队。”这个推理对不对? 为什么?
+  \end{enumerate}
+\end{problem}
+
+\begin{solution}
+  \begin{enumerate}
+    \item 不对。设\(p:\text{降落的球不受外力影响}, q:\text{不会改变降落的方向}\)，\(p \to q\)不能得出\(\neg p \to \neg q\).
+    \item 不对。设\(p:\text{避免主观性}, q: \text{了解情况}\)，\(p \leftarrow \neg q\) 不能得出\(q \to \neg p\)。
+    \item 对。设\(p:\text{甲队体力强, 技术高, 配合好}, q: \text{能战胜乙队}\)，\(p \leftarrow q\) 能得出\(\neg p \to \neg q\)。
+  \end{enumerate}
+
+\end{solution}
+
+\begin{problem}\label{pro:3}
+  下列推理各属何种形式的二难推理?
+  \begin{enumerate}
+    \item 如果这是一部好作品, 那么它思想性一定好; 如果这是一部好作品,那么它的艺术性一定高; 而这部作品或者思想性不好, 或者艺术性不高; 所以, 这不是一部好作品。
+    \item 如果承认矛可以戳穿盾, 这说明盾没有他所夸的那么好; 如果承认矛戳不穿盾, 这就说明矛并没有象他所说的那么好; 或者矛可以戳穿盾, 或者矛戳不穿盾; 可见,或者他的盾不好,或者他的矛不好。
+    \item “如果你考上大学, 那么, 你要利用在校时间努力学习; 如果你考不上大学, 你要在业余时间坚持自学; 你或者考上大学, 或者考不上大学; 总之, 你或者要利用在校时间努力学习,或者你要在业余时间坚持自学。”
+  \end{enumerate}
+\end{problem}
+\begin{solution}
+  \begin{enumerate}
+    \item 设\(p:\text{作品好}\),\(q:\text{作品思想好}\),\(r:\text{作品艺术性高}\)。
+      符号化后\((p \to q)\AND (p \to r) \vdash (\neg q \AND \neg r \to \neg p)\)。简单破坏式。
+    \item 设\(p : \text{矛穿盾}\), \(q :\text{盾不好}\),\(r:\text{矛不好}\)。
+      符号化后\((p \to q)\AND (\neg p \to r) \vdash ( p \OR \neg p \to q \OR r )\)。复杂构成式。
+    \item 设\(p:\text{考上大学}\), \(q:\text{在校时间努力学习}\),\(r:\text{业余时间坚持自学}\)。
+      符号化后\((p \to q)\AND (\neg p \to r) \vdash ( p \OR \neg p \to q \OR r )\)。复杂构成式。
+  \end{enumerate}
+
+\end{solution}
+
+\begin{problem}\label{pro:4}
+  请运用二难推理有关知识，回答下列问题：
+
+  有个法院审理一起盗窃案件, 某村的 $A 、 B 、 C$ 三人作为嫌疑犯被押上法庭。这个法院的法官是这样想的: 初审的时候, 在没有威迫的情况下, 假如不是盗窃犯就不会说假话; 相反, 真正的盗窃犯是一定会为了掩盖罪行而编造借口的。因此, 法官得出这样的结论: 说真话的肯定不是盗窃犯, 说假话的肯定就是盗窃犯。事后, 事实也证明法官的这个想法是正确的。
+  审问开始了。
+  法官先问 $A$ :
+  “你是怎样作案的? 快快从实招来!”
+  $A$ 回答了法官的问题。但是, $A$ 讲的是某地的方言, 法官根本听不懂 $A$讲的话是什么意思。
+  于是, 法官就问 $B$ 和 $C$ :
+  “刚才 $A$ 是如何回答我的问题?”
+  $B$ 说: “禀告法官老爷: $A$ 的意思是说, 他并不是盗窃犯。”
+  $C$ 说: “禀告法官老爷: $A$ 刚才招供了,他承认自己就是盗窃犯。”
+  $B$ 和 $C$ 说的话法官是能听懂的。听罢 $B$ 和 $C$ 的话之后, 这位法官马上作出判决: $B$ 无罪释放, $C$ 是盗窃犯应予逮捕人狱。
+  请问: 这位聪明的法官为什么能根据 $B$ 和 $C$ 的回答, 作出这样的判决?
+\end{problem}
+\begin{solution}
+  若\(A\) 是窃贼，则\(A\) 会撒谎说自己不是窃贼; 若\(A\) 不是窃贼，则\(A\) 会诚实地说自己不是窃贼。\(A\) 或者是窃贼，或者不是窃贼，故\(A\) 一定说自己不是窃贼。
+
+  \(B\) 说\(A\) 说自己不是窃贼，因此\(B\) 没有说谎，所以\(B\) 不是窃贼。而\(C\) 说\(A\) 说自己是窃贼, 因此\(C\) 在说谎，故\(C\) 一定是窃贼。
+\end{solution}
+\begin{problem}\label{pro:5}
+
+  下列推理属何种推理? 请列出它们的推理形式, 并说明是否有效?为什么?
+  \begin{enumerate}
+    \item 如果寒潮到来, 气温就要明显下降。所以, 如果气温没有明显下降, 就是寒潮没有到来。
+    \item 只有充分发展商品生产, 才能把我国的经济搞活; 只有把我国的经济搞活, 才能加快四化建设的速度; 所以, 如果要加快四化建设的速度,就要充分发展商品生产。
+    \item 如果要建设社会主义的物质文明, 那么就要大力发展社会生产; 如果要建设社会主义精神文明, 那么就要大力加强和改善思想政治工作; 我们既要建设社会主义的物质文明, 又要建设社会主义的精神文明; 所以, 我们又要大力发展社会生产, 又要加强和改善思想政治工作。
+  \end{enumerate}
+\end{problem}
+\begin{solution}
+  \begin{enumerate}
+    \item 设\(p:\text{寒潮降临}\),\(q:\text{气温明显下降}\)。
+      推理形式是\((p \to q ) \vdash (\neg q \to \neg p)\), 属于充分条件假言易位推理，属于有效推理，因为\((p \to q) \leftrightarrow (\neg q \to \neg p)\)。
+    \item 设\(p:\text{充分发展商品生成}\), \(q:\text{把我国经济搞活}\), \(r:\text{加快四化建设速度}\)。
+      推理形式是\((p \leftarrow q) \AND (q \leftarrow r) \vdash (p \leftarrow r)\), 属于假言联锁推理，属于有效推理，因为它是必要条件肯定式。
+    \item 设\(p:\text{建设社会主义物质文明}\), \(q:\text{大力发展社会生产}\),
+      \\\(r:\text{建设社会主义精神文明}\), \(t:\text{大力加强和改善思想政治工作}\)。
+      推理形式是\((p \to q) \AND (r \to t) \AND(p \AND r) \vdash (q \AND t)\), 属于假言联言推理，属于有效推理，因为属于肯定式。
+  \end{enumerate}
+
+\end{solution}
+
+\begin{problem}\label{pro:6}
+
+  首先指出下列命题中所包含的简单命题, 然后使用符号表示它们, 并且指出其中的主联结词, 给出它们的真值表。
+  \begin{enumerate}
+    \item 高水平的舞蹈演员不怕吃苦, 而且还有常人不具备的毅力。
+    \item 如果逻辑学使人更聪明, 那么人人都应认真学习逻辑学。
+    \item 张三能推出答案当且仅当他具有推理能力。
+  \end{enumerate}
+
+\end{problem}
+\begin{solution}
+  \begin{enumerate}
+    \item 设\(p:\text{舞蹈演员的水平高}\)， \(q: \text{不怕吃苦}\)，\(r : \text{具有常人不具备的毅力}\)。
+      \(p \to (q \AND r)\)， 主联结词是蕴含，真值表为：
+      \[
+        \begin{matrix}
+          p & q & r & q \AND r & p \to (q \AND r) \\
+          1 & 1 & 1 & 1        & 1                \\
+          1 & 0 & 1 & 0        & 0                \\
+          1 & 1 & 0 & 0        & 0                \\
+          1 & 0 & 0 & 0        & 0                \\
+          0 & 1 & 1 & 1        & 1                \\
+          0 & 0 & 1 & 0        & 1                \\
+          0 & 1 & 0 & 0        & 1                \\
+          0 & 0 & 0 & 0        & 1                \\
+        \end{matrix}
+      \]
+    \item 设\(p:\text{此人学逻辑学}\), \(q:\text{此人聪明}\),\(r: \text{人人应认真学习逻辑学}\)。
+      \((p \to q)\to r\),主联结词是蕴含，真值表为：
+      \[
+        \begin{matrix}
+          p & q & r & p \to q & (p \to q) \to r \\
+          1 & 1 & 1 & 1       & 1               \\
+          0 & 1 & 1 & 1       & 1               \\
+          1 & 0 & 1 & 0       & 1               \\
+          0 & 0 & 1 & 1       & 1               \\
+          1 & 1 & 0 & 1       & 0               \\
+          1 & 0 & 0 & 0       & 1               \\
+          0 & 1 & 0 & 1       & 0               \\
+          0 & 0 & 0 & 1       & 0               \\
+        \end{matrix}
+      \]
+    \item 设\(p:\text{张三推出答案}\), \(q:\text{张三具有推理能力}\)。
+      \(p \leftrightarrow q\),主联结词是等价，真值表为：
+      \[
+        \begin{matrix}
+          p & q & p \leftrightarrow q \\
+          1 & 1 & 1                   \\
+          1 & 0 & 0                   \\
+          0 & 1 & 0                   \\
+          0 & 0 & 1                   \\
+        \end{matrix}
+      \]
+  \end{enumerate}
+
+\end{solution}
+
+\begin{problem}\label{pro:7}
+
+  判定下列每组命题中两个命题之间是否逻辑等值。
+  \begin{enumerate}
+    \item $\mathrm{B} \wedge \mathrm{A} \rightarrow \neg \mathrm{C}$ 和 $\neg \mathrm{A} \vee \neg \mathrm{B} \rightarrow \mathrm{C}$
+    \item $\neg(\mathrm{A} \vee(\mathrm{C} \rightarrow \mathrm{B}))$ 和 $\neg \mathrm{A} \wedge \mathrm{C} \wedge \neg \mathrm{B}$
+  \end{enumerate}
+
+\end{problem}
+
+\begin{solution}
+  \begin{enumerate}
+    \item 当\(A = 0, B=1,C=1\)， 那么\(\neg A \OR \neg B = 1, \neg C=0\)， 而\(B \AND A \to \neg C = 1\)，\(\neg A \AND \neg B \to C = 0\)。真值表不一样故不等价。
+    \item \(\neg(A \OR(C \to B)) \iff \neg A \AND \neg (\neg C \OR B) \iff \neg A \AND (\neg \neg C \AND \neg B )\iff \neg A \AND C \AND \neg B\)。故逻辑等值。
+  \end{enumerate}
+
+\end{solution}
+
+\begin{problem}\label{pro:8}
+
+  命题 “如果商品价廉并且物美, 那么商品畅销” 与下列哪些命题是逻辑等值的:
+  \begin{enumerate}
+    \item 如果商品不畅销, 那么价不廉并且物不美。
+    \item \label{tt1} 如果商品不畅销, 那么价不廉或者物不美。
+    \item \label{tt2}如果商品价廉，那么如果它物美就会畅销。
+    \item \label{tt3}如果商品价廉，那么或者它物美或者它不会畅销。
+  \end{enumerate}
+
+\end{problem}
+
+\begin{solution}
+  设\(p:\text{商品畅销}\)，\(q:\text{商品廉价}\)，\(r:\text{商品物美}\)。
+  那么“如果商品价廉并且物美, 那么商品畅销”，表示为\(q \AND r \to p\)。
+  上述句子可以表示为：
+  \begin{enumerate}
+    \item \(\neg p \to \neg q \AND \neg r\)。
+    \item \(\neg p \to \neg q \OR \neg r\)。
+    \item \(q \to (r \to p)\)。
+    \item \(q \to r \OR \neg p\)。
+  \end{enumerate}
+  故原语句和\ref{tt1},\ref{tt2},\ref{tt3}等价。
+\end{solution}
+\begin{problem}\label{pro:9}
+
+  考虑如下推理: 某地发生一起凶杀案。经过分析, 凶手是两人合谋。初步确定 a、b、c、d、e 五人是嫌疑犯。警方掌握了以下情况：
+  \begin{enumerate}
+    \item a 和 d 两人中至少有一人是凶手。
+    \item 如果 d 是凶手, 那么 e 也是凶手。
+    \item 如果 b 是凶手，那么 c 是凶手。
+    \item 如果 b 不是凶手，那么 a 也不可能是凶手。
+    \item c 不是凶手。
+  \end{enumerate}
+  根据以上情况, 警方推断 d 和 e 是凶手。请写出警方推理的形式。
+\end{problem}
+\begin{solution}
+  设\(p_1:\text{a 和 d 两人中至少有一人是凶手}\)\\
+  \(p_2:\text{如果 d 是凶手，那么 e 也是凶手}\)\\
+  \(p_3:\text{如果 b 是凶手，那么 c 是凶手}\)\\
+  \(p_4:\text{如果 b 不是凶手，那么 a 也不可能是凶手}\)\\
+  \(p_5:\text{c 不是凶手}\) 。
+  由于\(p_5 \AND p_3  \to \text{b 不是凶手}\)， \(\text{b 不是凶手} \AND p_4 \to \text{a 不是凶手}\)，
+  \(\text{a 不是凶手} \AND p_1 \to \text{d 是凶手}\)， \(\text{d 是凶手} \AND p_2 \to \text{e 是凶手}\)。
+\end{solution}
+
+\end{document}

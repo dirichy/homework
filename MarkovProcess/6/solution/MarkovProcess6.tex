@@ -70,10 +70,10 @@
       (Y_{n+1} \perp \mathcal{F}_n,X_{n+1} )= & \mathbb{E}(\mathbbm{1}_i(X_{n+1} )\mathbb{P}(Y_{n+1} =j \mid Y_n) \mid \mathcal{H}_n)                                  \\
       (Y_n \in \mathcal{H}_n)=                & \mathbb{P}(Y_{n+1} =j \mid Y_n)\mathbb{P}(X_{n+1} =i \mid \mathcal{H}_n)                                               \\
       =                                       & \mathbb{P}(Y_{n+1} =j \mid Y_n)\mathbb{P}(X_{n+1} =i \mid X_n)                                                         \\
-      =                                       & \mathbb{P}(Y_{n+1} =j \mid X_n,Y_n)\mathbb{P}(X_{n+1} =i \mid X_n,Y_n)                                                 \\
-      =                                       & \mathbb{P}(X_{n+1} =i,Y_{n+1} =j \mid X_n,Y_n)
     \end{aligned}
   \]
+  So \(\mathbb{P}(X_{n+1} =i,Y_{n+1}=j \mid \mathcal{H}_n) \in \sigma(X_n,Y_n) \subset \mathcal{H}_n\).
+  So \(\mathbb{P}(X_{n+1}=i,Y_{n+1}=j \mid X_n,Y_n)=\mathbb{P}(X_{n+1}=i,Y_{n+1}=j \mid \mathcal{H}_n)\).
   So \(((X_n,Y_n):n \geq 0)\) is Markov chain.
 \end{solution}
 \begin{problem}\label{pro:5}

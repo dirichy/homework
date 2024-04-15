@@ -1,0 +1,94 @@
+%!Mode:: "TeX:UTF-8"
+%!TEX encoding = UTF-8 Unicode
+%!TEX TS-program = xelatex
+\documentclass{ctexart}
+\newif\ifpreface
+%\prefacetrue
+\input{../../../global/all}
+\begin{document}
+\large
+\setlength{\baselineskip}{1.2em}
+\ifpreface
+  \input{../../../global/preface}
+\else
+  %\maketitle
+\fi
+\newgeometry{left=2cm,right=2cm,top=2cm,bottom=2cm}
+%from_here_to_type
+\allowdisplaybreaks[4]
+\begin{problem}\label{pro:1}
+  Let \((X_n:n \geq 0)\perp (Y_n: n \geq 0)\) are Markov chain on \(E\) with
+  transition matrix \((p_{ij}:i,j \in E),(q_{ij}:i,j \in E)\) respectively.
+  Prove: \(\{(X_n,Y_n):n \geq 0\}\) are Markov chain on \(E \times E\).
+  And calculate the transition matrix of \((X_n,Y_n):n \geq 0\).
+\end{problem}
+\begin{solution}
+  Easy to get that
+  \[
+    \begin{aligned}
+       & \mathbb{P}(X_0=i_0,\cdots,X_{n+1} =i_{n+1},Y_0=j_0,\cdots,Y_{n+1}=j_{n+1})
+      \\= & \mathbb{P}(X_0=i_0,\cdots,X_{n+1} =i_{n+1})\mathbb{P}(Y_0=j_0,\cdots,Y_{n+1}=j_{n+1})
+      \\= & \mathbb{P}(X_0=i_0)\prod_{k=0}^{n} p_{i_k i_{k+1} } \mathbb{P}(Y_0=j_0) \prod_{k=0}^{n} q_{j_k j_{k+1}}
+      \\=& \mathbb{P}((X_0,Y_0)=(i_0,j_0)) \prod_{k=0}^{n} p_{i_k i_{k+1} } q_{j_k j_{k+1}}
+    \end{aligned}
+  \]
+  So we get that \(\left((X_n,Y_n): n \in \mathbb{N}\right)\) is Markov chain with transition matrix
+  \(r_{(i,j),(m,n)}=p_{im}q_{jn}\).
+\end{solution}
+
+\begin{problem}\label{pro:2}
+  Let \(S_n\) is a one dimensional simple random walk. Let \(a \in \mathbb{Z}\).
+  Let \(\tau := \inf \{n \geq 0: S_n =a\}\).
+  Prove:
+  \begin{enumerate}
+    \item \((S_{\tau + n}:n \geq 0)\) is a one dimensional simple random walk.
+    \item \((S_{n \wedge \tau }:n \geq 0)\) is a Markov chain on \(\mathbb{Z}\) and give its
+      transition matrix.
+    \item \((S_{n \wedge \tau}:n \geq 0) \perp (S_{\tau + n}: n \geq 0)\).
+  \end{enumerate}
+\end{problem}
+\begin{solution}
+  \begin{enumerate}
+    \item Easy to know that
+      \[
+        \begin{aligned}
+           & \mathbb{P}(S_\tau=i_0,S_{\tau+1}=i_1,\cdots,S_{\tau+n}=i_n \mid \tau<\infty)
+          \\= & \sum_{k \in \mathbb{N}}\mathbb{P}(\tau=k,S_\tau=i_0,S_{\tau+1}=i_1,\cdots,S_{\tau+n}=i_n \mid \tau<\infty)
+          \\= & \sum_{k \in \mathbb{N}}\mathbb{P}(\tau=k,S_k=i_0,S_{k+1}=i_1,\cdots,S_{k+n}=i_n \mid \tau<\infty)
+          \\= & \mathbbm{1}(a=i_0) \sum_{k \in \mathbb{N}}\mathbb{P}(S_0 \neq a,\cdots,S_{k-1}\neq a,S_k=a,S_{k+1}=i_1,\cdots,S_{k+n}=i_n \mid \tau<\infty)
+          \\= & \frac{\mathbbm{1}(a=i_0) \sum_{k \in \mathbb{N}}\mathbb{P}(S_0 \neq a,\cdots,S_{k-1}\neq a,S_k=a,S_{k+1}=i_1,\cdots,S_{k+n}=i_n )}{\mathbb{P}(\tau<\infty)}
+          \\= & \frac{\mathbbm{1}(a=i_0)}{\mathbb{P}(\tau<\infty)} \sum_{k \in \mathbb{N}}\mathbb{P}(S_0 \neq a,\cdots,S_{k-1}\neq a,S_k=a,S_{k+1}=i_1,\cdots,S_{k+n}=i_n)
+          \\= & \frac{\mathbbm{1}(a=i_0)}{\mathbb{P}(\tau<\infty)} \sum_{k \in \mathbb{N}}\mathbb{P}(S_{k+1}=i_1,\cdots,S_{k+n}=i_n \mid S_0 \neq a,\cdots,S_{k-1}\neq a,S_k=a)
+          \\ \times & \mathbb{P}(S_0 \neq a,\cdots,S_{k-1}\neq a,S_k=a)
+          \\= & \frac{\mathbbm{1}(a=i_0)}{\mathbb{P}(\tau<\infty)} \sum_{k \in \mathbb{N}}\mathbb{P}(S_{k+1}=i_1,\cdots,S_{k+n}=i_n \mid S_k=a) \mathbb{P}(\tau=k)
+          \\= & \frac{\mathbbm{1}(a=i_0)}{\mathbb{P}(\tau<\infty)} \sum_{k \in \mathbb{N}}\prod_{l=0}^{n-1} p_{i_l i_{l+1}} \mathbb{P}(\tau=k)=\mathbbm{1}(a=i_0) \prod_{l=0}^{n-1} p_{i_l i_{l+1}}
+        \end{aligned}
+      \]
+      Where \(p_{ij}:i,j \in \mathbb{Z}\) is the transition matrix of \(S_n:n \in \mathbb{N}\).
+      So \((S_{\tau+n}:n \in \mathbb{N})\) is Markov chain with transition matrix same as \(S_n\).
+    \item Easy to know that
+      \[
+        \begin{aligned}
+           & \mathbb{P}(S_{\tau \wedge 0}=i_0,S_{\tau\wedge 1}=i_1,\cdots,S_{\tau\wedge n}=i_n \mid \tau<\infty)
+          \\= & \sum_{k \in \mathbb{N}}\mathbb{P}(\tau=k,S_{\tau \wedge 0}=i_0,S_{\tau\wedge 1}=i_1,\cdots,S_{\tau\wedge n}=i_n \mid \tau<\infty)
+          \\= & \sum_{k \in \mathbb{N}}\mathbb{P}(\tau=k,S_{k \wedge 0}=i_0,S_{k\wedge 1}=i_1,\cdots,S_{k\wedge n}=i_n \mid \tau<\infty)
+          \\= & \sum_{k \geq n} \mathbb{P}(\tau =k,S_0=i_0,\cdots,S_n=i_n \mid \tau<\infty)
+          \\+ & \sum_{k < n} \mathbb{P}(\tau =k,S_0=i_0,\cdots,S_{k-1}=i_{k-1},S_k=i_k=i_{k+1} =\cdots=i_n \mid \tau<\infty)
+          \\= & \mathbbm{1}(i_0,i_1,\cdots,i_n \neq a) \prod_{k=0}^{n-1} p_{i_k i_{k+1}} + \sum_{k=0}^{n-1} \mathbbm{1}(i_0,\cdots,i_{k-1} \neq a,i_k=i_{k+1}=\cdots=i_n=a) \prod_{l=0}^{k-1} p_{i_l i_{l+1}}
+          \\=&\prod_{k=0}^{n-1} (\mathbbm{1}(i_k=i_{k+1}=a)+\mathbbm{1}(i_k \neq a)p_{i_k,i_{k+1}})
+        \end{aligned}
+      \]
+      So \((S_{n \wedge \tau}:n \in \mathbb{N})\) is Markov chain with transition matrix \(q_{i,j}=\mathbbm{1}(i=j=a)+\mathbbm{1}(i \neq a)p_{i,j}\).
+    \item
+  \end{enumerate}
+\end{solution}
+
+\begin{problem}\label{pro:3}
+  Let \(S_n\) is a one dimensional symmetry simple random walk starting from zero.
+  Prove: \((|S_n|: n \geq 0)\) is a Markov chain on \(\mathbb{Z}^+\) and give its transition matrix.
+\end{problem}
+\begin{problem}\label{pro:4}
+  Let \(S_n\) is a one dimensional simple random walk starting from zero.
+  Prove: \((|S_n|: n \geq 0)\) is a Markov chain on \(\mathbb{Z}^+\) and give its transition matrix.
+\end{problem}
+\end{document}
