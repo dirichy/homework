@@ -1,6 +1,6 @@
 %!Mode:: "TeX:UTF-8"
-%!TEX encoding = UTF-8 Unicode
-%!TEX TS-program = xelatex
+%!tex encoding = utf-8 unicode
+%!tex ts-program = xelatex
 \documentclass{ctexart}
 \newif\ifpreface
 %\prefacetrue
@@ -17,78 +17,145 @@
 %from_here_to_type
 \allowdisplaybreaks[4]
 \begin{problem}\label{pro:1}
-  Let \((X_n:n \geq 0)\perp (Y_n: n \geq 0)\) are Markov chain on \(E\) with
-  transition matrix \((p_{ij}:i,j \in E),(q_{ij}:i,j \in E)\) respectively.
-  Prove: \(\{(X_n,Y_n):n \geq 0\}\) are Markov chain on \(E \times E\).
-  And calculate the transition matrix of \((X_n,Y_n):n \geq 0\).
+  let \((x_n:n \geq 0)\perp (y_n: n \geq 0)\) are markov chain on \(e\) with
+  transition matrix \((p_{ij}:i,j \in e),(q_{ij}:i,j \in e)\) respectively.
+  prove: \(\{(x_n,y_n):n \geq 0\}\) are markov chain on \(e \times e\).
+  and calculate the transition matrix of \((x_n,y_n):n \geq 0\).
 \end{problem}
 \begin{solution}
-  Easy to get that
+  easy to get that
   \[
     \begin{aligned}
-       & \mathbb{P}(X_0=i_0,\cdots,X_{n+1} =i_{n+1},Y_0=j_0,\cdots,Y_{n+1}=j_{n+1})
-      \\= & \mathbb{P}(X_0=i_0,\cdots,X_{n+1} =i_{n+1})\mathbb{P}(Y_0=j_0,\cdots,Y_{n+1}=j_{n+1})
-      \\= & \mathbb{P}(X_0=i_0)\prod_{k=0}^{n} p_{i_k i_{k+1} } \mathbb{P}(Y_0=j_0) \prod_{k=0}^{n} q_{j_k j_{k+1}}
-      \\=& \mathbb{P}((X_0,Y_0)=(i_0,j_0)) \prod_{k=0}^{n} p_{i_k i_{k+1} } q_{j_k j_{k+1}}
+       & \mathbb{p}(x_0=i_0,\cdots,x_{n+1} =i_{n+1},y_0=j_0,\cdots,y_{n+1}=j_{n+1})
+      \\= & \mathbb{p}(x_0=i_0,\cdots,x_{n+1} =i_{n+1})\mathbb{p}(y_0=j_0,\cdots,y_{n+1}=j_{n+1})
+      \\= & \mathbb{p}(x_0=i_0)\prod_{k=0}^{n} p_{i_k i_{k+1} } \mathbb{p}(y_0=j_0) \prod_{k=0}^{n} q_{j_k j_{k+1}}
+      \\= & \mathbb{p}((x_0,y_0)=(i_0,j_0)) \prod_{k=0}^{n} p_{i_k i_{k+1} } q_{j_k j_{k+1}}
+      \\= & \mathbb{p}((x_0,y_0)=(i_0,j_0)) \prod_{k=0}^{n} \mathbb{p}(x_k = i_k,x_{k + 1}=i_{k + 1})\mathbb{p}(y_k=j_k,y_{k + 1}=j_{k + 1})
+      \\=& \mathbb{p}((x_0,y_0)=(i_0,j_0)) \prod_{k=0}^{n} \mathbb{p}((x_k,y_{k})=(i_k,j_{k}),(x_{k + 1},y_{k + 1})=(i_{k + 1},j_{k + 1}))
     \end{aligned}
   \]
-  So we get that \(\left((X_n,Y_n): n \in \mathbb{N}\right)\) is Markov chain with transition matrix
+  so we get that \(\left((x_n,y_n): n \in \mathbb{n}\right)\) is markov chain with transition matrix
   \(r_{(i,j),(m,n)}=p_{im}q_{jn}\).
 \end{solution}
 
 \begin{problem}\label{pro:2}
-  Let \(S_n\) is a one dimensional simple random walk. Let \(a \in \mathbb{Z}\).
-  Let \(\tau := \inf \{n \geq 0: S_n =a\}\).
-  Prove:
+  let \(s_n\) is a one dimensional simple random walk. let \(a \in \mathbb{z}\).
+  let \(\tau := \inf \{n \geq 0: s_n =a\}\).
+  prove:
   \begin{enumerate}
-    \item \((S_{\tau + n}:n \geq 0)\) is a one dimensional simple random walk.
-    \item \((S_{n \wedge \tau }:n \geq 0)\) is a Markov chain on \(\mathbb{Z}\) and give its
+    \item \((s_{\tau + n}:n \geq 0)\) is a one dimensional simple random walk.
+    \item \((s_{n \wedge \tau }:n \geq 0)\) is a markov chain on \(\mathbb{z}\) and give its
       transition matrix.
-    \item \((S_{n \wedge \tau}:n \geq 0) \perp (S_{\tau + n}: n \geq 0)\).
+    \item \((s_{n \wedge \tau}:n \geq 0) \perp (s_{\tau + n}: n \geq 0)\).
   \end{enumerate}
 \end{problem}
 \begin{solution}
   \begin{enumerate}
-    \item Easy to know that
+    \item easy to know that
       \[
         \begin{aligned}
-           & \mathbb{P}(S_\tau=i_0,S_{\tau+1}=i_1,\cdots,S_{\tau+n}=i_n \mid \tau<\infty)
-          \\= & \sum_{k \in \mathbb{N}}\mathbb{P}(\tau=k,S_\tau=i_0,S_{\tau+1}=i_1,\cdots,S_{\tau+n}=i_n \mid \tau<\infty)
-          \\= & \sum_{k \in \mathbb{N}}\mathbb{P}(\tau=k,S_k=i_0,S_{k+1}=i_1,\cdots,S_{k+n}=i_n \mid \tau<\infty)
-          \\= & \mathbbm{1}(a=i_0) \sum_{k \in \mathbb{N}}\mathbb{P}(S_0 \neq a,\cdots,S_{k-1}\neq a,S_k=a,S_{k+1}=i_1,\cdots,S_{k+n}=i_n \mid \tau<\infty)
-          \\= & \frac{\mathbbm{1}(a=i_0) \sum_{k \in \mathbb{N}}\mathbb{P}(S_0 \neq a,\cdots,S_{k-1}\neq a,S_k=a,S_{k+1}=i_1,\cdots,S_{k+n}=i_n )}{\mathbb{P}(\tau<\infty)}
-          \\= & \frac{\mathbbm{1}(a=i_0)}{\mathbb{P}(\tau<\infty)} \sum_{k \in \mathbb{N}}\mathbb{P}(S_0 \neq a,\cdots,S_{k-1}\neq a,S_k=a,S_{k+1}=i_1,\cdots,S_{k+n}=i_n)
-          \\= & \frac{\mathbbm{1}(a=i_0)}{\mathbb{P}(\tau<\infty)} \sum_{k \in \mathbb{N}}\mathbb{P}(S_{k+1}=i_1,\cdots,S_{k+n}=i_n \mid S_0 \neq a,\cdots,S_{k-1}\neq a,S_k=a)
-          \\ \times & \mathbb{P}(S_0 \neq a,\cdots,S_{k-1}\neq a,S_k=a)
-          \\= & \frac{\mathbbm{1}(a=i_0)}{\mathbb{P}(\tau<\infty)} \sum_{k \in \mathbb{N}}\mathbb{P}(S_{k+1}=i_1,\cdots,S_{k+n}=i_n \mid S_k=a) \mathbb{P}(\tau=k)
-          \\= & \frac{\mathbbm{1}(a=i_0)}{\mathbb{P}(\tau<\infty)} \sum_{k \in \mathbb{N}}\prod_{l=0}^{n-1} p_{i_l i_{l+1}} \mathbb{P}(\tau=k)=\mathbbm{1}(a=i_0) \prod_{l=0}^{n-1} p_{i_l i_{l+1}}
+           & \mathbb{p}(s_\tau=i_0,s_{\tau+1}=i_1,\cdots,s_{\tau+n}=i_n \mid \tau<\infty)
+          \\= & \sum_{k \in \mathbb{n}}\mathbb{p}(\tau=k,s_\tau=i_0,s_{\tau+1}=i_1,\cdots,s_{\tau+n}=i_n \mid \tau<\infty)
+          \\= & \sum_{k \in \mathbb{n}}\mathbb{p}(\tau=k,s_k=i_0,s_{k+1}=i_1,\cdots,s_{k+n}=i_n \mid \tau<\infty)
+          \\= & \mathbbm{1}(a=i_0) \sum_{k \in \mathbb{n}}\mathbb{p}(s_0 \neq a,\cdots,s_{k-1}\neq a,s_k=a,s_{k+1}=i_1,\cdots,s_{k+n}=i_n \mid \tau<\infty)
+          \\= & \frac{\mathbbm{1}(a=i_0) \sum_{k \in \mathbb{n}}\mathbb{p}(s_0 \neq a,\cdots,s_{k-1}\neq a,s_k=a,s_{k+1}=i_1,\cdots,s_{k+n}=i_n )}{\mathbb{p}(\tau<\infty)}
+          \\= & \frac{\mathbbm{1}(a=i_0)}{\mathbb{p}(\tau<\infty)} \sum_{k \in \mathbb{n}}\mathbb{p}(s_0 \neq a,\cdots,s_{k-1}\neq a,s_k=a,s_{k+1}=i_1,\cdots,s_{k+n}=i_n)
+          \\= & \frac{\mathbbm{1}(a=i_0)}{\mathbb{p}(\tau<\infty)} \sum_{k \in \mathbb{n}}\mathbb{p}(s_{k+1}=i_1,\cdots,s_{k+n}=i_n \mid s_0 \neq a,\cdots,s_{k-1}\neq a,s_k=a)
+          \\ \times & \mathbb{p}(s_0 \neq a,\cdots,s_{k-1}\neq a,s_k=a)
+          \\= & \frac{\mathbbm{1}(a=i_0)}{\mathbb{p}(\tau<\infty)} \sum_{k \in \mathbb{n}}\mathbb{p}(s_{k+1}=i_1,\cdots,s_{k+n}=i_n \mid s_k=a) \mathbb{p}(\tau=k)
+          \\= & \frac{\mathbbm{1}(a=i_0)}{\mathbb{p}(\tau<\infty)} \sum_{k \in \mathbb{n}}\prod_{l=0}^{n-1} p_{i_l i_{l+1}} \mathbb{p}(\tau=k)=\mathbbm{1}(a=i_0) \prod_{l=0}^{n-1} p_{i_l i_{l+1}}
         \end{aligned}
       \]
-      Where \(p_{ij}:i,j \in \mathbb{Z}\) is the transition matrix of \(S_n:n \in \mathbb{N}\).
-      So \((S_{\tau+n}:n \in \mathbb{N})\) is Markov chain with transition matrix same as \(S_n\).
-    \item Easy to know that
+      where \(p_{ij}:i,j \in \mathbb{z}\) is the transition matrix of \(s_n:n \in \mathbb{n}\).
+      so \((s_{\tau+n}:n \in \mathbb{n})\) is markov chain with transition matrix same as \(s_n\).
+    \item easy to know that
       \[
         \begin{aligned}
-           & \mathbb{P}(S_{\tau \wedge 0}=i_0,S_{\tau\wedge 1}=i_1,\cdots,S_{\tau\wedge n}=i_n \mid \tau<\infty)
-          \\= & \sum_{k \in \mathbb{N}}\mathbb{P}(\tau=k,S_{\tau \wedge 0}=i_0,S_{\tau\wedge 1}=i_1,\cdots,S_{\tau\wedge n}=i_n \mid \tau<\infty)
-          \\= & \sum_{k \in \mathbb{N}}\mathbb{P}(\tau=k,S_{k \wedge 0}=i_0,S_{k\wedge 1}=i_1,\cdots,S_{k\wedge n}=i_n \mid \tau<\infty)
-          \\= & \sum_{k \geq n} \mathbb{P}(\tau =k,S_0=i_0,\cdots,S_n=i_n \mid \tau<\infty)
-          \\+ & \sum_{k < n} \mathbb{P}(\tau =k,S_0=i_0,\cdots,S_{k-1}=i_{k-1},S_k=i_k=i_{k+1} =\cdots=i_n \mid \tau<\infty)
+           & \mathbb{p}(s_{\tau \wedge 0}=i_0,s_{\tau\wedge 1}=i_1,\cdots,s_{\tau\wedge n}=i_n \mid \tau<\infty)
+          \\= & \sum_{k \in \mathbb{n}}\mathbb{p}(\tau=k,s_{\tau \wedge 0}=i_0,s_{\tau\wedge 1}=i_1,\cdots,s_{\tau\wedge n}=i_n \mid \tau<\infty)
+          \\= & \sum_{k \in \mathbb{n}}\mathbb{p}(\tau=k,s_{k \wedge 0}=i_0,s_{k\wedge 1}=i_1,\cdots,s_{k\wedge n}=i_n \mid \tau<\infty)
+          \\= & \sum_{k \geq n} \mathbb{p}(\tau =k,s_0=i_0,\cdots,s_n=i_n \mid \tau<\infty)
+          \\+ & \sum_{k < n} \mathbb{p}(\tau =k,s_0=i_0,\cdots,s_{k-1}=i_{k-1},s_k=i_k=i_{k+1} =\cdots=i_n \mid \tau<\infty)
           \\= & \mathbbm{1}(i_0,i_1,\cdots,i_n \neq a) \prod_{k=0}^{n-1} p_{i_k i_{k+1}} + \sum_{k=0}^{n-1} \mathbbm{1}(i_0,\cdots,i_{k-1} \neq a,i_k=i_{k+1}=\cdots=i_n=a) \prod_{l=0}^{k-1} p_{i_l i_{l+1}}
           \\=&\prod_{k=0}^{n-1} (\mathbbm{1}(i_k=i_{k+1}=a)+\mathbbm{1}(i_k \neq a)p_{i_k,i_{k+1}})
         \end{aligned}
       \]
-      So \((S_{n \wedge \tau}:n \in \mathbb{N})\) is Markov chain with transition matrix \(q_{i,j}=\mathbbm{1}(i=j=a)+\mathbbm{1}(i \neq a)p_{i,j}\).
-    \item
+      so \((s_{n \wedge \tau}:n \in \mathbb{n})\) is markov chain with transition matrix \(q_{i,j}=\mathbbm{1}(i=j=a)+\mathbbm{1}(i \neq a)p_{i,j}\).
+    \item by the corollary 3.2.11, we only need to proof \(\tau\) is stopping time on \((\mathscr{f}_n:n \geq 0)\),
+      where \(\mathscr{f}_n=\sigma(s_k:k \leq n)\).
+      so we only need to prove \(\forall n \in \mathbb{n}\), \(\{\tau = n\} \in \mathscr{f}_n\).
+      since \(\{\tau =n\}=\{\omega \in \omega: s_0,\cdots,s_{n + 1} \neq a, s_n = a\}=\bigcap_{0 \leq k \leq n}\{s_k \neq a\}\cap\{s_n=a\}\),
+      and \(\{s_k \neq a\} \in \sigma(s_k), \forall 0 \leq k \leq n,\{s_n = a\} \in \sigma(s_n)\),
+      then \(\{\tau = n\} \in \mathscr{f}_n\).
   \end{enumerate}
 \end{solution}
 
 \begin{problem}\label{pro:3}
-  Let \(S_n\) is a one dimensional symmetry simple random walk starting from zero.
-  Prove: \((|S_n|: n \geq 0)\) is a Markov chain on \(\mathbb{Z}^+\) and give its transition matrix.
+  let \(s_n\) is a one dimensional symmetry simple random walk starting from zero.
+  prove: \((|s_n|: n \geq 0)\) is a markov chain on \(\mathbb{z}^+\) and give its transition matrix.
 \end{problem}
+\begin{solution}
+  only need to solve problem \ref{pro:4}.
+\end{solution}
+
 \begin{problem}\label{pro:4}
-  Let \(S_n\) is a one dimensional simple random walk starting from zero.
-  Prove: \((|S_n|: n \geq 0)\) is a Markov chain on \(\mathbb{Z}^+\) and give its transition matrix.
+  let \(s_n\) is a one dimensional simple random walk starting from zero.
+  prove: \((|s_n|: n \geq 0)\) is a markov chain on \(\mathbb{z}^+\) and give its transition matrix.
 \end{problem}
+\begin{solution}
+  by the definition of \(|s_n|\), we can easily get to know
+  \(\forall (i_0,\cdots,i_n) \in \mathbb{z}^{+}\), \(\mathbb{p}(|s_k|=i_k,k=0,\cdots,n)>0 \iff i_0=0,|i_k-i_{k-1}|=1, k=1,\cdots,n\).
+  let \(s_n=\sum_{k=1}^n \xi_k\), where \((\xi_n:n \geq)\) are i.i.d. r.v. and \(\mathbb{p}(\xi_1=1)=p,\mathbb{p}(\xi_1=-1)=q\).
+  \(a:=\{(i_0,\cdots,i_{n + 1}) \in \mathbb{z}: i_0=0,|i_k-i_{k- 1}|=1,k=1,\cdots,n + 1\}\).
+  \(\forall (i_0,\cdots,i_{n + 1}) \in a\), let \(r :=\max \{k:i_k=0\}\).
+  then \(i_r=0,\forall k \geq r + 1, i_k \geq 1\).
+  \begin{enumerate}
+    \item \(\forall (i_0,\cdots,i_{n + 1}) \notin a\), then \(\mathbb{p}(|s_k|=i_k,k=0,\cdots,n) =0\),
+      then we have no need to calculate \(\mathbb{p}(|s_{n + 1}|=i_{n + 1} | |s_k|=i_k,k=0,\cdots,n)\).
+    \item \(\forall(i_0,\cdots,i_{n + 1}) \in a\),
+      \[
+        \begin{aligned}
+           & \mathbb{p}(|s_{k}|=i_k,s_n=i_n,k=0,\cdots,n| |s_k|=i_k,k=0,\cdots,r)
+          \\   & =               \mathbb{p}(|s_{k}|=i_k,s_n=i_n,k=r + 1,\cdots,n| |s_k|=i_k,k=0,\cdots,r-1,s_r=0)
+          \\   & =               \mathbb{p}(|s_{k}|=i_k,s_n=i_n,k=r +1,\cdots,n| s_r=0)
+          \\   & =               \mathbb{p}(s_{k}=i_k,s_n=i_n,k=r +1,\cdots,n| s_r=0)
+          \\&=p^{\frac{n-r + r_n}{2}}q^{\frac{n-r -r_n}{2}}
+        \end{aligned}
+      \]
+      in the same way, we can get \(\mathbb{p}(|s_{k}|=i_k,s_n=-i_n,k=0,\cdots,n| |s_k|=i_k,k=0,\cdots,r)=p^{\frac{n-r - r_n}{2}}q^{\frac{n-r +r_n}{2}}\)
+      so
+      \[
+        \begin{aligned}
+           & \mathbb{p}(s_{n}=i_n| |s_k|=i_k,k=0,\cdots,n)
+          \\   & =          \frac{\mathbb{p}(s_{n}=i_n,|s_k|=i_k,k=0,\cdots,n)}{\mathbb{p}(|s_k|=i_k,k=0,\cdots,n)}
+          \\   & =          \frac{\mathbb{p}(s_{n}=i_n,|s_k|=i_k,k=0,\cdots,n||s_k|=i_k,k=0,\cdots,r)\mathbb{p}(|s_k|=r_k,k=0,\cdots,r)}{\mathbb{p}(|s_k|=i_k,k=0,\cdots,n)}
+          \\   & =          \frac{\mathbb{p}(s_{n}=i_n,|s_k|=i_k,k=0,\cdots,n||s_k|=i_k,k=0,\cdots,r)}{\frac{\mathbb{p}(|s_k|=i_k,k=0,\cdots,n)}{\mathbb{p}(|s_k|=r_k,k=0,\cdots,r)}}
+          \\   & =          \frac{\mathbb{p}(s_{n}=i_n,|s_k|=i_k,k=0,\cdots,n||s_k|=i_k,k=0,\cdots,r)}{\mathbb{p}(|s_k|=i_k,k=0,\cdots,n||s_k|=r_k,k=0,\cdots,r)}
+          \\   & =          \frac{\mathbb{p}(s_{n}=i_n,|s_k|=i_k,k=0,\cdots,n||s_k|=i_k,k=0,\cdots,r)}{\mathbb{p}(|s_k|=i_k,k=r + 1,\cdots,n||s_k|=r_k,k=0,\cdots,r)}
+          \\   & =\frac{p^{n - r + \frac{r_n}{2}}q^{n-r - \frac{r_n}{2}}}{p^{n - r + \frac{r_n}{2}}q^{n-r - \frac{r_n}{2}}+p^{n - r - \frac{r_n}{2}}q^{n-r + \frac{r_n}{2}}}
+          \\&=p^{i_n}(p^{i_n}+q^{i_n})^{-1}
+        \end{aligned}
+      \]
+      In the same way, we can get \(\mathbb{p}(s_{n}=-i_n| |s_k|=i_k,k=0,\cdots,n)=q^{r_n}(p^{r_n}+q^{r_n})^{-1}\).
+      Then
+      \[
+        \begin{aligned}
+           & \mathbb{p}(|s_{n + 1}|=i_{n + 1}| |s_k|=i_k,k=0,\cdots,n)
+          \\   & =          \mathbb{p}(|s_{n + 1}|=i_{n + 1}|s_n=i_n ,|s_k|=i_k,k=0,\cdots,n)
+          \\   & \times          \mathbb{p}(s_n=i_n ||s_k|=i_k,k=0,\cdots,n)
+          \\   & +          \mathbb{p}(|s_{n + 1}|=i_{n + 1}|s_n=-i_n ,|s_k|=i_k,k=0,\cdots,n)
+          \\   & \times          \mathbb{p}(s_n=-i_n ||s_k|=i_k,k=0,\cdots,n)
+          \\   & =          \mathbb{p}(s_{n + 1}=i_{n + 1}|s_n=i_n)
+          \\   & \times          \mathbb{p}(s_n=i_n ||s_k|=i_k,k=0,\cdots,n)
+          \\   & +          \mathbb{p}(s_{n + 1}=-i_{n + 1}|s_n=-i_n)
+          \\   & \times          \mathbb{p}(s_n=-i_n ||s_k|=i_k,k=0,\cdots,n)
+          \\ &=\mathbbm{1}(i_{n + 1}=i_n +1)(p^{i_n + 1} +q^{i_n + 1})(p^{i_n} + q^{i_n})^{-1} + \mathbbm{1}(i_{n + 1}=i_n-1)(p^{r_n}q +pq^{r_n })(p^{r_n} + q^{r_n})^{-1}
+        \end{aligned}
+      \]
+      Thus, \((|S_n|:n \geq 0)\) is markov chain on \(\mathbb{Z}^+\).
+
+  \end{enumerate}
+
+\end{solution}
+
 \end{document}
