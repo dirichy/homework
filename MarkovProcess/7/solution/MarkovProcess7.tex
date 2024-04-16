@@ -105,57 +105,61 @@
   \(\forall (i_0,\cdots,i_n) \in \mathbb{Z}^{+}\), \(\mathbb{P}(|S_k|=i_k,k=0,\cdots,n)>0 \iff i_0=0,|i_k-i_{k-1}|=1, k=1,\cdots,n\).
   Let \(S_n=\sum_{k=1}^n \xi_k\), where \((\xi_n:n \geq)\) are i.i.d. r.v. and \(\mathbb{P}(\xi_1=1)=p,\mathbb{P}(\xi_1=-1)=q\).
   \(A:=\{(i_0,\cdots,i_{n + 1}) \in \mathbb{Z}: i_0=0,|i_k-i_{k- 1}|=1,k=1,\cdots,n + 1\}\).
-  \(\forall (i_0,\cdots,i_{n + 1}) \in A\), let \(r :=\max \{k:i_k=0\}\).
-  Then \(i_r=0,\forall k \geq r + 1, i_k \geq 1\).
+  \(\forall (i_0,\cdots,i_{n + 1}) \in A\), let \(r :=\max \{k<n+1:i_k=0\}\).
+  Then \(i_r=0,\forall k:n+1>k \geq r + 1, i_k \geq 1\).
   \begin{enumerate}
     \item \(\forall (i_0,\cdots,i_{n + 1}) \notin A\), then \(\mathbb{P}(|S_k|=i_k,k=0,\cdots,n) =0\),
-      Then we have no need to calculate \(\mathbb{P}\Bigl(|S_{n + 1}|=i_{n + 1} \Bigl|  |S_k|=i_k,k=0,\cdots,n\Bigl)\).
-    \item \(\forall(i_0,\cdots,i_{n + 1}) \in A\),
+      Then we have no need to calculate \(\mathbb{P}\Bigl(|S_{n + 1}|=i_{n + 1} \Bigl|  |S_k|=i_k,k=0,\cdots,n\Bigr)\).
+    \item If \((i_0,\cdots,i_{n+1}) \in A \AND r=n\), then \(i_n=0,i_{n+1}=1\).
+      Then \(|S_n|=0 \iff S_n=0 \implies S_{n+1}=\pm 1 \iff |S_{n+1}|=1\).
+      So we get that
+      \(\mathbb{P}\Bigl(|S_{n+1}| =i_{n+1}\Bigl| |S_{k}|=i_{k},k=1,\cdots,n\Bigr)=1=\mathbb{P}\Bigl(|S_{n+1}| =i_{n+1}\Bigl| |S_{n}|=i_{n}\Bigr)\).
+    \item \(\forall(i_0,\cdots,i_{n + 1}) \in A,i_n \neq 0\),
       \[
         \begin{aligned}
-           & \mathbb{P}\Bigl(|S_{k}|=i_k,S_n=i_n,k=0,\cdots,n\Bigl|  |S_k|=i_k,k=0,\cdots,r\Bigl)
-          \\                   & =\mathbb{P}\Bigl(|S_{k}|=i_k,S_n=i_n,k=r + 1,\cdots,n\Bigl|  |S_k|=i_k,k=0,\cdots,r-1,S_r=0\Bigl)
-          \\                   & =\mathbb{P}\Bigl(|S_{k}|=i_k,S_n=i_n,k=r +1,\cdots,n\Bigl|  S_r=0\Bigl)
-          \\                   & =\mathbb{P}\Bigl(S_{k}=i_k,S_n=i_n,k=r +1,\cdots,n\Bigl|  S_r=0\Bigl)
-          \\&=p^{\frac{n-r + r_n}{2}}q^{\frac{n-r -r_n}{2}}
+           & \mathbb{P}\Bigl(|S_{k}|=i_k,S_n=i_n,k=0,\cdots,n\Bigl|  |S_k|=i_k,k=0,\cdots,r\Bigr)
+          \\                       & =\mathbb{P}\Bigl(|S_{k}|=i_k,S_n=i_n,k=r + 1,\cdots,n\Bigl|  |S_k|=i_k,k=0,\cdots,r-1,S_r=0\Bigr)
+          \\                       & =\mathbb{P}\Bigl(|S_{k}|=i_k,S_n=i_n,k=r +1,\cdots,n\Bigl|  S_r=0\Bigr)
+          \\                       & =\mathbb{P}\Bigl(S_{k}=i_k,S_n=i_n,k=r +1,\cdots,n\Bigl|  S_r=0\Bigr)
+          \\&=p^{\frac{n-r + i_n}{2}}q^{\frac{n-r -i_n}{2}}
         \end{aligned}
       \]
       In the same way, we can get
       \[
-        \mathbb{P}\Bigl(|S_{k}|=i_k,S_n=-i_n,k=0,\cdots,n\Bigl|  |S_k|=i_k,k=0,\cdots,r\Bigl)=p^{\frac{n-r - r_n}{2}}q^{\frac{n-r +r_n}{2}}
+        \mathbb{P}\Bigl(|S_{k}|=i_k,S_n=-i,k=0,\cdots,n\Bigl|  |S_k|=i_k,k=0,\cdots,r\Bigr)=p^{\frac{n-r - i_n}{2}}q^{\frac{n-r +i}{2}}
       \]
       So
       \[
         \begin{aligned}
-           & \mathbb{P}\Bigl(S_{n}=i_n\Bigl|  |S_k|=i_k,k=0,\cdots,n\Bigl)
-          \\                                & =          \frac{\mathbb{P}(S_{n}=i_n,|S_k|=i_k,k=0,\cdots,n)}{\mathbb{P}(|S_k|=i_k,k=0,\cdots,n)}
-          \\                                & =          \frac{\mathbb{P}\Bigl(S_{n}=i_n,|S_k|=i_k,k=0,\cdots,n\Bigl| |S_k|=i_k,k=0,\cdots,r\Bigl)\mathbb{P}(|S_k|=r_k,k=0,\cdots,r)}{\mathbb{P}(|S_k|=i_k,k=0,\cdots,n)}
-          \\                                & =          \frac{\mathbb{P}\Bigl(S_{n}=i_n,|S_k|=i_k,k=0,\cdots,n\Bigl| |S_k|=i_k,k=0,\cdots,r\Bigl)}{\frac{\mathbb{P}(|S_k|=i_k,k=0,\cdots,n)}{\mathbb{P}(|S_k|=r_k,k=0,\cdots,r)}}
-          \\                                & =          \frac{\mathbb{P}\Bigl(S_{n}=i_n,|S_k|=i_k,k=0,\cdots,n\Bigl||S_k|=i_k,k=0,\cdots,r\Bigl)}{\mathbb{P}\Bigl(|S_k|=i_k,k=0,\cdots,n\Bigl| |S_k|=r_k,k=0,\cdots,r\Bigl)}
-          \\                                & =          \frac{\mathbb{P}\Bigl(S_{n}=i_n,|S_k|=i_k,k=0,\cdots,n\Bigl||S_k|=i_k,k=0,\cdots,r\Bigl)}{\mathbb{P}\Bigl(|S_k|=i_k,k=r + 1,\cdots,n\Bigl| |S_k|=r_k,k=0,\cdots,r\Bigl)}
-          \\                                & =\frac{p^{n - r + \frac{r_n}{2}}q^{n-r - \frac{r_n}{2}}}{p^{n - r + \frac{r_n}{2}}q^{n-r - \frac{r_n}{2}}+p^{n - r - \frac{r_n}{2}}q^{n-r + \frac{r_n}{2}}}
+           & \mathbb{P}\Bigl(S_{n}=i_n\Bigl|  |S_k|=i_k,k=0,\cdots,n\Bigr)
+          \\                                    & =          \frac{\mathbb{P}(S_{n}=i_n,|S_k|=i_k,k=0,\cdots,n)}{\mathbb{P}(|S_k|=i_k,k=0,\cdots,n)}
+          \\                                    & =          \frac{\mathbb{P}\Bigl(S_{n}=i_n,|S_k|=i_k,k=0,\cdots,n\Bigl| |S_k|=i_k,k=0,\cdots,r\Bigr)\mathbb{P}(|S_k|=i_k,k=0,\cdots,r)}{\mathbb{P}(|S_k|=i_k,k=0,\cdots,n)}
+          \\                                    & =          \frac{\mathbb{P}\Bigl(S_{n}=i_n,|S_k|=i_k,k=0,\cdots,n\Bigl| |S_k|=i_k,k=0,\cdots,r\Bigr)}{\frac{\mathbb{P}(|S_k|=i_k,k=0,\cdots,n)}{\mathbb{P}(|S_k|=i_k,k=0,\cdots,r)}}
+          \\                                    & =          \frac{\mathbb{P}\Bigl(S_{n}=i_n,|S_k|=i_k,k=0,\cdots,n\Bigl||S_k|=i_k,k=0,\cdots,r\Bigr)}{\mathbb{P}\Bigl(|S_k|=i_k,k=0,\cdots,n\Bigl| |S_k|=i_k,k=0,\cdots,r\Bigr)}
+          \\                                    & =          \frac{\mathbb{P}\Bigl(S_{n}=i_n,|S_k|=i_k,k=0,\cdots,n\Bigl||S_k|=i_k,k=0,\cdots,r\Bigr)}{\mathbb{P}\Bigl(|S_k|=i_k,k=r + 1,\cdots,n\Bigl| |S_k|=i_k,k=0,\cdots,r\Bigr)}
+          \\                                    & =\frac{p^{n - r + \frac{i_n}{2}}q^{n-r - \frac{i_n}{2}}}{p^{n - r + \frac{i_n}{2}}q^{n-r - \frac{i_n}{2}}+p^{n - r - \frac{i_n}{2}}q^{n-r + \frac{i_n}{2}}}
           \\&=p^{i_n}(p^{i_n}+q^{i_n})^{-1}
         \end{aligned}
       \]
       In the same way, we can get
       \[
-        \mathbb{P}\Bigl(S_{n}=-i_n\Bigl|  |S_k|=i_k,k=0,\cdots,n\Bigl)=q^{r_n}(p^{r_n}+q^{r_n})^{-1}
+        \mathbb{P}\Bigl(S_{n}=-i_n\Bigl|  |S_k|=i_k,k=0,\cdots,n\Bigr)=q^{i_n}(p^{i_n}+q^{i_n})^{-1}
       \]
       Then
       \[
         \begin{aligned}
-           & \mathbb{P}\Bigl(|S_{n + 1}|=i_{n + 1}\Bigl|  |S_k|=i_k,k=0,\cdots,n\Bigl)
-          \\                     & =          \mathbb{P}\Bigl(|S_{n + 1}|=i_{n + 1}\mid S_n=i_n ,|S_k|=i_k,k=0,\cdots,n)\mathbb{P}(S_n=i_n \Bigl| |S_k|=i_k,k=0,\cdots,n\Bigl)
-          \\                   & +\mathbb{P}\Bigl(|S_{n + 1}|=i_{n + 1}\mid S_n=-i_n ,|S_k|=i_k,k=0,\cdots,n)\mathbb{P}(S_n=-i_n \Bigl| |S_k|=i_k,k=0,\cdots,n\Bigl)
-          \\                   & =\mathbb{P}\Bigl(S_{n + 1}=i_{n + 1}\Bigl|S_n=i_n\Bigl) \mathbb{P}\Bigl(S_n=i_n \Bigl| |S_k|=i_k,k=0,\cdots,n\Bigl)
-          \\                   & +\mathbb{P}\Bigl(S_{n + 1}=-i_{n + 1}\Bigl|S_n=-i_n\Bigl) \mathbb{P}\Bigl(S_n=-i_n \Bigl| |S_k|=i_k,k=0,\cdots,n\Bigl)
+           & \mathbb{P}\Bigl(|S_{n + 1}|=i_{n + 1}\Bigl|  |S_k|=i_k,k=0,\cdots,n\Bigr)
+          \\                         & =          \mathbb{P}\Bigl(|S_{n + 1}|=i_{n + 1}\mid S_n=i_n ,|S_k|=i_k,k=0,\cdots,n)\mathbb{P}(S_n=i_n \Bigl| |S_k|=i_k,k=0,\cdots,n\Bigr)
+          \\                       & +\mathbb{P}\Bigl(|S_{n + 1}|=i_{n + 1}\mid S_n=-i_n ,|S_k|=i_k,k=0,\cdots,n)\mathbb{P}(S_n=-i_n \Bigl| |S_k|=i_k,k=0,\cdots,n\Bigr)
+          \\                       & =\mathbb{P}\Bigl(S_{n + 1}=i_{n + 1}\Bigl|S_n=i_n\Bigr) \mathbb{P}\Bigl(S_n=i_n \Bigl| |S_k|=i_k,k=0,\cdots,n\Bigr)
+          \\                       & +\mathbb{P}\Bigl(S_{n + 1}=-i_{n + 1}\Bigl|S_n=-i_n\Bigr) \mathbb{P}\Bigl(S_n=-i_n \Bigl| |S_k|=i_k,k=0,\cdots,n\Bigr)
           \\ &=\mathbbm{1}(i_{n + 1}=i_n +1)(p^{i_n + 1} +q^{i_n + 1})(p^{i_n} + q^{i_n})^{-1} + \mathbbm{1}(i_{n + 1}=i_n-1)(p^{i_n}q +pq^{i_n })(p^{i_n} + q^{i_n})^{-1}
         \end{aligned}
       \]
-      Thus, \((|S_n|:n \geq 0)\) is Markov chain on \(\mathbb{Z}^+\), with transition matrix
-      \(r_{ij}=\mathbbm{1}(j=i +1)(p^{i + 1} +q^{i + 1})(p^{i} + q^{i})^{-1} + \mathbbm{1}(j=i-1)(p^{i}q +pq^{i })(p^{i} + q^{i})^{-1}\).
-      When \(p=q=\frac{1}{2}\), we get \(r_{ij}=\frac{1}{2}\mathbbm{1}(j=i+1) + \frac{1}{2}\mathbbm{1}(j=i - 1)\).
   \end{enumerate}
+  Thus, \((|S_n|:n \geq 0)\) is Markov chain on \(\mathbb{Z}^+\), with transition matrix
+  \(r_{ij}=\mathbbm{1}(0 \neq i = j-1)(p^{i + 1} +q^{i + 1})(p^{i} + q^{i})^{-1} + \mathbbm{1}(0 \neq i =j+1)(p^{i}q +pq^{i })(p^{i} + q^{i})^{-1} +\mathbbm{1}(i=0,j=1)\).
+  When \(p=q=\frac{1}{2}\), we get \(r_{ij}=\frac{1}{2}\mathbbm{1}(i \neq 0,|j-i|=1) + \mathbbm{1}(i=0,j=1)\).
 
 \end{solution}
 
