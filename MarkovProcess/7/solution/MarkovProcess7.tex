@@ -118,9 +118,9 @@
       \[
         \begin{aligned}
            & \mathbb{P}\Bigl(|S_{k}|=i_k,S_n=i_n,k=0,\cdots,n\Bigl|  |S_k|=i_k,k=0,\cdots,r\Bigr)
-          \\                       & =\mathbb{P}\Bigl(|S_{k}|=i_k,S_n=i_n,k=r + 1,\cdots,n\Bigl|  |S_k|=i_k,k=0,\cdots,r-1,S_r=0\Bigr)
-          \\                       & =\mathbb{P}\Bigl(|S_{k}|=i_k,S_n=i_n,k=r +1,\cdots,n\Bigl|  S_r=0\Bigr)
-          \\                       & =\mathbb{P}\Bigl(S_{k}=i_k,S_n=i_n,k=r +1,\cdots,n\Bigl|  S_r=0\Bigr)
+          \\                         & =\mathbb{P}\Bigl(|S_{k}|=i_k,S_n=i_n,k=r + 1,\cdots,n\Bigl|  |S_k|=i_k,k=0,\cdots,r-1,S_r=0\Bigr)
+          \\                         & =\mathbb{P}\Bigl(|S_{k}|=i_k,S_n=i_n,k=r +1,\cdots,n\Bigl|  S_r=0\Bigr)
+          \\                         & =\mathbb{P}\Bigl(S_{k}=i_k,S_n=i_n,k=r +1,\cdots,n\Bigl|  S_r=0\Bigr)
           \\&=p^{\frac{n-r + i_n}{2}}q^{\frac{n-r -i_n}{2}}
         \end{aligned}
       \]
@@ -132,12 +132,12 @@
       \[
         \begin{aligned}
            & \mathbb{P}\Bigl(S_{n}=i_n\Bigl|  |S_k|=i_k,k=0,\cdots,n\Bigr)
-          \\                                    & =          \frac{\mathbb{P}(S_{n}=i_n,|S_k|=i_k,k=0,\cdots,n)}{\mathbb{P}(|S_k|=i_k,k=0,\cdots,n)}
-          \\                                    & =          \frac{\mathbb{P}\Bigl(S_{n}=i_n,|S_k|=i_k,k=0,\cdots,n\Bigl| |S_k|=i_k,k=0,\cdots,r\Bigr)\mathbb{P}(|S_k|=i_k,k=0,\cdots,r)}{\mathbb{P}(|S_k|=i_k,k=0,\cdots,n)}
-          \\                                    & =          \frac{\mathbb{P}\Bigl(S_{n}=i_n,|S_k|=i_k,k=0,\cdots,n\Bigl| |S_k|=i_k,k=0,\cdots,r\Bigr)}{\frac{\mathbb{P}(|S_k|=i_k,k=0,\cdots,n)}{\mathbb{P}(|S_k|=i_k,k=0,\cdots,r)}}
-          \\                                    & =          \frac{\mathbb{P}\Bigl(S_{n}=i_n,|S_k|=i_k,k=0,\cdots,n\Bigl||S_k|=i_k,k=0,\cdots,r\Bigr)}{\mathbb{P}\Bigl(|S_k|=i_k,k=0,\cdots,n\Bigl| |S_k|=i_k,k=0,\cdots,r\Bigr)}
-          \\                                    & =          \frac{\mathbb{P}\Bigl(S_{n}=i_n,|S_k|=i_k,k=0,\cdots,n\Bigl||S_k|=i_k,k=0,\cdots,r\Bigr)}{\mathbb{P}\Bigl(|S_k|=i_k,k=r + 1,\cdots,n\Bigl| |S_k|=i_k,k=0,\cdots,r\Bigr)}
-          \\                                    & =\frac{p^{n - r + \frac{i_n}{2}}q^{n-r - \frac{i_n}{2}}}{p^{n - r + \frac{i_n}{2}}q^{n-r - \frac{i_n}{2}}+p^{n - r - \frac{i_n}{2}}q^{n-r + \frac{i_n}{2}}}
+          \\                                      & =          \frac{\mathbb{P}(S_{n}=i_n,|S_k|=i_k,k=0,\cdots,n)}{\mathbb{P}(|S_k|=i_k,k=0,\cdots,n)}
+          \\                                      & =          \frac{\mathbb{P}\Bigl(S_{n}=i_n,|S_k|=i_k,k=0,\cdots,n\Bigl| |S_k|=i_k,k=0,\cdots,r\Bigr)\mathbb{P}(|S_k|=i_k,k=0,\cdots,r)}{\mathbb{P}(|S_k|=i_k,k=0,\cdots,n)}
+          \\                                      & =          \frac{\mathbb{P}\Bigl(S_{n}=i_n,|S_k|=i_k,k=0,\cdots,n\Bigl| |S_k|=i_k,k=0,\cdots,r\Bigr)}{\frac{\mathbb{P}(|S_k|=i_k,k=0,\cdots,n)}{\mathbb{P}(|S_k|=i_k,k=0,\cdots,r)}}
+          \\                                      & =          \frac{\mathbb{P}\Bigl(S_{n}=i_n,|S_k|=i_k,k=0,\cdots,n\Bigl||S_k|=i_k,k=0,\cdots,r\Bigr)}{\mathbb{P}\Bigl(|S_k|=i_k,k=0,\cdots,n\Bigl| |S_k|=i_k,k=0,\cdots,r\Bigr)}
+          \\                                      & =          \frac{\mathbb{P}\Bigl(S_{n}=i_n,|S_k|=i_k,k=0,\cdots,n\Bigl||S_k|=i_k,k=0,\cdots,r\Bigr)}{\mathbb{P}\Bigl(|S_k|=i_k,k=r + 1,\cdots,n\Bigl| |S_k|=i_k,k=0,\cdots,r\Bigr)}
+          \\                                      & =\frac{p^{n - r + \frac{i_n}{2}}q^{n-r - \frac{i_n}{2}}}{p^{n - r + \frac{i_n}{2}}q^{n-r - \frac{i_n}{2}}+p^{n - r - \frac{i_n}{2}}q^{n-r + \frac{i_n}{2}}}
           \\&=p^{i_n}(p^{i_n}+q^{i_n})^{-1}
         \end{aligned}
       \]
@@ -149,10 +149,10 @@
       \[
         \begin{aligned}
            & \mathbb{P}\Bigl(|S_{n + 1}|=i_{n + 1}\Bigl|  |S_k|=i_k,k=0,\cdots,n\Bigr)
-          \\                         & =          \mathbb{P}\Bigl(|S_{n + 1}|=i_{n + 1}\mid S_n=i_n ,|S_k|=i_k,k=0,\cdots,n)\mathbb{P}(S_n=i_n \Bigl| |S_k|=i_k,k=0,\cdots,n\Bigr)
-          \\                       & +\mathbb{P}\Bigl(|S_{n + 1}|=i_{n + 1}\mid S_n=-i_n ,|S_k|=i_k,k=0,\cdots,n)\mathbb{P}(S_n=-i_n \Bigl| |S_k|=i_k,k=0,\cdots,n\Bigr)
-          \\                       & =\mathbb{P}\Bigl(S_{n + 1}=i_{n + 1}\Bigl|S_n=i_n\Bigr) \mathbb{P}\Bigl(S_n=i_n \Bigl| |S_k|=i_k,k=0,\cdots,n\Bigr)
-          \\                       & +\mathbb{P}\Bigl(S_{n + 1}=-i_{n + 1}\Bigl|S_n=-i_n\Bigr) \mathbb{P}\Bigl(S_n=-i_n \Bigl| |S_k|=i_k,k=0,\cdots,n\Bigr)
+          \\                           & =          \mathbb{P}\Bigl(|S_{n + 1}|=i_{n + 1}\mid S_n=i_n ,|S_k|=i_k,k=0,\cdots,n)\mathbb{P}(S_n=i_n \Bigl| |S_k|=i_k,k=0,\cdots,n\Bigr)
+          \\                         & +\mathbb{P}\Bigl(|S_{n + 1}|=i_{n + 1}\mid S_n=-i_n ,|S_k|=i_k,k=0,\cdots,n)\mathbb{P}(S_n=-i_n \Bigl| |S_k|=i_k,k=0,\cdots,n\Bigr)
+          \\                         & =\mathbb{P}\Bigl(S_{n + 1}=i_{n + 1}\Bigl|S_n=i_n\Bigr) \mathbb{P}\Bigl(S_n=i_n \Bigl| |S_k|=i_k,k=0,\cdots,n\Bigr)
+          \\                         & +\mathbb{P}\Bigl(S_{n + 1}=-i_{n + 1}\Bigl|S_n=-i_n\Bigr) \mathbb{P}\Bigl(S_n=-i_n \Bigl| |S_k|=i_k,k=0,\cdots,n\Bigr)
           \\ &=\mathbbm{1}(i_{n + 1}=i_n +1)(p^{i_n + 1} +q^{i_n + 1})(p^{i_n} + q^{i_n})^{-1} + \mathbbm{1}(i_{n + 1}=i_n-1)(p^{i_n}q +pq^{i_n })(p^{i_n} + q^{i_n})^{-1}
         \end{aligned}
       \]
@@ -162,5 +162,4 @@
   When \(p=q=\frac{1}{2}\), we get \(r_{ij}=\frac{1}{2}\mathbbm{1}(i \neq 0,|j-i|=1) + \mathbbm{1}(i=0,j=1)\).
 
 \end{solution}
-
 \end{document}

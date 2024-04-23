@@ -1,0 +1,114 @@
+%!Mode:: "TeX:UTF-8"
+%!TEX encoding = UTF-8 Unicode
+%!TEX TS-program = xelatex
+\documentclass{ctexart}
+\newif\ifpreface
+%\prefacetrue
+\input{../../../global/all}
+\begin{document}
+\large
+\setlength{\baselineskip}{1.2em}
+\ifpreface
+  \input{../../../global/preface}
+\else
+  %\maketitle
+\fi
+\newgeometry{left=2cm,right=2cm,top=2cm,bottom=2cm}
+%from_here_to_type.pr
+\begin{problem}\label{pro:1}
+  Assume \((X_n:n \geq 0)\) is an irreducible Markov chain on \(E\).
+  Prove that \((X_n:n \geq 0)\) is recurrent (or transient) \(\iff\)
+  \(\forall i \in E\),
+  \[
+    \mathbb{P}\left(\bigcap_{n=1}^{\infty} \bigcup_{k=n}^{\infty} \{X_k=i\}\right)=1 (\text{or } 0).
+  \]
+\end{problem}
+\begin{solution}
+  Only need to prove ``\(\implies\)''.
+
+  First we assume \((X_n:n \in \mathbb{N})\) is recurrent, we should prove \(\mathbb{P}\left(\bigcap_{n=1}^{\infty} \bigcup_{k=n}^{\infty} \{X_k=i\}\right)=1\).
+  Let \(\tau_1=\inf \{n > 0:X_n=i\}\), and for \(n \in \mathbb{N}^+\), we let \(\tau_{n+1}=\inf \{n > \tau_n:X_n=i\}\).
+  Since \(i\) is recurrent and \((X_n)\) is irreducible, we know that \(\tau_1<\infty,a.s.\).
+  Then \((X_{\tau_1+n}:n \in \mathbb{N})\) is a Markov chain with the same transition matrix as \((X_n)\).
+  So we get that \(\tau_2-\tau_1 < \infty,a. s.\). So \(\tau_2<\infty\), a.s..
+  Use MI, we can easily get that \(\forall n \in \mathbb{N}^+,\tau_n<\infty,a. s.\).
+  Easy to get that \(\tau_{n+1}>\tau_n\) and \(\tau_1>0\), so \(\tau_n \geq n\).
+  So \(\tau_n<\infty \implies \exists k \geq n,X_k=i\).
+  So \(\forall n \in \mathbb{N},\mathbb{P}\left(  \bigcup_{k=n}^{\infty} \{X_k=i\}\right)=1\).
+  Thus \(\mathbb{P}\left(\bigcap_{n=1}^{\infty} \bigcup_{k=n}^{\infty} \{X_k=i\}\right)=1\).
+
+  Second we assume \((X_n:n \in \mathbb{N})\) is transient, we should prove that \(\mathbb{P}\left(\bigcap_{n=1}^{\infty} \bigcup_{k=n}^{\infty} \{X_k=i\}\right)=0\).
+  Write \(A=\bigcap_{n=1}^{\infty} \bigcup_{k=n}^{\infty} \{X_k=i\}\).
+  If not, we consider \((A,\mathcal{F} \cap A,\mathbb{P}_A:=\frac{\mathbb{P}}{\mathbb{P}(A)})\).
+  We define \(\tau_n \) as above. Easy to know \(\forall \omega \in A,\forall n \in \mathbb{N}^+,\tau_n<\infty\).
+  And easy to know that \(\tau_{n+1}-\tau_n \mid_{\tau_n<\infty}\) has the same distribution for every \(n\).
+  And since \((X_n)\) is transient, we know \((X_{\tau_k+n})\) is transient for every \(k \in \mathbb{N}^+\).
+  So we know \(\mathbb{P}(\tau_{n+1}-\tau_n<\infty \mid \tau_n<\infty)<1\).
+  Then \(\mathbb{P}(A)=\mathbb{P}(\forall n,\tau_n < \infty) \leq \mathbb{P}(\forall n,\tau_{n+1}-\tau_n<\infty) \leq \prod_{n=1}^{\infty} \mathbb{P}(\tau_{n+1}-\tau_n<\infty \mid \tau_n<\infty)=\prod_{n=1}^{\infty} \mathbb{P}(\tau_2-\tau_1<\infty \mid \tau_1<\infty)=0\).
+\end{solution}
+
+\begin{problem}\label{pro:3}
+  Assume \((X_n: n \geq 0)\) is Markov chain on \(E\), where \(E\) is finite. Prove that \(\exists x \in E\), \(x\) is recurrent.
+\end{problem}
+\begin{solution}
+
+\end{solution}
+
+\begin{problem}\label{pro:4}
+  Assume \((X_n:n \geq 0)\) is Markov chain on \(\mathbb{Z}\). Prove it is transient \(\iff\)
+  \(\forall \mu_0\) is primitive distribution, \(\lim_{n \to \infty} |X_n| \overset{\text{a.s.}}{=} \infty\).
+\end{problem}
+\begin{solution}
+  Only need to prove that \(\forall k \in \mathbb{N},\liminf_{n \to \infty}|X_n|>k,a. s.\).
+  Consider the event \(\liminf_{n \to \infty}|X_n|\leq k\), it means \(\forall n \in \mathbb{N},\exists t \geq n,X_t \in [-k,k]\).
+  So we only need to prove \(\mathbb{P}\left(\bigcap_{n=1}^{\infty} \bigcup_{t=n}^{\infty} \{X_t \in [-k,k]\}\right)=0\).
+  It is sufficient to prove that \(\mathbb{P}(\bigcup_{u \in [-k,k]}\bigcap_{n=1}^{\infty} \bigcup_{t=n}^{\infty} \{X_t=u\})=0\).
+  Since \((X_n)\) is transient, it has been proved that \(\mathbb{P}(\bigcap_{n=1}^{\infty} \bigcup_{t=n}^{\infty} \{X_t=u\})=0\).
+  So \(\mathbb{P}(\bigcup_{u \in [-k,k]}\bigcap_{n=1}^{\infty} \bigcup_{t=n}^{\infty} \{X_t=u\})=0 \leq \sum_{u \in [-k,k]}\mathbb{P}(\bigcap_{n=1}^{\infty} \bigcup_{t=n}^{\infty} \{X_t=u\})=0\).
+\end{solution}
+
+% \begin{problem}\label{pro:5}
+%   Assume \(P\) is a transition matrix on \(\mathbb{Z}^+\) with first line \(\{a_0,a_1,\cdots\}\),
+%   \(\forall i \geq 1\), \(p_{i,i-1}=1\), and \(\forall j \neq i-1\), \(p_{i,j}=0\).
+%   Discuss the irreducibility, recurrence, ergodicity and periodicity of \(0\).
+% \end{problem}
+% \begin{solution}
+%   If \(\exists n,\forall k \geq n,a_k=0\), then we can get that \(P_t(0,n)=0,\forall t \in \mathbb{N}\). 
+%   Then the chain is reducible. 
+%   Else, we get \(\forall n \in \mathbb{N}^+,\exists k \geq n,a_k>0\). 
+%   Then \(P_{k-n+1}(0,n) \geq P(0,k)P(k,k-1)\cdots P(n+1,n)=P(0,k)=a_k>0\). 
+%   And \(P_{n}(n,0)=1>0\). 
+%   So the chain is irreducible. 
+%
+%   Assume \((X_n:n \in \mathbb{N})\) has transition matrix \(P\) and start at \(0\), and \(\tau=\inf\{n>0:X_n=0\}\). 
+%   Then easy to get \(\tau=X_1+1,a. s.\). So \(\tau<\infty,a. s.\). So \(0\) is recurrent. 
+%   It is easy to know that \(P_n(n,0)=1,\forall n \in \mathbb{N}^+\), so the class contains \(0\) is the only close class. 
+%   So \(\forall n \in \mathbb{N},n\) is recurrent \(\iff n\) is in the class contains \(0\). 
+%   So if \(\forall k \geq n,a_k=0\), then \(n\) is transient. 
+%   And if \(\exists k \geq n,a_k>0\), then \(n\) is recurrent. 
+%
+% \end{solution}
+\begin{problem}\label{pro:7}
+  Assume \(P\) is a transition matrix on \(E\) and \(P\) is irreducible, \(j \in E\).
+  Prove: \(P\) is recurrent \(\iff\) \(1\) is the minimum non negtive solution of
+  \[
+    y_i = \sum_{k \neq j} p_{ik}y_k + p_{ij}, i \in E\setminus\{j\}
+  \]
+\end{problem}
+\begin{solution}
+
+\end{solution}
+
+\begin{problem}\label{pro:8}
+  Let \(\{a_k:k \geq 0\}\) satisfies \(\sum_{k \geq 0}a_k =1, a_k \geq 1, a_0 >0\), \(\mu :=\sum_{k=1}^{\infty} ka_k >1\).
+  Define \(p_{ij}=
+  \begin{cases}
+    a_j         & , i =0                    \\
+    a_{j-i + 1} & ,i \geq 1 \AND j \geq i-1 \\
+    0           & ,\text{otherwise}
+  \end{cases}
+  \).
+  Prove: \(P\) is transient.
+\end{problem}
+
+\end{document}
