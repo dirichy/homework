@@ -20,7 +20,7 @@
   Prove that \((X_n:n \geq 0)\) is recurrent (or transient) \(\iff\)
   \(\forall i \in E\),
   \[
-    \mathbb{P}\left(\bigcap_{n=1}^{\infty} \bigcup_{k=n}^{\infty} \{X_k=i\}\right)=1 (\text{or } 0).
+    \mathbb{P}\left(\bigcap_{n=1}^{\infty} \bigcup_{k=n}^{\infty} \{X_k=i\}\right)=1 (\text{ or } 0).
   \]
 \end{problem}
 \begin{solution}
@@ -35,11 +35,10 @@
   Easy to get that \(\tau_{n+1}>\tau_n\) and \(\tau_1>0\), so \(\tau_n \geq n\).
   So \(\tau_n<\infty \implies \exists k \geq n,X_k=i\).
   So \(\forall n \in \mathbb{N},\mathbb{P}\left(  \bigcup_{k=n}^{\infty} \{X_k=i\}\right)=1\).
-  Thus \(\mathbb{P}\left(\bigcap_{n=1}^{\infty} \bigcup_{k=n}^{\infty} \{X_k=i\}\right)=1\).
+  Thus, \(\mathbb{P}\left(\bigcap_{n=1}^{\infty} \bigcup_{k=n}^{\infty} \{X_k=i\}\right)=1\).
 
   Second we assume \((X_n:n \in \mathbb{N})\) is transient, we should prove that \(\mathbb{P}\left(\bigcap_{n=1}^{\infty} \bigcup_{k=n}^{\infty} \{X_k=i\}\right)=0\).
   Write \(A=\bigcap_{n=1}^{\infty} \bigcup_{k=n}^{\infty} \{X_k=i\}\).
-  If not, we consider \((A,\mathcal{F} \cap A,\mathbb{P}_A:=\frac{\mathbb{P}}{\mathbb{P}(A)})\).
   We define \(\tau_n \) as above. Easy to know \(\forall \omega \in A,\forall n \in \mathbb{N}^+,\tau_n<\infty\).
   And easy to know that \(\tau_{n+1}-\tau_n \mid_{\tau_n<\infty}\) has the same distribution for every \(n\).
   And since \((X_n)\) is transient, we know \((X_{\tau_k+n})\) is transient for every \(k \in \mathbb{N}^+\).
@@ -51,7 +50,9 @@
   Assume \((X_n: n \geq 0)\) is Markov chain on \(E\), where \(E\) is finite. Prove that \(\exists x \in E\), \(x\) is recurrent.
 \end{problem}
 \begin{solution}
-
+  Easily \(\sum_{i \in E}\sum_{n=1}^{\infty} p_{ki}(n)=\sum_{n \in \mathbb{N}^+}\sum_{i \in E}p_{ki}(n)=\sum_{n \in \mathbb{N}^+} 1=+\infty\).
+  Since \(E\) is finite, we obtain that there is at least one \(i\) such that \(\sum_{n \in \mathbb{N}^+}p_{ki}(n)=\infty\), then \(p_{ki}^{*}\).
+  Then \(i\) is recurrent.
 \end{solution}
 
 \begin{problem}\label{pro:4}
@@ -88,15 +89,47 @@
 %   And if \(\exists k \geq n,a_k>0\), then \(n\) is recurrent. 
 %
 % \end{solution}
-\begin{problem}\label{pro:7}
-  Assume \(P\) is a transition matrix on \(E\) and \(P\) is irreducible, \(j \in E\).
-  Prove: \(P\) is recurrent \(\iff\) \(1\) is the minimum non negtive solution of
-  \[
-    y_i = \sum_{k \neq j} p_{ik}y_k + p_{ij}, i \in E\setminus\{j\}
-  \]
+\begin{problem}\label{pro:5}
+  Assume \(\{a_i: i \geq 1\} \subset (0,1)\). Consider \(E:=\mathbb{N}\), \(P\) is a transition matrix on \(E\),
+  where \(p_{ij}=a_i \mathbbm{1}_{\{j=0\}} + (1-a_i)\mathbbm{1}_{\{j=i+1\}}\).
+  Prove:
+  \begin{enumerate}
+    \item \(P\) is irreducible.
+    \item \(P\) is recurrent \( \iff \) \(\sum_{i}a_i=\infty\).
+    \item \(P\) is ergodic \(\iff \) \(\sum_{k=1}^{\infty} \prod_{i=1}^{k-1} (1-a_i)< \infty\).
+  \end{enumerate}
 \end{problem}
 \begin{solution}
+  \begin{enumerate}
+    \item Easy to prove that \(p_{i0}(1)>0,\forall i \in \mathbb{N}\).
+      And easily \(p_{0i}(i)=\prod_{k=0}^{i-1} (1-a_k)>0\).
+      So \(P\) is irreducible.
+    \item Since \(P\) is irreducible, we only need to consider \(X_0=0\). Then \(\{T_0 > n\} \overset{\text{a.s.}}{=}\{X_k=k,k=0,\cdots,n\}\).
+      Then \(\mathbb{P}_0(T_0 = \infty)=\mathbb{P}_0(\bigcap_{n}\{T_0 > n\})=\lim_{n \to \infty}\mathbb{P}_0(X_k=k,k=0,\cdots,n)=\lim_{n \to \infty}\prod_{k=0}^{n-1} (1-a_k) =\prod_{k=0}^{\infty} (1-a_k) \).
+      Then \(\mathbb{P}_0(T_0=\infty)=0 \iff \prod_{k=0}^{\infty} (1-a_k) =0\iff \sum_{k}a_k=\infty\).
+    \item Since \(\mathbb{E}_0(T_0)=\sum_{n \in E}\mathbb{P}_0(T_0 >n)=\sum_{n=0}^{\infty} \prod_{k=0}^{n-1} (1-a_k)\), then \(P\) is ergodic
+      \(\iff \) \(\mathbb{E}_0(T_0) < \infty\) \(\iff\) \(\sum_{n=0}^{\infty} \prod_{k=0}^{n-1} (1-a_k) <\infty\).
+  \end{enumerate}
+\end{solution}
+\begin{problem}\label{pro:7}
+  Assume \(P\) is a transition matrix on \(E\) and \(P\) is irreducible, \(j \in E\).
+  Prove: \(P\) is recurrent \(\iff\) \(1\) is the minimum non-negative solution of
+  \begin{equation}\label{equ:7}
+    y_i = \sum_{k \neq j} p_{ik}y_k + p_{ij}, i \in E\setminus\{j\}
+  \end{equation}
+\end{problem}
+\begin{solution}
+  ``\(\implies\)'': If \(P\) is recurrent, then the bounded solution of \(z_i=\sum_{k \in E}p_{ik}z_k, i  \in E\setminus\{j\}\) is constant.
+  Easy to get that \(1\) is one of solution of Equation \eqref{equ:7}, now we will prove that \(1\) is the unique solution.
+  Assume there is another solution, then \(y_i-1=\sum_{k \neq j}p_{ik}(y_k-1),\forall i \in E\setminus\{j\}\).
+  Then we let \(z_j=0,z_i=y_i-1,\forall i \neq j\), we find a non-constant solution, contradiction!
+  So \(1\) is the unique solution and thus minimum solution.
 
+  ``\(\impliedby\)'': If \(P\) is transient, then the bounded solution of \(z_i=\sum_{k \in E}p_{ik}z_k, i  \in E\setminus\{j\}\) has non-constant solution.
+  Without loss of generality, we can assume \(z_j=0,\forall i \in E,|z_i| \leq 1,  \exists i_0 \in E, z_{i_0} <0\).
+  Let \(y_i = 1 + z_i, i \in E\), then \(\{y_i: i \in E\}\) is the bounded solution of Equation \eqref{equ:7}.
+  But \(y_{i_0} <1, y_i \geq 0, i \in E\).
+  So \(1\) is not the minimum solution.
 \end{solution}
 
 \begin{problem}\label{pro:8}
@@ -110,5 +143,17 @@
   \).
   Prove: \(P\) is transient.
 \end{problem}
+\begin{solution}
+  First, we prove that \(P\) is irreducible: Since \(\sum_{k=1}^{\infty} ka_k > 1\), then \(\exists m,a_m >0\).
+  And \(\forall i \geq 1\), \( p_{i-1,i}=a_0 >0\). Then \(\forall i,j \), if \(i < j\), then \(p_{ij}(j-i)=a_0^{j-i}>0\).
+  If \(i \geq j\), let \(t \equiv i-j \pmod{m}, 1 \leq t \leq m\), then \(p_{ij}(t + 1)=a_0^{t}a_m >0\).
 
+  Let \(\xi_n :n \in \mathbb{N}\) is a sequence of i.i.d r.v with \(\mathbb{P}(\xi_0=i)=a_i\).
+  Since \(P\) is irreducible, we only consider the chain begin at \(0\).
+  Let \(X_0=0,X_{n+1}=X_n+\xi_n-\mathbbm{1}_{X_n>0}\).
+  Then easily \(X_n\) is the Markov chain begin at \(0\) with transition matrix \(P\).
+  And \(X_{n}=\sum_{k=0}^{n-1} \xi_k -\sum_{k=0}^{n-1} \mathbbm{1}_{X_n>0} \geq \sum_{k=0}^{n-1} (\xi_k-1)\).
+  So we obtain \(\liminf_{n \to \infty}\frac{X_n}{n} \geq \liminf_{n \to \infty}\frac{\sum_{k=0}^{n-1} \xi_k-1}{n}=\mu-1>0\).
+  So \(\liminf_{n \to \infty}X_n=\infty\), so \(0\) is transient.
+\end{solution}
 \end{document}

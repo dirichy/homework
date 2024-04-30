@@ -1,0 +1,184 @@
+%!Mode:: "TeX:UTF-8"
+%!TEX TS-program = xelatex
+\documentclass{ctexart}
+\newif\ifpreface
+%\prefacetrue
+\input{../../../global/all}
+\begin{document}
+\large
+\setlength{\baselineskip}{1.2em}
+\ifpreface
+  \input{../../../global/preface}
+\else
+  \newgeometry{left=2cm,right=2cm,top=2cm,bottom=2cm}
+  \title{Logic 2}
+  \maketitle
+\fi
+%from_here_to_type
+\begin{problem}\label{pro:1}
+  设 $p$ 的真值为真, $q$ 的真值为假, 求 $\neg p , p \wedge q , p \vee q , p \rightarrow q , p \leftrightarrow q$的真值。
+\end{problem}
+\begin{solution}
+  显然有如下真值表：
+  \[
+    \begin{matrix}
+      \neg p               & F \\
+      p \AND q             & F \\
+      p \OR q              & T \\
+      p \to q              & F \\
+      p \leftrightarrow  q & F \\
+    \end{matrix}
+  \]
+\end{solution}
+
+\begin{problem}\label{pro:2}
+  设 $p$ 为 $T$ (真) $q$ 为 $T, r$ 为 $F$ (假), 下列公式中哪些公式取值为 $T$ ?
+  \begin{enumerate}
+    \item \label{it:2.1} $q \wedge r$
+    \item \label{it:2.2}$\neg p \wedge \neg r$
+    \item \label{it:2.3}$p \leftrightarrow \neg q \vee r$
+    \item \label{it:2.4}$q \vee \neg r \rightarrow p$
+    \item \label{it:2.5}$(q \rightarrow p) \rightarrow((p \rightarrow \neg r) \rightarrow(\neg r \rightarrow q))$
+  \end{enumerate}
+\end{problem}
+\begin{solution}
+  \begin{enumerate}
+    \item 显然\(q \AND r\)为假。
+    \item 显然有\(\neg p\)为假，故\(\neg p \AND \neg r\)为假。
+    \item 由\(\neg q\)和\(r\)均为假可知\(\neg q \OR r\)为假，但\(p\)为真，故\(p \leftrightarrow \neg q \OR r\)为假。
+    \item 由于\(p\)为真，故\(q \OR \neg r \to p\)为真。
+    \item 易于得到以下真值表：
+      \[
+        \begin{matrix}
+          p & q & r & \neg r & p \to \neg r & \neg r \to q & q \to p & (p \to \neg r) \to (\neg r \to q) & (q \to p)\to ((p \to \neg r) \to (\neg r \to q)) \\
+          T & T & F & T      & T            & T            & T       & T                                 & T                                                \\
+        \end{matrix}
+      \]
+  \end{enumerate}
+  故\ref{it:2.4},\ref{it:2.5}为真。
+\end{solution}
+\begin{problem}\label{pro:3}
+  用真值表判定下列各组公式哪些表示相同的真值函项 (即哪些是等值的)?
+  \begin{enumerate}
+    \item $p \rightarrow q, \neg p \vee q$
+    \item $\neg p \vee \neg q, \neg(p \vee q)$
+  \end{enumerate}
+
+\end{problem}
+\begin{solution}
+  \begin{enumerate}
+    \item 显然有如下真值表：
+      \[
+        \begin{matrix}
+          p & q & \neg p & \neg p \OR q & p \to q \\
+          T & T & F      & T            & T       \\
+          T & F & T      & F            & F       \\
+          F & T & F      & T            & T       \\
+          F & F & T      & T            & T       \\
+        \end{matrix}
+      \]
+      故逻辑等值。
+    \item 显然有如下真值表：
+      \[
+        \begin{matrix}
+          p & q & \neg p & \neg q & p \OR q & \neg(p \OR q) & \neg p \OR \neg q \\
+          T & T & F      & F      & T       & F             & F                 \\
+          T & F & F      & T      & T       & F             & T                 \\
+          F & T & T      & F      & T       & F             & T                 \\
+          F & F & T      & T      & F       & T             & T                 \\
+        \end{matrix}
+      \]，故不逻辑等值。
+  \end{enumerate}
+\end{solution}
+\begin{problem}\label{pro:4}
+  列出下列公式的真值表, 并指出它们分别为重言式、矛盾式或协调式。
+  \begin{enumerate}
+    \item $p \leftrightarrow p \vee p$
+    \item $p \wedge(q \wedge \neg q)$
+  \end{enumerate}
+\end{problem}
+\begin{solution}
+  \begin{enumerate}
+    \item 显然有如下真值表：
+      \[
+        \begin{matrix}
+          p & p \OR p & p \leftrightarrow p \OR p \\
+          T & T       & T                         \\
+          F & F       & T                         \\
+        \end{matrix}
+      \]，故为重言式。
+    \item 显然有如下真值表：
+      \[
+        \begin{matrix}
+          p & q & \neg q & q \AND \neg q & p \AND q \AND \neg q \\
+          T & T & F      & F             & F                    \\
+          T & F & T      & F             & F                    \\
+          F & T & F      & F             & F                    \\
+          F & F & T      & F             & F                    \\
+        \end{matrix}
+      \]，故为矛盾式。
+  \end{enumerate}
+\end{solution}
+\begin{problem}\label{pro:5}
+  用命题的自然推理, 证明下列公式是否为有效式 (为系统中之定理)?
+  \begin{enumerate}
+    \item $p \wedge p \rightarrow p$
+    \item $(q \rightarrow r) \rightarrow(p \vee q \rightarrow p \vee r)$
+  \end{enumerate}
+\end{problem}
+\begin{solution}
+  \begin{enumerate}
+    \item \[
+        \begin{matrix}
+          [1] &                & p \AND p & hyp           \\
+          [2] &                & p        & \AND E:[1]    \\
+          [3] & p \AND p \to p &          & \to I:[1]-[2] \\
+        \end{matrix}
+      \]
+    \item \[
+        \begin{matrix}
+          [1]  &                                   & q \to r             &         &         & hyp           \\
+          [2]  &                                   &                     & p \OR q &         & hyp           \\
+          [3]  &                                   &                     &         & p       & hyp           \\
+          [4]  &                                   &                     &         & p \OR r & \OR I:[3]     \\
+          [5]  &                                   &                     &         & q       & hyp           \\
+          [6]  &                                   &                     &         & r       & \to E:[5][1]  \\
+          [7]  &                                   &                     &         & p \OR r & \OR I:[6]     \\
+          [8]  &                                   &                     & p \OR r &         & \OR E:[3]-[7] \\
+          [9]  &                                   & p \OR q \to p \OR r &         &         & \to I:[2]-[8] \\
+          [10] & (q \to r)\to(p \OR q \to p \OR r) &                     &         &         & \to I:[1]-[9] \\
+        \end{matrix}
+      \]
+  \end{enumerate}
+
+\end{solution}
+\begin{problem}\label{pro:6}
+  请用简化真值表方法判定以下命题是否为重言式。
+  \begin{enumerate}
+    \item $((p \to q) \wedge(r \to s)) \vee(p \vee r) \to q \vee s$
+    \item $((p \to q) \wedge(r \to s)) \wedge(p \wedge r) \to q \wedge s$
+    \item $(p \wedge(q \vee j)) \wedge(p \to(q \to k \wedge t)) \wedge(p \wedge j \to \neg(k \vee t)) \to(k \wedge t) \vee(\neg k \wedge \neg t)$
+  \end{enumerate}
+\end{problem}
+\begin{solution}
+  \begin{enumerate}
+    \item 反设\(((p \to q) \wedge(r \to s)) \vee(p \vee r) \to q \vee s\)不成立，
+      则得到\(((p \to q)\AND (r \to s))\OR(p \OR r)\)和\(\neg q\)以及\(\neg s\)。
+      观察发现当\(p,r\)为真，\(q,s\)为假时上述条件成立，原表达式为假。
+      故不是重言式。
+    \item 反设\(((p \to q) \wedge(r \to s)) \wedge(p \wedge r) \to q \wedge s\)不成立，
+      则得到\(((p \to q) \wedge(r \to s)) \wedge(p \wedge r) \) 和\(\neg q \OR \neg s\)。
+      从而有\(p \to q,r \to s,p,r,\neg q \OR \neg s\)。
+      由\(p,p \to q\)得到\(q\)，同样由\(r,r \to s\)得到\(s\)，从而得到\(q \AND s\)，与\(\neg q \OR \neg s\)矛盾！
+      故原式是重言式。
+    \item 反设\((p \wedge(q \vee j)) \wedge(p \to(q \to k \wedge t)) \wedge(p \wedge j \to \neg(k \vee t)) \to(k \wedge t) \vee(\neg k \wedge \neg t)\) 为假，
+      则有\(p,q \OR j,p \to (q \to k \AND t),p \AND j \to \neg (k \OR t),\neg(k \AND t),\neg(\neg k \AND \neg t)\)。
+      由\(p,p \to (q \to k \AND t)\)可得\(q \to k \AND t\)，再由\(\neg(k \AND t)\)得到\(\neg q\)，进一步
+      由\(q \OR j\)得到\(j\)，从而得到\(p \AND j\)，再结合\(p \AND j \to \neg(k \OR t)\)得到
+      \(\neg (k \OR t)\)，从而得到\(\neg k \AND \neg t\)。
+      但是我们已经由假设得到了\(\neg(\neg k \AND \neg t)\)，故产生矛盾。
+      从而原式是重言式。
+  \end{enumerate}
+\end{solution}
+
+\end{document}

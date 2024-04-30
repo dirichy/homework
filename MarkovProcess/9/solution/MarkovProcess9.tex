@@ -1,0 +1,141 @@
+%!Mode:: "TeX:UTF-8"
+%!TEX encoding = UTF-8 Unicode
+%!TEX TS-program = xelatex
+\documentclass{ctexart}
+\newif\ifpreface
+%\prefacetrue
+\input{../../../global/all}
+\begin{document}
+\large
+\setlength{\baselineskip}{1.2em}
+\ifpreface
+  \input{../../../global/preface}
+\else
+  %\maketitle
+\fi
+\newgeometry{left=2cm,right=2cm,top=2cm,bottom=2cm}
+%from_here_to_type
+\begin{problem}\label{pro:1}
+  Let \(X=\{X(n): n \geq 0\}\) be Markov chain defined on probability space \((\Omega,\mathscr{F},\mathbb{P})\), with state space \(E\) and
+  transition probability matrix \(P=(p(i,j):i,j \in E)\). Let \(a, b \in E\), \(\tau_0 =0\), \(\sigma_k = \inf \{n \geq \tau_{k-1}: X(n)=b\}, \tau_k=\inf\{n \geq \sigma_{k-1}: X(n)=a\}\).
+  Prove: \(\tau_n,\sigma_n, n \geq 1 \) are all stopping time on \((\mathscr{F}_n: n \geq 0)\).
+\end{problem}
+
+\begin{solution}
+  We use MI to prove it. Easily \(\sigma_1=\inf \{n \geq \tau_0:X(n)=b\}=\inf \{n \geq 0:X(n)=b\}\) is stopping time.
+  Assume for certain \(n \geq 1\), we have proved that \(\sigma_n,\tau_{n-1}\) are stopping times, now we need to prove \(\sigma_{n+1},\tau_n\) are stopping times.
+  Since \(\sigma_n\) is stopping time, we know \(\forall k \leq m,\{k \geq \sigma_n\} \in \mathcal{F}_m\).
+  And obviously \(\forall k \leq m,\{X(k)=a\}\in \mathcal{F}_m\). So we obtain that \(\{\sigma_n \leq m\}=\bigcup_{k=1}^{m} \{k \geq \sigma_n,X(k)=a\} \in \mathcal{F}_m\).
+  So \(\tau_n\) is stopping time.
+  Since \(\tau_n\) is stopping time, we know \(\forall k \leq m,\{k \geq \tau_n\} \in \mathcal{F}_m\).
+  And obviously \(\forall k \leq m,\{X(k)=b\}\in \mathcal{F}_m\). So we obtain that \(\{\tau_n \leq m\}=\bigcup_{k=1}^{m} \{k \geq \tau_n,X(k)=b\} \in \mathcal{F}_m\).
+  So \(\sigma_{n+1}\) is stopping time.
+  So we finally obtain that \(\forall n \in \mathbb{N}^+,\sigma_n,\tau_n\) are stopping times.
+\end{solution}
+
+\begin{problem}\label{pro:2}
+  Let \((X_{n}: n \geq 0)\) be a one-dimension simple random walk starting at \(1\).
+  Let \(e(n)=\{X_{n \wedge \tau_1}: n \geq 0\}\), where \(\tau_1=\inf \{n \geq 0: X_{n}=0\}\).
+  Find the distribution of \(\sup_{n \geq 0}e(n)\).
+\end{problem}
+\begin{solution}
+  Assume \(\mathbb{P}(X_{n+1}-X_n=1)=p,\mathbb{P}(X_{n+1}-X_n=-1)=q\), where \(p+q=1\).
+  Let \(E:=\sup_{n \geq 0}e(n)\).
+  Let \(m \in \mathbb{N}^+\).
+  Let \(\sigma:=\inf \{n \geq 0:X_n=0 \text{ or } X_n=m\}\). Then \(\sigma\) is a stopping time.
+
+  First we assume \(p \neq  q\).
+  Let \(Y_n:=\left(\frac{q}{p}\right)^{X_n}\), then it's easy to check that \(Y_n\) is martingale.
+  So we know that \(Y_{n \wedge \sigma}\) is martingale, too.
+  Easy to get that \(\sigma<\infty,a. s.\), so \(Y_{n \wedge \sigma} \overset{\text{a.s.}}{\to} Y_{\sigma}\).
+  And \(0 \leq Y_{n \wedge \sigma} \leq m\), so \(\mathbb{E}(Y_{\sigma})=\mathbb{E}(Y_{n \wedge \sigma})=\mathbb{E}(Y_0)\).
+  Noting that \(\{X_\sigma =0\}\overset{\text{a.s.}}{=}\{E<m\}\) and \(\{X_{\sigma}= m\}\overset{\text{a.s.}}{=}\{E \geq m\}\),
+  we get two equations:
+  \[
+    \begin{cases}
+      \mathbb{P}(E<m)+\mathbb{P}(E \geq m)=1 \\
+      \mathbb{P}(E<m)+\mathbb{P}(E \geq m) \left(\frac{q}{p}\right)^m =\frac{q}{p}
+    \end{cases}.
+  \]
+  Solve this equation, we get \(\mathbb{P}(E \geq m)=\frac{\frac{q}{p}-1}{(\frac{q}{p})^m-1}\).
+  Then \(\mathbb{P}(E=m)=\frac{(\frac{p}{q})^m(\frac{p}{q}-1)}{((\frac{p}{q})^m-1)((\frac{p}{q})^{m+1}-1)}\).
+  Furthermore, easily \(\mathbb{P}(E=\infty)=\lim_{m \to \infty}\mathbb{P}(E \geq m)=\begin{cases}
+    0             & \frac{q}{p}>1 \\
+    1-\frac{q}{p} & \frac{q}{p}<1
+  \end{cases}\).
+
+  Second, we consider \(p=q=\frac{1}{2}\). Then easily \(X_n\) is martingale.
+  So we know that \(X_{n \wedge \sigma}\) is martingale, too.
+  Easy to get that \(\sigma<\infty,a. s.\), so \(X_{n \wedge \sigma} \overset{\text{a.s.}}{\to} X_{\sigma}\).
+  And \(0 \leq X_{n \wedge \sigma} \leq m\), so \(\mathbb{E}(X_{\sigma})=\mathbb{E}(X_{n \wedge \sigma})=\mathbb{E}(X_0)\).
+  Noting that \(\{X_\sigma =0\}\overset{\text{a.s.}}{=}\{E<m\}\) and \(\{X_{\sigma}= m\}\overset{\text{a.s.}}{=}\{E \geq m\}\),
+  we get two equations:
+  \[
+    \begin{cases}
+      \mathbb{P}(E<m)+\mathbb{P}(E \geq m)=1 \\
+      0\mathbb{P}(E<m)+m\mathbb{P}(E \geq m) =1
+    \end{cases}.
+  \]
+  Solve this equation, we get \(\mathbb{P}(E \geq m)=\frac{1}{m}\).
+  So \(\mathbb{P}(E=m)=\frac{1}{m(m+1)}\), and easily \(\mathbb{P}(E=\infty)=0\).
+\end{solution}
+
+\begin{problem}\label{pro:3}
+  Prove:
+  \begin{enumerate}
+    \item \label{it:3.1}When \(0 < p \leq q\), the reflecting random walk with transition matrix \(Q^a_+\) is recurrent.
+    \item When \(0 < q \leq p\), the reflecting random walk with transition matrix \(Q^a_-\) is recurrent.
+  \end{enumerate}
+\end{problem}
+
+\begin{solution}
+  By symmetry, only need to prove \ref{it:3.1}. By shifting, without loss of generality we can assume \(a=0\).
+  We consider the equation
+  \[
+    y_0=y_1,\forall i \geq 1,y_i=qy_{i-1}+py_{i+1}
+  \]
+  Only need to prove its all bounded solution are all constant.
+  Easy to get \(y_{i+2}=\frac{1}{p}y_{i+1}-\frac{q}{p}y_{i}\).
+  Consider the charasteristic equation of this sequence, \(x^2-\frac{x}{p}+\frac{q}{p}=0\).
+  We get \(x_1=1,x_2=\frac{q}{p} \geq 1\).
+  If \(x_2>1\), then \(y_n=c_1 x_1^n + c_2 x_2^n\) is bounded \(\iff c_2=0\), so \(y_n=c_1 x_1^n=c_1\) is constant.
+  Else, \(x_2=x_1=1\), then \(y_n=(an+b)x_1^n=an+b\) is bounded \(\iff a=0\), so \(y_n=b\) is constant.
+  So the Markov chain is recurrent.
+\end{solution}
+
+\begin{problem}\label{pro:4}
+  Prove colloary 4.4.3. i.e., let \(\phi_0(n:n \in \mathbb{N}^+)\) be simple random walk begin at \(\phi_0(0) \geq a+1\),
+  let \(\zeta_0:=\inf \{m:\phi_0(m)=a+1\}\), let \(Y_n:n \in \mathbb{N}\) be reflecting simple random walk on \(\mathbb{Z}^a_+\), starting at \(a+1\), indenpendent with \(\phi_0\).
+  Let \(X_n:=\begin{cases}
+    \phi_0(n)   & n \leq \zeta_0 \\
+    Y_n-\zeta_0 & n \geq \zeta_0
+  \end{cases}\).
+  Prove that \(X_n:n \in \mathbb{N}\) is reflecting random walk on \(\mathbb{Z}^a_+\) begin at \(\phi_0(0)\).
+\end{problem}
+\begin{solution}
+  Now we consider \(n \in \mathbb{N}^+\) and \(i_0,i_1,i_2,\cdots,i_{n+1}  \in \mathbb{Z}^a_+\).
+  \begin{enumerate}
+    \item If \(\forall k:1 \leq k \leq n,i_k \neq a+1\), then we have
+      \[
+        \begin{aligned}
+          \mathbb{P}(X_0=i_0,\cdots,X_{n+1} =i_{n+1} ) & =\mathbb{P}(\phi_0(0)=i_0,\cdots,\phi_0(n+1)=i_{n+1} )                                            \\
+                                                       & =\mathbb{P}(\phi_0(0)=i_0,\cdots,\phi_0(n)=i_n)\mathbb{P}(\phi_0(n+1)=i_{n+1} \mid \phi_0(n)=i_n) \\
+                                                       & =\mathbb{P}(X_0=i_0,\cdots,X_n=i_n)q^a_+(i_n,i_{n+1})
+        \end{aligned}
+      \]
+    \item Else, we let \(k:=\inf \{m:1 \leq m \leq n,i_m=a+1\}\).
+      Then we have
+      \[
+        \begin{aligned}
+          \mathbb{P}(X_0=i_0,\cdots,X_{n+1}=i_{n+1})
+           & =\mathbb{P}(\phi_0(0)=i_0,\cdots,\phi_0(k)=i_k,Y_0=a+1,Y_1=i_{k+1},\cdots,Y_{n-k}=i_{n},Y_{n-k+1}=i_{n+1})              \\
+           & =\mathbb{P}(\phi_0(0)=i_0,\cdots,\phi_0(k)=i_k)\mathbb{P}(Y_0=a+1,Y_1=i_{k+1},\cdots,Y_{n-k}=i_{n},Y_{n-k+1}=i_{n+1})   \\
+           & =\mathbb{P}(\phi_0(0)=i_0,\cdots,\phi_0(k)=i_k)\mathbb{P}(Y_0=a+1,Y_1=i_{k+1},\cdots,Y_{n-k}=i_{n}) q^a_+(i_n,i_{n+1} ) \\
+           & =\mathbb{P}(X_0=i_0,\cdots,X_n=i_n)q^a_+(i_n,i_{n+1})
+        \end{aligned}
+      \]
+  \end{enumerate}
+  So we get \((X_n:n \geq 0)\) is reflecting simple random walk on \(\mathbb{Z}^a_+\).
+\end{solution}
+
+\end{document}
