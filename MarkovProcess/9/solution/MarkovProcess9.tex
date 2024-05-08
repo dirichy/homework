@@ -107,8 +107,8 @@
   Prove colloary 4.4.3. i.e., let \(\phi_0(n:n \in \mathbb{N}^+)\) be simple random walk begin at \(\phi_0(0) \geq a+1\),
   let \(\zeta_0:=\inf \{m:\phi_0(m)=a+1\}\), let \(Y_n:n \in \mathbb{N}\) be reflecting simple random walk on \(\mathbb{Z}^a_+\), starting at \(a+1\), indenpendent with \(\phi_0\).
   Let \(X_n:=\begin{cases}
-    \phi_0(n)   & n \leq \zeta_0 \\
-    Y_n-\zeta_0 & n \geq \zeta_0
+    \phi_0(n)     & n \leq \zeta_0 \\
+    Y_{n-\zeta_0} & n \geq \zeta_0
   \end{cases}\).
   Prove that \(X_n:n \in \mathbb{N}\) is reflecting random walk on \(\mathbb{Z}^a_+\) begin at \(\phi_0(0)\).
 \end{problem}
@@ -118,16 +118,17 @@
     \item If \(\forall k:1 \leq k \leq n,i_k \neq a+1\), then we have
       \[
         \begin{aligned}
-          \mathbb{P}(X_0=i_0,\cdots,X_{n+1} =i_{n+1} ) & =\mathbb{P}(\phi_0(0)=i_0,\cdots,\phi_0(n+1)=i_{n+1} )                                            \\
-                                                       & =\mathbb{P}(\phi_0(0)=i_0,\cdots,\phi_0(n)=i_n)\mathbb{P}(\phi_0(n+1)=i_{n+1} \mid \phi_0(n)=i_n) \\
-                                                       & =\mathbb{P}(X_0=i_0,\cdots,X_n=i_n)q^a_+(i_n,i_{n+1})
+           & \mathbb{P}(X_0=i_0,\cdots,X_{n+1} =i_{n+1} )                                                      \\
+           & =\mathbb{P}(\phi_0(0)=i_0,\cdots,\phi_0(n+1)=i_{n+1} )                                            \\
+           & =\mathbb{P}(\phi_0(0)=i_0,\cdots,\phi_0(n)=i_n)\mathbb{P}(\phi_0(n+1)=i_{n+1} \mid \phi_0(n)=i_n) \\
+           & =\mathbb{P}(X_0=i_0,\cdots,X_n=i_n)q^a_+(i_n,i_{n+1})
         \end{aligned}
       \]
     \item Else, we let \(k:=\inf \{m:1 \leq m \leq n,i_m=a+1\}\).
       Then we have
       \[
         \begin{aligned}
-          \mathbb{P}(X_0=i_0,\cdots,X_{n+1}=i_{n+1})
+           & \mathbb{P}(X_0=i_0,\cdots,X_{n+1}=i_{n+1})                                                                              \\
            & =\mathbb{P}(\phi_0(0)=i_0,\cdots,\phi_0(k)=i_k,Y_0=a+1,Y_1=i_{k+1},\cdots,Y_{n-k}=i_{n},Y_{n-k+1}=i_{n+1})              \\
            & =\mathbb{P}(\phi_0(0)=i_0,\cdots,\phi_0(k)=i_k)\mathbb{P}(Y_0=a+1,Y_1=i_{k+1},\cdots,Y_{n-k}=i_{n},Y_{n-k+1}=i_{n+1})   \\
            & =\mathbb{P}(\phi_0(0)=i_0,\cdots,\phi_0(k)=i_k)\mathbb{P}(Y_0=a+1,Y_1=i_{k+1},\cdots,Y_{n-k}=i_{n}) q^a_+(i_n,i_{n+1} ) \\
