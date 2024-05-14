@@ -1,0 +1,163 @@
+%!Mode:: "TeX:UTF-8"
+%!TEX encoding = UTF-8 Unicode
+%!TEX TS-program = xelatex
+\documentclass{ctexart}
+\newif\ifpreface
+%\prefacetrue
+\input{../../../global/all}
+\begin{document}
+\large
+\setlength{\baselineskip}{1.2em}
+\ifpreface
+  \input{../../../global/preface}
+\else
+  %\maketitle
+\fi
+\newgeometry{left=2cm,right=2cm,top=2cm,bottom=2cm}
+%from_here_to_type
+\begin{problem}\label{pro:1}
+  Let \(S=(S_n:n \geq 0)\) be the one-dimensional symmetry simple random walk with \(S_0=c \geq 0\).
+  Let \(k \geq 1\) and \(\tau\) be the time of the \(k\)-th downcrossing of \(0\).
+  \(X_b\) is the times of \((S_{n \AND \tau}:n \geq 0)\) downcrossing of \(b\). Prove:
+  \begin{enumerate}
+    \item \((X_b:b \geq c-1)\) is branch process.
+      And offspring distribution is \(Geo(\frac{1}{2})\)
+
+    \item \((X_{-a}:a \geq 1)\) is branch process.
+      And offspring distribution is \(Geo(\frac{1}{2})\)
+
+    \item \((X_b:0 \leq b \leq c-1)\) is migrating branch process.
+      And offspring distribution is \(Geo(\frac{1}{2})\)
+
+      And the migrating distribution is concentrating on \(1\).
+
+  \end{enumerate}
+\end{problem}
+\begin{solution}
+  For a random walk \(y\), we let \(D(n,y)\) be the number of downcrossings of \(y\) over \(n\).
+  \begin{enumerate}
+    \item Fix \(b \geq c-1\). Let \(\phi_0\) be the journey from start point to \(b+1\).
+      Let \(e_n\) be \(n\)-th journey from \(b+1\) to \(b\).
+      Let \(\varepsilon_n\) be \(n\)-th journey after \(\phi_0\) from \(b\) to \(b+1\).
+      Then we know that \(e_n,\varepsilon_n\) are independent.
+      Easy to get that \(D(e_n,b)=1\) and \(D(\varepsilon_n,b)=0,D(\varepsilon_n,b+1=0)\).
+      Easy to get that \(D((S_{n \wedge \tau}:n \in \mathbb{N}),b+1)=\sum_{t=1}^{D((S_{n \wedge \tau}:n \in \mathbb{N}),b)} D(e_t,b+1) \).
+      Noting that \(\forall d:c-1 \leq d \leq b,D((S_{n \wedge \tau}:n \in \mathbb{N}),d) \in \sigma(\varepsilon_n:n \in \mathbb{N})\).
+      We easily get that \(D(e_t,b+1) \perp \sigma(\varepsilon_n:n \in \mathbb{N})\).
+      So \(X_b\) is Markov process. And to prove it's branch process, we only need to prove that \(D(e_t,b+1)\) are i.i.d.
+      It has been proved that \(D(e_t,b+1)\) are i.i.d and \(Geo(\frac{1}{2})\).
+      So the offspring distribution is \(Geo(\frac{1}{2})\).
+    \item Fix \(a \geq 1\). Let \(\phi_0\) be the journey from start point to \(-a\).
+      Let \(e_n\) be \(n\)-th journey from \(-a\) to \(-a-1\), and \(\varepsilon_n\) be \(n\)-th journey from \(-a-1\) to \(-a\).
+      Then easy to get that \(X_{-a-1}=\sum_{t=1}^{X_{-a}} D(\varepsilon_t,-a-1)\).
+      For the same reason we easily get that \(D(\varepsilon_t,-a-1)\perp \sigma(e_n:n \in \mathbb{N})\).
+      And by reflecting easy to get that \(D(\varepsilon_t,-a-1) \sim Geo(\frac{1}{2})\), too.
+      So \((X_{-a}:a \geq 1)\) is branch process
+      and offspring distribution is \(Geo(\frac{1}{2})\)
+
+    \item Fix \(b<c-1\). Let \(\phi_0\) be the journey from start point to \(b+1\).
+      Let \(e_n\) be the \(n\)-th journey from \(b+1\) to \(b\) and \(\varepsilon_n\) be \(n\)-th journey from \(b\) to \(b+1\).
+      Then easy to prove that \(X_{b+1}=D(\phi_0,b+1)+\sum_{t=1}^{X_b} D(e_n,b+1)\).
+      Noting that \(D(\phi_0,b+1)=1\). So for the same reason, we get that \((X_b:0 \leq b \leq c-1)\) is migrating branch process,
+      with offspring distribution \(Geo(\frac{1}{2})\) and migrating distribution \(\delta_1\).
+  \end{enumerate}
+\end{solution}
+\begin{problem}\label{pro:2}
+  \(c < b \in \mathbb{Z}_+\). Let \(W=(W_n :n \geq 0)\) be the one-dimensional reflecting simple
+  random walk with \(W_0=c \geq 0\) on \(\mathbb{Z}^{0,b}\), whose transition matrix is \(P^{0,b}\), where
+  \(a = 0,p,q >0, p + q =1\).
+  Let \(k \geq 1\) and \(\tau\) be the time of the \(k\)-th downcrossing over \(0\) on \((W_n)\).
+  \(0 \leq a \leq b\),
+  \(X_a\) is the times of \((S_{n \AND \tau}:n \geq 0)\) downcrossing over \(a\). Prove:
+  \begin{enumerate}
+    \item \((X_a:c-1 \leq a \leq b-1)\) is branch process.
+      And offspring distribution is \(Geo(p)\).
+    \item \((X_a:0 \leq a \leq c-1)\) is migrating branch process.
+      And offspring distribution is \(Geo(p)\).
+      And the migrating distribution is concentrating on \(1\).
+  \end{enumerate}
+\end{problem}
+\begin{solution}
+  For a random walk \(y\), we let \(D(n,y)\) be the number of downcrossings of \(y\) over \(n\).
+  \begin{enumerate}
+    \item Fix \(a\) such that \(c-1 \leq a < b-1\).
+      Let \(\phi_0\) be the journey from start point to \(a\).
+      Let \(e_n\) be the \(n\)-th journey from \(a\) to \(a+1\), and \(\varepsilon_n\) be the \(n\)-th journey from \(a+1\) to \(a\).
+      For reflecting simple random walk, we can also prove that \(e_n,\varepsilon_n\) are independent.
+      Noting that \(X_{a+1}=\sum_{t=1}^{X_a} D(\varepsilon_t,a+1)\), we easily get the conclusion.
+    \item Fix \(a:0 \leq a<c-1\). Let \(\phi_0\) be the journey from start point to \(a+1\).
+      Let \(e_n\) be the \(n\)-th journey from \(a+1\) to \(a\) and \(\varepsilon_n\) be \(n\)-th journey from \(a\) to \(a+1\).
+      Then easy to prove that \(X_{a+1}=D(\phi_0,a+1)+\sum_{t=1}^{X_a} D(e_n,a+1)\).
+      Noting that \(D(\phi_0,a+1)=1\). So for the same reason, we get that \((X_a:0 \leq a \leq c-1)\) is migrating branch process,
+      with offspring distribution \(Geo(\frac{1}{2})\) and migrating distribution \(\delta_1\).
+  \end{enumerate}
+\end{solution}
+\begin{problem}\label{pro:3}
+  Let \(W=(W_n:n \geq 0)\) be the one-dimensional simple random walk with \(W_0=0\),
+  whose transition matrix \(P\) given by equation \((4.4.3)\)
+  on textbook, \(0< p<q<1\).
+  \(X_a\) is the times of \((W_{n \AND \tau}:n \geq 0)\) downcrossing \(a\).
+  \(r=\frac{p}{q}\).
+  Prove:
+  \begin{enumerate}
+    \item \label{ite:3.1} \(\mathbb{P}(X_0=i)=r^i(1-r),i \geq 0\);
+    \item \(a \geq 0\), \(\mathbb{P}(X_a=0)=1-r^{a +1}\), \(\mathbb{P}(X_a=i)=r^{a + 1}(1 -r),i \geq 1\).
+  \end{enumerate}
+\end{problem}
+\begin{solution}
+  \begin{enumerate}
+    \item Since \(p <q\), then \(W_n \to -\infty,n \to \infty\). Let \(\tau_0=0, \forall k \geq 1\),
+      \(\sigma_k=\inf \{n \geq \tau_{k-1}:W_n=1\},\tau_k=\inf \{n \geq \sigma_k:W_n=0\}\).
+      \begin{enumerate}
+        \item If \(i=0\), then \(\{X_0=i\}\overset{\text{a.s.}}{=}\{\sigma_1=\infty\}\). Then \(\mathbb{P}(X_0=i)=\mathbb{P}(\sigma_1=\infty)=r\).
+        \item If \(i \geq 1\), then \(\{X_0=i\}\overset{\text{a.s.}}{=}\{\sigma_i <\infty,\sigma_{i + 1}=\infty\}\).
+          Since \(\{\tau_{i} <\infty\} \subset \{\sigma_{i} \infty\}, \mathbb{P}(\sigma_i <\infty, \tau_i = \infty)=0\),
+          then by strong markov property,
+          \[
+            \begin{aligned}
+              \mathbb{P}(\sigma_{i + 1} <\infty \mid \sigma_{i} < \infty) & = \mathbb{P}(\sigma_{i + 1} < \infty \mid \sigma_i <\infty, \tau_i < \infty) \\
+                                                                          & =\mathbb{P}(\sigma_{i + 1}<\infty \mid \tau_i < \infty)                      \\
+                                                                          & =\mathbb{P}(\sigma_{i + 1}< \infty \mid \tau_i < \infty, W_{\tau_i}=0)       \\
+                                                                          & =\mathbb{P}(\sigma_1 < \infty)=r
+            \end{aligned}
+          \]
+          Therefore,
+          \[
+            \mathbb{P}(\sigma_{i + 1} < \infty)=\mathbb{P}(\sigma_{i + 1}<\infty \mid \sigma_i < \infty )\mathbb{P}(\sigma_i < \infty)
+          \]
+          Then \(\mathbb{P}(\sigma_{i }<\infty)=r^i\).
+          Therefore, \(\mathbb{P}(X_0=i)=\mathbb{P}(\sigma_i < \infty,\sigma_{i + 1}=\infty)=\mathbb{P}(\sigma_i < \infty) \mathbb{P}(\sigma_{i + 1}=\infty \mid \sigma_i < \infty)=r^i(1-r)\).
+      \end{enumerate}
+    \item Let \(D_a=\inf (n \geq 0: W_n=a)\), then \(\mathbb{P}(D_a < \infty)=r^a\). By strong markov property,
+      \((W_{D_a + n-a:n \geq 0})\) is a random walk starting from \(0\) under \(\mathbb{P}(\cdot \mid D_a < \infty)=\mathbb{P}(\cdot \mid D_a < \infty, W_{D_a}=a)\).
+      By the conclusion in \ref{ite:3.1}, \(\mathbb{P}(X_a=i \mid D_a < \infty)=r^i(1-r), i \geq 0\).
+      Then \[
+        \begin{aligned}
+          \mathbb{P}(X_a=0) & =\mathbb{P}(D_a=\infty) + \mathbb{P}(D_a < \infty, X_a=0)            \\
+                            & =1-r^a + \mathbb{P}(D_a < \infty)\mathbb{P}(X_a=0 \mid D_a < \infty) \\
+                            & =1-r^a + r^a(1-r)=1-r^{a + 1}
+        \end{aligned}
+      \]
+      \(\forall i \geq 1\),
+      \[
+        \begin{aligned}
+          \mathbb{P}(X_a=i) & =\mathbb{P}(D_a< \infty,X_a=i)                                    \\
+                            & =    \mathbb{P}(D_a< \infty)\mathbb{P}(X_a = i \mid D_a < \infty) \\
+                            & =r^ar^i(1-r)=r^{a + i}(1-r)
+        \end{aligned}
+      \]
+  \end{enumerate}
+\end{solution}
+\begin{problem}\label{pro:4}
+  Let \(W=(W_n:n \geq 0)\) be the one-dimensional simple random walk with \(W_0=0\),
+  whose transition matrix \(P\) given by equation \((4.4.3)\)
+  on textbook, \(0< p<q<1\).
+  \(X_a\) is the times of \((W_{n \AND \tau}:n \geq 0)\) downcrossing over \(a\).
+  \(r=\frac{p}{q}\).
+  Prove: if \(a \leq -1\), then \(X_a \sim G(1-r)\), i.e. \(\mathbb{P}(X_a=i)=r^{i-1}(1-r),i \geq 1\).
+\end{problem}
+\begin{solution}
+
+\end{solution}
+
+\end{document}

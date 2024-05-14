@@ -141,7 +141,7 @@
   \]
 \end{problem}
 \begin{solution}
-  For convinence we write \(\mathbb{E},\mathbb{D}\) instead of \(\mathbb{E}_1,\mathbb{D}_1\).
+  For convenience we write \(\mathbb{E},\mathbb{D}\) instead of \(\mathbb{E}_1,\mathbb{D}_1\).
   Easy to get that \(\mathbb{E}(m ^{-2n} X_n^2)=\frac{\sigma^2(1-m^{-n})}{m^2-m}+1\).
   So by Fatou theorem we get that \(\mathbb{E}(W^2) \leq \lim_{n \to \infty}\mathbb{E}(m^{-2n}X_n^2)=\frac{\sigma^2}{m^2-m}+1<\infty\).
   And by Doob Stochastic Processes p317 theorem 3.4 we get that
@@ -153,9 +153,8 @@
     \mathbb{E}(m^{-2n}X_n^2-W^2)=\mathbb{E}((m^{-n}X_n+W)(m^{-n}X_n-W)) \leq \sqrt{\mathbb{E}((m^{-n}X_n+W)^2) \mathbb{E}((m^{-n}X_n-W)^2)} \to 0
   \]
   ,
-  we get \(\mathbb{E}(W^2)=\lim \mathbb{E}(m^{-n}X_n)=\frac{\sigma^2}{m^2-m}+1\).
-  Also, \(\mathbb{E}(|m^{-n}X_n-W|)^2 \leq \mathbb{E}((m^{-n}X_n-W)^2)\),
-  so \(\mathbb{E}(W)=\lim \mathbb{E}(m^{-n}X_n)=1\).
+  we get \(\mathbb{E}(W^2)=\lim \mathbb{E}(m^{-2n}X_n^2)=\frac{\sigma^2}{m^2-m}+1\).
+  And \(\mathbb{E}(W)=\lim \mathbb{E}(m^{-n}X_n)=1\).
   So \(\mathbb{D}(W)=\mathbb{E}(W^2)-\mathbb{E}(W)^2=\frac{\sigma^2}{m(m-1)}\).
 \end{solution}
 
@@ -190,7 +189,7 @@
 \end{solution}
 
 \begin{problem}\label{pro:6}
-  Let \(\{Y(n): n \in \mathbb{N}\}\) be branch process with offspring distribution \(p(j): j \in \mathbb{N}\).
+  Let \(\{Y(n): n \in \mathbb{N}\}\) be branch process with offspring distribution \(p(j): j \in \mathbb{N}\) and migrating distribution \(\gamma\).
   And \(g\) is the generating function, where \(m :=g' (1) \leq 1\).
   Discuss \(\lim_{n \to \infty}\mathbb{E}(Y_n \mid Y_0=i)\).
 \end{problem}
