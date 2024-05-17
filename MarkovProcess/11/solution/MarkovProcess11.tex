@@ -17,8 +17,8 @@
 %from_here_to_type
 \begin{problem}\label{pro:1}
   Let \(S=(S_n:n \geq 0)\) be the one-dimensional symmetry simple random walk with \(S_0=c \geq 0\).
-  Let \(k \geq 1\) and \(\tau\) be the time of the \(k\)-th downcrossing of \(0\).
-  \(X_b\) is the times of \((S_{n \AND \tau}:n \geq 0)\) downcrossing of \(b\). Prove:
+  Let \(k \geq 1\) and \(\tau\) be the time of the \(k\)-th downcrossing \(0\).
+  \(X_b\) is the times of \((S_{n \AND \tau}:n \geq 0)\) downcrossing \(b\). Prove:
   \begin{enumerate}
     \item \((X_b:b \geq c-1)\) is branch process.
       And offspring distribution is \(Geo(\frac{1}{2})\)
@@ -34,7 +34,7 @@
   \end{enumerate}
 \end{problem}
 \begin{solution}
-  For a random walk \(y\), we let \(D(n,y)\) be the number of downcrossings of \(y\) over \(n\).
+  For a random walk \(y\), we let \(D(n,y)\) be the number of downcrossings of \(y\) of \(n\).
   \begin{enumerate}
     \item Fix \(b \geq c-1\). Let \(\phi_0\) be the journey from start point to \(b+1\).
       Let \(e_n\) be \(n\)-th journey from \(b+1\) to \(b\).
@@ -66,9 +66,9 @@
   \(c < b \in \mathbb{Z}_+\). Let \(W=(W_n :n \geq 0)\) be the one-dimensional reflecting simple
   random walk with \(W_0=c \geq 0\) on \(\mathbb{Z}^{0,b}\), whose transition matrix is \(P^{0,b}\), where
   \(a = 0,p,q >0, p + q =1\).
-  Let \(k \geq 1\) and \(\tau\) be the time of the \(k\)-th downcrossing over \(0\) on \((W_n)\).
+  Let \(k \geq 1\) and \(\tau\) be the time of the \(k\)-th downcrossing \(0\) of \((W_n)\).
   \(0 \leq a \leq b\),
-  \(X_a\) is the times of \((S_{n \AND \tau}:n \geq 0)\) downcrossing over \(a\). Prove:
+  \(X_a\) is the times of \((S_{n \AND \tau}:n \geq 0)\) downcrossing \(a\). Prove:
   \begin{enumerate}
     \item \((X_a:c-1 \leq a \leq b-1)\) is branch process.
       And offspring distribution is \(Geo(p)\).
@@ -78,7 +78,7 @@
   \end{enumerate}
 \end{problem}
 \begin{solution}
-  For a random walk \(y\), we let \(D(n,y)\) be the number of downcrossings of \(y\) over \(n\).
+  For a random walk \(y\), we let \(D(n,y)\) be the number of downcrossings of \(y\) of \(n\).
   \begin{enumerate}
     \item Fix \(a\) such that \(c-1 \leq a < b-1\).
       Let \(\phi_0\) be the journey from start point to \(a\).
@@ -152,12 +152,14 @@
   Let \(W=(W_n:n \geq 0)\) be the one-dimensional simple random walk with \(W_0=0\),
   whose transition matrix \(P\) given by equation \((4.4.3)\)
   on textbook, \(0< p<q<1\).
-  \(X_a\) is the times of \((W_{n \AND \tau}:n \geq 0)\) downcrossing over \(a\).
+  \(X_a\) is the times of \((W_{n \AND \tau}:n \geq 0)\) downcrossing \(a\).
   \(r=\frac{p}{q}\).
-  Prove: if \(a \leq -1\), then \(X_a \sim G(1-r)\), i.e. \(\mathbb{P}(X_a=i)=r^{i-1}(1-r),i \geq 1\).
+  Prove: if \(a \leq -1\), then \(X_a-1 \sim G(1-r)\), i.e. \(\mathbb{P}(X_a=i)=r^{i-1}(1-r),i \geq 1\).
 \end{problem}
 \begin{solution}
-
+  Let \(\tau=\inf \{n \in \mathbb{N}:W_n=a\}\). Then \(\tau < \infty,a. s.\), then \(W_n\) downcross \(a\) at \(\tau\).
+  And \((W_{\tau+n}-a:n \in \mathbb{N})\) is simple random walk start at \(0\).
+  So by \ref{pro:3} we easily get \(X_a -1\sim Geo(1-r)\).
 \end{solution}
 
 \end{document}

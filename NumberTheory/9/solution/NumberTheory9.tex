@@ -1,0 +1,98 @@
+%!Mode:: "TeX:UTF-8"
+%!TEX encoding = UTF-8 Unicode
+%!TEX TS-program = xelatex
+\documentclass{ctexart}
+\newif\ifpreface
+%\prefacetrue
+\input{../../../global/all}
+\begin{document}
+\large
+\setlength{\baselineskip}{1.2em}
+\ifpreface
+\input{../../../global/preface}
+\newgeometry{left=2cm,right=2cm,top=2cm,bottom=2cm}
+\else
+\newgeometry{left=2cm,right=2cm,top=2cm,bottom=2cm}
+%\maketitle \fi
+%from_here_to_type
+\begin{problem}\label{pro:1}
+  Find the number of all the intergal solution of equations as follow:
+  \begin{enumerate}
+    \item \(x^2 \equiv 3766 \pmod{5987}\);
+    \item \(x^2 \equiv 3149 \pmod{5987}\).
+      Where \(5987\) is a prime.
+  \end{enumerate}
+\end{problem}
+\begin{problem}\label{pro:2}
+  \begin{enumerate}
+    \item When the equation has solutions, apply theorm 1 in section 2 to
+      find the solution of \(x^2 \equiv a \pmod{p}, p=4m + 3\).
+    \item When the equation has solutions, apply theorem 1 in section 2 and section 3 to
+      find the solution of \(x^2 \equiv a \pmod{p}, p=8m + 5\).
+    \item If the equation \(x^2 \equiv a \pmod{p},p=8m + 1\) has solutions, and \(N \) is non quadratic residue.
+      Give one way to solve the equation above.
+  \end{enumerate}
+\end{problem}
+\begin{enumerate}
+  \item Since the equation has solution, we know that \(a^{\frac{p-1}{2}}\equiv 1 \mod p\).
+    So \(a^{2m+1} \equiv 1 \mod p\). So \(a^{2m+2}\equiv a \mod p\).
+    So \((a^{m+1})^2 \equiv a \mod p\). So the solution is \(x \equiv \pm a^{m+1} \mod p\).
+  \item Since the equation has solution, we know that \(a^{\frac{p-1}{2}} \equiv 1 \mod p\), then \(a^{4m+2} \equiv 1 \mod p\).
+    So \(a^{2m+1} \equiv \pm 1 \mod p\).
+    If \(a^{2m+1}\equiv 1 \mod p\), then we have \((a^{m+1})^2 \equiv a \mod p\), so \(x \equiv \pm a^{m+1} \mod p\).
+    Else, since \(\legendre{2}{p}=(-1)^{\frac{p^2-1}{8}}=-1\), we have \(2^{4m+2} \equiv -1 \mod p\).
+    So \(2^{4m+2} a^{2m+2}\equiv a \mod p\). So \(x \equiv \pm 2^{2m+1}a^{m+1} \mod p\).
+  \item For the same reason, we easily get that \(a^{4m} \equiv 1 \mod p\) and \(N^{4m} \equiv -1 \mod p\).
+    We can find the solution by following method:
+    \begin{enumerate}
+      \item let \(x=4m,y=0\).
+      \item \label{it:cir}if \(2 \nmid x\), goto \ref{it:out}.
+      \item If \(a^{\frac{x}{2}}N^{\frac{y}{2}} \equiv 1 \mod p\), then let \(x=\frac{x}{2},y=\frac{y}{2}\).
+        If \(a^{\frac{x}{2}}N^{\frac{y}{2}} \equiv -1 \mod p\), then let \(x=\frac{x}{2},y=\frac{3y}{2}\).
+      \item goto \ref{it:cir}.
+      \item \label{it:out} Now we have \(2 \nmid x,2 \mid y,a^x N^y \equiv 1 \mod p\).
+        So \(x \equiv a^{\frac{x+1}{2}}N^{\frac{y}{2}} \mod p\).
+    \end{enumerate}
+    It is easy to prove that this method can end because every turn the calue of \(v_2(x)\) will \(-1\).
+    And easy to prove that \(2 \mid y\) because we can use MI to prove that \(v_2(y)>v_2(x)\).
+\end{enumerate}
+\begin{problem}\label{pro:3}
+  Solve the following equations
+  \begin{enumerate}
+    \item \(x^2 \equiv 59 \pmod{125}\).
+    \item \(x^2 \equiv 41 \pmod{64}\).
+  \end{enumerate}
+\end{problem}
+\begin{solution}
+  \begin{enumerate}
+    \item First solve \(x^2 \equiv 4 \mod 5\). Solution is \(x \equiv \pm 2 \mod 5\).
+      Second solve \(x^2 \equiv 9 \mod 25\), assume \(x=5y \pm 2\), easy to get that \(x \equiv \pm 3 \mod 25\).
+      Finally solve \(x^2 \equiv 59 \mod 125\) and assume \(x = 25y \pm 3\). Easily \(x \equiv \pm 53 \mod 125\).
+      So the solution is \(x \equiv \pm 53 \mod 125\).
+    \item Easy to find that \(x \equiv \pm 13,\pm 19 \mod 64\).
+  \end{enumerate}
+\end{solution}
+
+\begin{problem}\label{pro:4}
+  \begin{enumerate}
+    \item \label{ite:4.1} Prove equation \(x^2 \equiv 1 \pmod{m}\) and \((x + 1)(x-1) \equiv 0 \pmod{m}\) are equal.
+    \item Apply \ref{ite:4.1} to give one way of finding all the solutions of \(x^2 \equiv 1 \pmod{m}\).
+  \end{enumerate}
+\end{problem}
+\begin{solution}
+  \begin{enumerate}
+    \item Obviously because \(x^2-1=(x+1)(x-1)\).
+    \item We can solve the equation by this way:
+      \begin{enumerate}
+        \item Dissolve \(m\) into product of primes, write \(m=2^{\alpha}\prod_{i=1}^{n} p_i^{\alpha_i}\).
+        \item For \(p_i^{\alpha_i}\), easy to get that solution of \(x^2 \equiv 1 \mod p_i^{\alpha_i}\) is \(x \equiv \pm 1 \mod p_i^{\alpha_i}\).
+        \item For \(2^\alpha\), if \(\alpha \geq 1\), we need to find solution of \(x^2 \equiv 1 \mod 2^\alpha\).
+          When \(\alpha=1\), the solution is \(x \equiv 1 \mod 2\).
+          When \(\alpha=2\), the solution is \(x \equiv 1,3 \mod 4\).
+          When \(\alpha \geq 3\), the solution is \(x \equiv \pm 1,\pm (2^{\alpha-1}+1) \mod 2^\alpha\).
+        \item Use Chinese Reminder Theorem to find all the solution of \(x^2 \equiv 1 \mod m\).
+      \end{enumerate}
+  \end{enumerate}
+\end{solution}
+
+\end{document}
