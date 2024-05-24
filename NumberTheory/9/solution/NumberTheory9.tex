@@ -23,6 +23,30 @@
       Where \(5987\) is a prime.
   \end{enumerate}
 \end{problem}
+\begin{solution}
+  \begin{enumerate}
+    \item
+      \begin{equation}
+        \begin{aligned}
+           & \legendre{3766}{5987}=\legendre{2^3}{5987}\legendre{471}{5987}=\legendre{2}{5987}(-1)^{\frac{5986}{2} \frac{470}{2}}\legendre{5987}{471} \\
+           & =(-1)^{\frac{5987^2-1}{8}} (-1)\legendre{5987}{471}=\legendre{-136}{471}=\legendre{2}{471}\legendre{17}{471}\legendre{-1}{471}           \\
+           & =(-1)^{\frac{471^2-1}{8}}(-1)^{\frac{471-1}{2} \frac{17-1}{2}}\legendre{471}{17}(-1)^{\frac{471-1}{2}}                                   \\
+           & =-\legendre{-5}{17}=-(-1)^{16}\legendre{5}{17}                                                                                           \\
+           & =-\legendre{17}{5}=-\legendre{2}{5}=-(-1)^{\frac{5^2-1}{8}}=-(-1)^3=1
+        \end{aligned}
+      \end{equation}
+      Since \(5987\) is prime, then \(x^2 \equiv 3766 \pmod{5987}\) has \(2\) solutions.
+    \item
+      \begin{equation}
+        \begin{aligned}
+           & \legendre{3149}{5987}=\legendre{-311}{5987}=\legendre{-1}{5987}\legendre{311}{5987}=(-1)^{\frac{5987-1}{2}}\legendre{78}{311}                                                        \\
+           & =-\legendre{2}{311}\legendre{3}{311}\legendre{13}{311}=-(-1)^{\frac{311^2-1}{8}}(-1)^{\frac{310}{2} \frac{2}{2}}\legendre{311}{3}(-1)^{\frac{310}{2} \frac{12}{2}}\legendre{311}{13} \\
+           & =\legendre{2}{3}(-1)\legendre{-1}{13}=(-1)^{\frac{3^2-1}{8}}(-1)(-1)^{\frac{13-1}{2}}=1
+        \end{aligned}
+      \end{equation}
+      Since \(5987\) is prime, then \(x^2 \equiv 3149 \pmod{5987}\) has \(2\) solutions.
+  \end{enumerate}
+\end{solution}
 \begin{problem}\label{pro:2}
   \begin{enumerate}
     \item When the equation has solutions, apply theorm 1 in section 2 to
