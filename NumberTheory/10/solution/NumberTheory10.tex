@@ -1,0 +1,54 @@
+%!Mode:: "TeX:UTF-8"
+%!TEX encoding = UTF-8 Unicode
+%!TEX TS-program = xelatex
+\documentclass{ctexart}
+\newif\ifpreface
+%\prefacetrue
+\input{../../../global/all}
+\begin{document}
+\large
+\setlength{\baselineskip}{1.2em}
+\ifpreface
+  \input{../../../global/preface}
+  \newgeometry{left=2cm,right=2cm,top=2cm,bottom=2cm}
+\else
+  \newgeometry{left=2cm,right=2cm,top=2cm,bottom=2cm}
+  \maketitle \fi
+%from_here_to_type
+\begin{problem}\label{pro:1}
+  Assume \(p,q\) are odd primes, \(a > 1\) is integal.
+  Prove:
+  \begin{enumerate}
+    \item \(q \mid a^p-1 \implies q \mid a-1 \OR 2p \mid q-1\).
+    \item \(q \mid a^p +1\implies q \mid a+1 \OR 2p \mid q-1\)
+  \end{enumerate}
+\end{problem}
+\begin{solution}
+  \begin{enumerate}
+    \item Consider \(o(a)\) in \(\mathbb{Z}_q^{*}\). We know that \(o(a) \mid p\).
+      So \(o(a)=1 \OR o(a) = p\). When \(o(a)=1\), we get \(q \mid a-1\).
+      Besides, \(o(a) \mid o(\mathbb{Z}_q^{*})=q-1\).
+      So when \(o(a)=p\), we get \(p \mid q-1\).
+      Since \(q\) is odd, we know \(2 \mid q-1\). And \(\gcd(2,p)=1\), so \(2p \mid q-1\).
+    \item Consider \(o(-a)\) in \(\mathbb{Z}_q^{*}\). We know that \(o(-a) \mid p\).
+      So \(o(-a)=1 \OR o(-a) = p\). When \(o(-a)=1\), we get \(q \mid a+1\).
+      Besides, \(o(-a) \mid o(\mathbb{Z}_q^{*})=q-1\).
+      So when \(o(-a)=p\), we get \(p \mid q-1\).
+      Since \(q\) is odd, we know \(2 \mid q-1\). And \(\gcd(2,p)=1\), so \(2p \mid q-1\).
+  \end{enumerate}
+\end{solution}
+
+\begin{problem}\label{pro:2}
+  Find a primitive root for each number \(7,49,343,686\).
+\end{problem}
+\begin{solution}
+  By calculating we get that \(3\) is primitive root of \(7\).
+  So we know there exists a primitive root \(x\) of \(49\) such that \(x=3+7y\).
+  By calculating we get that \(3\) is primitive root of \(49\).
+  So we know there exists a primitive root \(x\) of \(49\) such that \(x=3+49y\).
+  By calculating we get that \(3\) is primitive root of \(343\).
+  So we know that the odd one of \(3,346\) is primitive root of \(686\).
+  So \(3\) is primitive root of \(686\).
+\end{solution}
+
+\end{document}
