@@ -1,0 +1,82 @@
+%!Mode:: "TeX:UTF-8"
+%!TEX encoding = UTF-8 Unicode
+%!TEX TS-program = xelatex
+\documentclass{ctexart}
+\newif\ifpreface
+%\prefacetrue
+\input{../../../global/all}
+\begin{document}
+\large
+\setlength{\baselineskip}{1.2em}
+\ifpreface
+  \input{../../../global/preface}
+\else
+  %\maketitle
+\fi
+\newgeometry{left=2cm,right=2cm,top=2cm,bottom=2cm}
+%from_here_to_type
+\begin{problem}\label{pro:1}
+  A radio is powered by one battery,
+  the lifetime of the battery obey the distribution of exponential distribution
+  with parameter \(\lambda = \frac{1}{30}\). In long term, in which frequence should we change the battery?
+\end{problem}
+\begin{solution}
+  Easy to get that \(\lim_{t \to \infty}\frac{m(t)}{t}=\frac{1}{\mathbb{E}(\xi_1)}=\frac{1}{30}\).
+  So we change battery every \(30\) hours in average.
+\end{solution}
+
+\begin{problem}\label{pro:2}
+  Consider a primitive renewing process with average renewing internal time \(\mu\). Assume every renewing time
+  is recorded by probability \(p\), and each record and each renew are independence. Let \(N_r(t)\) be the
+  times of renewing by recorded until time \(t\). \(\{N_r(t): t \geq 0\}\) is a renewing process or not?
+  And calculate \(\lim_{t \to \infty}\frac{N_r(t)}{t}\).
+\end{problem}
+\begin{solution}
+  Assume \(X_n:n \in \mathbb{N}\) are i.i.d r.v and \(X_0 \sim Geo(p)\), and \((X_n:n \in \mathbb{N})\perp (N(t):t \geq 0)\).
+  Let \(Y_n:=\sum_{k=1}^{n} X_n\), and \(Y_0=0\).
+  Let \(\xi_r(n):=\sum_{k=Y_{n-1}+1}^{Y_{n}} \xi_k\).
+  Then \(\xi_r(n):n \in \mathbb{N}^+\) is update time of \(N_r\).
+  Since \((X_n:n \in \mathbb{N})\perp (N(t):t \geq 0)\), we get that \((\xi_r(n):n \in \mathbb{N}^+)\) are i.i.d.
+  And \(\mathbb{E}(\xi_r(1))=\mathbb{E}(X_1)\mathbb{E}(\xi_1)=\frac{\mu}{p}\).
+  So \(\lim_{t \to \infty}\frac{N_r(t)}{t}=\frac{\mu}{p}\).
+\end{solution}
+\begin{problem}\label{pro:3}
+  Assume \((U_n:n \in \mathbb{N}^+)\) are i.i.d r.v. and \(U_1 \sim U(0,1)\).
+  Assume \(X_{n,m}:n,m \in \mathbb{N}^+\) are r.v. and \(X_{n,m} \mid U_n \sim B(U_n)\).
+  And \((X_{n,m} \mid U_n:m \in \mathbb{N}^+)\) are i.i.d.
+  Let \(\xi_n:=\inf \{m \in \mathbb{N}^+:X_{n,m}=1\}\) be the \(n\)-th update time of \(N(t)\).
+  Find \(\lim_{t \to \infty}\frac{N(t)}{t}\).
+\end{problem}
+\begin{solution}
+  Easy to find that \(\mathbb{E}(\xi_1)=\int_{0}^{1} \mathbb{E}(\xi_1 \mid U_1=x) \d x=\int_{0}^{1} \frac{\d x}{x}=\infty\).
+  So easy to find that \(\lim_{t \to \infty}\frac{N(t)}{t}=\infty\).
+\end{solution}
+\begin{problem}\label{pro:4}
+  Assume \((\xi_n:n \in \mathbb{N}^+)\) is i.i.d r.v. ranging in \(\mathbb{N}\) is update time of \(N(t)\).
+  Let \(A_n\) be the event that at time \(n\) there is an update.
+  Assume \(a=\lim_{n \to \infty}\mathbb{P}(A_n)\) exists.
+  Prove that \(a=\frac{1}{\mathbb{E}(\xi_1)}\).
+\end{problem}
+\begin{solution}
+  Since \(N(n)=\sum_{k=1}^{n} \mathbbm{1}(A_k)\), we know that \(\mathbb{E}(N(n))=\sum_{k=1}^{n} \mathbb{P}(A_k)\).
+  Noting that \(\lim_{n \to \infty}\frac{N(n)}{n}=\frac{1}{\mathbb{E}(\xi_1)}\), we obtain that \(\lim_{n \to \infty}\mathbb{E}(\frac{N(n)}{n})=\frac{1}{\mathbb{E}(\xi_1)}\).
+  So \(\lim_{n \to \infty}\frac{\sum_{k=1}^{n} \mathbb{P}(A_k)}{n}=\frac{1}{\mathbb{E}(\xi_1)}\).
+  By stolz, we can get that \(\lim_{n \to \infty}\frac{\sum_{k=1}^{n} \mathbb{P}(A_k)}{n}=a\).
+  So \(a=\frac{1}{\mathbb{E}(\xi_1)}\).
+\end{solution}
+\begin{problem}\label{pro:5}
+  Assume \(N_1(t),N_2(t)\) are two independent updating process with update time distribution
+  \(E(1),U(0,2)\).
+  Find an estimate of \(\mathbb{P}(N_1(100)+N_2(100) \geq 190)\).
+\end{problem}
+\begin{solution}
+  Easy to know the expectation and varience of the update time are \(\mu_1=1,\sigma_1^2=1,\mu_2=1,\sigma_2^2=\frac{1}{3}\).
+  So by the central limit theorem of updating process we know that
+  \[
+    \frac{N_1(100)-100}{\sqrt{100}},\frac{N_2(100)-100}{\sqrt{\frac{100}{3}}} \sim N(0,1)
+  \]
+  So \(\frac{N_1(100)+N_2(100)-200}{\sqrt{\frac{400}{3}}} \sim N(0,1)\).
+  So \(\mathbb{P}(N_1(100)+N_2(100)\geq 190)\approx \mathbb{P}(N(0,1) \geq -\frac{\sqrt{3}}{2})\).
+\end{solution}
+
+\end{document}

@@ -6,29 +6,30 @@
 \input{../../../global/all}
 \begin{document}
 \large
-\iffalse 
-\setlength{\baselineskip}{1.2em}
-\ifpreface
+\iffalse
+  \setlength{\baselineskip}{1.2em}
+  \ifpreface
     \input{../../../global/preface}
-\else
-\maketitle
-\fi
+  \else
+    \maketitle
+  \fi
 \fi
 \newgeometry{left=2cm,right=2cm,top=2cm,bottom=2cm}
 %from_here_to_type
 \begin{problem}\label{pro:-1}
-  Toss a coin until we get two successively head, call it a renew. 
-  We toss the coin \(k\) times, call the number of renews \(N(k)\). 
+  Toss a coin until we get two successively head, call it a renew.
+  We toss the coin \(k\) times, call the number of renews \(N(k)\).
   Find the distribution and expectation of interval time \(T\)
 \end{problem}
 
 \begin{solution}
-  We use \(\xi_k\) to present the result of \(k\)-th toss. 
-  If we get head, then \(\xi_k=1\). Else, \(\xi_k=0\). 
-  Let \(X_k=2\xi_k+\xi_{k+1}\). Then \(X_k:k \in \mathbb{N}^+\) is Markov chain. 
-  Let \(\tau:=\inf \{k:X_k=3\}\), then \(T=\tau+1\). 
-  
+  Let \(p_n:=\mathbb{P}(T=n)\). Then \(p_1=0,p_2=\frac{1}{4}\).
+  Easy to find that \(p_{n+2}=\frac{1}{2}p_{n + 1}+\frac{1}{4}p_{n}\).
+  The characteristic equation of this sequence is \(x^2=\frac{1}{2}x+\frac{1}{4}\).
+  The roots are \(x_1=\frac{1+\sqrt{5}}{4},x_2=\frac{1-\sqrt{5}}{4}\).
+  So \(p_n=Ax_1^n+Bx_2^n\). By \(p_1,p_2\), easy to get that
+  \(p_n=\frac{1}{2 \sqrt{ 5}}\left(x_1^{n-1}-x_2^{n-1}\right)\).
+  So easily \(\mathbb{E}(T)=\sum_{n=1}^{\infty} np_n=6\).
 \end{solution}
-
 
 \end{document}
