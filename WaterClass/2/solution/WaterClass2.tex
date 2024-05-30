@@ -1,0 +1,110 @@
+%!Mode:: "TeX:UTF-8"
+%!TEX TS-program = xelatex
+\documentclass{ctexart}
+\usepackage{float}
+\usepackage{tikz}
+\usepackage{subfig}
+\usetikzlibrary{patterns}
+\newif\ifpreface
+\prefacetrue
+\input{../../../global/all}
+\begin{document}
+\large
+\setlength{\baselineskip}{1.2em}
+\ifpreface
+  \input{../../../global/preface}
+\else
+  \title{Logic 3}
+  \maketitle
+\fi
+\newgeometry{left=2cm,right=2cm,top=2cm,bottom=2cm}
+%from_here_to_type
+\begin{problem}\label{pro:1}
+  下列命题各属于何种性质的命题？其主项的周延情况如何？
+  \begin{enumerate}
+    \item 无论什么困难都不是不可克服的。
+    \item 有些动物不是用鳃呼吸的。
+  \end{enumerate}
+\end{problem}
+\begin{solution}
+  \begin{enumerate}
+    \item 全称否定命题。主项周延。
+    \item 特称否定命题。主项不周延。
+  \end{enumerate}
+\end{solution}
+\begin{problem}\label{pro:2}
+  用欧拉图表示性质命题的主项（S）和谓项（P）的关系。
+  \begin{enumerate}
+    \item 已知``有\(S\)是\(P\)''为真，请用欧拉图表示\(S\)和\(P\)之间的各种关系，并举出实例。
+    \item 已知``所有\(S\)都不是\(P\)''为假，请用欧拉图表示\(S\)和\(P\)之间的各种关系，并举出实例。
+  \end{enumerate}
+\end{problem}
+\begin{solution}
+  \begin{enumerate}
+    \item
+      \begin{itemize}
+        \item
+          \begin{figure}[H]
+            \centering
+            \begin{tikzpicture}
+              \filldraw[fill=white] (-2,-2) rectangle (3,2);
+              \draw (0,0) circle (1)
+              (1,0) circle (1);
+              \node at (-0.2,1.2) {S};
+              \node at (1.2,1.2) {P};
+              \node at (0.5,0) {\checkmark};
+            \end{tikzpicture}
+            \label{fig:2.1.1}
+          \end{figure}
+          令\(S\)为奇数，\(P\)为质数。
+        \item
+          \begin{figure}[H]
+            \centering
+            \begin{tikzpicture}
+              \filldraw[fill=white] (-2,-2) rectangle (3,2);
+              \draw (0.5,0) circle (1)
+              (0.6,0) circle (0.3);
+              \node at (0.3,1.2) {S};
+              \node at (0.6,0.5) {P};
+            \end{tikzpicture}
+            \label{fig:2.1.2}
+          \end{figure}
+          令\(S\)为整数，\(P\)为偶数。
+        \item
+          \begin{figure}[H]
+            \centering
+            \begin{tikzpicture}
+              \filldraw[fill=white] (-2,-2) rectangle (3,2);
+              \draw (0.5,0) circle (1)
+              (0.6,0) circle (0.3);
+              \node at (0.3,1.2) {P};
+              \node at (0.6,0.5) {S};
+            \end{tikzpicture}
+            \label{fig:2.1.3}
+          \end{figure}
+          令\(S\)为质数，\(P\)为整数。
+      \end{itemize}
+    \item ``所有\(S\)不是\(P\)''为假，即``有\(S\)为\(P\)''为真。故与上一问相同。
+  \end{enumerate}
+\end{solution}
+\begin{problem}\label{pro:3}
+  下列根据对当关系所进行的推理是否有效？为什么？
+  \begin{enumerate}
+    \item 有些人是画家，所以，有些人不是画家。
+    \item 并非所有的办公大楼都是五层的，所以，有些办公大楼不是五层的。
+  \end{enumerate}
+\end{problem}
+\begin{solution}
+  \begin{enumerate}
+    \item 无效。根据下反对关系，\(I\)假，\(O\)真假不定。
+    \item 有效。根据矛盾关系，\(A\)假，\(O\)必真。
+  \end{enumerate}
+\end{solution}
+\begin{problem}\label{pro:4}
+  下列直接推理能否成立？如能成立，请用公式写出它的推理过程。
+  \begin{enumerate}
+    \item 从\(SAP\)真，推出\(\overline{P}O \overline{S}\)真。
+    \item 从\(SEP\)真，推出\(\overline{P}I \overline{S}\)真。
+  \end{enumerate}
+\end{problem}
+\end{document}
