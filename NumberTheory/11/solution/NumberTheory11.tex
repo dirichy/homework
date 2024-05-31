@@ -1,6 +1,7 @@
 %!Mode:: "TeX:UTF-8"
 %!TEX TS-program = xelatex
 \documentclass{ctexart}
+\usepackage{float}
 \newif\ifpreface
 %\prefacetrue
 \input{../../../global/all}
@@ -56,7 +57,7 @@
 \end{problem}
 \begin{solution}
   Use \(6\) as primative root of \(41\), we have this table of index:
-  \begin{figure}
+  \begin{figure}[H]
     \centering
     \includegraphics[width=\linewidth]{./mod41.png}
   \end{figure}
