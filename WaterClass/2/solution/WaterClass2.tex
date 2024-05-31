@@ -6,7 +6,7 @@
 \usepackage{subfig}
 \usetikzlibrary{patterns}
 \newif\ifpreface
-\prefacetrue
+% \prefacetrue
 \input{../../../global/all}
 \begin{document}
 \large
@@ -14,10 +14,10 @@
 \ifpreface
   \input{../../../global/preface}
 \else
+  \newgeometry{left=2cm,right=2cm,top=2cm,bottom=2cm}
   \title{Logic 3}
   \maketitle
 \fi
-\newgeometry{left=2cm,right=2cm,top=2cm,bottom=2cm}
 %from_here_to_type
 \begin{problem}\label{pro:1}
   下列命题各属于何种性质的命题？其主项的周延情况如何？
@@ -107,4 +107,152 @@
     \item 从\(SEP\)真，推出\(\overline{P}I \overline{S}\)真。
   \end{enumerate}
 \end{problem}
+\begin{solution}
+  以下论证均假设主谓项非空。
+  \begin{enumerate}
+    \item 能成立。由换质法推理可得\(SAP\implies SE \overline{P}\)。
+      再由换位法可得\(\overline{P}E S\)。
+      再由换质法得\(\overline{P} A \overline{S}\)。
+      最后由差等关系推理可得\(\overline{P}I \overline{S}\)。
+    \item 不能成立。
+  \end{enumerate}
+\end{solution}
+\begin{problem}\label{pro:5}
+  \begin{enumerate}
+    \item 请根据换质法和换位法的规则回答，从``一切好的干部都是密切联系群众的''能否推出以下结论：
+      \begin{enumerate}
+        \item 有些好的干部不是密切联系群众的。
+        \item 不密切联系群众的不是好的干部。
+        \item 密切联系群众的是好干部。
+      \end{enumerate}
+      如能，请写出推理形式。如不能，说明理由。
+  \end{enumerate}
+\end{problem}
+\begin{solution}
+  \begin{enumerate}
+    \item 不能。\(SAP\) 与\(SOP\)是矛盾的。
+    \item 能。\(SAP\)由换质法得到\(SE \overline{P}\)，再由换位法得到\(\overline{P}ES\)，再由换质法得到\(\overline{P}E \overline{S}\).
+    \item 不能。\(SAP\)不能得到\(PAS\)。
+  \end{enumerate}
+\end{solution}
+\begin{problem}\label{pro:6}
+  下列三段论是否正确？如不正确，违反了哪条规则？
+  \begin{enumerate}
+    \item 海豚不是鱼，海狮不是海豚，所以，海狮不是鱼。
+    \item 甲车间多数工人评上过先进生产者，甲车间有些工人是党员，所以甲车间有
+      些党员是先进生产者。
+    \item 没有优秀的文艺作品不受群众欢迎的，长篇小说并不都是受群众欢迎的，所
+      以，有些长篇小说不是优秀的文艺作品。
+  \end{enumerate}
+\end{problem}
+\begin{solution}
+  \begin{enumerate}
+    \item 不正确。否定规则。
+    \item 不正确。中项不周延。
+    \item 正确。
+  \end{enumerate}
+\end{solution}
+\begin{problem}\label{pro:7}
+  在括号中填入适当的符号，构成一个正确的三段论，并写出推导过程。
+  \begin{enumerate}
+    \item \(\begin{matrix}
+                   & (\textcolor{white}{M}) & (\textcolor{white}{A}) & (\textcolor{white}{P}) \\
+                   & S                      & O                      & M                      \\
+        \hline
+        \therefore & S                      & (\textcolor{white}{O}) & P                      \\
+
+      \end{matrix}\)
+    \item \(\begin{matrix}
+                   & (\textcolor{white}{P}) & E                      & (\textcolor{white}{M}) \\
+                   & M                      & I                      & S                      \\
+        \hline
+        \therefore & S                      & (\textcolor{white}{O}) & P                      \\
+
+      \end{matrix}\)
+  \end{enumerate}
+
+\end{problem}
+\begin{solution}
+  \begin{enumerate}
+    \item \(\begin{matrix}
+                   & ({M}) & ({A}) & ({P}) \\
+                   & S     & O     & M     \\
+        \hline
+        \therefore & S     & ({O}) & P     \\
+
+      \end{matrix}\)
+
+      由于小前提否定知结论一定否定。由\(S\)在小前提中不周延知\(S\)在结论中不周延，故结论为\(SOP\)。
+      由中项规则知大前提中中项一定周延。结合否定规则，知大前提必须为\(MAP\)。
+    \item \(\begin{matrix}
+                   & ({P}) & E     & ({M}) \\
+                   & M     & I     & S     \\
+        \hline
+        \therefore & S     & ({O}) & P     \\
+
+      \end{matrix}\)
+
+      由\(S\)在小前提中不周延，知\(S\)在结论中不周延。结合否定规则，知结论为\(SOP\)。
+      显然前提是\(PEM\)。
+  \end{enumerate}
+\end{solution}
+\begin{problem}\label{pro:8}
+  请运用三段论有关知识，回答下列问题：
+  \begin{enumerate}
+    \item 以\(E\)命题为大前提，以\(I\)命题为小前提进行的三段论推理中，结论应该是什么命题？为什么？
+    \item 为什么结论是否定命题的三段论式，其大前提不能是\(I\)命题？
+  \end{enumerate}
+\end{problem}
+\begin{solution}
+  \begin{enumerate}
+    \item 由否定规则知结论为否定命题。由周延规则知结论中小项不周延。故结论应该为\(O\)命题。
+    \item 反设大前提可以是\(I\)命题。由否定规则可知小前提为否定命题。由周延规则知大项不周延。
+      故结论只可能是\(O\)命题。由中项规则知中项在小前提中周延。故小前提只能是\(SEM\)。
+      此时不论大前提是\(PIM\)还是\(MIP\)均不能构成有效三段论。故结论是否定命题的三段论，其大前提不能是\(I\) 命题。
+  \end{enumerate}
+\end{solution}
+\begin{problem}\label{pro:9}
+  \begin{enumerate}
+    \item 有一个正确的三段论，前提和结论中一共只有三个周延的项，结论中小项
+      周延，这是一个怎样的三段论？
+    \item 有一个正确的三段论，两个前提中只有大前提中有一个周延的项，这个三
+      段论的大前提、小前提和结论各为什么命题？
+  \end{enumerate}
+\end{problem}
+\begin{solution}
+  \begin{enumerate}
+    \item 中项至少周延一次，结论中小项周延故小前提中小项也周延。故大项均不周延，中项周延恰一次。
+      由结论中大项不周延，小项周延，可得结论为\(SAP\)。由结论是肯定的可得大小前提均肯定。
+      由小项在小前提周延可得小前提一定为\(SAM\)。故中项在大前提周延，因此大前提一定是\(MAP\)。
+    \item 由中项规则知这个项一定是中项。因此大小项在大小前提中都不周延。根据周延规则知大小项在结论中均不周延。
+      因此结论只能是\(O\) 命题或者\(I\)命题。
+      由中项在大前提周延，大项不周延可知大前提为\(MAP\)。由小前提两项都不周延知小前提只能是\(O\) 命题或者\(I\)命题。
+      故所有可能组合为：
+      \begin{enumerate}
+        \item 结论为\(SOP\)，小前提为\(SOM\)。
+        \item 结论为\(SIP\)，小前提为\(SIM\)。
+      \end{enumerate}
+      经过验证，这两种可能性都是合法的。
+  \end{enumerate}
+\end{solution}
+\begin{problem}\label{pro:10}
+  \begin{enumerate}
+    \item 结论是全称命题的正确三段论，其中项不能周延两次。
+    \item 已知某有效三段论的大前提为\(O\)命题，证明其小前提必为全称肯定命题，
+      并推出这一三段论的格及其形式。
+  \end{enumerate}
+\end{problem}
+\begin{solution}
+  \begin{enumerate}
+    \item 反设中项周延两次。由结论为全称命题知小项在结论中周延。由周延规则知小项在小前提周延。
+      故小前提只能是\(SEM\)。故由否定规则知结论必须否定，因此结论为\(SEP\)。因此\(P\)在结论中周延，
+      根据周延规则可知\(P\) 在大前提周延。因此大前提只能为\(PEM\)。这与否定规则是矛盾的。
+      因此反设不成立。
+    \item 由大前提为\(O\) 命题知中项在大前提不周延。根据中项规则知中项在小前提周延。
+      由大前提是否定命题，根据否定规则知小前提是肯定命题，结论是否定命题。
+      因此小前提只能是\(MAS\)。由小项在小前提不周延知其在结论不周延。结合结论是否定命题，可得结论一定是\(SOP\)。
+      大前提显然是\(POM\)。
+  \end{enumerate}
+\end{solution}
+
 \end{document}
