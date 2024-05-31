@@ -1,0 +1,49 @@
+%!Mode:: "TeX:UTF-8"
+%!TEX TS-program = xelatex
+\documentclass{ctexart}
+\newif\ifpreface
+%\prefacetrue
+\input{../../../global/all}
+\begin{document}
+\large
+\iffalse
+  \setlength{\baselineskip}{1.2em}
+  \ifpreface
+    \input{../../../global/preface}
+  \else
+    \maketitle
+  \fi
+\fi
+\newgeometry{left=2cm,right=2cm,top=2cm,bottom=2cm}
+%from_here_to_type
+\begin{solution}
+  On one hand, assume \(g\) is \(q_i\)-th power residue of \(m\), then \(g \equiv h^{q_i} \mod m\).
+  So \(g^{\frac{\phi(m)}{q_i}}\equiv h^{\phi(m)}\equiv 1 \mod m\), contradiction!
+
+  On the other hand, assume \(o(g)<\phi(m)\). Easily \(o(g) \mid \phi(m)\), so \(\frac{\phi(m)}{o(g)} \in \mathbb{Z}\).
+  So \(\exists i,q_i \mid \frac{\phi(m)}{o(g)}\). Then \(g^{\frac{\phi(m)}{q_i}} \equiv 1 \mod m\).
+  Then \(g\) is \(q_i\)-th power residue of \(m\).
+\end{solution}
+
+\begin{solution}
+  Easily \(\phi(17)=16=2^4\). So we only need to check \(10^8 \not \equiv 1 \mod 17\).
+  Easily \(10^8 \equiv 100^4 \equiv (-2)^4 \equiv 2^4 \equiv -1 \mod 17\).
+  So \(10\) is primative root of \(17\).
+
+  Easily \(\phi(257)=256=2^8\), so we only need to check \(10^{128} \not \equiv 1 \mod 257\).
+  By calculation easily to get that \(10^{128}\equiv -1 \mod 257\).
+  So \(10\) is primative root of \(17\).
+
+  Since \(10\) is primative root of \(17,257\), we know the length of loop-body of \(\frac{1}{17},\frac{1}{257}\) are \(16,256\).
+\end{solution}
+
+\begin{solution}
+  Use \(6\) as primative root of \(41\), we have this table of index:
+  \begin{figure}
+    \centering
+    \includegraphics{./mod41.png}
+  \end{figure}
+
+\end{solution}
+
+\end{document}
