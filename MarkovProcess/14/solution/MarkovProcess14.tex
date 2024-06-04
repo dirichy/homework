@@ -1,0 +1,79 @@
+%!Mode:: "TeX:UTF-8"
+%!TEX TS-program = xelatex
+\documentclass{ctexart}
+\newif\ifpreface
+%\prefacetrue
+\input{../../../global/all}
+\begin{document}
+\large
+\iffalse
+  \setlength{\baselineskip}{1.2em}
+  \ifpreface
+    \input{../../../global/preface}
+  \else
+    \maketitle
+  \fi
+\fi
+\newgeometry{left=2cm,right=2cm,top=2cm,bottom=2cm}
+%from_here_to_type
+\begin{problem}\label{pro:1}
+  Assume \(N(t)\) is updating process. \(X\) is the time interval distrabution of \(N(t)\).
+  Assume \(\mathbb{D}(X)<\infty\).
+  Let \(R(t):=S_{N(t)+1}-t\). Find:
+  \[
+    \lim_{T \to \infty} \frac{1}{T}\int_{0}^{T}R(t) \d t
+  \]
+\end{problem}
+\begin{solution}
+  Easily \(N(t)+1 \geq T \geq N(t)\).
+  So \(\int_{0}^{T}R(t) \d t \leq \sum_{i=1}^{N(T)+1} \int_{S_{i-1}}^{S_i}(S_i-t) \d t=\frac{1}{2}\sum_{i=1}^{N(t)+1} (S_i-S_{i-1})^2=\frac{1}{2} \sum_{i=1}^{N(T)+1} \xi_i^2\).
+  For the same reason, we get that \(\int_{0}^{T}R(t) \d t \geq \frac{1}{2} \sum_{i=1}^{N(T)} \xi_i^2\).
+
+  Easy to know that \(\lim_{T \to \infty} \frac{1}{T} \sum_{i=1}^{N(T)} \xi_i^2=\lim_{T \to \infty} \frac{1}{T} \sum_{i=1}^{N(T)+1} \xi_i^2=\frac{\mathbb{E}(X^2)}{\mathbb{E}(X)^2}\).
+  So finally we get that
+  \[
+    \lim_{T \to \infty} \frac{1}{T}\int_{0}^{T}R(t) \d t=\frac{\mathbb{E}(X^2)}{2\mathbb{E}(X)^2}
+  \]
+  .
+\end{solution}
+\begin{problem}\label{pro:2}
+  Assume the number of people arriving the cinema is distributed as a Possion process with parameter \(\lambda\).
+  Assume the film begin at a fixed time \(t \geq 0\).
+  Let \(A(t)\) be the sum of waiting time of all people arriving in \((0,t]\), find \(\mathbb{E}(A(t))\).
+\end{problem}
+\begin{solution}
+  Let \(V_k\) be the arriving time of \(k\)-th people. Let \(N(t)\) be the number of people in \((0,t]\).
+  Then \(A(t)=\sum_{k=1}^{N(t)} (t-V_k)\). Let \(\xi_k:=V_k-V_{k-1}\).
+  Then \(\sum_{k=1}^{N(t)} V_k=\sum_{k=1}^{N(t)} (N(t)-k)\xi_k=\sum_{k=0}^{N(t)-1} k \xi_{N(t)-k}\).
+  So \(\mathbb{E}(A(t))=t \mathbb{E}(N(t))-\mathbb{E}(\sum_{k=0}^{N(t)-1} k\xi_{N(t)-k})\).
+  Easy to get that \(\mathbb{E}(\sum_{k=0}^{N(t)-1} k\xi_{N(t)-k} \mid N(t)=n)=\frac{nt}{2}\).
+  So \(\mathbb{E}(A(t) \mid N(t)=n)=nt-\frac{nt}{2}=\frac{nt}{2}\).
+  So finally we have \(\mathbb{E}(A(t))=\mathbb{E}(\mathbb{E}(A(t) \mid N(t)))=\mathbb{E}(\frac{N(t)t}{2})=\frac{\lambda t^2}{2}\).
+\end{solution}
+\begin{problem}\label{pro:3}
+  Assume a machine has life distrabuted \(p\). When machine is broken or has been used \(T\) years, we will change a new machine.
+  The price of new machine is \(C_1\), and if the machine is broken, it would cause loss \(C_2\).
+  \begin{enumerate}
+    \item Give the long-time average fee of this machine.
+    \item Let \(C_1=10,C_2=0.5\), and \(p(x)=\mathbbm{1}_{(0,10)}(x) \frac{1}{10}\).
+      Which \(T\) can let the fee be minimum.
+  \end{enumerate}
+\end{problem}
+\begin{solution}
+  \begin{enumerate}
+    \item Let \(\xi\) be the time when the machine will broken. Let \(\gamma:=\xi \wedge T\).
+      Then the machine will be changed at \(\gamma\).
+      Obviously \(\mathbb{E}(\gamma)=T \mathbb{P}(\xi>T)+\mathbb{E}(\xi \mathbbm{1}(\xi \leq T))=T \int_{T}^{\infty}p(x) \d x + \int_{0}T xp(x) \d x\).
+      Let \(\eta\) be the fee of this machine, then we have \(\eta=C_1\mathbbm{1}(\xi>T)+(C_1+C_2)\mathbbm{1}(\xi \leq T)=C_1+C_2 \mathbbm{1}(\xi \leq T)\).
+      So \(\mathbb{E}(\eta)=C_1+C_2 \int_{0}^{T}p(x) \d x\).
+      So the long-time average fee is
+      \[
+        g(T)=\frac{C_1+C_2 \int_{0}T p(x) \d x}{T \int_{T}^{\infty}p(x) \d x + \int_{0}^{T}x p(x) \d x}
+      \].
+    \item Easy to get that \(g(T)=\frac{200+T}{20T-T^2}\) when \(T \in (0,10)\).
+      And \(g'(T)=\frac{T^2 + 400T - 4000}{(20T-T^2)^2}\).
+      Let \(g'(T)=0\), then \(T^2+400T-4000=0\), then \(T=20 \sqrt{110}-200 \approx 9.76\).
+      So \(T=9.76\) can make the fee get minimum.
+  \end{enumerate}
+\end{solution}
+\end{document}
