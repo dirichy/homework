@@ -28,7 +28,7 @@
   Easily \(N(t)+1 \geq T \geq N(t)\).
   So \(\int_{0}^{T}R(t) \d t \leq \sum_{i=1}^{N(T)+1} \int_{S_{i-1}}^{S_i}(S_i-t) \d t=\frac{1}{2}\sum_{i=1}^{N(t)+1} (S_i-S_{i-1})^2=\frac{1}{2} \sum_{i=1}^{N(T)+1} \xi_i^2\).
   For the same reason, we get that \(\int_{0}^{T}R(t) \d t \geq \frac{1}{2} \sum_{i=1}^{N(T)} \xi_i^2\).
-
+  \(\int_{0}^T R(t)\d t \geq \frac{1}{2}\sum_{i=1}^{N} \xi_i^2\)
   Easy to know that \(\lim_{T \to \infty} \frac{1}{T} \sum_{i=1}^{N(T)} \xi_i^2=\lim_{T \to \infty} \frac{1}{T} \sum_{i=1}^{N(T)+1} \xi_i^2=\frac{\mathbb{E}(X^2)}{\mathbb{E}(X)^2}\).
   So finally we get that
   \[
@@ -75,5 +75,28 @@
       Let \(g'(T)=0\), then \(T^2+400T-4000=0\), then \(T=20 \sqrt{110}-200 \approx 9.76\).
       So \(T=9.76\) can make the fee get minimum.
   \end{enumerate}
+\end{solution}
+\begin{problem}\label{pro:4 }
+  A kind of product is qualified with probability \(p(0 < p < 1)\).
+  We sample these product by the following way: we check all the product at first until there appears
+  \(k\) qualified product sequently. Then we check the rest of product by probability \(\alpha(0 < \alpha <1)\)
+  until there appears one unqualified product, then one circle ends. Next we restart another checking
+  circle. Please find out the proportion of checked product after a long time.
+\end{problem}
+\begin{solution}
+  For sake of convenience, we call the \(k\) qualified products appearing sequently as \(k\) qualified sequence.
+  Assume the proportion of checked product after a long time is \(\beta\).
+  Let \(N_k\) be the amount of product when the first \(k\) qualified sequence ends. \(M_k=\mathbb{E}(N_k)\). \(G_k\) is the
+  event that the next one is qualified after the first \(k-1\) qualified sequence ends. Obviously, \(\mathbb{E}(N_k-N_{k-1} \mid G_k)=1\).
+  And \(\mathbb{E}(N_k-N_{k-1} \mid G_k)=\mathbb{E}(N_k) + 1\).
+  Therefore, \(\mathbb{E}(N_k-N_{k-1})=p + (1-p)(\mathbb{E}(N_k) + 1)\). So \(M_{k-} M_{k-1}=p + (1-p)( 1 + M_k)\).
+  Then \(pM_k=M_{k-1} + 1\). Thus, \(M_k=\frac{\frac{1}{p^k}-1}{1-p}\).
+  Let \(A=\{\)The amount of product checked in one circle\(\}\), \(B=\{\)The amount of product in one circle\(\}\).
+  So finding one unqualified product need average checking time \(\frac{1}{1-p}\) according to geometric distribution.
+  Then we averagely need \(\frac{1}{\alpha(1-p)}\) product to find out the unqualified one.
+  Then \(\mathbb{E}(A)=M_k + \frac{1}{1-p}, \mathbb{E}(B)=M_k + \frac{1}{\alpha(1-p)}\).
+  So \[
+    \beta = \frac{\mathbb{E}(A)}{\mathbb{E}(B)}=\frac{\frac{\frac{1}{p^k}-1}{1-p} + \frac{1}{1-p}}{\frac{\frac{1}{p^k}-1}{1-p} + \frac{1}{\alpha(1-p)}}=\frac{\alpha}{\alpha + p^k-\alpha p^k}
+  \]
 \end{solution}
 \end{document}

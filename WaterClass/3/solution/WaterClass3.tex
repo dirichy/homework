@@ -1,0 +1,146 @@
+%!Mode:: "TeX:UTF-8"
+%!TEX TS-program = xelatex
+\documentclass{ctexart}
+\newif\ifpreface
+% \prefacetrue
+\input{../../../global/all}
+\begin{document}
+\large
+\setlength{\baselineskip}{1.2em}
+\ifpreface
+  \input{../../../global/preface}
+\else
+  \newgeometry{left=2cm,right=2cm,top=2cm,bottom=2cm}
+  \title{Logic 4}
+  \maketitle
+\fi
+%from_here_to_type
+\begin{problem}\label{pro:1}
+  从对称性的角度下列命题中划有横线的关系各属于何种关系？
+  \begin{enumerate}
+    \item 甲概念\underline{包含于}乙概念。
+    \item 甲队\underline{战胜}乙队。
+    \item 田路和王州\underline{同岁}。
+  \end{enumerate}
+\end{problem}
+\begin{solution}
+  \begin{enumerate}
+    \item 理解为非严格包含的话为非对称关系。如果理解为严格对称关系的话为反对称关系。
+    \item 战胜应当是一个动词而非关系，我觉得应该改为``在XX比赛中战胜了''，或者``战胜过''。
+      按照第一种理解应当是反对称关系。按照第二种理解应当是非对称关系。
+    \item 对称关系。
+  \end{enumerate}
+\end{solution}
+\begin{problem}\label{pro:2}
+  下列关系推理是否正确？为什么？
+  \begin{enumerate}
+    \item W足球队败给了S足球队，S足球队又败给了K足球队，所以，这次足球球赛的名次是冠军为K足球队，亚军是S足球队，W足球队获得第三名。
+    \item 吕珍佩服于烨，于是，于烨也佩服吕珍。
+    \item 美国在加拿大以南，巴西在美国以南，所以，巴西在加拿大以南。
+    \item 甲组有的同学批评了小王，张红是甲组的同学，所以张红也批评了小王。
+  \end{enumerate}
+\end{problem}
+\begin{solution}
+  \begin{enumerate}
+    \item 信息不足无法判断。首先，如果是积分制的比赛，名次是不能用胜败关系得出的。
+      其次，没有明确是否只有W，S，K三支队伍。
+      如果是淘汰赛并且只有这三支队伍的话，推理正确。
+    \item 不正确。``佩服''是非对称关系。
+    \item 推理正确。``在……以南''是传递关系。
+    \item 推理不正确。媒概念在关系命题中必须周延。
+  \end{enumerate}
+\end{solution}
+\begin{problem}\label{pro:3}
+  下面有若干组模态命题，已知每一组的第一个命题为真，请指出其余命题的真假。
+  \begin{enumerate}
+    \item
+      \begin{enumerate}
+        \item 竺红必然不能取得100米决赛的冠军。
+        \item 竺红必然取得100米决赛的冠军。
+        \item 竺红可能取得100米决赛的冠军。
+        \item 竺红可能不会取得100米决赛的冠军。
+      \end{enumerate}
+    \item
+      \begin{enumerate}
+        \item 市第一百货商店今天可能没有彩电出售。
+        \item 市第一百货商店今天必然有彩电出售。
+        \item 市第一百货商店今天必然没有彩电出售。
+        \item 市第一百货商店今天可能有彩电出售。
+      \end{enumerate}
+  \end{enumerate}
+\end{problem}
+\begin{solution}
+  \begin{enumerate}
+    \item
+      \begin{enumerate}
+        \item \label{it:1.1} 依题意为真。
+        \item 根据\ref{it:1.1}，依照反对关系可知为假。
+        \item 根据\ref{it:1.1}，依照矛盾关系可知为假。
+        \item 根据\ref{it:1.1}，依照差等关系可知为真。
+      \end{enumerate}
+    \item
+      \begin{enumerate}
+        \item \label{it:2.1} 依题意为真。
+        \item 根据\ref{it:2.1}，依照矛盾关系可知为假。
+        \item 根据\ref{it:2.1}，依照差等关系可知真假不定。
+        \item 根据\ref{it:2.1}，依照下反对关系可知真假不定。
+      \end{enumerate}
+  \end{enumerate}
+\end{solution}
+\begin{problem}\label{pro:4}
+  请指出下列模态推理的形势，并说明它是否正确，为什么？
+  \begin{enumerate}
+    \item 周师傅今年不可能回家，所以，周师傅今年春节不回家是必然的。
+    \item 老王可能不住在五层楼上，所以，老王不可能住在五层楼上。
+    \item 北方人冬天到南方来对气候可能不适应，所以，北方人冬天到南方来对气候不必然不适应。
+  \end{enumerate}
+\end{problem}
+\begin{solution}
+  \begin{enumerate}
+    \item 推理形式：\(\neg \lozenge p \vdash \square \neg p\) 。正确。属于矛盾关系推理。
+    \item 推理形式：\(\lozenge \neg p \vdash \neg \lozenge p\)。不正确。
+      根据矛盾关系可知，\(\neg \lozenge p \iff \square \neg p\)，根据差等关系知\(\lozenge \neg p \not \vdash \square \neg p\)。
+      故为无效推理。
+    \item 推理形式：\(\lozenge \neg p \vdash \neg \square \neg p \)。不正确。根据差等关系可知其为无效推理。
+  \end{enumerate}
+\end{solution}
+\begin{problem}\label{pro:5}
+  下面有若干组规范命题，已知每一组的第一个命题是正确的，请根据对当关系，指出其他三个命题的正确与否。
+  \begin{enumerate}
+    \item
+      \begin{enumerate}
+        \item 进出C厂厂门必须佩戴厂徽。
+        \item 进出C厂厂门必须不佩戴厂徽。
+        \item 进出C厂厂门允许佩戴厂徽。
+        \item 进出C厂厂门允许不佩戴厂徽。
+      \end{enumerate}
+    \item
+      \begin{enumerate}
+        \item M国的新产品允许不交所得税。
+        \item M国的新产品必须交所得税。
+        \item M国的新产品必须不交所得税。
+        \item M国的新产品允许交所得税。
+      \end{enumerate}
+  \end{enumerate}
+  \begin{solution}
+    \begin{enumerate}
+      \item
+        \begin{enumerate}
+          \item \label{it:3.1}依题意为真。
+          \item 根据\ref{it:3.1}，依照反对关系知为假。
+          \item 根据\ref{it:3.1}，依照差等关系知为真。
+          \item 根据\ref{it:3.1}，依照矛盾关系知为假。
+        \end{enumerate}
+      \item
+        \begin{enumerate}
+          \item \label{it:4.1}依题意为真。
+          \item 根据\ref{it:4.1}，依照矛盾关系知为假。
+          \item 根据\ref{it:4.1}，依照差等关系知真假不定。
+          \item 根据\ref{it:4.1}，依照下反对关系知真假不定。
+        \end{enumerate}
+    \end{enumerate}
+  \end{solution}
+
+\end{problem}
+
+\end{document}
