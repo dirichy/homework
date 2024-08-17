@@ -83,43 +83,42 @@ SID:201911010205\\
 \large
 \maketitle
 \begin{problem}
-    证明存在闭区间 $[0,1]$ 上的连续函数 $x(t)$, 使得
-    $$
+  证明存在闭区间 $[0,1]$ 上的连续函数 $x(t)$, 使得
+  $$
     x(t)=\frac{1}{2} \sin x(t)-a(t) .
-    $$
-    其中 $a(t)$ 是给定的 $[0,1]$ 上的连续函数
+  $$
+  其中 $a(t)$ 是给定的 $[0,1]$ 上的连续函数
 \end{problem}
 \begin{proof}
-    $\theta: C[0,1]\to C[0,1]$, $x(t)\eleto 1/2\sin x(t)-a(t)$,  $\rho(x(t),y(t)):=\max_{0\leq t\leq 1}|x(t)-y(t)|$ is the distance on $C[0,1]$.
-    \begin{equation}
-        \begin{aligned}
-            &|\theta(x(t))-\theta(y(t))|\\
-            =&|1/2\sin x(t)-a(t)-(1/2\sin y(t)-a(t))|\\
-            =&|1/2\sin x(t)-1/2\sin y(t)|\\
-            =&|\sin \frac{x(t)-y(t)}{2}\cos\frac{x(t)+y(t)}{2}|\\
-            \leq&|\frac{x(t)-y(t)}{2}|
-        \end{aligned}\end{equation}
-    Therefore, $\rho(\theta(x(t)),\theta(y(t)))\leq \frac{1}{2}\rho(x(t),y(t))$. Thus, $\theta$ is a contraction mapping on $(C[0,1],\rho)$. By contraction mapping principle, $\exists x(t)\in C[0,1]$ statisfies $x(t)=\frac{1}{2}\sin x(t)-a(t)$.
-    
+  $\theta: C[0,1]\to C[0,1]$, $x(t)\eleto 1/2\sin x(t)-a(t)$,  $\rho(x(t),y(t)):=\max_{0\leq t\leq 1}|x(t)-y(t)|$ is the distance on $C[0,1]$.
+  \begin{equation}
+    \begin{aligned}
+           & |\theta(x(t))-\theta(y(t))|                       \\
+      =    & |1/2\sin x(t)-a(t)-(1/2\sin y(t)-a(t))|           \\
+      =    & |1/2\sin x(t)-1/2\sin y(t)|                       \\
+      =    & |\sin \frac{x(t)-y(t)}{2}\cos\frac{x(t)+y(t)}{2}| \\
+      \leq & |\frac{x(t)-y(t)}{2}|
+    \end{aligned}\end{equation}
+  Therefore, $\rho(\theta(x(t)),\theta(y(t)))\leq \frac{1}{2}\rho(x(t),y(t))$. Thus, $\theta$ is a contraction mapping on $(C[0,1],\rho)$. By contraction mapping principle, $\exists x(t)\in C[0,1]$ statisfies $x(t)=\frac{1}{2}\sin x(t)-a(t)$.
+
 \end{proof}
 \begin{problem}
-$$x(t)-\lambda \int_0^1 \e^{t-s} x(s) \mathrm{d} s=y(t),$$
-其中 $y(t) \in C[0,1], \lambda$ 为常数, $|\lambda|<1$. 证明存在唯一解 $x(t) \in C[0,1]$.
+  $$x(t)-\lambda \int_0^1 \e^{t-s} x(s) \mathrm{d} s=y(t),$$
+  其中 $y(t) \in C[0,1], \lambda$ 为常数, $|\lambda|<1$. 证明存在唯一解 $x(t) \in C[0,1]$.
 \end{problem}
 \begin{proof}
- $x(t)-\lambda \int_0^1 \e^{t-s} x(s) \mathrm{d} s=y(t),\Leftrightarrow \e^{-t} x(t)-\lambda \int_0^1 \e^{-s} x(s) \mathrm{d} s=\e^{-t}y(t).$\\
- Let $z(t)=\e^{-t}x(t),w(t)=\e^{-t}y(t)$,  $\theta: C[0,1]\to C[0,1]$, $z(t)\eleto \lambda \int_0^1 z(s) \mathrm{d} s-w(t)$,  $\rho(x(t),y(t)):=\max_{0\leq t\leq 1}|x(t)-y(t)|$ is the distance on $C[0,1]$.
- \begin{equation}
+  $x(t)-\lambda \int_0^1 \e^{t-s} x(s) \mathrm{d} s=y(t),\Leftrightarrow \e^{-t} x(t)-\lambda \int_0^1 \e^{-s} x(s) \mathrm{d} s=\e^{-t}y(t).$\\
+  Let $z(t)=\e^{-t}x(t),w(t)=\e^{-t}y(t)$,  $\theta: C[0,1]\to C[0,1]$, $z(t)\eleto \lambda \int_0^1 z(s) \mathrm{d} s-w(t)$,  $\rho(x(t),y(t)):=\max_{0\leq t\leq 1}|x(t)-y(t)|$ is the distance on $C[0,1]$.
+  \begin{equation}
     \begin{aligned}
-        &|\theta(u(t))-\theta(v(t))|\\
-        =&|(\lambda \int_0^1 u(s) \mathrm{d} s-w(t))-(\lambda \int_0^1 v(s) \mathrm{d} s-w(t))|\\
-        =&|\lambda \int_0^1 u(s) \mathrm{d} s-\lambda \int_0^1 v(s) \mathrm{d} s|\\
-        \leq&|\lambda |\int_0^1|u(s)-v(s)|\mathrm{d}  s\\
-        \leq &|\lambda|\rho(u(s),v(s))
+           & |\theta(u(t))-\theta(v(t))|                                                           \\
+      =    & |(\lambda \int_0^1 u(s) \mathrm{d} s-w(t))-(\lambda \int_0^1 v(s) \mathrm{d} s-w(t))| \\
+      =    & |\lambda \int_0^1 u(s) \mathrm{d} s-\lambda \int_0^1 v(s) \mathrm{d} s|               \\
+      \leq & |\lambda |\int_0^1|u(s)-v(s)|\mathrm{d}  s                                            \\
+      \leq & |\lambda|\rho(u(s),v(s))
     \end{aligned}\end{equation}
-    Therefore, $\rho(\theta(x(t)),\theta(y(t)))\leq |\lambda|\rho(x(t),y(t))$, where $|\lambda|<1$.
-    Thus, $\theta$ is a contraction mapping on $(C[0,1],\rho)$. By contraction mapping principle, $\exists |z(t)\in C[0,1]$ statisfies $z(t)=\lambda \int_0^1 z(s) \mathrm{d} s-w(t)$. $x(t)=\e^{t}z(t)$ is what we need.
+  Therefore, $\rho(\theta(x(t)),\theta(y(t)))\leq |\lambda|\rho(x(t),y(t))$, where $|\lambda|<1$.
+  Thus, $\theta$ is a contraction mapping on $(C[0,1],\rho)$. By contraction mapping principle, $\exists |z(t)\in C[0,1]$ statisfies $z(t)=\lambda \int_0^1 z(s) \mathrm{d} s-w(t)$. $x(t)=\e^{t}z(t)$ is what we need.
 \end{proof}
 \end{document}
-
 

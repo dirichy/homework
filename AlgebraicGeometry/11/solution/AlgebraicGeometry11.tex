@@ -9,26 +9,26 @@
 \large
 \setlength{\baselineskip}{1.2em}
 \ifpreface
-    \input{../../../global/preface}
-\newgeometry{left=2cm,right=2cm,top=2cm,bottom=2cm}
+  \input{../../../global/preface}
+  \newgeometry{left=2cm,right=2cm,top=2cm,bottom=2cm}
 \else
-\newgeometry{left=2cm,right=2cm,top=2cm,bottom=2cm}
-\maketitle
+  \newgeometry{left=2cm,right=2cm,top=2cm,bottom=2cm}
+  \maketitle
 \fi
 %from_here_to_type
 \begin{problem}
-  Let \(E:=\{(x,y) \in \mathbbm{A}_{\mathbb{C}}^2:y^2=x^3+ax+b\}\). Prove that \(E\) is nonsingular \(\iff 4a^3+27b^2 \neq 0\). 
-  i.e., \(x^3+ax+b\) has no repeated roots. 
+  Let \(E:=\{(x,y) \in \mathbbm{A}_{\mathbb{C}}^2:y^2=x^3+ax+b\}\). Prove that \(E\) is nonsingular \(\iff 4a^3+27b^2 \neq 0\).
+  i.e., \(x^3+ax+b\) has no repeated roots.
 \end{problem}
 
 \begin{solution}
-  Let \(f(x,y):=y^2-x^3-ax-b \in \mathbb{C}[x,y]\). Then we have \(f_x(x,y)=3x^2-a,f_y(x,y)=2y\). 
-  Now consider the equation \(f(x,y)=f_x(x,y)=f_y(x,y)=0\). We know \(E\) is nonsigular iff this equation has solutions. 
-  From \(f_y=0\) we get \(y=0\), then \(x^3-ax-b=3x^2-a=0\). So the equation has solutions iff \(x^3-ax-b\) has repeated roots. 
-  Since \(3x^2-a=0\) we get \(0=x^3-ax-b=3x^3-3ax-3b=ax-3ax-3b\), so \(2ax=-3b\), then \(0=3x^2-a=12a^2x^2-4a^3=27b^2-4a^3\). 
-  So we get \(x^3-ax-b\) has repeated roots iff \(27b^2-4a^3=0\). 
+  Let \(f(x,y):=y^2-x^3-ax-b \in \mathbb{C}[x,y]\). Then we have \(f_x(x,y)=3x^2-a,f_y(x,y)=2y\).
+  Now consider the equation \(f(x,y)=f_x(x,y)=f_y(x,y)=0\). We know \(E\) is nonsigular iff this equation has solutions.
+  From \(f_y=0\) we get \(y=0\), then \(x^3-ax-b=3x^2-a=0\). So the equation has solutions iff \(x^3-ax-b\) has repeated roots.
+  Since \(3x^2-a=0\) we get \(0=x^3-ax-b=3x^3-3ax-3b=ax-3ax-3b\), so \(2ax=-3b\), then \(0=3x^2-a=12a^2x^2-4a^3=27b^2-4a^3\).
+  So we get \(x^3-ax-b\) has repeated roots iff \(27b^2-4a^3=0\).
 
-  So finally we get \(E\) is nonsingular iff \(27b^2-4a^3=0 \) iff \(x^3-ax-b\) has no repeated roots. 
+  So finally we get \(E\) is nonsingular iff \(27b^2-4a^3=0 \) iff \(x^3-ax-b\) has no repeated roots.
 \end{solution}
 
 \begin{problem}
@@ -36,25 +36,24 @@
 \end{problem}
 
 \begin{solution}
-  Consider \(\theta:E\setminus \van(y) \to \mathbbm{A}_{\mathbb{C}}^2,[x,y,z] \mapsto (\frac{x}{y}, \frac{z}{y})\). 
-  Noting \(\theta([0,1,0])=(0,0)\), so we only need to prove \((0,0)\) is nonsigular in \(F=\{(x,z)\in \mathbbm{A}_{\mathbb{C}}^2:z=x^3-axz^2-bz^3\}\). 
-  Let \(f(x,z)=x^3-axz^2-bz^3-z\), then \(f_x(x,z)=3x^2-az^2,f_z(x,z)=2axz-3bz^2-1\). 
-  Then \(f_z(0,0)=-1 \neq 0\). So \((0,0)\) is nonsigular. 
+  Consider \(\theta:E\setminus \van(y) \to \mathbbm{A}_{\mathbb{C}}^2,[x,y,z] \mapsto (\frac{x}{y}, \frac{z}{y})\).
+  Noting \(\theta([0,1,0])=(0,0)\), so we only need to prove \((0,0)\) is nonsigular in \(F=\{(x,z)\in \mathbbm{A}_{\mathbb{C}}^2:z=x^3-axz^2-bz^3\}\).
+  Let \(f(x,z)=x^3-axz^2-bz^3-z\), then \(f_x(x,z)=3x^2-az^2,f_z(x,z)=2axz-3bz^2-1\).
+  Then \(f_z(0,0)=-1 \neq 0\). So \((0,0)\) is nonsigular.
 \end{solution}
 
 \begin{problem}
-  Let \(\omega_1,\omega_2 \in \mathbb{C}\) are \(\mathbb{R}\)-linear independent and \(\Lambda:=\{m \omega_1+ n \omega_2:m,n \in \mathbb{Z}\}\subset \mathbb{C}\). 
-  Then \(\mathbb{C} / \Lambda\) is Riemann surface. Now consider \(T_w:\mathbb{C} / \Lambda \to \mathbb{C} / \Lambda,[z] \mapsto [z + w]\) for some \(w \in \mathbb{C}\). 
-  Prove that \(T_w\) is homomorphism. 
+  Let \(\omega_1,\omega_2 \in \mathbb{C}\) are \(\mathbb{R}\)-linear independent and \(\Lambda:=\{m \omega_1+ n \omega_2:m,n \in \mathbb{Z}\}\subset \mathbb{C}\).
+  Then \(\mathbb{C} / \Lambda\) is Riemann surface. Now consider \(T_w:\mathbb{C} / \Lambda \to \mathbb{C} / \Lambda,[z] \mapsto [z + w]\) for some \(w \in \mathbb{C}\).
+  Prove that \(T_w\) is homomorphism.
 \end{problem}
 
 \begin{solution}
-  For \(p=[z]\in \mathbb{C} / \Lambda\), let \(q=[z+w]=T_w([p])\). 
-  Let \(\phi_p,\phi_q\) is homomorphism from neibor of \(p,q\) to \(\mathbb{C}\). Then we easily get \(\phi_q \circ T_w-\phi_p=w+r\) for some \(r \in \Lambda\). 
-  Let \(f:\mathbb{C} \to \mathbb{C},x \mapsto x+w+r\). Then \(f+\phi_q \circ T_w \circ \phi_p^{-1}\) is homomorphism. 
-  So we get \(T_w\) is homomorphism. 
-  Easily we get \(T_{-w}=T_w^{-1}\), so \(T_w\) is isomorphic. 
+  For \(p=[z]\in \mathbb{C} / \Lambda\), let \(q=[z+w]=T_w([p])\).
+  Let \(\phi_p,\phi_q\) is homomorphism from neibor of \(p,q\) to \(\mathbb{C}\). Then we easily get \(\phi_q \circ T_w-\phi_p=w+r\) for some \(r \in \Lambda\).
+  Let \(f:\mathbb{C} \to \mathbb{C},x \mapsto x+w+r\). Then \(f+\phi_q \circ T_w \circ \phi_p^{-1}\) is homomorphism.
+  So we get \(T_w\) is homomorphism.
+  Easily we get \(T_{-w}=T_w^{-1}\), so \(T_w\) is isomorphic.
 \end{solution}
 
-fdsa范德萨\(fdsa\)分三大范德萨fdsa fdsafdsaf fdsa 范德萨范德萨\(fdsafdsafdsaf\,\, f\)等
 \end{document}
