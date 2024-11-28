@@ -1,0 +1,144 @@
+%arara: xelatex
+%!Mode:: "TeX:UTF-8"
+%!TEX TS-program = xelatex
+\documentclass{ctexart}
+\newif\ifpreface
+\prefacetrue
+\input{../../../global/all}
+\DeclareMathOperator{\sgn}{sgn}
+\begin{document}
+\large
+\setlength{\baselineskip}{1.2em}
+\ifpreface
+\input{../../../global/preface}
+\else
+\maketitle
+\fi
+\newgeometry{left=2cm,right=2cm,top=2cm,bottom=2cm}
+\everymath{\displaystyle}
+\newlength\inlineHeight
+\newlength\inlineWidth
+\long\def\(#1\){%
+  \settoheight{\inlineHeight}{$#1$}%
+  \settowidth{\inlineWidth}{$#1$}%
+  \ifdim \inlineWidth > 0.5\textwidth%
+  $$#1$$%
+  \else%
+  \ifdim \inlineHeight > 1.5em%
+  $$#1$$%
+  \else%
+  $#1$%
+  \fi%
+  \fi%
+}
+%from_here_to_type
+\begin{problem}\label{pro:1.1}
+  Assume \(\mathcal{A}_0=\{(U_\alpha,\phi_\alpha):\alpha \in I\}\) is a \(C^r\)-compatible coordinate covery of a \(m\)-dimensional manifold \(M\), let
+  \(\mathcal{A}:= \{(U,\phi): (U,\phi) \text{ is chart of } M, \AND \forall (V,\psi)\in \mathcal{A}_0,(U,\phi)\text{ is compatible with }(V,\psi)\}\).
+  Then \(\mathcal{A}\) is unique \(C^r\)-differential structure on \(M\) contains \(\mathcal{A}_0\).
+\end{problem}
+\begin{solution}
+
+  First, easily \(\mathcal{A}_0 \subset \mathcal{A}\) by definition of \(\mathcal{A}_0\).
+  Now we should prove \(\mathcal{A}\) is differential structure on \(M\). Let \((U,\phi),(V,\psi) \in \mathcal{A}\).
+  If \((U,\phi)\in \mathcal{A}_0\), then by definition of \(\mathcal{A}_0\) we know \((U,\phi)\) is compatible to \((V,\psi)\).
+  If \((U,\phi),(V,\psi) \notin \mathcal{A}_0\), then consider \(U\cap V\). If \(U\cap V=\varnothing\), then \((U,\phi)\) is compatible with \((V,\psi)\).
+  Now assume \(W=U \cap V\neq \varnothing\). Consider \(\gamma:=\psi \circ \phi^{-1} :\phi(W) \to \psi(W)\).
+  For any \(x \in W\), since \(\mathcal{A}_0\) is covery of \(M\), we know \(\exists (T,\tau) \in \mathcal{A}_0,x \in T\).
+  Then by the definition of \(\mathcal{A}\), we know \((T,\tau)\) is compatible locally on \(x\) with both \((U,\phi)\) and \((V,\psi)\).
+  So \((U,\phi)\) is locally compatible with \((V,\psi)\) on \(x\). Since \(x\) is arbitrary, we know \((U,\phi)\) is compatible with \((V,\psi)\).
+  So \(\mathcal{A}\) is differential structure of \(M\).
+
+  Now we assume \(\mathcal{B}\) is another differential structure of \(M\) contains \(\mathcal{A}_0\).
+  Since \(\mathcal{B}\) is compatible, we get \(\mathcal{B} \subset \mathcal{A}\).
+  Since \(\mathcal{B}\) is maximal, we get \(\mathcal{B}=\mathcal{A}\).
+  So \(\mathcal{A}\) is unique.
+\end{solution}
+\begin{problem}\label{pro:1.2}
+  Assume \((U,\phi;x^i),(V,\psi;y^i),(W,\chi;z^i)\) are three local coordinate on an \(m\)-dimensional smooth manifold \(M\), and \(W \cap V \cap U \neq \varnothing\).
+  Prove that on \(\phi(U \cap V \cap W)\), we have:
+  \(\left( \frac{\partial z^i}{\partial x^j}\right)=\left(\frac{\partial z^i}{\partial y^k}\right)\left(\frac{\partial y^k}{\partial x^j}\right)\).
+\end{problem}
+\begin{solution}
+  For fixed \(1 \leq i,j \leq m\), we have \(\frac{\partial z^i}{\partial x^j}=\sum_{k=1}^{m} \frac{\partial z^i}{\partial y^k} \frac{\partial y^k}{\partial x^j}\).
+  So easily to get that \(\left( \frac{\partial z^i}{\partial x^j}\right)=\left(\frac{\partial z^i}{\partial y^k}\right)\left(\frac{\partial y^k}{\partial x^j}\right)\).
+
+  We let \((W,\chi;z^i)=(U,\phi;x^i)\), then we get:
+  \(I_m=\left(\frac{\partial x^i}{\partial y^k}\right)\left(\frac{\partial y^k}{\partial x^j}\right)\).
+  So both terms on the right side are invertible, thus non-singular.
+\end{solution}
+\begin{problem}\label{pro:1.3}
+  Assume \(M\) is orientable and connected, prove that \(M\) has exactly two different oriention.
+\end{problem}
+% \begin{lemma}\label{lem:connected_manifold_is_path_connected}
+%   Assume \(M\) is a connected manifold, then it's path-connected.
+% \end{lemma}
+% \begin{proof}
+%   For \(x,y \in M\), we define \(x \sim y\) if and only if there is a path from \(x\) to \(y\).
+%   Easily \(\sim\) is equivalent relation.
+%   For \(x \in M\), we define \(U:=\{y \in M: x \sim y\}\). Obviously \(x \in U \neq \varnothing\),
+%   so we only need to prove \(U\) is both open and closed.
+%   Assume \(y \in U\), since \(M\) is manifold, we obtain \(\exists V\) is homeomorphic to \(\mathbb{R}^n\), thus path-connected, and \(y \in V\).
+%   So \(\forall z \in V,z \sim y\), so \(z \sim x\). So \(V \subset U\). So \(U\) is open.
+%   For \(y \notin U\), samely \(\exists V\) is open and path-connected and \(y \in V\).
+%   If \(z \in V\) and \(z \sim x\) then we will get \(y \sim x\), contradiction!
+%   So \(\forall z \in V,z \not \sim x\). So \(V \subset U^c\), so \(U^c\) is open, thus \(U\) is closed.
+%   Since \(M\) is connected and \(U\) is both open and closed and \(U \neq \varnothing\), we obtain \(U = M\).
+%   So \(M\) is path-connected.
+% \end{proof}
+
+% \begin{lemma}\label{lem:1.3}
+%   Assume \(\mathcal{A}\) is an oriention of \(M\). Then for every local corrdinate \((V;y^i)\), one of \((V;y^i)\) and \((V;z^i)\) is in \(\mathcal{A}\),
+%   where \(z^i=
+%     \begin{cases}
+%       y^i & i>1\\
+%       -y^i & i=1
+%   \end{cases}\).
+% \end{lemma}
+% \begin{proof}
+%   Since Jacobi determinant is continious, and Jacobi determinant of transition map is non-zero, so it's always positive or negative.
+%   Let \(\mathcal{B}:=\{(U;x^i) \in \mathcal{A}:U \cap V \neq \varnothing, J_{x,y}>0\}\) and \(\mathcal{C}:=\{(U;x^i) \in \mathcal{A}:U \cap V \neq \varnothing, J_{x,y}<0\}\).
+%   If \(\mathcal{C}\) is empty then \((V;y^i)\in \mathcal{A}\) by maximalism of \(\mathcal{A}\).
+%   If \(\mathcal{B}\) is empty then \((V;z^i)\in \mathcal{A}\) because \(J_{x,y}=-J_{x,z}\).
+%   So we only need to prove it's impossible that \(\mathcal{B}\) and \(\mathcal{C}\) are both non-empty.
+%
+%   Assume \((U;x^i) \in \mathcal{B}\) and \((T;z^i) \in \mathcal{C}\). By definition of \(\mathcal{B},\mathcal{C}\) we get \(U \cap V \neq \varnothing,T \cap V \neq \varnothing\).
+%   Let \(p \in U \cap V,q \in T \cap V\). Since \((V;y^i)\) is homeomorphic to a subset of \(\mathbb{R}^n\), we know there is a path from \(p\) to \(q\).
+%   Easily this path is compact, so \(\exists p_0=p,p_1,p_2,\cdots,p_k=q\) on this path and \(\{(U_i;y_i^j):i=0,\cdots,k\} \subset \mathcal{A}\) is local coordinate of \(p_i\), and this path is in \(\bigcup_{t=0}^{k} U_t\).
+% \end{proof}
+
+\begin{solution}
+  Since \(M\) is orientable, we can assume that \(\mathcal{B} \subset \mathcal{A}\) is an oriention of \(M\), where \(\mathcal{A}\) is all local coordinate of \(M\).
+  Now consider \(\mathcal{C}:=\{(U;-x^i):(U;x^i) \in \mathcal{B}\}\). Easily to check that \(\mathcal{C}\) is an oriention of \(M\), too.
+  And obviously \(\mathcal{B} \cap \mathcal{C} = \varnothing\), thus \(\mathcal{B} \neq \mathcal{C}\). So there is two oriention. Now we need to prove there is no other oriention.
+
+  Assume \(\mathcal{D}\) is an oriention of \(M\). We will define a function \(\sgn:M \to \{1,-1\}\) by
+  \(\sgn(p)=1 \iff \exists (U_0,x_0^i) \in \mathcal{B},\exists (V_0,y_0^i) \in \mathcal{D},p \in U_0 \cap V_0,J_{x_0,y_0}(p)>0\).
+  We will prove that \(\sgn(p)=1 \implies \forall (U,x^i) \in \mathcal{B},\forall (V;y^i) \in \mathcal{D},p \in U \cap V \implies J_{x,y}(p)>0\).
+  It's easy because \(J_{x,y}=J_{x,x_0}J_{x_0,y_0}J_{y_0,y}\), and \(J_{x,x_0}>0,J_{y,y_0}>0\) by definition of oriention.
+  So \(\sgn(p)=-1 \iff \exists (U_0,x_0^i) \in \mathcal{C},\exists (V_0,y_0^i) \in \mathcal{D},p \in U_0 \cap V_0,J_{x_0,y_0}(p)>0 \)
+  \(\iff \forall (U,x^i) \in \mathcal{B},\forall (V;y^i) \in \mathcal{D},p \in U \cap V \implies J_{x,y}(p)>0 \).
+  Noting that if \(\sgn(p)=1\), we have \(\forall q \in U_0 \cap V_0,\sgn(q)=1\), and so is \(\sgn(p)=-1\).
+  So \(\sgn\) is continuous. So \(\sgn\) is constant because \(M\) is connected.
+  Easy to check that \(\sgn(p)=1 \iff \mathcal{B}=\mathcal{D}\), and \(\sgn(p)=-1 \iff \mathcal{C}=\mathcal{D}\).
+  So there is only two oriention of \(M\).
+\end{solution}
+
+\begin{problem}\label{pro:1.4}
+  Let \(S^n(a):=\{(x^{(1)},\cdots,x^{(n + 1)} )\in \mathbb{R}_1^{n+1} :\sum_{k=1}^{n+1} (x^{(k)})^2=a^2\}\) be the ball in \(\mathbb{R}^{n+1}\) with radius \(a>0\).
+  Let \(S:=(0,\cdots,-a),N:=(0,\cdots,a)\) be the South Pole and North Pole respectively.
+  Let \(U_+=S^n(a)\setminus\{S\},U_-=S^n(a)\setminus\{N\}\).
+  Let \(\phi_+:U_+ \to \mathbb{R}^n,\phi_-:U_- \to \mathbb{R}^n\).
+  \((\xi^{(1)},\cdots,\xi^{(n)})=\phi_+(x^{(1)},\cdots,x^{(n+1)}):=\left(\frac{ax^{(1)}}{a+x^{(n+1)}},\cdots,\frac{ax^{(n)}}{a+x^{(n+1)}}\right)\).
+  \((\eta^{(1)},\cdots,\eta^{(n)})=\phi_+(x^{(1)},\cdots,x^{(n+1)}):=\left(\frac{ax^{(1)}}{a-x^{(n+1)}},\cdots,\frac{ax^{(n)}}{a-x^{(n+1)}}\right)\).
+  Calculate the inverses of \(\phi_+\) and \(\phi_-\), thus prove \(\{(U_+,\phi_+),(U_-,\phi_-)\}\) gives a smooth structuction of \(S^n(a)\).
+\end{problem}
+%TODO:Calculate this out.
+\begin{solution}
+  Noting \(\xi^{(i)}=\frac{a x^{(i)}}{a+x^{(n+1)}}\), so \(x^{(i)}=\frac{\xi^{(i)}(a+x^{(n+1)})}{a}\).
+  And \(\sum_{k=1}^{n+1} (x^{(k)})^2=a^2\), so \(\sum_{k=1}^{n} \frac{(\xi^{(i)})^2 (a+x^{(n+1)})^2}{a^2} + (x^{(n+1)})^2 = a^2\).
+\end{solution}
+\begin{problem}\label{pro:1.5}
+\end{problem}
+\end{document}
+

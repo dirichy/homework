@@ -7,5 +7,6 @@
 	"fun":"FunctionalAnalysis",
 	"mak":"MarkovProcess",
   "num":"NumberTheory",
-  "wat":"WaterClass"
+  "wat":"WaterClass",
+  "rie":"RiemannGeometry"
 }
