@@ -9,7 +9,7 @@
 \large
 \setlength{\baselineskip}{1.2em}
 \ifpreface
-    \input{../../../global/preface}
+\input{../../../global/preface}
 \newgeometry{left=2cm,right=2cm,top=2cm,bottom=2cm}
 \else
 \newgeometry{left=2cm,right=2cm,top=2cm,bottom=2cm}
@@ -17,41 +17,49 @@
 \fi
 %from_here_to_type
 \begin{problem}
-  Assume \(x,y \in \mathbb{C}\) and \(\im x,\im y>0\). Assume \(\begin{pmatrix}
-  b & a\\
-  d & c\\
-  \end{pmatrix} \in \text{GL}(2,\mathbb{Z})\), and \(x= \frac{a+by}{c+dy}\). 
-  Prove that \(\begin{vmatrix}
-  b & a\\
-  d & c\\
-  \end{vmatrix}=1\). 
+  Assume \(x,y \in \mathbb{C}\) and \(\im x,\im y>0\). Assume \(
+    \begin{pmatrix}
+      b & a\\
+      d & c\\
+  \end{pmatrix} \in \text{GL}(2,\mathbb{Z})\), and \(x= \frac{a+by}{c+dy}\).
+  Prove that \(
+    \begin{vmatrix}
+      b & a\\
+      d & c\\
+  \end{vmatrix}=1\).
 \end{problem}
 \begin{solution}
-  Assume \(y=m+n \mathrm{i},m,n \in \mathbb{R},n>0\). 
-  Then we get \(\im x = \im \frac{a+bm+bn \mathrm{i}}{c+dm+dn \mathrm{i}}=\frac{(c+dm)bn-(a+bm)dn}{(c+dm)^2+(dn)^2}>0\). 
-  So we get \(cbn+dmbn-adn-bm dn=n(cb-ad)>0\). Since \(n>0\) we get \(cb-ad>0\), so \(\begin{vmatrix}
-    b & a\\
-    d & c\\
-  \end{vmatrix}>0\). 
+  Assume \(y=m+n \mathrm{i},m,n \in \mathbb{R},n>0\).
+  Then we get \(\im x = \im \frac{a+bm+bn \mathrm{i}}{c+dm+dn \mathrm{i}}=\frac{(c+dm)bn-(a+bm)dn}{(c+dm)^2+(dn)^2}>0\).
+  So we get \(cbn+dmbn-adn-bm dn=n(cb-ad)>0\). Since \(n>0\) we get \(cb-ad>0\), so \(
+    \begin{vmatrix}
+      b & a\\
+      d & c\\
+  \end{vmatrix}>0\).
 
-  Since \(\begin{pmatrix}
-    b & a\\
-    d & c\\
-    \end{pmatrix}\in \text{GL}(2,\mathbb{Z})\), we get \(\begin{vmatrix}
-    b & a\\
-    d & c\\
-    \end{vmatrix}=\pm 1\), so finally we get \(\begin{vmatrix}
-    b & a\\
-    d & c\\
-  \end{vmatrix}=1\). 
+  Since \(
+    \begin{pmatrix}
+      b & a\\
+      d & c\\
+  \end{pmatrix}\in \text{GL}(2,\mathbb{Z})\), we get \(
+    \begin{vmatrix}
+      b & a\\
+      d & c\\
+  \end{vmatrix}=\pm 1\), so finally we get \(
+    \begin{vmatrix}
+      b & a\\
+      d & c\\
+  \end{vmatrix}=1\).
 \end{solution}
 
 \begin{problem}
-  Assume \(\tau,\rho \in \mathbb{C},\tau^2=\rho^3=1\). Prove that \(\exists \sigma \in \mathbb{C}\) such that \(\rho=\sigma^4,\tau=\sigma^6\). 
+  Assume \(\tau,\rho \in \mathbb{C},\tau^2=\rho^3=1\). Prove that \(\exists \sigma \in \mathbb{C}\) such that \(\rho=\sigma^4,\tau=\sigma^6\).
 \end{problem}
 
 \begin{solution}
-  Let \(\sigma \in \sqrt{\tau \rho^2}\), i.e., \(\sigma^2=\tau \rho^2\). 
-  Then \(\sigma^4=\tau^2 \rho^4=\rho\) and \(\sigma^6=\tau^3\rho^6=\tau \). 
+  Let \(\sigma \in \sqrt{\tau \rho^2}\), i.e., \(\sigma^2=\tau \rho^2\).
+  Then \(\sigma^4=\tau^2 \rho^4=\rho\) and \(\sigma^6=\tau^3\rho^6=\tau \).
 \end{solution}
 \end{document}
+
+

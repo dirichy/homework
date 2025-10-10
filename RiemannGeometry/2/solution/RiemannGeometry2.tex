@@ -1,0 +1,30 @@
+%!Mode:: "TeX:UTF-8"
+%!TEX TS-program = xelatex
+\documentclass{ctexart}
+\newif\ifpreface
+\prefacetrue
+\input{../../../global/all}
+\begin{document}
+\large
+\setlength{\baselineskip}{1.2em}
+\ifpreface
+\input{../../../global/preface}
+\else
+\maketitle
+\fi
+\newgeometry{left=2cm,right=2cm,top=2cm,bottom=2cm}
+%from_here_to_type
+\begin{problem}
+  设\(V \subset \overline{V} \subset U \subset W \)，其中\(V,U \)是开集，\(W \)是光滑流形，\(\overline{V}  \)是紧的。
+  则存在\(W \)到\(\mathbb{R} \)的光滑函数\(f \)，使\(f \)在\(V \)上取\(0 \)，在\(U \)外取\(1 \)。
+\end{problem}
+
+\begin{definition}\label{def:local_finite}
+  设\(\{U_{\alpha}_{\alpha \in \Lambda}\} \)是流形\(M \)的开到覆盖，若\(\forall p \in M,\exists O_p \)为\(p \)的邻域，且\(O_p \)只与有限个 \(U_{\alpha} \)相交，则称\(\{U_\alpha\}_{\alpha \in \Lambda} \)是局部有限的。
+\end{definition}
+
+\begin{definition}\label{def:仿紧}
+  若拓扑空间 \(M \)的任何开覆盖都有局部有限的开加细，则称\(M \)是仿紧的。
+\end{definition}
+
+\end{document}

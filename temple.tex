@@ -21,22 +21,21 @@
 }
 
 \begin{document}
-\begin{solution}
-  Since \(M\) is orientable, we can assume that \(\mathcal{B} \subset \mathcal{A}\) is an oriention of \(M\), where \(\mathcal{A}\) is all local coordinate of \(M\).
-  Now consider \(\mathcal{C}:=\{(U;-x^i):(U;x^i) \in \mathcal{B}\}\). Easily to check that \(\mathcal{C}\) is an oriention of \(M\), too.
-  And obviously \(\mathcal{B} \cap \mathcal{C} = \varnothing\), thus \(\mathcal{B} \neq \mathcal{C}\). So there is two oriention. Now we need to prove there is no other oriention.
 
-  Assume \(\mathcal{D}\) is an oriention of \(M\). We will define a function \(\sgn:M \to \{1,-1\}\) by
-  \(\sgn(p)=1 \iff \exists (U_0,x_0^i) \in \mathcal{B},\exists (V_0,y_0^i) \in \mathcal{D},p \in U_0 \cap V_0,J_{x_0,y_0}(p)>0\).
-  We will prove that \(\sgn(p)=1 \implies \forall (U,x^i) \in \mathcal{B},\forall (V;y^i) \in \mathcal{D},p \in U \cap V \implies J_{x,y}(p)>0\).
-  It's easy because \(J_{x,y}=J_{x,x_0}J_{x_0,y_0}J_{y_0,y}\), and \(J_{x,x_0}>0,J_{y,y_0}>0\) by definition of oriention.
+\begin{solution}
+  Since \(M\) is orientable, we can assume that \(\mathcal{B} \subset \mathcal{A}\) is an oriention of \(M\)\nolinebreak[4]，where \(\mathcal{A}\) is all local coordinate of \(M\)\nolinebreak[4]。
+  Now consider \(\mathcal{C}:=\{(U;-x^i):(U;x^i) \in \mathcal{B}\}\)\nolinebreak[4]。Easily to check that \(\mathcal{C}\) is an oriention of \(M\)\nolinebreak[4]，too.
+  And obviously \(\mathcal{B} \cap \mathcal{C} = \varnothing\)\nolinebreak[4]，thus \(\mathcal{B} \neq \mathcal{C}\)\nolinebreak[4]。So there is two oriention. Now we need to prove there is no other oriention.
+
+  Assume \(\mathcal{D}\) is an oriention of \(M\)\nolinebreak[4]。We will define a function \(\sgn:M \to \{1,-1\}\) by
+  \(\sgn(p)=1 \iff \exists (U_0,x_0^i) \in \mathcal{B},\exists (V_0,y_0^i) \in \mathcal{D},p \in U_0 \cap V_0,J_{x_0,y_0}(p)>0\)\nolinebreak[4]。
+  We will prove that \(\sgn(p)=1 \implies \forall (U,x^i) \in \mathcal{B},\forall (V;y^i) \in \mathcal{D},p \in U \cap V \implies J_{x,y}(p)>0\)\nolinebreak[4]。
+  It's easy because \(J_{x,y}=J_{x,x_0}J_{x_0,y_0}J_{y_0,y}\)\nolinebreak[4]，and \(J_{x,x_0}>0,J_{y,y_0}>0\) by definition of oriention.
   So \(\sgn(p)=-1 \iff \exists (U_0,x_0^i) \in \mathcal{C},\exists (V_0,y_0^i) \in \mathcal{D},p \in U_0 \cap V_0,J_{x_0,y_0}(p)>0 \)
-  \(\iff \forall (U,x^i) \in \mathcal{B},\forall (V;y^i) \in \mathcal{D},p \in U \cap V \implies J_{x,y}(p)>0 \).
-  Noting that if \(\sgn(p)=1\), we have \(\forall q \in U_0 \cap V_0,\sgn(q)=1\), and so is \(\sgn(p)=-1\).
+  \(\iff \forall (U,x^i) \in \mathcal{B},\forall (V;y^i) \in \mathcal{D},p \in U \cap V \implies J_{x,y}(p)>0 \)\nolinebreak[4]。
+  Noting that if \(\sgn(p)=1\)\nolinebreak[4]，we have \(\forall q \in U_0 \cap V_0,\sgn(q)=1\)\nolinebreak[4]，and so is \(\sgn(p)=-1\)\nolinebreak[4]。
   So \(\sgn\) is continuous. So \(\sgn\) is constant because \(M\) is connected.
-  Easy to check that \(\sgn(p)=1 \iff \mathcal{B}=\mathcal{D}\), and \(\sgn(p)=-1 \iff \mathcal{C}=\mathcal{D}\).
-  So there is only two oriention of \(M\).
+  Easy to check that \(\sgn(p)=1 \iff \mathcal{B}=\mathcal{D}\)\nolinebreak[4]，and \(\sgn(p)=-1 \iff \mathcal{C}=\mathcal{D}\)\nolinebreak[4]。
+  So there is only two oriention of \(M\)\nolinebreak[4]。
 \end{solution}
 \end{document}
-
-

@@ -7,12 +7,12 @@
 \begin{document}
 \large
 \iffalse
-  \setlength{\baselineskip}{1.2em}
-  \ifpreface
-    \input{../../../global/preface}
-  \else
-    \maketitle
-  \fi
+\setlength{\baselineskip}{1.2em}
+\ifpreface
+\input{../../../global/preface}
+\else
+\maketitle
+\fi
 \fi
 \newgeometry{left=2cm,right=2cm,top=2cm,bottom=2cm}
 %from_here_to_type
@@ -20,17 +20,20 @@
   Assume \((N(t):t \geq 0)\) is a renewing process with renewing internal
   \(\{\xi_n: n \geq 1\}\), \(S_n=\sum_{k=1}^{n} \xi_k\), \(N(t):=\sup \{n: S_n \leq t\}\), calculate \(g(t):=\mathbb{E}(N(t)^2)\).
 \end{problem}
+
 \begin{solution}
   Let \(T_1=\xi_1\), then \(g(t)=\mathbb{E}(\mathbb{E}(N(t)^2 \mid T_1))=\int_{0}^t \mathbb{E}(N(t)^2 \mid T_1=x)d F(x)\).
   By the independence, \[
-    \mathbb{E}(N(t)^2 \mid T_1=x)=\begin{cases}
+    \mathbb{E}(N(t)^2 \mid T_1=x)=
+    \begin{cases}
       0                          & , x > t    \\
       \mathbb{E}((1 + N(t-x))^2) & , x \leq t
     \end{cases}
   \]
-  That is \(\mathbb{E}(N(t)^2 \mid T_1=x)=\begin{cases}
-    0                    & ,x > t    \\
-    1 + 2m(t-x) + g(t-x) & ,x \leq t
+  That is \(\mathbb{E}(N(t)^2 \mid T_1=x)=
+    \begin{cases}
+      0                    & ,x > t    \\
+      1 + 2m(t-x) + g(t-x) & ,x \leq t
   \end{cases}\).
   Therefore,
   \[
@@ -62,8 +65,9 @@
 \end{problem}
 \begin{solution}
   Let \(A_z(t)=\mathbb{P}(\gamma_t > z)\), then \[
-    \mathbb{P}(\gamma_t > z \mid \xi_1=x)=\begin{cases}
-      1        & ,x > t + z         \\
+    \mathbb{P}(\gamma_t > z \mid \xi_1=x)=
+    \begin{cases}
+      1        & , x > t + z         \\
       0        & , t < x \leq t + z \\
       A_z(t-x) & , 0 < x \leq t
     \end{cases}
@@ -89,19 +93,18 @@
   \begin{equation}
     \begin{aligned}
       \mathbb{P}(L(t)>x)= & \sum_{k=0}^{\infty} \mathbb{P}\left(\xi_{k+1}>x, N(t)=k\right)                                                           \\
-      =                   & \sum_{k=0}^{\infty} \mathbb{P}\left(\xi_{k+1}>x, S_k \leq t, \xi_{k+1}>t-S_k\right)                                      \\
-      =                   & \sum_{k=1}^{\infty} \mathbb{P}\left(\xi_{k+1}>x, t-x<S_k \leq t\right)                                                   \\
-                          & \quad+\sum_{k=0}^{\infty} \mathbb{P}\left(\xi_{k+1}>t-S_k, S_k \leq t-x\right)                                           \\
+      = & \sum_{k=0}^{\infty} \mathbb{P}\left(\xi_{k+1}>x, S_k \leq t, \xi_{k+1}>t-S_k\right)                                      \\
+      = & \sum_{k=1}^{\infty} \mathbb{P}\left(\xi_{k+1}>x, t-x<S_k \leq t\right)                                                   \\
+      & \quad+\sum_{k=0}^{\infty} \mathbb{P}\left(\xi_{k+1}>t-S_k, S_k \leq t-x\right)                                           \\
       =                   & \mathbb{P}\left(\xi_1>x\right) \mathbb{E}[(N(t)-N(t-x))]+\mathbb{P}(N(t)=N(t-x))                                         \\
       =                   & \mathbb{P}\left(\xi_1>x\right)+\mathbb{P}\left(\xi_1>x\right) \mathbb{E}[(N(t)-N(t-x))-1]                                \\
-                          & +\mathbb{P}(N(t)=N(t-x))                                                                                                 \\
+      & +\mathbb{P}(N(t)=N(t-x))                                                                                                 \\
       =                   & \mathbb{P}\left(\xi_1>x\right)+\mathbb{P}\left(\xi_1>x\right) \mathbb{E}\left[(N(t)-N(t-x)-1) 1_{\{N(t)>N(t-x)\}}\right] \\
-                          & -\mathbb{P}\left(\xi_1>x\right) \mathbb{E}\left(1_{\{N(t)=N(t-x)\}}\right)+\mathbb{P}(N(t)=N(t-x))                       \\
+      & -\mathbb{P}\left(\xi_1>x\right) \mathbb{E}\left(1_{\{N(t)=N(t-x)\}}\right)+\mathbb{P}(N(t)=N(t-x))                       \\
       \geq                & \mathbb{P}\left(\xi_1>x\right) .
     \end{aligned}
   \end{equation}
 \end{solution}
-
 \begin{problem}\label{pro:-1}
   Toss a coin until we get two successively head, call it a renew.
   We toss the coin \(k\) times, call the number of renews \(N(k)\).
@@ -119,3 +122,5 @@
 \end{solution}
 
 \end{document}
+
+

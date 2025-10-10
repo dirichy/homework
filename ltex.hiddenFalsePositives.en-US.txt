@@ -1,0 +1,1 @@
+{"rule":"ITS_JJ_NNSNN","sentence":"^\\QObviously it's irreducible representation of \\E(?:Dummy|Ina|Jimmy-)[0-9]+\\Q.\\E$"}

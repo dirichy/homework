@@ -1,12 +1,15 @@
 {
-	"group":"GroupRepresentation",
-	"set":"SetTheory",
-	"dsjh":"AlgebraicGeometry",
-	"algebra":"AlgebraicGeometry",
-	"com":"Combination",
-	"fun":"FunctionalAnalysis",
-	"mak":"MarkovProcess",
-  "num":"NumberTheory",
-  "wat":"WaterClass",
-  "rie":"RiemannGeometry"
+  "group": "GroupRepresentation",
+  "set": "SetTheory",
+  "dsjh": "AlgebraicGeometry",
+  "algebra": "AlgebraicGeometry",
+  "com": "Combination",
+  "fun": "FunctionalAnalysis",
+  "mak": "MarkovProcess",
+  "num": "NumberTheory",
+  "wat": "WaterClass",
+  "rie": "RiemannGeometry",
+  "sto": "StochasticProcess",
+  "prob": "Probability",
+  "eng": "english"
 }

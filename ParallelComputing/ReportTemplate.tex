@@ -6,7 +6,6 @@
 %\usepackage[UTF8]{ctex}
 %\usepackage[english]{babel}
 
-
 \parindent0pt  \parskip10pt             % make block paragraphs
 %\raggedright                            % do not right justify
 \usepackage{xcolor}
@@ -31,9 +30,7 @@
 \usepackage{lipsum}
 \usepackage{tcolorbox}
 
-
 \usepackage{microtype}
-
 
 \definecolor{echodrk}{HTML}{0099cc}
 \definecolor{mymauve}{rgb}{0.58,0,0.82}
@@ -55,14 +52,11 @@
 }
 \makeatother
 
-
-
 \usepackage{marginnote}
 \renewcommand*{\marginfont}{\footnotesize}
 \newcommand{\joan}[1]{{\color{green}#1}}
 \newcommand{\michael}[1]{{\color{magenta}#1}} \newcommand{\taco}[1]{{\color{blue}#1}}
 \newcommand{\petar}[1]{{\color{cyan}#1}}
-
 
 \definecolor{olivegreen}{HTML}{006400}
 \definecolor{echoblue}{HTML}{0099CC}
@@ -72,8 +66,7 @@
 \definecolor{darkgry}{HTML}{333333}
 \definecolor{echopurple}{HTML}{9400D1}
 \usepackage{tikz}
-\tikzset{every picture/.style={line width=0.75pt}} %set default line width to 0.75pt    
-
+\tikzset{every picture/.style={line width=0.75pt}} %set default line width to 0.75pt
 
 \newcommand*{\horzbar}{\rule[.5ex]{2.5ex}{0.5pt}}
 \newtheoremstyle{break}%
@@ -106,7 +99,6 @@
   \renewcommand{\footrulewidth}{0pt}
 }
 
-
 \fancypagestyle{fancybook}{%
   \fancyhf{}%
   % Note the ## here. It's required because \fancypagestyle is making a macro (\ps@fancybook).
@@ -115,7 +107,7 @@
   % You are not expected to understand this.
   \renewcommand*{\sectionmark}[1]{ \markright{\thesection\ ##1} }%
   %\renewcommand*{\chaptermark}[1]{ \markboth{\chaptername\ \thechapter: ##1}{} }%
-  % Increase the length of the header such that the folios 
+  % Increase the length of the header such that the folios
   % (typography jargon for page numbers) move into the margin
   \fancyhfoffset[LE]{6mm}% slightly less than 0.25in
   \fancyhfoffset[RO]{6mm}%
@@ -128,7 +120,6 @@
 %\usepackage{appendix}
 
 \usepackage[titletoc]{appendix}
-
 
 %\fancyhf[HLE,HRO]{Bruna et al.}
 \pagestyle{empty}
@@ -286,7 +277,8 @@ where \( W_{ij}\) denotes a weight of the edge \( ij\) and the scaling \(\frac{1
 The identities
 
 \begin{equation}
-  \begin{aligned}H(\sigma )&=-\sum _{ij\in E(V^{+})}J_{ij}-\sum _{ij\in E(V^{-})}J_{ij}+\sum _{ij\in \delta (V^{+})}J_{ij}\\&=-\sum _{ij\in E(G)}J_{ij}+2\sum _{ij\in \delta (V^{+})}J_{ij}\end{aligned}
+  \begin{aligned}H(\sigma )&=-\sum _{ij\in E(V^{+})}J_{ij}-\sum _{ij\in E(V^{-})}J_{ij}+\sum _{ij\in \delta (V^{+})}J_{ij}\\&=-\sum _{ij\in E(G)}J_{ij}+2\sum _{ij\in \delta (V^{+})}J_{ij}
+  \end{aligned}
 \end{equation}
 where the total sum in the first term does not depend on \( \sigma\), imply that minimizing \( H(\sigma )\) in \( \sigma\) is equivalent to minimizing \( \sum _{ij\in \delta (V^{+})}J_{ij}\).
 Defining the edge weight \( W_{ij}=-J_{ij}\) thus turns the Ising problem without an external field into a graph Max-Cut problem [4] maximizing the cut size \( \left|\delta (V^{+})\right|\), which is related to the Ising Hamiltonian as follows,
@@ -321,7 +313,8 @@ Following videos only can be played with pdf viewer supporting javascript, such 
   \label{vid:3}
 \end{figure}
 \section{Codes}
-\newcommand{\code}[1]{\subsection{#1}\lstinputlisting[frame=single, numbers=left, style=Matlab-editor]{codes/#1.m}}
+\newcommand{\code}[1]{
+\subsection{#1}\lstinputlisting[frame=single, numbers=left, style=Matlab-editor]{codes/#1.m}}
 \code{main}
 \code{GenerateGrid}
 \code{WhetherAccept}
@@ -330,6 +323,5 @@ Following videos only can be played with pdf viewer supporting javascript, such 
 \code{pro1}
 \code{pro2}
 
-
-
 \end{document}                          % The required last line
+

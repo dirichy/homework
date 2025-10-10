@@ -10,143 +10,157 @@
 \large
 \setlength{\baselineskip}{1.2em}
 \ifpreface
-	\input{../../../global/preface}
-	\newgeometry{left=2cm,right=2cm,top=2cm,bottom=2cm}
+\input{../../../global/preface}
+\newgeometry{left=2cm,right=2cm,top=2cm,bottom=2cm}
 \else
-	\newgeometry{left=2cm,right=2cm,top=2cm,bottom=2cm}
-	\maketitle
+\newgeometry{left=2cm,right=2cm,top=2cm,bottom=2cm}
+\maketitle
 \fi
 %from_here_to_type
 \begin{problem}
-Find the complex character table of following group.
-\begin{enumerate}
-	\item \(D_4\).
-	\item \(Q=\left\langle j,i:i^4=j^4=1,jij^{-1}=i^{-1}\right\rangle \).
-	\item \(A_4\).
-	\item \(D_6\).
-\end{enumerate}
+  Find the complex character table of following group.
+  \begin{enumerate}
+    \item \(D_4\)\nolinebreak[4]。
+    \item \(Q=\left\langle j,i:i^4=j^4=1,jij^{-1}=i^{-1}\right\rangle \)\nolinebreak[4]。
+    \item \(A_4\)\nolinebreak[4]。
+    \item \(D_6\)\nolinebreak[4]。
+  \end{enumerate}
 \end{problem}
 
 \begin{solution}
-	\begin{enumerate}
-		\item Write \(D_4=\left\langle \sigma,\tau:\sigma^4=\tau^2=1,\tau \sigma \tau = \sigma^{-1}\right\rangle \).
-		      First we find all of conjugate class of \(D_4\), they are \(C_1=\{1\},C_2=\{\sigma,\sigma^3\},C_3=\{\sigma^2\},C_4=\{\tau,\sigma^2 \tau\},C_5=\{\sigma \tau,\sigma^3 \tau\}\).
-		      Second we find all of \(1\)-dimetional reperesentation of \(D_4\). Only need to find all \(1\)-dimetional reperesentation of \(D_4/D_4'\).
-		      Easily we get \(D_4'=\{\sigma^2,1\}\), so \(D_4/D_4'=\{D_4',D_4'\sigma,D_4'\tau,D_4'\sigma \tau\}\).
-		      So \(D_4/D_4'\) has \(4\) different reperesentation, write \(\overline{\phi_0},\overline{\phi_1},\overline{\phi_2},\overline{\phi_3}\), where \(\overline{\phi_0}\) is main reperesentation.
-		      And let \(\overline{\phi_1}(D_4'\sigma)=-1,\overline{\phi_1}(D_4'\tau)=1,\overline{\phi_2}(D_4'\sigma)=1,\overline{\phi_2}(D_4'\tau)=-1,\overline{\phi_3}(D_4'\sigma)=-1,\overline{\phi_3}(D_4'\tau)=-1\).
-		      Then improve them to \(D_4\), we get \(\phi_0,\phi_1,\phi_2,\phi_3\), where \(\phi_0\) is main reperesentation, and
-		      \(\phi_i(x)=\overline{\phi_i}(D_4'x)\). They are all of \(1\)-dimetional reperesentation of \(D_4\).
-		      Now we find other irreducible reperesentation of \(D_4\).
-		      Since \(|D_4|=8=1^2+1^2+1^2+1^2+2^2\) we get \(D_4\) has a \(2\)-dimetional irreducible reperesentation.
-		      Consider \(\phi_4:D_4 \to M_2(\mathbb{C}),\sigma \mapsto \begin{pmatrix}
-			      0 & -1 \\
-			      1 & 0
-		      \end{pmatrix},\tau \mapsto \begin{pmatrix}
-			      -1 & 0 \\
-			      0  & 1
-		      \end{pmatrix}\).
-		      Obviously it's irreducible reperesentation of \(D_4\).
-		      So all of irreducible reperesentation are \(\phi_0,\phi_1,\phi_2,\phi_3,\phi_4\).
-		      Now let \(g_1=1,g_2=\sigma,g_3=\sigma^2,g_4=\tau,g_5=\sigma \tau\), and let \(W_{ij}=\chi_{i-1}( g_j)\).
-		      Then we get
-		      \[
-			      W=\begin{pmatrix}
-				      1 & 1  & 1  & 1  & 1  \\
-				      1 & -1 & 1  & 1  & -1 \\
-				      1 & 1  & 1  & -1 & -1 \\
-				      1 & -1 & 1  & -1 & 1  \\
-				      2 & 0  & -2 & 0  & 0  \\
-			      \end{pmatrix}
-		      \]
-		\item
-		      Write \(Q=\{\pm 1,\pm i,\pm j,\pm k\}\). Easily we get \(C_0=\{1\},C_1=\{- 1\},C_2=\{\pm i\},C_3=\{\pm j\},C_4=\{\pm k\}\) are conjugate class of \(Q\).
-		      So \(Q\) has \(5\) different irreducible reperesentation.
-		      Easily we know \(Q'=\{\pm 1\}\) and \(Q / Q'=\{Q',Q'i,Q'j,Q'k=Q'ij\}\).
-		      Easily \(Q / Q'\) has \(4\) different \(1\)-dimetional reperesentation, write \(\overline{\phi_0},\overline{\phi_1},\overline{\phi_2},\overline{\phi_3}\), where \(\overline{\phi_0}\) is main reperesentation.
-		      And \(\overline{\phi_1}(Q'i)=-1,\overline{\phi_1}(Q'j)=1;\overline{\phi_2}(Q'i)=1,\overline{\phi_2}(Q'j)=-1;\overline{\phi_3}(Q'i)=\overline{\phi_3}(Q'j)=-1\).
-		      Improve them we get \(\phi_0,\phi_1,\phi_2,\phi_3\), and \(\phi_0\) is main reperesentation, and
-		      \(\phi_t(x)=\overline{\phi_t}(Q'x)\).
-		      Since \(|Q|=8=1^2+1^2+1^2+1^2+2^2\), we get the last reperesentation is \(2\)-dimetional.
-		      Consider \(\phi_4:Q \to M_2(\mathbb{C}),i \mapsto \begin{pmatrix}
-			      \mathrm{i} & 0           \\
-			      0          & -\mathrm{i}
-		      \end{pmatrix}, j \mapsto \begin{pmatrix}
-			      0          & \mathrm{i} \\
-			      \mathrm{i} & 0
-		      \end{pmatrix}\).
-		      Easily we get \(\phi_4\) is irreducible, so \(\phi_t,t=0,\cdots,4\) are all irreducible reperesentation of \(Q\).
+  \begin{enumerate}
+    \item Write \(D_4=\left\langle \sigma,\tau:\sigma^4=\tau^2=1,\tau \sigma \tau = \sigma^{-1}\right\rangle \)\nolinebreak[4]。
+      First we find all conjugate class of \(D_4\)\nolinebreak[4]，they are \(C_1=\{1\},C_2=\{\sigma,\sigma^3\},C_3=\{\sigma^2\},C_4=\{\tau,\sigma^2 \tau\},C_5=\{\sigma \tau,\sigma^3 \tau\}\)\nolinebreak[4]。
+      Second we find all of \(1\)-dimetional representation of \(D_4\)\nolinebreak[4]。Only need to find all \(1\)-dimetional representation of \(D_4/D_4'\)\nolinebreak[4]。
+      Easily we get \(D_4'=\{\sigma^2,1\}\)\nolinebreak[4]，so \(D_4/D_4'=\{D_4',D_4'\sigma,D_4'\tau,D_4'\sigma \tau\}\)\nolinebreak[4]。
+      So \(D_4/D_4'\) has \(4\) different representation, write \(\overline{\phi_0},\overline{\phi_1},\overline{\phi_2},\overline{\phi_3}\)\nolinebreak[4]，where \(\overline{\phi_0}\) is main representation.
+      And let \(\overline{\phi_1}(D_4'\sigma)=-1,\overline{\phi_1}(D_4'\tau)=1,\overline{\phi_2}(D_4'\sigma)=1,\overline{\phi_2}(D_4'\tau)=-1,\overline{\phi_3}(D_4'\sigma)=-1,\overline{\phi_3}(D_4'\tau)=-1\)\nolinebreak[4]。
+      Then improve them to \(D_4\)\nolinebreak[4]，we get \(\phi_0,\phi_1,\phi_2,\phi_3\)\nolinebreak[4]，where \(\phi_0\) is main representation, and
+      \(\phi_i(x)=\overline{\phi_i}(D_4'x)\)\nolinebreak[4]。They are all of \(1\)-dimetional representation of \(D_4\)\nolinebreak[4]。
+      Now we find other irreducible representation of \(D_4\)\nolinebreak[4]。
+      Since \(|D_4|=8=1^2+1^2+1^2+1^2+2^2\) we get \(D_4\) has a \(2\)-dimetional irreducible representation.
+      Consider \(\phi_4:D_4 \to M_2(\mathbb{C}),\sigma \mapsto
+        \begin{pmatrix}
+          0 & -1 \\
+          1 & 0
+        \end{pmatrix},\tau \mapsto
+        \begin{pmatrix}
+          -1 & 0 \\
+          0  & 1
+      \end{pmatrix}\)\nolinebreak[4]。
+      Obviously it's irreducible representation of \(D_4\)\nolinebreak[4]。
+      So all of irreducible representation are \(\phi_0,\phi_1,\phi_2,\phi_3,\phi_4\)\nolinebreak[4]。
+      Now let \(g_1=1,g_2=\sigma,g_3=\sigma^2,g_4=\tau,g_5=\sigma \tau\)\nolinebreak[4]，and let \(W_{ij}=\chi_{i-1}( g_j)\)\nolinebreak[4]。
+      Then we get
+      \[
+        W=
+        \begin{pmatrix}
+          1 & 1  & 1  & 1  & 1  \\
+          1 & -1 & 1  & 1  & -1 \\
+          1 & 1  & 1  & -1 & -1 \\
+          1 & -1 & 1  & -1 & 1  \\
+          2 & 0  & -2 & 0  & 0  \\
+        \end{pmatrix}
+      \]
+    \item
+      Write \(Q=\{\pm 1,\pm i,\pm j,\pm k\}\)\nolinebreak[4]。Easily we get \(C_0=\{1\},C_1=\{- 1\},C_2=\{\pm i\},C_3=\{\pm j\},C_4=\{\pm k\}\) are conjugate class of \(Q\)\nolinebreak[4]。
+      So \(Q\) has \(5\) different irreducible representation.
+      Easily we know \(Q'=\{\pm 1\}\) and \(Q / Q'=\{Q',Q'i,Q'j,Q'k=Q'ij\}\)\nolinebreak[4]。
+      Easily \(Q / Q'\) has \(4\) different \(1\)-dimetional representation, write \(\overline{\phi_0},\overline{\phi_1},\overline{\phi_2},\overline{\phi_3}\)\nolinebreak[4]，where \(\overline{\phi_0}\) is main representation.
+      And \(\overline{\phi_1}(Q'i)=-1,\overline{\phi_1}(Q'j)=1;\overline{\phi_2}(Q'i)=1,\overline{\phi_2}(Q'j)=-1;\overline{\phi_3}(Q'i)=\overline{\phi_3}(Q'j)=-1\)\nolinebreak[4]。
+      Improve them we get \(\phi_0,\phi_1,\phi_2,\phi_3\)\nolinebreak[4]，and \(\phi_0\) is main representation, and
+      \(\phi_t(x)=\overline{\phi_t}(Q'x)\)\nolinebreak[4]。
+      Since \(|Q|=8=1^2+1^2+1^2+1^2+2^2\)\nolinebreak[4]，we get the last representation is \(2\)-dimetional.
+      Consider \(\phi_4:Q \to M_2(\mathbb{C}),i \mapsto
+        \begin{pmatrix}
+          \mathrm{i} & 0           \\
+          0          & -\mathrm{i}
+        \end{pmatrix}, j \mapsto
+        \begin{pmatrix}
+          0          & \mathrm{i} \\
+          \mathrm{i} & 0
+      \end{pmatrix}\)\nolinebreak[4]。
+      Easily we get \(\phi_4\) is irreducible, so \(\phi_t,t=0,\cdots,4\) are all irreducible representation of \(Q\)\nolinebreak[4]。
 
-		      Now let \(g_1 = 1,g_2 = -1,g_3 = i,g_4 = j,g_5 = k\) and \(W_{ij}=\chi_{i-1}( g_j)\). Then we have
-		      \[
-			      W=\begin{pmatrix}
-				      1 & 1  & 1  & 1  & 1  \\
-				      1 & 1  & -1 & 1  & -1 \\
-				      1 & 1  & 1  & -1 & -1 \\
-				      1 & 1  & -1 & -1 & 1  \\
-				      2 & -2 & 0  & 0  & 0  \\
-			      \end{pmatrix}
-		      \]
-		\item
-		      Obviously \(A_4'=K_4=\{(1 2)(3 4),(1 3)(2 4),(1 4)(2 3),(1)\}\).
-		      And \(C_1=\{(1)\}, C_2=K_4 \setminus C_1,C_3=\{(1 2 3),(243),(134),(142)\}, C_4=\{(132),(124),(143),(234)\}\) are all of conjugate class of \(A_4\).
-		      Easily \(A_4/K_4=\{(123)K_4,(132)K_4,K_4\}\). So it has \(3\) different irreducible \(1\)-dimetional reperesentation.
-		      Write \(\overline{\phi_0},\overline{\phi_1},\overline{\phi_2}\), where \(\overline{\phi_0}\) is main reperesentation.
-		      And \(\overline{\phi_1}((123)K_4)=\omega,\overline{\phi_2}((123)K_4)=\omega^2\).
-		      Now improve then to \(A_4\), we get \(\phi_0,\phi_1,\phi_2\), where \(\phi_0\) is main reperesentation, and
-		      \(\phi_t(x)=\overline{\phi_t}(xK4)\).
-		      Sicne \(|A_4|=1^2+1^2+1^2+1^2+3^2\), we know the last irreducible reperesentation is \(3\)-dimetional.
-		      Consider \(\phi_3:A_4 \to M_3(\mathbb{C})\), and
-		      \[
-			      \phi_3((123))=\begin{pmatrix}
-				      -1 & -1 & -1 \\
-				      1  & 0  & 0  \\
-				      0  & 0  & 1
-			      \end{pmatrix}, \phi_3((124))=\begin{pmatrix}
-				      -1 & -1 & -1 \\
-				      0  & 1  & 0  \\
-				      1  & 0  & 0
-			      \end{pmatrix}
-		      \]
-		      Easily we get \(\phi_3\) is irreducible. So all irreducible reperesentation of \(A_4\) are \(\phi_0,\phi_1,\phi_2,\phi_3\).
+      Now let \(g_1 = 1,g_2 = -1,g_3 = i,g_4 = j,g_5 = k\) and \(W_{ij}=\chi_{i-1}( g_j)\)\nolinebreak[4]。Then we have
+      \[
+        W=
+        \begin{pmatrix}
+          1 & 1  & 1  & 1  & 1  \\
+          1 & 1  & -1 & 1  & -1 \\
+          1 & 1  & 1  & -1 & -1 \\
+          1 & 1  & -1 & -1 & 1  \\
+          2 & -2 & 0  & 0  & 0  \\
+        \end{pmatrix}
+      \]
+    \item
+      Obviously \(A_4'=K_4=\{(1 2)(3 4),(1 3)(2 4),(1 4)(2 3),(1)\}\)\nolinebreak[4]。
+      And \(C_1=\{(1)\}, C_2=K_4 \setminus C_1,C_3=\{(1 2 3),(243),(134),(142)\}, C_4=\{(132),(124),(143),(234)\}\) are all conjugate class of \(A_4\)\nolinebreak[4]。
+      Easily \(A_4/K_4=\{(123)K_4,(132)K_4,K_4\}\)\nolinebreak[4]。So it has \(3\) different irreducible \(1\)-dimetional representation.
+      Write \(\overline{\phi_0},\overline{\phi_1},\overline{\phi_2}\)\nolinebreak[4]，where \(\overline{\phi_0}\) is main representation.
+      And \(\overline{\phi_1}((123)K_4)=\omega,\overline{\phi_2}((123)K_4)=\omega^2\)\nolinebreak[4]。
+      Now improve then to \(A_4\)\nolinebreak[4]，we get \(\phi_0,\phi_1,\phi_2\)\nolinebreak[4]，where \(\phi_0\) is main representation, and
+      \(\phi_t(x)=\overline{\phi_t}(xK4)\)\nolinebreak[4]。
+      Since \(|A_4|=1^2+1^2+1^2+1^2+3^2\)\nolinebreak[4]，we know the last irreducible representation is \(3\)-dimetional.
+      Consider \(\phi_3:A_4 \to M_3(\mathbb{C})\)\nolinebreak[4]，and
+      \[
+        \phi_3((123))=
+        \begin{pmatrix}
+          -1 & -1 & -1 \\
+          1  & 0  & 0  \\
+          0  & 0  & 1
+        \end{pmatrix}, \phi_3((124))=
+        \begin{pmatrix}
+          -1 & -1 & -1 \\
+          0  & 1  & 0  \\
+          1  & 0  & 0
+        \end{pmatrix}
+      \]
+      Easily we get \(\phi_3\) is irreducible. So all irreducible representation of \(A_4\) are \(\phi_0,\phi_1,\phi_2,\phi_3\)\nolinebreak[4]。
 
-		      Now let \(g_1 = ( 1),g_2 = ( 12)( 34),g_3 = ( 123),g_4=( 132) \) and \(W_{ij}=\chi_{i-1}( g_j)\), then we have
-		      \[
-			      W=\begin{pmatrix}
-				      1 & 1  & 1        & 1        \\
-				      1 & 1  & \omega   & \omega^2 \\
-				      1 & 1  & \omega^2 & \omega   \\
-				      3 & -1 & 0        & 0        \\
-			      \end{pmatrix}
-		      \]
-		\item
-		      First easily we get \(C_1=\{ e\},C_2=\{ \sigma^3\},C_3=\{ \sigma,\sigma^5\},C_4=\{ \sigma^2,\sigma^4\},C_5=\{ \tau,\sigma^2 \tau,\sigma^4 \tau\},C_6=\{ \sigma \tau,\sigma^3 \tau,\sigma^5 \tau\}\) are conjugate classes of \(D_6\).
-		      So there are \(6\) different irreducible reperesentation of \(D_6\).
-		      Second we should find all of \(1\)-dim reperesentation of \(D_6\).
-		      Easily we get \(D_6' = \{e,\sigma^2,\sigma^4 \}\), so we get \(D_6 / D_6' \cong K_4\), where \(K_4\) is the Klein group.
-		      So we get \(\overline{\phi_0},\overline{\phi_1},\overline{\phi_2},\overline{\phi_3}\) are \(1\)-dim irreducible reperesentation of \(D_6 / D_6'\), where
-		      \(\overline{\phi_0}\) is the main reperesentation, and \(\overline{\phi_1}( \sigma D_6')=-1,\overline{\phi_1}( \tau D_6')=1,\overline{\phi_2}( \sigma D_6')=1,\overline{\phi_2}( \tau D_6')=-1,\overline{\phi_3}( \sigma D_6')=\overline{\phi_3}( \tau D_6')=-1\).
-		      Improve them by \(\phi_i( x)=\overline{\phi_i}( x D_6')\), we get \(\phi_0,\phi_1,\phi_2,\phi_3\) are all of \(1\)-dim reperesentation of \(D_6\).
-		      Now we should find other reperesentation. Since \(| D_6|=12=1^2+1^2+1^2+1^2+2^2+2^2\), we get \(D_6\) has two \(2\)-dim irreducible reperesentation.
-		      Consider \(\phi_\theta( \sigma)=\begin{pmatrix}
-			      \cos \theta & -\sin \theta \\
-			      \sin \theta & \cos \theta  \\
-		      \end{pmatrix}\) and \(\phi_\theta( \tau)=\begin{pmatrix}
-			      -1 & 0 \\
-			      0  & 1 \\
-		      \end{pmatrix}\), let \(\phi_4=\phi_{\frac{\pi}{3}}\) and \(\phi_5=\phi_{\frac{2\pi}{3}}\).
-		      then easily we get \(\phi_5,\phi_6\) are irreducible. So all of irreducible reperesentation of \(D_6\) are \(\phi_i,i=0,\cdots,5\).
-		      Let \(g_1=e,g_2=\sigma^3,g_3=\sigma,g_4=\sigma^2,g_5=\tau,g_6=\sigma \tau\) and \(W_{ij}=\chi_{i-1}( g_j)\), then we get
-		      \[
-			      W=\begin{pmatrix}
-				      1 & 1  & 1  & 1  & 1  & 1  \\
-				      1 & -1 & -1 & 1  & 1  & -1 \\
-				      1 & 1  & 1  & 1  & -1 & -1 \\
-				      1 & -1 & -1 & 1  & -1 & 1  \\
-				      2 & -2 & 1  & -1 & 0  & 0  \\
-				      2 & 2  & -1 & -1 & 0  & 0  \\
-			      \end{pmatrix}
-		      \]
-	\end{enumerate}
+      Now let \(g_1 = ( 1),g_2 = ( 12)( 34),g_3 = ( 123),g_4=( 132) \) and \(W_{ij}=\chi_{i-1}( g_j)\)\nolinebreak[4]，then we have
+      \[
+        W=
+        \begin{pmatrix}
+          1 & 1  & 1        & 1        \\
+          1 & 1  & \omega   & \omega^2 \\
+          1 & 1  & \omega^2 & \omega   \\
+          3 & -1 & 0        & 0        \\
+        \end{pmatrix}
+      \]
+    \item
+      First easily we get \(C_1=\{ e\},C_2=\{ \sigma^3\},C_3=\{ \sigma,\sigma^5\},C_4=\{ \sigma^2,\sigma^4\},C_5=\{ \tau,\sigma^2 \tau,\sigma^4 \tau\},C_6=\{ \sigma \tau,\sigma^3 \tau,\sigma^5 \tau\}\) are conjugate classes of \(D_6\)\nolinebreak[4]。
+      So there are \(6\) different irreducible representation of \(D_6\)\nolinebreak[4]。
+      Second we should find all of \(1\)-dim representation of \(D_6\)\nolinebreak[4]。
+      Easily we get \(D_6' = \{e,\sigma^2,\sigma^4 \}\)\nolinebreak[4]，so we get \(D_6 / D_6' \cong K_4\)\nolinebreak[4]，where \(K_4\) is the Klein group.
+      So we get \(\overline{\phi_0},\overline{\phi_1},\overline{\phi_2},\overline{\phi_3}\) are \(1\)-dim irreducible representation of \(D_6 / D_6'\)\nolinebreak[4]，where
+      \(\overline{\phi_0}\) is the main representation, and \(\overline{\phi_1}( \sigma D_6')=-1,\overline{\phi_1}( \tau D_6')=1,\overline{\phi_2}( \sigma D_6')=1,\overline{\phi_2}( \tau D_6')=-1,\overline{\phi_3}( \sigma D_6')=\overline{\phi_3}( \tau D_6')=-1\)\nolinebreak[4]。
+      Improve them by \(\phi_i( x)=\overline{\phi_i}( x D_6')\)\nolinebreak[4]，we get \(\phi_0,\phi_1,\phi_2,\phi_3\) are all of \(1\)-dim representation of \(D_6\)\nolinebreak[4]。
+      Now we should find other representation. Since \(| D_6|=12=1^2+1^2+1^2+1^2+2^2+2^2\)\nolinebreak[4]，we get \(D_6\) has two \(2\)-dim irreducible representation.
+      Consider \(\phi_\theta( \sigma)=
+        \begin{pmatrix}
+          \cos \theta & -\sin \theta \\
+          \sin \theta & \cos \theta  \\
+      \end{pmatrix}\) and \(\phi_\theta( \tau)=
+        \begin{pmatrix}
+          -1 & 0 \\
+          0  & 1 \\
+      \end{pmatrix}\)\nolinebreak[4]，let \(\phi_4=\phi_{\frac{\pi}{3}}\) and \(\phi_5=\phi_{\frac{2\pi}{3}}\)\nolinebreak[4]。
+      Then easily we get \(\phi_5,\phi_6\) are irreducible. So all of irreducible representation of \(D_6\) are \(\phi_i,i=0,\cdots,5\)\nolinebreak[4]。
+      Let \(g_1=e,g_2=\sigma^3,g_3=\sigma,g_4=\sigma^2,g_5=\tau,g_6=\sigma \tau\) and \(W_{ij}=\chi_{i-1}( g_j)\)\nolinebreak[4]，then we get
+      \[
+        W=
+        \begin{pmatrix}
+          1 & 1  & 1  & 1  & 1  & 1  \\
+          1 & -1 & -1 & 1  & 1  & -1 \\
+          1 & 1  & 1  & 1  & -1 & -1 \\
+          1 & -1 & -1 & 1  & -1 & 1  \\
+          2 & -2 & 1  & -1 & 0  & 0  \\
+          2 & 2  & -1 & -1 & 0  & 0  \\
+        \end{pmatrix}
+      \]
+  \end{enumerate}
 \end{solution}
 \end{document}
+
+

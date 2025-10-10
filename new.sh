@@ -1,4 +1,4 @@
-subject=$(grep -o '"'$1'":"[^"]*' subjects.json | grep -o '[^"]*$')
+subject=$(grep -o '"'$1'": "[^"]*' subjects.json | grep -o '[^"]*$')
 echo $subject
 if [ ! $subject ]; then
 	echo "Can't find given subject, please check subjects.json!"

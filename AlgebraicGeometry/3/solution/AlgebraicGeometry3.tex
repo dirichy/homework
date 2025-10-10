@@ -10,21 +10,21 @@
 \DeclareMathOperator{\Ord}{Ord}
 
 \newcommand{\cc}{\mathfrak{c}}
-
 \def\email#1{{\texttt{#1}}}
 \newcommand{\isep}[1][0pt]{\addtolength{\itemsep}{#1}}
 \renewcommand{\theproblem}{\Roman{problem}}
 \crefname{problem}{Problem}{Problem}
 %\renewcommand\theprob{{\Roman{problem}}}
-\newcommand\mysolution{\begin{tikzpicture}[baseline]%
-\node at (-0.04em,0.3em) {$\mathbb{S}$};%
-\node[scale=0.7] at (0.35em,0.4em) {O};%
-\node at (0.7em,0.3em) {\textit{L}};%
-\node[scale=0.7] at (0.95em,0.4em) {U};%
-\node[scale=1.1] at (1.19em,0.32em){T};%
-\node[scale=0.85] at (1.4em,0.24em){I};%
-\node at (1.9em,0.32em){$\mathcal{O}$};%
-\node[scale=0.75] at (2.3em,0.21em){\texttt{N}};%
+\newcommand\mysolution{
+  \begin{tikzpicture}[baseline]%
+    \node at (-0.04em,0.3em) {$\mathbb{S}$};%
+    \node[scale=0.7] at (0.35em,0.4em) {O};%
+    \node at (0.7em,0.3em) {\textit{L}};%
+    \node[scale=0.7] at (0.95em,0.4em) {U};%
+    \node[scale=1.1] at (1.19em,0.32em){T};%
+    \node[scale=0.85] at (1.4em,0.24em){I};%
+    \node at (1.9em,0.32em){$\mathcal{O}$};%
+    \node[scale=0.75] at (2.3em,0.21em){\texttt{N}};%
 \end{tikzpicture}}
 
 %%%%%%%%
@@ -60,107 +60,100 @@
 \newcommand{\frp}{\mathfrak{p}}
 \crefname{enumi}{}{}
 
-
-
-
-
-
-
 \begin{document}
 \large
 \setlength{\baselineskip}{1.2em}
 \ifpreface
-    \input{../../../global/preface}
+\input{../../../global/preface}
 \else
 \maketitle
 \fi
 \newgeometry{left=2cm,right=2cm,top=2cm,bottom=2cm}
 \begin{problem}
-    Let $R$ be a Abel ring, $\fra$ is an ideal of $R$, and $\sqrt{\fra}:=\{x\in R:\exists n\in\N,x^n\in\fra\}$. Prove that:
-    \begin{enumerate}[ref=\theproblem.\arabic*]
-        \item\label{it:11} $\sqrt{\mathfrak{a}}$ is ideal.
-        \item\label{it:12} $\sqrt{\sqrt{\mathfrak{a}}}=\sqrt{\mathfrak{a}}$.
-        \item\label{it:13} $\sqrt{\fra}$ is the smallest radical ideal contain $\mathfrak{a}$. 
-        \item\label{it:14} If $\mathfrak{p}$ is prime ideal, then $\mathfrak{p}$ is radical. 
-        \item\label{it:15} $\sqrt{\mathfrak{a}}=\bigcap_{\mathfrak{p}\in\mathcal{P}}\mathfrak{p}$, where $\mathcal{P}$ is the set of all prime ideal contains $\fra$. 
-    \end{enumerate}
+  Let $R$ be a Abel ring, $\fra$ is an ideal of $R$, and $\sqrt{\fra}:=\{x\in R:\exists n\in\N,x^n\in\fra\}$. Prove that:
+  \begin{enumerate}[ref=\theproblem.\arabic*]
+    \item\label{it:11} $\sqrt{\mathfrak{a}}$ is ideal.
+    \item\label{it:12} $\sqrt{\sqrt{\mathfrak{a}}}=\sqrt{\mathfrak{a}}$.
+    \item\label{it:13} $\sqrt{\fra}$ is the smallest radical ideal contain $\mathfrak{a}$.
+    \item\label{it:14} If $\mathfrak{p}$ is prime ideal, then $\mathfrak{p}$ is radical.
+    \item\label{it:15} $\sqrt{\mathfrak{a}}=\bigcap_{\mathfrak{p}\in\mathcal{P}}\mathfrak{p}$, where $\mathcal{P}$ is the set of all prime ideal contains $\fra$.
+  \end{enumerate}
 \end{problem}
 
 \begin{solution}
-    \begin{enumerate}
-        \item $\forall a,b\in\sqrt{\fra},\exists m,n\in\N,a^m,b^n\in \fra$. Consider $a-b$, we have $(a-b)^{m+n}=\sum_{k=0}^{m+n}\binom{m+n}{k}a^kb^{m+n-k}$. Since $k+m+n-k=m+n$, so $k\geq m$ or $m+n-k\geq n$. So $(a-b)^{m+n}\in\fra$ and thus $a-b\in\sqrt{\fra}$. 
-        
-        $\forall a\in\sqrt{\fra},b\in R,(ab)^n=a^nb^n$. So $ab\in\sqrt{\fra}$. 
-        \item  Obviously $\sqrt{\fra}\subset\sqrt{\sqrt{\fra}}$, so only need to prove $\sqrt{\sqrt{\fra}}\subset \sqrt{\fra}$. Consider $a\in \sqrt{\sqrt{\fra}},\exists n\in\N,a^n\in\sqrt{\fra},\exists m\in\N,(a^n)^m\in\fra$. Thus $a^{mn}\in\fra$, so $a\in\sqrt{\fra}$. So $\sqrt{\fra}=\sqrt{\sqrt{\fra}}$. 
-        \item Let $\frb$ is a radical ideal contains $\fra$, then $\forall a\in\sqrt{\fra},\exists n\in\N,a^n\in\fra\subset\frb$. 
-        Since $\frb$ is radical, we get $a\in\frb$. So $\sqrt{\fra}\subset \frb$. 
-        Noting we have proved $\sqrt{\fra}$ is radical in \Cref{it:12}, so it's the smallest. 
-        \item $\forall a\in\sqrt{\frp},\exists n\in\N,a^n\in\frp$. Since $\frp$ is prime, so $a\in\frp$. 
-        \item From \Cref{it:13} and \Cref{it:14} we get $\sqrt{\fra}\subset \frp$, so we only need to prove $\bigcap_{\frp\in\mathcal{P}}\frp\subset \sqrt{\fra}$. If not, then $\exists a\notin \sqrt{\fra},\forall \frp\in\mathcal{P},a\in\frp$. Let $\mathcal{I}$ is the set of all ideal contains $\fra$ and not contains any of $a^n,n\in\N$. Since $(\mathcal{I},\subset)$ is partial order, and obviously every chain has upper bound(use union), and $\mathcal{I}\neq \emptyset$($\fra\in\mathcal{I})$. So there is a maximal element in $\mathcal{I}$(by Zorn's lemma). Assume $\mathfrak{q}\in \mathcal{I}$ is maximal element, we will prove $\mathfrak{q}$ is prime ideal. If not, then $\exists x,y\notin\mathfrak{q},xy\in \mathfrak{q}$. Since $\mathfrak{q}$ is maximal, then $(\mathfrak{q},x),(\mathfrak{q},y)$ contians some $a^n$. Assume $a^n=q_1+xt_1,a^m=q_2+yt_2,q_1,q_2\in \mathfrak{q},t_1,t_2\in R$. Then $a^{m+n}=q_1(q_2+yt_2)+q_2xt_1+xyt_1t_2\in \mathfrak{q}$, contradiction with the definition of $\mathcal{I}$! So $\mathfrak{q}\in\mathcal{P}$. But $a\notin \mathfrak{q}$, contradiction with the assumption that $a\in\frp\forall\frp\in\mathcal{P}$! So $\bigcap_{\frp\in\mathcal{P}}\frp\subset \sqrt{\fra}$. 
-    \end{enumerate}
+  \begin{enumerate}
+    \item $\forall a,b\in\sqrt{\fra},\exists m,n\in\N,a^m,b^n\in \fra$. Consider $a-b$, we have $(a-b)^{m+n}=\sum_{k=0}^{m+n}\binom{m+n}{k}a^kb^{m+n-k}$. Since $k+m+n-k=m+n$, so $k\geq m$ or $m+n-k\geq n$. So $(a-b)^{m+n}\in\fra$ and thus $a-b\in\sqrt{\fra}$.
+
+      $\forall a\in\sqrt{\fra},b\in R,(ab)^n=a^nb^n$. So $ab\in\sqrt{\fra}$.
+    \item  Obviously $\sqrt{\fra}\subset\sqrt{\sqrt{\fra}}$, so only need to prove $\sqrt{\sqrt{\fra}}\subset \sqrt{\fra}$. Consider $a\in \sqrt{\sqrt{\fra}},\exists n\in\N,a^n\in\sqrt{\fra},\exists m\in\N,(a^n)^m\in\fra$. Thus $a^{mn}\in\fra$, so $a\in\sqrt{\fra}$. So $\sqrt{\fra}=\sqrt{\sqrt{\fra}}$.
+    \item Let $\frb$ is a radical ideal contains $\fra$, then $\forall a\in\sqrt{\fra},\exists n\in\N,a^n\in\fra\subset\frb$.
+      Since $\frb$ is radical, we get $a\in\frb$. So $\sqrt{\fra}\subset \frb$.
+      Noting we have proved $\sqrt{\fra}$ is radical in \Cref{it:12}, so it's the smallest.
+    \item $\forall a\in\sqrt{\frp},\exists n\in\N,a^n\in\frp$. Since $\frp$ is prime, so $a\in\frp$.
+    \item From \Cref{it:13} and \Cref{it:14} we get $\sqrt{\fra}\subset \frp$, so we only need to prove $\bigcap_{\frp\in\mathcal{P}}\frp\subset \sqrt{\fra}$. If not, then $\exists a\notin \sqrt{\fra},\forall \frp\in\mathcal{P},a\in\frp$. Let $\mathcal{I}$ is the set of all ideal contains $\fra$ and not contains any of $a^n,n\in\N$. Since $(\mathcal{I},\subset)$ is partial order, and obviously every chain has upper bound(use union), and $\mathcal{I}\neq \emptyset$($\fra\in\mathcal{I})$. So there is a maximal element in $\mathcal{I}$(by Zorn's lemma). Assume $\mathfrak{q}\in \mathcal{I}$ is maximal element, we will prove $\mathfrak{q}$ is prime ideal. If not, then $\exists x,y\notin\mathfrak{q},xy\in \mathfrak{q}$. Since $\mathfrak{q}$ is maximal, then $(\mathfrak{q},x),(\mathfrak{q},y)$ contians some $a^n$. Assume $a^n=q_1+xt_1,a^m=q_2+yt_2,q_1,q_2\in \mathfrak{q},t_1,t_2\in R$. Then $a^{m+n}=q_1(q_2+yt_2)+q_2xt_1+xyt_1t_2\in \mathfrak{q}$, contradiction with the definition of $\mathcal{I}$! So $\mathfrak{q}\in\mathcal{P}$. But $a\notin \mathfrak{q}$, contradiction with the assumption that $a\in\frp\forall\frp\in\mathcal{P}$! So $\bigcap_{\frp\in\mathcal{P}}\frp\subset \sqrt{\fra}$.
+  \end{enumerate}
 \end{solution}
 
 \begin{problem}
-    An algebraically field is not finite field. 
+  An algebraically field is not finite field.
 \end{problem}
 \begin{solution}
-    Assume $F$ is a finite, consider $f(x)=\prod_{a\in F}(x-a)+1\in F[x]$, easily prove $f(x)$ has no root in $F$. 
+  Assume $F$ is a finite, consider $f(x)=\prod_{a\in F}(x-a)+1\in F[x]$, easily prove $f(x)$ has no root in $F$.
 \end{solution}
 \begin{problem}
-    Let $A=K[x_1,x_2,\cdots x_n]$, and $m_p=(x_1-a_1,\cdots x_n-a_n),p=(a_1,a_2,\cdots a_n)\in\A_K^n$. Then $m$ is max ideal.
+  Let $A=K[x_1,x_2,\cdots x_n]$, and $m_p=(x_1-a_1,\cdots x_n-a_n),p=(a_1,a_2,\cdots a_n)\in\A_K^n$. Then $m$ is max ideal.
 \end{problem}
 \begin{lemma}
-    \label{lem:ker}
-    If $f(x_1,x_2,\cdots x_n)\in K[x_1,x_2,\cdots x_n],f(a_1,a_2,\cdots a_n)=0$, then $f=\sum_{k=1}^n (x_k-a_k)f_k(x_1,x_2,\cdots x_n)$. 
+  \label{lem:ker}
+  If $f(x_1,x_2,\cdots x_n)\in K[x_1,x_2,\cdots x_n],f(a_1,a_2,\cdots a_n)=0$, then $f=\sum_{k=1}^n (x_k-a_k)f_k(x_1,x_2,\cdots x_n)$.
 \end{lemma}
 \begin{proof}
-    Use MI to $n$. When $n=1$ it's obvious. If for some certain $n$ it's right, when goes to $n+1$: Let $g(x_1,x_2,\cdots x_n):=f(x_1,x_2,\cdots x_n,a_{n+1})\in K[x_1,x_2,\cdots x_n]$. Then $g(a_1,a_2,\cdots a_n)=0$, so $g(x_1,x_2,\cdots x_n)=\sum_{k=1}^n (x_k-a_k)g_i(x_1,x_2,\cdots x_n)$. Let $h(x_{n+1}):=f(x_1,x_2,\cdots x_{n+1})-g(x_1,x_2,\cdots x_n)\in K[x_1,x_2,\cdots x_n][x_{n+1}]$, then $h(a_{n+1})=0$. So $h(x_{n+1})=(x_{n+1}-a_{n+1})h_1(x_{n+1})$ for some $h_1(x_{n+1})\in K[x_1,x_2,\cdots x_n][x_{n+1}]$. Then $f(x_1,x_2,\cdots x_{n+1})=\sum_{k=1}^{n+1}(x_{i}-a_i)f_i(x_1,x_2,\cdots x_{n+1})$, where $f_k(x_1,x_2,\cdots x_{n+1})=g_k(x_1,x_2,\cdots x_n),k=1,2,\cdots n$, and $f_{n+1}(x_1,x_2,\cdots x_{n+1})=h_1(x_{n+1})$. 
+  Use MI to $n$. When $n=1$ it's obvious. If for some certain $n$ it's right, when goes to $n+1$: Let $g(x_1,x_2,\cdots x_n):=f(x_1,x_2,\cdots x_n,a_{n+1})\in K[x_1,x_2,\cdots x_n]$. Then $g(a_1,a_2,\cdots a_n)=0$, so $g(x_1,x_2,\cdots x_n)=\sum_{k=1}^n (x_k-a_k)g_i(x_1,x_2,\cdots x_n)$. Let $h(x_{n+1}):=f(x_1,x_2,\cdots x_{n+1})-g(x_1,x_2,\cdots x_n)\in K[x_1,x_2,\cdots x_n][x_{n+1}]$, then $h(a_{n+1})=0$. So $h(x_{n+1})=(x_{n+1}-a_{n+1})h_1(x_{n+1})$ for some $h_1(x_{n+1})\in K[x_1,x_2,\cdots x_n][x_{n+1}]$. Then $f(x_1,x_2,\cdots x_{n+1})=\sum_{k=1}^{n+1}(x_{i}-a_i)f_i(x_1,x_2,\cdots x_{n+1})$, where $f_k(x_1,x_2,\cdots x_{n+1})=g_k(x_1,x_2,\cdots x_n),k=1,2,\cdots n$, and $f_{n+1}(x_1,x_2,\cdots x_{n+1})=h_1(x_{n+1})$.
 \end{proof}
 \begin{solution}
-    Obviously $m_p$ is ideal, so we only need to prove it's max. Consider $\phi:K[x_1,x_2,\cdots x_n]\to K,f(x_1,x_2,\cdots x_n)\mapsto f(a_1,a_2,\cdots a_n)$. Obviously it's a homomorphism, consider $\ker \phi$. Obviously $m_p\subset \ker \phi$, now we prove $\ker \phi\subset m_p$. Assume $f\in\ker\phi$, then $f(a_1,a_2,\cdots a_n)=0$. Use \Cref{lem:ker} we get $f\in\ker\phi$. So $m_p=\ker \phi$. So $R/m_p\cong K$ is a field, thus $m_p$ is max ideal. 
+  Obviously $m_p$ is ideal, so we only need to prove it's max. Consider $\phi:K[x_1,x_2,\cdots x_n]\to K,f(x_1,x_2,\cdots x_n)\mapsto f(a_1,a_2,\cdots a_n)$. Obviously it's a homomorphism, consider $\ker \phi$. Obviously $m_p\subset \ker \phi$, now we prove $\ker \phi\subset m_p$. Assume $f\in\ker\phi$, then $f(a_1,a_2,\cdots a_n)=0$. Use \Cref{lem:ker} we get $f\in\ker\phi$. So $m_p=\ker \phi$. So $R/m_p\cong K$ is a field, thus $m_p$ is max ideal.
 \end{solution}
 
 \begin{problem}
-    $A\subset B\subset C$ are Abel rings. If $B$ is f.g. $A-$module and $C$ is f.g. $B-$module, then $C$ is f.g. $A-$module, too.  
+  $A\subset B\subset C$ are Abel rings. If $B$ is f.g. $A-$module and $C$ is f.g. $B-$module, then $C$ is f.g. $A-$module, too.
 \end{problem}
 \begin{solution}
-    Let $\{b_i:i=1,2,\cdots n\}$ is a basis of $B$ over $A$, and $\{c_i:i=1,2,\cdots m\}$ is a basis of $C$ over $B$. Then for $c\in C,\exists x_i\in B$ such that $c=\sum_{i=1}^m x_i c_i$. And $\exists y_{ij}\in A$ such that $x_i=\sum_{j=1}^n y_{ij} b_j$. So $c=\sum_{i=1}^m\sum_{j=1}^n y_{ij} b_jc_i$. That means $\{b_jc_i:j=1,2,\cdots n,i=1,2,\cdots m\}$ is a basis of $C$ over $A$. 
+  Let $\{b_i:i=1,2,\cdots n\}$ is a basis of $B$ over $A$, and $\{c_i:i=1,2,\cdots m\}$ is a basis of $C$ over $B$. Then for $c\in C,\exists x_i\in B$ such that $c=\sum_{i=1}^m x_i c_i$. And $\exists y_{ij}\in A$ such that $x_i=\sum_{j=1}^n y_{ij} b_j$. So $c=\sum_{i=1}^m\sum_{j=1}^n y_{ij} b_jc_i$. That means $\{b_jc_i:j=1,2,\cdots n,i=1,2,\cdots m\}$ is a basis of $C$ over $A$.
 \end{solution}
 
 \begin{problem}
-    If $x$ is integral over $A$ then $A[x]$ is f.g. $A-$module. 
+  If $x$ is integral over $A$ then $A[x]$ is f.g. $A-$module.
 \end{problem}
 \begin{solution}
-    Assume $x^n+\sum_{k=0}^{n-1}-a_kx^k=0,a_k\in A$. Then we prove $\{x^k:k=0,1,\cdots n-1\}$ is a basis of $A[x]$. Only need to prove $x^m,m\in \N$ can be reperesented. Use MI to $m$. When $m\leq n-1$ it's obvious. Assume for certain $m\geq n,\forall k<m,x^k$ can be reperesented, then for $m$, we have $x^m=x^{m-n}x^n=x^{m-n}\sum_{t=0}^{n-1}a_tx^t=\sum_{t=0}^{n-1}a_tx^{t+m-n}$. Since $t+m-n\leq n-1+m-n=m-1<m$, we get $x^k$ can be reperesented, so $\sum_{t=0}^{n-1}a_tx^{t+m-n}$ can be reperesented. i.e., $x^m$ can be reperesented. So $\{x^k:k=0,1,\cdots n-1\}$ is basis. 
+  Assume $x^n+\sum_{k=0}^{n-1}-a_kx^k=0,a_k\in A$. Then we prove $\{x^k:k=0,1,\cdots n-1\}$ is a basis of $A[x]$. Only need to prove $x^m,m\in \N$ can be reperesented. Use MI to $m$. When $m\leq n-1$ it's obvious. Assume for certain $m\geq n,\forall k<m,x^k$ can be reperesented, then for $m$, we have $x^m=x^{m-n}x^n=x^{m-n}\sum_{t=0}^{n-1}a_tx^t=\sum_{t=0}^{n-1}a_tx^{t+m-n}$. Since $t+m-n\leq n-1+m-n=m-1<m$, we get $x^k$ can be reperesented, so $\sum_{t=0}^{n-1}a_tx^{t+m-n}$ can be reperesented. i.e., $x^m$ can be reperesented. So $\{x^k:k=0,1,\cdots n-1\}$ is basis.
 \end{solution}
 
 \begin{problem}
-    Let $R$ be an integral domain, finitely generated over a field $k$. If $R$ has transcendence degree $n$ over $k$, then there exist elements $x_1, \ldots, x_n \in R$, algebraically independent over $k$, such that $R$ is integrally dependent on the subring $k\left[x_1, \ldots, x_n\right]$ generated by the $x$ 's.
+  Let $R$ be an integral domain, finitely generated over a field $k$. If $R$ has transcendence degree $n$ over $k$, then there exist elements $x_1, \ldots, x_n \in R$, algebraically independent over $k$, such that $R$ is integrally dependent on the subring $k\left[x_1, \ldots, x_n\right]$ generated by the $x$ 's.
 \end{problem}
 
 \begin{solution}
-    Since $R$ is f.g. over $k$, we can assume $R:=k[x_1,\cdots x_m]/I$. 
-    We use induction on $m$. 
-    If $m=0$, there is nothing to do. If $I=(0)$, then we can set $c_i=x_i+I$ for $i=1,\cdots ,m$, and again there is nothing to show. 
-    If $I\neq (0)$, then choose $f\in I\minus\{0\}$. 
-    If $f\in k$ then $I=k[x_1,\cdots,x_m]$. Then $R=\{0\}$. Else, $\deg f>0$. 
-    Write $f$ as 
-    \begin{equation}
-        f=\sum_{i=(i_1,i_2,\cdots i_m)\in S}\alpha_{i}\prod_{t=1}^{m}x_{t}^{i_t}
-    \end{equation}
-    Where $\emptyset \neq S\subset \N^m$ is a finite set and $\alpha_{i}\in k^*$. Choose $d$ greater than all $x_i-$degrees of $f$, then the function $\phi:S\to \mathbb{N},i\mapsto \sum_{j=1}^mi_jd^{j-1}$ is injective. For $i=2,\cdots,m$, let $y_i=x_i-x_1^{d^{i-1}}$, then:
-    \begin{equation}
-            f=f\left(x_1,y_2+x_1^d,\cdots y_m+x_1^{d^{m-1}}\right)=\sum_{i\in S} \alpha_i\left(x_1^{\phi(i)}+g_{i}(x_1,y_2,\cdots ,y_m)\right)
-    \end{equation}
-    where $g_{i}$'s are polynomials satisfying $\deg_{x_1}g_{i}<\phi(i)$. Since $\phi$ is injective, we have exactly one $i\in S$ such that $\phi(i)$ is maximum, assume the maximum value is $u=\phi(i)$. Since $f$ is not constant, $u>0$. Thus we obtain:
-    \begin{equation}
-        f=\alpha_{i}x_1^u + h(x_1,y_2,\cdots,y_m) 
-    \end{equation}
-with $\deg_{x_1} h<u$. Therefore
-\begin{equation}
+  Since $R$ is f.g. over $k$, we can assume $R:=k[x_1,\cdots x_m]/I$.
+  We use induction on $m$.
+  If $m=0$, there is nothing to do. If $I=(0)$, then we can set $c_i=x_i+I$ for $i=1,\cdots ,m$, and again there is nothing to show.
+  If $I\neq (0)$, then choose $f\in I\setminus\{0\}$.
+  If $f\in k$ then $I=k[x_1,\cdots,x_m]$. Then $R=\{0\}$. Else, $\deg f>0$.
+  Write $f$ as
+  \begin{equation}
+    f=\sum_{i=(i_1,i_2,\cdots i_m)\in S}\alpha_{i}\prod_{t=1}^{m}x_{t}^{i_t}
+  \end{equation}
+  Where $\emptyset \neq S\subset \mathbb{N}^m$ is a finite set and $\alpha_{i}\in k^*$. Choose $d$ greater than all $x_i-$degrees of $f$, then the function $\phi:S\to \mathbb{N},i\mapsto \sum_{j=1}^mi_jd^{j-1}$ is injective. For $i=2,\cdots,m$, let $y_i=x_i-x_1^{d^{i-1}}$, then:
+  \begin{equation}
+    f=f\left(x_1,y_2+x_1^d,\cdots y_m+x_1^{d^{m-1}}\right)=\sum_{i\in S} \alpha_i\left(x_1^{\phi(i)}+g_{i}(x_1,y_2,\cdots ,y_m)\right)
+  \end{equation}
+  where $g_{i}$'s are polynomials satisfying $\deg_{x_1}g_{i}<\phi(i)$. Since $\phi$ is injective, we have exactly one $i\in S$ such that $\phi(i)$ is maximum, assume the maximum value is $u=\phi(i)$. Since $f$ is not constant, $u>0$. Thus we obtain:
+  \begin{equation}
+    f=\alpha_{i}x_1^u + h(x_1,y_2,\cdots,y_m)
+  \end{equation}
+  with $\deg_{x_1} h<u$. Therefore
+  \begin{equation}
     x_1^u+\alpha_{i}^{-1}h(x_1,y_2,\cdots,y_m)\in I
-\end{equation}
-Let $B:=k[y_2+I,\cdots y_m+I]\subset R$, then $R=B[x_1+I]$, and above equation shows $R$ is integral over $B$. By induction, there exists algebraically independent $c_1,\cdots,c_n\in B$ such that $B$ is integral over $k[c_1,\cdots,c_n]$. Thus $R$ is integral over $k[c_1,\cdots c_n]$, too.
+  \end{equation}
+  Let $B:=k[y_2+I,\cdots y_m+I]\subset R$, then $R=B[x_1+I]$, and above equation shows $R$ is integral over $B$. By induction, there exists algebraically independent $c_1,\cdots,c_n\in B$ such that $B$ is integral over $k[c_1,\cdots,c_n]$. Thus $R$ is integral over $k[c_1,\cdots c_n]$, too.
 \end{solution}
-
 \end{document}

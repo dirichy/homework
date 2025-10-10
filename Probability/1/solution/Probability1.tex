@@ -1,0 +1,173 @@
+%arara: xelatex
+%!Mode:: "TeX:UTF-8"
+\documentclass{ctexart}
+\newif\ifpreface
+\prefacetrue
+\input{../../../global/all}
+\begin{document}
+\large
+\setlength{\baselineskip}{1.2em}
+\ifpreface
+\input{../../../global/preface}
+\else
+\maketitle
+\fi
+\newgeometry{left=2cm,right=2cm,top=2cm,bottom=2cm}
+%from_here_to_type
+%p22 2,3,4,6,9,11,12
+\begin{problem}\label{pro:1.4.2}
+  证明\(\sigma \)-代数是集代数。
+\end{problem}
+\begin{solution}
+  设\(\mathcal{A} \)是\(\sigma \)-代数，则由定义知\(\Omega \in \mathcal{A} \)。
+  下面证\( \forall A,B \in \mathcal{A},A \setminus B \in \mathcal{A} \)。
+  易知\(A \setminus B = A \cap B^c = (A^c \cup B)^c \)。
+  由\(A \in \mathcal{A} \)及\(\mathcal{A} \)是\(\sigma \)-代数知\(A^c \in \mathcal{A} \)。
+  又\(A^c,B \in \mathcal{A} \)，可取\(A_1=A^c,A_2=B,A_n=\emptyset,\forall n \geq 3 \),可知\(A^c \cup B = \bigcup_{n \geq 1}A_n \in \mathcal{A} \)。
+  最后由\(A^c \cup B \in \mathcal{A} \)知\(A \setminus B = (A^c \cup B)^c  \in \mathcal{A}\)。
+
+  综上知\(\mathcal{A} \)是集代数。
+\end{solution}
+
+\begin{problem}\label{pro:1.4.3}
+  设\(\mathcal{C} \)是集类，
+  则\(\forall A \in \sigma(\mathcal{C}),\exists \mathcal{C}_1 \subset \mathcal{C},|\mathcal{C}_1| \leq \aleph_0,A \in \sigma(\mathcal{C}_1) \)。
+\end{problem}
+\begin{solution}
+  定义\(\mathcal{D}:=\{ A \in \sigma(\mathcal{C}):\exists \mathcal{C}_1 \subset \mathcal{C},|\mathcal{C}_1| \leq \aleph_0,A \in \sigma(\mathcal{C}_1) \} \)。
+  对于\(A \in \mathcal{C} \)，易知\(A \in \sigma\{A\} \)，故\(A \in \mathcal{D} \)。
+  从而\(\mathcal{C} \subset \mathcal{D} \)。又显然有\(\mathcal{D} \subset \sigma(\mathcal{C}) \)，故要证\(\mathcal{D} =\sigma(\mathcal{C})\)，只需证\(\mathcal{D} \)是\(\sigma \)-代数。
+
+  \begin{enumerate}
+    \item 由\(\Omega \in \{\emptyset,\Omega\} = \sigma(\emptyset) \)知\(\Omega \in \mathcal{D} \)。
+    \item 对\(A \in \mathcal{D} \)，取满足条件的\(\mathcal{C}_1 \)，则由 \(A \in \sigma(\mathcal{C}_1) \) 知\(A^c \in \sigma(\mathcal{C}_1) \)，故\(A^c \in \mathcal{D} \)。
+    \item 对\(A_n \in \mathcal{D},n=1,2,\cdots \)，分别取满足条件的\(\mathcal{C}_n \)。考查\(\mathcal{C}_0=\bigcup_{n=1}^{\infty} \mathcal{C}_n \)。
+      由\(A_n \in \sigma(\mathcal{C}_n) \subset \sigma(\mathcal{C}_0) \)及\(\sigma(\mathcal{C}_0) \)为\(\sigma \)-代数可知\(\bigcup_{n=1}^{\infty} A_n \in \sigma(\mathcal{C}_0) \)。
+      又由\(\mathcal{C}_n \)是可数的，得\(\mathcal{C}_0 \)是可数的。
+      故\(\bigcup_{n=1}^{\infty} A_n \in \mathcal{D} \)。
+  \end{enumerate}
+  综上知\(\mathcal{D} \)为\(\sigma \)-代数，故\(\mathcal{D}=\sigma(\mathcal{C}) \)，也即\(\forall A \in \sigma(\mathcal{C}),\exists \mathcal{C}_1 \subset \mathcal{C},|\mathcal{C}_1| \leq \aleph_0,A \in \sigma(\mathcal{C}_1) \)。
+\end{solution}
+
+\begin{problem}\label{pro:1.4.4}
+  \(\sigma \)-代数\(\mathcal{A} \)称为可数生成的，如果存在可数的子集类\(\mathcal{C} \subset \mathcal{A} \)使\(\sigma(\mathcal{C})=\mathcal{A} \)。
+  证明\(\mathcal{B}^d \)是可数生成的。
+\end{problem}
+\begin{solution}
+  令\(\mathcal{C}:=\{B(x,r):x=(x_1,\cdots,x_d),x_i \in \mathbb{Q},i=1,\cdots,d, r \in \mathbb{Q}\} \)。易知\(\mathcal{C} \)可数。
+  令\(\mathcal{O} \)为全体开集。易知\(\mathcal{C} \subset \mathcal{O} \)，故\(\sigma(\mathcal{C}) \subset \mathcal{B}^d \)。
+  故要证\(\sigma(\mathcal{C})=\mathcal{B}^d \)，只需\(\sigma(\mathcal{C}) \supset \mathcal{B}^k \)。
+  又由\(\sigma(\mathcal{C}) \)为\(\sigma \)-代数，且\(\mathcal{B}^k=\sigma(\mathcal{O}) \)，故只需证\(\mathcal{O} \subset \sigma(\mathcal{C}) \)。
+  对于\(O \in \mathcal{O}\)，我们只需证\(O = \bigcup_{C \in \mathcal{C}:C \subset O} C \in \sigma(\mathcal{C}) \) （由\(\mathcal{C} \)可数知其为可数并）。
+  显然有\( O \supset \bigcup_{C \in \mathcal{C}:C \subset O} C \)，故只需证
+  \( O \subset \bigcup_{C \in \mathcal{C}:C \subset O} C  \)。
+  取\(x \in O \)，由\(O \)为开集知\(\exists r >0,B(x,r) \subset O \)。
+  设\(x=(x_1,\cdots,x_d) \)，由有理数的稠密性知\(\exists y_i \in \mathbb{Q},|x_i-y_i| < \frac{r}{100d} \)。
+  再取\(s \in \mathbb{Q} \)使\(\frac{r}{3} < s < \frac{r}{2} \)。
+  则易知\(B(y,s) \subset B(x,r) \subset O \)，且\(x \in B(y,s) \in \mathcal{C} \)。
+  故\(x \in \bigcup_{C \in \mathcal{C}:C \subset O} C \)。
+
+  综上 \(\mathcal{B}^k=\sigma(\mathcal{C}) \) 是可数生成的。
+\end{solution}
+
+\begin{problem}\label{pro:1.4.6}
+  设\(\mathcal{C} \)是\(\Omega \)中任一集代数，则存在\(\Omega \)中的单调类\(\mathcal{M}_0 \)满足：
+  \begin{enumerate}
+    \item \label{temp:1} \(\mathcal{C} \subset \mathcal{M}_0 \)，
+    \item \label{temp:2}对于包含\(\mathcal{C} \)的单调类\(\mathcal{M} \)，有\(\mathcal{M}_0 \subset \mathcal{M} \)。
+  \end{enumerate}
+  称这样的单调类为\(\mathcal{C} \)生成的单调类，记作\(\mathcal{M}(\mathcal{A}) \)。
+\end{problem}
+\begin{solution}
+  令
+  \begin{equation}\label{equ:1}
+    \mathcal{M}_0:=\bigcap_{\mathcal{M}:\mathcal{C} \subset \mathcal{M}, \mathcal{M} \text{为\(\Omega \)上的单调类}}\mathcal{M}
+  \end{equation}
+  。
+  显然\(2^{\Omega} \)是包含\(\mathcal{C} \)的单调类，故\(\mathcal{M}_0 \)良定义。
+  由\(\mathcal{M}_0 \)的定义易知\ref{temp:1},\ref{temp:2} 是成立的。故只需证\(\mathcal{M}_0 \)是单调类。
+
+  对\(A_1,\cdots \in \mathcal{M}_0, A_1 \subset A_2 \subset \cdots\)，我们要证\(A:=\bigcup_{n=1}^{\infty} A_n \in \mathcal{M}_0 \)。
+  对于\eqref{equ:1}中的\(\mathcal{M} \)，由\(\mathcal{M}_0 \)的定义知\(\mathcal{M}_0 \subset \mathcal{M} \)，故\(A_n \in \mathcal{M} \)。
+  又由\(\mathcal{M} \)为单调类，故\(A \in \mathcal{M} \)。
+  由\(\mathcal{M} \)的任意性可知\(A \in \mathcal{M}_0 \)。
+  对单调下降集列同理可得。故\(\mathcal{M}_0 \)是单调类，从而\(\mathcal{M}(\mathcal{A}) \)是良定义的。
+\end{solution}
+
+\begin{problem}\label{pro:1.4.9}
+  设\(\Omega_i ,i=1,2,\cdots,n\)是\(n \)个集合，\(\mathcal{A}_i \)是\(\Omega_i \)上的\(\sigma \)-代数。
+  证明\(\mathcal{C}=\{A_1 \times \cdots \times A_n:A_i \in \mathcal{A}_i\} \)为半集代数。
+\end{problem}
+\begin{solution}
+  事实上只需\(\mathcal{A}_i \)是半集代数就够了。
+  \begin{enumerate}
+    \item 显然\(\Omega=\prod_{i=1}^{n} \Omega_i \in \mathcal{C} \)，且\(\emptyset=\prod_{i=1}^{n} \emptyset  \in \mathcal{C}\)。
+    \item 设\(A=\prod_{i}A_i,B=\prod_{i}B_i \in \mathcal{C} \)，则\(A \cap B=\prod_{i}A_i \cap B_i \in \mathcal{C} \)。
+    \item 设\(A=\prod_{i}A_i,B_0=\prod_{i}B_{0i} \in \mathcal{C} \)，且\(B \subset A \)。
+      则有\(\forall i,B_{0i} \subset A_i \)。由\(\mathcal{A}_i \)为半集代数可知\(\exists B_{1i},\cdots,B_{n_ii} \in \mathcal{A}_i,A_i=\sum_{j=1}^{n_i} B_{ji} \)。
+      于是\(A=\sum_{i_1,i_2,\cdots,i_n:0 \leq i_n \leq n_i} \prod_{j=1}^{n} B_{i_j} \)，\(i_1=i_2=\cdots=i_n=0 \)时取到\(B \)。
+  \end{enumerate}
+  故\(\mathcal{C} \)为\(\prod_{i}\Omega_i \)上的半集代数。
+\end{solution}
+
+\begin{problem}\label{pro:1.4.11}
+  举例说明可加测度未必有限可加。
+\end{problem}
+\begin{solution}
+  令\(\Omega=\{1,2,3\},\mathcal{C}=\{\{1\},\{2\},\{3\},\{1,2,3\}\} \)。
+  令\(\mu:\mathcal{C} \to \mathbb{R},\mu(\{1\})=\mu(\{2\})=\mu(\{3\})=\mu(\Omega)=1 \)。
+  由于\(\mathcal{C} \)中任两个集都相交，故可加性显然满足。但\(\mu(\Omega)=1 \neq 3 = \mu(\{1\})+\mu(\{2\})+\mu(\{3\}) \)。
+\end{solution}
+
+\begin{problem}\label{pro:1.4.12}
+  举例说明半集代数\(\mathcal{T}\)生成的\(\sigma\)-代数不能一般性地表述为
+  \[
+    \sigma(\mathcal{T})=\{\sum_{n=1}^{\infty} A_n:\forall n \geq 1, A_n \in \mathcal{T}\}
+  \]
+  但如果\(\Omega\)至多可数时，如上表述是正确的。
+\end{problem}
+\begin{solution}
+  % 令\(\Omega=\mathbb{R} \)，令\(\mathcal{T}:=\{A \subset \mathbb{R}:|A| < \aleph_0 \text{或} |A^c| < \aleph_0 \} \)。
+  % 易于验证\(\mathcal{T} \)是半集代数（事实上它是集代数）。令\(\mathcal{S}:= \{\sum_{n=1}^{\infty} A_n:\forall n \geq 1, A_n \in \mathcal{T}\} \)，
+  % 下证\(\mathcal{S} \neq \sigma(\mathcal{T}) \)。事实上可以证明\(\mathbb{N}^c \notin \mathcal{S},\mathbb{N}^c \in \sigma( \mathcal{T} ) \)。
+  % 首先由\(\{n\} \in \mathcal{T} \)知\(\mathbb{N}=\bigcup_{n \in \mathbb{N}}\{n\} \in \sigma(\mathcal{T}) \)，故\(\mathbb{N}^c \in \sigma ( \mathcal{T} ) \)。
+  % 若\(\mathbb{N}^c = \sum_{n=1}^{\infty} A_n,A_n \in \mathcal{T} \)，则由\(\mathbb{N}^c \)不可数知\(\exists n, A_n \)不可数。
+  % 由\(\mathcal{T} \)的定义知\(A_n^c \)是有限的。但\(\mathbb{N}=(\mathbb{N}^c)^c \)是无限集，矛盾！
+  % 故\(\mathbb{N}^c \notin \mathcal{S} \)。
+  %
+  令\(\Omega = \mathbb{N} \)，令\(\mathcal{T}:=\{A \subset \mathbb{N}:0 \in A \text{且\( A^c \) 有限或}0 \notin A \text{且\( A\) 有限} \} \)。
+  先证\(\mathcal{T} \)是半集代数。只需证\(\mathcal{T} \)是集代数。
+  \begin{enumerate}
+    \item \( \Omega=\mathbb{N} \)满足\(0 \in \Omega,\Omega^c=\emptyset \) 有限，故\(\Omega \in \mathcal{T} \)。
+      % 同理\(\emptyset \in \mathcal{T} \)。
+      % \item 设\(A,B \in \mathcal{T} \)，需证\(A \cap B \in \mathcal{T} \)。若\(A,B \)中有一个有限且不含\(0 \)，则\(A \cap B \)也有限且不含\(0 \)。
+      %   若\(A^c,B^c \)均有限且\(A,B \)均含\(0 \)，则\((A \cap B)^c = A^c \cup B^c \)也有限，\(A \cap B \)也含\(0 \)。
+      %   故无论如何都有\(A \cap B \in \mathcal{T} \)。
+    \item 设\(A,B \in \mathcal{T} \)。须证\(A \setminus B \in \mathcal{T} \)。若\(A \)有限且\(0 \notin A \)，则有\(A \setminus B \)也有限且\(0 \notin A \setminus B \)，故\(A \setminus B \in \mathcal{T} \)。
+      若\(A^c \)有限且\(0 \in A \)，\(B \)有限且\(0 \notin B \)，则\(( A \setminus B  )^c = A^c \cup B\)也有限且\(0 \in A \setminus B \)，故\(A \setminus B \in \mathcal{T} \)。
+      若\(A^c,B^c \)有限且\(0 \in A,B \)，则\(A \setminus B=A \cap B^c \)有限，且\(0 \notin A \setminus B \)，故\(A \setminus B \in \mathcal{T} \)。
+      综上,\(\forall A,B \in \mathcal{T},A \setminus B \in \mathcal{T} \)。
+  \end{enumerate}
+  令\(\mathcal{S}:= \{\sum_{n=1}^{\infty} A_n:\forall n \geq 1, A_n \in \mathcal{T}\} \)，下证\(\mathcal{S} \neq \sigma(\mathcal{T}) \)。
+  只需证\(\{0\} \in \sigma(\mathcal{T}),\{0\} \notin \mathcal{S} \)。
+  由\(\{n\} \in \mathcal{T},\forall n \geq 1 \)可得\(\mathbb{N}_+ \in \sigma(\mathcal{T}) \)，故\(\{0\}=\mathbb{N}_+^c \in \sigma(\mathcal{T}) \)。
+  反设 \( \{0\} \in \mathcal{S} \)，则\(\{0\}=\sum_{n}A_n,A_n \in \mathcal{T} \)。由\(\{0\} \)有限知\(A_n \)有限，由\(\mathcal{T} \)的定义知\(0 \notin A_n \)，故\(0 \notin \sum_{n}A_n=\{0\} \)，矛盾！
+  故\(\{0\}\notin \mathcal{S} \)。从而 \( \mathcal{S} \neq \sigma(\mathcal{T}) \)。
+
+  % 下面证明对可数的\(\Omega \)上面的表述是正确的。
+  % 易知\(\mathrm{L.H.S} \supset \mathrm{R.H.S} \supset \mathcal{T} \)，故只需证\(\mathrm{R.H.S} \)是\(\sigma \)-代数。
+  % 方便起见同样将其记为\(\mathcal{S} \)。
+  % \begin{enumerate}
+  %   \item 显然\(\Omega \in \mathcal{T} \subset \mathcal{S} \)。
+  %   \item 设\(A_n \in \mathcal{S} ,n=1,2,\cdots \)，则由\(\mathcal{S} \)的定义可知\(A_n= \sum_{i} A_{i n},A_{i n} \in \mathcal{T}\)。
+  %     故\(\bigcup_{n}A_n = \bigcup_{i,n}A_{i n} \)为可数并，方便起见将其记作\(\bigcup_{n}A_n=\bigcup_{n}B_n,B_n \in \mathcal{T} \)。
+  %     令\(C_1=B_1,C_{n+1}=B_{n+1} \setminus B_n \)。则\(\bigcup_{n}A_n=\sum_{n}C_n \)。
+  %     令\(D_{1,1}=C_1,k_1=1 \)。对\(n+1>1 \)，由\(\mathcal{T} \)为半集代数知\(B_{n+1} \cap B_n \in \mathcal{T} \)。
+  %     又\(B_{n + 1}\cap B_n \subset B_{n + 1} \)，由半集代数的性质可知\(\exists D_{n + 1,1},D_{n + 1,2},\cdots,D_{n + 1,k_{n + 1}} \in \mathcal{T},B_{n + 1}=\sum_{i=0}^{k_{n + 1}} D_{n+1,i} \)，其中\(D_{n+1,0}=B_{n+1} \cap B_{n} \)。
+  %     故\(C_{n+1}=\sum_{i=1}^{k_{n + 1}} D_{n+1,i} \)。
+  %     故\(\bigcup_{n}A_n = \sum_{n=1}^{\infty} \sum_{i=1}^{k_{n}} D_{n+1,i} \in \mathcal{S} \)。
+  % \end{enumerate}
+
+\end{solution}
+
+\end{document}

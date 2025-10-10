@@ -9,9 +9,9 @@
 \large
 \setlength{\baselineskip}{1.2em}
 \ifpreface
-  \input{../../../global/preface}
+\input{../../../global/preface}
 \else
-  %\maketitle
+%\maketitle
 \fi
 \newgeometry{left=2cm,right=2cm,top=2cm,bottom=2cm}
 %from_here_to_type
@@ -20,6 +20,7 @@
   the lifetime of the battery obey the distribution of exponential distribution
   with parameter \(\lambda = \frac{1}{30}\). In long term, in which frequence should we change the battery?
 \end{problem}
+
 \begin{solution}
   Easy to get that \(\lim_{t \to \infty}\frac{m(t)}{t}=\frac{1}{\mathbb{E}(\xi_1)}=\frac{1}{30}\).
   So we change battery every \(30\) hours in average.
@@ -80,3 +81,5 @@
 \end{solution}
 
 \end{document}
+
+
