@@ -15,7 +15,7 @@
 \newgeometry{left=2cm,right=2cm,top=2cm,bottom=2cm}
 %from_here_to_type
 %p22 2,3,4,6,9,11,12
-\begin{problem}\label{pro:1.4.2}
+\begin{problem}\label{pro:1.4.1}
   证明\(\sigma \)-代数是集代数。
 \end{problem}
 \begin{solution}
@@ -29,7 +29,7 @@
   综上知\(\mathcal{A} \)是集代数。
 \end{solution}
 
-\begin{problem}\label{pro:1.4.3}
+\begin{problem}\label{pro:1.4.2}
   设\(\mathcal{C} \)是集类，
   则\(\forall A \in \sigma(\mathcal{C}),\exists \mathcal{C}_1 \subset \mathcal{C},|\mathcal{C}_1| \leq \aleph_0,A \in \sigma(\mathcal{C}_1) \)。
 \end{problem}
@@ -49,7 +49,7 @@
   综上知\(\mathcal{D} \)为\(\sigma \)-代数，故\(\mathcal{D}=\sigma(\mathcal{C}) \)，也即\(\forall A \in \sigma(\mathcal{C}),\exists \mathcal{C}_1 \subset \mathcal{C},|\mathcal{C}_1| \leq \aleph_0,A \in \sigma(\mathcal{C}_1) \)。
 \end{solution}
 
-\begin{problem}\label{pro:1.4.4}
+\begin{problem}\label{pro:1.4.3}
   \(\sigma \)-代数\(\mathcal{A} \)称为可数生成的，如果存在可数的子集类\(\mathcal{C} \subset \mathcal{A} \)使\(\sigma(\mathcal{C})=\mathcal{A} \)。
   证明\(\mathcal{B}^d \)是可数生成的。
 \end{problem}
@@ -69,8 +69,44 @@
 
   综上 \(\mathcal{B}^k=\sigma(\mathcal{C}) \) 是可数生成的。
 \end{solution}
+\begin{problem}\label{pro:1.4.4}
+  设\(\mathcal{C}_n \)是单调上升的集类。
+  \begin{enumerate}
+    \item
+      设\(\mathcal{C}_n \)是集代数，则\(\bigcup_{n=1}^{\infty} \mathcal{C}_n\)是集代数
+    \item 设\(\mathcal{C}_n \)是\(\sigma \)-代数，则\(\bigcup_{n=1}^{\infty}\mathcal{C}_n \)未必是\(\sigma \)-代数。
+  \end{enumerate}
+\end{problem}
+\begin{solution}
+  \begin{enumerate}
+    \item
+      \begin{enumerate}
+        \item 显然\(\Omega \in \mathcal{C}_n \subset \mathcal{C} \)。
+        \item 设\(A,B \in \mathcal{C} \)，则\(\exists n,m \)使\(A \in \mathcal{C}_n,B \in \mathcal{C}_m \)。
+          取\(k >n,m \)，则\(A,B \in \mathcal{C}_k \)。故\(A \setminus B \in \mathcal{C}_k \subset \mathcal{C} \)。
+      \end{enumerate}
+      故\(\mathcal{C} \)是集代数。
+    \item 令\(\Omega=\mathbb{N} \)，令\(\mathcal{C}_n \)是由\(\{\{1\},\{2\},\cdots,\{n\}\} \)生成的\(\sigma \)代数。
+      考察\(\bigcup_{n=1}^{\infty}\mathcal{C}_n =\{A:A \text{有限} \vee A^c \text{有限}\}\)，易知\(\forall n,\{2n\} \in \bigcup_{n=1}^{\infty}\mathcal{C}_n \)，
+      但\(2 \mathbb{N} \notin \bigcup_{n=1}^{\infty}\mathcal{C}_n \)。故其不是\(\sigma \)-代数。
+  \end{enumerate}
+\end{solution}
 
 \begin{problem}\label{pro:1.4.6}
+  证明\(\sigma \)代数不能与\(\mathbb{N} \)等势。
+\end{problem}
+\begin{solution}
+  设\(\mathcal{F} \)是一个\(\sigma \)-代数。考察其原子集族\(\mathcal{A} \)。
+  若\(\mathcal{A} \)是\(\Omega \)的覆盖，则考察\(|\mathcal{A}| \)。若\(\mathcal{A} \)有限，则易知\(|\mathcal{F}|=2^{|\mathcal{A}|} \)也有限。
+  若\(\mathcal{A} \)无限，则取一个\(\mathcal{A} \)的可数子集\(\mathcal{A}_1 \)，加上\(\Omega \setminus \bigcup \mathcal{A}_1\) 构成一个\(\Omega \)的可数分割，记为\(\mathcal{B} \)。
+  故\(|\mathcal{F}|\geq |\sigma(\mathcal{B})|=2^{|\mathcal{B}|}=2^{\aleph_0}>\aleph_0 \)。
+
+  若\(\mathcal{A} \)不是\(\Omega \)的覆盖，则\(\mathcal{F} \)中一定有无穷递降列\(F_1 \supset F_2 \supset \cdots \)。
+  令\(A_n :=F_n \setminus F_{n+1} \)，则\(A_n \in \mathcal{F} \)两两不交。取\(\mathcal{B}:=\{A_n:n \in \mathbb{N}_{+}\} \cup \{\Omega \setminus \bigcup_{n=1}^{\infty}A_n\} \)，
+  则由前面的讨论知\(\mathcal{F} \)不可数。
+\end{solution}
+
+\begin{problem}\label{pro:1.4.a}
   设\(\mathcal{C} \)是\(\Omega \)中任一集代数，则存在\(\Omega \)中的单调类\(\mathcal{M}_0 \)满足：
   \begin{enumerate}
     \item \label{temp:1} \(\mathcal{C} \subset \mathcal{M}_0 \)，
@@ -94,7 +130,7 @@
   对单调下降集列同理可得。故\(\mathcal{M}_0 \)是单调类，从而\(\mathcal{M}(\mathcal{A}) \)是良定义的。
 \end{solution}
 
-\begin{problem}\label{pro:1.4.9}
+\begin{problem}\label{pro:1.4.b}
   设\(\Omega_i ,i=1,2,\cdots,n\)是\(n \)个集合，\(\mathcal{A}_i \)是\(\Omega_i \)上的\(\sigma \)-代数。
   证明\(\mathcal{C}=\{A_1 \times \cdots \times A_n:A_i \in \mathcal{A}_i\} \)为半集代数。
 \end{problem}
@@ -110,13 +146,46 @@
   故\(\mathcal{C} \)为\(\prod_{i}\Omega_i \)上的半集代数。
 \end{solution}
 
-\begin{problem}\label{pro:1.4.11}
+\begin{problem}\label{pro:1.4.9}
   举例说明可加测度未必有限可加。
 \end{problem}
 \begin{solution}
   令\(\Omega=\{1,2,3\},\mathcal{C}=\{\{1\},\{2\},\{3\},\{1,2,3\}\} \)。
   令\(\mu:\mathcal{C} \to \mathbb{R},\mu(\{1\})=\mu(\{2\})=\mu(\{3\})=\mu(\Omega)=1 \)。
   由于\(\mathcal{C} \)中任两个集都相交，故可加性显然满足。但\(\mu(\Omega)=1 \neq 3 = \mu(\{1\})+\mu(\{2\})+\mu(\{3\}) \)。
+\end{solution}
+
+\begin{problem}
+  设\((\Omega_n,\mathcal{A}_n,\mu_{n}),n \geq 1 \)为一列测度空间，\(\Omega_n \)两两不交。令 \[
+    \Omega=\sum_{n=1}^{\infty} \Omega_n, \mathcal{A}=\{A \subset \Omega : \forall n \geq 1,A \cap \Omega_n \in \mathcal{A}_n\}, \mu (A)=\sum_{n=1}^{\infty} \mu_{n} (A \cap \Omega_n), A \in \mathcal{A}
+  \]
+  证明\((\Omega , \mathcal{A} , \mu ) \)为测度空间。
+\end{problem}
+\begin{solution}
+  先证\(\mathcal{A} \)为\(\sigma \)-代数。
+  \begin{enumerate}
+    \item \(\Omega = \bigcup_{n=1}^{\infty}\Omega_n \in \mathcal{A} \)。
+    \item 设\(A_n \in \mathcal{A} \)，则\(( \bigcup_{n}A_n ) \cap \Omega_m = \bigcup_{n}(A_n \cap \Omega_m) \in \mathcal{A}_m\)，故\(\bigcup_{n}A_n \in \mathcal{A} \)。
+    \item 设\(A \in \mathcal{A} \)，则\(A^c \cap \Omega_m = \Omega_m \setminus (A \cap \Omega_m) \in \mathcal{A}_m \)，故\(A^c \in \mathcal{A} \)。
+  \end{enumerate}
+  再证\(\mu \)为测度。显然\(\mu(A) \geq 0 \)。
+  设\(A_n \in \mathcal{A} \)两两不交，则
+  \(\mu(\bigcup_{n}A_n) = \sum_{k=1}^{\infty}\mu_k(\bigcup_{n}A_n \cap \Omega_k) = \sum_{k=1}^{\infty}\sum_{m=1}^{\infty}\mu_k(A_m \cap \Omega_k) = \sum_{m=1}^{\infty}\mu(A_m) \)。
+  故\(\mu \)是测度。
+\end{solution}
+
+\begin{problem}
+  设\(\Omega \)为一无穷集，令\(\mathcal{F} \)为\(\Omega \)中的有限集或者余有限集构成的集合，\(\mathbb{P} \)在次两类集合上取值
+  分别为\(0 \)或\(1 \)。
+  \begin{itemize}
+    \item 证明\(\mathcal{F} \)为集代数，\(\mathbb{P} \)为有限可加。
+    \item 若\(\Omega \)为可数集，则\(\mathbb{P} \)不可能为\(\sigma \)可加。
+    \item 若\(\Omega \)为不可数集，则\(\mathbb{P} \)为可数可加。
+  \end{itemize}
+
+\end{problem}
+\begin{solution}
+
 \end{solution}
 
 \begin{problem}\label{pro:1.4.12}
