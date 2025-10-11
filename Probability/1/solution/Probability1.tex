@@ -197,7 +197,10 @@
       对于\(A,B \in \mathcal{F},A \cap B = \emptyset \)，
       由\(\Omega \)无限知 \(A,B \)中有一个有限，不妨\(A \)有限，则\(B \)的有限性与\(A \cup B \)相同。
       故\(\mathbb{P}(A \cup B)=\mathbb{P}(B)=\mathbb{P}(A)+\mathbb{P}(B) \)。
-    \item
+    \item \(\mathbb{P}(\bigcup_{\omega \in \Omega}\{\omega\})=1 \neq 0 = \sum_{\omega \in \Omega}\mathbb{P}(\{\omega\}) \)。
+    \item 取\(A_n \in \mathcal{F} \)两两不交，则由\(\Omega \)无限知其中至多有一个余有限集。
+      若存在余有限集，不妨设为\(A_1 \)，则\(\mathbb{P}(\bigcup_{n}A_n)=1=\mathbb{P}(A_1)=\sum_{n=1}^{\infty}\mathbb{P}(A_n) \)。
+      否则\(A_n \)均为有限集。故\(\bigcup_{n}A_n \)至多可数。又\(\Omega \)不可数，故其不是余有限集。故\(\mathbb{P}(\bigcup_{n}A_n)=0 = \sum_{n=1}^{\infty}\mathbb{P}(A_n) \)。
   \end{enumerate}
 
 \end{solution}
