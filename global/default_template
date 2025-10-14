@@ -1,5 +1,6 @@
 %!Mode:: "TeX:UTF-8"
 %!TEX TS-program = xelatex
+%arara: xelatex
 \documentclass{ctexart}
 \newif\ifpreface
 \prefacetrue

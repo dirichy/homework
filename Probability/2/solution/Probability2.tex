@@ -1,0 +1,115 @@
+%!Mode:: "TeX:UTF-8"
+%!TEX TS-program = xelatex
+%arara: xelatex
+\documentclass{ctexart}
+\newif\ifpreface
+\prefacetrue
+\input{../../../global/all}
+\begin{document}
+\large
+\setlength{\baselineskip}{1.2em}
+\ifpreface
+\input{../../../global/preface}
+\else
+\maketitle
+\fi
+\newgeometry{left=2cm,right=2cm,top=2cm,bottom=2cm}
+%from_here_to_type
+
+\begin{problem}\label{pro:21}
+  设\(\mu^* \)是\(\mu \)生成的外测度，证明测度空间\((\Omega,\mathcal{A},\mu)\)是完全的当且仅当\(\mathcal{A} \supset \{A \in \Omega:\mu^*(A)=0\} \)。
+\end{problem}
+\begin{solution}
+  先证充分性。设\(\mathcal{A} \supset \{A \in \Omega:\mu^*(A)=0\}\)。
+  考察\(\mu \)-零测集\(A \)，由定义知\(\exists B \in \mathcal{A},A \subset B,\mu(B)=0 \)。
+  故\(\{B\} \)是\(A \)的一个覆盖，从而\(\mu^*(A) \leq \mu(B)=0 \)，故\(\mu^*(A)=0 \)，从而\(A \in \mathcal{A} \)。
+
+  再证必要性。设\(A \)满足\(\mu^*(A)=0 \)。则由定义知\(\exists A_1,A_2,\cdots \in \mathcal{A},B \subset \bigcup_{n}A_n,\mu(A_n)=0 \)。
+  由\(\mathcal{A} \)为\(\sigma \)-代数知\(\bigcup_{n}A_n \in \mathcal{A} \)，故\(A \)也是\(\mu \)-零测集。
+  由完全性的定义知\(A \in \mathcal{A} \)。
+\end{solution}
+
+\begin{problem}\label{pro:22}
+  $\mathscr{S}$ 是半集代数，$\mu$ 是 $\mathscr{S}$ 上有限测度。记 $\left(\Omega, \mathscr{A}^*, \mu^*\right)$ 是 $\mu$ 扩张至 $\sigma(\mathscr{S})$的完全化，令
+  $$
+  \begin{aligned}
+    \mu_*(A) & =\sup \left\{\sum_n \mu\left(A_n\right): A_n \in \mathscr{S} \text { 两两不交 },\sum_n A_n \subset A\right\}, \\
+    \mathscr{A}_* & =\left\{A \subset \Omega: \mu^*(A)=\mu_*(A)\right\} .
+  \end{aligned}
+  $$
+  试证： \(\mathscr{A}^* \supset \mathscr{A}_*\)
+\end{problem}
+\begin{solution}
+  设\(A \in \mathcal{A}_{*} \)，即\(\mu^{*}(A)=\mu_{*}(A) \)，下证\(A \in \mathcal{A}^* \)。
+  由外测度的定义，结合\(\mu \)有限，可得 \(\forall \varepsilon =\frac{1}{n} >0,\exists \mathcal{R} \subset \mathscr{S} \)  为\(A \)的可数覆盖，且\(\sum_{X \in \mathcal{R}}\mu(X) < \mu^*(A) + \varepsilon \)。
+  令\(A_n := \bigcup \mathcal{R} \)，则\(A_n \supset A \)且\(\mu(A_n)\searrow \mu^*(A) \)。
+  同样地，可以找到\(B_n \in \sigma(\mathscr{S}) \)，满足\(B_n \subset A \)且\(\mu(B_n) \nearrow \mu_*(A) \)。
+  令\(O=\bigcap_{n}A_n \setminus \bigcup_{n} B_n \)，则\(\forall n, \mu(O) \leq \mu(A_n \setminus B_n)=\mu(A_n)-\mu(B_n) \to 0 \),故\(\mu(O)=0 \)。
+  又\(A \setminus \bigcup_{n}B_n \subset O\)，从而\(A=\bigcup_{n}B_n \cup (A \setminus \bigcup_{n}B_n) \in \mathcal{A}^* \)。
+\end{solution}
+
+\begin{problem}\label{pro:23}
+  设 $(\Omega, \mathscr{A}, \mu)$ 为测度空间，$\mu^*$ 为由 $\mu$ 生成的外测度。证明 $N \subset \Omega$ 为 $\mu$零测集
+  当且仅当 $\mu^*(N)=0$ ．
+\end{problem}
+
+\begin{solution}
+  一方面，设\(\mu^*(N)=0 \)，则由\ref{pro:22}中证明可知\(\exists A_n \in \mathcal{A} ,N \subset A_n\)使\(\mu(A_n) \to 0 \)。
+  故\(\mu(\bigcap_{n}A_n) \leq \mu(A_n) \to 0 \)，从而\(N \subset \bigcap_{n}A_n,\mu(\bigcap_{n}A_n)=0 \)。
+  故\(N \)是\(\mu \)零测集。
+
+  另一方面，设\(N\)是\(\mu \)零测集，则\(\exists M \in \mathcal{A},N \subset M,\mu(M)=0 \)。
+  从而\(\{M\} \)为\(N \)的可数覆盖，\(\mu^*(N) \leq \mu(M)=0 \)。
+\end{solution}
+
+\begin{problem}\label{pro:1.4.12}
+  举例说明即使\(\Omega\)可数，半集代数\(\mathcal{T}\)生成的\(\sigma\)-代数不能表示为：
+  \[
+    \sigma(\mathcal{T})=\{\sum_{n=1}^{\infty} A_n:\forall n \geq 1, A_n \in \mathcal{T}\}
+  \]
+\end{problem}
+\begin{solution}
+  % 令\(\Omega=\mathbb{R} \)，令\(\mathcal{T}:=\{A \subset \mathbb{R}:|A| < \aleph_0 \text{或} |A^c| < \aleph_0 \} \)。
+  % 易于验证\(\mathcal{T} \)是半集代数（事实上它是集代数）。令\(\mathcal{S}:= \{\sum_{n=1}^{\infty} A_n:\forall n \geq 1, A_n \in \mathcal{T}\} \)，
+  % 下证\(\mathcal{S} \neq \sigma(\mathcal{T}) \)。事实上可以证明\(\mathbb{N}^c \notin \mathcal{S},\mathbb{N}^c \in \sigma( \mathcal{T} ) \)。
+  % 首先由\(\{n\} \in \mathcal{T} \)知\(\mathbb{N}=\bigcup_{n \in \mathbb{N}}\{n\} \in \sigma(\mathcal{T}) \)，故\(\mathbb{N}^c \in \sigma ( \mathcal{T} ) \)。
+  % 若\(\mathbb{N}^c = \sum_{n=1}^{\infty} A_n,A_n \in \mathcal{T} \)，则由\(\mathbb{N}^c \)不可数知\(\exists n, A_n \)不可数。
+  % 由\(\mathcal{T} \)的定义知\(A_n^c \)是有限的。但\(\mathbb{N}=(\mathbb{N}^c)^c \)是无限集，矛盾！
+  % 故\(\mathbb{N}^c \notin \mathcal{S} \)。
+  %
+  令\(\Omega = \mathbb{N} \)，令\(\mathcal{T}:=\{A \subset \mathbb{N}:0 \in A \text{且\( A^c \) 有限或}0 \notin A \text{且\( A\) 有限} \} \)。
+  先证\(\mathcal{T} \)是半集代数。只需证\(\mathcal{T} \)是集代数。
+  \begin{enumerate}
+    \item \( \Omega=\mathbb{N} \)满足\(0 \in \Omega,\Omega^c=\emptyset \) 有限，故\(\Omega \in \mathcal{T} \)。
+      % 同理\(\emptyset \in \mathcal{T} \)。
+      % \item 设\(A,B \in \mathcal{T} \)，需证\(A \cap B \in \mathcal{T} \)。若\(A,B \)中有一个有限且不含\(0 \)，则\(A \cap B \)也有限且不含\(0 \)。
+      %   若\(A^c,B^c \)均有限且\(A,B \)均含\(0 \)，则\((A \cap B)^c = A^c \cup B^c \)也有限，\(A \cap B \)也含\(0 \)。
+      %   故无论如何都有\(A \cap B \in \mathcal{T} \)。
+    \item 设\(A,B \in \mathcal{T} \)。须证\(A \setminus B \in \mathcal{T} \)。若\(A \)有限且\(0 \notin A \)，则有\(A \setminus B \)也有限且\(0 \notin A \setminus B \)，故\(A \setminus B \in \mathcal{T} \)。
+      若\(A^c \)有限且\(0 \in A \)，\(B \)有限且\(0 \notin B \)，则\(( A \setminus B  )^c = A^c \cup B\)也有限且\(0 \in A \setminus B \)，故\(A \setminus B \in \mathcal{T} \)。
+      若\(A^c,B^c \)有限且\(0 \in A,B \)，则\(A \setminus B=A \cap B^c \)有限，且\(0 \notin A \setminus B \)，故\(A \setminus B \in \mathcal{T} \)。
+      综上,\(\forall A,B \in \mathcal{T},A \setminus B \in \mathcal{T} \)。
+  \end{enumerate}
+  令\(\mathcal{S}:= \{\sum_{n=1}^{\infty} A_n:\forall n \geq 1, A_n \in \mathcal{T}\} \)，下证\(\mathcal{S} \neq \sigma(\mathcal{T}) \)。
+  只需证\(\{0\} \in \sigma(\mathcal{T}),\{0\} \notin \mathcal{S} \)。
+  由\(\{n\} \in \mathcal{T},\forall n \geq 1 \)可得\(\mathbb{N}_+ \in \sigma(\mathcal{T}) \)，故\(\{0\}=\mathbb{N}_+^c \in \sigma(\mathcal{T}) \)。
+  反设 \( \{0\} \in \mathcal{S} \)，则\(\{0\}=\sum_{n}A_n,A_n \in \mathcal{T} \)。由\(\{0\} \)有限知\(A_n \)有限，由\(\mathcal{T} \)的定义知\(0 \notin A_n \)，故\(0 \notin \sum_{n}A_n=\{0\} \)，矛盾！
+  故\(\{0\}\notin \mathcal{S} \)。从而 \( \mathcal{S} \neq \sigma(\mathcal{T}) \)。
+
+  % 下面证明对可数的\(\Omega \)上面的表述是正确的。
+  % 易知\(\mathrm{L.H.S} \supset \mathrm{R.H.S} \supset \mathcal{T} \)，故只需证\(\mathrm{R.H.S} \)是\(\sigma \)-代数。
+  % 方便起见同样将其记为\(\mathcal{S} \)。
+  % \begin{enumerate}
+  %   \item 显然\(\Omega \in \mathcal{T} \subset \mathcal{S} \)。
+  %   \item 设\(A_n \in \mathcal{S} ,n=1,2,\cdots \)，则由\(\mathcal{S} \)的定义可知\(A_n= \sum_{i} A_{i n},A_{i n} \in \mathcal{T}\)。
+  %     故\(\bigcup_{n}A_n = \bigcup_{i,n}A_{i n} \)为可数并，方便起见将其记作\(\bigcup_{n}A_n=\bigcup_{n}B_n,B_n \in \mathcal{T} \)。
+  %     令\(C_1=B_1,C_{n+1}=B_{n+1} \setminus B_n \)。则\(\bigcup_{n}A_n=\sum_{n}C_n \)。
+  %     令\(D_{1,1}=C_1,k_1=1 \)。对\(n+1>1 \)，由\(\mathcal{T} \)为半集代数知\(B_{n+1} \cap B_n \in \mathcal{T} \)。
+  %     又\(B_{n + 1}\cap B_n \subset B_{n + 1} \)，由半集代数的性质可知\(\exists D_{n + 1,1},D_{n + 1,2},\cdots,D_{n + 1,k_{n + 1}} \in \mathcal{T},B_{n + 1}=\sum_{i=0}^{k_{n + 1}} D_{n+1,i} \)，其中\(D_{n+1,0}=B_{n+1} \cap B_{n} \)。
+  %     故\(C_{n+1}=\sum_{i=1}^{k_{n + 1}} D_{n+1,i} \)。
+  %     故\(\bigcup_{n}A_n = \sum_{n=1}^{\infty} \sum_{i=1}^{k_{n}} D_{n+1,i} \in \mathcal{S} \)。
+  % \end{enumerate}
+
+\end{solution}
+
+\end{document}
