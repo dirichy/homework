@@ -1,5 +1,6 @@
 %!Mode:: "TeX:UTF-8"
 %!TEX TS-program = xelatex
+%!TEX language = zh
 %arara: xelatex
 \documentclass{ctexart}
 \newif\ifpreface
@@ -103,10 +104,10 @@
 \begin{solution}
   \begin{enumerate}
     \item
-      由定理2.6（2）可知\(F:=(f_1,\cdots,f_n) \)是{ \((\Omega,\mathcal{A}) \) }上的{实（复）可测函数}。
+      由定理2.6（2）可知\(F:=(f_1,\cdots,f_n) \)是{ \((\Omega,\mathcal{A}) \) }上的\(n \) 维{实（复）可测函数}。
       故由定理2.7可得\(g \circ F=g(f_1,\cdots,f_n) \)是\((\Omega,\mathcal{A}) \)上的{实（复）可测函数}。
     \item
-      由定理2.6（2）可知\(F:=(f_1,\cdots,f_n) \)是{ \((\Omega,\mathcal{A}) \) }上的{实（复）可测函数}。
+      由定理2.6（2）可知\(F:=(f_1,\cdots,f_n) \)是{ \((\Omega,\mathcal{A}) \) }上的\(n \) 维{实（复）可测函数}。
       故由定理2.7可得\(g \circ F=g(f_1,\cdots,f_n) \)是\((\Omega,\mathcal{A}) \)上的{实（复）可测函数}。
   \end{enumerate}
 
@@ -115,10 +116,15 @@
 \begin{problem}\label{pro:2.5.3}
   \begin{enumerate}
     \item   设\(g \)是\((\overline{\mathbb{R}}^n,\overline{\mathcal{B}}^n) \)上的实（复）可测函数，\(f_1,\cdots,f_n \)是\((\Omega,\mathcal{A},\mathbb{P}) \)上的随机变量。
-      且\(\mathbb{P}(|g(f_1,\cdots,f_n)|=\infty)=0 \)。 则\(g(f_1,\cdots,f_n) \)是\((\Omega,\mathcal{A}) \)上的实（复）随机变量。
+      且\(\mathbb{P}(|g(f_1,\cdots,f_n)|=\infty)=0 \)。 则\(g(f_1,\cdots,f_n) \)是\((\Omega,\mathcal{A},\mathbb{P} ) \)上的实（复）随机变量。
     \item   设\(g \)是\((\overline{\mathbb{C}}^n,\overline{\mathcal{B}}^n_c) \)上的实（复）可测函数，\(f_1,\cdots,f_n \)是\((\Omega,\mathcal{A},\mathbb{P}) \)上的复随机变量。
-      且\(\mathbb{P}(|g(f_1,\cdots,f_n)|=\infty)=0 \)。 则\(g(f_1,\cdots,f_n) \)是\((\Omega,\mathcal{A}) \)上的实（复）随机变量。
+      且\(\mathbb{P}(|g(f_1,\cdots,f_n)|=\infty)=0 \)。 则\(g(f_1,\cdots,f_n) \)是\((\Omega,\mathcal{A},\mathbb{P} ) \)上的实（复）随机变量。
   \end{enumerate}
 \end{problem}
+\begin{solution}
+  由\ref{pro:2.5.2}可知\(g(f_1,f_2,\cdots,f_n) \)是实（复）可测函数。
+  又由\(\mathbb{P}(|g(f_1,\cdots,f_n)|=\infty)=0 \)知其几乎处处有限，故有\(g(f_1,\cdots,f_n) \overset{\text{a.s.}}{=} \mathbbm{1}_{|g(f_1,\cdots,f_n)|<\infty}g(f_1,\cdots,f_n) \)。
+  而后者值域为\(\mathbb{R} \)（\(\mathbb{C} \)），故在几乎处处相等的意义下\(g(f_1,\cdots,f_n) \)是实（复）随机变量。
+\end{solution}
 
 \end{document}

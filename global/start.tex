@@ -40,7 +40,8 @@
 \newtheorem{lemma}{Lemma}
 \usepackage{xcolor}
 \newcounter{problem}
-\newcommand{\Problem}{\begin{tikzpicture}[baseline]%
+\newcommand{\Problem}{
+  \begin{tikzpicture}[baseline]%
     \node at (-0.02em,0.3em) {$\mathbb{P}$};%
     \node[scale=0.7] at (0.2em,-0.0em) {R};%
     \node[scale=0.7] at (0.6em,0.4em) {O};%
@@ -54,7 +55,8 @@
 \newenvironment{problem}{\refstepcounter{problem}\noindent\color{blue}\Problem\theproblem}{}
 
 \crefname{problem}{\protect\Problem}{Problem}
-\newcommand\Solution{\begin{tikzpicture}[baseline]%
+\newcommand\Solution{
+  \begin{tikzpicture}[baseline]%
     \node at (-0.04em,0.3em) {$\mathbb{S}$};%
     \node[scale=0.7] at (0.35em,0.4em) {O};%
     \node at (0.7em,0.3em) {\textit{L}};%
@@ -63,32 +65,34 @@
     \node[scale=0.85] at (1.4em,0.24em){I};%
     \node at (1.9em,0.32em){$\mathcal{O}$};%
     \node[scale=0.75] at (2.3em,0.21em){\texttt{N}};%
-  \end{tikzpicture}}
-\newenvironment{solution}{\begin{proof}[\Solution]}{\end{proof}}
+\end{tikzpicture}}
+\newenvironment{solution}{
+\begin{proof}[\Solution]}{
+\end{proof}}
 \title{\input{../../.subject}\input{../.number}}
 \makeatletter
 \newcommand\email[1]{\def\@email{#1}\def\@refemail{mailto:#1}}
 \newcommand\schoolid[1]{\def\@schoolid{#1}}
 \ifpreface
-  \def\@maketitle{
+\def\@maketitle{
   \raggedright
   {\Huge \bfseries \sffamily \@title }\\[1cm]
   {\Huge  \bfseries \sffamily\heiti\@author}\\[1cm]
   {\Huge \@schoolid}\\[1cm]
   {\Huge\href\@refemail\@email}\\[0.5cm]
-  \Huge\@date\\[1cm]}
+\Huge\@date\\[1cm]}
 \else
-  \def\@maketitle{
-    \raggedright
-    \begin{center}
-      {\Huge \bfseries \sffamily \@title }\\[4ex]
-      {\Large  \@author}\\[4ex]
-      {\large \@schoolid}\\[4ex]
-      {\href\@refemail\@email}\\[4ex]
-      \@date\\[8ex]
-    \end{center}}
+\def\@maketitle{
+  \raggedright
+  \begin{center}
+    {\Huge \bfseries \sffamily \@title }\\[4ex]
+    {\Large  \@author}\\[4ex]
+    {\large \@schoolid}\\[4ex]
+    {\href\@refemail\@email}\\[4ex]
+    \@date\\[8ex]
+\end{center}}
 \fi
 \makeatother
 \ifpreface
-  \usepackage[placement=bottom,scale=1,opacity=1]{background}
+\usepackage[placement=bottom,scale=1,opacity=1]{background}
 \fi
