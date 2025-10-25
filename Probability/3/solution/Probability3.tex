@@ -1,0 +1,96 @@
+%!Mode:: "TeX:UTF-8"
+%!TEX TS-program = xelatex
+%arara: xelatex
+\documentclass{ctexart}
+\newif\ifpreface
+\prefacetrue
+\input{../../../global/all}
+\begin{document}
+\large
+\setlength{\baselineskip}{1.2em}
+\ifpreface
+\input{../../../global/preface}
+\else
+\maketitle
+\fi
+\newgeometry{left=2cm,right=2cm,top=2cm,bottom=2cm}
+%from_here_to_type
+% p46 5, 7, 9, 11, 12
+\begin{problem}\label{pro:5}
+  分布函数是否是不降的？举出反例或者给出证明。
+\end{problem}
+\begin{solution}
+  \(1 \)维情形由定义显然是不降的，高维情形未必，下面给出一个例子。
+  令\(F(x,y)=\mathrm{e}^{x+y}-x-y \)，则有\(\Delta_{a,b} F = F(b_1,b_2)-F(a_1,b_2)-F(b_1,a_2)+F(a_1,a_2)
+    = \mathrm{e}^{b_1+b_2}-\mathrm{e}^{a_1+b_2}-\mathrm{e}^{b_1+a_2}+\mathrm{e}^{a_1+a_2}-b_1-b_2+a_1+b_2+b_1+a_2-a_1-a_2
+    = (\mathrm{e}^{b_1}-\mathrm{e}^{a_1})(\mathrm{e}^{b_2}-\mathrm{e}^{a_2}) \geq 0
+  \)，但\(F(-1,-1)\geq 2 > 0 = F(0,0) \)。
+\end{solution}
+
+\begin{problem}\label{pro:7}
+  证明若\(F(x)=\mathbb{P}(\xi < x) \)是连续的，则\(\eta = F(\xi) \)具有\((0,1) \)上的均匀分布。
+\end{problem}
+
+\begin{solution}
+  只需证明\(\mathbb{P}(F(\xi)< x)=x,x \in (0,1) \)。
+  令\(G(x):=\inf\{y \in \mathbb{R}:F(y)\geq x\},x \in [0,1] \)。
+  考查事件\(\xi < G(x) \)，由\(G(x) \)的定义知其等价于\(F(\xi)<x \)，故\(\mathbb{P}(F(\xi)<x)=\mathbb{P}(\xi \leq G(x)) \)。
+  又由\(F \)是连续的，得\(\mathbb{P}(\xi \leq G(x))=\mathbb{P}(\xi < G(x))=F(G(x)) \)。若\(G(x)=\pm \infty \)，易于验证\(F(G(x))=x \)。
+  下设\(G(x)\in \mathbb{R} \)。
+
+  由\(G(x) \)的定义知\(\exists y_n \searrow G(x), F(y_n) \geq x \)，结合\(F \)的连续性可知\(F(G(x)) \geq x\)。
+  同样由\(G(x) \)的定义可知\(\forall y < G(x),F(y)<x \)，令\(y \nearrow G(x) \)，由\(F \)的连续性可知\(F(G(x)) \leq x \)。
+  故\(F(G(x))=x \)，从而\(\mathbb{P}(\xi \leq G(x))=x \)，即\(F(\xi) \)是\((0,1) \)上的均匀分布。
+\end{solution}
+
+\begin{problem}\label{pro:9}
+  设\(\xi_n，n \in \mathbb{N}_{+} \)为\(\mathrm{i.i.d.}  \)随机变量，分布为\(\mu \)。
+  给定\(A \in \mathcal{B} \)，\(\mu(A) >0 \)，定义\(\tau = \inf\{k:\xi_k \in A\} \)。
+  证明\(\xi_{\tau} \)的分布为\(\frac{\mu(\cdot \cap A)}{\mu(A)} \)。
+\end{problem}
+
+\begin{solution}
+  \(\mathbb{P}(\xi_{\tau} \in B)=\sum_{n =1}^{\infty} \mathbb{P}(\tau=n,\xi_{\tau} \in B )= \sum_{n =1}^{\infty} \mathbb{P}(\tau=n,\xi_{n} \in B )\)。
+  注意到\(\{\tau=n\}=\{\forall k <n,\xi_k \notin A\} \cap \{\xi_n \in A\} \)，且\(\xi_n \)相互独立，故有
+  \(\mathbb{P}(\tau=n,\xi_n \in B)=\mathbb{P}(\tau=n)\mathbb{P}(\xi_n \in B \mid \xi_n \in A)=\mathbb{P}(\tau=n) \frac{\mu(B \cap A)}{\mu(A)} \)。
+  从而\(\mathbb{P}(\xi_{\tau} \in B)=\sum_{n = 1}^{\infty} \mathbb{P}(\tau=n) \frac{\mu(B \cap A)}{\mu(A)}=\frac{\mu(B \cap A)}{\mu(A)} \)。
+\end{solution}
+
+\begin{problem}\label{pro:11}
+  若\(\mathcal{C}_1,\cdots,\mathcal{C}_n \)为独立的包含\(\Omega \) 的\(\pi \)-系，那么\(\sigma(\mathcal{C}_1),\cdots,\sigma(\mathcal{C}_n)\)独立。
+\end{problem}
+\begin{solution}
+  先证\(\sigma(\mathcal{C}_1),\mathcal{C}_2,\cdots,\mathcal{C}_n \)独立。
+  令\(\mathcal{A}:=\{A \in \sigma( \mathcal{C}_1 ): \forall C_k \in \mathcal{C}_k,k=2,\cdots,n,\mathbb{P}(A \cap \bigcap_{k=2}^{n}C_k)=\mathbb{P}(A)\prod_{k=2}^{n}\mathbb{P}(C_k)\} \)，只需证\(\mathcal{A} = \sigma(\mathcal{C}_1) \)。
+  显然\(\mathcal{C}_1 \subset \mathcal{A} \)，只需证\(\mathcal{A} \)是\(\sigma \)-代数。由\(\mathcal{C}_1 \)是\(\pi \)-系，只需证\(\mathcal{A} \)是\(\lambda \)-系。
+  \begin{itemize}
+    \item 由定义知\(\Omega \in \mathcal{C}_1 \subset \mathcal{A} \)。
+    \item 设\(A,B \in \mathcal{A} , B \subset A\)，则有\(\mathbb{P}((A\setminus B) \cap \bigcap_{k=2}^{n}C_k) = \mathbb{P}(A \cap \bigcap_{k=2}^{n}C_k)-\mathbb{P}(B \cap \bigcap_{k=2}^{n}C_k)= ( \mathbb{P}(A) -\mathbb{P}(B))\prod_{k=2}^{n}\mathbb{P}(C_k)=( \mathbb{P}(A\setminus B))\prod_{k=2}^{n}\mathbb{P}(C_k)\)。
+    \item 设\(A_k \in \mathcal{A},A_k \nearrow A \)，则有\(\mathbb{P}(A \cap \bigcap_{k=2}^{n}C_k) = \lim_{i}\mathbb{P}(A_i \cap \bigcap_{k=2}^{n}C_k)= \lim_{i}\mathbb{P}(A_i) \prod_{k=2}^{n}\mathbb{P}(C_k)=\mathbb{P}(A)\prod_{k=2}^{n}\mathbb{P}(C_k)\)。
+  \end{itemize}
+  故\(\mathcal{A} \)是\(\lambda \)-系，从而\(\sigma(\mathcal{C}_1),\cdots,\mathcal{C}_n \)独立。
+
+  显然\(\sigma(\mathcal{C}_k) \)也是包含\(\Omega \)的\(\pi \)-系，故可以重复上述过程，最后得到\(\sigma(\mathcal{C}_1),\cdots,\sigma(\mathcal{C}_n) \)独立。
+\end{solution}
+
+\begin{problem}\label{pro:12}
+  \begin{enumerate}
+    \item 设\(\{A_n\}_{n \geq 1} \) 为独立事件序列，令\(\mathcal{J} = \bigcap_{n=1}^{\infty} \sigma\{A_n,A_{n + 1},\cdots\}. \)
+      证明\(\forall A \in \mathcal{J} \)，有\(\mathbb{P} (A) =0 \)或\(1 \).
+    \item 设 \(\{\xi_n\}_{n \geq 1} \)为独立随机变量，令\(\mathcal{J} = \bigcap_{n=1}^{\infty} \sigma\{\xi_n,\xi_{n + 1},\cdots\} \)。
+      证明\(\forall A \in \mathcal{J} \)，有\(\mathbb{P}(A)=0 \)或\(1 \).
+  \end{enumerate}
+\end{problem}
+\begin{solution}
+  \begin{enumerate}
+    \item 可取\(\xi_n=\mathbbm{1}_{A_n} \)，故只证\ref{it:1}。
+    \item \label{it:1} 由\(A \in \mathcal{J} \)知\(A \in \sigma(\xi_n,\cdots) \)，故\(A \)与\(\xi_1,\cdots,\xi_{n-1}  \)独立。
+      故\(A \)与包含\(\Omega \)的 \(\pi \)-系\(\mathcal{C}_n:=\{ \bigcap_{k=1}^{n-1} \{\xi_k\in B_k\} :B_k \in \mathcal{B} \} \)是独立的。
+      从而\(A \)与\(\bigcup_{n \geq 1}\mathcal{C}_n \)独立。故由\ref{pro:11} 知
+      \(A \)与\(\sigma(\xi_1,\cdots)=\sigma(\bigcup_{n \geq 1}\mathcal{C}_n) \)独立。但\(A \in \sigma(\xi_1,\cdots) \)，故\(A \)与\(A \)独立，从而\(\mathbb{P}(A)=\mathbb{P}(A \cap A)=\mathbb{P}(A)\mathbb{P}(A) \)，
+      故\(\mathbb{P}(A) \in \{0,1\} \)。
+  \end{enumerate}
+
+\end{solution}
+
+\end{document}
