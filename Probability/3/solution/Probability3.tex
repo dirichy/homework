@@ -16,11 +16,13 @@
 \newgeometry{left=2cm,right=2cm,top=2cm,bottom=2cm}
 %from_here_to_type
 % p46 5, 7, 9, 11, 12
+% p47 15,18,19,20,25
 \begin{problem}\label{pro:5}
   分布函数是否是不降的？举出反例或者给出证明。
 \end{problem}
 \begin{solution}
-  \(1 \)维情形由定义显然是不降的，高维情形未必，下面给出一个例子。
+  \(1 \)
+  维情形由定义显然是不降的，高维情形未必，下面给出一个例子。
   令\(F(x,y)=\mathrm{e}^{x+y}-x-y \)，则有\(\Delta_{a,b} F = F(b_1,b_2)-F(a_1,b_2)-F(b_1,a_2)+F(a_1,a_2)
     = \mathrm{e}^{b_1+b_2}-\mathrm{e}^{a_1+b_2}-\mathrm{e}^{b_1+a_2}+\mathrm{e}^{a_1+a_2}-b_1-b_2+a_1+b_2+b_1+a_2-a_1-a_2
     = (\mathrm{e}^{b_1}-\mathrm{e}^{a_1})(\mathrm{e}^{b_2}-\mathrm{e}^{a_2}) \geq 0
@@ -90,7 +92,36 @@
       \(A \)与\(\sigma(\xi_1,\cdots)=\sigma(\bigcup_{n \geq 1}\mathcal{C}_n) \)独立。但\(A \in \sigma(\xi_1,\cdots) \)，故\(A \)与\(A \)独立，从而\(\mathbb{P}(A)=\mathbb{P}(A \cap A)=\mathbb{P}(A)\mathbb{P}(A) \)，
       故\(\mathbb{P}(A) \in \{0,1\} \)。
   \end{enumerate}
-
 \end{solution}
+% p47 15,18,19,20,25
+\begin{problem}\label{pro:15}
+  设\(\{\xi_1,\cdots\} \)是\(\mathrm{i.i.d.} \)的取值于\(\{1,\cdots,r\} \)的随机变量，且\(\mathbb{P}(\xi_i=k)=p(k)>0,\forall 1 \leq k \leq r \)。
+  令\(\pi_n(\omega)=\prod_{k=1}^{n}p(\xi_k(\omega)) \)，证明
+  \(-n^{-1} \log \pi_n \overset{\mathbb{P}}{\to} H \overset{\Delta}{=}-\sum_{k=1}^{r}p(k)\log p(k) \)。
+  这里\(H \)称为Shannon信息熵。
+\end{problem}
+
+\begin{problem}\label{pro:18}
+  设\(\xi_n \)关于\(n \)单调上升，且\(\xi_n \to \xi \)，求证\(\xi_n \overset{\mathrm{a.e.}}{\to} \xi \)。
+\end{problem}
+
+\begin{problem}\label{pro:19}
+  \begin{enumerate}
+    \item 设\(\xi_n \overset{\mathrm{a.e.}}{\to} \xi\)，则
+      \(S_n \overset{\Delta}{=} \frac{1}{n}\sum_{k = 1}^{n}\xi_k \overset{\mathrm{a.e.}}{\to} \xi \)。
+    \item 若\(\xi_n \overset{\mathbb{P}}{\to} \xi \)，则\(S_n \overset{\mathbb{P}}{\to} \xi \)是否成立？
+  \end{enumerate}
+\end{problem}
+
+\begin{problem}\label{pro:20}
+  若\(\Omega \)存在划分\(\{A_n\}_{n \geq 1} \)使\(\mathcal{A} = \sigma(\{A_n : 1 \leq n <\infty\}) \)，
+  则称\((\Omega,\mathcal{A},\mathbb{P}) \)为纯原子概率空间，每个非空的\(A_n \)称为一个原子。
+  证明在纯原子概率空间上，随机变量序列依概率收敛等价于几乎处处收敛。
+\end{problem}
+
+\begin{problem}\label{pro:25}
+  设随机变量\(\xi_n,\xi \)的分布函数分别为\(F_n,F \)。
+  若\(\xi_n \overset{d}{\to} \xi \)，则对\(F \)的任意连续点\(x \)有\(\mathbb{P}(\xi_n \leq x)\to \mathbb{P}(\xi \leq x),\mathbb{P}(\xi_n >x) \to \mathbb{P}(\xi >x) \)。
+\end{problem}
 
 \end{document}
