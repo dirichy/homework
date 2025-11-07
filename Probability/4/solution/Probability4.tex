@@ -1,0 +1,83 @@
+%!Mode:: "TeX:UTF-8"
+%!TEX TS-program = xelatex
+%arara: xelatex
+
+\documentclass{ctexart}
+% \newcommand{\floor}{\lfloor #1 \rfloor}
+\newif\ifpreface
+\prefacetrue
+\input{../../../global/all}
+\begin{document}
+\large
+\setlength{\baselineskip}{1.2em}
+\ifpreface
+\input{../../../global/preface}
+\newgeometry{left=2cm,right=2cm,top=2cm,bottom=2cm}
+\else
+\newgeometry{left=2cm,right=2cm,top=2cm,bottom=2cm}
+\maketitle
+\fi
+%from_here_to_type
+%p72 1,2,7,10
+\begin{problem} \label{pro:3.6.1}
+  设\(f \)的积分存在。证明：
+  \(\int_{\Omega} f \d \mu = \lim_{n \to \infty} \sum_{i = - \infty}^{\infty} \frac{i}{2^n} \mu \left(\{\frac{i}{2^n} \leq f < \frac{i + 1}{2^n}\}\right) \)。
+\end{problem}
+
+\begin{solution}
+  % 记\(A_{n,i}:= \{x:\frac{i}{2^n} \leq f(x) < \frac{i + 1}{2^n}\}\)。
+  % 令\(g_n(x):=\frac{\floor{f(x)2^n}}{2^n}\)，则有\(g_n(x)=\frac{i}{2^n} \iff i \leq f(x)2^n < i + 1 \iff x \in A_{n,i} \)，故\(g_n(x)=\sum_{i=-\infty}^{\infty}\mathbbm{1}_{A_{n,i}}(x) \frac{i}{2^n} \)。
+  % 由
+  取\(\Omega=[1,\infty),\mu \)为勒贝格测度，\(f(x):=-\frac{1}{x^2} \)，则易知\(f(x) \)是可积的，故积分存在。
+  但对任何\(n \)，有\(\mu(\{\frac{-1}{2^n} \leq f < \frac{0}{2^n}\})=\infty \)，于是\( \sum_{i = - \infty}^{\infty} \frac{i}{2^n} \mu \left(\{\frac{i}{2^n} \leq f < \frac{i + 1}{2^n}\}\right)=-\infty \)，
+  故题设不成立。
+\end{solution}
+
+\begin{problem}\label{pro:3.6.2}
+  设\(f \)为非负可测函数，令：
+  \(\overline{\int}_{\Omega} f \d \mu := \inf\left\{\int_{\Omega} g \d \mu:g \geq f,g \text{为简单函数}\right\} \)。
+  举例说明\(\overline{\int} \)与\(\int \)未必相同，并解释为何不将积分定义为\(\overline{\int} \)。
+\end{problem}
+\begin{solution}
+  令\(\Omega=[1,\infty),\mu \)为勒贝格测度，令\(f(x)=\frac{1}{x^2} \)，则易知\(\int_{\Omega} f \d \mu < \infty \)。
+  考查\(g \geq f \)为简单函数，令\(\varepsilon=\inf_{x \in \Omega}g(x) \)，由于\(g(x) \)值域有限，故\(\exists x \in \Omega,g(x)=\varepsilon \geq f(x)>0 \)。
+  于是\(\int_{\Omega} g \d \mu \geq \int_{\Omega} \varepsilon \d \mu = \varepsilon \mu\{\Omega\}=\infty \)。故\(\overline{\int}_{\Omega} f \d \mu = \infty \neq \int_{\Omega} f \d \mu \)。
+
+  使用\(\int \)而不是\(\overline{\int} \)的原因应该是为了保证所有黎曼可积的函数都可积。
+\end{solution}
+
+\begin{problem}\label{pro:3.6.7}
+  设\(\{f_{nm}\}_{n,m \geq 1} \)为一族非负实数。证明\(\liminf_{m \to \infty} \sum_{n = 1}^{\infty}f_{nm} \geq \sum_{n = 1}^{\infty}\liminf_{m \to \infty}f_{nm} \)。
+\end{problem}
+
+\begin{solution}
+  令\(\Omega=\mathbb{N}_{+},\mu \)为计数测度。记\(g_m(n):=f_{nm} \)。则\(\int_{\Omega} g_m \d \mu =\sum_{n=1}^{\infty} \mu\{n\} g_m(n)=\sum_{n=1}^{\infty}f_{nm} \)。
+  由 Fatou 定理知\(\liminf_{m \to \infty} \sum_{n = 1}^{\infty}f_{nm} =\liminf_{m \to \infty} \int_{\Omega} g_m \d \mu \geq \int_{\Omega} \liminf_{m \to \infty} g_m \d \mu =\sum_{n = 1}^{\infty}\liminf_{m \to \infty}f_{nm} \)。
+\end{solution}
+
+\begin{problem}\label{pro:3.6.10}
+  若\(\xi_n \)依分布收敛于\(\xi \)，则\(\mathbb{E} |\xi| \leq \liminf_{n \to \infty}\mathbb{E} |\xi_n| \)。
+\end{problem}
+
+\begin{solution}
+  设\(F_n,F \)为\(\xi_n,\xi \)的分布函数。
+  构造一个新测度空间\((\Omega,\mu) \)，其中\(\Omega=(0,1),\mu \)为勒贝格测度。
+  令\(G(x):=\sup\{y \in \mathbb{R}:F(y)<x\},x \in (0,1) \)。
+  则\(G \)是单调的，故为\(\Omega \)上的可测函数。
+  考察\(G(y)<x \)，由\(G \)的定义知\(G(x)<y \iff F(y) \geq x \iff x \in (0,F(y)) \)。
+  故\(\mu(G < y)=F(y) \)，于是\(G \)的分布函数也为\(F \)。
+  同理 令\(G_{n}(x):=\sup\{y \in \mathbb{R}:F_{n}(y)<x\},x \in (0,1) \)，则\(G_n \)的分布函数为\(F_n \)。
+  由于\(G_n \)于\(\xi_n \)同分布，故\(\mathbb{E} |\xi_n| = \int_{(0,1)} |G_n| \d \mu \)。同理\(\mathbb{E} |\xi|=\int_{(0,1)} |G| \d \mu \)。
+  由\(G_n \)的定义知\(F_n(G_n(x)) \leq x \)，
+
+  于是由 Fatou引理知\(\mathbb{E} | \xi| = \int_{(0,1)} |G| \d \mu =  \)
+  考查事件\(\xi < G(x) \)，由\(G(x) \)的定义知其等价于\(F(\xi)<x \)，故\(\mathbb{P}(F(\xi)<x)=\mathbb{P}(\xi \leq G(x)) \)。
+  又由\(F \)是连续的，得\(\mathbb{P}(\xi \leq G(x))=\mathbb{P}(\xi < G(x))=F(G(x)) \)。若\(G(x)=\pm \infty \)，易于验证\(F(G(x))=x \)。
+  下设\(G(x)\in \mathbb{R} \)。
+
+  由\(G(x) \)的定义知\(\exists y_n \searrow G(x), F(y_n) \geq x \)，结合\(F \)的连续性可知\(F(G(x)) \geq x\)。
+  同样由\(G(x) \)的定义可知\(\forall y < G(x),F(y)<x \)，令\(y \nearrow G(x) \)，由\(F \)的连续性可知\(F(G(x)) \leq x \)。
+  故\(F(G(x))=x \)，从而\(\mathbb{P}(\xi \leq G(x))=x \)，即\(F(\xi) \)是\((0,1) \)上的均匀分布。
+\end{solution}
+
+\end{document}

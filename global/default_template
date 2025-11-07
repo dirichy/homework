@@ -10,10 +10,11 @@
 \setlength{\baselineskip}{1.2em}
 \ifpreface
     \input{../../../global/preface}
+\newgeometry{left=2cm,right=2cm,top=2cm,bottom=2cm}
 \else
+\newgeometry{left=2cm,right=2cm,top=2cm,bottom=2cm}
 \maketitle
 \fi
-\newgeometry{left=2cm,right=2cm,top=2cm,bottom=2cm}
 %from_here_to_type
 
 \end{document}
