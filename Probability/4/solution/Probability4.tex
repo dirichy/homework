@@ -59,25 +59,54 @@
   若\(\xi_n \)依分布收敛于\(\xi \)，则\(\mathbb{E} |\xi| \leq \liminf_{n \to \infty}\mathbb{E} |\xi_n| \)。
 \end{problem}
 
+\begin{lemma}\label{lem:1}
+  若\(\xi_n \overset{d}{\to} \xi\)，则对任何有界连续函数\(g:\mathbb{R} \to \mathbb{R} \)，有\(\mathbb{E} g(\xi_n) \to \mathbb{E} g(\xi) \)。
+\end{lemma}
+\begin{proof}
+  不妨设\(g \)非负，否则用\(g-\min g \)代替\(g \)。
+
+  首先证明\(\forall x \in \mathbb{R},\liminf_{n}\mathbb{P}(\xi_n<x) \geq \mathbb{P}(\xi<x),\limsup_{n}\mathbb{P}(\xi_n \leq x) \leq \mathbb{P}(\xi \leq x) \)。
+  记\(\xi_n,\xi \)的分布函数分别为\(F_n,F \)。由\(F \)不连续点至多可数，可取\(\varepsilon_n \searrow 0\)，使\(F \)在\(x \pm \varepsilon_n \)处连续。
+  于是\(\liminf_{n}\mathbb{P}(\xi_n<x) \geq \liminf_{n}\mathbb{P}(\xi_n<x-\varepsilon_m)=\mathbb{P}(\xi<x-\varepsilon_m),\limsup_{n}\mathbb{P}(\xi_n \leq x) \leq \limsup_{n}\mathbb{P}(\xi_n<x+\varepsilon_m) = \mathbb{P}(\xi \leq x+\varepsilon_m) \)。
+  令\(m \to \infty \)即得。
+
+  故有\(\forall x<y \)，有\(\liminf_{n} \mathbb{P}(\xi_n \in (x,y)) \geq \liminf_{n}\mathbb{P}(\xi_n<y)-\limsup_{n}\mathbb{P}(\xi_n \leq x) \geq \mathbb{P}(\xi<y)-\mathbb{P}(\xi \leq x)=\mathbb{P}(\xi \in (x,y)) \)。
+  对于\(\mathbb{R} \)中的开集\(O \)，熟知\(A \)可表示为可数个开区间的并，于是\(\liminf_{n}\mathbb{P}(\xi_n \in O) \geq \mathbb{P}(\xi \in O) \)。
+  注意到闭集的补集是开集，于是对于\(\mathbb{R} \)中的闭集\(C \)，有\(\limsup_{n}\mathbb{P}(\xi_n \in C) \leq \mathbb{P}(\xi \in C) \)。
+
+  接下来证明
+  \begin{equation}\label{equ:2}
+    \mathbb{E} X = \int_{x \geq 0} \mathbb{P}(X>x) \d x=\int_{x \geq 0} \mathbb{P}(X \geq x) \d x
+  \end{equation}
+  对任何非负的随机变量\(X \)成立。
+  由\(\mathbbm{1}_{x<X(\omega)} \geq 0,\forall x \in \mathbb{R},\omega \in \Omega \)，
+  \begin{equation} \label{equ:1}
+    \begin{aligned}
+      \mathbb{E} X&=\int_{\Omega} X(\omega) \d \mathbb{P}\\
+      &=\int_{\Omega} \int_{0}^{\infty} \mathbbm{1}_{x < X(\omega)} \d x \d \mathbb{P}\\
+      &=\int_{0}^{\infty} \int_{\Omega} \mathbbm{1}_{x < X(\omega)} \d \mathbb{P} \d x\\
+      &=\int_{0}^{\infty} \mathbb{P}(X>x) \d x
+    \end{aligned}
+  \end{equation}。
+  在\eqref{equ:1}中将\(x<X \)换为\(x \leq X \)也成立。故\eqref{equ:2}成立。
+
+  于是
+  \begin{equation}
+    \begin{aligned}
+      \liminf_{n}\mathbb{E} g(\xi_n)&=\liminf_{n}\int_{0}^{\infty} \mathbb{P}(g(\xi_n)>x) \d x \\
+      &=\liminf_{n} \int_{0}^{\infty} \mathbb{P}(\xi_n \in \{y:g(y)>x\}) \d x \\
+      &\overset{Fatou}{=} \int_{0}^{\infty} \liminf_{n} \mathbb{P}(\xi_n \in \{y:g(y)>x\}) \d x\\
+      &\overset{\{y:g(y)>x\}\text{是开集}}{\geq}\int_{0}^{\infty}\mathbb{P}(\xi \in \{y:g(y)>x\}) \d x\\
+      &=\mathbb{E} g(\xi)
+    \end{aligned}
+  \end{equation}。
+  同理可得\(\limsup_{n}\mathbb{E} g(\xi_n) \leq \mathbb{E} g(\xi) \)，于是\(\lim_{n} \mathbb{E} g(\xi_n)=\mathbb{E} g(\xi) \)。
+\end{proof}
+
 \begin{solution}
-  设\(F_n,F \)为\(\xi_n,\xi \)的分布函数。
-  构造一个新测度空间\((\Omega,\mu) \)，其中\(\Omega=(0,1),\mu \)为勒贝格测度。
-  令\(G(x):=\sup\{y \in \mathbb{R}:F(y)<x\},x \in (0,1) \)。
-  则\(G \)是单调的，故为\(\Omega \)上的可测函数。
-  考察\(G(y)<x \)，由\(G \)的定义知\(G(x)<y \iff F(y) \geq x \iff x \in (0,F(y)) \)。
-  故\(\mu(G < y)=F(y) \)，于是\(G \)的分布函数也为\(F \)。
-  同理 令\(G_{n}(x):=\sup\{y \in \mathbb{R}:F_{n}(y)<x\},x \in (0,1) \)，则\(G_n \)的分布函数为\(F_n \)。
-  由于\(G_n \)于\(\xi_n \)同分布，故\(\mathbb{E} |\xi_n| = \int_{(0,1)} |G_n| \d \mu \)。同理\(\mathbb{E} |\xi|=\int_{(0,1)} |G| \d \mu \)。
-  由\(G_n \)的定义知\(F_n(G_n(x)) \leq x \)，
-
-  于是由 Fatou引理知\(\mathbb{E} | \xi| = \int_{(0,1)} |G| \d \mu =  \)
-  考查事件\(\xi < G(x) \)，由\(G(x) \)的定义知其等价于\(F(\xi)<x \)，故\(\mathbb{P}(F(\xi)<x)=\mathbb{P}(\xi \leq G(x)) \)。
-  又由\(F \)是连续的，得\(\mathbb{P}(\xi \leq G(x))=\mathbb{P}(\xi < G(x))=F(G(x)) \)。若\(G(x)=\pm \infty \)，易于验证\(F(G(x))=x \)。
-  下设\(G(x)\in \mathbb{R} \)。
-
-  由\(G(x) \)的定义知\(\exists y_n \searrow G(x), F(y_n) \geq x \)，结合\(F \)的连续性可知\(F(G(x)) \geq x\)。
-  同样由\(G(x) \)的定义可知\(\forall y < G(x),F(y)<x \)，令\(y \nearrow G(x) \)，由\(F \)的连续性可知\(F(G(x)) \leq x \)。
-  故\(F(G(x))=x \)，从而\(\mathbb{P}(\xi \leq G(x))=x \)，即\(F(\xi) \)是\((0,1) \)上的均匀分布。
+  令\(g_m(x)=\min(|x|,m) \)是有界连续函数，于是由引理 \ref{lem:1}知\(\lim_{n}\mathbb{E} g_m(\xi_n)=\mathbb{E} g_m(\xi) \)。
+  对任何的\(m,n \)有\(g_m(\xi_n) \leq |\xi_n| \)，于是\(\mathbb{E} g_m(\xi) \leq \liminf_{n} \mathbb{E} |\xi_n| \)。
+  注意到\(g_m(\xi)\nearrow |\xi| \)，由单调收敛定理知\(\mathbb{E} |\xi| =\lim_{m} \mathbb{E} g_m(\xi) \leq \liminf_{n} \mathbb{E} |\xi_n| \)。
 \end{solution}
 
 \end{document}
