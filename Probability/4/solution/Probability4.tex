@@ -5,7 +5,7 @@
 \documentclass{ctexart}
 % \newcommand{\floor}{\lfloor #1 \rfloor}
 \newif\ifpreface
-\prefacetrue
+\prefacefalse
 \input{../../../global/all}
 \begin{document}
 \large
@@ -25,12 +25,19 @@
 \end{problem}
 
 \begin{solution}
-  % 记\(A_{n,i}:= \{x:\frac{i}{2^n} \leq f(x) < \frac{i + 1}{2^n}\}\)。
-  % 令\(g_n(x):=\frac{\floor{f(x)2^n}}{2^n}\)，则有\(g_n(x)=\frac{i}{2^n} \iff i \leq f(x)2^n < i + 1 \iff x \in A_{n,i} \)，故\(g_n(x)=\sum_{i=-\infty}^{\infty}\mathbbm{1}_{A_{n,i}}(x) \frac{i}{2^n} \)。
-  % 由
+  对一般的测度\(\mu \)不成立，反例如下：
+
   取\(\Omega=[1,\infty),\mu \)为勒贝格测度，\(f(x):=-\frac{1}{x^2} \)，则易知\(f(x) \)是可积的，故积分存在。
   但对任何\(n \)，有\(\mu(\{\frac{-1}{2^n} \leq f < \frac{0}{2^n}\})=\infty \)，于是\( \sum_{i = - \infty}^{\infty} \frac{i}{2^n} \mu \left(\{\frac{i}{2^n} \leq f < \frac{i + 1}{2^n}\}\right)=-\infty \)，
   故题设不成立。
+
+  对有限测度\(\mu \)是成立的，下面给出证明：
+
+  记\(A_{n,i}:= \{x:\frac{i}{2^n} \leq f(x) < \frac{i + 1}{2^n}\}\)。
+  令\(g_n(x):=\frac{\floor{f(x)2^n}}{2^n}\)，则有\(g_n(x)=\frac{i}{2^n} \iff i \leq f(x)2^n < i + 1 \iff x \in A_{n,i} \)，故\(g_n(x)=\sum_{i=-\infty}^{\infty}\mathbbm{1}_{A_{n,i}}(x) \frac{i}{2^n} \)。
+  由\(A_{n,i} \)的定义可知\(g_n(x) \leq f(x) < g_n(x) + \frac{1}{2^n} \)，故\(|g_n| \leq |f|+ \frac{1}{2^n} \)。
+  由\(f \)可积，\(\mu \)有限，知\(|f| + \frac{1}{2^n} \)可积，
+  于是由控制收敛定理知\(\int_{\Omega} f \d \mu=\lim_{n} \int_{\Omega} g_n \d \mu = \lim_{n \to \infty} \sum_{i = - \infty}^{\infty} \frac{i}{2^n} \mu \left(\{\frac{i}{2^n} \leq f < \frac{i + 1}{2^n}\}\right)  \)。
 \end{solution}
 
 \begin{problem}\label{pro:3.6.2}
@@ -43,7 +50,7 @@
   考查\(g \geq f \)为简单函数，令\(\varepsilon=\inf_{x \in \Omega}g(x) \)，由于\(g(x) \)值域有限，故\(\exists x \in \Omega,g(x)=\varepsilon \geq f(x)>0 \)。
   于是\(\int_{\Omega} g \d \mu \geq \int_{\Omega} \varepsilon \d \mu = \varepsilon \mu\{\Omega\}=\infty \)。故\(\overline{\int}_{\Omega} f \d \mu = \infty \neq \int_{\Omega} f \d \mu \)。
 
-  使用\(\int \)而不是\(\overline{\int} \)的原因应该是为了保证所有黎曼可积的函数都可积。
+  使用\(\int \)而不是\(\overline{\int} \)的原因应该是为了保证所有广义黎曼可积的非负函数都可积。
 \end{solution}
 
 \begin{problem}\label{pro:3.6.7}
@@ -80,4 +87,109 @@
   故\(F(G(x))=x \)，从而\(\mathbb{P}(\xi \leq G(x))=x \)，即\(F(\xi) \)是\((0,1) \)上的均匀分布。
 \end{solution}
 
+\begin{problem}\label{pro:3.6.13}
+  设\(\xi \geq 0 \)使\(\mathbb{E} \xi^2 < \infty\)。证明\(\mathbb{P}(\xi >0) \geq \frac{(\mathbb{E} \xi)^2}{\mathbb{E} \xi^2} \)。
+\end{problem}
+\begin{solution}
+  记\(\eta=\mathbbm{1}_{\xi>0} \)，则
+  由 Cauchy 不等式知：
+  \(\mathbb{E} \xi^2 \mathbb{P}(\xi>0)= \mathbb{E} \xi^2\eta^2 \mathbb{E}(\eta^2) \geq \mathbb{E}(\xi \eta^2)^2 = (\mathbb{E}\xi)^2\)。
+  于是\(\mathbb{P}(\xi >0) \geq \frac{(\mathbb{E} \xi)^2}{\mathbb{E} \xi^2} \)。
+\end{solution}
+
+\begin{problem}\label{pro:3.6.15}
+  利用 Jensen 不等式证明几何平均值小于代数平均值：
+  \(a_1,\cdots,a_n \geq 0 \)及\(\alpha_1,\cdots,\alpha_n \geq 0 \)使\(\sum_{k=1}^{n}\alpha_k = 1 \)，有\(\prod_{k = 1}^{n}a_k^{\alpha_k} \leq \sum_{k = 1}^{n}\alpha_k a_k \)。
+\end{problem}
+\begin{solution}
+  记\(\ln 0 =-\infty \)，则\(\ln x \)在\([0,\infty) \)上上凸。
+  于是\(\sum_{k = 1}^{n}\alpha_k \ln a_k \leq \ln \sum_{k = 1}^{n} \alpha_k a_k \)，
+  两边取\(\exp \)即得\(\prod_{k = 1}^{n}a_k^{\alpha_k} \leq \sum_{k = 1}^{n}\alpha_k a_k \)。
+\end{solution}
+
+\begin{problem}\label{pro:3.6.26}
+  \begin{enumerate}
+    \item 如\(\{f_t\}_{t \in T} \)一致可积，则必积分一致连续；
+    \item 当\(\mu \)有限时，一致可积当且仅当积分一致有界且积分一致连续。
+  \end{enumerate}
+\end{problem}
+\begin{solution}
+  \begin{enumerate}
+    \item \label{it:1}对于任何\(\varepsilon>0 \)，由\(f_t \)一致可积知\(\exists M>0 \)使\(\sup_{t \in T} \mu(|f_t| \mathbbm{1}_{|f_t|>M})<\frac{\varepsilon}{2} \)。
+      取\(\delta=\frac{\varepsilon}{2M} \)，对于任何\(A \subset \Omega \)满足\(\mu(A)<\delta \)，有\(\mu(|f_t|\mathbbm{1}_A) \leq \mu(|f_t|\mathbbm{1}_A \mathbbm{1}_{|f_t| \leq M}) +\mu (|f_t|\mathbbm{1}_A \mathbbm{1}_{|f_t| > M})
+        \leq \mu(M\mathbbm{1}_A) + \mu(|f_t|\mathbbm{1}_{|f_t|>M}) \leq M \cdot \delta + \frac{\varepsilon}{2}=\varepsilon
+      \)。
+      于是\(\{f_t\} \)积分一致连续。
+    \item 由\ref{it:1}可知一致可积``\(\implies\)''积分一致连续。
+      由一致可积，\(\exists M>0 \)使\(\sup_{t \in T} \mu(|f_t| \mathbbm{1}_{|f_t|>M})<1 \)。
+      于是\(\sup_{t \in T} \mu(|f_t|) \leq \sup_{t \in T} \mu(|f_t|\mathbbm{1}_{|f_t| \leq M}) + \sup_{t \in T}\mu(|f_t|\mathbbm{1}_{|f_t|>M})
+      \leq M \mu(\Omega) + 1\)。于是一致可积\(\implies\)积分一致有界。
+
+      下面证明积分一致有界且积分一致连续\(\implies\)一致可积。
+      由积分一致有界，\(\sup_{t \in T} \mu(|f_t|) \leq N \in \mathbb{R} \)。任取\(\varepsilon >0 \)，由积分一致连续知\(\exists \delta>0,\forall A \subset \Omega:\mu(A)\leq \delta,\forall t \in T,\mu(|f_t|\mathbbm{1}_{A}) \leq \frac{\varepsilon}{3} \)。
+      由\(\mu(\{|f_t| \geq \frac{N}{\delta}\}) \leq \mu(\frac{|f_t|}{\frac{N}{\delta}})=\delta \)，得 \(\mu(|f_t|\mathbbm{1}_{|f_t| \geq \frac{N}{\delta}}) \leq \frac{\varepsilon}{3} \)对任何\(t \in T \)都成立。
+      故\(\{f_t\} \)一致可积。
+  \end{enumerate}
+\end{solution}
+
+\begin{problem}\label{pro:3.6.30}
+  对可测函数\(f \)，定义本征上确界为：
+  \(\norm{f}_{\infty} := \inf \{M: \mu(\{\omega:|f(\omega) |>M\}) = 0\} \)。
+  \begin{enumerate}
+    \item 证明\(\norm{\cdot}_{\infty} \)满足三角不等式。
+    \item 若\(\mu(\Omega)<\infty \)，则\(\norm{f}_{\infty}=\lim_{r \to \infty} \norm{f}_{r} \)。
+  \end{enumerate}
+\end{problem}
+\begin{solution}
+  \begin{enumerate}
+    \item 须证对任何\(f,g \)有\(\norm{f}_{\infty} + \norm{g}_{\infty} \geq \norm{f + g}_{\infty} \)。
+      由定义，对任何\(\varepsilon>0 \)，\(\mu(\{\omega:|f(\omega)|>\norm{f}_{\infty} + \varepsilon\})=0 \)，取\(\varepsilon=\frac{1}{n} \)，由测度的下连续性知
+      \(\mu\{\omega:|f(\omega)|>\norm{f}_{\infty}\}=0 \)。同理\(\mu\{\omega:|g(\omega)|>\norm{g}_{\infty}\}=0 \)。
+      又\(|f+g| \leq |f| + |g| \)，故\(\mu(\{\omega:|f(\omega) + g(\omega)|>\norm{f}_{\infty} + \norm{g}_{\infty}\})=0 \)，
+      由定义知\(\norm{f + g}_{\infty} \leq \norm{f}_{\infty} + \norm{g}_{\infty} \)。
+    \item 对于\(M>\norm{f}_{\infty} \)，有：
+      \begin{equation}\label{equ:1}
+        \begin{aligned}
+          \limsup_{r \to \infty} \frac{\norm{f}_{r}}{M}&= \limsup_{r \to \infty} \left(\int_{\Omega} \frac{|f|^r}{M^r} \d \mu\right)^{  \frac{1}{r} }\\
+          & \leq  \limsup_{r \to \infty} \left(\int_{\Omega} \left(\frac{\norm{f}_{\infty}}{M}\right)^r \d \mu \right)^{\frac{1}{r}}\\
+          &= \limsup_{r \to \infty} \frac{\norm{f}_{\infty}}{M} (\mu(\Omega))^{\frac{1}{r}} = \frac{\norm{f}_{\infty}}{M} <1
+        \end{aligned}
+      \end{equation}。
+      于是\(\limsup_{r \to \infty} \norm{f}_{r} < M \)。故\(\limsup_{r \to \infty} \norm{f}_{r} \leq \norm{f}_{\infty} \)。
+
+      对于\(0<M<\norm{f}_{\infty} \)，取\(M<N<\norm{f}_{\infty} \)，有：
+      \begin{equation}\label{equ:2}
+        \begin{aligned}
+          \liminf_{r \to \infty} \frac{\norm{f}_{r}}{M}&= \liminf_{r \to \infty} \left(\int_{\Omega} \frac{|f|^r}{M^r} \d \mu\right)^{  \frac{1}{r} }\\
+          & \geq  \liminf_{r \to \infty} \left(\int_{|f| \geq N} \left(\frac{N}{M}\right)^r \d \mu \right)^{\frac{1}{r}}\\
+          &= \liminf_{r \to \infty} \frac{N}{M} (\mu(\{|f| \geq N\}))^{\frac{1}{r}} = \frac{N}{M} >1
+        \end{aligned}
+      \end{equation}。
+      于是\(\liminf_{r \to \infty} \norm{f}_{r} > M \)。故\(\liminf_{r \to \infty} \norm{f}_{r} \geq \norm{f}_{\infty} \)。
+
+      综上所述，\(\norm{f}_{\infty} = \lim_{r \to \infty} \norm{f}_{r} \)。
+  \end{enumerate}
+\end{solution}
+\begin{problem}\label{pro:3.6.33}
+  设随机变量\(\xi \)具有数学期望\(m \)与方差\(\sigma^2 \)。
+  \begin{enumerate}
+    \item 证明\(\mathbb{P}(\xi - m \geq t) \leq \frac{\sigma^2}{\sigma^2 + t^2}, \forall t \geq 0 \)。
+    \item 证明\(\mathbb{P}(|\xi - m| \geq t) \leq \frac{2\sigma^2}{\sigma^2 + t^2} \)。
+  \end{enumerate}
+\end{problem}
+\begin{solution}
+  不妨设\(m=0 \)，否则用\(\xi-m \)代替\(\xi \)。
+  方便起记\(p=\mathbb{P}(\xi \geq t) \)。
+  \begin{enumerate}
+    \item \label{it:2} 注意到 \(0=\mathbb{E}(\xi)\geq t \mathbb{P}(\xi \geq t) - \mathbb{E}(\xi^{-}) \)，故\(\mathbb{E} \xi^{-} \geq t p \)。
+      于是由 Cauchy 不等式知\(\mathbb{E} (\xi^{-})^2 \mathbb{E} \mathbbm{1}_{\xi<0} \geq (\mathbb{E} \xi^{-})^2 \geq t^2 p^2 \)。
+      结合\(\mathbb{E} \mathbbm{1}_{\xi<0} \leq 1-\mathbb{P}(\xi \geq t) \)知 \(\mathbb{E} (\xi^{-})^2 \geq t^2 \frac{p^2}{1- p} \)。
+      又\(\mathbb{E} (\xi^{+})^2 \geq \mathbb{E} \xi^2 \mathbbm{1}_{\xi \geq t} \geq t^2 p \)，于是
+      \(\sigma^2 = \mathbb{E} (\xi^{+})^2 + \mathbb{E} (\xi^{-})^2 \geq t^2  \frac{p}{1-p} \)。
+      于是\(\frac{\sigma^2}{t^2}(1-p) \geq p\)，整理得
+      \(p \leq \frac{\sigma^2}{\sigma^2 + t^2} \)。
+    \item 对\(-\xi \) 有\(\mathbb{P}(-\xi \geq t) \leq \frac{\sigma^2}{\sigma^2 + t^2} \)，
+      与\(\mathbb{P}(\xi \geq t ) \leq \frac{\sigma^2}{\sigma^2 + t^2} \)相加可得\(\mathbb{P}(|\xi| \geq t) \leq \frac{2 \sigma^2}{\sigma^2 t^2} \)。
+  \end{enumerate}
+\end{solution}
 \end{document}
