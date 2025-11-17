@@ -70,7 +70,7 @@
   若\(\xi_n \overset{d}{\to} \xi\)，则对任何有界连续函数\(g:\mathbb{R} \to \mathbb{R} \)，有\(\mathbb{E} g(\xi_n) \to \mathbb{E} g(\xi) \)。
 \end{lemma}
 \begin{proof}
-  不妨设\(g \)非负，否则用\(g-\min g \)代替\(g \)。
+  不妨设\(g \)非负，否则用\(g-\inf g \)代替\(g \)。
 
   首先证明\(\forall x \in \mathbb{R},\liminf_{n}\mathbb{P}(\xi_n<x) \geq \mathbb{P}(\xi<x),\limsup_{n}\mathbb{P}(\xi_n \leq x) \leq \mathbb{P}(\xi \leq x) \)。
   记\(\xi_n,\xi \)的分布函数分别为\(F_n,F \)。由\(F \)不连续点至多可数，可取\(\varepsilon_n \searrow 0\)，使\(F \)在\(x \pm \varepsilon_n \)处连续。
@@ -177,24 +177,28 @@
       又\(|f+g| \leq |f| + |g| \)，故\(\mu(\{\omega:|f(\omega) + g(\omega)|>\norm{f}_{\infty} + \norm{g}_{\infty}\})=0 \)，
       由定义知\(\norm{f + g}_{\infty} \leq \norm{f}_{\infty} + \norm{g}_{\infty} \)。
     \item 对于\(M>\norm{f}_{\infty} \)，有：
-      \begin{equation}\label{equ:1}
+      \begin{equation}\label{equ:3}
         \begin{aligned}
           \limsup_{r \to \infty} \frac{\norm{f}_{r}}{M}&= \limsup_{r \to \infty} \left(\int_{\Omega} \frac{|f|^r}{M^r} \d \mu\right)^{  \frac{1}{r} }\\
           & \leq  \limsup_{r \to \infty} \left(\int_{\Omega} \left(\frac{\norm{f}_{\infty}}{M}\right)^r \d \mu \right)^{\frac{1}{r}}\\
           &= \limsup_{r \to \infty} \frac{\norm{f}_{\infty}}{M} (\mu(\Omega))^{\frac{1}{r}} = \frac{\norm{f}_{\infty}}{M} <1
         \end{aligned}
       \end{equation}。
-      于是\(\limsup_{r \to \infty} \norm{f}_{r} < M \)。故\(\limsup_{r \to \infty} \norm{f}_{r} \leq \norm{f}_{\infty} \)。
+      于是\(\limsup_{r \to \infty} \norm{f}_{r} < M \)。
+      若\(\norm{f}_{\infty}<\infty \)，则令\(M \to \norm{f}_{\infty}+ \)得 \(\limsup_{r \to \infty} \norm{f}_{r} \leq \norm{f}_{\infty} \)；
+      否则\(\norm{f}_{\infty}= \infty \)，显然成立同样的不等式。
 
       对于\(0<M<\norm{f}_{\infty} \)，取\(M<N<\norm{f}_{\infty} \)，有：
-      \begin{equation}\label{equ:2}
+      \begin{equation}\label{equ:4}
         \begin{aligned}
           \liminf_{r \to \infty} \frac{\norm{f}_{r}}{M}&= \liminf_{r \to \infty} \left(\int_{\Omega} \frac{|f|^r}{M^r} \d \mu\right)^{  \frac{1}{r} }\\
           & \geq  \liminf_{r \to \infty} \left(\int_{|f| \geq N} \left(\frac{N}{M}\right)^r \d \mu \right)^{\frac{1}{r}}\\
           &= \liminf_{r \to \infty} \frac{N}{M} (\mu(\{|f| \geq N\}))^{\frac{1}{r}} = \frac{N}{M} >1
         \end{aligned}
       \end{equation}。
-      于是\(\liminf_{r \to \infty} \norm{f}_{r} > M \)。故\(\liminf_{r \to \infty} \norm{f}_{r} \geq \norm{f}_{\infty} \)。
+      于是\(\liminf_{r \to \infty} \norm{f}_{r} > M \)。
+      若\(\norm{f}_{\infty}>0 \)，则令\(M \to \norm{f}_{\infty}- \)得\(\liminf_{r \to \infty} \norm{f}_{r} \geq \norm{f}_{\infty} \)；
+      否则\(\norm{f}_{\infty} = 0 \)，显然成立同样的不等式。
 
       综上所述，\(\norm{f}_{\infty} = \lim_{r \to \infty} \norm{f}_{r} \)。
   \end{enumerate}
