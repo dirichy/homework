@@ -70,7 +70,7 @@
   若\(\xi_n \overset{d}{\to} \xi\)，则对任何有界连续函数\(g:\mathbb{R} \to \mathbb{R} \)，有\(\mathbb{E} g(\xi_n) \to \mathbb{E} g(\xi) \)。
 \end{lemma}
 \begin{proof}
-  不妨设\(g \)非负，否则用\(g-\min g \)代替\(g \)。
+  不妨设\(g \)非负，否则用\(g-\inf g \)代替\(g \)。
 
   首先证明\(\forall x \in \mathbb{R},\liminf_{n}\mathbb{P}(\xi_n<x) \geq \mathbb{P}(\xi<x),\limsup_{n}\mathbb{P}(\xi_n \leq x) \leq \mathbb{P}(\xi \leq x) \)。
   记\(\xi_n,\xi \)的分布函数分别为\(F_n,F \)。由\(F \)不连续点至多可数，可取\(\varepsilon_n \searrow 0\)，使\(F \)在\(x \pm \varepsilon_n \)处连续。
@@ -78,7 +78,7 @@
   令\(m \to \infty \)即得。
 
   故有\(\forall x<y \)，有\(\liminf_{n} \mathbb{P}(\xi_n \in (x,y)) \geq \liminf_{n}\mathbb{P}(\xi_n<y)-\limsup_{n}\mathbb{P}(\xi_n \leq x) \geq \mathbb{P}(\xi<y)-\mathbb{P}(\xi \leq x)=\mathbb{P}(\xi \in (x,y)) \)。
-  对于\(\mathbb{R} \)中的开集\(O \)，熟知\(A \)可表示为可数个开区间的并，于是\(\liminf_{n}\mathbb{P}(\xi_n \in O) \geq \mathbb{P}(\xi \in O) \)。
+  对于\(\mathbb{R} \)中的开集\(O \)，熟知\(A \)可表示为可数个不交开区间的并，于是由 Fatou 引理知 \(\liminf_{n}\mathbb{P}(\xi_n \in O) \geq \mathbb{P}(\xi \in O) \)。
   注意到闭集的补集是开集，于是对于\(\mathbb{R} \)中的闭集\(C \)，有\(\limsup_{n}\mathbb{P}(\xi_n \in C) \leq \mathbb{P}(\xi \in C) \)。
 
   接下来证明
@@ -102,7 +102,7 @@
     \begin{aligned}
       \liminf_{n}\mathbb{E} g(\xi_n)&=\liminf_{n}\int_{0}^{\infty} \mathbb{P}(g(\xi_n)>x) \d x \\
       &=\liminf_{n} \int_{0}^{\infty} \mathbb{P}(\xi_n \in \{y:g(y)>x\}) \d x \\
-      &\overset{Fatou}{=} \int_{0}^{\infty} \liminf_{n} \mathbb{P}(\xi_n \in \{y:g(y)>x\}) \d x\\
+      &\overset{Fatou}{\geq} \int_{0}^{\infty} \liminf_{n} \mathbb{P}(\xi_n \in \{y:g(y)>x\}) \d x\\
       &\overset{\{y:g(y)>x\}\text{是开集}}{\geq}\int_{0}^{\infty}\mathbb{P}(\xi \in \{y:g(y)>x\}) \d x\\
       &=\mathbb{E} g(\xi)
     \end{aligned}
@@ -184,7 +184,9 @@
           &= \limsup_{r \to \infty} \frac{\norm{f}_{\infty}}{M} (\mu(\Omega))^{\frac{1}{r}} = \frac{\norm{f}_{\infty}}{M} <1
         \end{aligned}
       \end{equation}。
-      于是\(\limsup_{r \to \infty} \norm{f}_{r} < M \)。故\(\limsup_{r \to \infty} \norm{f}_{r} \leq \norm{f}_{\infty} \)。
+      于是\(\limsup_{r \to \infty} \norm{f}_{r} < M \)。
+      若\(\norm{f}_{\infty}<\infty \)，则令\(M \to \norm{f}_{\infty}+ \)得 \(\limsup_{r \to \infty} \norm{f}_{r} \leq \norm{f}_{\infty} \)；
+      否则\(\norm{f}_{\infty}= \infty \)，显然成立同样的不等式。
 
       对于\(0<M<\norm{f}_{\infty} \)，取\(M<N<\norm{f}_{\infty} \)，有：
       \begin{equation}\label{equ:4}
@@ -194,7 +196,9 @@
           &= \liminf_{r \to \infty} \frac{N}{M} (\mu(\{|f| \geq N\}))^{\frac{1}{r}} = \frac{N}{M} >1
         \end{aligned}
       \end{equation}。
-      于是\(\liminf_{r \to \infty} \norm{f}_{r} > M \)。故\(\liminf_{r \to \infty} \norm{f}_{r} \geq \norm{f}_{\infty} \)。
+      于是\(\liminf_{r \to \infty} \norm{f}_{r} > M \)。
+      若\(\norm{f}_{\infty}>0 \)，则令\(M \to \norm{f}_{\infty}- \)得\(\liminf_{r \to \infty} \norm{f}_{r} \geq \norm{f}_{\infty} \)；
+      否则\(\norm{f}_{\infty} = 0 \)，显然成立同样的不等式。
 
       综上所述，\(\norm{f}_{\infty} = \lim_{r \to \infty} \norm{f}_{r} \)。
   \end{enumerate}
