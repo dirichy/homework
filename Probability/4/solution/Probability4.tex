@@ -177,7 +177,7 @@
       又\(|f+g| \leq |f| + |g| \)，故\(\mu(\{\omega:|f(\omega) + g(\omega)|>\norm{f}_{\infty} + \norm{g}_{\infty}\})=0 \)，
       由定义知\(\norm{f + g}_{\infty} \leq \norm{f}_{\infty} + \norm{g}_{\infty} \)。
     \item 对于\(M>\norm{f}_{\infty} \)，有：
-      \begin{equation}\label{equ:1}
+      \begin{equation}\label{equ:3}
         \begin{aligned}
           \limsup_{r \to \infty} \frac{\norm{f}_{r}}{M}&= \limsup_{r \to \infty} \left(\int_{\Omega} \frac{|f|^r}{M^r} \d \mu\right)^{  \frac{1}{r} }\\
           & \leq  \limsup_{r \to \infty} \left(\int_{\Omega} \left(\frac{\norm{f}_{\infty}}{M}\right)^r \d \mu \right)^{\frac{1}{r}}\\
@@ -187,7 +187,7 @@
       于是\(\limsup_{r \to \infty} \norm{f}_{r} < M \)。故\(\limsup_{r \to \infty} \norm{f}_{r} \leq \norm{f}_{\infty} \)。
 
       对于\(0<M<\norm{f}_{\infty} \)，取\(M<N<\norm{f}_{\infty} \)，有：
-      \begin{equation}\label{equ:2}
+      \begin{equation}\label{equ:4}
         \begin{aligned}
           \liminf_{r \to \infty} \frac{\norm{f}_{r}}{M}&= \liminf_{r \to \infty} \left(\int_{\Omega} \frac{|f|^r}{M^r} \d \mu\right)^{  \frac{1}{r} }\\
           & \geq  \liminf_{r \to \infty} \left(\int_{|f| \geq N} \left(\frac{N}{M}\right)^r \d \mu \right)^{\frac{1}{r}}\\

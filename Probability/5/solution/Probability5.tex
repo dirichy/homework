@@ -1,0 +1,137 @@
+%!Mode:: "TeX:UTF-8"
+%!TEX TS-program = xelatex
+%arara: xelatex
+\documentclass{ctexart}
+\newif\ifpreface
+\prefacetrue
+\input{../../../global/all}
+\begin{document}
+\large
+\setlength{\baselineskip}{1.2em}
+\ifpreface
+\input{../../../global/preface}
+\newgeometry{left=2cm,right=2cm,top=2cm,bottom=2cm}
+\else
+\newgeometry{left=2cm,right=2cm,top=2cm,bottom=2cm}
+\maketitle
+\fi
+%from_here_to_type
+%p75: 38,39,40
+\begin{problem}\label{pro:3.38}
+  （原题目定义不清，此处换用更清楚的定义）
+  设\(C \)为 Cantor 集，对每个\(x \in (0,1) \)，定义\(x_n \)为\(x \)的三进制表示，即\(x = \sum_{n=0}^{\infty}\frac{x_n}{3^n} \)。
+  定义\(f(x):= \inf_{x_n = 1}n \)。
+  % 对于有多种三进制表示的\(x \)，我们总取使\(f(x) \)最小的一种表示。
+  定义：
+  \begin{equation}\label{equ:1}
+    F(x) =
+    \begin{cases}
+      0 & x \leq 0\\
+      1 & x \geq 1\\
+      \sum_{n=0}^{f(x)}\frac{\mathbbm{1}_{x_n>0}}{2^{n}} & x \in (0,1)
+    \end{cases}
+  \end{equation}
+  此\(F \)称为 Cantor 集上的均匀分布。证明：
+  \begin{enumerate}
+    \item \(F \)是连续的；
+    \item \(F \)是 Lebesgue 奇异的。
+  \end{enumerate}
+\end{problem}
+\begin{solution}
+  先证\(F \)是良定义的，即对不同的三进制表示取值相同。
+  设\(x = \sum_{n=0}^{\infty}\frac{x_n}{3^n} = \sum_{n=0}^{\infty}\frac{y_n}{3^n} \)是\(x \)的两种三进制表示，
+  设\(\exists N,\forall n >N,x_n=0,y_n=2 \)。令\(m = \inf\{N:\forall n > N,y_n=2\} \)，则\(x_m=y_m+1,\forall n>m, x_n=0,y_n=2; \forall n<m,x_n=y_n  \)。
+  若\(\exists n<m,x_n = 1 \)，则用\(x_n \)和\(y_n \)得到的\(F(x) \)显然由定义是相等的。现在假设\(\forall n<m,x_n \neq 1 \)。
+
+  若\(y_m=0,x_m=1 \)，则两种表示得到的值分别为\(\sum_{n=0}^{\infty}\frac{\mathbbm{1}_{y_n>0}}{2^n} \)和\(\sum_{n=0}^{m}\frac{\mathbbm{1}_{x_n>0}}{2^n} \)，
+  差为\(\sum_{n=m+1}^{\infty} \frac{1}{2^n}-\frac{1}{2^m}=0 \)。
+
+  若\(y_m=1,x_m=2 \)，则两种表示得到的值分别为\(\sum_{n=0}^{m}\frac{\mathbbm{1}_{y_n>0}}{2^n} \)和\(\sum_{n=0}^{\infty}\frac{\mathbbm{1}_{x_n>0}}{2^n} \)，
+  由\(\forall n>m,x_n=0 \)立得它们相等。
+
+  综上，\(F \)是良定义的。
+  \begin{enumerate}
+    \item 先证\(F \)单调不减。设\(0<x<y<1 \)，取\(x,y \)的三进制表示\(x_n,y_n \)，则\(\exists m,\forall n<m,x_n=y_n, x_m<y_m \)，于是\(y_m>0 \)。
+      若\(\exists n<m,x_n=y_n=1 \)，则\[F(x) = F(y) \]。现设\(\forall n<m,x_n \neq 1 \)。
+      若\(x_m=0 \)，则\(F(y)-F(x) \geq \frac{1}{2^m}-\sum_{n=m+1}^{\infty} \frac{1}{2^n}=0 \)。
+      若\(x_m >0 \)，则\(x_m=1,y_m=2 \)，于是\(f(x)=m \)，故\(F(y) \geq F(x) \)明显成立。
+      于是\(F \)在\((0,1) \)上单调不减。又由\(F \)的定义明显看出\(F \)在\(\mathbb{R} \)上是单调的。
+
+      再证\(F \)的值域是\([0,1] \)。显然\(F(\mathbb{R}) \subset [0,1] \)，故只需\(\forall y \in [0,1],\exists x \in \mathbb{R},F(x)=y \)。
+      对\(y=0 \)和\(y=1 \)显然成立，下设\(y \in (0,1) \)。取\(y \)的二进制表示\(y = \sum_{n=0}^{\infty}\frac{y_n}{2^n} \)。
+      令\(x:=\sum_{n=0}^{\infty}\frac{2y_n}{3^n} \)，则显然有\(F(x)=y \)。
+
+      故\(F \)是单调的值域连通的函数，从而连续。
+    \item 由Lebesgue分解定理知\(F=F_c+F_d+F_s \)。由\(F \)连续知\(F_d \)差分为\(0 \)，不妨设\(F_d=0 \)。
+      在 Cantor 关于\([0,1] \)的补集中的每个开区间\((a,b) \)上，一定有\(a=\sum_{k=0}^{m} \frac{a_k}{3^k},b=\sum_{k = 0}^{m}\frac{b_k}{3^k},\forall n<m,a_n = b_n, a_m=1,b_m=2 \)。
+      于是\(F(a)=F(b) \)，也就是\(\Delta F(a,b)=0 \)。于是\(F \)所对应的测度只集中在 Cantor 集上。又由 Cantor 集是零测的，得\(F_c=0 \)。
+      于是\(F=F_d \)，故\(F \)是奇异的。
+  \end{enumerate}
+\end{solution}
+
+\begin{problem}\label{pro:3.39}
+  设\(\mu_1,\mu_2 \)是有限符号测度，令\(\mu_1 \vee \mu_2 = \mu_1 + (\mu_2 - \mu_1)^{+},\mu_1 \wedge \mu_2 = \mu_1 - (\mu_1 - \mu_2)^{+} \)，
+  则\(\mu_1 \vee \mu_2 \)是满足\(\nu \geq \mu_i,i=1,2 \)的最小符号测度；
+  \(\mu_1 \wedge \mu_2 \)是满足\(\nu \leq \mu_i,i=1,2 \)的最大符号测度。
+\end{problem}
+\begin{solution}
+  对\(\mu_1-\mu_{2} \)进行 Hahn 分解得到\(D,D^c \)，使\((\mu_1-\mu_{2})^+(A)=\mu_1(A \cap D)-\mu_2(A \cap D) \)。
+  则自然有\((\mu_2-\mu_{1})^+(A)=(\mu_1-\mu_{2})^-(A)=\mu_2(A \setminus D)-\mu_1(A \setminus D) \)。
+
+  且显然成立\((\mu_1-\mu_{2})^+ \geq \mu_1 - \mu_2 ,(\mu_2-\mu_{1})^+ \geq \mu_2 - \mu_1 \)。
+
+  一方面，对于任何的\(A \)，有\(\mu_1 \vee \mu_2(A)= \mu_1(A) + (\mu_2-\mu_1)^+(A) \geq \mu_1(A) + \max\{0,\mu_2(A)-\mu_1(A)\}=\max\{\mu_1(A),\mu_2(A)\}\)；
+  另一方面，设\(\nu\)满足\(\nu \geq \mu_i \)，须证\(\nu \geq \mu_1 \vee \mu_2 \)。反设不成立，则存在\(A \)使\(\nu(A)<\mu_1 \vee \mu_2(A) \)，
+  则\(\nu(A \cap D)<\mu_1 \vee \mu_2(A \cap D)=\mu_1(A \cap D) + 0 \)或\(\nu(A \setminus D) < \mu_1 \vee \mu_2(A \setminus D) =\mu_1(A \setminus D) + \mu_2(A \setminus D)-\mu_1(A \setminus D)=\mu_2(A \setminus D) \)。
+  均与\(\nu \geq \mu_1,\mu_{2} \)矛盾！故\(\nu \geq \mu_1 \vee \mu_{2} \)。
+
+  同理，一方面有\(\mu_1\wedge \mu_2(A)=\mu_1(A)-(\mu_1-\mu_{2})^-(A) \leq \mu_1(A)-\max\{0,\mu_1(A)-\mu_2(A)\}=\min\{\mu_1(A),\mu_2(A)\} \)。
+  另一方面，设\(\nu\)满足\(\nu \leq \mu_i \)，须证\(\nu \leq \mu_1 \vee \mu_2 \)。反设不成立，则存在\(A \)使\(\nu(A)>\mu_1 \wedge \mu_2(A) \)，
+  则\(\nu(A \cap D)<\mu_1 \wedge \mu_2(A \cap D)=\mu_2(A \cap D) \) 或\(\nu(A \setminus D) < \mu_1 \wedge \mu_2(A \setminus D) =\mu_1(A \setminus D) + 0=\mu_1(A \setminus D) \)。
+  均与\(\nu \leq \mu_1,\mu_{2} \)矛盾！故\(\nu \leq \mu_1 \wedge \mu_{2} \)。
+\end{solution}
+
+\begin{problem}\label{pro:3.40}
+  设\(\mu \)为\((\Omega,\mathcal{A}) \)上的\(\sigma \)有限测度，\(\mathcal{A} \)包含单点集。则集合\(\{x \in \Omega: \mu(\{x\}) > 0\} \)至多可数。
+\end{problem}
+\begin{solution}
+  令\(A_n := \{x \in \Omega:\mu(\{x\}) \geq \frac{1}{n}\} \)。若\(\exists n,A_n \)为无限集，则可取其可数子集\(B_n \)，
+  有\(\mu(B_n) = \sum_{x \in B_n}\mu(\{x\}) \geq \sum_{x \in B_n}\frac{1}{n} = \frac{q}{n} \cdot \infty = \infty\)。
+  与\(\mu(B_n) \leq \mu(\Omega) < \infty \)矛盾。故\(\forall n,A_n \)为有限集。
+
+  注意到\(\{x \in \Omega:\mu(\{x\}) >0\} = \bigcup_{n = 1}^{\infty}A_n \)，而每个\(A_n \)有限，故\(\{x \in \Omega:\mu(\{x\})>0\} \)至多可数。
+\end{solution}
+\begin{problem}\label{pro:4.4}
+  设\((\Omega_i,\mathcal{A}_i),i = 1,2,3 \)为三个可测空间，\(\lambda \)为\(\Omega_2 \times \mathcal{A}_{3} \)上的\(\sigma \)有限测转移测度，\(f \)是\(\mathcal{A}_1 \times \mathcal{A}_{3} \)
+  可测函数。若\(\forall (\omega_1,\omega_{2})\in \Omega_1 \times \Omega_{2} \)，积分\(g(\omega_1,\omega_{2}):=\int_{\Omega_{3}} f(\omega_1,\omega_{3}) \lambda(\omega_2,\d \omega_{3}) \)存在。
+  证明\(g \)是\(\mathcal{A}_1 \times \mathcal{A}_{2} \)可测的。
+\end{problem}
+\begin{solution}
+  令\(L:=\{f \in \mathcal{A}_1 \times \mathcal{A}_3: \int_{\Omega_{3}} f(\omega_1,\omega_{3}) \lambda(\omega_2,\d \omega_{3})\text{可测}\} \)。
+  先证\(L \)是\(\mathcal{L} \)-系。
+  \begin{enumerate}
+    \item \(\int_{\Omega_{3}} 1 \lambda(\omega_2,\d \omega_{3})= \lambda(\omega_2,\Omega_{3}) \)，由转移测度的定义知其可测。故\(1 \in L \)。
+    \item 设\(f_{1},f_{2} \in L,a,b \in \mathbb{R},a f_{1} + b f_{2} \)有意义。则\(\int_{\Omega_{3}} (a f_{1} + b f_{2})(\omega_1,\omega_{3}) \lambda(\omega_2,\d \omega_{3}) =a\int_{\Omega_{3}} f_{1}(\omega_1,\omega_{3}) \lambda(\omega_2,\d \omega_{3}) +b\int_{\Omega_{3}} f_{2}(\omega_1,\omega_{3}) \lambda(\omega_2,\d \omega_{3}) \)。
+      故\(a f_{1} + b f_{2} \in L \)。
+    \item 设\(0 \leq f_n \nearrow f,f_n \in L \)。则\(\int_{\Omega_{3}} f(\omega_1,\omega_{3}) \lambda(\omega_2,\d \omega_{3}) = \lim_{n}\int_{\Omega_{3}} f_n(\omega_1,\omega_{3}) \lambda(\omega_2 \d \omega_{3}) \)可测，于是\(f \in L \)。
+  \end{enumerate}
+
+\end{solution}
+
+\begin{problem}\label{pro:4.6}
+  若矩阵\(P = (p_{ij})_{i,j = 1}^\infty \)满足\(p_{ij} \geq 0,\sum_{j = 1}^{\infty} p_{ij} = 1, \forall i \geq 1 \)，则称\(P \)为转移概率矩阵。
+  令\(\lambda(i,A) = \sum_{j \in A}p_{ij} \)，证明\(\lambda \)是转移概率。
+\end{problem}
+
+\begin{problem}\label{pro:4.9}
+  设\(\mu_k,\nu_k \)分别为\(\Omega_k,\mathcal{A}_k \)上\(\sigma \)有限测度，\(\nu_k \ll \mu_k,k = 1,2 \)。
+  证明\(\nu_1 \times \nu_2 \ll \mu_1 \times \mu_{2} \)且
+  \(\frac{\d(\nu_1 \times \nu_{2})}{\d (\mu_1 \times \mu_{2})}(\omega_1,\omega_{2}) = \frac{\d \nu_{1}}{\d \mu_{1}} \frac{\d \nu_{2}}{\d \mu_{2}}(\omega_{2}), \mu_1 \times \mu_2 \mathrm{-a.e.} \)
+\end{problem}
+
+\begin{problem}\label{pro:4.10}
+  设\((\Omega_t,\mathcal{A}_t)_{t \in T} \)为一族可测空间，\(\mathcal{C}_t \subset \mathcal{A}_t,\sigma(\mathcal{C}_t) = \mathcal{A}_t,t \in T \)。
+  证明\(\prod_{t \in T}\mathcal{A}_t = \sigma\left(\bigcup_{t \in T} J_t^{-1}(\mathcal{C}_t)\right) \)，其中\(J_t:\prod_{t \in T} \ni \omega \mapsto \omega_t \in \Omega_t \)。
+\end{problem}
+
+\end{document}

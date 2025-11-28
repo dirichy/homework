@@ -1,0 +1,24 @@
+%!Mode:: "TeX:UTF-8"
+%!TEX TS-program = xelatex
+%arara: xelatex
+\documentclass{ctexart}
+\newif\ifpreface
+\prefacetrue
+\input{../../../global/all}
+\begin{document}
+\large
+\setlength{\baselineskip}{1.2em}
+\ifpreface
+\input{../../../global/preface}
+\newgeometry{left=2cm,right=2cm,top=2cm,bottom=2cm}
+\else
+\newgeometry{left=2cm,right=2cm,top=2cm,bottom=2cm}
+\maketitle
+\fi
+%from_here_to_type
+\(\d X_t = b(t,X_t,\mathcal{L}_{X_t}) \d t + \sigma(t,X_t,\mathcal{L}_{X_t}) \d W_t, X_{0} = \xi \in L^p(\Omega \to \mathbb{R}^d,\mathcal{F}_0,\mathbb{P}) \).
+
+\(\d X_t = b(t,X_t,\mathcal{L}_{X_t}) \d t + \sigma(t,X_t,\mathcal{L}_{X_t}) \d B_t^H, X_{0} = \xi \in L^p(\Omega \to \mathbb{R}^d,\mathcal{F}_0,\mathbb{P}) \), where
+\(B^H = (B^{H,1},\cdots,B^{H,d}) \)
+
+\end{document}

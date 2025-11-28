@@ -1,0 +1,126 @@
+%!Mode:: "TeX:UTF-8"
+%!TEX TS-program = xelatex
+%arara: xelatex
+\documentclass{ctexart}
+\newif\ifpreface
+\prefacetrue
+\input{../../../global/all}
+\newtheorem{definition}{Def}
+\newtheorem{example}{Example}
+\newtheorem{theorem}{Theorem}
+\newcommand{\norm}[1]{\left\lVert #1 \right\rVert}
+\begin{document}
+\large
+\setlength{\baselineskip}{1.2em}
+\ifpreface
+\input{../../../global/preface}
+\else
+\maketitle
+\fi
+\newgeometry{left=2cm,right=2cm,top=2cm,bottom=2cm}
+%from_here_to_type
+\section{谱}
+\begin{definition}\label{def:banach_algebra}
+  设\(\mathcal{A} \)是复 Banach 空间，同时是代数。若\(\norm{x}\norm{y} \geq \norm{xy} \)，则称\(\mathcal{A} \)是 Banach 代数。
+\end{definition}
+
+\begin{example}\label{exa:banach_algebra_1}
+  设\(X \)为 Banach 空间，则\(X \)上的有界线性算子全体 \(B(X) \)是一个 Banach 代数。
+\end{example}
+
+\begin{example}\label{exa:banach_algebra_2}
+  用\(A(\mathbb{D}) \)记圆盘代数，即在开单位圆盘\(\mathbb{D} \)中解析，在\(\overline{\mathbb{D}} \)上连续的函数全体。作为\(C(\overline{\mathbb{D}}) \)的一个子代数，它是 Banach 代数。
+\end{example}
+
+\begin{example}\label{exa:banach_algebra_3}
+  在\(l^1(\mathbb{Z}) \)上定义乘法：
+  \((x {*} y)_n := \sum_{k = - \infty}^{\infty}x_k y_{n-k} \)，
+  可验证\(l^1(\mathbb{Z}) \)是有单位元的交换 Banach 代数。
+\end{example}
+
+\begin{example}\label{exa:banach_algrbra_4}
+  在\(L^1(\mathbb{R}) \)中定义乘法：
+  \(f {*} g := \frac{1}{\sqrt{2 \pi}} \int_{\mathbb{R}} f(x - t)g(t) \d t \)，则\(L^1(\mathbb{R}) \)是有单位元的交换 Banach 代数。
+  反设\(e \)是单位元，则\(\hat{e {*} e} = \hat{e} {*} \hat{e} \)。又\(\lim_{x \to \infty} \hat{e}(x)=0 \),故\(e(x)\equiv 0 \)，矛盾！
+\end{example}
+
+\begin{theorem}\label{the:1}
+  \begin{enumerate}
+    \item \label{it:11} 若\(x \in \mathcal{A},\norm{x} < 1 \)，则\(\mathbf{1} -x \)可逆，其逆为\((\mathbf{1}-x)^{-1} = \sum_{n = 0}^{\infty}x^n \)，且
+      \(\norm{(\mathbf{1}- x)^{-1}} \leq (\norm{\mathbf{1} - x})^{-1} \)；
+    \item \label{it:12} 若\(x \in \mathcal{A}^{-1} \)且\(h \in \mathcal{A} \)满足\(\norm{h}<\frac{1}{2} \norm{x^{-1}}^{-1} \)，则\(x + h \in \mathcal{A}^{-1} \)，且
+      \(\norm{(x + h)^{-1} - x^{-1}} \leq 2\norm{x^{-1}}^2 \norm{h} \)。
+    \item \(\mathcal{A}^{-1} \)是开集，且映射\(x \mapsto x^{-1} \)是\(\mathcal{A}^{-1} \) 的自同胚。
+  \end{enumerate}
+\end{theorem}
+\begin{proof}
+  \begin{enumerate}
+    \item 计算\((\mathbf{1}- x) \sum_{n = 0}^{\infty}x^n=0 \)即可，\(\norm{x} < 1 \)保证了收敛性。
+      显然有\(\norm{( \mathbf{1}-x )^{-1}} \leq \sum_{n = 0}^{\infty}\norm{x^n} \leq \frac{1}{1-\norm{x}} \)。
+    \item 由\(x+h = x(1+hx^{-1}) \)结合\ref{it:11} 即得。
+    \item 由\ref{it:12}即得。
+  \end{enumerate}
+
+\end{proof}
+
+\begin{definition}\label{def:shc}
+  设\(\mathcal{A} \)是 Banach 代数，\(x \in \mathcal{A} \)，定义\(\sigma(x):= \{\lambda \in \mathbb{C}:x - \lambda \mathbf{1} \notin \mathcal{A}^{-1}\} \)。
+  若\(A \in B(X)\)，则\(\sigma(A):=\{\lambda:\lambda I - A \text{不可逆}\} \)为\(A \)的谱。
+  \(A \)的点谱\(\sigma_p(A):= \{\lambda \in \mathbb{C}: \exists x \in X \setminus \{0\},(A\setminus \lambda \mathbf{1})x = 0\} \)。
+  \(\sigma(A)\setminus \sigma_p(A) \)称为\(A \)的连续谱（剩余谱）。
+\end{definition}
+
+\begin{theorem}\label{the:shc_nonempty}
+  对每个\(x \in \mathcal{A},\sigma(x)\neq \varnothing \)。
+\end{theorem}
+\begin{proof}
+  若\(\sigma(x)= \emptyset \)，那么\(f(\lambda) = (x - \lambda \mathbf{1})^{-1} \)是向量值的整函数。又\(\lim_{|\lambda| \to \infty}\norm{f(\lambda)} = 0 \)，
+  故\(f \)是有界整函数，于是\(f \equiv 0 \)，矛盾！故\(\sigma(x) \neq \emptyset \)。
+\end{proof}
+
+\begin{definition}\label{def:shc_riduas}
+  对\(x \in \mathcal{A}\)，定义\(r(x):= \sup_{\lambda \in \sigma(x)}|\lambda| \)为\(x \)的谱半径。
+\end{definition}
+
+\begin{theorem}\label{the:shc_riduas}
+  当\(x \in \mathcal{A} \)时，\(r(x) = \lim_{n \to \infty}\norm{x^r}^{\frac{1}{n}} \)。
+\end{theorem}
+\begin{proof}
+  一方面，\(\lambda \in \sigma(x) \implies \lambda^n \in \sigma(x^n) \)，于是\(|\lambda| \leq \norm{x^n}^{\frac{1}{n}} \)。
+
+  另一方面，令\(R_x(\lambda):= (x - \lambda \mathbf{1})^{-1} \)，它有 Laurent 展开式\(R_x(\lambda) = \sum_{n = 0}^{\infty}\frac{y_n}{\lambda^n},y_n \in \mathcal{A} \)。
+  因为\(|\lambda| > \norm{x} \)时\(R_x(\lambda) = -\frac{1}{\lambda} \sum_{n = 0}^{\infty} \)
+  \(|\lambda| > r(x) \)时，\(R_x(\lambda) = -\sum_{n = 1}^{\infty}\frac{x^{n - 1}}{\lambda^n} \)收敛，于是
+  \(\limsup \norm{\frac{x^n}{\lambda^{n + 1}}}^{\frac{1}{n}} \leq 1 \)。
+\end{proof}
+
+\begin{theorem}\label{the:shc_subset}
+  设\(\mathbf{1} \in \mathcal{A} \subset \mathcal{B},x \in \mathcal{A} \)，则
+  \begin{enumerate}
+    \item \(\partial \sigma_{\mathcal{A}}(x) \subset \sigma_{\mathcal{B}}(x) \subset \sigma_{\mathcal{A}}(x)\)；
+    \item \label{it:1} 如果\(\Omega \) 是\(\mathbb{C} \setminus \sigma_{\mathcal{B}}(x) \)的一个有界连通分支，那么\(\Omega \cap \sigma_{\mathcal{A}}(x)=\emptyset \text{或} \Omega \)。
+    \item \(\sigma_{\mathcal{A}}(x) = \sigma_{\mathcal{B}}(x) \cup \bigcup_{k = 1}^{\infty} \Omega_k \)，其中\(\Omega_n \)是\(\mathbb{C} \setminus \sigma_{\mathcal{B}}(x) \)的某些有界分支。
+  \end{enumerate}
+\end{theorem}
+\begin{proof}
+  \begin{enumerate}
+    \item 只需证\(0 \in \partial \sigma_{\mathcal{A}}(x) \implies 0 \in \sigma_{\mathcal{B}}(x) \)即可。
+      由\(0 \in \sigma_{\mathcal{A}}(x) \)，取\(\lambda_n \to 0,\lambda_n \notin \sigma_{\mathcal{A}}(x) \)。
+      若\(0 \notin \sigma_{\mathcal{B}}(x) \)，则\((x - \lambda_n \mathbf{1})^{-1} \to x^{-1} \) 在\(\mathcal{B} \)中成立。
+      又\((x - \lambda_n \mathbf{1})^{-1} \in \mathcal{A} \)，且\(\mathcal{A} \)为Banach 空间，故\(x^{-1} \in \mathcal{A} \)，矛盾！
+    \item 令\(X : = \Omega \cap \sigma_{\mathcal{A}}(x) \)，则\(X \)是\(\Omega \)的闭子集。
+      \(\partial_{\Omega} X \subset \partial \sigma_{\mathcal{A}}(x) \subset \sigma_{\mathcal{B}}(x) \subset \mathbb{C} \setminus \Omega \)，故\(\partial_{\Omega} X = \emptyset \)。
+      于是\(X = \Omega \)或\(X = \emptyset \)。
+    \item 由\ref{it:1}显然。
+  \end{enumerate}
+\end{proof}
+\begin{example}\label{exa:shc_subset}
+  设\(K:= \{z \in \mathbb{C}:1 \leq |z| \leq 2\},\mathcal{A},\mathcal{B} \)分别的由\((1,z) \)和\((1,z,z^{-1}) \)生成的\(C(K) \)的闭子代数，则\(\mathcal{A} \subsetneqq \mathcal{B} \)。
+  令\(f(z) = z \)，那么\(\sigma_{\mathcal{B}}(f) = K,\sigma_{\mathcal{A}} \)
+\end{example}
+\begin{definition}\label{def:l2_t}
+  \(\mathbb{T} \)是单位圆周，\(\{\mathrm{e}^{\mathrm{i} n \theta}:n \in \mathbb{Z}\} \)是\(L^2(\mathbb{T}) \)的标准正交基。
+  \(H^2(\mathbb{T}) := \{f \in L^2(\mathbb{T}): \hat{f}(n)= 0,n <0\} \)。
+\end{definition}
+
+\end{document}
