@@ -3,7 +3,7 @@
 %arara: xelatex
 \documentclass{ctexart}
 \newif\ifpreface
-\prefacetrue
+\prefacefalse
 \input{../../../global/all}
 \begin{document}
 \large
@@ -115,23 +115,44 @@
       故\(a f_{1} + b f_{2} \in L \)。
     \item 设\(0 \leq f_n \nearrow f,f_n \in L \)。则\(\int_{\Omega_{3}} f(\omega_1,\omega_{3}) \lambda(\omega_2,\d \omega_{3}) = \lim_{n}\int_{\Omega_{3}} f_n(\omega_1,\omega_{3}) \lambda(\omega_2 \d \omega_{3}) \)可测，于是\(f \in L \)。
   \end{enumerate}
-
+  于是\(L \)是\(\mathcal{L} \)-系。对于\(A_{1} \times A_{3} \in \mathcal{A}_1 \times \mathcal{A}_{3} \)，有\(\int_{\Omega_{3}} \mathbbm{1}_{A_{1} \times A_{3}}(\omega_1,\omega_{3}) \lambda(\omega_2,\d \omega_{3}) = \mathbbm{1}_{A_{1}}(\omega_{1}) \int_{A_{3}} 1 \lambda(\omega_2,\d \omega_{3}) = \mathbbm{1}_{A_{1}}(\omega_{1}) \lambda(\omega_2,A_{3})\)。
+  由转移测度的定义知\(\int_{A_{3}} 1 \lambda(\omega_2,\d \omega_{3}) \)可测，又显然\(\mathbbm{1}_{A_{1}}(\omega_{1}) \)可测，故其可测。于是\(\mathbbm{1}_{A_{1} \times A_{3}} \in L \)。
+  故所有\(\mathcal{A}_1 \times \mathcal{A}_{3} \)可测函数均在\(L \)中，证毕。
 \end{solution}
 
 \begin{problem}\label{pro:4.6}
   若矩阵\(P = (p_{ij})_{i,j = 1}^\infty \)满足\(p_{ij} \geq 0,\sum_{j = 1}^{\infty} p_{ij} = 1, \forall i \geq 1 \)，则称\(P \)为转移概率矩阵。
   令\(\lambda(i,A) = \sum_{j \in A}p_{ij} \)，证明\(\lambda \)是转移概率。
 \end{problem}
+\begin{solution}
+  对固定的\(i \)而言，须证\(\lambda(i,\cdot) \)是概率。注意到\(\mu_{ij}(A) = \mathbbm{1}_{j \in A} p_{ij} \)是测度，而\(\lambda(i,A) = \sum_{j}\mu_{ij}(A) \)，于是为测度。
+  又\(\lambda(i,\Omega) = \sum_{j}p_{ij} = 1 \)，故为概率。
+
+  对固定的\(A \)而言，须证\(\lambda(\cdot,A) \)可测。在离散空间上显然所有函数都可测。
+
+  综上，\(\lambda \)是转移概率。
+\end{solution}
 
 \begin{problem}\label{pro:4.9}
-  设\(\mu_k,\nu_k \)分别为\(\Omega_k,\mathcal{A}_k \)上\(\sigma \)有限测度，\(\nu_k \ll \mu_k,k = 1,2 \)。
+  设\(\mu_k,\nu_k \)分别为\((\Omega_k,\mathcal{A}_k) \)上\(\sigma \)有限测度，\(\nu_k \ll \mu_k,k = 1,2 \)。
   证明\(\nu_1 \times \nu_2 \ll \mu_1 \times \mu_{2} \)且
-  \(\frac{\d(\nu_1 \times \nu_{2})}{\d (\mu_1 \times \mu_{2})}(\omega_1,\omega_{2}) = \frac{\d \nu_{1}}{\d \mu_{1}} \frac{\d \nu_{2}}{\d \mu_{2}}(\omega_{2}), \mu_1 \times \mu_2 \mathrm{-a.e.} \)
+  \(\frac{\d(\nu_1 \times \nu_{2})}{\d (\mu_1 \times \mu_{2})}(\omega_1,\omega_{2}) = \frac{\d \nu_{1}}{\d \mu_{1}}(\omega_{1}) \frac{\d \nu_{2}}{\d \mu_{2}}(\omega_{2}), \mu_1 \times \mu_2 \mathrm{-a.e.} \)
 \end{problem}
+
+\begin{solution}
+  由测度扩张的唯一性，只需验证对于\(A_{1} \times A_{2} \in \mathcal{A}_1 \times \mathcal{A}_{2} \)，有\(\nu_1 \times \nu_{2}(A_{1} \times A_{2}) = \int_{\Omega_1 \times \Omega_{2}} \frac{\d \nu_{1}}{\d \mu_{1}}(\omega_{1}) \frac{\d \nu_{2}}{\d \mu_{2}}(\omega_{2}) \d \mu_1 \times \mu_{2} \)即可。
+  显然有
+  \(\nu_1 \times \nu_2(A_{1} \times A_{2}) = \nu_1 (A_{1}) \nu_2(A_{2}) = \int_{\Omega_{1}} \frac{\d \nu_{1}}{\d \mu_{1}}(\omega_{1}) \d \mu_{1} + \int_{\Omega_{2}} \frac{\d \nu_{2}}{\d \mu_{2}}(\omega_{2}) \d \mu_{2} = \int_{\Omega_1 \times \Omega_{2}} \frac{\d \nu_{1}}{\d \mu_{1}}(\omega_{1}) \frac{\d \nu_{2}}{\d \mu_{2}}(\omega_{2}) \d \mu_1 \times \mu_{2} \)。
+\end{solution}
 
 \begin{problem}\label{pro:4.10}
   设\((\Omega_t,\mathcal{A}_t)_{t \in T} \)为一族可测空间，\(\mathcal{C}_t \subset \mathcal{A}_t,\sigma(\mathcal{C}_t) = \mathcal{A}_t,t \in T \)。
   证明\(\prod_{t \in T}\mathcal{A}_t = \sigma\left(\bigcup_{t \in T} J_t^{-1}(\mathcal{C}_t)\right) \)，其中\(J_t:\prod_{t \in T} \ni \omega \mapsto \omega_t \in \Omega_t \)。
 \end{problem}
-
+\begin{solution}
+  显然有\(\prod_{t \in T}\mathcal{A}_t \supset \sigma\left(\bigcup_{t \in T} J_t^{-1}(\mathcal{C}_t)\right) \)。只需证\( \sigma\left(\bigcup_{t \in T} J_t^{-1}(\mathcal{C}_t)\right) \)包含所有有限维柱集即可。
+  对于有限维柱集有\(\prod_{t \in T_{0}}A_t \times \prod_{t \in T \setminus T_{0}} \Omega_t= \bigcap_{t \in T_{0}} J_t^{-1}(A_t)\)，故只需证明\(J_t^{-1}(A_t) \in \sigma(J_t^{-1}(\mathcal{C}_t))\)。
+  由\(\sigma(\mathcal{C}_t) = \mathcal{A}_t \)及\(A_t \in \mathcal{A}_t \)知其成立。故\( \sigma\left(\bigcup_{t \in T} J_t^{-1}(\mathcal{C}_t)\right) \)包含所有有限维柱集，
+  从而\(\prod_{t \in T}\mathcal{A}_t = \sigma\left(\bigcup_{t \in T} J_t^{-1}(\mathcal{C}_t)\right) \)。
+\end{solution}
 \end{document}
