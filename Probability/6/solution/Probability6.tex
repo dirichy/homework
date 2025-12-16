@@ -67,6 +67,7 @@
   叙述并证明关于条件期望 Jensen 不等式和 Minikowski 不等式。
   \begin{enumerate}
     \item 设\(\xi \)可积，\(\phi \)是区间上的下凸函数，且\(\xi(\omega) \in \dom \phi \)几乎必然成立。则\(\mathbb{E}(\phi(\xi) \mid \mathcal{C} ) \geq \phi(\mathbb{E}(\xi \mid \mathcal{C})) \)。
+    \item 设\(\xi,\eta \)可积，\(p>1 \)。则\(\mathbb{E}(|\xi + \eta|^p \mid \mathcal{C})^{\frac{1}{p}} \leq \mathbb{E}(|\xi|^p \mid \mathcal{C})^{\frac{1}{p}} + \mathbb{E}(|\eta|^p \mid \mathcal{C})^{\frac{1}{p}}\)。
   \end{enumerate}
 \end{problem}
 \begin{lemma}\label{lem:1}
@@ -114,6 +115,10 @@
       对于\(\mathbb{E}(\xi \mid \mathcal{C})(\omega) = a \)也同理。
 
       综上所述，\(\mathbb{E}(\phi(\xi) \mid \mathcal{C}) \geq \phi(\mathbb{E}(\xi \mid \mathcal{C})) \)几乎处处成立。
+    \item 由\(p > 1  \)知\(|\xi + \eta|^p \leq (|\xi|+ |\eta|)|\xi + \eta|^{p-1} \)，取条件期望得\(\mathbb{E}(|\xi + \eta|^p \mid \mathcal{C}) \leq \mathbb{E}(|\xi||\xi + \eta|^{p-1} \mid \mathcal{C}) + \mathbb{E}(|\eta||\xi + \eta|^{p-1} \mid \mathcal{C}) \)。
+      由\ref{pro:5} 知条件期望的赫尔德不等式成立，故\(\mathbb{E}(|\xi||\xi + \eta|^{p -1} \mid \mathcal{C}) \leq \mathbb{E}(|\xi|^p \mid \mathcal{C})^{\frac{1}{p}}\mathbb{E}(|\xi + \eta|^{(p-1)q} \mid \mathcal{C})^{\frac{1}{q}} \)，其中\(\frac{1}{p} + \frac{1}{q} = 1 \)。
+      对\(\mathbb{E}(|\eta||\xi + \eta|^{p -1} \mathcal{C}) \)同理。注意到\((p-1)q = p \)，故有\(\mathbb{E}(|\xi + \eta|^p \mid \mathcal{C}) \leq (\mathbb{E}(|\xi|^p \mid \mathcal{C})^{\frac{1}{p}} + \mathbb{E}(|\eta|^p \mid \mathcal{C})^{\frac{1}{p}})(\mathbb{E}(|\xi + \eta|^p \mid \mathcal{C}))^{\frac{1}{q}} \)。
+      由\(\mathbb{E}(|\xi + \eta|^p \mid \mathcal{C}) \geq 0 \)，整理得\(\mathbb{E}(|\xi + \eta|^p \mid \mathcal{C})^{\frac{1}{p}} \leq \mathbb{E}(|\xi|^p \mid \mathcal{C})^{\frac{1}{p}} + \mathbb{E}(|\eta|^p \mid \mathcal{C})^{\frac{1}{p}}\)。
   \end{enumerate}
 \end{solution}
 
@@ -121,12 +126,78 @@
   设\(\mathcal{C}_1,\mathcal{C}_2 \)为\(\mathcal{A} \)的子\(\sigma \)代数。举例说明\(\mathbb{E}(\xi \mid \mathcal{C}_1 \cap \mathcal{C}_2) \neq \mathbb{E}(\mathbb{E}(\xi \mid \mathcal{C}_1) \mid \mathcal{C}_2) \)。
 \end{problem}
 
-\(\int f g \leq (\int f^r)^{\frac{1}{r}} (\int g^s)^{\frac{1}{s}} \),where \(\frac{1}{r} + \frac{1}{s} = 1 \).
-wlog assume \(\int f^r = \int g^s = 1 \).
-\(\int f g \leq \int \frac{1}{s} g^s + \frac{1}{r} f^r = 1 \).
+\begin{solution}
+  令\(\Omega=\{1,2,3\},\mathcal{F}=2^\Omega,\mathbb{P}(\{i\}):=p_i,p_{1}=\frac{1}{2},p_{2}=\frac{1}{3},p_{3}=\frac{1}{6},\mathcal{C}_1=\sigma(\{1\}),\mathcal{C}_2=\sigma(\{2\}),\xi = \mathbbm{1}_{\{3\}} \)。
+  则\(\mathcal{C}_1 \cap \mathcal{C}_2 = \sigma(\varnothing) \)，即\(\mathbb{E}(\xi \mid \mathcal{C}_1 \cap \mathcal{C}_{2}) = \mathbb{E}(\xi) \)。\(\mathbb{E}(\xi \mid \mathcal{C}_{1}) = \mathbbm{1}_{\{1\}} \cdot 0 + \mathbbm{1}_{\{2,3\}} \cdot \frac{1}{3} = \frac{1}{3}\mathbbm{1}_{\{2,3\}} \)。
+  故\(\mathbb{E}(\mathbb{E}(\xi \mid \mathcal{C}_{1})\mid \mathcal{C}_{2}) = \frac{1}{3} \mathbb{E}(\mathbbm{1}_{\{2,3\} \mid \mathcal{C}_{2}}) = \frac{1}{3} (\mathbbm{1}_{\{2\}} \cdot 1 + \mathbbm{1}_{\{1,3\}} \cdot \frac{1}{4}) \neq \mathbb{E}(\xi) \)。
+\end{solution}
 
-\(\ln \int f g \leq \frac{1}{r} \ln\int f^r + \frac{1}{s} \ln\int g^s \).
-\(\frac{\ln a}{s} + \frac{\ln b}{r} \leq \ln(\frac{a}{s} +\frac{b}{r}) \).
-\(a^{\frac{1}{s}} b^{\frac{1}{r} } \leq \frac{a}{s} + \frac{b}{r} \).
-\(ab \leq \frac{1}{s} a^s + \frac{1}{r} b^r \).
+\begin{problem}\label{pro:11}
+  设\(\mathcal{A}_n \)是一列单调上升的子\(\sigma \)代数，若随机变量\(\xi_n \)满足
+  \[
+    \mathbb{E}(\xi_{n + 1} \mid \mathcal{A}_n)=\xi_n,n \geq 1
+  \]则称为鞅序列。证明\(\xi_n=\mathbb{E}(\xi \mid \mathcal{A}_n) \)是鞅。
+\end{problem}
+\begin{solution}
+  \(\mathbb{E}(\xi_{n + 1} \mid \mathcal{A}_n) = \mathbb{E}(\mathbb{E}(\xi \mid \mathcal{A}_{n + 1}) \mid \mathcal{A}_n) = \mathbb{E}(\xi \mid \mathcal{A}_n) = \xi_n \)，因为\(\mathcal{A}_n \subset \mathcal{A}_{n + 1} \)。
+  故\(\xi_n \)关于\(\mathcal{ A}_n \)成鞅。
+\end{solution}
+
+\begin{problem}\label{pro:12}
+  设\(\xi_n \)为随机变量，令\(\mathcal{A}_n =\sigma(\{\xi_m:m \leq n\})\)。若
+  \[
+    \mathbb{E}(\xi_{n + 1} \mid \mathcal{A}_n)=\mathbb{E}(\xi_{n + 1} \mid \xi_n),n \geq 1
+  \] 则称\(\xi_n \)为马氏过程。若\(X_n \)为独立随机变量，证明\(\sum_{m=1}^{n}X_m \) 为马氏过程。
+\end{problem}
+\begin{solution}
+\end{solution}
+
+\begin{problem}\label{pro:13}
+  设\(\mathcal{A}_n=\sigma(\{\xi_m:m \leq n\}),\mathcal{A}^n=\sigma(\{\xi_m:m \geq n\}) \)，则\(\xi_n \)为马氏过程当且仅当下列条件之一成立：
+  \begin{enumerate}
+    \item \(\mathbb{E}(\xi_m \mid \mathcal{A}_n)=\mathbb{E}(\xi_{n + 1} \mid \xi_n),m \geq n \geq 1 \)；
+    \item \(\mathbb{E}(\eta \mid \mathcal{A}_n)=\mathbb{E}(\eta \mid \xi_n),\eta \in \mathcal{A}^n, n \geq 1 \)，
+    \item \(\forall \eta \in \mathcal{A}_n,\xi \in \mathcal{A}^n \)使得\(\eta , \zeta ,\eta \zeta \)均可积，则\[
+        \mathbb{E}(\eta \zeta \mid \xi_n)=\mathbb{E}(\eta \mid \xi_n)\mathbb{E}(\zeta \mid \xi_n),n \geq 1
+      \]
+  \end{enumerate}
+\end{problem}
+
+\begin{problem}\label{pro:15}
+  证明\(\mathbb{E}(\xi \mid \mathcal{C})=\eta, \) \(\mathbb{E}(\xi^2)=\mathbb{E}(\eta^2)<\infty \)，那么\(\eta=\xi,a.e. \)。
+\end{problem}
+\begin{solution}
+  \(\mathbb{E}((\xi - \eta)^2) = \mathbb{E}(\xi^2) + \mathbb{E}(\eta^2) - 2 \mathbb{E}(\xi \eta) \)。
+  注意到\(\mathbb{E}(\xi \eta) = \mathbb{E}(\mathbb{E}(\xi \eta \mid \mathcal{C})) = \mathbb{E}(\eta \mathbb{E}(\xi \mid \mathcal{C})) = \mathbb{E}(\eta^2) \)，故\(\mathbb{E}((\xi - \eta)^2) = \mathbb{E}(\xi^2) - \mathbb{E}(\eta^2) \)。
+  由\(\mathbb{E}(\xi^2) = \mathbb{E}(\eta^2) < \infty \)知\(\mathbb{E}((\xi - \eta)^2)= 0 \)，故\(\xi = \eta,a. s. \)。
+\end{solution}
+
+\begin{problem}\label{pro:20}
+  \begin{enumerate}
+    \item 若\(A \)满足\(\mathbb{P}(A)>0 \)，定义\(\mathbb{Q}(B)=\mathbb{P}(B \mid A) \)，证明对于\(B \in \mathcal{A} \)，以及子\(\sigma \)-代数\(\mathcal{C} \)，\[
+        \mathbb{Q}(B \mid \mathcal{C})=\frac{\mathbb{P}(A \cap B \mid \mathcal{C})}{\mathbb{P}(A \mid \mathcal{C})}, \mathbb{Q}-a.s.
+      \]
+    \item 设\(\mathcal{D} \)是由划分\(\{A_n\}\)生成的\(\sigma \)代数，\(\mathcal{C} \vee \mathcal{D} := \sigma(\mathcal{C} \cup \mathcal{D}) \)。证明\(B \in \mathcal{A} \) \[
+        \mathbb{P}(B \mid \mathcal{C} \vee \mathcal{D})=\sum_{n=1}^{\infty} \mathbbm{1}_{A_n} \frac{\mathbb{P}(B \cap A_n \mid \mathcal{C})}{\mathbb{P}(A_n \mid \mathcal{C})}
+      \]
+  \end{enumerate}
+\end{problem}
+\begin{solution}
+  \begin{enumerate}
+    \item 我们来证明\(\mathbb{Q}(\xi \mid \mathcal{C}) = \frac{\mathbb{E}(\xi \mathbbm{1}_{A} \mid \mathcal{C})}{\mathbb{P}(A \mid \mathcal{C})},\mathbb{Q}- a.s.\)，其中\(\mathbb{Q}(\xi \mid \mathcal{C}) \)表示\(\xi \)在\((\Omega,\mathcal{A},\mathbb{Q}) \)下关于\(\mathcal{C} \)的条件期望。
+      令\(N:=\{\omega:\mathbb{P}(A \mid \mathcal{C})(\omega) = 0\} \in \mathcal{C} \)，由条件期望的定义有\(0=\int_{N } \mathbb{P}(A \mid \mathcal{C}) \d \mathbb{P} = \int_{N} \mathbbm{1}_A \d \mathbb{P} = \mathbb{P}(N \cap A) \)。
+      于是\(\mathbb{Q}(N) = \frac{\mathbb{P}(A \cap N)}{\mathbb{P}(A)} = 0 \)。结合\(\mathbbm{1}_A \geq 0\)知\(\mathbb{P}(A \mid \mathcal{C}) \geq 0,\mathbb{P} \)-a.s. 。又\(\mathbb{Q} \ll \mathbb{P} \)，故\(\mathbb{P}(A \mid \mathcal{C}) >0, \mathbb{Q}\)-a.s.。
+      故我们只需证\(\mathbb{Q}(\xi \mid \mathcal{C}) \mathbb{P}(A \mid \mathcal{C}) = \mathbb{E}(\xi \mathbbm{1}_A \mid \mathcal{C}) \)。注意到\(\mathbb{P}(A \mid \mathcal{C}) \in \mathcal{C} \)，故\(\mathbb{Q}(\xi \mid \mathcal{C}) \mathbb{P}(A \mid \mathcal{C}) = \mathbb{Q}(\xi \mathbb{P}(A \mid \mathcal{C}) \mid \mathcal{C}) \)。
+      按照条件期望的定义，只需验证\(\forall C \in \mathcal{C},\int_{C} \xi \mathbb{P}(A \mid \mathcal{C}) \d \mathbb{Q} = \int_{C} \mathbb{E}(\xi \mathbbm{1}_A \mid \mathcal{C}) \d \mathbb{Q} \)。
+      注意到\(\d \mathbb{Q} = \frac{\mathbbm{1}_A}{\mathbb{P}(A)} \d \mathbb{P} \)，故只需验证\(\int_{C} \xi \mathbb{P}(A \mid \mathcal{C})\mathbbm{1}_A \d \mathbb{P} = \int_{C} \mathbb{E}(\xi \mathbbm{1}_A\mid \mathcal{C}) \mathbbm{1}_A \d \mathbb{P}\)。
+      由\(\mathbb{E}(\xi \mathbb{P}(A \mid \mathcal{C})\mathbbm{1}_A \mid \mathcal{C}) = \mathbb{P}(A \mid \mathcal{C})\mathbb{E}(\xi \mathbbm{1}_A \mid \mathcal{C}) = \mathbb{E}(\mathbb{E}(\xi \mathbbm{1}_A \mid \mathcal{C})\mathbbm{1}_A \mid \mathcal{C}) \)，知
+      \(\int_{C} \xi \mathbb{P}(A \mid \mathcal{C})\mathbbm{1}_A \d \mathbb{P} =\int_{C} \mathbb{E}(\xi \mathbbm{1}_A \mid \mathcal{C}) \mathbb{P}(A \mid \mathcal{C}) \d \mathbb{P} =\int_{C} \mathbb{E}(\xi \mathbbm{1}_A\mid \mathcal{C}) \mathbbm{1}_A \d \mathbb{P}\)。
+    \item 令\(\mathbb{Q}_n(B) = \mathbb{P}(B \mid A_n) \)，则我们须证\(\mathbb{P}(B \mid \mathcal{C} \vee \mathcal{D} )= \sum_{b = 1}^{\infty} \mathbbm{1}_{A_n} \mathbb{Q}_n(B \mid \mathcal{C}) \)。
+      由\(A_n \)是划分，只需证\(\mathbb{E}(\mathbbm{1}_B \mathbbm{1}_{A_n} \mid \mathcal{C} \vee \mathcal{D}) = \mathbb{P}(B \mid \mathcal{C} \vee \mathcal{D})\mathbbm{1}_{A_n} = \mathbbm{1}_{A_n} \mathbb{Q}_n(B \mid \mathcal{C}) \)。
+      注意到\(\{E \in \mathcal{C} \vee \mathcal{D}:\forall n \in \mathbb{N}_+,\exists C \in \mathcal{C} \in \mathcal{C}, E \cap A_n = C \cap A_n\} \supset \mathcal{C} \cup \mathcal{D} \)是\(\sigma \)-代数，故\(\forall E \in \mathcal{C} \vee \mathcal{D},\exists C \in \mathcal{C},\mathbb{E} \cap A_n = C \cap A_n \)。
+      于是有\(\int_{E} \mathbbm{1}_{A_n} \mathbb{Q}_n(B \mid \mathcal{C}) \d \mathbb{P} =\int_{C} \mathbbm{1}_{A_n} \mathbb{Q}_n(B \mid \mathcal{C}) \d \mathbb{P} = \int_{C} \mathbb{Q}_n(B \mid \mathcal{C}) \mathbb{P}(A_n) \d \mathbb{Q}_n = \int_{C} \mathbbm{1}_B \mathbb{P}(A_n) \d \mathbb{Q}_n = \mathbb{Q}_n(C \cap B) \mathbb{P}(A_n) = \mathbb{P}(C \cap B \cap A_n) = \int_{C} \mathbbm{1}_B \mathbbm{1}_{A_n} \d \mathbb{P} =\int_{E} \mathbbm{1}_B \mathbbm{1}_{A_n} \d \mathbb{P} \)，
+      得到\(\mathbb{E}(\mathbbm{1}_{A_n}\mathbbm{1}_B \mid \mathcal{C} \vee \mathcal{D}) = \mathbbm{1}_{A_n} \mathbb{Q}_n(B \mid \mathcal{C}),\mathbb{P}_{\mathcal{C} \vee \mathcal{D}} \)-a.s.。
+  \end{enumerate}
+\end{solution}
+
 \end{document}
