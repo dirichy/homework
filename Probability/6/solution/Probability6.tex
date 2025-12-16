@@ -2,6 +2,8 @@
 %!TEX TS-program = xelatex
 %arara: xelatex
 \documentclass{ctexart}
+\usepackage{catppuccinpalette}
+\newcommand{\res}[2]{#1_{#2}}
 \newif\ifpreface
 \prefacetrue
 \input{../../../global/all}
@@ -17,4 +19,114 @@
 \fi
 %from_here_to_type
 
+\begin{problem}\label{pro:1}
+  举例说明\(\mathcal{C} \not \subset \mathcal{C}' \)时，未必有\(\mathbb{E}(\mathbb{E}(\xi \mid \mathcal{C}')\mid \mathcal{C}) = \mathbb{E}(\xi \mid \mathcal{C}) \)。
+\end{problem}
+\begin{solution}
+  令\(\xi \sim B(1,\frac{1}{2}) \)，令\(\mathcal{C}'=\{\emptyset,\Omega\},\mathcal{C}=\sigma(\xi) \)。
+  则\(\mathbb{E}(\xi \mid \mathcal{C}) = \mathbb{E}(\xi \mid \sigma(\xi)) = \xi \)，
+  但\(\mathbb{E}(\mathbb{E}(\xi \mid \mathcal{C}') \mid \mathcal{C}) = \mathbb{E}(\frac{1}{2} \mid \mathcal{C}) = \frac{1}{2} \)。
+  显然\(\xi \neq \frac{1}{2} \)。
+\end{solution}
+
+\begin{problem}\label{pro:2}
+  设\(\xi \)可积。设\(\mathcal{C} \)为\(\mathcal{A} \)的子\(\sigma \)代数，\(\phi(B)=\int_{B} \xi \d \mathbb{P} , B \in \mathcal{C}  \), 则\(\phi  \)是\( \mathcal{C} \) 上\(\sigma \)可加集函数，
+  \(\phi \ll \res{\mathbb{P}}{\mathcal{C}}\)。从而存在\(\mathbb{E}(\xi \mid \mathcal{C}) = \frac{\d \phi}{\d \mathbb{P}_{\mathcal{C}}}, \mathbb{P}_{\mathcal{C}}\)-a.e.
+\end{problem}
+\begin{solution}
+  显然\(\phi:\mathcal{C} \to \mathbb{R} \)。只需证\(\phi \)为\(\mathcal{C} \)上的\(\sigma \)可加集函数。
+  取\(B_n \in \mathcal{C},n \in \mathbb{N}_{+} \)两两不交。考查\(\xi_n:=\xi \mathbbm{1}_{\bigcup_{k=1}^{n}B_k} = \sum_{k=1}^{n} \xi \mathbbm{1}_{B_k} \)，有\(|\xi_n|<|\xi| \)，且\(\xi \)可积。
+  故由控制收敛定理可得\(\lim_{n \to \infty} \int \xi_n \d \mathbb{P} = \int \lim_{n} \xi_n \d \mathbb{P} \)，
+  即\(\sum_{k=1}^{\infty} \phi(B_n)=\lim_{n}\sum_{k=1}^{n} \phi(B_n) = \lim_{n} \sum_{k=1}^{n} \int_{B_k} \xi \d \mathbb{P} = \int \mathbbm{1}_{\bigcup_{k=1}^{\infty} B_k} \xi \d \mathbb{P} = \phi(\bigcup_{k=1}^{\infty} B_k) \)。
+
+  显然\(\mathbb{P}(B)=0 \implies \phi(B)=\int_{B} \xi \d \mathbb{P} =0\)。故\(\phi \ll \res{\mathbb{P}}{\mathcal{C}} \)。从而存在\(\mathbb{E}(\xi \mid \mathcal{C}) = \frac{\d \phi}{ \d \mathbb{P}_{\mathcal{C}}} \)。
+\end{solution}
+\begin{problem}\label{pro:5}
+  证明赫尔德不等式\(\mathbb{E}(\xi \eta \mid \mathcal{C}) \leq \mathbb{E}(|\xi|^p \mid \mathcal{C})^{\frac{1}{p}} \mathbb{E}(|\eta|^q \mid \mathcal{C})^{\frac{1}{q}}, p >1, \frac{1}{p} + \frac{1}{q} =1 \)。
+\end{problem}
+\begin{solution}
+  不妨设\(\xi,\eta \geq 0 \)，否则用\(|\xi|,|\eta| \)代替。
+  记\(\xi_n = \frac{\xi}{ (\mathbb{E}(\xi^p \mid \mathcal{C})+ \frac{1}{n})^{\frac{1}{p}}}, \eta_n = \frac{\eta}{ (\mathbb{E}(\eta^q \mid \mathcal{C})+ \frac{1}{n})^{\frac{1}{q}}} \)。
+  由 Young 不等式知\(\xi_n \eta_n \leq \frac{1}{p} \xi_n^p + \frac{1}{q} \eta_n^q \)。
+  注意到\( (\mathbb{E}(\xi^p \mid \mathcal{C})+ \frac{1}{n})^{\frac{1}{p}}, (\mathbb{E}(\eta^q \mid \mathcal{C})+ \frac{1}{n})^{\frac{1}{q}} \)，关于\(\mathcal{C} \)可测，结合条件期望的单调性知
+  \begin{equation}
+    \begin{aligned}
+      &\frac{\mathbb{E}(\xi \eta \mid \mathcal{C})}{ (\mathbb{E}(\xi^p \mid \mathcal{C})+ \frac{1}{n})^{\frac{1}{p}}(\mathbb{E}(\eta^q \mid \mathcal{C})+ \frac{1}{n})^{\frac{1}{q}} }\\
+      =&\mathbb{E}(\xi_n \eta_n \mid \mathcal{C}) \\
+      \leq & \mathbb{E} (\frac{1}{p} \xi_n^p + \frac{1}{q} \eta_n^q \mid \mathcal{C}) \\
+      =& \frac{1}{p} \frac{\mathbb{E}(\xi^p \mid \mathcal{C})}{ \mathbb{E}(\xi^p \mid \mathcal{C}) + \frac{1}{n}} + \frac{1}{q} \frac{\mathbb{E}(\eta^q \mid \mathcal{C})}{ \mathbb{E}(\eta^q \mid \mathcal{C}) + \frac{1}{n}} \\
+      \leq & \frac{1}{p} + \frac{1}{q} \\
+      =& 1
+    \end{aligned}
+  \end{equation}
+  ，整理得\(\mathbb{E}(\xi \eta \mid \mathcal{C}) \leq  (\mathbb{E}(\xi^p \mid \mathcal{C})+ \frac{1}{n})^{\frac{1}{p}} (\mathbb{E}(\eta^q \mid \mathcal{C})+ \frac{1}{n})^{\frac{1}{q}}  \)。
+  令\(n \to \infty \)，得到\(\mathbb{E}(\xi \eta \mid \mathcal{C}) \leq \mathbb{E}(|\xi|^p \mid \mathcal{C})^{\frac{1}{p}} \mathbb{E}(|\eta|^q \mid \mathcal{C})^{\frac{1}{q}}\)。
+\end{solution}
+
+\begin{problem}\label{pro:7}
+  叙述并证明关于条件期望 Jensen 不等式和 Minikowski 不等式。
+  \begin{enumerate}
+    \item 设\(\xi \)可积，\(\phi \)是区间上的下凸函数，且\(\xi(\omega) \in \dom \phi \)几乎必然成立。则\(\mathbb{E}(\phi(\xi) \mid \mathcal{C} ) \geq \phi(\mathbb{E}(\xi \mid \mathcal{C})) \)。
+  \end{enumerate}
+\end{problem}
+\begin{lemma}\label{lem:1}
+  \(\phi \) 为区间上的下凸函数，且在端点处（如果有定义的话）连续。那么存在可数的\(A \subset \mathbb{R}^2 \)，使\(\phi(x)=\sup_{(a,b) \in A} ax+b \)。
+\end{lemma}
+\begin{proof}
+  若区间为单点集，则显然成立。下设区间不是单点集。
+
+  由于\(\phi \)在端点处连续，故只需考虑定义域内部的点\(x \)。故可不妨设该区间为开区间。
+
+  熟知开区间上的下凸函数必然连续，且\(\phi_+',\phi_-' \)都存在，且\(\forall x<y \)，有\(\phi_-'(x) \leq \phi_+'(x) \leq \phi_-'(y) \leq \phi_+'(y) \)。
+  对于任意的\(a \)，考查直线\(y-\phi(a)=\phi_-'(a)(x-a) \)。
+  由凸函数的性质，有\(\phi(x) \geq \phi(a) + \phi_-'(a)(x-a) = \phi_-'(a)x + \phi(a) - a \phi_-'(a) \)。
+  让\(a \)取遍\(\mathbb{Q} \cap \dom \phi \)，即令\(A:=\{(\phi_-'(a),\phi(a)-a \phi_-'(a)):a \in \mathbb{Q} \cap \dom \phi\} \)，显然\(A \)可数，下证\(A \)满足条件。
+
+  按照\(A \)的定义显然有\(\phi(x) \geq \sup_{(a,b) \in A}ax+b \)，下面证明\( \phi(x) \leq \sup_{(a,b) \in A}ax+b \)。
+  取一列\(\mathbb{Q} \cap \dom \phi \ni a_n \nearrow x \)，有\((\phi_-'(a_n),\phi(a_n) - a_n \phi_-'(a_n)) \in A \)。
+  考查\(y_n = \phi_-'(a_n)x + \phi(a_n) - a_n \phi_-'(a_n) \)，有\(\phi(x)-y_n = \phi(x) - \phi(a_n) + \phi_-'(a_n)(x-a_n) \to 0 \)。
+  于是\(y_n \to \phi(x) \)，故\(\phi(x) = \sup_{(a,b) \in A} ax+b \)。
+\end{proof}
+
+\begin{solution}
+  \begin{enumerate}
+    \item 若\(\dom \phi\)为单点集，即\(\xi \)为常数，则显然成立。下设\(\dom \phi\) 不是单点集。
+
+      记\(\dom \phi\)的内部为\((a,b) \)，则\(\phi \)在\((a,b) \)上连续且单侧可导。
+      由\(\xi \leq b \)几乎必然成立，知\(\mathbb{E}(\xi \mathbbm{1}_{C}) \leq b \mathbb{P}(C) \)对所有\(C \in \mathcal{C} \)成立，故\(\mathbb{E}(\xi \mid \mathcal{C}) \leq b \)几乎必然成立。
+      同理\(\mathbb{E}(\xi \mid \mathcal{C}) \geq a \)几乎必然成立。
+      对\(x \in [a,b] \)记 \(\psi(x)= \lim_{(a,b)\ni y \to x}\phi(y) \)，则\(\psi(x) \)在\([a,b] \)上连续且下凸。
+      且对\(x \in (a,b) \)有\(\phi(x) = \psi(x) \)，且\(\phi(a) \geq \psi(a),\phi(b) \geq \psi(b) \)。
+
+      由引理 \ref{lem:1}知存在可数的\(A \subset \mathbb{R}^2 \)使\(\psi(x) = \sup_{(a,b) \in A}ax + b \)。
+      对任何\((a,b) \in A \)，有\(\mathbb{E}(\psi(\xi) \mid \mathcal{C}) \geq \mathbb{E}(a \xi + b \mid \mathcal{C}) = a \mathbb{E}(\xi \mid \mathcal{C}) + b \)几乎处处成立。
+      由\(A \)是可数集，可对\((a,b)\in A \)取上确界，得\(\mathbb{E}(\psi(\xi) \mid \mathcal{C}) \geq \psi(\mathbb{E}(\xi \mid \mathcal{C})) \)。
+
+      对于\(\omega \)使\(\mathbb{E}(\xi \mid \mathcal{C})(\omega) \in (a,b) \)，有\(\mathbb{E}(\phi(\xi) \mid \mathcal{C})(\omega) \geq \mathbb{E}(\psi(\xi) \mid \mathcal{C})(\omega) \geq \psi(\mathbb{E}(\xi \mid \mathcal{C})(\omega)) = \phi(\mathbb{E}(\xi \mid \mathcal{C})(\omega)) \)。
+      否则有\(\mathbb{E}(\xi \mid \mathcal{C})(\omega)= a \)或\(b \)，不妨设\(\mathbb{E}(\xi \mid \mathcal{C})(\omega) = b \)。
+      考查\(B:=\{\omega \in \Omega:\mathbb{E}(\xi \mid \mathcal{C}) = b\} \in \mathcal{C} \)，有\(\mathbb{E}(\xi \mathbbm{1}_{B}) = b \mathbb{P}(B) \)。
+      结合\(\xi \leq b \)知\(\forall \omega \in B,\xi(\omega)= b \)。于是对于任何\(B \)的\(\mathcal{C} \)可测子集\(C \)，成立
+      \begin{align}
+        \int_{C} \mathbb{E}(\phi(\xi) \mid \mathcal{C}) \d \mathbb{P} &= \int_{\Omega} \mathbb{E}(\phi(\xi) \mathbbm{1}_{C} \mid \mathcal{C}) \d \mathbb{P} = \int_{\Omega} \mathbb{E}(\phi(b) \mathbbm{1}_{C} \mid \mathcal{C}) \d \mathbb{P} = \mathbb{P}(C) \phi(b);\\
+        \int_{C} \phi(\mathbb{E}(\xi \mid \mathcal{C})) \d \mathbb{P} &= \int_{C} \phi(b) \d \mathbb{P} = \mathbb{P}(C) \phi(b).
+      \end{align}
+      故\(\mathbb{E}(\phi(\xi) \mid \mathcal{C})(\omega) \geq \phi(\mathbb{E}(\xi \mid \mathcal{C})(\omega)) \)对于\(\omega \in B \)几乎处处成立（事实上是等于）。
+      对于\(\mathbb{E}(\xi \mid \mathcal{C})(\omega) = a \)也同理。
+
+      综上所述，\(\mathbb{E}(\phi(\xi) \mid \mathcal{C}) \geq \phi(\mathbb{E}(\xi \mid \mathcal{C})) \)几乎处处成立。
+  \end{enumerate}
+\end{solution}
+
+\begin{problem}\label{pro:9}
+  设\(\mathcal{C}_1,\mathcal{C}_2 \)为\(\mathcal{A} \)的子\(\sigma \)代数。举例说明\(\mathbb{E}(\xi \mid \mathcal{C}_1 \cap \mathcal{C}_2) \neq \mathbb{E}(\mathbb{E}(\xi \mid \mathcal{C}_1) \mid \mathcal{C}_2) \)。
+\end{problem}
+
+\(\int f g \leq (\int f^r)^{\frac{1}{r}} (\int g^s)^{\frac{1}{s}} \),where \(\frac{1}{r} + \frac{1}{s} = 1 \).
+wlog assume \(\int f^r = \int g^s = 1 \).
+\(\int f g \leq \int \frac{1}{s} g^s + \frac{1}{r} f^r = 1 \).
+
+\(\ln \int f g \leq \frac{1}{r} \ln\int f^r + \frac{1}{s} \ln\int g^s \).
+\(\frac{\ln a}{s} + \frac{\ln b}{r} \leq \ln(\frac{a}{s} +\frac{b}{r}) \).
+\(a^{\frac{1}{s}} b^{\frac{1}{r} } \leq \frac{a}{s} + \frac{b}{r} \).
+\(ab \leq \frac{1}{s} a^s + \frac{1}{r} b^r \).
 \end{document}
