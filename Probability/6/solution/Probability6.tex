@@ -149,7 +149,27 @@
     \mathbb{E}(\xi_{n + 1} \mid \mathcal{A}_n)=\mathbb{E}(\xi_{n + 1} \mid \xi_n),n \geq 1
   \] 则称\(\xi_n \)为马氏过程。若\(X_n \)为独立随机变量，证明\(\sum_{m=1}^{n}X_m \) 为马氏过程。
 \end{problem}
+\begin{lemma}\label{lem:2}
+  设\(X \)与\(\mathcal{C} \)独立，\(\phi \)是非负Broel可测函数，\(Y \in \mathcal{C} \)，且 \(\mathbb{E}(\phi(a,X)) = h(a) \)，则\(\mathbb{E}(\phi(Y,X) \mid \mathcal{C}) = h(Y) \)。
+\end{lemma}
+\begin{proof}
+  记\(h=h_\phi \)。令\(L:=\{\phi:\mathbb{R}^2 \to [0,\infty): \mathbb{E}(\phi(Y,X) \mid \mathcal{C}) = h_\phi(Y)\} \)。
+  易知\(\mathbb{E}(\mathbbm{1}_A(Y) \mathbbm{1}_B(X) \mid \mathcal{C}) = \mathbbm{1}_A(Y) \mathbb{P}(X \in B) \)，且\(\mathbb{E}(\mathbbm{1}_A(a)\mathbbm{1}_B(X) \mathbb{})= \mathbbm{1}_A(a)\mathbb{P}(X \in A) \)。
+  故\(\mathbbm{1}_{A \times B} \in L \)对任何\(A \times B \in \mathcal{B}^2 \)成立。
+  若\(\phi,\psi \in L,\phi \geq \psi \)，则\(\mathbb{E}(\phi(Y,X)-\psi(Y,X) \mid \mathcal{A}) = h_\phi(Y) - h_\psi(Y) \)，且\(h_\phi(a) - h_\psi(a) = \mathbb{E}(\phi(a,X) - \psi(a,X)) = h_{\phi - \psi} \)，
+  故\(\phi - \psi \in L \)。
+  若\(\phi_n \in L,\phi_n \nearrow \phi \)，则同理有\(\phi \in L \)。
+  故\(L \)包含所有非负可测函数。
+\end{proof}
+
 \begin{solution}
+  记\(S_n:=\sum_{m = 1}^{n}X_m \)，则\(\mathcal{A}_n = \sigma\{S_m:m \leq n\} = \sigma\{X_m:m \leq n\} \)。
+  由\(X_n \)相互独立，有\(X_{n + 1} \)与\(\mathcal{A}_n \)独立。
+  故\(\mathbb{P}(S_{n + 1} \in B \mid \mathcal{A}_n) = \mathbb{P}(S_n + X_{n + 1} \in B \mid \mathcal{A}_n) \)。
+  注意到\(S_n \in \mathcal{A}_n \)，且\(X_{n + 1} \)与\(\mathcal{A}_n \)独立，且\(\phi(y,x) : = \mathbbm{1}_{B}(x + y)\)可测。
+  由\ref{lem:2}，记 \(h(a):=\mathbb{E}(\phi(a,X_{n + 1})) \)，有\(\mathbb{E}(S_{n + 1} \mid \mathcal{A}_n) = h(S_n) \)。
+  同理\(\mathbb{E}(S_{n + 1}\mid S_n) = h(S_n) \)，故 \(\mathbb{E}(S_{n + 1} \mid S_n) = \mathbb{E}(S_{n + 1} \mid \mathcal{A}_n) \)。
+  故\(\{S_n\} \)为马氏过程。
 \end{solution}
 
 \begin{problem}\label{pro:13}
@@ -162,6 +182,37 @@
       \]
   \end{enumerate}
 \end{problem}
+\begin{solution}
+  事实上，我们可以证明以下命题等价：
+  \begin{enumerate}
+    \item \(\mathbb{P}(\xi_{n + 1} \in B \mid \mathcal{A}_n)=\mathbb{P}(\xi_{n + 1} \in B \mid \xi_n) \) a.e. \(\forall n \in \mathbb{N}_{+}, B \in \mathcal{B} \);
+    \item \(\mathbb{E}(\eta \mid \mathcal{A}_n )= \mathbb{E}(\eta \mid \xi_n),\forall \eta \in \sigma(\xi_{n + 1}) \);
+    \item \(\mathbb{E}(Y_1,\cdots,Y_m \mid \mathcal{A}_n)=\mathbb{E}(Y_1,\cdots,Y_m \mid \xi_n),\forall Y_k \in \sigma(\xi_{n + k}),k =1,\cdots,m \);
+    \item \(\mathbb{E}(\eta \mid \mathcal{A}_n)=\mathbb{E}(\eta \mid \xi_n),\eta \in \mathcal{A}^n, n \geq 1 \)，
+    \item \(\forall \eta \in \mathcal{A}_n,\xi \in \mathcal{A}^n \)使得\(\eta , \zeta ,\eta \zeta \)均可积，则\[
+        \mathbb{E}(\eta \zeta \mid \xi_n)=\mathbb{E}(\eta \mid \xi_n)\mathbb{E}(\zeta \mid \xi_n),n \geq 1
+      \]
+  \end{enumerate}
+  \begin{enumerate}
+    \item 1``\(\implies\)''2: \(\forall B \in \sigma(\xi_{n + 1}) \)，那么\(\mathbb{E}(\mathbbm{1}_B \mid \mathcal{A}_n)=\mathbb{P}(\xi_{n + 1} \in B \mid \mathcal{A}_n)=\mathbb{P}(\xi_{n + 1} \in B \mid \xi_n)=\mathbb{E}(\mathbbm{1}_B \mid \xi_n) \)。
+      令\(\mathcal{L}:=\{f \in \sigma(\xi_{n + 1}): \mathbb{E}(f \mid \mathcal{A}_n)=\mathbb{E}(f \mid \xi_n)\} \)。
+      故\(\mathbbm{1}_{B} \in \mathcal{L} \)。显然\(\mathcal{L} \)对正系数线性运算封闭。
+      考虑\(0 \leq f_n \in \mathcal{L} \)单调增收敛到\(f \)。那么\(\mathbb{E}(f_n \mid \mathcal{A}_n) \to \mathbb{E}(f \mid \mathcal{A}_n) \)，\(\mathbb{E}(f_n \mid \xi_n) \to \mathbb{E}(f \mid \xi_n) \)。
+      从而\(\mathcal{L} \)为\(L \)系。那么，由函数类单调类定义可知，\(\forall f \in \sigma(\xi_{n + 1}) \)，\(\mathbb{E}(f \mid \mathcal{A}_n)=\mathbb{E}(f \mid \xi_n) \).
+    \item 2``\(\implies\)''3:用MI证明。\(k=1 \)，即第二条，故成立。若\( k=m\)时成立，下面证明\(k=m + 1 \)成立：\\
+      令\(Y=(Y_1,\cdots,Y_{m + 1}) \)，那么\(\mathbb{E}(Y \mid \mathcal{A}_n)=\mathbb{E}(\mathbb{E}(Y \mid \mathcal{A}_{n + m }) \mid \mathcal{A}_n)=\mathbb{E}(\mathbb{E}(Y \mid \mathcal{A}_{n + m})\mid \xi_n)=\mathbb{E}(Y  \mid \xi_n) \)。
+    \item 3``\(\implies\)''4: 令\(\mathcal{C}=\{B \times \Omega_{> k + n}: B \in \sigma(\xi_n,\cdots,\xi_{k + n}), k \in \mathbb{N}_{+}\} \)，那么可知\(\sigma(\mathcal{C})=\mathcal{A}^n \)。
+      同理上一问的证明，只需证明\(\forall A \in \mathcal{C} \)，\(\mathbb{E}(\mathbbm{1}_A \mid \mathcal{A}_n)=\mathbb{E}(\mathbbm{1}_A \mid \xi_n) \)。设\(A=B \times \Omega_{> k + n}, B \in \sigma(\xi_n,\cdots,\xi_{n + k}) \)，
+      那么\(\mathbb{E}(\mathbbm{1}_A \mid \mathcal{A}_n)=\mathbbm{E}(\mathbbm{1}_B \mid \mathcal{A}_n), \) \(\mathbb{E}(\mathbbm{1}_A \mid \xi_n)=\mathbb{E}(\mathbbm{1}_B  \mid \xi_n) \)。
+      故只需证明\(\forall k \in \mathbb{N}_{+},B \in \sigma(\xi_n,\cdots,\xi_{n + k}) \)有\(\mathbb{E}(\mathbbm{1}_B \mid \mathcal{A}_n)=\mathbb{E}(\mathbbm{1}_B \mid \xi_n) \)。
+      故由单调类定理知，只需证明\(\forall A \in \sigma(\xi_{n + k}),k \in \mathbb{N}_{+ } \)，\(\mathbb{E}(\mathbbm{1}_A \mid \mathcal{A}_n)=\mathbb{E}(\mathbbm{1}_A \mid \xi_n) \)。
+      只需在第三条中取\(Y_i=\mathbbm{1}_\Omega,1 \leq i \leq k-1, Y_k=\mathbbm{1}_A \)即可，故成立。
+    \item 4``\(\implies\)''5:\(\mathbb{E}(\eta \zeta \mid \xi_n) = \mathbb{E}(\eta \xi \mid \mathcal{A}_n)=\mathbb{E}(\mathbb{E}(\eta \zeta \mid \mathcal{A}_n) \mid \xi_n)=\mathbb{E}(\eta \mathbb{E}(\zeta \mid \mathcal{A}_n) \mid \xi_n)=\mathbb{E}(\eta \mathbb{E}(\zeta \mid \xi_n) \mid \xi_n)=\mathbb{E}(\eta \mid \xi_n)=\mathbb{E}(\zeta \mid \xi_n) \).
+    \item 5``\(\implies\)''1:令\(A=\{\xi_{n + 1} \in B\} \)，\(\forall \eta  \in \mathcal{A}_n \)，
+      \(\mathbb{E}(\eta \mathbb{E}(\mathbbm{1}_A \mid \mathcal{A}_n))=\mathbb{E}(\mathbb{E}(\eta \mathbbm{1}_A \mid \mathcal{A}_n))=\mathbb{E}(\eta \mathbbm{1}_A)=\mathbb{E}(\mathbb{E}(\eta \mathbbm{1}_A \mid \xi_n))=\mathbb{E}(\mathbb{E}(\eta \mid \xi_n) \mathbb{E}(\mathbbm{1}_A \mid \xi_n))=\mathbb{E}(\eta \mathbb{E}(\mathbbm{1}_A \mid \xi_n)) \)。
+      又由\(\eta \)任意性，可知\(\mathbb{E}(\mathbbm{1}_A \mid \mathcal{A}_n) =\mathbb{E}(\mathbbm{1}_A \mid \xi_n)\)。
+  \end{enumerate}
+\end{solution}
 
 \begin{problem}\label{pro:15}
   证明\(\mathbb{E}(\xi \mid \mathcal{C})=\eta, \) \(\mathbb{E}(\xi^2)=\mathbb{E}(\eta^2)<\infty \)，那么\(\eta=\xi,a.e. \)。
