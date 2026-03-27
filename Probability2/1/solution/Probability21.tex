@@ -1,0 +1,145 @@
+%!Mode:: "TeX:UTF-8"
+%!TEX TS-program = xelatex
+%arara: xelatex
+\documentclass{ctexart}
+%nvimtex: enable_parser_command_definition
+\newcommand{\ceil}[1]{\lceil #1\rceil}
+%nvimtex: disable_parser_command_definition
+% \everymath{\displaystyle}
+\newlength\inlineHeight
+\newlength\inlineWidth
+\long\def\(#1\){%
+  \settoheight{\inlineHeight}{$#1$}%
+  \settowidth{\inlineWidth}{$#1$}%
+  \ifdim \inlineWidth > 0.4\textwidth%
+  $$#1$$%
+  \else%
+  \ifdim \inlineHeight > 1.5em%
+  $$#1$$%
+  \else%
+  $#1$%
+  \fi%
+  \fi%
+}
+\newif\ifpreface
+\prefacetrue
+\input{../../../global/all}
+\begin{document}
+\large
+\setlength{\baselineskip}{1.2em}
+\ifpreface
+\input{../../../global/preface}
+\newgeometry{left=2cm,right=2cm,top=2cm,bottom=2cm}
+\else
+\newgeometry{left=2cm,right=2cm,top=2cm,bottom=2cm}
+\maketitle
+\fi
+\newtheorem{remark}{Remark}
+%from_here_to_type
+\begin{problem}\label{pro:1}
+  使用 Borel-Cantelli 引理和极大不等式证明 Rademacher-Menchoff 定理，即：
+
+  设\(\{Z_n\} \)是正交随机变量序列，满足\(\sum_{n = 1}^{\infty}(\log n)^2 \mathbb{E}(Z_n^2) < \infty \)。
+  证明\(\sum_{n = 1}^{\infty}Z_n \)几乎处处收敛。
+\end{problem}
+\begin{lemma}\label{lem:1}
+  设\(0 < b_n \nearrow \infty, a_n \geq 0 \)，且\(\sum_{n}a_n b_n < \infty \)。令\(n_k := \inf \{n \geq 1:b_n \geq k\} \)，则有\(\sum_{k = 1}^{\infty}\sum_{j = n_k}^{\infty}a_j < \infty \)。
+\end{lemma}
+\begin{lemma}\label{lem:2}
+  设\(0 < b_n \nearrow \infty\)，\(\{Z_n\} \)相互独立，且\(\sum_{n}b_n \mathbb{E}(Z_n^2)< \infty \)。令\(n_k := \inf \{n \geq 1:b_n \geq k\} \)，则\(\lim_{k \to \infty} S_{n_k} \)几乎处处收敛到有限值。
+  其中\(S_n := \sum_{k=1}^{n}Z_k \)。
+\end{lemma}
+\begin{proof}
+  由引理\ref{lem:1}知\(\sum_{k = 1}^{\infty}\sum_{j = n_k}^{\infty} \mathbb{E}(Z_n^2) < \infty \)。
+  由期望的可加性知\(\sum_{k = 1}^{\infty} \mathbb{E}(\sum_{j = n_k}^{\infty} Z_j^2) < \infty \)。
+  于是
+  \[\sup_{r,s > n_k} \mathbb{E}(|S_r - S_s|^2) \leq \mathbb{E}(\sum_{j=n_k}^{\infty} Z_j^2) \to 0 \]。
+  故\(S_n \overset{L^2}{\to} S \)存在。
+  易知\(\mathbb{E} |S_{n_k}-S|^2 = \lim_{t \to \infty} \mathbb{E}|S_{n_k}-S_{n_t}|^2 = \sum_{j > n_k} \mathbb{E}(Z_j^2)\)。
+  于是\(\sum_{k=1}^{\infty} \mathbb{E}|S_{n_k}-S|^2 \leq \sum_{k=1}^{\infty}\sum_{j \geq n_k}\mathbb{E}(Z_j^2) < \infty\)。
+  对于任何的\(\varepsilon>0 \)，由切比雪夫不等式，可得\(\mathbb{P}(|S_{n_k}>S|>\varepsilon) \leq \frac{\mathbb{E}|S_{n_k}-S|^2}{\varepsilon^2} \)。
+  于是\(\sum_{k=1}^{\infty} \mathbb{P}(|S_{n_k}-S|>\varepsilon) < \infty \)。
+  由 Borel-Cantelli 定理可知\(\mathbb{P}(\exists K,\forall k > K,|S_{n_k}-S|\leq \varepsilon)=1 \)。
+  于是\(S_{n_k} \overset{\mathrm{a.s.}}{\to} S \)。
+\end{proof}
+\begin{lemma}\label{lem:3}
+  设\(Z_n \)正交，则有
+  \[
+    \mathbb{E} \max_{1 \leq j \leq n} |S_j|^2 \leq (\log 4n)^2 \mathbb{E} S_n^2
+  \]
+\end{lemma}
+\begin{solution}
+  令\(b_n = ( \log n )^2 \)， 由引理\ref{lem:2}知\(\lim_{k} S_{n_{\ceil{2^{\sqrt{k}}}}} \to S \)存在，且\(S_n \overset{L^2}{\to} S \)。
+  可取子列\(S_{n_k}=S_{2^k} \to S\)。
+  对于一般的\(n \)，一定存在\(k \)使\(n_k \leq n < n_{k + 1} \)。
+  考查\(\mathbb{E} \max_{n_k \leq n < n_{k + 1}} |S_n - S_{n_k}|^2 \)。
+  由引理\ref{lem:3}可得\(\mathbb{E} \max_{n_k \leq n < n_{k + 1}} |S_n - S_{n_k}|^2 \leq (\log(4( n_{k + 1}-n_k )))^2 \mathbb{E} |S_{n_{k + 1}-S_{n_k}}|^2\)。
+  于是同样由切比雪夫不等式可得：
+  \(\sum_{k=1}^{\infty}\mathbb{P}(\max_{n_k \leq n < n_{k + 1}} |S_n-S_{n_k}| > \varepsilon)\leq \frac{1}{\varepsilon^2} \sum_{k=1}^{\infty} \log(2^{k+2}) \sum_{j=n_k+1}^{n_{k+1}}\mathbb{E}(Z_j^2) < \infty \)对任何\(\varepsilon>0 \)成立。
+  从而由 Borel-Cantelli 引理可知\(\mathbb{P}(\exists K, \forall k>K,\max_{n_k \leq n < n_{k + 1}} |S_n-S_{n_k}| \leq \varepsilon)=1 \)。
+  结合\(S_{n_k} \to S \)几乎必然成立，可知对于充分大的\(n \)，有\(|S_n-S| \leq |S_n - S_{n_k}| + |S_{n_k}-S| < 2 \varepsilon \)几乎必然成立。
+  从而\(S_n \to S \)几乎必然成立。
+\end{solution}
+
+\begin{problem}\label{pro:2}
+  设\(\rho \in l^1 \)，则存在\(C>0 \)，满足对于任何
+  \(L^2 \)-可积随机变量序列\(\{X_n\} \)，如果
+  \(\mathbb{E}(X_i X_j) \leq \rho_{|j-i|} \sqrt{\mathbb{E}(X_i^2)\mathbb{E}(X_j^2)} \)对任意的\(i \neq j \)成立，
+  那么\(\mathbb{E}(\max_{1 \leq i \leq n} S_i^2) \leq C (\log 4n)^2 \sum_{i=1}^{n}\mathbb{E}(X_i^2) \),
+  其中\(S_n=\sum_{i=1}^{n}X_i \)。
+\end{problem}
+\begin{solution}
+  对于\(2^m<n < 2^{m+1} \)，我们可以令\(X_{n+1}=X_{n+2}=\cdots=X_{2^{m + 1}} =0 \)。
+  这样就有\(\max_{1 \leq i \leq n}S_i^2 = \max_{1 \leq  i \leq 2^{m + 1}}S_i^2 \)，且\(\sum_{i=1}^{n}X_i^2 = \sum_{i=1}^{2^{m + 1}} X_i^2 \)，
+  且\(\log 4n \leq \log 2^{m+3} \leq 2 \log 4n \)。
+  因此我们只需要考虑\(n= 2^{m + 1} \)的情形。
+
+  方便起见记\(n=2^m \)。
+  令\(Z_{i,j}=\sum_{k=2^i j}^{2^i (j+1)-1}X_k \)，其中\(i=0,1,\cdots,m; j=1,2,\cdots,2^{m-i} \)。
+  则\(S_k \)一定能写成\(S_k = \sum_{i=0}^{m}Z_{i,j_i} \)。
+  由 Cauchy 不等式有\(S_k^2 \leq (m+1)\sum_{i=0}^{m}Z_{i,j_i}^2 \leq \sum_{i=0}^{m}\sum_{j=1}^{2^{m-i }}Z_{i,j}^2\)。
+  于是\(\max_{1 \leq k \leq n}S_k^2 \leq (m+1)\sum_{i=0}^{m}\sum_{j=1}^{2^{m-i }}Z_{i,j}^2 \)。
+  取期望，可得
+  \begin{equation}
+    \begin{aligned}
+      &\mathbb{E}(\max_{1 \leq k \leq n}S_k^2)\\
+      \leq &(m+1) \sum_{i=0}^{m} \sum_{j=1}^{2^{m-i}}\mathbb{E}(Z_{i,j}^2)\\
+      \leq &(m+1)\sum_{i=0}^{m}\sum_{j,k=1}^{n} \max\{\mathbb{E}(X_j X_k)|,0\}\\
+      =&(m+1)^2 \sum_{j,k=1}^{n} \max \{\mathbb{E}(X_j X_k),0\}
+    \end{aligned}
+  \end{equation}
+  补充定义\(\rho_0=1 \)，由\(\mathbb{E}(X_iX_j) \leq \rho_{|j-i|} \sqrt{\mathbb{E}(X_i^2)\mathbb{E}(X_j^2)} \leq \frac{\rho_{|j-i|}}{2} \mathbb{E}(X_i^2 + X_j^2) \)，
+  得
+  \begin{equation}
+    \begin{aligned}
+      &\mathbb{E}(\max_{1 \leq i \leq n}S_i^2)\\
+      \leq& (m+1)^2 \sum_{j,i = 1}^{n} \frac{\rho_{|j-i|}}{2}\mathbb{E}(X_j^2 + X_i^2)\\
+      =& (m+1)^2 \sum_{i=1}^{n} \sum_{j=1}^{n}\rho_{|j-i|}\mathbb{E}(X_i^2)\\
+      \leq&  (m+1)^2 \sum_{i=1}^{n} \sum_{j=1}^{\infty} \rho_{|j-i|}\mathbb{E}(X_i^2)\\
+      \leq& (m+1)^2 \sum_{i=1}^{n} 2\sum_{k=0}^{\infty} \rho_k \mathbb{E}(X_i^2)\\
+      =& 2\sum_{k=0}^{\infty}\rho_k (m+1)^2 \sum_{i=1}^{n}\mathbb{E}(X_i^2)
+    \end{aligned}
+  \end{equation}
+  注意到\(m+1 \leq \log(4n) \)，于是取\(C=2\sum_{k=0}^{\infty} |\rho_k| \)即可。
+\end{solution}
+\begin{remark}\label{re:1}
+  可以定义\(g(F_{a}^n):=\sum_{i=1}^{n} C \mathbb{E}(X_{i+a}^2) \)。
+  此时显然有\(g(F_{a}^k) + g(F_{a+k}^l) = g(F_a^{k+l}) \)。
+  且在\(C>2 \sum_{k=1}^{\infty} \rho_k +2 \) 时补充定义\(\rho_0=1 \)，
+  有
+  \begin{equation}
+    \begin{aligned}
+      \mathbb{E}(|\sum_{i=1}^{n}X_{a+i}|^2) \\
+      \leq & \sum_{j,i = 1}^{n} \frac{\rho_{|j-i|}}{2}\mathbb{E}(X_j^2 + X_i^2)\\
+      =& \sum_{i=1}^{n} \sum_{j=1}^{n}\rho_{|j-i|}\mathbb{E}(X_i^2)\\
+      \leq & \sum_{i=1}^{n} \sum_{j=1}^{\infty} \rho_{|j-i|}\mathbb{E}(X_i^2)\\
+      \leq & \sum_{i=1}^{n} 2\sum_{k=0}^{\infty} \rho_k \mathbb{E}(X_i^2)\\
+      =& 2\sum_{k=0}^{\infty}\rho_k  \sum_{i=1}^{n}\mathbb{E}(X_i^2)\\
+      \leq & g(F_a^n)
+    \end{aligned}
+  \end{equation}
+
+  于是我们可以直接用引理7.3.1完成证明。
+\end{remark}
+
+\end{document}
