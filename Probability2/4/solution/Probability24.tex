@@ -1,0 +1,95 @@
+%!Mode:: "TeX:UTF-8"
+%!TEX TS-program = xelatex
+%arara: xelatex
+\documentclass{ctexart}
+\newif\ifpreface
+\prefacetrue
+\input{../../../global/all}
+\newcommand{\norm}[1]{\lVert#1\rVert}
+\begin{document}
+\large
+\setlength{\baselineskip}{1.2em}
+\ifpreface
+\input{../../../global/preface}
+\newgeometry{left=2cm,right=2cm,top=2cm,bottom=2cm}
+\else
+\newgeometry{left=2cm,right=2cm,top=2cm,bottom=2cm}
+\maketitle
+\fi
+%from_here_to_type
+\begin{problem}\label{pro:1}
+  设\((\mathbb{P}_i,\theta_i)i = 1,2 \)保测。
+  证明，\((\mathbb{P}_1 \times \mathbb{P}_2,\theta_1 \times \theta_{2}) \)也保测。
+\end{problem}
+\begin{solution}
+  简单起见记\(\mathbb{P} = \mathbb{P}_1 \times \mathbb{P}_2,\theta = \theta_1 \times \theta_2,\mathcal{F} = \mathcal{F}_1 \times \mathcal{F}_{2} \)。
+  我们记\(\mathcal{A} = \{A \in \mathcal{F}:\mathbb{P}(A) = \mathbb{P}(\theta ^{-1} A)\} \)。
+  对于\(A = A_{1} \times A_{2},A_i \in \mathcal{F}_i \)，有
+  \(\mathbb{P}(\theta ^{-1} A) = \mathbb{P}(\theta_1^{-1}(A_{1})\times \theta_2^{-1}(A_{2})) = \mathbb{P}_1(\theta_1^{-1} A_{1})\mathbb{P}_2(\theta_2^{-1}A_{2}) = \mathbb{P}(A) \)。
+  于是\(\mathcal{C}:=\{A_{1} \times A_{2}:A_{1} \in \mathcal{F}_1,A_{2} \in \mathcal{F}_{2}\} \subset \mathcal{A} \)。
+  要证\(\mathcal{A} = \mathcal{F} = \sigma(\mathcal{C})\)，只需证\(\mathcal{A} \)为\(\sigma \)-代数即可。
+  注意到\(\mathcal{C} \)为\(\pi \)-系，于是只需证\(\mathcal{A} \)为\(\lambda \)-系即可。
+  \begin{enumerate}
+    \item 显然\(\Omega = \Omega_1 \times \Omega_2 \in \mathcal{A} \)。
+    \item 设\(A,B \in \mathcal{A},B \subset A \)，则\(\mathbb{P}(\theta ^{-1} (A \setminus B)) = \mathbb{P}( \theta ^{-1} A \setminus \theta ^{-1} B) = \mathbb{P}(\theta ^{-1} A) - \mathbb{P}(\theta ^{-1} B) = \mathbb{P}(A)-\mathbb{P}(B) = \mathbb{P}(A \setminus B) \)，
+      于是\(A\setminus B \in \mathcal{A} \)。
+    \item 设\(A_n \in \mathcal{A},A_n \subset A_{n + 1},A = \bigcup_{n}A_n \)，则\(\mathbb{P}(\theta ^{-1} A) = \lim_{n}\mathbb{P}(\theta ^{-1}A_n) = \lim_{n}\mathbb{P}(A_n) = \mathbb{P}(A) \)。
+      于是\(A \in \mathcal{A} \)。
+  \end{enumerate}
+  于是\(\mathcal{A} \)是\(\lambda \)-系，从而\(\mathcal{A} = \mathcal{F} \)。
+  故\((\mathbb{P},\theta) \)保测。
+\end{solution}
+\begin{problem}\label{pro:2}
+  \((\mathbb{P},\theta) \)弱混合，证明\((\mathbb{P} \times \mathbb{P},\theta \times \theta) \)遍历。
+\end{problem}
+\begin{solution}
+  事实上\((\mathbb{P} \times \mathbb{P},\theta \times \theta) \)是弱混合的。
+  我们需要证明对于任何的\(h \in L^2(\mathbb{P}^2) \)，都有
+
+  \(\lim_{n}\frac{1}{n}\sum_{k = 1}^{n}|\langle U^kh,h\rangle - \langle h,1\rangle \langle 1,h\rangle | = 0 \) 。
+
+  首先考虑\(h = f \otimes g = \mathbbm{1}_A \otimes \mathbbm{1}_B \)的形式。
+  有
+  \begin{equation}\label{equ:1}
+    \begin{aligned}
+      &|\langle U^kh,h\rangle - \langle h,1\rangle \langle 1,h\rangle | \\
+      =& |\langle U^kf,f\rangle \langle U^kg,g\rangle - \langle f,1\rangle \langle 1,f\rangle \langle g,1\rangle \langle 1,g\rangle | \\
+      \leq& |\langle U^kg,g\rangle ||\langle U^kf,f\rangle - \langle f,1\rangle \langle 1,f\rangle |
+      + |\langle f,1\rangle \langle 1,f\rangle ||\langle U^kg,g\rangle - \langle g,1\rangle \langle 1,g\rangle | \\
+      \leq& M \left(|\langle U^kf,f\rangle - \langle f,1\rangle \langle 1,f\rangle | + |\langle U^kg,g\rangle - \langle g,1\rangle \langle 1,g\rangle |\right)
+    \end{aligned}
+  \end{equation}
+  ，其中\(M = |\langle f,1\rangle \langle 1,f\rangle| +| \langle U^kg,g\rangle |< \infty \)，因为\(f,g \in L^2 \)。
+  于是
+  \(\lim_{n}\frac{1}{n}\sum_{k = 1}^{n}|\langle U^kh,h\rangle - \langle h,1\rangle \langle 1,h\rangle |\leq
+    M \lim_{n}\frac{1}{n}\sum_{k = 1}^{n}|\langle U^kf,f\rangle - \langle f,1\rangle \langle 1,f\rangle |+
+  M \lim_{n}\frac{1}{n}\sum_{k = 1}^{n}|\langle U^kg,g\rangle - \langle g,1\rangle \langle 1,g\rangle | \to 0\)。
+  令\(\mathcal{L} := \{h \in L^2(\mathbb{P}^2): \lim_{n}\frac{1}{n}\sum_{k = 1}^{n}|\langle U^kh,h\rangle - \langle h,1\rangle \langle 1,h\rangle | = 0 \} \)。
+  令\(\mathcal{A} = \{A \in \mathcal{F} \times \mathcal{F}:\mathbbm{1}_A \in \mathcal{L}\} \)。
+  显然对于\(0 \leq h_{1} \leq h_{2} \)，有\(h_{2} - h_{1} \in \mathcal{L} \)。
+  取\(h_{1}=\mathbbm{1}_B,h_{2}=\mathbbm{1}_A \)，得\(\mathcal{A} \)对真差封闭。
+  对于\(0 \leq h_{n} \nearrow h \in L^2 \)，我们将证明\(h \in \mathcal{L} \)。
+  有\(|\langle U^kh,h\rangle -\langle h,1\rangle \langle 1,h\rangle | \leq |\langle U^kh,h_n\rangle -\langle U^kh,h\rangle | + |\langle U^kh_n,h_n\rangle - \langle U^kh,h_n\rangle |
+    + |\langle U^kh_n,h_n\rangle - \langle h_n,1\rangle \langle 1,h_n\rangle | + |\langle h_n,1\rangle \langle 1,h_n\rangle -\langle h,1\rangle \langle 1,h\rangle |
+    \leq 4\norm{h_n-h} \norm{h} + |\langle U^kh_n,h_n\rangle - \langle h_n,1\rangle \langle 1,h_n\rangle |
+  \)。
+
+  其中\(\norm{h} \)是\(h \)的\(L^2 \)范数。
+  由于\(0 \leq h_n \leq h \)，可得\(h_n \overset{L^2}{\to}h \)。故对于任何\(\varepsilon>0 \)，可取充分大的\(n \)使\(4 \norm{h_n-h}\norm{h} < \varepsilon \)。
+  由于\(h_n \in \mathcal{L} \)，故可取充分大的\(N \)，使得对于\(k>N \)，有\(\frac{1}{k}\sum_{i=1}^{k}|\langle U^kh_n,h_n\rangle - \langle h_n,1\rangle \langle 1,h_n\rangle | \leq \varepsilon \)。
+  于是对于\(k>N \)，有\(\frac{1}{k}\sum_{i=1}^{k}|\langle U^kh,h\rangle - \langle h,1\rangle \langle 1,h\rangle | \leq 2\varepsilon \)。
+  于是\(h \in \mathcal{L} \)。
+  取\(h_n = \mathbbm{1}_{A_n} \)，可得\(\mathcal{A} \)对单调增极限封闭。
+  又显然\(\mathcal{A} \)包含所有的\(A \times B \)，于是\(\mathcal{A} = \mathcal{F} \times \mathcal{F} \)。
+  于是\(\forall A \in \mathcal{F} \times \mathcal{F},\mathbbm{1}_A \in \mathcal{L} \)。
+
+  对于\(h_{1},\cdots,h_n \in \mathcal{L},a_{1},\cdots,a_n \in \mathbb{R} \)，有\(\sum_{k = 1}^{n}a_k h_k \in \mathcal{L} \)。
+  故\(\mathcal{L} \)包含所有简单函数。
+  对于任何非负的\(h \in L^2 \)，总能找到简单函数列\(0 \leq h_n \nearrow h \)。
+  于是由前面的结论知\(h \in \mathcal{L} \)。
+  又由\(\mathcal{L} \)对线性组合封闭，可知\(\mathcal{L} \)包含所有\(L^2 \)函数。
+
+  综上所述，\((\mathbb{P} \times \mathbb{P},\theta \times \theta) \)是弱混合的。
+\end{solution}
+
+\end{document}

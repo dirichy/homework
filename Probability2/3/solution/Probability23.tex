@@ -1,0 +1,103 @@
+%!Mode:: "TeX:UTF-8"
+%!TEX TS-program = xelatex
+%arara: xelatex
+\documentclass{ctexart}
+\newif\ifpreface
+\prefacetrue
+\input{../../../global/all}
+\begin{document}
+\large
+\setlength{\baselineskip}{1.2em}
+\ifpreface
+\input{../../../global/preface}
+\newgeometry{left=2cm,right=2cm,top=2cm,bottom=2cm}
+\else
+\newgeometry{left=2cm,right=2cm,top=2cm,bottom=2cm}
+\maketitle
+\fi
+%from_here_to_type
+\begin{problem}\label{pro:1}
+  验证\(\theta^{-N} A \cap (\bigcup_{k=0}^{N-1}F_{[k,N)}) = \{\omega \in \Omega: \exists k \in [0.N),\theta^k \omega \in A, \theta^N \omega \in A\} \)
+\end{problem}
+\begin{solution}
+  一方面，对于\(\omega \in  \theta^{-N} A \cap (\bigcup_{k=0}^{N-1}F_{[k,N)}) \)，有\(\omega \in \theta^{-N}A \)，于是\(\theta^N \omega \in A \)。
+  且存在\(k:0 \leq k <N \)使\(\omega \in F_{[k,N)} \)，于是由\(F \)的定义可知 \(\theta^k \omega \in A \)。
+
+  另一方面，对于满足\(\exists k \in [0,N),\theta^k \theta \in A,\theta^N \omega \in A \)的\(\omega \in \Omega \)，
+  由\(\theta^N \omega \in A \)得\(\omega \in \theta^{-N} A \)。
+  取最大的\(k \in [0,N) \)使\(\theta^k \omega \in A \)，于是\(\forall i \in (k,N),\theta^i \omega \notin A \)。
+  于是由\(F \)的定义知\(\omega \in F_{[k,N)} \)。
+  于是\(\omega \in  \theta^{-N} A \cap (\bigcup_{k=0}^{N-1}F_{[k,N)})\)
+
+  综上所述，得 \(\theta^{-N} A \cap (\bigcup_{k=0}^{N-1}F_{[k,N)}) = \{\omega \in \Omega: \exists k \in [0.N),\theta^k \omega \in A, \theta^N \omega \in A\} \)。
+\end{solution}
+
+\begin{problem}\label{pro:2}
+  对\(f \in L^1 \)，证明\(A_n f \overset{L^1}{\to} \overline{f} \)。
+\end{problem}
+\begin{solution}
+  我们已经得到了\(A_n f \overset{\mathrm{a.s.}}{\to} \overline{f} \)，故只需验证\(A_n f \)一致可积即可。
+  由\(\theta \)保测知\(\theta^n f \)是一致可积的。
+  于是\(\forall \varepsilon>0,\exists \delta>0,\forall B:\mathbb{P}(B)<\delta,\mathbb{E}(\mathbbm{1}_B |U^k f|)<\varepsilon\)。
+  注意到\(|A_n f| \leq \frac{1}{n} \sum_{k=1}^{n}|U^k f| \)，
+  于是\(\mathbb{E}(\mathbbm{1}_B |A_n f|) \leq \frac{1}{n}\sum_{k=1}^{n}\mathbb{E}(\mathbbm{1}_B |U^k f|)<\varepsilon \)。
+  于是\(A_n f \)也是一致可积的，对\(\mathbb{E}(|A_n f - \overline{f}|) \)使用控制收敛定理即得结论。
+\end{solution}
+\begin{problem}\label{pro:3}
+  设\(X_n \)是独立同分布的离散序列，\(R_n \)为\(X_{1},\cdots,X_{n} \)中的不同元素个数，证明\(\lim_{n \to \infty}\frac{R_n}{n} = 0 \)几乎必然成立。
+\end{problem}
+\begin{solution}
+  不妨设\(X_n \)为乘积空间\(\Omega \)的第\(n \)个坐标函数，且\(X_n \)取值在\(\mathbb{N}_+ \)中。记\(\theta \)为左推移。则\(\theta \)是保测的。
+  注意到\(\card A + \card B \geq \card A \cup B \)，于是\(R_{n + m} \leq R_n + R_m \circ \theta^n \)。
+  且\(f_1=1 \)，故\(f_{1}^+ \in L^1 \)。
+  于是由 Kingman 次可加遍历定理可知\(\lim_{n \to \infty}\frac{R_n}{n} \)几乎处处存在。
+  结合\((\mathbb{P},\theta) \)显然是遍历的，可知\(\lim_{n \to \infty}\frac{R_n}{n}=\inf_{m}\frac{\mathbb{E}(R_m)}{m} \)。
+  故我们只需证明\(\inf_{m}\frac{\mathbb{E}(R_m)}{m} = 0 \)。
+
+  注意到\(R_{m + 1} - R_{m} = \mathbbm{1}_{X_{m + 1} \neq X_k,k=1,\cdots,m}\)，于是\(\mathbb{E}(R_{m + 1}- R_m) = \mathbb{P}(X_{m + 1} \neq X_k,k=1,\cdots,m)=\sum_{n=1}^{\infty}\mathbb{P}(X_{m+1}=n,X_k \neq n,k=1,\cdots,m) \)。
+  由\(X_n \)独立同分布，可得\(\mathbb{P}(X_{m + 1}= n,X_k \neq n,k=1,\cdots,m) = \mathbb{P}(X_{m + 1}=n) \prod_{k=1}^{m}\mathbb{P}(X_k \neq n) = \mathbb{P}(X_1 = n)\mathbb{P}(X_1 \neq n)^m\)。
+  记\(p_n = \mathbb{P}(X_{1} = n) \)，
+  于是\(\mathbb{E}(R_{m + 1})-\mathbb{E}(R_m) = \sum_{i = 1}^{\infty}p_i(1-p_i)^m \)。
+  易知\(p_i(1-p_i)^m \to 0 \)，且\(p_i(1-p_i)^m \leq p_i \)。
+  故由 LCDT 可知\(\mathbb{E}(R_{m + 1})- \mathbb{E}(R_m) \to 0 \)。
+  于是由 stolz 定理，可知\(\lim_{m}\frac{\mathbb{E}(R_m)}{m} = \lim_{m} \mathbb{E}(R_{m + 1})- \mathbb{E}(R_m) = 0 \)。
+
+  综上，\(\lim_{m} \frac{R_m}{m} = \inf_{m} \frac{\mathbb{E}(R_m)}{m} = \lim_{m} \frac{\mathbb{E}(R_m)}{m} = 0 \)。
+\end{solution}
+\begin{problem}\label{pro:4}
+  已知\(\frac{1}{n}\sum_{k=1}^{n}a_k \to 0 \)，其中\(a_n \)是非负实数列。
+  证明存在\(J \subset \mathbb{N} \) 为零密度集，使\(\lim_{k \to \infty,k \notin J}a_k \to 0 \)。
+\end{problem}
+\begin{solution}
+  对于任何\(k \in \mathbb{N}_+ \)，取\(\varepsilon = \frac{1}{k^2} \)，一定存在\(N_k \)使得\(\forall n \geq N_k,\sum_{k = 1}^{n}a_k \leq \frac{n}{k^2} \)。
+  不妨假设\(N_{k+1}>(k+1)N_k \)。补充定义\(N_{0}=1 \)。
+
+  取\(J_k = \{i: N_k \leq i < N_{k + 1},a_i > \frac{1}{k}\} \)。
+  取\(J=\bigcup_{k=1}^{\infty}J_k \)。
+  下面证明\(J \)合题义。
+
+  首先证明\(\lim_{i \notin J,i \to \infty}a_i = 0 \)。
+  对于\(i \in [N_k,N_{k + 1}) \)，由\(J_k \)的定义知\(a_i \leq \frac{1}{k} \)。
+  随着\(i \to \infty \)，显然有\(k \to \infty \)，于是\(a_i \to 0 \)。
+
+  然后证明\(J \)是零密度的。
+  我们现在考查\(\sum_{i =1}^{n}a_i \leq \frac{n}{k^2},\forall n \in [N_k,N_{k + 1}) \)。
+  取\(n = N_{k + 1} \)可得，\(\frac{1}{k} \card J_k \leq \sum_{i \in J_k}a_i \leq \frac{N_{k+1}}{k^2} \)。
+  于是\(\card J_k \leq \frac{ N_{k + 1}}{k} \)。
+  现在我们考查\(J \)的密度\(j_n : = \frac{\card J \cap [1,n]}{n} \)。
+  设\(N_k \leq n < N_{k + 1} \)，则\(nj_n = \card J \cap [1,n] = \sum_{i = 1}^{k - 1}\card J_i + \card J_k \cap [1,n] \leq \sum_{i = 1}^{k - 1} \frac{N_{i + 1}}{i} + \card J_k \cap [1,n]\)。
+  两边除以\(n \)，由\(n \geq N_k \)得\(j_n \leq \sum_{i = 1}^{k - 1}\frac{ N_{i + 1}}{i N_k} + \frac{\card J_k \cap [1,n]}{n} \)。
+
+  对于求和项，不妨设\(k>3 \)，结合\(N_{k + 1} > (k+1)N_k \)可得
+  \(\frac{N_{i+1}}{N_k} \leq \frac{N_{i+1}}{N_{k-2}k(k-1)} \leq \frac{1}{k(k-1)},i \leq k-3 \)。
+  于是\(\sum_{i = 1}^{k-1}\frac{ N_{i + 1}}{i N_k} \leq \sum_{i=1}^{k-3}\frac{1}{ik(k-1)} + \frac{1}{k(k-1)} + \frac{1}{k} \leq \frac{2}{k} \)。
+
+  对于最后一项，由\(N_k \)的定义，我们考查\(\frac{1}{k}\card J_k \cap [1,n] \leq \sum_{i \in J_k \cap [1,n]}a_i \leq \sum_{i=1}^{n}a_i \leq \frac{n}{k^2}\)，
+  得\(\frac{\card J_k \cap [1,n]}{n} \leq \frac{1}{k} \)。
+  于是\(j_n \leq \frac{2}{k} + \frac{1}{k} \to 0 \)，因为随着\(n \to \infty \)有\(k \to \infty \)。
+  于是\(J \)是零密度的。
+
+  综上所述，命题得证。
+\end{solution}
+
+\end{document}
