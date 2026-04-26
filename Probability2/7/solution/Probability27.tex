@@ -1,0 +1,26 @@
+%!Mode:: "TeX:UTF-8"
+%!TEX TS-program = xelatex
+%arara: xelatex
+\documentclass{ctexart}
+\newif\ifpreface
+\prefacetrue
+\input{../../../global/all}
+\begin{document}
+\large
+\setlength{\baselineskip}{1.2em}
+\ifpreface
+\input{../../../global/preface}
+\newgeometry{left=2cm,right=2cm,top=2cm,bottom=2cm}
+\else
+\newgeometry{left=2cm,right=2cm,top=2cm,bottom=2cm}
+\maketitle
+\fi
+%from_here_to_type
+\begin{problem}\label{pro:1}
+  设\(\mu \)为\(\mathbb{R}^d \)上的符号测度。证明\(|\mu|(\mathbb{R}^d) = \sum \{ \int_{\mathbb{R}^d} g \d \mu: g \in C_b(\mathbb{R}^d), \norm{g}_{\infty} \leq 1\} \)。
+\end{problem}
+\begin{solution}
+
+\end{solution}
+
+\end{document}

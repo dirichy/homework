@@ -1,0 +1,60 @@
+%!Mode:: "TeX:UTF-8"
+%!TEX TS-program = xelatex
+%arara: xelatex
+\documentclass{ctexart}
+\newif\ifpreface
+\prefacetrue
+\input{../../../global/all}
+\begin{document}
+\large
+\setlength{\baselineskip}{1.2em}
+\ifpreface
+\input{../../../global/preface}
+\newgeometry{left=2cm,right=2cm,top=2cm,bottom=2cm}
+\else
+\newgeometry{left=2cm,right=2cm,top=2cm,bottom=2cm}
+\maketitle
+\fi
+%from_here_to_type
+\begin{problem}\label{pro:0}
+  将下面的语句转写为\(\varepsilon \)语言：
+  \begin{itemize}
+    \item \(\exists a > 0, \lim_{n} \mu_n(\{\omega \in D:|\omega(0)|>a\}) = 0 \)。
+    \item \(\forall \varepsilon > 0, \lim_{\delta \searrow 0} \limsup_{n} \mu_n\{\omega \in D:osc(\omega,\delta)>\varepsilon\} = 0\)。
+  \end{itemize}
+\end{problem}
+\begin{solution}
+  \begin{itemize}
+    \item \(\exists a >0,\forall \varepsilon > 0,\exists N, \forall n > N, \mu_n(\{\omega \in D: |\omega(0)|>a\}) < \varepsilon \)。
+    \item \(\forall \varepsilon > 0, \forall \varepsilon'> 0, \exists \delta > 0, \exists N, \forall n>N, \mu_n\{\omega \in D:osc(\omega,\delta)>\varepsilon\} < \varepsilon'  \)。
+  \end{itemize}
+  事实上取\(\varepsilon' = \varepsilon \)也是可以的，写起来更简单。
+\end{solution}
+
+\begin{problem}\label{pro:1}
+  设\(\mu_n \)是\(D=C[0,1] \)上的一列 Borel 概率测度，满足：
+  \begin{itemize}
+    \item \(\exists a > 0, \lim_{n} \mu_n(\{\omega \in D:|\omega(0)|>a\}) = 0 \)。
+    \item \(\forall \varepsilon > 0, \lim_{\delta \searrow 0} \limsup_{n} \mu_n\{\omega \in D:osc(\omega,\delta)>\varepsilon\} = 0\)。
+  \end{itemize}
+  证明\(\mu_n \)是胎紧的。
+\end{problem}
+\begin{solution}
+  取\(\varepsilon_m = \frac{1}{m} \)，则\(\exists \delta_m > 0, \limsup_{n} \mu_n\{\omega \in D:osc(\omega,\delta_m)>\varepsilon_m\} < \frac{1}{2^m}\)。
+  由于\(\mu_n \)是概率测度，由上连续性，结合\(C[0,1] \)中函数一定一致连续，
+  可知对于固定的\(n,\varepsilon_m \)，一定存在\(\delta>0 \)使\(\mu_n \{\omega \in D:osc(\omega,\delta)>\varepsilon_m\} < \frac{1}{2^m} \)。
+  于是可不妨设\(\sup_{n} \mu_n\{\omega \in D:osc(\omega,\delta_m)>\varepsilon_m\} < \frac{1}{2^m} \)。
+  同理，对于任何\(\varepsilon>0 \)，一定存在\(a_\varepsilon>0 \)使\(\sup_{n}\mu_n \{\omega \in D:|\omega(0)|>a_\varepsilon\} <\varepsilon \)。
+
+  现在取定\(\varepsilon>0 \)，我们取足够大的\(m \)使\(\frac{1}{2^m}<\varepsilon \)。
+  我们考查\(K:=D \setminus \{\omega \in D:|\omega(0)>a_\varepsilon|\} \setminus \bigcup_{k=m}^{\infty} \{\omega \in D: osc(\omega,\delta_k)> \frac{1}{k}\} \)。
+  于是\(\mu_n(K) \geq 1-\varepsilon - \sum_{k=m}^{\infty} \frac{1}{2^k} \geq 1-3 \varepsilon \)。
+  我们仅需证明\(K \)是预紧集。
+  显然\(\forall \omega \in K,|\omega(0)| \leq a_\varepsilon \)，故只需证明等度连续。
+  对于任何的\(\frac{1}{t}>0 \)，我们有\(\forall \omega \in K, osc(\omega,\delta_t) \leq \frac{1}{t} \)。
+  于是\(K \)是等度连续的，从而是预紧的。
+
+  综上所述，\(\mu_n \)是胎紧的。
+\end{solution}
+
+\end{document}

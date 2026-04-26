@@ -1,0 +1,42 @@
+%!Mode:: "TeX:UTF-8"
+%!TEX TS-program = xelatex
+%arara: xelatex
+\documentclass{ctexart}
+\newif\ifpreface
+\prefacetrue
+\input{../../../global/all}
+\begin{document}
+\large
+\setlength{\baselineskip}{1.2em}
+\ifpreface
+\input{../../../global/preface}
+\newgeometry{left=2cm,right=2cm,top=2cm,bottom=2cm}
+\else
+\newgeometry{left=2cm,right=2cm,top=2cm,bottom=2cm}
+\maketitle
+\fi
+%from_here_to_type
+\begin{problem}\label{pro:1}
+  设\(Z \)是随机变量，\(F \)是其分布函数。证明：
+  \begin{itemize}
+    \item \(\mathbb{E}(Z^+) = \int_{0}^{\infty}(1 - F(x)) \d x \)。
+    \item \(\mathbb{E}(Z^-) = \int_{-\infty}^{0} F(x) \d x \)。
+  \end{itemize}
+\end{problem}
+\begin{solution}
+  由 Fubini 定理知：
+  \(\mathbb{E}(Z^+) = \mathbb{E}(\int_{0}^{\infty} \mathbbm{1}_{[0,Z^+)}(x) \d x) = \int_{0}^{\infty} \mathbb{E}(\mathbbm{1}_{[0,Z^+)}(x)) \d x = \int_{0}^{\infty}(1-F(x)) \d x \)。
+  同理，有
+  \(\mathbb{E}(Z^-) = \mathbb{E}(\int_{-\infty}^{0} \mathbbm{1}_{(-Z^-,0]}(x) \d x) = \int_{-\infty}^{0}\mathbb{E}(\mathbbm{1}_{(-Z^-,0]}(x)) \d x = \int_{-\infty}^{0}F(x) \d x \)。
+\end{solution}
+
+\begin{problem}\label{pro:2}
+  设\(Z,Y \)是随机变量。\(\sigma^2 = \mathbb{E}(Z^2) \)。
+  对于任何满足\(h' \)连续有界的函数\(h \)，都有
+  \(\mathbb{E}(Zh(Z)) = \sigma^2\mathbb{E}(h'(Y)) \)。
+  求\(Y \)与\(Z \)的分布的关系。
+\end{problem}
+\begin{solution}
+\end{solution}
+
+\end{document}
