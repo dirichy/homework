@@ -17,9 +17,32 @@
 \fi
 %from_here_to_type
 \begin{problem}\label{pro:1}
-  设\(\mu \)为\(\mathbb{R}^d \)上的符号测度。证明\(|\mu|(\mathbb{R}^d) = \sum \{ \int_{\mathbb{R}^d} g \d \mu: g \in C_b(\mathbb{R}^d), \norm{g}_{\infty} \leq 1\} \)。
+  设\(\mu \)为\(\mathbb{R}^d \)上的符号测度。证明\(|\mu|(\mathbb{R}^d) = \sup \{ \int_{\mathbb{R}^d} g \d \mu: g \in C_b(\mathbb{R}^d), \norm{g}_{\infty} \leq 1\} \)。
 \end{problem}
 \begin{solution}
+  这里应该假设\(\mathbb{R}^d \)带有的\(\sigma \)-代数是 Broel 代数，否则可能会有问题。
+
+  由定义知\(|\mu| = \mu^+ + \mu^- \)，且\(\mu^- \)是有限测度。
+  若\(\mu^+ \)不是有限测度，则\(|\mu|(\mathbb{R}^d) = + \infty \)，且\(\int_{\mathbb{R}^d} 1 \d \mu = \mu^+(\mathbb{R}^d) - \mu^-(\mathbb{R}^d) = + \infty \)，
+  故题设成立。下设\(\mu^+ \)是有限的。
+
+  一方面，对于任意的\(g \in C_b(\mathbb{R}^d), \norm{g}_{\infty} \leq 1 \)，都有\(\int g \d \mu \leq \int |g| \d |\mu| \leq \int 1 \d |\mu| = |\mu|(\mathbb{R}^d) \)。
+  故\(|\mu|(\mathbb{R}^d) \geq \sup \{ \int_{\mathbb{R}^d} g \d \mu: g \in C_b(\mathbb{R}^d), \norm{g}_{\infty} \leq 1\} \)。
+
+  另一方面，由 Hahn-分解可得到\(A=\mathrm{supp}(\mu^+),B=\mathrm{supp}(\mu^-) \)。
+  由 Polish 空间上的 Borel 测度一定有正则性，可取紧集\(A_n \subset A,B_n \subset B \)，使\(\mu^+(A_n) \to \mu^+(A),\mu^-(B_n) \to \mu^-(B) \)。
+  由 Urysohn 引理，可知\(\exists g_n \in C_b(\mathbb{R}^d), \norm{g_n}_{\infty} \leq 1, g_n(A_n) = \{1\}, g_n(B_n) = \{-1\} \)。
+  于是
+
+  \begin{equation}\label{equ:2}
+    \begin{aligned}
+      \int g_n \d \mu &\geq \int_{A_n} g_n \d \mu + \int_{B_n} g_n \d \mu - \mu^+(A \setminus A_n) - \mu^-(B \setminus B_n) \\
+      &= \mu^+(A_n) + \mu^-(B_n) - \mu^+(A \setminus A_n) - \mu^-(B \setminus B_n) \\
+      &\geq \mu^+ (A) + \mu^-(B) - 2\mu^+(A \setminus A_n) - 2\mu^-(B \setminus B_n)
+    \end{aligned}
+  \end{equation}
+  。
+  令\(n \to \infty \)，得到\(\lim_{n}\int g_n \d \mu \geq |\mu|(\mathbb{R}^d)\)。
 
 \end{solution}
 

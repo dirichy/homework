@@ -17,7 +17,7 @@
 \fi
 %from_here_to_type
 \begin{problem}\label{pro:1}
-  设\(Z \)是随机变量，\(F \)是其分布函数。证明：
+  设 \(Z \)是随机变量， \(F \)是其分布函数。证明：
   \begin{itemize}
     \item \(\mathbb{E}(Z^+) = \int_{0}^{\infty}(1 - F(x)) \d x \)。
     \item \(\mathbb{E}(Z^-) = \int_{-\infty}^{0} F(x) \d x \)。
@@ -31,12 +31,36 @@
 \end{solution}
 
 \begin{problem}\label{pro:2}
-  设\(Z,Y \)是随机变量。\(\sigma^2 = \mathbb{E}(Z^2) \)。
-  对于任何满足\(h' \)连续有界的函数\(h \)，都有
+  设 \(Z,Y \)是随机变量。 \(\sigma^2 = \mathbb{E}(Z^2), \mathbb{E}(Z) = 0\)。
+  对于任何满足 \(h' \)连续有界的函数 \(h \)，都有
   \(\mathbb{E}(Zh(Z)) = \sigma^2\mathbb{E}(h'(Y)) \)。
-  求\(Y \)与\(Z \)的分布的关系。
+  % 求 \(Y \)与 \(Z \)的分布的关系。
+  设 \(Z \)的分布函数为 \(F \)，求证 \(Y \)有密度，且密度为 \(p(x) =
+    \begin{cases}
+      \frac{2}{\sigma^2} \int_{x}^{\infty}(1-F(u)) \d u & x \geq 0\\
+      \frac{2}{\sigma^2} \int_{-\infty}^{x}F(u) \d u & x < 0
+  \end{cases} \)
 \end{problem}
 \begin{solution}
+  感觉老师好像给错答案了。
+  令 \(\mathbb{P}(Y = \pm 1) = \frac{1}{2} \)，令 \(h'(x) = \mathbbm{1}_{(a,\infty)},a \in (-1,1) \)。
+  令 \(h(x) = \mathbbm{1}_{(a,\infty)}(x) (x-a) \)。
+  则有 \(\mathbb{E}(Zh(Z)) = \frac{1}{2} (1-a) \)。
+  于是应该有 \(\sigma^2 \mathbb{E}(h'(Y)) = \mathbb{P}(Y>a) = \frac{1}{2}(1-a) \)。
+  得到 \(p(x) = \frac{1}{2}, x \in (-1,1) \)，与老师给的答案明显不同。
+
+  % 记 \( Y\)的分布函数为 \(F \)。
+  % 可取一列有界连续函数收敛到 \(\mathbbm{1}_{(a,\infty)} \)，
+  % 因此我们可以直接取 \(h' = \mathbbm{1}_{(a,\infty)} \)。
+  % 此时可取 \(h(x)= \mathbbm{1}_{(a,\infty)}(x) (x-a) \)。
+  % 于是 \(\int xh(x) \d F(x) = \sigma^2 \mathbb{P}(Y >a)\)。
+  % 代入 \(h \)的定义可得 \(\sigma^2 \mathbb{P}(Y>a) = \int x h(x) \d F(x) = \int_{a}^{\infty} x(x-a) \d F(x)  \)。
+  % 由 \(Z \)方差存在，可得 \(\lim_{x \to \infty} (F(x)-1)x^2 \to 0 \)。于是由分部积分法可得：
+  % \(\sigma^2\mathbb{P}(Y>a) = \int_{a}^{\infty} (2x-a)(1-F(x)) \d x \)。
+  % 于是 \(\mathbb{P}(Y>a) \)绝对连续且几乎处处可导，故 \(Y \)存在密度，设为 \(p \)。
+  % 求导可得 \(\sigma^2p(a)= 2a(1-F(a)) -\int_{a}^{\infty} (1-F(x)) \d x - a(1-F(a)) \)
+  % 整理可得 \(\int_{a}^{\infty} x^2 -\sigma^2 p(x) \d F(x) = a\int_{a}^{\infty} x \d F(x)\)。
+  % 注意到 \(\mathbb{E}(Z) = \int x \d F(x) = 0 \)
 \end{solution}
 
 \end{document}
