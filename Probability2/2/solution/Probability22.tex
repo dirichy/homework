@@ -17,7 +17,26 @@
 \fi
 %from_here_to_type
 \begin{problem}\label{pro:1}
-
+  设\(\theta \)是保测映射，\(A \)是\(\theta \)-不变的集合，且\(0<\mathbb{P}(A)<1 \)。求证\((\mathbb{P}_A:=\mathbb{P}(\cdot \mid A),\theta)\)也是保测的。
 \end{problem}
+\begin{solution}
+  对于任何的可测集\(B \)，有\(\mathbb{P}_A(\theta^{-1} B)=\frac{\mathbb{P}(A \cap \theta^{-1} B)}{\mathbb{P}(\theta^{-1} A)} \)。
+  由于\(A \)是\(\theta \)-不变的，于是\(\mathbb{P}(A \cap \theta^{-1} B) = \mathbb{P}(\theta^{-1} A \cap \theta^{-1} B) = \mathbb{P}(\theta^{-1} (A \cap B)) \)。
+  由\(\theta\)保测知\(\mathbb{P}_A(\theta^{-1}B)=\frac{\mathbb{P}(\theta^{-1}(A \cap B))}{\theta ^{-1} A}=\frac{\mathbb{P}(A \cap B)}{\mathbb{P}(A)}=\mathbb{P}_A(B) \)。
+  于是\((\mathbb{P}_A,\theta ) \)也是保测的。
+\end{solution}
+\begin{problem}\label{pro:2}
+  设\(\theta \)是遍历的保测映射，\(\mathbb{P}(A)>0 \)。令\(B:=\bigcup_{n=0}^{\infty}\theta^{-n}A \)，则显然有\(\theta ^{-1} B \subset B \)。
+  求证\(B \)是\(\theta \)-不变的，从而\(\mathbb{P}(B)=0 \text{ or } 1 \)。
+  又\(A \subset B \)，从而\(\mathbb{P}(B)=1 \)。
+\end{problem}
+\begin{solution}
+  由\(\theta \)是保测的，得\(\mathbb{P}(\theta ^{-1} B)=\mathbb{P}(B) \)。从而\(N_{0}:=B \setminus \theta ^{-1} B \)是零测的。
+  令\(N_{n+1} := \theta ^{-1} N_n \)，令\(N:=\bigcup_{n=0}^{\infty}N_n \)。
+  由\(N_{0} \)零测，结合\(\theta \)保测，知\(N \)是零测的。考查\(B \setminus N \)，有
+  \(\theta ^{-1}(B \setminus N) = \theta ^{-1} B \setminus \theta ^{-1} N = (B \setminus N_{0}) \setminus \bigcup_{n=1}^{\infty}N_n = B\setminus \bigcup_{n=0}^{\infty}N_n =B \setminus N\)。
+  于是\(B\setminus N \)是\(\theta \)-不变的。由\(\theta \)是遍历的，得\(\mathbb{P}(B \setminus N)=0 \text{or} 1 \)，从而\(\mathbb{P}(B)=0 \text{or} 1 \)。
+  又由\(A \subset B \)得\(\mathbb{P}(B=1) \)。
+\end{solution}
 
 \end{document}

@@ -100,6 +100,7 @@
   由 Cauchy 不等式有\(S_k^2 \leq (m+1)\sum_{i=0}^{m}Z_{i,j_i}^2 \leq \sum_{i=0}^{m}\sum_{j=1}^{2^{m-i }}Z_{i,j}^2\)。
   于是\(\max_{1 \leq k \leq n}S_k^2 \leq (m+1)\sum_{i=0}^{m}\sum_{j=1}^{2^{m-i }}Z_{i,j}^2 \)。
   取期望，可得
+
   \begin{equation}
     \begin{aligned}
       &\mathbb{E}(\max_{1 \leq k \leq n}S_k^2)\\
@@ -138,6 +139,865 @@
       \leq & g(F_a^n)
     \end{aligned}
   \end{equation}
+  \begin{equation}
+    \begin{aligned}
+      \mathbb{E}(|\sum_{i=1}^{n}X_{a+i}|^2) \\
+      \leq & \sum_{j,i = 1}^{n} \frac{\rho_{|j-i|}}{2}\mathbb{E}(X_j^2 + X_i^2)\\
+      =& \sum_{i=1}^{n} \sum_{j=1}^{n}\rho_{|j-i|}\mathbb{E}(X_i^2)\\
+      \leq & \sum_{i=1}^{n} \sum_{j=1}^{\infty} \rho_{|j-i|}\mathbb{E}(X_i^2)\\
+      \leq & \sum_{i=1}^{n} 2\sum_{k=0}^{\infty} \rho_k \mathbb{E}(X_i^2)\\
+      =& 2\sum_{k=0}^{\infty}\rho_k  \sum_{i=1}^{n}\mathbb{E}(X_i^2)\\
+      \leq & g(F_a^n)
+    \end{aligned}
+  \end{equation}
+  \begin{equation}
+    \begin{aligned}
+      \mathbb{E}(|\sum_{i=1}^{n}X_{a+i}|^2) \\
+      \leq & \sum_{j,i = 1}^{n} \frac{\rho_{|j-i|}}{2}\mathbb{E}(X_j^2 + X_i^2)\\
+      =& \sum_{i=1}^{n} \sum_{j=1}^{n}\rho_{|j-i|}\mathbb{E}(X_i^2)\\
+      \leq & \sum_{i=1}^{n} \sum_{j=1}^{\infty} \rho_{|j-i|}\mathbb{E}(X_i^2)\\
+      \leq & \sum_{i=1}^{n} 2\sum_{k=0}^{\infty} \rho_k \mathbb{E}(X_i^2)\\
+      =& 2\sum_{k=0}^{\infty}\rho_k  \sum_{i=1}^{n}\mathbb{E}(X_i^2)\\
+      \leq & g(F_a^n)
+    \end{aligned}
+  \end{equation}
+  \begin{equation}
+    \begin{aligned}
+      \mathbb{E}(|\sum_{i=1}^{n}X_{a+i}|^2) \\
+      \leq & \sum_{j,i = 1}^{n} \frac{\rho_{|j-i|}}{2}\mathbb{E}(X_j^2 + X_i^2)\\
+      =& \sum_{i=1}^{n} \sum_{j=1}^{n}\rho_{|j-i|}\mathbb{E}(X_i^2)\\
+      \leq & \sum_{i=1}^{n} \sum_{j=1}^{\infty} \rho_{|j-i|}\mathbb{E}(X_i^2)\\
+      \leq & \sum_{i=1}^{n} 2\sum_{k=0}^{\infty} \rho_k \mathbb{E}(X_i^2)\\
+      =& 2\sum_{k=0}^{\infty}\rho_k  \sum_{i=1}^{n}\mathbb{E}(X_i^2)\\
+      \leq & g(F_a^n)
+    \end{aligned}
+  \end{equation}
+  \begin{equation}
+    \begin{aligned}
+      \mathbb{E}(|\sum_{i=1}^{n}X_{a+i}|^2) \\
+      \leq & \sum_{j,i = 1}^{n} \frac{\rho_{|j-i|}}{2}\mathbb{E}(X_j^2 + X_i^2)\\
+      =& \sum_{i=1}^{n} \sum_{j=1}^{n}\rho_{|j-i|}\mathbb{E}(X_i^2)\\
+      \leq & \sum_{i=1}^{n} \sum_{j=1}^{\infty} \rho_{|j-i|}\mathbb{E}(X_i^2)\\
+      \leq & \sum_{i=1}^{n} 2\sum_{k=0}^{\infty} \rho_k \mathbb{E}(X_i^2)\\
+      =& 2\sum_{k=0}^{\infty}\rho_k  \sum_{i=1}^{n}\mathbb{E}(X_i^2)\\
+      \leq & g(F_a^n)
+    \end{aligned}
+  \end{equation}
+  \begin{equation}
+    \begin{aligned}
+      \mathbb{E}(|\sum_{i=1}^{n}X_{a+i}|^2) \\
+      \leq & \sum_{j,i = 1}^{n} \frac{\rho_{|j-i|}}{2}\mathbb{E}(X_j^2 + X_i^2)\\
+      =& \sum_{i=1}^{n} \sum_{j=1}^{n}\rho_{|j-i|}\mathbb{E}(X_i^2)\\
+      \leq & \sum_{i=1}^{n} \sum_{j=1}^{\infty} \rho_{|j-i|}\mathbb{E}(X_i^2)\\
+      \leq & \sum_{i=1}^{n} 2\sum_{k=0}^{\infty} \rho_k \mathbb{E}(X_i^2)\\
+      =& 2\sum_{k=0}^{\infty}\rho_k  \sum_{i=1}^{n}\mathbb{E}(X_i^2)\\
+      \leq & g(F_a^n)
+    \end{aligned}
+  \end{equation}
+  \begin{equation}
+    \begin{aligned}
+      \mathbb{E}(|\sum_{i=1}^{n}X_{a+i}|^2) \\
+      \leq & \sum_{j,i = 1}^{n} \frac{\rho_{|j-i|}}{2}\mathbb{E}(X_j^2 + X_i^2)\\
+      =& \sum_{i=1}^{n} \sum_{j=1}^{n}\rho_{|j-i|}\mathbb{E}(X_i^2)\\
+      \leq & \sum_{i=1}^{n} \sum_{j=1}^{\infty} \rho_{|j-i|}\mathbb{E}(X_i^2)\\
+      \leq & \sum_{i=1}^{n} 2\sum_{k=0}^{\infty} \rho_k \mathbb{E}(X_i^2)\\
+      =& 2\sum_{k=0}^{\infty}\rho_k  \sum_{i=1}^{n}\mathbb{E}(X_i^2)\\
+      \leq & g(F_a^n)
+    \end{aligned}
+  \end{equation}
+  \begin{equation}
+    \begin{aligned}
+      \mathbb{E}(|\sum_{i=1}^{n}X_{a+i}|^2) \\
+      \leq & \sum_{j,i = 1}^{n} \frac{\rho_{|j-i|}}{2}\mathbb{E}(X_j^2 + X_i^2)\\
+      =& \sum_{i=1}^{n} \sum_{j=1}^{n}\rho_{|j-i|}\mathbb{E}(X_i^2)\\
+      \leq & \sum_{i=1}^{n} \sum_{j=1}^{\infty} \rho_{|j-i|}\mathbb{E}(X_i^2)\\
+      \leq & \sum_{i=1}^{n} 2\sum_{k=0}^{\infty} \rho_k \mathbb{E}(X_i^2)\\
+      =& 2\sum_{k=0}^{\infty}\rho_k  \sum_{i=1}^{n}\mathbb{E}(X_i^2)\\
+      \leq & g(F_a^n)
+    \end{aligned}
+  \end{equation}
+  \begin{equation}
+    \begin{aligned}
+      \mathbb{E}(|\sum_{i=1}^{n}X_{a+i}|^2) \\
+      \leq & \sum_{j,i = 1}^{n} \frac{\rho_{|j-i|}}{2}\mathbb{E}(X_j^2 + X_i^2)\\
+      =& \sum_{i=1}^{n} \sum_{j=1}^{n}\rho_{|j-i|}\mathbb{E}(X_i^2)\\
+      \leq & \sum_{i=1}^{n} \sum_{j=1}^{\infty} \rho_{|j-i|}\mathbb{E}(X_i^2)\\
+      \leq & \sum_{i=1}^{n} 2\sum_{k=0}^{\infty} \rho_k \mathbb{E}(X_i^2)\\
+      =& 2\sum_{k=0}^{\infty}\rho_k  \sum_{i=1}^{n}\mathbb{E}(X_i^2)\\
+      \leq & g(F_a^n)
+    \end{aligned}
+  \end{equation}
+  \begin{equation}
+    \begin{aligned}
+      \mathbb{E}(|\sum_{i=1}^{n}X_{a+i}|^2) \\
+      \leq & \sum_{j,i = 1}^{n} \frac{\rho_{|j-i|}}{2}\mathbb{E}(X_j^2 + X_i^2)\\
+      =& \sum_{i=1}^{n} \sum_{j=1}^{n}\rho_{|j-i|}\mathbb{E}(X_i^2)\\
+      \leq & \sum_{i=1}^{n} \sum_{j=1}^{\infty} \rho_{|j-i|}\mathbb{E}(X_i^2)\\
+      \leq & \sum_{i=1}^{n} 2\sum_{k=0}^{\infty} \rho_k \mathbb{E}(X_i^2)\\
+      =& 2\sum_{k=0}^{\infty}\rho_k  \sum_{i=1}^{n}\mathbb{E}(X_i^2)\\
+      \leq & g(F_a^n)
+    \end{aligned}
+  \end{equation}
+  \begin{equation}
+    \begin{aligned}
+      \mathbb{E}(|\sum_{i=1}^{n}X_{a+i}|^2) \\
+      \leq & \sum_{j,i = 1}^{n} \frac{\rho_{|j-i|}}{2}\mathbb{E}(X_j^2 + X_i^2)\\
+      =& \sum_{i=1}^{n} \sum_{j=1}^{n}\rho_{|j-i|}\mathbb{E}(X_i^2)\\
+      \leq & \sum_{i=1}^{n} \sum_{j=1}^{\infty} \rho_{|j-i|}\mathbb{E}(X_i^2)\\
+      \leq & \sum_{i=1}^{n} 2\sum_{k=0}^{\infty} \rho_k \mathbb{E}(X_i^2)\\
+      =& 2\sum_{k=0}^{\infty}\rho_k  \sum_{i=1}^{n}\mathbb{E}(X_i^2)\\
+      \leq & g(F_a^n)
+    \end{aligned}
+  \end{equation}
+  \begin{equation}
+    \begin{aligned}
+      \mathbb{E}(|\sum_{i=1}^{n}X_{a+i}|^2) \\
+      \leq & \sum_{j,i = 1}^{n} \frac{\rho_{|j-i|}}{2}\mathbb{E}(X_j^2 + X_i^2)\\
+      =& \sum_{i=1}^{n} \sum_{j=1}^{n}\rho_{|j-i|}\mathbb{E}(X_i^2)\\
+      \leq & \sum_{i=1}^{n} \sum_{j=1}^{\infty} \rho_{|j-i|}\mathbb{E}(X_i^2)\\
+      \leq & \sum_{i=1}^{n} 2\sum_{k=0}^{\infty} \rho_k \mathbb{E}(X_i^2)\\
+      =& 2\sum_{k=0}^{\infty}\rho_k  \sum_{i=1}^{n}\mathbb{E}(X_i^2)\\
+      \leq & g(F_a^n)
+    \end{aligned}
+  \end{equation}
+  \begin{equation}
+    \begin{aligned}
+      \mathbb{E}(|\sum_{i=1}^{n}X_{a+i}|^2) \\
+      \leq & \sum_{j,i = 1}^{n} \frac{\rho_{|j-i|}}{2}\mathbb{E}(X_j^2 + X_i^2)\\
+      =& \sum_{i=1}^{n} \sum_{j=1}^{n}\rho_{|j-i|}\mathbb{E}(X_i^2)\\
+      \leq & \sum_{i=1}^{n} \sum_{j=1}^{\infty} \rho_{|j-i|}\mathbb{E}(X_i^2)\\
+      \leq & \sum_{i=1}^{n} 2\sum_{k=0}^{\infty} \rho_k \mathbb{E}(X_i^2)\\
+      =& 2\sum_{k=0}^{\infty}\rho_k  \sum_{i=1}^{n}\mathbb{E}(X_i^2)\\
+      \leq & g(F_a^n)
+    \end{aligned}
+  \end{equation}
+  \begin{equation}
+    \begin{aligned}
+      \mathbb{E}(|\sum_{i=1}^{n}X_{a+i}|^2) \\
+      \leq & \sum_{j,i = 1}^{n} \frac{\rho_{|j-i|}}{2}\mathbb{E}(X_j^2 + X_i^2)\\
+      =& \sum_{i=1}^{n} \sum_{j=1}^{n}\rho_{|j-i|}\mathbb{E}(X_i^2)\\
+      \leq & \sum_{i=1}^{n} \sum_{j=1}^{\infty} \rho_{|j-i|}\mathbb{E}(X_i^2)\\
+      \leq & \sum_{i=1}^{n} 2\sum_{k=0}^{\infty} \rho_k \mathbb{E}(X_i^2)\\
+      =& 2\sum_{k=0}^{\infty}\rho_k  \sum_{i=1}^{n}\mathbb{E}(X_i^2)\\
+      \leq & g(F_a^n)
+    \end{aligned}
+  \end{equation}
+  \begin{equation}
+    \begin{aligned}
+      \mathbb{E}(|\sum_{i=1}^{n}X_{a+i}|^2) \\
+      \leq & \sum_{j,i = 1}^{n} \frac{\rho_{|j-i|}}{2}\mathbb{E}(X_j^2 + X_i^2)\\
+      =& \sum_{i=1}^{n} \sum_{j=1}^{n}\rho_{|j-i|}\mathbb{E}(X_i^2)\\
+      \leq & \sum_{i=1}^{n} \sum_{j=1}^{\infty} \rho_{|j-i|}\mathbb{E}(X_i^2)\\
+      \leq & \sum_{i=1}^{n} 2\sum_{k=0}^{\infty} \rho_k \mathbb{E}(X_i^2)\\
+      =& 2\sum_{k=0}^{\infty}\rho_k  \sum_{i=1}^{n}\mathbb{E}(X_i^2)\\
+      \leq & g(F_a^n)
+    \end{aligned}
+  \end{equation}
+  \begin{equation}
+    \begin{aligned}
+      \mathbb{E}(|\sum_{i=1}^{n}X_{a+i}|^2) \\
+      \leq & \sum_{j,i = 1}^{n} \frac{\rho_{|j-i|}}{2}\mathbb{E}(X_j^2 + X_i^2)\\
+      =& \sum_{i=1}^{n} \sum_{j=1}^{n}\rho_{|j-i|}\mathbb{E}(X_i^2)\\
+      \leq & \sum_{i=1}^{n} \sum_{j=1}^{\infty} \rho_{|j-i|}\mathbb{E}(X_i^2)\\
+      \leq & \sum_{i=1}^{n} 2\sum_{k=0}^{\infty} \rho_k \mathbb{E}(X_i^2)\\
+      =& 2\sum_{k=0}^{\infty}\rho_k  \sum_{i=1}^{n}\mathbb{E}(X_i^2)\\
+      \leq & g(F_a^n)
+    \end{aligned}
+  \end{equation}
+  \begin{equation}
+    \begin{aligned}
+      \mathbb{E}(|\sum_{i=1}^{n}X_{a+i}|^2) \\
+      \leq & \sum_{j,i = 1}^{n} \frac{\rho_{|j-i|}}{2}\mathbb{E}(X_j^2 + X_i^2)\\
+      =& \sum_{i=1}^{n} \sum_{j=1}^{n}\rho_{|j-i|}\mathbb{E}(X_i^2)\\
+      \leq & \sum_{i=1}^{n} \sum_{j=1}^{\infty} \rho_{|j-i|}\mathbb{E}(X_i^2)\\
+      \leq & \sum_{i=1}^{n} 2\sum_{k=0}^{\infty} \rho_k \mathbb{E}(X_i^2)\\
+      =& 2\sum_{k=0}^{\infty}\rho_k  \sum_{i=1}^{n}\mathbb{E}(X_i^2)\\
+      \leq & g(F_a^n)
+    \end{aligned}
+  \end{equation}
+  \begin{equation}
+    \begin{aligned}
+      \mathbb{E}(|\sum_{i=1}^{n}X_{a+i}|^2) \\
+      \leq & \sum_{j,i = 1}^{n} \frac{\rho_{|j-i|}}{2}\mathbb{E}(X_j^2 + X_i^2)\\
+      =& \sum_{i=1}^{n} \sum_{j=1}^{n}\rho_{|j-i|}\mathbb{E}(X_i^2)\\
+      \leq & \sum_{i=1}^{n} \sum_{j=1}^{\infty} \rho_{|j-i|}\mathbb{E}(X_i^2)\\
+      \leq & \sum_{i=1}^{n} 2\sum_{k=0}^{\infty} \rho_k \mathbb{E}(X_i^2)\\
+      =& 2\sum_{k=0}^{\infty}\rho_k  \sum_{i=1}^{n}\mathbb{E}(X_i^2)\\
+      \leq & g(F_a^n)
+    \end{aligned}
+  \end{equation}
+  \begin{equation}
+    \begin{aligned}
+      \mathbb{E}(|\sum_{i=1}^{n}X_{a+i}|^2) \\
+      \leq & \sum_{j,i = 1}^{n} \frac{\rho_{|j-i|}}{2}\mathbb{E}(X_j^2 + X_i^2)\\
+      =& \sum_{i=1}^{n} \sum_{j=1}^{n}\rho_{|j-i|}\mathbb{E}(X_i^2)\\
+      \leq & \sum_{i=1}^{n} \sum_{j=1}^{\infty} \rho_{|j-i|}\mathbb{E}(X_i^2)\\
+      \leq & \sum_{i=1}^{n} 2\sum_{k=0}^{\infty} \rho_k \mathbb{E}(X_i^2)\\
+      =& 2\sum_{k=0}^{\infty}\rho_k  \sum_{i=1}^{n}\mathbb{E}(X_i^2)\\
+      \leq & g(F_a^n)
+    \end{aligned}
+  \end{equation}
+  \begin{equation}
+    \begin{aligned}
+      \mathbb{E}(|\sum_{i=1}^{n}X_{a+i}|^2) \\
+      \leq & \sum_{j,i = 1}^{n} \frac{\rho_{|j-i|}}{2}\mathbb{E}(X_j^2 + X_i^2)\\
+      =& \sum_{i=1}^{n} \sum_{j=1}^{n}\rho_{|j-i|}\mathbb{E}(X_i^2)\\
+      \leq & \sum_{i=1}^{n} \sum_{j=1}^{\infty} \rho_{|j-i|}\mathbb{E}(X_i^2)\\
+      \leq & \sum_{i=1}^{n} 2\sum_{k=0}^{\infty} \rho_k \mathbb{E}(X_i^2)\\
+      =& 2\sum_{k=0}^{\infty}\rho_k  \sum_{i=1}^{n}\mathbb{E}(X_i^2)\\
+      \leq & g(F_a^n)
+    \end{aligned}
+  \end{equation}
+  \begin{equation}
+    \begin{aligned}
+      \mathbb{E}(|\sum_{i=1}^{n}X_{a+i}|^2) \\
+      \leq & \sum_{j,i = 1}^{n} \frac{\rho_{|j-i|}}{2}\mathbb{E}(X_j^2 + X_i^2)\\
+      =& \sum_{i=1}^{n} \sum_{j=1}^{n}\rho_{|j-i|}\mathbb{E}(X_i^2)\\
+      \leq & \sum_{i=1}^{n} \sum_{j=1}^{\infty} \rho_{|j-i|}\mathbb{E}(X_i^2)\\
+      \leq & \sum_{i=1}^{n} 2\sum_{k=0}^{\infty} \rho_k \mathbb{E}(X_i^2)\\
+      =& 2\sum_{k=0}^{\infty}\rho_k  \sum_{i=1}^{n}\mathbb{E}(X_i^2)\\
+      \leq & g(F_a^n)
+    \end{aligned}
+  \end{equation}
+  \begin{equation}
+    \begin{aligned}
+      \mathbb{E}(|\sum_{i=1}^{n}X_{a+i}|^2) \\
+      \leq & \sum_{j,i = 1}^{n} \frac{\rho_{|j-i|}}{2}\mathbb{E}(X_j^2 + X_i^2)\\
+      =& \sum_{i=1}^{n} \sum_{j=1}^{n}\rho_{|j-i|}\mathbb{E}(X_i^2)\\
+      \leq & \sum_{i=1}^{n} \sum_{j=1}^{\infty} \rho_{|j-i|}\mathbb{E}(X_i^2)\\
+      \leq & \sum_{i=1}^{n} 2\sum_{k=0}^{\infty} \rho_k \mathbb{E}(X_i^2)\\
+      =& 2\sum_{k=0}^{\infty}\rho_k  \sum_{i=1}^{n}\mathbb{E}(X_i^2)\\
+      \leq & g(F_a^n)
+    \end{aligned}
+  \end{equation}
+  \begin{equation}
+    \begin{aligned}
+      \mathbb{E}(|\sum_{i=1}^{n}X_{a+i}|^2) \\
+      \leq & \sum_{j,i = 1}^{n} \frac{\rho_{|j-i|}}{2}\mathbb{E}(X_j^2 + X_i^2)\\
+      =& \sum_{i=1}^{n} \sum_{j=1}^{n}\rho_{|j-i|}\mathbb{E}(X_i^2)\\
+      \leq & \sum_{i=1}^{n} \sum_{j=1}^{\infty} \rho_{|j-i|}\mathbb{E}(X_i^2)\\
+      \leq & \sum_{i=1}^{n} 2\sum_{k=0}^{\infty} \rho_k \mathbb{E}(X_i^2)\\
+      =& 2\sum_{k=0}^{\infty}\rho_k  \sum_{i=1}^{n}\mathbb{E}(X_i^2)\\
+      \leq & g(F_a^n)
+    \end{aligned}
+  \end{equation}
+  \begin{equation}
+    \begin{aligned}
+      \mathbb{E}(|\sum_{i=1}^{n}X_{a+i}|^2) \\
+      \leq & \sum_{j,i = 1}^{n} \frac{\rho_{|j-i|}}{2}\mathbb{E}(X_j^2 + X_i^2)\\
+      =& \sum_{i=1}^{n} \sum_{j=1}^{n}\rho_{|j-i|}\mathbb{E}(X_i^2)\\
+      \leq & \sum_{i=1}^{n} \sum_{j=1}^{\infty} \rho_{|j-i|}\mathbb{E}(X_i^2)\\
+      \leq & \sum_{i=1}^{n} 2\sum_{k=0}^{\infty} \rho_k \mathbb{E}(X_i^2)\\
+      =& 2\sum_{k=0}^{\infty}\rho_k  \sum_{i=1}^{n}\mathbb{E}(X_i^2)\\
+      \leq & g(F_a^n)
+    \end{aligned}
+  \end{equation}
+  \begin{equation}
+    \begin{aligned}
+      \mathbb{E}(|\sum_{i=1}^{n}X_{a+i}|^2) \\
+      \leq & \sum_{j,i = 1}^{n} \frac{\rho_{|j-i|}}{2}\mathbb{E}(X_j^2 + X_i^2)\\
+      =& \sum_{i=1}^{n} \sum_{j=1}^{n}\rho_{|j-i|}\mathbb{E}(X_i^2)\\
+      \leq & \sum_{i=1}^{n} \sum_{j=1}^{\infty} \rho_{|j-i|}\mathbb{E}(X_i^2)\\
+      \leq & \sum_{i=1}^{n} 2\sum_{k=0}^{\infty} \rho_k \mathbb{E}(X_i^2)\\
+      =& 2\sum_{k=0}^{\infty}\rho_k  \sum_{i=1}^{n}\mathbb{E}(X_i^2)\\
+      \leq & g(F_a^n)
+    \end{aligned}
+  \end{equation}
+  \begin{equation}
+    \begin{aligned}
+      \mathbb{E}(|\sum_{i=1}^{n}X_{a+i}|^2) \\
+      \leq & \sum_{j,i = 1}^{n} \frac{\rho_{|j-i|}}{2}\mathbb{E}(X_j^2 + X_i^2)\\
+      =& \sum_{i=1}^{n} \sum_{j=1}^{n}\rho_{|j-i|}\mathbb{E}(X_i^2)\\
+      \leq & \sum_{i=1}^{n} \sum_{j=1}^{\infty} \rho_{|j-i|}\mathbb{E}(X_i^2)\\
+      \leq & \sum_{i=1}^{n} 2\sum_{k=0}^{\infty} \rho_k \mathbb{E}(X_i^2)\\
+      =& 2\sum_{k=0}^{\infty}\rho_k  \sum_{i=1}^{n}\mathbb{E}(X_i^2)\\
+      \leq & g(F_a^n)
+    \end{aligned}
+  \end{equation}
+  \begin{equation}
+    \begin{aligned}
+      \mathbb{E}(|\sum_{i=1}^{n}X_{a+i}|^2) \\
+      \leq & \sum_{j,i = 1}^{n} \frac{\rho_{|j-i|}}{2}\mathbb{E}(X_j^2 + X_i^2)\\
+      =& \sum_{i=1}^{n} \sum_{j=1}^{n}\rho_{|j-i|}\mathbb{E}(X_i^2)\\
+      \leq & \sum_{i=1}^{n} \sum_{j=1}^{\infty} \rho_{|j-i|}\mathbb{E}(X_i^2)\\
+      \leq & \sum_{i=1}^{n} 2\sum_{k=0}^{\infty} \rho_k \mathbb{E}(X_i^2)\\
+      =& 2\sum_{k=0}^{\infty}\rho_k  \sum_{i=1}^{n}\mathbb{E}(X_i^2)\\
+      \leq & g(F_a^n)
+    \end{aligned}
+  \end{equation}
+  \begin{equation}
+    \begin{aligned}
+      \mathbb{E}(|\sum_{i=1}^{n}X_{a+i}|^2) \\
+      \leq & \sum_{j,i = 1}^{n} \frac{\rho_{|j-i|}}{2}\mathbb{E}(X_j^2 + X_i^2)\\
+      =& \sum_{i=1}^{n} \sum_{j=1}^{n}\rho_{|j-i|}\mathbb{E}(X_i^2)\\
+      \leq & \sum_{i=1}^{n} \sum_{j=1}^{\infty} \rho_{|j-i|}\mathbb{E}(X_i^2)\\
+      \leq & \sum_{i=1}^{n} 2\sum_{k=0}^{\infty} \rho_k \mathbb{E}(X_i^2)\\
+      =& 2\sum_{k=0}^{\infty}\rho_k  \sum_{i=1}^{n}\mathbb{E}(X_i^2)\\
+      \leq & g(F_a^n)
+    \end{aligned}
+  \end{equation}
+  \begin{equation}
+    \begin{aligned}
+      \mathbb{E}(|\sum_{i=1}^{n}X_{a+i}|^2) \\
+      \leq & \sum_{j,i = 1}^{n} \frac{\rho_{|j-i|}}{2}\mathbb{E}(X_j^2 + X_i^2)\\
+      =& \sum_{i=1}^{n} \sum_{j=1}^{n}\rho_{|j-i|}\mathbb{E}(X_i^2)\\
+      \leq & \sum_{i=1}^{n} \sum_{j=1}^{\infty} \rho_{|j-i|}\mathbb{E}(X_i^2)\\
+      \leq & \sum_{i=1}^{n} 2\sum_{k=0}^{\infty} \rho_k \mathbb{E}(X_i^2)\\
+      =& 2\sum_{k=0}^{\infty}\rho_k  \sum_{i=1}^{n}\mathbb{E}(X_i^2)\\
+      \leq & g(F_a^n)
+    \end{aligned}
+  \end{equation}
+  \begin{equation}
+    \begin{aligned}
+      \mathbb{E}(|\sum_{i=1}^{n}X_{a+i}|^2) \\
+      \leq & \sum_{j,i = 1}^{n} \frac{\rho_{|j-i|}}{2}\mathbb{E}(X_j^2 + X_i^2)\\
+      =& \sum_{i=1}^{n} \sum_{j=1}^{n}\rho_{|j-i|}\mathbb{E}(X_i^2)\\
+      \leq & \sum_{i=1}^{n} \sum_{j=1}^{\infty} \rho_{|j-i|}\mathbb{E}(X_i^2)\\
+      \leq & \sum_{i=1}^{n} 2\sum_{k=0}^{\infty} \rho_k \mathbb{E}(X_i^2)\\
+      =& 2\sum_{k=0}^{\infty}\rho_k  \sum_{i=1}^{n}\mathbb{E}(X_i^2)\\
+      \leq & g(F_a^n)
+    \end{aligned}
+  \end{equation}
+  \begin{equation}
+    \begin{aligned}
+      \mathbb{E}(|\sum_{i=1}^{n}X_{a+i}|^2) \\
+      \leq & \sum_{j,i = 1}^{n} \frac{\rho_{|j-i|}}{2}\mathbb{E}(X_j^2 + X_i^2)\\
+      =& \sum_{i=1}^{n} \sum_{j=1}^{n}\rho_{|j-i|}\mathbb{E}(X_i^2)\\
+      \leq & \sum_{i=1}^{n} \sum_{j=1}^{\infty} \rho_{|j-i|}\mathbb{E}(X_i^2)\\
+      \leq & \sum_{i=1}^{n} 2\sum_{k=0}^{\infty} \rho_k \mathbb{E}(X_i^2)\\
+      =& 2\sum_{k=0}^{\infty}\rho_k  \sum_{i=1}^{n}\mathbb{E}(X_i^2)\\
+      \leq & g(F_a^n)
+    \end{aligned}
+  \end{equation}
+  \begin{equation}
+    \begin{aligned}
+      \mathbb{E}(|\sum_{i=1}^{n}X_{a+i}|^2) \\
+      \leq & \sum_{j,i = 1}^{n} \frac{\rho_{|j-i|}}{2}\mathbb{E}(X_j^2 + X_i^2)\\
+      =& \sum_{i=1}^{n} \sum_{j=1}^{n}\rho_{|j-i|}\mathbb{E}(X_i^2)\\
+      \leq & \sum_{i=1}^{n} \sum_{j=1}^{\infty} \rho_{|j-i|}\mathbb{E}(X_i^2)\\
+      \leq & \sum_{i=1}^{n} 2\sum_{k=0}^{\infty} \rho_k \mathbb{E}(X_i^2)\\
+      =& 2\sum_{k=0}^{\infty}\rho_k  \sum_{i=1}^{n}\mathbb{E}(X_i^2)\\
+      \leq & g(F_a^n)
+    \end{aligned}
+  \end{equation}
+  \begin{equation}
+    \begin{aligned}
+      \mathbb{E}(|\sum_{i=1}^{n}X_{a+i}|^2) \\
+      \leq & \sum_{j,i = 1}^{n} \frac{\rho_{|j-i|}}{2}\mathbb{E}(X_j^2 + X_i^2)\\
+      =& \sum_{i=1}^{n} \sum_{j=1}^{n}\rho_{|j-i|}\mathbb{E}(X_i^2)\\
+      \leq & \sum_{i=1}^{n} \sum_{j=1}^{\infty} \rho_{|j-i|}\mathbb{E}(X_i^2)\\
+      \leq & \sum_{i=1}^{n} 2\sum_{k=0}^{\infty} \rho_k \mathbb{E}(X_i^2)\\
+      =& 2\sum_{k=0}^{\infty}\rho_k  \sum_{i=1}^{n}\mathbb{E}(X_i^2)\\
+      \leq & g(F_a^n)
+    \end{aligned}
+  \end{equation}
+  \begin{equation}
+    \begin{aligned}
+      \mathbb{E}(|\sum_{i=1}^{n}X_{a+i}|^2) \\
+      \leq & \sum_{j,i = 1}^{n} \frac{\rho_{|j-i|}}{2}\mathbb{E}(X_j^2 + X_i^2)\\
+      =& \sum_{i=1}^{n} \sum_{j=1}^{n}\rho_{|j-i|}\mathbb{E}(X_i^2)\\
+      \leq & \sum_{i=1}^{n} \sum_{j=1}^{\infty} \rho_{|j-i|}\mathbb{E}(X_i^2)\\
+      \leq & \sum_{i=1}^{n} 2\sum_{k=0}^{\infty} \rho_k \mathbb{E}(X_i^2)\\
+      =& 2\sum_{k=0}^{\infty}\rho_k  \sum_{i=1}^{n}\mathbb{E}(X_i^2)\\
+      \leq & g(F_a^n)
+    \end{aligned}
+  \end{equation}
+  \begin{equation}
+    \begin{aligned}
+      \mathbb{E}(|\sum_{i=1}^{n}X_{a+i}|^2) \\
+      \leq & \sum_{j,i = 1}^{n} \frac{\rho_{|j-i|}}{2}\mathbb{E}(X_j^2 + X_i^2)\\
+      =& \sum_{i=1}^{n} \sum_{j=1}^{n}\rho_{|j-i|}\mathbb{E}(X_i^2)\\
+      \leq & \sum_{i=1}^{n} \sum_{j=1}^{\infty} \rho_{|j-i|}\mathbb{E}(X_i^2)\\
+      \leq & \sum_{i=1}^{n} 2\sum_{k=0}^{\infty} \rho_k \mathbb{E}(X_i^2)\\
+      =& 2\sum_{k=0}^{\infty}\rho_k  \sum_{i=1}^{n}\mathbb{E}(X_i^2)\\
+      \leq & g(F_a^n)
+    \end{aligned}
+  \end{equation}
+  \begin{equation}
+    \begin{aligned}
+      \mathbb{E}(|\sum_{i=1}^{n}X_{a+i}|^2) \\
+      \leq & \sum_{j,i = 1}^{n} \frac{\rho_{|j-i|}}{2}\mathbb{E}(X_j^2 + X_i^2)\\
+      =& \sum_{i=1}^{n} \sum_{j=1}^{n}\rho_{|j-i|}\mathbb{E}(X_i^2)\\
+      \leq & \sum_{i=1}^{n} \sum_{j=1}^{\infty} \rho_{|j-i|}\mathbb{E}(X_i^2)\\
+      \leq & \sum_{i=1}^{n} 2\sum_{k=0}^{\infty} \rho_k \mathbb{E}(X_i^2)\\
+      =& 2\sum_{k=0}^{\infty}\rho_k  \sum_{i=1}^{n}\mathbb{E}(X_i^2)\\
+      \leq & g(F_a^n)
+    \end{aligned}
+  \end{equation}
+  \begin{equation}
+    \begin{aligned}
+      \mathbb{E}(|\sum_{i=1}^{n}X_{a+i}|^2) \\
+      \leq & \sum_{j,i = 1}^{n} \frac{\rho_{|j-i|}}{2}\mathbb{E}(X_j^2 + X_i^2)\\
+      =& \sum_{i=1}^{n} \sum_{j=1}^{n}\rho_{|j-i|}\mathbb{E}(X_i^2)\\
+      \leq & \sum_{i=1}^{n} \sum_{j=1}^{\infty} \rho_{|j-i|}\mathbb{E}(X_i^2)\\
+      \leq & \sum_{i=1}^{n} 2\sum_{k=0}^{\infty} \rho_k \mathbb{E}(X_i^2)\\
+      =& 2\sum_{k=0}^{\infty}\rho_k  \sum_{i=1}^{n}\mathbb{E}(X_i^2)\\
+      \leq & g(F_a^n)
+    \end{aligned}
+  \end{equation}
+  \begin{equation}
+    \begin{aligned}
+      \mathbb{E}(|\sum_{i=1}^{n}X_{a+i}|^2) \\
+      \leq & \sum_{j,i = 1}^{n} \frac{\rho_{|j-i|}}{2}\mathbb{E}(X_j^2 + X_i^2)\\
+      =& \sum_{i=1}^{n} \sum_{j=1}^{n}\rho_{|j-i|}\mathbb{E}(X_i^2)\\
+      \leq & \sum_{i=1}^{n} \sum_{j=1}^{\infty} \rho_{|j-i|}\mathbb{E}(X_i^2)\\
+      \leq & \sum_{i=1}^{n} 2\sum_{k=0}^{\infty} \rho_k \mathbb{E}(X_i^2)\\
+      =& 2\sum_{k=0}^{\infty}\rho_k  \sum_{i=1}^{n}\mathbb{E}(X_i^2)\\
+      \leq & g(F_a^n)
+    \end{aligned}
+  \end{equation}
+  \begin{equation}
+    \begin{aligned}
+      \mathbb{E}(|\sum_{i=1}^{n}X_{a+i}|^2) \\
+      \leq & \sum_{j,i = 1}^{n} \frac{\rho_{|j-i|}}{2}\mathbb{E}(X_j^2 + X_i^2)\\
+      =& \sum_{i=1}^{n} \sum_{j=1}^{n}\rho_{|j-i|}\mathbb{E}(X_i^2)\\
+      \leq & \sum_{i=1}^{n} \sum_{j=1}^{\infty} \rho_{|j-i|}\mathbb{E}(X_i^2)\\
+      \leq & \sum_{i=1}^{n} 2\sum_{k=0}^{\infty} \rho_k \mathbb{E}(X_i^2)\\
+      =& 2\sum_{k=0}^{\infty}\rho_k  \sum_{i=1}^{n}\mathbb{E}(X_i^2)\\
+      \leq & g(F_a^n)
+    \end{aligned}
+  \end{equation}
+  \begin{equation}
+    \begin{aligned}
+      \mathbb{E}(|\sum_{i=1}^{n}X_{a+i}|^2) \\
+      \leq & \sum_{j,i = 1}^{n} \frac{\rho_{|j-i|}}{2}\mathbb{E}(X_j^2 + X_i^2)\\
+      =& \sum_{i=1}^{n} \sum_{j=1}^{n}\rho_{|j-i|}\mathbb{E}(X_i^2)\\
+      \leq & \sum_{i=1}^{n} \sum_{j=1}^{\infty} \rho_{|j-i|}\mathbb{E}(X_i^2)\\
+      \leq & \sum_{i=1}^{n} 2\sum_{k=0}^{\infty} \rho_k \mathbb{E}(X_i^2)\\
+      =& 2\sum_{k=0}^{\infty}\rho_k  \sum_{i=1}^{n}\mathbb{E}(X_i^2)\\
+      \leq & g(F_a^n)
+    \end{aligned}
+  \end{equation}
+  \begin{equation}
+    \begin{aligned}
+      \mathbb{E}(|\sum_{i=1}^{n}X_{a+i}|^2) \\
+      \leq & \sum_{j,i = 1}^{n} \frac{\rho_{|j-i|}}{2}\mathbb{E}(X_j^2 + X_i^2)\\
+      =& \sum_{i=1}^{n} \sum_{j=1}^{n}\rho_{|j-i|}\mathbb{E}(X_i^2)\\
+      \leq & \sum_{i=1}^{n} \sum_{j=1}^{\infty} \rho_{|j-i|}\mathbb{E}(X_i^2)\\
+      \leq & \sum_{i=1}^{n} 2\sum_{k=0}^{\infty} \rho_k \mathbb{E}(X_i^2)\\
+      =& 2\sum_{k=0}^{\infty}\rho_k  \sum_{i=1}^{n}\mathbb{E}(X_i^2)\\
+      \leq & g(F_a^n)
+    \end{aligned}
+  \end{equation}
+  \begin{equation}
+    \begin{aligned}
+      \mathbb{E}(|\sum_{i=1}^{n}X_{a+i}|^2) \\
+      \leq & \sum_{j,i = 1}^{n} \frac{\rho_{|j-i|}}{2}\mathbb{E}(X_j^2 + X_i^2)\\
+      =& \sum_{i=1}^{n} \sum_{j=1}^{n}\rho_{|j-i|}\mathbb{E}(X_i^2)\\
+      \leq & \sum_{i=1}^{n} \sum_{j=1}^{\infty} \rho_{|j-i|}\mathbb{E}(X_i^2)\\
+      \leq & \sum_{i=1}^{n} 2\sum_{k=0}^{\infty} \rho_k \mathbb{E}(X_i^2)\\
+      =& 2\sum_{k=0}^{\infty}\rho_k  \sum_{i=1}^{n}\mathbb{E}(X_i^2)\\
+      \leq & g(F_a^n)
+    \end{aligned}
+  \end{equation}
+  \begin{equation}
+    \begin{aligned}
+      \mathbb{E}(|\sum_{i=1}^{n}X_{a+i}|^2) \\
+      \leq & \sum_{j,i = 1}^{n} \frac{\rho_{|j-i|}}{2}\mathbb{E}(X_j^2 + X_i^2)\\
+      =& \sum_{i=1}^{n} \sum_{j=1}^{n}\rho_{|j-i|}\mathbb{E}(X_i^2)\\
+      \leq & \sum_{i=1}^{n} \sum_{j=1}^{\infty} \rho_{|j-i|}\mathbb{E}(X_i^2)\\
+      \leq & \sum_{i=1}^{n} 2\sum_{k=0}^{\infty} \rho_k \mathbb{E}(X_i^2)\\
+      =& 2\sum_{k=0}^{\infty}\rho_k  \sum_{i=1}^{n}\mathbb{E}(X_i^2)\\
+      \leq & g(F_a^n)
+    \end{aligned}
+  \end{equation}
+  \begin{equation}
+    \begin{aligned}
+      \mathbb{E}(|\sum_{i=1}^{n}X_{a+i}|^2) \\
+      \leq & \sum_{j,i = 1}^{n} \frac{\rho_{|j-i|}}{2}\mathbb{E}(X_j^2 + X_i^2)\\
+      =& \sum_{i=1}^{n} \sum_{j=1}^{n}\rho_{|j-i|}\mathbb{E}(X_i^2)\\
+      \leq & \sum_{i=1}^{n} \sum_{j=1}^{\infty} \rho_{|j-i|}\mathbb{E}(X_i^2)\\
+      \leq & \sum_{i=1}^{n} 2\sum_{k=0}^{\infty} \rho_k \mathbb{E}(X_i^2)\\
+      =& 2\sum_{k=0}^{\infty}\rho_k  \sum_{i=1}^{n}\mathbb{E}(X_i^2)\\
+      \leq & g(F_a^n)
+    \end{aligned}
+  \end{equation}
+  \begin{equation}
+    \begin{aligned}
+      \mathbb{E}(|\sum_{i=1}^{n}X_{a+i}|^2) \\
+      \leq & \sum_{j,i = 1}^{n} \frac{\rho_{|j-i|}}{2}\mathbb{E}(X_j^2 + X_i^2)\\
+      =& \sum_{i=1}^{n} \sum_{j=1}^{n}\rho_{|j-i|}\mathbb{E}(X_i^2)\\
+      \leq & \sum_{i=1}^{n} \sum_{j=1}^{\infty} \rho_{|j-i|}\mathbb{E}(X_i^2)\\
+      \leq & \sum_{i=1}^{n} 2\sum_{k=0}^{\infty} \rho_k \mathbb{E}(X_i^2)\\
+      =& 2\sum_{k=0}^{\infty}\rho_k  \sum_{i=1}^{n}\mathbb{E}(X_i^2)\\
+      \leq & g(F_a^n)
+    \end{aligned}
+  \end{equation}
+  \begin{equation}
+    \begin{aligned}
+      \mathbb{E}(|\sum_{i=1}^{n}X_{a+i}|^2) \\
+      \leq & \sum_{j,i = 1}^{n} \frac{\rho_{|j-i|}}{2}\mathbb{E}(X_j^2 + X_i^2)\\
+      =& \sum_{i=1}^{n} \sum_{j=1}^{n}\rho_{|j-i|}\mathbb{E}(X_i^2)\\
+      \leq & \sum_{i=1}^{n} \sum_{j=1}^{\infty} \rho_{|j-i|}\mathbb{E}(X_i^2)\\
+      \leq & \sum_{i=1}^{n} 2\sum_{k=0}^{\infty} \rho_k \mathbb{E}(X_i^2)\\
+      =& 2\sum_{k=0}^{\infty}\rho_k  \sum_{i=1}^{n}\mathbb{E}(X_i^2)\\
+      \leq & g(F_a^n)
+    \end{aligned}
+  \end{equation}
+  \begin{equation}
+    \begin{aligned}
+      \mathbb{E}(|\sum_{i=1}^{n}X_{a+i}|^2) \\
+      \leq & \sum_{j,i = 1}^{n} \frac{\rho_{|j-i|}}{2}\mathbb{E}(X_j^2 + X_i^2)\\
+      =& \sum_{i=1}^{n} \sum_{j=1}^{n}\rho_{|j-i|}\mathbb{E}(X_i^2)\\
+      \leq & \sum_{i=1}^{n} \sum_{j=1}^{\infty} \rho_{|j-i|}\mathbb{E}(X_i^2)\\
+      \leq & \sum_{i=1}^{n} 2\sum_{k=0}^{\infty} \rho_k \mathbb{E}(X_i^2)\\
+      =& 2\sum_{k=0}^{\infty}\rho_k  \sum_{i=1}^{n}\mathbb{E}(X_i^2)\\
+      \leq & g(F_a^n)
+    \end{aligned}
+  \end{equation}
+  \begin{equation}
+    \begin{aligned}
+      \mathbb{E}(|\sum_{i=1}^{n}X_{a+i}|^2) \\
+      \leq & \sum_{j,i = 1}^{n} \frac{\rho_{|j-i|}}{2}\mathbb{E}(X_j^2 + X_i^2)\\
+      =& \sum_{i=1}^{n} \sum_{j=1}^{n}\rho_{|j-i|}\mathbb{E}(X_i^2)\\
+      \leq & \sum_{i=1}^{n} \sum_{j=1}^{\infty} \rho_{|j-i|}\mathbb{E}(X_i^2)\\
+      \leq & \sum_{i=1}^{n} 2\sum_{k=0}^{\infty} \rho_k \mathbb{E}(X_i^2)\\
+      =& 2\sum_{k=0}^{\infty}\rho_k  \sum_{i=1}^{n}\mathbb{E}(X_i^2)\\
+      \leq & g(F_a^n)
+    \end{aligned}
+  \end{equation}
+  \begin{equation}
+    \begin{aligned}
+      \mathbb{E}(|\sum_{i=1}^{n}X_{a+i}|^2) \\
+      \leq & \sum_{j,i = 1}^{n} \frac{\rho_{|j-i|}}{2}\mathbb{E}(X_j^2 + X_i^2)\\
+      =& \sum_{i=1}^{n} \sum_{j=1}^{n}\rho_{|j-i|}\mathbb{E}(X_i^2)\\
+      \leq & \sum_{i=1}^{n} \sum_{j=1}^{\infty} \rho_{|j-i|}\mathbb{E}(X_i^2)\\
+      \leq & \sum_{i=1}^{n} 2\sum_{k=0}^{\infty} \rho_k \mathbb{E}(X_i^2)\\
+      =& 2\sum_{k=0}^{\infty}\rho_k  \sum_{i=1}^{n}\mathbb{E}(X_i^2)\\
+      \leq & g(F_a^n)
+    \end{aligned}
+  \end{equation}
+  \begin{equation}
+    \begin{aligned}
+      \mathbb{E}(|\sum_{i=1}^{n}X_{a+i}|^2) \\
+      \leq & \sum_{j,i = 1}^{n} \frac{\rho_{|j-i|}}{2}\mathbb{E}(X_j^2 + X_i^2)\\
+      =& \sum_{i=1}^{n} \sum_{j=1}^{n}\rho_{|j-i|}\mathbb{E}(X_i^2)\\
+      \leq & \sum_{i=1}^{n} \sum_{j=1}^{\infty} \rho_{|j-i|}\mathbb{E}(X_i^2)\\
+      \leq & \sum_{i=1}^{n} 2\sum_{k=0}^{\infty} \rho_k \mathbb{E}(X_i^2)\\
+      =& 2\sum_{k=0}^{\infty}\rho_k  \sum_{i=1}^{n}\mathbb{E}(X_i^2)\\
+      \leq & g(F_a^n)
+    \end{aligned}
+  \end{equation}
+  \begin{equation}
+    \begin{aligned}
+      \mathbb{E}(|\sum_{i=1}^{n}X_{a+i}|^2) \\
+      \leq & \sum_{j,i = 1}^{n} \frac{\rho_{|j-i|}}{2}\mathbb{E}(X_j^2 + X_i^2)\\
+      =& \sum_{i=1}^{n} \sum_{j=1}^{n}\rho_{|j-i|}\mathbb{E}(X_i^2)\\
+      \leq & \sum_{i=1}^{n} \sum_{j=1}^{\infty} \rho_{|j-i|}\mathbb{E}(X_i^2)\\
+      \leq & \sum_{i=1}^{n} 2\sum_{k=0}^{\infty} \rho_k \mathbb{E}(X_i^2)\\
+      =& 2\sum_{k=0}^{\infty}\rho_k  \sum_{i=1}^{n}\mathbb{E}(X_i^2)\\
+      \leq & g(F_a^n)
+    \end{aligned}
+  \end{equation}
+  \begin{equation}
+    \begin{aligned}
+      \mathbb{E}(|\sum_{i=1}^{n}X_{a+i}|^2) \\
+      \leq & \sum_{j,i = 1}^{n} \frac{\rho_{|j-i|}}{2}\mathbb{E}(X_j^2 + X_i^2)\\
+      =& \sum_{i=1}^{n} \sum_{j=1}^{n}\rho_{|j-i|}\mathbb{E}(X_i^2)\\
+      \leq & \sum_{i=1}^{n} \sum_{j=1}^{\infty} \rho_{|j-i|}\mathbb{E}(X_i^2)\\
+      \leq & \sum_{i=1}^{n} 2\sum_{k=0}^{\infty} \rho_k \mathbb{E}(X_i^2)\\
+      =& 2\sum_{k=0}^{\infty}\rho_k  \sum_{i=1}^{n}\mathbb{E}(X_i^2)\\
+      \leq & g(F_a^n)
+    \end{aligned}
+  \end{equation}
+  \begin{equation}
+    \begin{aligned}
+      \mathbb{E}(|\sum_{i=1}^{n}X_{a+i}|^2) \\
+      \leq & \sum_{j,i = 1}^{n} \frac{\rho_{|j-i|}}{2}\mathbb{E}(X_j^2 + X_i^2)\\
+      =& \sum_{i=1}^{n} \sum_{j=1}^{n}\rho_{|j-i|}\mathbb{E}(X_i^2)\\
+      \leq & \sum_{i=1}^{n} \sum_{j=1}^{\infty} \rho_{|j-i|}\mathbb{E}(X_i^2)\\
+      \leq & \sum_{i=1}^{n} 2\sum_{k=0}^{\infty} \rho_k \mathbb{E}(X_i^2)\\
+      =& 2\sum_{k=0}^{\infty}\rho_k  \sum_{i=1}^{n}\mathbb{E}(X_i^2)\\
+      \leq & g(F_a^n)
+    \end{aligned}
+  \end{equation}
+  \begin{equation}
+    \begin{aligned}
+      \mathbb{E}(|\sum_{i=1}^{n}X_{a+i}|^2) \\
+      \leq & \sum_{j,i = 1}^{n} \frac{\rho_{|j-i|}}{2}\mathbb{E}(X_j^2 + X_i^2)\\
+      =& \sum_{i=1}^{n} \sum_{j=1}^{n}\rho_{|j-i|}\mathbb{E}(X_i^2)\\
+      \leq & \sum_{i=1}^{n} \sum_{j=1}^{\infty} \rho_{|j-i|}\mathbb{E}(X_i^2)\\
+      \leq & \sum_{i=1}^{n} 2\sum_{k=0}^{\infty} \rho_k \mathbb{E}(X_i^2)\\
+      =& 2\sum_{k=0}^{\infty}\rho_k  \sum_{i=1}^{n}\mathbb{E}(X_i^2)\\
+      \leq & g(F_a^n)
+    \end{aligned}
+  \end{equation}
+  \begin{equation}
+    \begin{aligned}
+      \mathbb{E}(|\sum_{i=1}^{n}X_{a+i}|^2) \\
+      \leq & \sum_{j,i = 1}^{n} \frac{\rho_{|j-i|}}{2}\mathbb{E}(X_j^2 + X_i^2)\\
+      =& \sum_{i=1}^{n} \sum_{j=1}^{n}\rho_{|j-i|}\mathbb{E}(X_i^2)\\
+      \leq & \sum_{i=1}^{n} \sum_{j=1}^{\infty} \rho_{|j-i|}\mathbb{E}(X_i^2)\\
+      \leq & \sum_{i=1}^{n} 2\sum_{k=0}^{\infty} \rho_k \mathbb{E}(X_i^2)\\
+      =& 2\sum_{k=0}^{\infty}\rho_k  \sum_{i=1}^{n}\mathbb{E}(X_i^2)\\
+      \leq & g(F_a^n)
+    \end{aligned}
+  \end{equation}
+  \begin{equation}
+    \begin{aligned}
+      \mathbb{E}(|\sum_{i=1}^{n}X_{a+i}|^2) \\
+      \leq & \sum_{j,i = 1}^{n} \frac{\rho_{|j-i|}}{2}\mathbb{E}(X_j^2 + X_i^2)\\
+      =& \sum_{i=1}^{n} \sum_{j=1}^{n}\rho_{|j-i|}\mathbb{E}(X_i^2)\\
+      \leq & \sum_{i=1}^{n} \sum_{j=1}^{\infty} \rho_{|j-i|}\mathbb{E}(X_i^2)\\
+      \leq & \sum_{i=1}^{n} 2\sum_{k=0}^{\infty} \rho_k \mathbb{E}(X_i^2)\\
+      =& 2\sum_{k=0}^{\infty}\rho_k  \sum_{i=1}^{n}\mathbb{E}(X_i^2)\\
+      \leq & g(F_a^n)
+    \end{aligned}
+  \end{equation}
+  \begin{equation}
+    \begin{aligned}
+      \mathbb{E}(|\sum_{i=1}^{n}X_{a+i}|^2) \\
+      \leq & \sum_{j,i = 1}^{n} \frac{\rho_{|j-i|}}{2}\mathbb{E}(X_j^2 + X_i^2)\\
+      =& \sum_{i=1}^{n} \sum_{j=1}^{n}\rho_{|j-i|}\mathbb{E}(X_i^2)\\
+      \leq & \sum_{i=1}^{n} \sum_{j=1}^{\infty} \rho_{|j-i|}\mathbb{E}(X_i^2)\\
+      \leq & \sum_{i=1}^{n} 2\sum_{k=0}^{\infty} \rho_k \mathbb{E}(X_i^2)\\
+      =& 2\sum_{k=0}^{\infty}\rho_k  \sum_{i=1}^{n}\mathbb{E}(X_i^2)\\
+      \leq & g(F_a^n)
+    \end{aligned}
+  \end{equation}
+  \begin{equation}
+    \begin{aligned}
+      \mathbb{E}(|\sum_{i=1}^{n}X_{a+i}|^2) \\
+      \leq & \sum_{j,i = 1}^{n} \frac{\rho_{|j-i|}}{2}\mathbb{E}(X_j^2 + X_i^2)\\
+      =& \sum_{i=1}^{n} \sum_{j=1}^{n}\rho_{|j-i|}\mathbb{E}(X_i^2)\\
+      \leq & \sum_{i=1}^{n} \sum_{j=1}^{\infty} \rho_{|j-i|}\mathbb{E}(X_i^2)\\
+      \leq & \sum_{i=1}^{n} 2\sum_{k=0}^{\infty} \rho_k \mathbb{E}(X_i^2)\\
+      =& 2\sum_{k=0}^{\infty}\rho_k  \sum_{i=1}^{n}\mathbb{E}(X_i^2)\\
+      \leq & g(F_a^n)
+    \end{aligned}
+  \end{equation}
+  \begin{equation}
+    \begin{aligned}
+      \mathbb{E}(|\sum_{i=1}^{n}X_{a+i}|^2) \\
+      \leq & \sum_{j,i = 1}^{n} \frac{\rho_{|j-i|}}{2}\mathbb{E}(X_j^2 + X_i^2)\\
+      =& \sum_{i=1}^{n} \sum_{j=1}^{n}\rho_{|j-i|}\mathbb{E}(X_i^2)\\
+      \leq & \sum_{i=1}^{n} \sum_{j=1}^{\infty} \rho_{|j-i|}\mathbb{E}(X_i^2)\\
+      \leq & \sum_{i=1}^{n} 2\sum_{k=0}^{\infty} \rho_k \mathbb{E}(X_i^2)\\
+      =& 2\sum_{k=0}^{\infty}\rho_k  \sum_{i=1}^{n}\mathbb{E}(X_i^2)\\
+      \leq & g(F_a^n)
+    \end{aligned}
+  \end{equation}
+  \begin{equation}
+    \begin{aligned}
+      \mathbb{E}(|\sum_{i=1}^{n}X_{a+i}|^2) \\
+      \leq & \sum_{j,i = 1}^{n} \frac{\rho_{|j-i|}}{2}\mathbb{E}(X_j^2 + X_i^2)\\
+      =& \sum_{i=1}^{n} \sum_{j=1}^{n}\rho_{|j-i|}\mathbb{E}(X_i^2)\\
+      \leq & \sum_{i=1}^{n} \sum_{j=1}^{\infty} \rho_{|j-i|}\mathbb{E}(X_i^2)\\
+      \leq & \sum_{i=1}^{n} 2\sum_{k=0}^{\infty} \rho_k \mathbb{E}(X_i^2)\\
+      =& 2\sum_{k=0}^{\infty}\rho_k  \sum_{i=1}^{n}\mathbb{E}(X_i^2)\\
+      \leq & g(F_a^n)
+    \end{aligned}
+  \end{equation}
+  \begin{equation}
+    \begin{aligned}
+      \mathbb{E}(|\sum_{i=1}^{n}X_{a+i}|^2) \\
+      \leq & \sum_{j,i = 1}^{n} \frac{\rho_{|j-i|}}{2}\mathbb{E}(X_j^2 + X_i^2)\\
+      =& \sum_{i=1}^{n} \sum_{j=1}^{n}\rho_{|j-i|}\mathbb{E}(X_i^2)\\
+      \leq & \sum_{i=1}^{n} \sum_{j=1}^{\infty} \rho_{|j-i|}\mathbb{E}(X_i^2)\\
+      \leq & \sum_{i=1}^{n} 2\sum_{k=0}^{\infty} \rho_k \mathbb{E}(X_i^2)\\
+      =& 2\sum_{k=0}^{\infty}\rho_k  \sum_{i=1}^{n}\mathbb{E}(X_i^2)\\
+      \leq & g(F_a^n)
+    \end{aligned}
+  \end{equation}
+  \begin{equation}
+    \begin{aligned}
+      \mathbb{E}(|\sum_{i=1}^{n}X_{a+i}|^2) \\
+      \leq & \sum_{j,i = 1}^{n} \frac{\rho_{|j-i|}}{2}\mathbb{E}(X_j^2 + X_i^2)\\
+      =& \sum_{i=1}^{n} \sum_{j=1}^{n}\rho_{|j-i|}\mathbb{E}(X_i^2)\\
+      \leq & \sum_{i=1}^{n} \sum_{j=1}^{\infty} \rho_{|j-i|}\mathbb{E}(X_i^2)\\
+      \leq & \sum_{i=1}^{n} 2\sum_{k=0}^{\infty} \rho_k \mathbb{E}(X_i^2)\\
+      =& 2\sum_{k=0}^{\infty}\rho_k  \sum_{i=1}^{n}\mathbb{E}(X_i^2)\\
+      \leq & g(F_a^n)
+    \end{aligned}
+  \end{equation}
+  \begin{equation}
+    \begin{aligned}
+      \mathbb{E}(|\sum_{i=1}^{n}X_{a+i}|^2) \\
+      \leq & \sum_{j,i = 1}^{n} \frac{\rho_{|j-i|}}{2}\mathbb{E}(X_j^2 + X_i^2)\\
+      =& \sum_{i=1}^{n} \sum_{j=1}^{n}\rho_{|j-i|}\mathbb{E}(X_i^2)\\
+      \leq & \sum_{i=1}^{n} \sum_{j=1}^{\infty} \rho_{|j-i|}\mathbb{E}(X_i^2)\\
+      \leq & \sum_{i=1}^{n} 2\sum_{k=0}^{\infty} \rho_k \mathbb{E}(X_i^2)\\
+      =& 2\sum_{k=0}^{\infty}\rho_k  \sum_{i=1}^{n}\mathbb{E}(X_i^2)\\
+      \leq & g(F_a^n)
+    \end{aligned}
+  \end{equation}
+  \begin{equation}
+    \begin{aligned}
+      \mathbb{E}(|\sum_{i=1}^{n}X_{a+i}|^2) \\
+      \leq & \sum_{j,i = 1}^{n} \frac{\rho_{|j-i|}}{2}\mathbb{E}(X_j^2 + X_i^2)\\
+      =& \sum_{i=1}^{n} \sum_{j=1}^{n}\rho_{|j-i|}\mathbb{E}(X_i^2)\\
+      \leq & \sum_{i=1}^{n} \sum_{j=1}^{\infty} \rho_{|j-i|}\mathbb{E}(X_i^2)\\
+      \leq & \sum_{i=1}^{n} 2\sum_{k=0}^{\infty} \rho_k \mathbb{E}(X_i^2)\\
+      =& 2\sum_{k=0}^{\infty}\rho_k  \sum_{i=1}^{n}\mathbb{E}(X_i^2)\\
+      \leq & g(F_a^n)
+    \end{aligned}
+  \end{equation}
+  \begin{equation}
+    \begin{aligned}
+      \mathbb{E}(|\sum_{i=1}^{n}X_{a+i}|^2) \\
+      \leq & \sum_{j,i = 1}^{n} \frac{\rho_{|j-i|}}{2}\mathbb{E}(X_j^2 + X_i^2)\\
+      =& \sum_{i=1}^{n} \sum_{j=1}^{n}\rho_{|j-i|}\mathbb{E}(X_i^2)\\
+      \leq & \sum_{i=1}^{n} \sum_{j=1}^{\infty} \rho_{|j-i|}\mathbb{E}(X_i^2)\\
+      \leq & \sum_{i=1}^{n} 2\sum_{k=0}^{\infty} \rho_k \mathbb{E}(X_i^2)\\
+      =& 2\sum_{k=0}^{\infty}\rho_k  \sum_{i=1}^{n}\mathbb{E}(X_i^2)\\
+      \leq & g(F_a^n)
+    \end{aligned}
+  \end{equation}
+  \begin{equation}
+    \begin{aligned}
+      \mathbb{E}(|\sum_{i=1}^{n}X_{a+i}|^2) \\
+      \leq & \sum_{j,i = 1}^{n} \frac{\rho_{|j-i|}}{2}\mathbb{E}(X_j^2 + X_i^2)\\
+      =& \sum_{i=1}^{n} \sum_{j=1}^{n}\rho_{|j-i|}\mathbb{E}(X_i^2)\\
+      \leq & \sum_{i=1}^{n} \sum_{j=1}^{\infty} \rho_{|j-i|}\mathbb{E}(X_i^2)\\
+      \leq & \sum_{i=1}^{n} 2\sum_{k=0}^{\infty} \rho_k \mathbb{E}(X_i^2)\\
+      =& 2\sum_{k=0}^{\infty}\rho_k  \sum_{i=1}^{n}\mathbb{E}(X_i^2)\\
+      \leq & g(F_a^n)
+    \end{aligned}
+  \end{equation}
+  \begin{equation}
+    \begin{aligned}
+      \mathbb{E}(|\sum_{i=1}^{n}X_{a+i}|^2) \\
+      \leq & \sum_{j,i = 1}^{n} \frac{\rho_{|j-i|}}{2}\mathbb{E}(X_j^2 + X_i^2)\\
+      =& \sum_{i=1}^{n} \sum_{j=1}^{n}\rho_{|j-i|}\mathbb{E}(X_i^2)\\
+      \leq & \sum_{i=1}^{n} \sum_{j=1}^{\infty} \rho_{|j-i|}\mathbb{E}(X_i^2)\\
+      \leq & \sum_{i=1}^{n} 2\sum_{k=0}^{\infty} \rho_k \mathbb{E}(X_i^2)\\
+      =& 2\sum_{k=0}^{\infty}\rho_k  \sum_{i=1}^{n}\mathbb{E}(X_i^2)\\
+      \leq & g(F_a^n)
+    \end{aligned}
+  \end{equation}
+  \begin{equation}
+    \begin{aligned}
+      \mathbb{E}(|\sum_{i=1}^{n}X_{a+i}|^2) \\
+      \leq & \sum_{j,i = 1}^{n} \frac{\rho_{|j-i|}}{2}\mathbb{E}(X_j^2 + X_i^2)\\
+      =& \sum_{i=1}^{n} \sum_{j=1}^{n}\rho_{|j-i|}\mathbb{E}(X_i^2)\\
+      \leq & \sum_{i=1}^{n} \sum_{j=1}^{\infty} \rho_{|j-i|}\mathbb{E}(X_i^2)\\
+      \leq & \sum_{i=1}^{n} 2\sum_{k=0}^{\infty} \rho_k \mathbb{E}(X_i^2)\\
+      =& 2\sum_{k=0}^{\infty}\rho_k  \sum_{i=1}^{n}\mathbb{E}(X_i^2)\\
+      \leq & g(F_a^n)
+    \end{aligned}
+  \end{equation}
+  \begin{equation}
+    \begin{aligned}
+      \mathbb{E}(|\sum_{i=1}^{n}X_{a+i}|^2) \\
+      \leq & \sum_{j,i = 1}^{n} \frac{\rho_{|j-i|}}{2}\mathbb{E}(X_j^2 + X_i^2)\\
+      =& \sum_{i=1}^{n} \sum_{j=1}^{n}\rho_{|j-i|}\mathbb{E}(X_i^2)\\
+      \leq & \sum_{i=1}^{n} \sum_{j=1}^{\infty} \rho_{|j-i|}\mathbb{E}(X_i^2)\\
+      \leq & \sum_{i=1}^{n} 2\sum_{k=0}^{\infty} \rho_k \mathbb{E}(X_i^2)\\
+      =& 2\sum_{k=0}^{\infty}\rho_k  \sum_{i=1}^{n}\mathbb{E}(X_i^2)\\
+      \leq & g(F_a^n)
+    \end{aligned}
+  \end{equation}
+  \begin{equation}
+    \begin{aligned}
+      \mathbb{E}(|\sum_{i=1}^{n}X_{a+i}|^2) \\
+      \leq & \sum_{j,i = 1}^{n} \frac{\rho_{|j-i|}}{2}\mathbb{E}(X_j^2 + X_i^2)\\
+      =& \sum_{i=1}^{n} \sum_{j=1}^{n}\rho_{|j-i|}\mathbb{E}(X_i^2)\\
+      \leq & \sum_{i=1}^{n} \sum_{j=1}^{\infty} \rho_{|j-i|}\mathbb{E}(X_i^2)\\
+      \leq & \sum_{i=1}^{n} 2\sum_{k=0}^{\infty} \rho_k \mathbb{E}(X_i^2)\\
+      =& 2\sum_{k=0}^{\infty}\rho_k  \sum_{i=1}^{n}\mathbb{E}(X_i^2)\\
+      \leq & g(F_a^n)
+    \end{aligned}
+  \end{equation}
+  \begin{equation}
+    \begin{aligned}
+      \mathbb{E}(|\sum_{i=1}^{n}X_{a+i}|^2) \\
+      \leq & \sum_{j,i = 1}^{n} \frac{\rho_{|j-i|}}{2}\mathbb{E}(X_j^2 + X_i^2)\\
+      =& \sum_{i=1}^{n} \sum_{j=1}^{n}\rho_{|j-i|}\mathbb{E}(X_i^2)\\
+      \leq & \sum_{i=1}^{n} \sum_{j=1}^{\infty} \rho_{|j-i|}\mathbb{E}(X_i^2)\\
+      \leq & \sum_{i=1}^{n} 2\sum_{k=0}^{\infty} \rho_k \mathbb{E}(X_i^2)\\
+      =& 2\sum_{k=0}^{\infty}\rho_k  \sum_{i=1}^{n}\mathbb{E}(X_i^2)\\
+      \leq & g(F_a^n)
+    \end{aligned}
+  \end{equation}
+  \begin{equation}
+    \begin{aligned}
+      \mathbb{E}(|\sum_{i=1}^{n}X_{a+i}|^2) \\
+      \leq & \sum_{j,i = 1}^{n} \frac{\rho_{|j-i|}}{2}\mathbb{E}(X_j^2 + X_i^2)\\
+      =& \sum_{i=1}^{n} \sum_{j=1}^{n}\rho_{|j-i|}\mathbb{E}(X_i^2)\\
+      \leq & \sum_{i=1}^{n} \sum_{j=1}^{\infty} \rho_{|j-i|}\mathbb{E}(X_i^2)\\
+      \leq & \sum_{i=1}^{n} 2\sum_{k=0}^{\infty} \rho_k \mathbb{E}(X_i^2)\\
+      =& 2\sum_{k=0}^{\infty}\rho_k  \sum_{i=1}^{n}\mathbb{E}(X_i^2)\\
+      \leq & g(F_a^n)
+    \end{aligned}
+  \end{equation}
+  \begin{equation}
+    \begin{aligned}
+      \mathbb{E}(|\sum_{i=1}^{n}X_{a+i}|^2) \\
+      \leq & \sum_{j,i = 1}^{n} \frac{\rho_{|j-i|}}{2}\mathbb{E}(X_j^2 + X_i^2)\\
+      =& \sum_{i=1}^{n} \sum_{j=1}^{n}\rho_{|j-i|}\mathbb{E}(X_i^2)\\
+      \leq & \sum_{i=1}^{n} \sum_{j=1}^{\infty} \rho_{|j-i|}\mathbb{E}(X_i^2)\\
+      \leq & \sum_{i=1}^{n} 2\sum_{k=0}^{\infty} \rho_k \mathbb{E}(X_i^2)\\
+      =& 2\sum_{k=0}^{\infty}\rho_k  \sum_{i=1}^{n}\mathbb{E}(X_i^2)\\
+      \leq & g(F_a^n)
+    \end{aligned}
+  \end{equation}
+  \begin{equation}
+    \begin{aligned}
+      \mathbb{E}(|\sum_{i=1}^{n}X_{a+i}|^2) \\
+      \leq & \sum_{j,i = 1}^{n} \frac{\rho_{|j-i|}}{2}\mathbb{E}(X_j^2 + X_i^2)\\
+      =& \sum_{i=1}^{n} \sum_{j=1}^{n}\rho_{|j-i|}\mathbb{E}(X_i^2)\\
+      \leq & \sum_{i=1}^{n} \sum_{j=1}^{\infty} \rho_{|j-i|}\mathbb{E}(X_i^2)\\
+      \leq & \sum_{i=1}^{n} 2\sum_{k=0}^{\infty} \rho_k \mathbb{E}(X_i^2)\\
+      =& 2\sum_{k=0}^{\infty}\rho_k  \sum_{i=1}^{n}\mathbb{E}(X_i^2)\\
+      \leq & g(F_a^n)
+    \end{aligned}
+  \end{equation}
+  \begin{equation}
+    \begin{aligned}
+      \mathbb{E}(|\sum_{i=1}^{n}X_{a+i}|^2) \\
+      \leq & \sum_{j,i = 1}^{n} \frac{\rho_{|j-i|}}{2}\mathbb{E}(X_j^2 + X_i^2)\\
+      =& \sum_{i=1}^{n} \sum_{j=1}^{n}\rho_{|j-i|}\mathbb{E}(X_i^2)\\
+      \leq & \sum_{i=1}^{n} \sum_{j=1}^{\infty} \rho_{|j-i|}\mathbb{E}(X_i^2)\\
+      \leq & \sum_{i=1}^{n} 2\sum_{k=0}^{\infty} \rho_k \mathbb{E}(X_i^2)\\
+      =& 2\sum_{k=0}^{\infty}\rho_k  \sum_{i=1}^{n}\mathbb{E}(X_i^2)\\
+      \leq & g(F_a^n)
+    \end{aligned}
+  \end{equation}
+  \begin{equation}
+    \begin{aligned}
+      \mathbb{E}(|\sum_{i=1}^{n}X_{a+i}|^2) \\
+      \leq & \sum_{j,i = 1}^{n} \frac{\rho_{|j-i|}}{2}\mathbb{E}(X_j^2 + X_i^2)\\
+      =& \sum_{i=1}^{n} \sum_{j=1}^{n}\rho_{|j-i|}\mathbb{E}(X_i^2)\\
+      \leq & \sum_{i=1}^{n} \sum_{j=1}^{\infty} \rho_{|j-i|}\mathbb{E}(X_i^2)\\
+      \leq & \sum_{i=1}^{n} 2\sum_{k=0}^{\infty} \rho_k \mathbb{E}(X_i^2)\\
+      =& 2\sum_{k=0}^{\infty}\rho_k  \sum_{i=1}^{n}\mathbb{E}(X_i^2)\\
+      \leq & g(F_a^n)
+    \end{aligned}
+  \end{equation}
+  \begin{equation}
+    \begin{aligned}
+      \mathbb{E}(|\sum_{i=1}^{n}X_{a+i}|^2) \\
+      \leq & \sum_{j,i = 1}^{n} \frac{\rho_{|j-i|}}{2}\mathbb{E}(X_j^2 + X_i^2)\\
+      =& \sum_{i=1}^{n} \sum_{j=1}^{n}\rho_{|j-i|}\mathbb{E}(X_i^2)\\
+      \leq & \sum_{i=1}^{n} \sum_{j=1}^{\infty} \rho_{|j-i|}\mathbb{E}(X_i^2)\\
+      \leq & \sum_{i=1}^{n} 2\sum_{k=0}^{\infty} \rho_k \mathbb{E}(X_i^2)\\
+      =& 2\sum_{k=0}^{\infty}\rho_k  \sum_{i=1}^{n}\mathbb{E}(X_i^2)\\
+      \leq & g(F_a^n)
+    \end{aligned}
+  \end{equation}
+  \begin{equation}
+    \begin{aligned}
+      \mathbb{E}(|\sum_{i=1}^{n}X_{a+i}|^2) \\
+      \leq & \sum_{j,i = 1}^{n} \frac{\rho_{|j-i|}}{2}\mathbb{E}(X_j^2 + X_i^2)\\
+      =& \sum_{i=1}^{n} \sum_{j=1}^{n}\rho_{|j-i|}\mathbb{E}(X_i^2)\\
+      \leq & \sum_{i=1}^{n} \sum_{j=1}^{\infty} \rho_{|j-i|}\mathbb{E}(X_i^2)\\
+      \leq & \sum_{i=1}^{n} 2\sum_{k=0}^{\infty} \rho_k \mathbb{E}(X_i^2)\\
+      =& 2\sum_{k=0}^{\infty}\rho_k  \sum_{i=1}^{n}\mathbb{E}(X_i^2)\\
+      \leq & g(F_a^n)
+    \end{aligned}
+  \end{equation}
+  \begin{equation}
+    \begin{aligned}
+      \mathbb{E}(|\sum_{i=1}^{n}X_{a+i}|^2) \\
+      \leq & \sum_{j,i = 1}^{n} \frac{\rho_{|j-i|}}{2}\mathbb{E}(X_j^2 + X_i^2)\\
+      =& \sum_{i=1}^{n} \sum_{j=1}^{n}\rho_{|j-i|}\mathbb{E}(X_i^2)\\
+      \leq & \sum_{i=1}^{n} \sum_{j=1}^{\infty} \rho_{|j-i|}\mathbb{E}(X_i^2)\\
+      \leq & \sum_{i=1}^{n} 2\sum_{k=0}^{\infty} \rho_k \mathbb{E}(X_i^2)\\
+      =& 2\sum_{k=0}^{\infty}\rho_k  \sum_{i=1}^{n}\mathbb{E}(X_i^2)\\
+      \leq & g(F_a^n)
+    \end{aligned}
+  \end{equation}
+  \(\alpha \beta \gamma \delta \varepsilon \varepsilon \varepsilon \varepsilon \varepsilon \varepsilon\)
 
   于是我们可以直接用引理7.3.1完成证明。
 \end{remark}
