@@ -1,0 +1,262 @@
+%!Mode:: "TeX:UTF-8"
+%!TEX TS-program = xelatex
+%arara: xelatex
+\documentclass{ctexart}
+\newif\ifpreface
+\prefacetrue
+\input{../../../global/all}
+\begin{document}
+\large
+\setlength{\baselineskip}{1.2em}
+\ifpreface
+\input{../../../global/preface}
+\newgeometry{left=2cm,right=2cm,top=2cm,bottom=2cm}
+\else
+\newgeometry{left=2cm,right=2cm,top=2cm,bottom=2cm}
+\maketitle
+\fi
+%from_here_to_type
+如无特殊说明，我们总认为
+\[
+  X=\{\Omega,\mathscr{F},\mathscr{F}_n,X_n,\theta_n,\mathbb P^x\}
+\]
+是时间集 \(T=\mathbb N\)、状态空间 \(E\) 离散的 Markov 链。其转移函数为
+\(p(x,y)\)。
+
+对于任意 \(x\in E\)，记
+\[
+  \tau_x^+ := \inf\{n\ge 1:X_n=x\}
+\]
+表示 \(x\) 的首中时。定义
+\[
+  \tau_x^{(1)}:=\tau_x^+,
+  \qquad
+  \tau_x^{(k)}
+  :=
+  \inf\{n>\tau_x^{(k-1)}:X_n=x\},
+  \quad k\ge2.
+\]
+
+\begin{problem}
+  证明：\(\tau_x^{(k)}\) 是 \(\mathscr F_n\)-停时。
+\end{problem}
+
+\begin{solution}
+
+  我们对 \(k\) 做归纳。
+
+  首先，
+  \[
+    \tau_x^{(1)}
+    =
+    \tau_x^+
+    =
+    \inf\{n\ge1:X_n=x\}.
+  \]
+  对任意 \(n\ge1\)，有
+  \[
+    \{\tau_x^{(1)}=n\}
+    =
+    \{X_1\neq x,\dots,X_{n-1}\neq x,X_n=x\}.
+  \]
+  由于 \(X_i\) 是 \(\mathscr F_i\)-可测且
+  \(\mathscr F_i\subseteq\mathscr F_n\)，故
+  \[
+    \{\tau_x^{(1)}=n\}\in\mathscr F_n.
+  \]
+  于是
+  \[
+    \{\tau_x^{(1)}\le n\}
+    =
+    \bigcup_{m=1}^n
+    \{\tau_x^{(1)}=m\}
+    \in\mathscr F_n,
+  \]
+  因此 \(\tau_x^{(1)}\) 是停时。
+
+  假设 \(\tau_x^{(k-1)}\) 是停时。考虑
+  \[
+    \tau_x^{(k)}
+    =
+    \inf\{n>\tau_x^{(k-1)}:X_n=x\}.
+  \]
+
+  对任意 \(n\)，有
+  \[
+    \{\tau_x^{(k)}=n\}
+    =
+    \bigcup_{m=1}^{n-1}
+    \Big(
+      \{\tau_x^{(k-1)}=m\}
+      \cap
+      \{X_{m+1}\neq x,\dots,X_{n-1}\neq x,X_n=x\}
+    \Big).
+  \]
+  由归纳假设，
+  \(\{\tau_x^{(k-1)}=m\}\in\mathscr F_m\subseteq\mathscr F_n\)，
+  而后面的事件显然属于 \(\mathscr F_n\)，故
+  \[
+    \{\tau_x^{(k)}=n\}\in\mathscr F_n.
+  \]
+  于是
+  \[
+    \{\tau_x^{(k)}\le n\}
+    =
+    \bigcup_{r=1}^n
+    \{\tau_x^{(k)}=r\}
+    \in\mathscr F_n.
+  \]
+  因此 \(\tau_x^{(k)}\) 是 \(\mathscr F_n\)-停时。
+
+\end{solution}
+
+\begin{problem}\label{pro:1}
+  假设 \(x\) 可达 \(y\)，且 \(x\) 常返。证明：
+
+  \begin{enumerate}[label=(\arabic*)]
+    \item
+      \[
+        \mathbb P^x(\tau_y^+<\infty)
+        =
+        \mathbb P^y(\tau_x^+<\infty)
+        =
+        1.
+      \]
+      特别地，\(x,y\) 互达。
+
+    \item
+      \(y\) 也常返。
+  \end{enumerate}
+\end{problem}
+
+\begin{solution}
+
+  由于 \(x\to y\)，存在某个 \(m\ge1\)，使得
+  \[
+    p^{(m)}(x,y)>0.
+  \]
+
+  \begin{enumerate}
+    \item
+      因为 \(x\) 常返，
+      \[
+        \mathbb P^x(\tau_x^+<\infty)=1.
+      \]
+      并且从 \(x\) 出发会无穷次返回 \(x\)。
+
+      每次回到 \(x\) 后，在接下来的 \(m\) 步内到达 \(y\) 的概率至少为
+      \[
+        p^{(m)}(x,y)>0.
+      \]
+      利用强 Markov 性，链每次回到 \(x\) 后都会重新开始，因此若始终不访问 \(y\)，其概率至多为
+      \[
+        \lim_{n\to\infty}(1-p^{(m)}(x,y))^n=0.
+      \]
+      故
+      \[
+        \mathbb P^x(\tau_y^+<\infty)=1.
+      \]
+
+      接下来证明
+      \[
+        \mathbb P^y(\tau_x^+<\infty)=1.
+      \]
+
+      设
+      \[
+        a=\mathbb P^y(\tau_x^+<\infty).
+      \]
+      由全概率公式，
+      \[
+        1
+        =
+        \mathbb P^x(\tau_y^+<\infty)
+        \le
+        \mathbb P^x(\tau_y^+<\infty,\tau_x^+\circ\theta_{\tau_y^+}<\infty).
+      \]
+      利用强 Markov 性，
+      \[
+        \mathbb P^x(\tau_x^+\circ\theta_{\tau_y^+}<\infty
+          \mid
+        \mathscr F_{\tau_y^+})
+        =
+        \mathbb P^y(\tau_x^+<\infty)
+        =a.
+      \]
+      因此
+      \[
+        1\le a,
+      \]
+      故 \(a=1\)。
+
+      于是
+      \[
+        \mathbb P^y(\tau_x^+<\infty)=1.
+      \]
+      所以 \(y\to x\)，即 \(x,y\) 互达。
+    \item
+      由于已经证明 \(y\leftrightarrow x\)，故存在 \(n\ge1\) 使得
+      \[
+        p^{(n)}(y,x)>0.
+      \]
+
+      从 \(y\) 出发，几乎必然到达 \(x\)，而 \(x\) 出发几乎必然回到\(y \)，
+      故：
+      \[
+        \mathbb{P}^y(\tau_y^+<\infty)\geq \mathbb{P}^y(\tau_x^+<\infty, \tau_y^+ \circ \theta_{\tau_x^+}<\infty ) = \mathbb{P}^y(\tau_x^+<\infty) \mathbb{P}^x(\tau_y^+<\infty) = 1
+      \]。
+
+      故
+      \[
+        \mathbb P^y(\tau_y^+<\infty)=1,
+      \]
+      即 \(y\) 常返。
+  \end{enumerate}
+
+\end{solution}
+
+\begin{problem}
+  假设 \(x\) 常返。证明：对于任意 \(k\ge1\),
+  \[
+    \mathbb P^x(\tau_x^+\circ\theta_k<\infty)=1.
+  \]
+\end{problem}
+
+\begin{solution}
+
+  由于 \(x\) 常返，
+  \[
+    \mathbb P^x(\tau_x^+<\infty)=1.
+  \]
+
+  考虑时刻 \(k\) 之后的过程。由 Markov 性，
+  在给定 \(X_k=y\) 的条件下，
+  \[
+    \mathbb P^x(\tau_x^+\circ\theta_k<\infty\mid X_k=y)
+    =
+    \mathbb P^y(\tau_x^+<\infty).
+  \]
+
+  由于 \(x\) 常返，由\ref{pro:1}可得
+  \[
+    \mathbb P^y(\tau_x^+<\infty)=1
+  \]
+  对所有满足 \(\mathbb{P} (y=X_k)>0\) 的\(y \) 成立。
+
+  于是
+  \[
+    \mathbb P^x(\tau_x^+\circ\theta_k<\infty)
+    =
+    \sum_{y\in E}
+    \mathbb P^x(X_k=y)
+    \mathbb P^y(\tau_x^+<\infty)
+    =
+    \sum_{y\in E}\mathbb P^x(X_k=y)
+    =
+    1.
+  \]
+
+  故结论成立。
+
+\end{solution}
+\end{document}
