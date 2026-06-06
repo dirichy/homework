@@ -1,0 +1,123 @@
+%!Mode:: "TeX:UTF-8"
+%!TEX TS-program = xelatex
+%arara: xelatex
+\documentclass{ctexart}
+\newif\ifpreface
+\prefacetrue
+\input{../../../global/all}
+\begin{document}
+\large
+\setlength{\baselineskip}{1.2em}
+\ifpreface
+\input{../../../global/preface}
+\newgeometry{left=2cm,right=2cm,top=2cm,bottom=2cm}
+\else
+\newgeometry{left=2cm,right=2cm,top=2cm,bottom=2cm}
+\maketitle
+\fi
+%from_here_to_type
+\begin{problem}\label{pro:1}
+  \begin{enumerate}
+    \item  \(p_{xy}(t)\)是次马氏的转移函数, 即满足讲义上的(a,b',c),
+      \(p_{xy}(t), x,y\in E\cup \{\partial\}\)是马氏转移函数, 即满足讲义上的(a,b,c).
+    \item  \(p_{xy}(t)\)是标准的, 即满足讲义中的(d),  \(p_{xy}(t)\)也是标准的.
+  \end{enumerate}
+\end{problem}
+
+\begin{solution}
+  \begin{enumerate}
+    \item
+
+      设加入坟墓点 $\partial\notin E$ 后定义
+      \[
+        p_{x\partial}(t)=1-\sum_{y\in E}p_{xy}(t),\qquad
+        p_{\partial\partial}(t)=1,\qquad
+        p_{\partial y}(t)=0\ (y\in E).
+      \]
+
+      由次马氏性知 $\sum_{y\in E}p_{xy}(t)\le 1$，故
+      $p_{x\partial}(t)\ge 0$，从而对任意
+      $x,y\in E\cup\{\partial\}$ 都有 $p_{xy}(t)\ge 0$。
+
+      对于任意 $x\in E$，
+      \[
+        \sum_{y\in E\cup\{\partial\}}p_{xy}(t)
+        =\sum_{y\in E}p_{xy}(t)+p_{x\partial}(t)=1.
+      \]
+      而
+      \[
+        \sum_{y\in E\cup\{\partial\}}p_{\partial y}(t)
+        =p_{\partial\partial}(t)=1.
+      \]
+      因此满足条件 (b)。
+
+      下面验证 Chapman--Kolmogorov 方程。
+
+      若 $x,y\in E$，则
+      \[
+        \sum_{z\in E\cup\{\partial\}}p_{xz}(s)p_{zy}(t)
+        =\sum_{z\in E}p_{xz}(s)p_{zy}(t)
+        +p_{x\partial}(s)p_{\partial y}(t)
+        =p_{xy}(s+t),
+      \]
+      因为 $p_{\partial y}(t)=0$。
+
+      若 $x=\partial$，则
+      \[
+        \sum_{z\in E\cup\{\partial\}}p_{\partial z}(s)p_{zy}(t)
+        =p_{\partial\partial}(s)p_{\partial y}(t)
+        =p_{\partial y}(s+t).
+      \]
+
+      最后考虑 $y=\partial$。由概率守恒，
+      \[
+        \begin{aligned}
+          \sum_{z\in E\cup\{\partial\}}p_{xz}(s)p_{z\partial}(t)
+          &=\sum_{z\in E\cup\{\partial\}}p_{xz}(s)
+          \left(1-\sum_{u\in E}p_{zu}(t)\right)\\
+          &=1-\sum_{u\in E}
+          \sum_{z\in E\cup\{\partial\}}p_{xz}(s)p_{zu}(t)\\
+          &=1-\sum_{u\in E}p_{xu}(s+t)
+          =p_{x\partial}(s+t).
+        \end{aligned}
+      \]
+      故 Chapman--Kolmogorov 方程成立。
+
+      因此补充后的 $\{p_{xy}(t)\}$ 满足 (a)、(b)、(c)，从而是马氏转移函数。
+
+    \item
+
+      设原转移函数是标准的，即对任意 $x,y\in E$，
+      $\lim_{t\downarrow0}p_{xy}(t)=\delta_{xy}$。
+
+      对于 $x,y\in E$，补充后的转移函数与原来一致，因此仍有
+      $\lim_{t\downarrow0}p_{xy}(t)=\delta_{xy}$。
+
+      对于 $x\in E$，
+      \[
+        p_{x\partial}(t)
+        =1-\sum_{y\in E}p_{xy}(t),
+      \]
+      故
+      \[
+        \lim_{t\downarrow0}p_{x\partial}(t)
+        \leq 1-\lim_{t \downarrow 0} p_{xx}(t) = 0
+      \]
+      ，又\(p_{x \partial } \geq 0  \)，故\(\lim_{t \downarrow 0}p_{x \partial}(t) = 0 \)
+
+      又因为 $p_{\partial\partial}(t)=1$ 且
+      $p_{\partial y}(t)=0$（$y\in E$），故
+      \[
+        \lim_{t\downarrow0}p_{\partial\partial}(t)=1,
+        \qquad
+        \lim_{t\downarrow0}p_{\partial y}(t)=0.
+      \]
+
+      因此对任意 $x,y\in E\cup\{\partial\}$，
+      \[
+        \lim_{t\downarrow0}p_{xy}(t)=\delta_{xy},
+      \]
+      即补充后的转移函数仍然是标准的。
+  \end{enumerate}
+\end{solution}
+\end{document}
