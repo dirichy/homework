@@ -1,0 +1,338 @@
+%!Mode:: "TeX:UTF-8"
+%!TEX TS-program = xelatex
+%arara: xelatex
+\documentclass{ctexart}
+\newif\ifpreface
+\prefacetrue
+\input{../../../global/all}
+\begin{document}
+\large
+\setlength{\baselineskip}{1.2em}
+\ifpreface
+\input{../../../global/preface}
+\newgeometry{left=2cm,right=2cm,top=2cm,bottom=2cm}
+\else
+\newgeometry{left=2cm,right=2cm,top=2cm,bottom=2cm}
+\maketitle
+\fi
+%from_here_to_type
+\begin{problem}\label{pro:1.0.8}
+  对于 \(d\ge1\)，令 \(X=(Y,\xi)\) 表示从原点出发的 \(d+1\) 维对称简单随机游动，其中
+  \(Y\in\mathbb Z^d\) 表示前 \(d\) 个分量，而 \(\xi\in\mathbb Z\) 表示第 \(d+1\) 个分量。
+
+  记
+  \[
+    T_0:=0,\qquad
+    T_k:=\inf\{n>T_{k-1}:Y_n\neq Y_{T_{k-1}}\},\quad k\ge1.
+  \]
+
+  证明下述结论：
+  \begin{enumerate}
+    \item \(T_k\) 是有限 \(\mathcal F_n\)-停时；
+    \item 令 \(\eta_n:=Y_n-Y_{n-1}\)，证明 \(\{\eta_n:n\ge1\}\) 相互独立；
+    \item 记 \(\mathcal G_n:=\sigma(\eta_1,\dots,\eta_n)\)。任取 a.s. 有限的 \(\mathcal G_n\)-停时 \(T(\ge1)\)，证明 \(\mathcal G_T\) 与 \(\sigma(\eta_{T+n}:n\ge1)\) 独立，并且
+      \[
+        (\eta_{T+n})_{n\ge1}\overset d=(\eta_n)_{n\ge1};
+      \]
+    \item 记 \(\widetilde Y_k:=Y_{T_k}\)，以及 \(\widetilde\eta_k:=\widetilde Y_k-\widetilde Y_{k-1}\)。证明 \(\{\widetilde\eta_k:k\ge1\}\) 独立同分布，并且
+      \[
+        \mathbb{P}(\widetilde\eta_k=\pm e_i)=\frac1{2d},\qquad i=1,\dots,d;
+      \]
+    \item 若 \(\tau^{(d)}:=\inf\{k\ge1:\widetilde Y_k=0\}\)，而 \(\tau^{(d+1)}\) 表示 \(X\) 首次返回原点的时刻，证明
+      \[
+        \mathbb{P}(\tau^{(d+1)}<\infty)\le \mathbb{P}(\tau^{(d)}<\infty);
+      \]
+    \item 若 \(d\)-维对称简单随机游动暂留，则 \(d+1\)-维对称简单随机游动也暂留。
+  \end{enumerate}
+\end{problem}
+
+\begin{solution}
+  \begin{enumerate}
+    \item
+      先证明 \(T_k\) 是 \(\mathcal F_n\)-停时。对 \(k\) 用归纳法。
+
+      当 \(k=0\) 时，\(T_0=0\) 显然是停时。假设 \(T_{k-1}\) 是停时。则对任意 \(n\ge0\)，
+      \[
+        \{T_k\le n\}
+        =
+        \bigcup_{m=0}^{n-1}
+        \Big(
+          \{T_{k-1}=m\}
+          \cap
+          \{\exists j\in\{m+1,\dots,n\}:Y_j\neq Y_m\}
+        \Big).
+      \]
+      由归纳假设，\(\{T_{k-1}=m\}\in\mathcal F_m\subset\mathcal F_n\)，而
+      \(\{\exists j\in\{m+1,\dots,n\}:Y_j\neq Y_m\}\in\mathcal F_n\)，故 \(\{T_k\le n\}\in\mathcal F_n\)。因此 \(T_k\) 是停时。
+
+      再证明 \(T_k<\infty\) a.s.。每一步中 \(Y\) 发生变化的概率为 \(d/(d+1)>0\)，因此从任意时刻开始，等待 \(Y\) 下一次变化的时间服从参数 \(d/(d+1)\) 的几何分布，故几乎处处有限。由归纳法可知，对所有 \(k\ge1\)，\(T_k<\infty\) a.s.
+
+    \item
+      令 \(\Delta X_n:=X_n-X_{n-1}\)。由于 \(X\) 是 \(d+1\) 维对称简单随机游动，\(\{\Delta X_n:n\ge1\}\) 相互独立。
+
+      又因为
+      \[
+        \eta_n=Y_n-Y_{n-1}
+      \]
+      是 \(\Delta X_n\) 的前 \(d\) 个坐标构成的随机变量，所以
+      \[
+        \sigma(\eta_n)\subset \sigma(\Delta X_n).
+      \]
+      而 \(\{\sigma(\Delta X_n):n\ge1\}\) 相互独立，因此较小的 \(\sigma\)-代数族 \(\{\sigma(\eta_n):n\ge1\}\) 也相互独立。故 \(\{\eta_n:n\ge1\}\) 相互独立。
+
+    \item
+      由于 \(\{\eta_n:n\ge1\}\) 是独立序列，对任意 \(m\ge1\)，\(\sigma(\eta_1,\dots,\eta_m)\) 与 \(\sigma(\eta_{m+1},\eta_{m+2},\dots)\) 独立，并且
+      \[
+        (\eta_{m+n})_{n\ge1}\overset d=(\eta_n)_{n\ge1}.
+      \]
+
+      下面对停时 \(T\) 分解。任取 \(A\in\mathcal G_T\)，以及只依赖有限多个坐标的事件
+      \[
+        B=\{(\eta_{T+1},\dots,\eta_{T+r})\in C\}.
+      \]
+      因为 \(T\) 是 \(\mathcal G_n\)-停时，所以 \(\{T=m\}\in\mathcal G_m\)。又由 \(A\in\mathcal G_T\) 可知 \(A\cap\{T=m\}\in\mathcal G_m\)。于是
+      \[
+        \mathbb{P}(A\cap B)
+        =
+        \sum_{m\ge1}
+        \mathbb{P}\big(A\cap\{T=m\},(\eta_{m+1},\dots,\eta_{m+r})\in C\big).
+      \]
+      由独立性，
+      \[
+        \mathbb{P}(A\cap B)
+        =
+        \sum_{m\ge1}
+        \mathbb{P}(A\cap\{T=m\})
+        \mathbb{P}\big((\eta_{m+1},\dots,\eta_{m+r})\in C\big).
+      \]
+      又因为 \(\{\eta_n\}\) 同分布，
+      \[
+        \mathbb{P}\big((\eta_{m+1},\dots,\eta_{m+r})\in C\big)
+        =
+        \mathbb{P}\big((\eta_1,\dots,\eta_r)\in C\big).
+      \]
+      因此
+      \[
+        \mathbb{P}(A\cap B)
+        =
+        \mathbb{P}(A)\mathbb{P}\big((\eta_1,\dots,\eta_r)\in C\big).
+      \]
+      由柱状事件生成定理可知，\(\mathcal G_T\) 与 \(\sigma(\eta_{T+n}:n\ge1)\) 独立，并且
+      \[
+        (\eta_{T+n})_{n\ge1}\overset d=(\eta_n)_{n\ge1}.
+      \]
+
+    \item
+      注意到 \(T_k\) 是 \(Y\) 第 \(k\) 次发生变化的时刻，因此
+      \[
+        \widetilde\eta_k=\widetilde Y_k-\widetilde Y_{k-1}
+        =
+        Y_{T_k}-Y_{T_{k-1}}
+        \in\{\pm e_1,\dots,\pm e_d\}.
+      \]
+
+      先求分布。对任意 \(i=1,\dots,d\)，在 \(X\) 的一步移动中，沿 \(+e_i\) 或 \(-e_i\) 方向移动的概率均为 \(1/(2d+2)\)，而 \(Y\) 发生变化的概率为 \(2d/(2d+2)=d/(d+1)\)。因此条件于 \(Y\) 发生变化，有
+      \[
+        \mathbb{P}(\widetilde\eta_k=e_i)
+        =
+        \mathbb{P}(\widetilde\eta_k=-e_i)
+        =
+        \frac{1/(2d+2)}{d/(d+1)}
+        =
+        \frac1{2d}.
+      \]
+
+      再证独立性。由第 (3) 问可知，在任意有限停时之后，未来的 \((\eta_n)\) 与过去独立，且分布不变。由于 \(T_k\) 是由 \((\eta_n)\) 决定的有限停时，故从 \(T_k\) 之后开始，等待下一次非零 \(\eta_n\) 的过程与从初始时刻开始同分布，并且与过去独立。于是
+      \[
+        \widetilde\eta_{k+1}
+      \]
+      与 \(\sigma(\widetilde\eta_1,\dots,\widetilde\eta_k)\) 独立，且分布与 \(\widetilde\eta_1\) 相同。
+
+      对 \(k\) 归纳可得，\(\{\widetilde\eta_k:k\ge1\}\) 独立同分布，且
+      \[
+        \mathbb{P}(\widetilde\eta_k=\pm e_i)=\frac1{2d},\qquad i=1,\dots,d.
+      \]
+      因此 \(\widetilde Y_k\) 是 \(d\)-维对称简单随机游动。
+
+    \item
+      若 \(X_n=(Y_n,\xi_n)\) 返回原点，则必有 \(Y_n=0\)。而 \(Y_n=0\) 只可能对应于某个嵌入时刻 \(T_k\) 下的 \(\widetilde Y_k=0\)。因此
+      \[
+        \{\tau^{(d+1)}<\infty\}\subset\{\tau^{(d)}<\infty\}.
+      \]
+      取概率即得
+      \[
+        \mathbb{P}(\tau^{(d+1)}<\infty)\le \mathbb{P}(\tau^{(d)}<\infty).
+      \]
+
+    \item
+      若 \(d\)-维对称简单随机游动暂留，则
+      \[
+        \mathbb{P}(\tau^{(d)}<\infty)<1.
+      \]
+      由第 (5) 问，
+      \[
+        \mathbb{P}(\tau^{(d+1)}<\infty)\le \mathbb{P}(\tau^{(d)}<\infty)<1.
+      \]
+      因此 \(d+1\)-维对称简单随机游动也暂留。
+
+  \end{enumerate}
+\end{solution}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{problem}\label{pro:1.0.9}
+  考虑以 \(p\) 为转移函数的马氏链。假设 \(x\in E\) 为常返态。
+
+  记 \(\tau_x^{(n)}\) 为第 \(n\) 次到达 \(x\) 的时刻，且 \(\tau_x^{(0)}:=0\)。定义
+  \[
+    \sigma_n:=\tau_x^{(n)}-\tau_x^{(n-1)},\qquad n\ge1.
+  \]
+
+  证明：\(\{\sigma_n:n\ge1\}\) 独立同分布，且其分布与 \(\tau_x^+\) 相同。
+\end{problem}
+
+\begin{solution}
+  由于 \(x\) 为常返态，
+  \[
+    \mathbb{P}_x(\tau_x^+<\infty)=1.
+  \]
+
+  每次链回到状态 \(x\) 后，由强马氏性质，从该时刻开始之后的过程与重新从 \(x\) 出发的链分布相同。
+
+  因此
+  \[
+    \sigma_n=\tau_x^{(n)}-\tau_x^{(n-1)}
+  \]
+  表示“从 \(x\) 出发再次返回 \(x\) 的时间”，故
+  \[
+    \sigma_n\overset d=\tau_x^+.
+  \]
+
+  又由于不同 excursion 之间由强马氏性质相互独立，因此
+  \[
+    \{\sigma_n:n\ge1\}
+  \]
+  独立同分布，且公共分布为 \(\tau_x^+\)。
+\end{solution}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{problem}\label{pro:1.0.10}
+  考虑两个互达状态 \(x,y\)。证明：
+
+  \begin{enumerate}
+    \item \(x,y\) 常返，当且仅当
+      \[
+        \mathbb{P}_x(\tau_y^+<\infty)=\mathbb{P}_y(\tau_x^+<\infty)=1;
+      \]
+
+    \item \(x,y\) 暂留，当且仅当
+      \[
+        \mathbb{P}_x(\tau_y^+<\infty),\qquad
+        \mathbb{P}_y(\tau_x^+<\infty)
+      \]
+      其中之一严格小于 \(1\)；
+
+    \item 举例说明：可能存在 \(x,y\) 暂留，
+      \[
+        \mathbb{P}_x(\tau_y^+<\infty)<1,
+        \qquad
+        \mathbb{P}_y(\tau_x^+<\infty)=1.
+      \]
+  \end{enumerate}
+\end{problem}
+
+\begin{solution}
+  \begin{enumerate}
+
+    \item
+      先证明必要性。
+
+      若 \(x,y\) 常返，则由于 \(x\to y\)，存在 \(n\ge1\) 使得
+      \[
+        p^{(n)}(x,y)>0.
+      \]
+      由常返性，从 \(x\) 出发在时间大于\(n \)后能回到\(x \)的概率为\(1 \)，于是
+      \[
+        0=\mathbb{P}_x(\forall t > n,X_t \neq x) \geq \mathbb{\mathbb{P}}_x(X_n=y)\mathbb{\mathbb{P}}_y(\forall t >1,X_t \neq x) = p^{(n)}(x,y)\mathbb{\mathbb{P}}_y(\tau_x^+ = \infty)
+      \]
+      ，于是\( \mathbb{P}_y(\tau_x^+<\infty)=1. \) 同理， \(\mathbb{P}_x(\tau_y^+<\infty)=1.\)
+
+      再证明充分性。
+
+      假设
+      \[
+        \mathbb{P}_x(\tau_y^+<\infty)=\mathbb{P}_y(\tau_x^+<\infty)=1.
+      \]
+      由于 \(x,y\) 互达，存在 \(m,n\ge1\) 满足
+      \[
+        p^{(m)}(x,y)>0,\qquad p^{(n)}(y,x)>0.
+      \]
+
+      由强马氏性，
+      \[
+        \mathbb{P}_x(\tau_x^+<\infty)
+        \ge
+        \mathbb{P}_x(\tau_y^+<\infty)\cdot \mathbb{P}_y(\tau_x^+<\infty)
+        =1.
+      \]
+      因此
+      \[
+        \mathbb{P}_x(\tau_x^+<\infty)=1,
+      \]
+      即 \(x\) 常返。同理 \(y\) 常返。
+
+    \item
+      由第 1 问已经证明：
+      \[
+        x,y \text{ 常返}
+        \iff
+        \mathbb{P}_x(\tau_y^+<\infty)=\mathbb{P}_y(\tau_x^+<\infty)=1.
+      \]
+
+      由于 \(x,y\) 互达，不可能一个常返一个暂留，因此若其中一个暂留，则二者都不常返，从而都为暂留态。
+
+      因此，
+      \(x,y\) 暂留
+      等价于“不满足上式”，即 \(\mathbb{P}_x(\tau_y^+<\infty), \mathbb{P}_y(\tau_x^+<\infty)\)，
+      至少有一个严格小于 \(1\)。
+
+    \item
+      考虑状态空间
+      \[
+        E=\{0,1,2,\dots\}
+      \]
+      上的马氏链，其转移规则如下：
+
+      \[
+        p(0,1)=1,
+      \]
+      对 \(n\ge1\)，
+      \[
+        p(n,n+1)=p,
+        p(n,n-1)=q,
+      \]
+      其中
+      \[
+        p>q, p+q=1.
+      \]
+
+      该链具有向右漂移，因此是暂留链。
+
+      取
+      \[
+        x=0,y=1.
+      \]
+
+      从 \(0\) 出发必先到达 \(1\)，因此
+      \[
+        \mathbb{P}_0(\tau_1^+<\infty)=1.
+      \]
+
+      而从 \(1\) 出发，由于随机游动向右漂移，以正概率永远逃向 \(+\infty\) 而不再回到 \(0\)，因此
+      \[
+        \mathbb{P}_1(\tau_0^+<\infty)<1.
+      \]
+  \end{enumerate}
+\end{solution}
+\end{document}
